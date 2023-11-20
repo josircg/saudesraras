@@ -1,0 +1,6 @@
+{% block html_body  %}
+  <h1>A new Organization has been submitted on the Civis platform</h1>
+  <p>
+    Access the new organization, <a href="{{ domain }}{% url 'edit_organisation' pk=id %}">{{ submissionName }}</a>, to moderate it.
+  </p>
+{% endblock html_body %}

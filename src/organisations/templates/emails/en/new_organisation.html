@@ -1,0 +1,17 @@
+{% block html_body  %}
+  <p>Hello, {{ username }}</p>
+  <p>
+   Thank you for registering the organization <a href="{{ domain }}{% url 'organisation' pk=id %}">{{ submissionName }}</a>
+   on the Civis platform.
+  </p>
+  <p>Now, it will go through the moderation stage conducted by our team.</p>
+  <p>The objective is to prevent the use of the platform for purposes other than supporting citizen science.</p>
+  <p>If we have any questions, we will contact you.</p>
+  <p>If everything is ok, you will receive a notice that the organization has been approved and is published on the platform.</p>
+  <p>You can make updates or changes to your organization's profile at any time by accessing the My Submissions section in your
+    <a href="{{ domain }}{% url 'profiles:show_self' %}">Personal Area</a> (see the top right corner of the platform menu).</p>
+  <p>If you want to talk to us, write to civil@ibict.br.</p>
+  <p>This is an automated email, DO NOT respond.</p>
+  <p>Greetings,</p>
+  <p>Civis Team</p>
+{% endblock html_body %}

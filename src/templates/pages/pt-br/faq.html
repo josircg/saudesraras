@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ block.super }} :: {% trans "About" %}{% endblock %}
+
+{% block list_of_items %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mt-5 mb-5">
+                {% trans "Frequently <span class='text-pink6'>asked questions</span>" %}
+            </h1>
+        </div>
+    </div>
+    <section class="accordion">
+
+        <div class="accordion-group mb-5">
+            <h3 class="text-pink6">Sobre a Civis</h3>
+            <div class="accordion" id="accordion1">
+                <!-- #1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc1Heading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#acc1Collapse1" aria-expanded="true" aria-controls="acc1Collapse1">
+                            O que é a Civis?
+                        </button>
+                    </h2>
+                    <div id="acc1Collapse1" class="accordion-collapse collapse" aria-labelledby="acc1Heading1"
+                        data-bs-parent="#accordion1">
+                        <div class="accordion-body">
+                          A Civis [pronuncia Cívis] é uma plataforma de ciência cidadã,
+                          desenvolvida pelo Instituto Brasileiro de Informação em Ciência e Tecnologia (IBICT).
+                          Nosso objetivo é oferecer infraestrutura e conteúdos que contribuam para ampliar o
+                          entendimento sobre ciência cidadã, disseminar seu uso e dar suporte ao desenvolvimento de
+                          iniciativas e à aplicação de metodologias nesse campo, com foco na América Latina e no Caribe.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc1Heading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#acc1Collapse2" aria-expanded="false" aria-controls="acc1Collapse2">
+                            Que tipos de conteúdos vou encontrar na Civis?
+                        </button>
+                    </h2>
+                    <div id="acc1Collapse2" class="accordion-collapse collapse" aria-labelledby="acc1Heading2"
+                        data-bs-parent="#accordion1">
+                        <div class="accordion-body">
+                            Aqui você vai encontrar diversos conteúdos relativos à ciência cidadã,
+                            incluindo informações sobre iniciativas, projetos e organizações; ferramentas e
+                            recursos que auxiliem na compreensão do tema, na realização de iniciativas e
+                            na adoção métodos com essa abordagem; agenda de eventos no Brasil e no exterior;
+                            textos de opinião e entrevistas com praticantes, profissionais e pesquisadores
+                            da área, entre outros conteúdos que possam ser de interesse.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc1Heading3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#acc1Collapse3" aria-expanded="false" aria-controls="acc1Collapse3">
+                            A Civis possibilita o envio de dados cidadãos?
+                        </button>
+                    </h2>
+                    <div id="acc1Collapse3" class="accordion-collapse collapse" aria-labelledby="hacc1Heading3"
+                        data-bs-parent="#accordion1">
+                        <div class="accordion-body">
+                            No momento, a Civis não possui essa funcionalidade.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-group mb-5">
+            <h3 class="text-pink6">Como colaborar com a Civis</h3>
+            <div class="accordion" id="accordion2">
+                <!-- #4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse1" aria-expanded="true" aria-controls="accCollapse1">
+                            Preciso me cadastrar para colaborar?
+                        </button>
+                    </h2>
+                    <div id="accCollapse1" class="accordion-collapse collapse" aria-labelledby="acc2Heading1"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            Sim, é preciso criar um cadastro com login e senha para submeter conteúdos à
+                            Civis. É possível tornar sua participação visível para os demais participantes
+                            cadastrados, acessando seu “Centro de privacidade”. Para saber mais a respeito,
+                            consulte o item 3c do nosso <a href="{% url 'guide' %}" target="_blank">Guia de Uso</a>  (“Tornando seu Perfil público”).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse2" aria-expanded="false" aria-controls="accCollapse2">
+                            Como posso enviar conteúdos?
+                        </button>
+                    </h2>
+                    <div id="accCollapse2" class="accordion-collapse collapse" aria-labelledby="acc2Heading2"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            Você pode enviar os conteúdos utilizando nossos formulários disponíveis no botão
+                            de <strong>Nova Submissão</strong> . Para isso, é preciso estar logado na plataforma. Para saber
+                            mais a respeito, consulte o item 5 do nosso <a href="{% url 'guide' %}" target="_blank">Guia de Uso</a> (“Submeta um novo conteúdo
+                            à Civis”).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #6 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse3" aria-expanded="false" aria-controls="accCollapse3">
+                            Que tipo de conteúdos posso submeter?
+                        </button>
+                    </h2>
+                    <div id="accCollapse3" class="accordion-collapse collapse" aria-labelledby="acc2Heading3"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            É possível submeter iniciativas e projetos de ciência cidadã; recursos e
+                            ferramentas voltados à ciência cidadã; formações em ciência cidadã; e organizações
+                            que desenvolvam projetos, iniciativas e recursos de ciência cidadã.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #7 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse4" aria-expanded="false" aria-controls="accCollapse4">
+                            Como ajustar as imagens no formulário de cadastro?
+                        </button>
+                    </h2>
+                    <div id="accCollapse4" class="accordion-collapse collapse" aria-labelledby="acc2Heading4"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            As imagens precisam respeitar as dimensões indicadas nos formulários de submissão.
+                            Para saber mais a respeito, leia o item 5e do nosso <a href="{% url 'guide' %}" target="_blank">Guia de Uso</a> (“Anexando imagens”).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #8 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading5">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse5" aria-expanded="false" aria-controls="accCollapse5">
+                            Como informo a localização da minha iniciativa ou organização no mapa?
+                        </button>
+                    </h2>
+                    <div id="accCollapse5" class="accordion-collapse collapse" aria-labelledby="acc2Heading5"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            No formulário de submissão de iniciativa ou de organização, especifique a
+                            localização no campo indicado ou clique diretamente no mapa, usando o cursor.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #9 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading6">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse6" aria-expanded="false" aria-controls="accCollapse6">
+                            Como editar um conteúdo já cadastrado?
+                        </button>
+                    </h2>
+                    <div id="accCollapse6" class="accordion-collapse collapse" aria-labelledby="acc2Heading6"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            Após logar-se na plataforma, entre na página de perfil do respectivo conteúdo e
+                            clique no botão “Editar”. Só é possível editar conteúdos que tenham sido
+                            submetidos por você. No caso de iniciativas, coeditores/as também têm essa permissão.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #10 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading7">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse7" aria-expanded="false" aria-controls="accCollapse7">
+                            O que significa ser coeditor/a de uma iniciativa?
+                        </button>
+                    </h2>
+                    <div id="accCollapse7" class="accordion-collapse collapse" aria-labelledby="acc2Heading7"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            Coeditor/a é a pessoa com status para fazer alterações nas informações de uma
+                            iniciativa. Para ter esta atribuição, é preciso receber um convite de quem
+                            publicou o conteúdo originalmente na plataforma.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #11 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading8">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse8" aria-expanded="false" aria-controls="accCollapse8">
+                            O que significa marcar um projeto ou recurso como favorito?
+                        </button>
+                    </h2>
+                    <div id="accCollapse8" class="accordion-collapse collapse" aria-labelledby="acc2Heading8"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            Ao marcar um projeto ou recurso como favorito, você adiciona o respectivo
+                            conteúdo à sua própria biblioteca. Isso facilita encontrar posteriormente um
+                            conteúdo selecionado por você.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #12 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading9">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse9" aria-expanded="false" aria-controls="accCollapse9">
+                            O que é e como funciona a moderação?
+                        </button>
+                    </h2>
+                    <div id="accCollapse9" class="accordion-collapse collapse" aria-labelledby="acc2Heading9"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            A moderação da Civis é realizada pela equipe que mantém a plataforma, a partir
+                            da leitura das informações inseridas nos formulários de submissão. Nosso objetivo
+                            é assegurar que os conteúdos cadastrados estejam no escopo da ciência cidadã,
+                            bem como prevenir o uso da plataforma para outros fins.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #13 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc2Heading10">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accCollapse10" aria-expanded="false" aria-controls="accCollapse10">
+                            Como posso sugerir conteúdo para o blog da Civis?
+                        </button>
+                    </h2>
+                    <div id="accCollapse10" class="accordion-collapse collapse" aria-labelledby="acc2Heading10"
+                        data-bs-parent="#accordion2">
+                        <div class="accordion-body">
+                            Para sugerir conteúdos para o blog, preencha nosso <a href="{% url 'contact' %}" target="_blank">formulário de contato</a>, no
+                            menu do rodapé.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-group mb-5">
+            <h3 class="text-pink6">Busca de conteúdos</h3>
+            <div class="accordion" id="accordion3">
+                <!-- #14 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc3Heading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#acc3Collapse1" aria-expanded="true" aria-controls="acc3Collapse1">
+                            Como faço para pesquisar conteúdos na Civis?
+                        </button>
+                    </h2>
+                    <div id="acc3Collapse1" class="accordion-collapse collapse" aria-labelledby="acc3Heading1"
+                        data-bs-parent="#accordion3">
+                        <div class="accordion-body">
+                            As buscas são realizadas digitando, nos campos de busca, os termos de interesse.
+                            Para mais informações, consulte o item 4 do nosso <a href="{% url 'guide' %}" target="_blank">Guia de Uso</a> (“Realize buscas”).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #15 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc3Heading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#acc3Collapse2" aria-expanded="false" aria-controls="acc3Collapse2">
+                            O que fazer se eu não encontrar o conteúdo que procuro?
+                        </button>
+                    </h2>
+                    <div id="acc3Collapse2" class="accordion-collapse collapse" aria-labelledby="acc3Heading2"
+                        data-bs-parent="#accordion3">
+                        <div class="accordion-body">
+                            Caso não encontre o que procura, você pode utilizar o <a href="{% url 'contact' %}" target="_blank">formulário de contato</a> para
+                            nos informar o que deseja e sugerir novos conteúdos. Você pode também submeter
+                            iniciativas, organizações, recursos e eventos ainda não cadastrados na plataforma.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="accordion-group mb-5">
+            <h3 class="text-pink6">Como fazer contato</h3>
+            <div class="accordion" id="accordion4">
+                <!-- #16 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc4Heading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#acc4Collapse1" aria-expanded="true" aria-controls="acc4Collapse1">
+                            Como entro em contato com os administradores da Civis?
+                        </button>
+                    </h2>
+                    <div id="acc4Collapse1" class="accordion-collapse collapse" aria-labelledby="acc4Heading1"
+                        data-bs-parent="#accordion4">
+                        <div class="accordion-body">
+                            Para entrar em contato com a Civis, basta usar o <a href="{% url 'contact' %}" target="_blank">formulário de contato</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #17 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="acc4Heading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#acc4Collapse2" aria-expanded="false" aria-controls="acc4Collapse2">
+                            Como entro em contato com as iniciativas cadastradas na Civis?
+                        </button>
+                    </h2>
+                    <div id="acc4Collapse2" class="accordion-collapse collapse" aria-labelledby="acc4Heading2"
+                        data-bs-parent="#accordion4">
+                        <div class="accordion-body">
+                            Você pode entrar em contato direto com os realizadores da iniciativa, por
+                            meio das informações de contato disponíveis na respectiva página de perfil.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+{% endblock list_of_items %}

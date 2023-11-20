@@ -1,0 +1,38 @@
+[
+    {
+        "model": "projects.geographicextend",
+        "fields": {
+            "geographicextend": "Global"
+        }
+    },
+    {
+        "model": "projects.geographicextend",
+        "fields": {
+            "geographicextend": "Macrorregional"
+        }
+    },
+    {
+        "model": "projects.geographicextend",
+        "fields": {
+            "geographicextend": "Nacional"
+        }
+    },
+    {
+        "model": "projects.geographicextend",
+        "fields": {
+            "geographicextend": "Regional"
+        }
+    },
+    {
+        "model": "projects.geographicextend",
+        "fields": {
+            "geographicextend": "Municipal"
+        }
+    },
+    {
+        "model": "projects.geographicextend",
+        "fields": {
+            "geographicextend": "Vizinhança"
+        }
+    }
+]

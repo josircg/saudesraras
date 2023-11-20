@@ -1,0 +1,12 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load thumbnail %}
+{% for resource in resources %}
+{% include 'resource_card_one.html' with endPoint=endPoint %} <!-- enviando variável endPoint estaticamente, caso os cards são chamados na home  -->
+{% endfor %}
+{% if 'resources' in request.get_full_path %}
+<div class="col-lg-12">
+    {% include "fr2.html" %}
+</div>
+{% endif %}

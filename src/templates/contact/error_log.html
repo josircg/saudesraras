@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block list_of_items %}
+  <div class="erroPagina">
+    <h3>{{ title }}</h3>
+    {% for error in error_list %}
+        <p>{{ error }}</p>
+    {% endfor %}
+    <a href="javascript:history.back()">{% trans "Go back" %}</a>
+  </div>
+{% endblock list_of_items %}

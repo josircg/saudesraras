@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}{{ block.super }} :: Terms of Use{% endblock %}
+{% block splash %}
+{% endblock splash %}
+
+{% block navbar-left %}
+{% include "_navbar.html" %}
+{% endblock %}
+
+{% block list_of_items %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+            <br/>
+			<h2>Terms of Use</h2>
+		</div>
+		<div class="col-12 mt-4 mb-4">
+			Short version: We host crowdsourced content that encompasses a wide variety of Citizen Science
+            projects and resources from different locations. This collaboration only works when our users can work together synergistically and in good faith. While using this Platform’s Services, you must comply with our Terms of Use, which include some restrictions on content you can post, user conduct, and other limitations.
+    	</div>
+	</div>
+
+	<div class="container-fluid bg-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-12 mt-4 mb-4">
+					<h3>Compliance with Laws and Regulations</h3>
+				</div>
+				<div class="col-sm-8 col-12 mt-4 mb-4">
+					You are responsible for using the Service in compliance with all applicable laws, regulations,
+                    and our Terms of Use. These policies may be updated from time to time and are provided below.
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-12 mt-4 mb-4">
+				<h3>Content Restrictions</h3>
+			</div>
+			<div class="col-sm-8 col-12 mt-4 mb-4">
+				Under no circumstances will Users upload, post, host, execute, link to, or transmit any Content that:
+				<ul>
+					<li>is unlawful or promotes unlawful activities;</li>
+					<li>is or contains sexually obscene content;</li>
+					<li>is libelous, defamatory, or fraudulent;</li>
+					<li>is discriminatory or abusive toward any individual or group;</li>
+					<li>gratuitously depicts or glorifies violence, including violent images;</li>
+					<li>
+						contains or installs any active malware or exploits, or uses our platform for exploit delivery (such as part of a command-and-control system); or
+					</li>
+					<li>infringes any proprietary right of any party, including patent, trademark, trade secret, copyright, right of publicity, or other right.</li>
+                </ul>
+			</div>
+		</div>
+		<div class="container-fluid bg-white">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4 col-12 mt-4 mb-4">
+						<h3>Conduct Restrictions</h3>
+					</div>
+					<div class="col-sm-8 col-12 mt-4 mb-4">
+						While using the Service, under no circumstances will you: harass, abuse, threaten, or incite violence towards any individual or group, including the Platform managers, or other users.
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="container">
+            <div class="row">
+                <div class="col-12 mt-4 mb-4">
+                    <b>Credits:</b> Text based on and adapted from <a href=" https://eu-citizen.science/terms/">https://eu-citizen.science/terms/</a>
+                </div>
+            </div>
+	    </div>
+    </div>
+</div>
+{% endblock list_of_items%}

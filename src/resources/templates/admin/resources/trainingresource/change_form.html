@@ -1,0 +1,12 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n admin_urls %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+  {% if change %}
+    <li>
+      <a href="{% url 'admin:resources_trainingresource_migrate_resource' original.pk %}" class="historylink">{% trans 'Migrate to Resource' %}</a>
+    </li>
+  {% endif %}
+{% endblock %}
+

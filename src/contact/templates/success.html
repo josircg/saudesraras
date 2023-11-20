@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ block.super }}{{ title }}{% endblock %}
+
+{% block navbar-left %}
+{% include "_navbar.html" %}
+{% endblock %}
+
+{% block splash %}
+<div class="jumbotron jumbotron-fluid jumbotron-contact">
+	<div class="container">
+		<h1 class="display-5 pb-0"><br/></h1>
+		<p class="lead text-light"><br/><br/></p>
+	</div>
+</div>
+{% endblock splash %}
+
+{% block list_of_items %}
+<div class="container form-box">
+  <div class="text-center">
+    <h1>{{ title }}</h1>
+    <div class="form-message">
+      <p>{{ message }}</p>
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+{% endblock list_of_items %}

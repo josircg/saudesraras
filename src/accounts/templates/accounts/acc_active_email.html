@@ -1,0 +1,31 @@
+{% load i18n %}
+{% block subject %}
+{% blocktrans %}Activate your CIVIS account.{% endblocktrans %}
+{% endblock subject %}
+
+{% block html_body  %}
+
+<p>Olá, {{ user.name }}</p>
+
+<p>
+    Agradecemos por se registrar para fazer parte da comunidade da plataforma de Ciência Cidadã Civis.<br>
+    Seu cadastro está quase pronto. Para concluí-lo, confirme o seu endereço de e-mail clicando no
+    <a href="{{domain}}{% url 'accounts:activate' uidb64=uid token=token %}">link de ativação</a>, ou copie e cole o link abaixo no seu navegador.
+</p>
+
+<p>
+    {{domain}}{% url 'accounts:activate' uidb64=uid token=token %}
+</p>
+
+<p>
+    Caso você não tenha se cadastrado na Civis, ignore esta mensagem ou escreva para civis@ibict.br e nos informe. Este é um e-mail automático, NÃO responda.
+</p>
+
+<p>
+    Seu e-mail permanecerá sempre privado para a comunidade, e será usado apenas para que possamos enviar alertas como este, a menos que você opte explicitamente por divulgá-lo futuramente.
+</p>
+
+<p>Obrigada,<br>Equipe Civis </p>
+
+
+{% endblock html_body %}

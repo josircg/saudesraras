@@ -1,0 +1,8 @@
+-i https://pypi.python.org/simple
+-r base.txt
+django-debug-toolbar==4.2.0
+sqlparse==0.4.4
+werkzeug==2.3.7
+fabric==3.2.2
+flake8==6.1.0
+pre-commit==3.5.0

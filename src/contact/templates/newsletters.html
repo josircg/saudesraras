@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load thumbnail %}
+{% block title %}{{ block.super }} :: Newsletters {% endblock %}
+
+{% block list_of_items %}
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-4">
+                <h1 class="mt-5 mb-5">{{ site_name }}<span class="text-pink6">Newsletters</span></h1>
+            </div>
+        </div>
+        <div id="blog-list">
+            {% for newsletter in newsletter_list %}
+            <div class="col-12 mb-5">
+                <div class="h-100 border-0">
+
+                    <div class="card-content">
+
+                        <div class="row">
+                            <div class="col-md-3 pe-0">
+                                <img class="card-img"
+                                    src="{% thumbnail newsletter.image|default:'void_600.png' 600x400 upscale crop %}"
+                                    alt="Card image">
+                            </div>
+                            <div class="col-md-9 card-text ">
+                                <a href="{{ newsletter.get_absolute_url }}" class="card-title">
+                                    <h3 class="">{{ newsletter.headline }}</h3>
+                                </a>
+                                <p>{{ newsletter.featured_title }}</p>
+                                <p>{{ newsletter.featured_text }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-12">
+            {% include "blog_paginator.html" %}
+        </div>
+    </div>
+</div>
+
+{% endblock list_of_items %}

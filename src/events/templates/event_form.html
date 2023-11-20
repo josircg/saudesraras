@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }} :: Events{% endblock %}
+
+{% block navbar-left %}
+{% include "_navbar.html" with active_link="events" %}
+{% endblock %}
+
+{% block list_of_items %}
+<div class="intro-form mt-5 mb-5 pb-5 pt-5">
+    <div class="container">
+        {% include "_intro_form_event.html" %}
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="container mt-5">
+          <div class="row d-flex justify-content-center">
+              <div class="col-sm-10 col-12">
+                  <div class="mt-5 mb-5">
+                      <div class="pr-5 pl-5 pb-5">
+                      {% if event.pk %}
+                        <form action="/editEvent/{{ event.pk }}" method="post" enctype="multipart/form-data"
+                              class="save-event" autocomplete="off">
+                        <input type="hidden" id="eventID" name="eventID" value={{ event.pk }}>
+                      {% else %}
+                        <form action="/new_event" method="post" enctype="multipart/form-data"
+                              class="add-new-event" autocomplete="off">
+                      {% endif %}
+                          {% csrf_token %}
+                          <div class="row d-flex justify-content-center">
+                              <div class="col-8 mb-4">
+                                <h4>{% trans "Event info" %}</h4>
+                              </div>
+                              <div class="col-8 mb-4">
+                                  {{ form.title|as_crispy_field }}
+                              </div>
+                              <div class="col-8 mb-4">
+                                  {{ form.description|as_crispy_field }}
+                              </div>
+
+                              <div class="col-8 mb-4">
+                                  {{ form.place|as_crispy_field }}
+                              </div>
+                              <div class="col-8 mb-4">
+                                  {{ form.start_date|as_crispy_field }}
+                              </div>
+                              <div class="col-8 mb-4">
+                                  {{ form.end_date|as_crispy_field }}
+                              </div>
+                              <div class="col-8 mb-4">
+                                  {{ form.hour|as_crispy_field }}
+                              </div>
+                              <div class="col-8 mb-4">
+                                  {{ form.url|as_crispy_field }}
+                              </div>
+                          </div>
+                          <div class="row d-flex justify-content-center">
+                            <div class="col-8 mb-1">
+                                <button type="submit" class="btn btn-pink6">
+                                <i class="fas fa-share-square"></i>{% if event.pk %}{% trans 'Save' %}{% else %}{% trans 'Add' %}{% endif %}</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      {% if user.is_staff and event.pk and event.approved == None %}
+                      <div class="row d-flex justify-content-center">
+                          <div class="col-8">
+                                <a href="{% url 'approve_event' event.pk 1 %}"
+                                   class="btn btn-pink6"><i class="fas fa-thumbs-up"></i> {% trans "Approve" %}
+                                </a>
+                                <a href="{% url 'approve_event' event.pk 0 %}"
+                                   class="btn btn-pink6"><i class="fas fa-thumbs-down"></i> {% trans "Do not" %} {% trans "Approve" %}
+                                </a>
+                          </div>
+                      </div>
+                      {% endif %}
+                      <div class="mb-3"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock list_of_items %}
+
+{% block scripts %}
+<script>
+    $('form').on('submit', function(e){
+        $("button[type=submit]").attr('disabled','true');
+    });
+</script>
+{% endblock scripts %}

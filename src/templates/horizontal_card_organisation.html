@@ -1,0 +1,13 @@
+{% extends "horizontal_card.html" %}
+{% load thumbnail %}
+{% load eucs_platform_tags eucs_platform_translate %}
+{% block img %}
+<a href="/organisation/{{organisation.id}}">
+    <img title="organisation picture" class="img-fluid lazyload" data-src="{% thumbnail organisation.logo|safe_image:'default_profile.png' 200x133 crop %}">
+</a>
+{% endblock img %}
+{% block title %}
+<a href="/organisation/{{organisation.id}}">{{ organisation.name | truncatechars:30 }}</a>
+<div class="small text-muted">{{organisation.orgType|translate_instance}}</div>
+{% include '_card_moderation_info.html' with object=organisation %}
+{% endblock title %}

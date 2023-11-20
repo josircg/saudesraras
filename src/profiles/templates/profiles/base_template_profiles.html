@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load thumbnail %}
+{% block head %}
+{{ block.super }}
+{% endblock head %}
+{% block title %}{{ block.super }} :: {{show_user.get_full_name}}{% endblock %}
+{% block navbar-left %}
+{% include "_navbar.html" %}
+{% endblock %}
+{% block list_of_items %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-3">
+            <div class="mt-4 mb-3 text-center">
+                <div>
+                    <img title="profile picture" class="img-fluid rounded-circle"
+                         src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 280x280 crop %}">
+                </div>
+                <h3 class="mt-4">
+                    {% if show_user.profile.title %}
+                        {{ show_user.profile.title}}
+                    {% endif %}
+                    
+                    {{ show_user.get_full_name}}
+
+                </h3>
+                {% if show_user.profile.country %}
+                    <h5>{{show_user.profile.country.name}}</h5>
+                {% endif %}
+            </div>
+
+            <div class="list-group">
+                {% if editable %}
+                    <a href="{% url 'profiles:show_self' %}"
+                    class="list-group-item list-group-item-action">
+                    <i class="fas fa-user"></i>
+                    {% trans "Personal profile" %}</a>
+                {% elif show_user.profile.profileVisible %}
+                <a href="{% url 'profiles:show' slug=show_user.profile.slug %}"
+                   class="list-group-item list-group-item-action">
+                   <i class="fas fa-user"></i>
+                    {% trans "Personal profile" %}</a>
+                {% endif %}
+                {% if editable %}
+                  <a href="{% url 'profiles:self_submissions' %}"
+                      class="list-group-item list-group-item-action">
+                      <i class="fas fa-binoculars"></i>
+                      {% trans "Submissions" %}</a>
+                  {% if show_user.projectpermission_set.count %}
+                    <a href="{% url 'profiles:self_project_permissions' %}"
+                        class="list-group-item list-group-item-action">
+                        <i class="fas fa-project-diagram"></i>
+                        {% trans "Project Editor" %}</a>
+                  {% endif %}
+                {% elif show_user.profile.contentVisible %}
+                  <a href="{% url 'profiles:submissions' slug=show_user.profile.slug %}"
+                      class="list-group-item list-group-item-action">
+                      <i class="fas fa-binoculars"></i>
+                      {% trans "Submissions" %}</a>
+                  {% if show_user.projectpermission_set.count %}
+                    <a href="{% url 'profiles:project_permissions' slug=show_user.profile.slug %}"
+                        class="list-group-item list-group-item-action">
+                        <i class="fas fa-project-diagram"></i>
+                        {% trans "Project Editor" %}</a>
+                  {% endif %}
+                {% endif %}
+                {% if editable %}
+                <a href="{% url 'profiles:bookmarks' %}"
+                    class="list-group-item list-group-item-action">
+                    <i class="fas fa-bookmark"></i>
+                    {% trans "Bookmarks" %}</a>
+                <a href="{% url 'profiles:privacyCenter' %}"
+                    class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-shield"></i>
+                    {% trans "Privacy center" %}</a>
+                <a href="{% url 'profiles:edit_self' %}"
+                    class="list-group-item list-group-item-action">
+                    <i class="fas fa-pencil-alt"></i>
+                    {% trans "Edit profile" %}</a>
+                {% endif %} 
+            </div>
+
+        </div>
+        <div class="col-9">
+            {% block profile_right %}
+            {% endblock profile_right %}
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+{% endblock list_of_items %}
+
+{% block scripts %}
+  <script type = "text/javascript">
+      (function($) {
+          $(document).ready(function() {
+              $('div.list-group > a[href="' + window.location.pathname + '"]').addClass('active');
+          });
+      })(jQuery);
+  </script>
+{% endblock scripts %}

@@ -1,0 +1,12 @@
+{% block html_body  %}
+  <p>Hello,</p>
+  <p>We are pleased to inform you that the organisation <a href="{{ domain }}{{ organisation_url }}">{{ name }}</a> has been approved.</p>
+  <p>
+    You can make updates or changes to this organisation's profile by accessing the section my submissions in
+    your <a href="{{ domain }}{% url 'profiles:show_self' %}">Personal Area</a> (see top right corner of platform menu).
+  </p>
+  <p>If you want to get in touch with us, write to civil@ibict.br.</p>
+  <p>This is an automated email, DO NOT reply.</p>
+  <p>Greetings,</p>
+  <p>Civis Team</p>
+{% endblock html_body %}

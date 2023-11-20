@@ -1,0 +1,15 @@
+{% extends "./base_template_profiles.html" %}
+{% load i18n %}
+
+{% block profile_right %}
+{% if project_permissions %}
+<h3 class="col-12 leftborder mt-5"><span class='text-pink6'>{% trans "Project Editor" %}</span></h3>
+<div class="row">
+    {% for project_permission in project_permissions %}
+      <div class="col-12 col-md-6">
+          {% include "horizontal_card_project.html" with project=project_permission.project %}
+      </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}{{ block.super }} :: Condiciones de uso{% endblock %}
+{% block navbar-left %}
+{% include "_navbar.html" %}
+{% endblock %}
+
+{% block list_of_items %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+            <br/>
+            <h2>Condiciones de uso</h2>
+		</div>
+		<div class="col-12 mt-4 mb-4">
+				Resumen: <i>Alojamos contenidos enviados en colaboración que cubren una variedad de iniciativas y recursos de ciencia ciudadana de diferentes lugares. Dicha colaboración sólo funciona cuando todos trabajan en sinergia y actúan de buena fe. Al utilizar los servicios de esta plataforma, debe aceptar nuestras condiciones de uso, que incluyen restricciones sobre los contenidos que pueden publicarse, el comportamiento de los usuarios y otras limitaciones.</i>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid bg-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-12 mt-4 mb-4">
+					<h3>Cumplimiento de leyes y reglamentos</h3>
+				</div>
+				<div class="col-sm-8 col-12 mt-4 mb-4">
+					Usted es responsable de utilizar el Servicio de conformidad con todas las leyes y reglamentos aplicables y con todas nuestras Condiciones de uso, establecidas a continuación. Dichas Condiciones podrán ser actualizadas periódicamente.
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-12 mt-4 mb-4">
+				<h3>Restricciones de contenido</h3>
+			</div>
+			<div class="col-sm-8 col-12 mt-4 mb-4">
+				Bajo ninguna circunstancia los usuarios cargarán, publicarán, alojarán, ejecutarán, enlazarán o transmitirán contenidos que:
+				<ul>
+					<li>sea ilegal o promueva actividades ilegales;</li>
+					<li>es o contiene contenido sexual inapropiado;</li>
+					<li>sea injurioso, difamatorio o fraudulento;</li>
+					<li>sea discriminatorio o abusivo hacia cualquier individuo o grupo;</li>
+					<li>represente o glorifique gratuitamente la violencia, incluidas las imágenes violentas;</li>
+					<li>contiene o instala software malicioso (malware) o software que aprovecha vulnerabilidades de seguridad (exploits), o utiliza nuestra plataforma para distribuir exploits (como parte de un sistema de mando y control); o</li>
+					<li>infrinja cualquier derecho de propiedad de cualquiera de las partes, incluyendo patentes, marcas registradas, secretos comerciales, derechos de autor, derechos de publicidad u otros derechos.</li>
+                </ul>
+			</div>
+		</div>
+		<div class="container-fluid bg-white">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4 col-12 mt-4 mb-4">
+						<h3>Restricciones de conducta</h3>
+					</div>
+					<div class="col-sm-8 col-12 mt-4 mb-4">
+						Al utilizar el Servicio, bajo ninguna circunstancia podrá: acosar, abusar, amenazar o incitar a la violencia contra ningún individuo o grupo, incluidos los administradores de la Plataforma u otros usuarios.
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="container">
+		<div class="row">
+			<div class="col-12 mt-4 mb-4">
+				<b>Créditos:</b> Texto basado y adaptado de <a href=" https://eu-citizen.science/terms/"> https://eu-citizen.science/terms/</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock list_of_items%}

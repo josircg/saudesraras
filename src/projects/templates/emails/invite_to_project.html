@@ -1,0 +1,16 @@
+{% load i18n %}
+
+{% block html_body  %}
+{% blocktrans %}
+  <p>You were invited by {{ creator }} to be the editor of the project <a href='{{ domain }}/project/{{ project_id }}'>{{ project }}</a>, registered on the Civis platform.</p>
+  <p>This gives you authorization to update or modify registered information for this project.</p>
+  <p>To accept the invitation, <a href='{{ domain }}/{{ link }}'>click here</a>.</p>
+  <p>
+    Civis is a citizen science platform, developed by the Brazilian Institute of Information in Science and Technology - IBICT.
+    Our goal is to provide infrastructure and content that contribute to broadening the comprehension about citizen science,
+    disseminating its use and supporting the development of projects and the application of methodologies in this field.
+  </p>
+  <p>Civis is open for anyone to register projects, resources and other citizen science content.</p>
+  <p>Join the Civis community!</p>
+{% endblocktrans %}
+{% endblock html_body %}

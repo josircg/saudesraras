@@ -1,0 +1,52 @@
+{% load static %}
+{% load i18n cache %}
+{% cache 0 project_map %}
+<div id="mapaHome" class="mb-5">
+    <div class="mapaContent">
+        <div class="d-flex">
+            <div class="d-sm-flex align-items-center flex-grow-1">
+              <span class="title">{% trans 'Project map' %}</span>
+            </div>
+            <div id="div-ordenacao">
+                <div class="title-filtros text-white">{% trans "Select topic" %}</div>
+                <div class="input-group input-group-sm filter-bar">
+                        <select id="orderby" name="orderby" class="custom-select form-control">
+                          <option value="{{ visao_endpoint }}" selected>{% trans 'All topics' %}</option>
+                            {% for project_topic, endpoint  in project_topics %}
+                              <option value="{{ endpoint }}">{{ project_topic }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+            </div>
+        </div>        
+        <br>
+        <div id="frame-visao" class=""></div>
+    </div>
+</div>
+{% endcache %}
+
+
+<script>
+  function loadIframe() {
+    const iframeContainer = document.getElementById('frame-visao');
+    const iframe = document.createElement('iframe');
+    // Add the iframe to the container
+    iframeContainer.appendChild(iframe);
+    // Default iframe src
+    iframe.src = '{{ visao_endpoint }}';
+  }
+  // Function to update the iframe src based on the selected option
+  function updateIframeSrc() {
+    const selectedUrl = this.value;
+    const iframe = document.querySelector('#frame-visao iframe');
+
+    if (iframe) {
+      iframe.src = selectedUrl;
+    }
+  }
+  // Add event listener for change in select
+  const selectElement = document.getElementById('orderby');
+  selectElement.addEventListener('change', updateIframeSrc);
+  // Add event listener to load iframe after page load
+  window.addEventListener('load', loadIframe);
+</script>

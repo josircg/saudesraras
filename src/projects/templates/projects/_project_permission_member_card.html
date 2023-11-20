@@ -1,0 +1,20 @@
+{% extends 'horizontal_card_member.html' %}
+{% load i18n %}
+
+{% block img %}
+  {% if has_permission_to_edit %}
+    <button type="button" class="delete-member-permission" data-delete-url="{% url 'delete_project_permission' project_permission.pk %}"
+            data-parent-id="item-{{ project_permission.pk }}" aria-label="Close"
+            title="{% trans 'Delete editor' %}">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  {% endif %}
+  {{ block.super }}
+{% endblock %}
+
+{% block title %}
+  {{ block.super }}
+  {% if not project_permission.accepted %}
+    <div class="small text-danger">{% trans "Waiting to accept the invitation" %}</div>
+  {% endif %}
+{% endblock title %}

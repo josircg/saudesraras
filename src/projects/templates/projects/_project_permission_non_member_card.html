@@ -1,0 +1,15 @@
+{% extends 'horizontal_card.html' %}
+{% load i18n thumbnail %}
+
+{% block img %}
+  {% if has_permission_to_edit %}
+    <button type="button" class="delete-member-permission" data-delete-url="{% url 'delete_non_registered_user_invitation' activationtask.pk %}"
+            data-parent-id="item-task-{{ activationtask.pk }}" aria-label="Close"
+            title="{% trans 'Delete invitation' %}">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  {% endif %}
+  <img title="profile picture" class="img-fluid zoom lazyload" data-src="{% thumbnail 'default_profile.png' 200x133 crop %}">
+{% endblock %}
+
+{% block title %}{{ activationtask.email }}{% endblock title %}

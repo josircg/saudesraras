@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load thumbnail %}
+{% block title %}{{ block.super }} :: Blog {% endblock %}
+
+{% block list_of_items %}
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-4">
+                <h1 class="mt-5 mb-5">{{ site_name }}<span class="text-pink6"> blog</span></h1>
+            </div>
+            <div class="col-8 text-end">
+                <span class="fs-6 mt-5 pt-3 mb-5 d-block">
+                    {% blocktrans %}Want to send a text or suggestions for the blog?{% endblocktrans %}
+                    <a class="text-pink5" href="/contact">{% blocktrans %}Contact us{% endblocktrans %}.</a>
+                </span>
+            </div>
+
+        </div>
+        <div id="blog-list">
+            {% for post in post_list %}
+            <div class="col-12 mb-5">
+                <div class="h-100 border-0">
+
+                    <div class="card-content">
+
+                        <div class="row">
+                            <div class="col-md-3 pe-0">
+                                <img class="card-img lazyload"
+                                    data-src="{% thumbnail post.safe_image|default:'void_600.png' 600x400 upscale crop %}"
+                                    alt="Card image">
+                            </div>
+                            <div class="col-md-9 card-text ">
+                                <p class="small text-muted">
+                                    {% if post.author.name != "Empty user" %}
+                                    {{ post.author.name }},
+                                    {% endif %}
+                                    {{ post.created_on}}
+                                </p>
+
+                                <a href="{{ post.get_absolute_url }}" class="card-title">
+                                    <h3 class="">{{ post.title }}</h3>
+                                </a>
+
+                                <p class="gray7 mb-0">{{post.excerpt | safe }} </p>
+
+                                <!-- <a href="{{ post.get_absolute_url }}"><div class="btn btn-pink6">Ler</div></a> -->
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-12">
+            {% include "blog_paginator.html" %}
+        </div>
+    </div>
+</div>
+
+{% endblock list_of_items %}

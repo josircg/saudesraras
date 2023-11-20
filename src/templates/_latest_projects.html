@@ -1,0 +1,25 @@
+{% load i18n %}
+<div class="container-fluid">
+    <div class="container">
+        <div class="row rowTitleBtn">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="mt-5 mb-5">{% trans "Projects" %}</h2>
+            </div>
+            <div class="col-xs-12 col-sm-6 btnLatest">
+                <div class="mt-5 mb-5">
+                    <div class="float-end">
+                        <a class="btn btn-all-home my-1 my-md-0 ms-md-2 d-flex align-items-center justify-content-center"
+                            href="{% url 'projects' %}">
+                            {% trans "See all projects" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% include "projects_cards.html" %}
+        </div>
+            </div>
+        </div>
+    </div>
+</div>

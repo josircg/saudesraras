@@ -1,0 +1,21 @@
+{% load i18n %}
+
+
+{% block html_body  %}
+
+<p>Temos o prazer de informar que sua iniciativa <a href="{{domain}}/project/{{id}}">{{name}}</a> recebeu uma avaliação de um membro da comunidade. </p>
+
+<p>Você pode ler esta revisão acessando o perfil da sua iniciativa na seção Minhas submissões na sua <a href="{{domain}}/users/me"> Área Pessoal</a> (veja o canto superior direito do menu da plataforma).</p>
+
+<p>Você também pode responder a esta avaliação no mesmo perfil da iniciativa, usando o formulário de avaliação.</p>
+<p>
+Se precisar de ajuda, tiver dúvidas ou quiser fazer alguma sugestão, escreva para civis@ibict.br.
+Este é um e-mail automático, NÃO responda.
+</p>
+
+<p>
+    Saudações,<br>
+    Equipe Civis
+</p>
+
+{% endblock html_body %}

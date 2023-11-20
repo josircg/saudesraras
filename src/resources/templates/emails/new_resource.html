@@ -1,0 +1,24 @@
+{% load i18n %}
+
+{% block html_body  %}
+  <p>Olá,</p>
+  <p>
+    Agradecemos por registrar o recurso <a href='{{ domain }}{% url resource_url pk=resourceid %}'>{{ submissionName }}</a>
+    na plataforma Civis.
+  </p>
+  <p>
+    Agora, ele passará pela etapa de moderação conduzida pela nossa equipe. O objetivo é prevenir o uso da plataforma
+    para outros fins que não sejam o suporte à ciência cidadã.
+  </p>
+  <p>Caso tenhamos alguma dúvida, entraremos em contato.</p>
+  <p>Se estiver tudo ok, você receberá um aviso de que o recurso foi aprovado e encontra-se publicado na plataforma.</p>
+  <p>
+    Você pode fazer atualizações ou alterações no perfil deste recurso a qualquer momento acessando a
+      seção Minhas submissões na sua <a href="{{ domain }}{% url 'profiles:show_self' %}">Área Pessoal</a>
+      (veja o canto superior direito do menu da plataforma).
+  </p>
+  <p>Se quiser entrar em contato conosco, escreva para civis@ibict.br.</p>
+  <p>Este é um e-mail automático, NÃO responda.</p>
+  <p>Saudações,</p>
+  <p>Equipe Civis</p>
+{% endblock html_body %}

@@ -1,0 +1,80 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.mo
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Packaging files:
+*.egg*
+
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+*.sqlite3
+*.sqlite
+
+# Logs:
+*.log
+
+# Environment variables
+local.env
+
+# Django stuff:
+*.pot
+*.mo
+
+# Eclipse
+.project
+.pydevproject
+.settings
+
+# Linux Editors
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+*.swp
+*.swo
+
+# Rope
+.ropeproject
+
+# Mac
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Project settings
+./site/
+src/media/images/
+src/eucs_platform/settings/development.py
+src/eucs_platform/settings/local.env
+src/recreate_db.sh
+
+#media
+src/media/*
+
+#Profile picutes
+src/media/profile_pics/*
+
+#out
+*.out
+
+#whoosh
+src/whoosh_index
+
+.vscode/
+.idea/
+venv

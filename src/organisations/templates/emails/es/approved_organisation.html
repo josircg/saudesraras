@@ -1,0 +1,12 @@
+{% block html_body  %}
+  <p>Hola,</p>
+  <p>Nos complace informarle de que la organización <a href="{{ domain }}{{ organisation_url }}">{{ name }}</a> ha sido aprobada.</p>
+  <p>
+    Puede realizar actualizaciones o cambios en el perfil de esta organización accediendo a la sección Mis envíos de su
+    <a href="{{ domain }}{% url 'profiles:show_self' %}">Área Personal</a> (véase la esquina superior derecha del menú de la plataforma).
+  </p>
+  <p>Si desea ponerse en contacto con nosotros, escríbanos a civis@ibict.br.</p>
+  <p>Este es un correo electrónico automático, NO responda.</p>
+  <p>Saludos,</p>
+  <p>Equipo Civis</p>
+{% endblock html_body %}

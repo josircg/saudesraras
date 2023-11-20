@@ -1,0 +1,45 @@
+{% load i18n %}
+{% load static %}
+{% load l10n %}
+{% load countries %}
+{% get_countries as countries %}
+
+<div class="row">
+    <form class="form-inline float-lg-right" id="searchUsers" action="/users">
+        <input type="hidden" name="keywords" value="{{filters.keywords}}">
+        <div class="col-12 d-flex">
+
+            <div id="div-ordenacao">
+                <div class="title-filtros">Ordenar por</div>
+                <div class="input-group input-group-sm filter-bar">
+                    <div class="input-group-text filter-img">
+                        <img src="{% static '../static/site/icons/order-icon.png' %}" alt="">
+                    </div>
+                    <select id="orderby" name="orderby" class="custom-select status-select form-control">
+                        <option value="" {% if filters.orderby == "" %} selected {% endif %}>{% trans "Most Recent" %}</option>
+                        <option value="name" {% if filters.orderby == "name" %} selected {% endif %}>{% trans "By Name" %}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                {% if request.get_full_path != "/users/" %}
+                <a class="badge rounded-pill bg-pink8 text-decoration-none mt-4" href="/users">
+                    <i class="fas fa-times"></i> {% trans "Clear current search query and filters" %}
+                </a>
+                {% endif %}
+                <div class="small result mb-3 mt-3">
+                    {{ counter }}
+                    {% if counter != 1 %}
+                    {% trans "users found" %}
+                    {% else %}
+                    {% trans "user found" %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

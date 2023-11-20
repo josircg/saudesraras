@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load eucs_platform_translate %}
+
+{% block head %}
+{{ block.super }}
+{% endblock head %}
+
+{% block title %}
+{{ block.super }} :: {{platform.name}}
+
+{% endblock title %}
+{% block navbar-left %}
+{% endblock %}
+
+
+{% block list_of_items %}
+{% include '_modal_zone.html' %}
+
+{% if platform.profileImage %}
+<div class="container-fluid profileImage"
+     style="background: url('{{ platform.profileImage.url }}') no-repeat; background-size: cover;">
+</div>
+{% endif %}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+            <h1 class="display-4">{{platform.name}}</h1>
+            <input type='hidden' id='Id' value="{{platform.id}}" />
+        </div>
+
+        <div class="col-xl-8 col-md-6 col-12"><!-- Right column -->
+            <p class="mt-3">{{platform.description | safe }}</p>
+
+            {% if platform.organisation.all %}
+            <h4 class="mt-4 leftborder">{% trans "Organisations" %}</h4>
+            <div class="row">
+                {% for organisation in platform.organisation.all %}
+                <div class="col-12 col-md-6">
+                    {% include "horizontal_card_organisation.html" %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <a href="{{platform.url}}" target="_blank" class="btn btn-my-darkBlue mt-4 mb-4">
+                <i class="fas fa-external-link-square-alt"></i>{% trans "Go to the platform page" %}
+            </a>
+
+            {% if platform.contactPointEmail %}
+              <a href="mailto:{{ platform.contactPointEmail }}" class="btn btn-my-darkBlue mt-4 mb-4">
+              <i class="far fa-envelope"></i> {% trans "Contact email" %}</a>
+            {% endif %}
+
+            {% if platform.creator == user %}
+            <a href="/editPlatform/{{platform.id}}" class="btn btn-warning mt-4 mb-4">
+                <i class="fas fa-edit"></i>Edit
+            </a>
+            <button type="button" id="deletePlatform" class="btn btn-danger mt-4 mb-4 doModalAction">
+                <i class="fas fa-trash"></i> Delete
+            </button>
+            {% endif %}
+        </div><!-- End-of right column -->
+
+        <div class="col-xl-4 col-md-6 col-12"><!-- Left column -->
+            {% if platform.logo %}
+            <img class="img-fluid lazyload" data-src='{{ platform.logo.url }}' />
+            {% endif %}
+
+            <h5 class="mt-3">{% trans "Geographic extend" %}</h5>
+            {% with tgeoExtend=platform.geoExtend|translate_instance %}
+            <a class="badge bg-my-darkGreen" 
+                href="/platforms?geographicExtend={{ tgeoExtend }}">{{ tgeoExtend | title}}</a>
+            {% endwith %}
+            <div>
+
+            <h5 class="mt-3">{% trans "Countries" %}</h5>
+                {% for country in platform.countries %}
+                <a class="badge bg-my-darkBlue" href="#">{{ country.name }}</a>
+                {% endfor %}
+            </div>
+        </div><!-- End-of left column -->
+    </div>
+</div>
+{% endblock list_of_items %}
+
+
+

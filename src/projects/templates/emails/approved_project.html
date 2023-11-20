@@ -1,0 +1,22 @@
+{% load i18n %}
+
+{% block html_body  %}
+
+<p>Temos o prazer de informar que sua iniciativa <a href="{{ domain }}/project/{{ id }}">{{ name }}</a> foi aprovada.</p>
+<p>
+  Você pode fazer atualizações ou alterações no perfil desta iniciativa acessando a seção
+  <a href="{{ domain }}/users/me/submissions">Minhas submissões</a> na sua <a href="{{ domain }}/users/me">Área Pessoal</a> (veja o canto superior direito do menu da plataforma).
+</p>
+<p>
+  Também é possível convidar outras pessoas para serem editoras/es dessa iniciativa, dando-lhes assim autorização para
+  alterar todas as informações de cadastro. Por isso, atenção ao atribuir essa função a alguém.
+</p>
+<p>
+  Para enviar o convite, <a href="{{ domain }}/project_permissions/{{ id }}/">clique aqui</a> ou acesse a página da iniciativa.
+</p>
+<p>Se tiver dúvidas ou quiser fazer sugestões, escreva para civis@ibict.br.</p>
+<p>Este é um e-mail automático, NÃO responda.</p>
+<p>Saudações,</p>
+<p>Equipe Civis</p>
+
+{% endblock html_body %}

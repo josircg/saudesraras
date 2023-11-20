@@ -1,0 +1,98 @@
+{% extends "./base_template_profiles.html" %}
+{% load i18n %}
+{% block profile_right %}
+<h4 class="col-12 leftborder">{% trans "Permissions and password" %}</h4>
+<div class="row">
+    <div class="col-12">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" 
+                   class="custom-control-input myradio" 
+                   id="profileVisible"
+                   {% if show_user.profile.profileVisible %}checked{% endif %}>
+
+            <label class="custom-control-label" for="profileVisible">{% trans "Your profile is public and visible (your email address will not be shared in any case)" %}</label>
+        </div>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" 
+                   class="custom-control-input myradio" 
+                   id="contentVisible"
+                   {% if show_user.profile.contentVisible %}checked{% endif %}>
+            <label class="custom-control-label" for="contentVisible">{% trans "The list of content you have submitted is public and visible" %}</label>
+        </div>
+        <input type="hidden" id="subscribedtoDigest" name="subscribedtoDigest" value={{resource.id}}>
+        <div class="custom-control custom-switch">
+            <input type="checkbox"
+                   class="custom-control-input myradio"
+                   id="newsletter" name="newsletter"
+                   {% if newsletter %}checked{% endif %}>
+            <label class="custom-control-label" for="newsletter">{% trans "I want to receive the newsletter from Civis" %}</label>
+        </div>
+        {% comment %}
+        <!-- Removido a pedido 2022.03.21 - Marcos Novais
+        <div class="custom-control custom-switch">
+            <input type="checkbox" 
+                   class="custom-control-input myradio" 
+                   id="subscribedtoDigest"
+                   {% if show_user.profile.digest %}checked{% endif %}>
+            <label class="custom-control-label" for="subscribedtoDigest">{% trans "Subscribed to monthly digest" %}</label>
+        </div> -->
+        {% endcomment %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <a class="btn btn-pink6 mt-4 mb-4" href="{% url 'accounts:password-change' %}"><i class="fas fa-key"></i> {% trans "Change Password" %}</a>
+
+    </div>
+</div>
+
+<h4 class="col-12 leftborder mt-4">{% trans "General information" %}</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>{% trans "Event" %}</th>
+            <th>{% trans "When" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>{% trans "Profile created on" %}</td>
+        <td>{{show_user.date_joined}}</td>
+        </tr>
+        <tr>
+        <td>{% trans "Last seen on" %}</td>
+        <td>{{show_user.last_login}}</td>
+        </tr>
+
+    </tbody>
+</table>
+{% endblock %}
+{% block scripts %}
+  {{ block.super }}
+  <script>
+      $(function() {
+          $('.myradio').change(function(){
+              //console.log("changed digest")
+              //console.log($('#subscribedtoDigest').is(':checked'))
+              $.ajax({
+                  type: 'POST',
+                  url: 'privacy/updatePrivacy',
+                  data: {
+                      csrfmiddlewaretoken: '{{ csrf_token }}',
+                      subscribedtoDigest: $('#subscribedtoDigest').is(':checked'),
+                      profileVisible: $('#profileVisible').is(':checked'),
+                      contentVisible: $('#contentVisible').is(':checked'),
+                      newsletter: $('#newsletter').is(':checked'),
+                  },
+                  success: function(response){
+                      console.log(response)
+                  },
+                  error: function(error){
+                      console.log(error)
+                  }
+
+              })
+          })
+      })
+  </script>
+{% endblock scripts%}

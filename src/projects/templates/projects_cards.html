@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load static %}
+{% load reviews %}
+{% load thumbnail eucs_platform_tags %}
+{% for project in projects %}
+<div class="col-lg-3 col-sm-6 col-12 mb-5">
+    <div class="card h-100 border-1 rounded">
+        <a href="/project/{{project.id}}">
+            <img class="img-fluid img-card lazyload" data-src="{% thumbnail project.image1|safe_image 612x408 upscale crop %}"
+				   alt="image for {{project.name}}" width="600" height="400"/>
+        </a>
+        <div class="card-body">
+            
+            {% if project.featured %}
+            <div class="small text-muted mb-2">Featured</div>
+            {% else %}
+            <div class="small text-muted mb-2">&nbsp;</div>
+            {% endif %}
+            <!-- TODO: improve this loop -->
+            {% if project.mainOrganisation %}
+            <a href="/projects?country={{project.mainOrganisation.country}}" class="badge rounded-pill bg-pill">
+                {{ project.mainOrganisation.country.name }}
+            </a>
+            {% endif %}
+            {% for topic in project.topic.translated_sorted_by_text %}
+            {% if forloop.counter < 3 %}
+              <a class="badge rounded-pill bg-pill text-decoration-none"
+                 href="/projects?keywords=&topic={{topic|urlencode}}">{{ topic | truncatewords_html:20 }}</a>
+            {% elif forloop.counter < 4 %}
+            ...
+            {% endif %}
+            {% endfor %}
+            {% for keyword in project.keywords.all %}
+            {% if forloop.counter < 3 %}
+            <a class="badge rounded-pill bg-pill text-decoration-none"
+               href="/projects?keywords={{keyword|urlencode}}">{{ keyword | truncatewords_html:20 }}
+            </a>
+            {% elif forloop.counter < 4 %}
+            ...
+            {% endif %}
+            {% endfor %}
+            <h4 class="mt-2 mb-0">
+                <a href="/project/{{project.id}}" class="card-title">{{project.name | truncatewords_html:10 }}</a>
+            </h4>
+            <p class="mt-3 card-desc">{{ project.description | safe | truncate_summary:30 }}</p>
+        </div><!-- End of card-body -->
+    </div><!-- end of card -->
+</div><!-- end of col -->
+{% endfor %}
+{% if 'projects' in request.get_full_path %}
+<div class="col-lg-12">
+    {% include "paginator.html" %}
+</div>
+{% endif %}

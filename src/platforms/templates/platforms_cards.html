@@ -1,0 +1,31 @@
+{% load i18n %}
+{% load static %}
+{% load thumbnail eucs_platform_tags %}
+{% load eucs_platform_translate %}
+{% for platform in platforms %}
+<div class="col-lg-3 col-sm-6 col-xs-12 mb-5">
+    <div class="card h-100 border-1 rounded">
+        <a href="/platform/{{platform.id}}">
+            <img class="img-fluid img-card lazyload" data-src="{% thumbnail platform.logo|safe_image 306x204 crop %}"/>
+        </a>
+        <div class="card-body">
+                {% for country in platform.countries %}
+                <a class="badge rounded-pill bg-pill text-decoration-none">{{country.name}}</a>
+                {% endfor %}
+                <a class="badge rounded-pill bg-pill text-decoration-none">{{platform.geoExtend | translate_instance | title}}</a>
+                <h4 class="mt-2 mb-3">
+                    <a href="/platform/{{platform.id}}" class="card-title">{{ platform.name }}</a>
+                </h4>
+                <p class="mt-3 card-desc">{{platform.description | safe | truncate_summary:30 }}</p>
+        </div><!-- End of card-body -->
+    </div><!-- end of card -->
+</div>
+{% endfor %}
+
+{% if 'platforms' in request.get_full_path %}
+  {% with platforms as page_obj %}
+    <div class="col-12 mt-3 mb-3">
+        {% include "_paginator.html" %}
+    </div>
+  {% endwith %}
+{% endif %}

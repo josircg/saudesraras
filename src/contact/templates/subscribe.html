@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }} :: Subscribe{% endblock %}
+{% block splash %}
+<div class="jumbotron jumbotron-fluid jumbotron-default">
+	<div class="container">
+		<h1 class="display-4 pt-4 pb-4 text-white">{% trans "Contact" %}</h1>
+	</div>
+</div>
+{% endblock splash %}
+{% block navbar-left %}
+{% include "_navbar.html" with active_link="contact" %}
+{% endblock %}
+
+{% block page_title %}
+{% trans "Subscribe to our newsletter" %}
+{% endblock page_title %}
+
+{% block list_of_items %}
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-sm-12">
+			<div class="mb-3">
+				<div class="p-1">
+					<h1 class="text-pink6">{% trans "Subscribe to our newsletter" %}</h1><br>
+					<p>{% trans "Sign up to the Civis newsletter to get the latest updates" %}</p><br>
+                    <p>{% trans "You can unsubscribe at any time by clicking the link in the footer of our emails. For more information about our privacy practices, please visit our website." %}</p>
+					<form method="post" autocomplete="off">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-8">
+								{{ form.name | as_crispy_field}}
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-6">
+								{{ form.email | as_crispy_field}}
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-8">
+								{{ form.organisation | as_crispy_field}}
+							</div>
+						</div>
+						<br>
+                        <div>
+							<button type="submit" class="btn btn-pink6">{% trans "Send" %}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><br><br><br>
+{% endblock list_of_items %}

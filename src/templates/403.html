@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Permission Denied (403)' %}{% endblock %}
+
+{% block list_of_items %}
+  <div class="erroPagina">
+    <h1>403</h1>
+    <h3>{% trans "You do not have access to this page" %}</h3>
+    <a href="{% url 'home' %}">{% trans "Go back to home" %}</a>
+  </div>
+{% endblock list_of_items %}

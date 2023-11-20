@@ -1,0 +1,28 @@
+{% load i18n %}
+
+
+{% block html_body  %}
+<p>Olá, {{username}}</p>
+
+<p>
+    Agradecemos por registrar na plataforma Civis a iniciativa <a href='{{domain}}/project/{{projectid}}'>{{projectname}}</a>. 
+    Agora, ela passará pela etapa de moderação conduzida pela nossa equipe.
+</p>
+
+<p>O objetivo é assegurar que as iniciativas e projetos cadastrados estejam no escopo da ciência cidadã, bem como prevenir o uso da plataforma para outros fins.</p>
+
+<p>Caso tenhamos alguma dúvida, entraremos em contato.</p>
+
+<p>Se estiver tudo ok, você receberá um aviso de que a iniciativa foi aprovada pela moderação e encontra-se publicada na plataforma.</p>
+
+<p>Você pode fazer atualizações ou alterações neste perfil de iniciativa a qualquer momento, acessando a seção Minhas submissões <a href="{{domain}}/users/me/"> na sua Área Pessoal </a> (consulte o canto superior direito do menu da plataforma).</p><br>
+
+<p>
+Se precisar de ajuda, tiver dúvidas ou quiser fazer alguma sugestão, escreva para civis@ibict.br.
+Este é um e-mail automático, NÃO responda.
+</p>
+
+<p>Obrigada,</p>
+<p>Equipe Civis</p>
+
+{% endblock html_body %}

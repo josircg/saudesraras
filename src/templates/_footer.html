@@ -1,0 +1,129 @@
+{% load i18n %}
+{% load static %}
+<!--Footer-->
+<footer class="">
+  <div class="text-white header-footer">
+    <div class="container">
+      <!-- Grid row-->
+      <div class="row ">
+
+        <div class="col-md-6 col-12 mb-4 mt-4">
+          <span class="head-title-footer"></span>
+        </div>
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-12 mt-4">
+          <div class="d-flex justify-content-end">
+
+          </div>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+    </div>
+  </div>
+  <!-- Footer Links -->
+  <div class="content-footer">
+    <div class="container  pt-5 text-light">
+      <!-- Grid row -->
+      <div class="row mt-3">
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4 pe-5">
+          <!-- Content -->
+          <img data-src="{% static 'site/img/logo-civis-white.png' %}" alt="" class="lazyload">
+          <p class="mt-4">{% trans "Citizen science platform developed using open-source code based on the" %}<br>
+            <a href="https://eu-citizen.science/" target="_blank">EU-Citizen.Science</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="title-sec-footer">{% trans "Platform" %}</h6>
+          <a href="/about" class="item-footer">{% trans "About" %}</a>
+          <a href="/faq" class="item-footer">{% trans "FAQ" %}</a>
+          <a href="/newsletters" class="item-footer">{% trans "Newsletter" %}</a>
+          <a href="/subscribe" class="item-footer">{% trans "Subscribe to our newsletter" %}</a>
+          <a href="/contact" class="item-footer">{% trans "Contact" %}</a>
+
+        </div>
+        <!-- Grid column -->
+
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="title-sec-footer">{% trans "Policies" %}</h6>
+          <a href="/terms" class="item-footer">{% trans "Terms of Use" %}</a>
+          <a href="/privacy" class="item-footer">{% trans "Privacy" %}</a>
+          <a href="/guide" class="item-footer" target="_blank">{% trans "User Guide" %}</a>
+          <a href="https://git.redemoara.ibict.br/ibict/cgti/civis" class="item-footer">{% trans "Source Code" %}</a>
+        </div>
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <h6 class="title-sec-footer">{% trans "Follow us" %}</h6>
+          <a class="tw-ic ic item-footer" href="https://twitter.com/civisbr" target="_blank" rel="noreferrer">
+            <h3 class="float-right blue-color"><i class="fab fa-twitter white-text mr-4"> </i></h3>
+          </a>
+          <a class="ins-ic ic" href="https://www.youtube.com/channel/UCxDAX5WfOPlH06blXIkGOHg" target="_blank"
+            rel="noreferrer">
+            <h3 class="float-right blue-color"><i class="fab fa-youtube white-text"> </i></h3>
+          </a>
+        </div>
+        <!-- Grid column -->
+
+      </div>
+
+      <div id="parcerias" class="mt-5">
+        <span class="d-block pb-3">{% trans "Partnerships" %}</span>
+        <div class="d-flex align-items-center">
+          <div class="flex-grow-1 parceiros-logos">
+            <a class="pe-3" href="https://sites.usp.br/rbcienciacidada/" target="_blank">
+              <img data-src="{% static 'site/img/logos/rbcc-white.png' %}" alt="" class="lazyload">
+            </a>
+            <a class="pe-3" href="" target="_blank">
+              <img data-src="{% static 'site/img/logos/ricap.png' %}" alt="" class="lazyload">
+            </a>
+          </div>
+          <div class="pe-3 pt-2">
+            <a href="https://www.gov.br/ibict/pt-br" target="_blank">
+              <img data-src="{% static 'site/img/logos/ibict-white.png' %}" width="130" alt="" class="lazyload">
+            </a>
+          </div>
+          <div class="">
+            <a href="https://www.gov.br/mcti/pt-br" target="_blank">
+              <img data-src="{% static 'site/img/logos/mcti-white.png' %}?2022" style="margin-top: 8px; width: 220px;" alt="logo gov.br 2022"
+                   class="lazyload">
+            </a>
+          </div>
+
+        </div>
+      </div>
+      <!-- Grid row -->
+
+    </div>
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright">
+    <div class="container">
+      <div class="bottom">
+        <div class="row">
+          <div class="col-12">
+            <span class="title-sec-footer">
+              <a href="https://creativecommons.org/licenses/by/4.0/deed.pt_BR" target="_blank">{% trans "CC BY 4.0 License" %}</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!--/.Footer-->

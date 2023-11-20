@@ -1,0 +1,66 @@
+{% extends 'admin/change_list.html' %}
+{% load i18n static %}
+
+{% block bodyclass %} change-list{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {% trans 'Country List' %}
+</div>
+{% endblock %}
+
+{% block object-tools %}{% endblock %}
+
+{% block search %}
+<div id="toolbar">
+  <form id="changelist-search" method="get">
+    <div><!-- DIV needed for valid HTML -->
+      <label for="searchbar"><img src="{% static 'admin/img/search.svg'%}" alt="Search"></label>
+      <input type="text" size="40" name="q" value="" id="searchbar" autofocus="">
+      <input type="submit" value="{% trans 'Search' %}">
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block result_list %}
+<div class="results">
+  <table id="result_list">
+    <thead>
+      <tr>
+        <th scope="col" class="column-name">
+          <div class="text"><a href="#">{% trans 'Country Code' %}</a></div>
+          <div class="clear"></div>
+        </th>
+        <th scope="col" class="column-name">
+          <div class="text"><a href="#">{% trans 'Country Name' %} (pt-br)</a></div>
+          <div class="clear"></div>
+        </th>
+        <th scope="col" class="column-name">
+          <div class="text"><a href="#">{% trans 'Country Name' %} (en)</a></div>
+          <div class="clear"></div>
+        </th>
+        <th scope="col" class="column-name">
+          <div class="text"><a href="#">{% trans 'Country Name' %} (es)</a></div>
+          <div class="clear"></div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for country in countries %}
+        <tr class="{% cycle 'row1' 'row2' %}">
+          <th class="field-name">{{ country.code }}</th>
+          <th class="field-name">{{ country.name_portuguese }}</th>
+          <th class="field-name">{{ country.name_english }}</th>
+          <th class="field-name">{{ country.name_spanish }}</th>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block pagination %}{% endblock %}

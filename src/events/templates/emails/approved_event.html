@@ -1,0 +1,15 @@
+{% load i18n %}
+
+{% block html_body  %}
+  {% blocktrans %}
+    <p>Hello,</p>
+    <p>
+      We are pleased to inform you that the event <a href="{{ domain }}{{ event_url }}">{{ title }}</a>
+      has been approved.
+    </p>
+    <p>If you want to get in touch with us, write to civil@ibict.br.</p>
+    <p>This is an automated email, DO NOT reply.</p>
+    <p>Greetings,</p>
+    <p>Civis Team</p>
+  {% endblocktrans %}
+{% endblock html_body %}

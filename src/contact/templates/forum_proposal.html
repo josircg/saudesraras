@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+  {{ block.super }}
+  {{ form.media.css }}
+{% endblock head %}
+{% block title %}{{ block.super }} :: {% trans "Forum Proposal" %}{% endblock %}
+{% block splash %}
+<div class="jumbotron jumbotron-fluid jumbotron-default">
+	<div class="container">
+		<h1 class="display-4 pt-4 pb-4 text-white">{% trans "Forum Proposal" %}</h1>
+	</div>
+</div>
+{% endblock splash %}
+{% block navbar-left %}
+{% include "_navbar.html" with active_link="forum" %}
+{% endblock %}
+
+{% block page_title %}
+{% trans "Forum Proposal" %}
+{% endblock page_title %}
+
+{% block list_of_items %}
+  <div class="intro-form mt-5 mb-5 pb-5 pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>{% trans "New" context "fem" %}<span class="text-pink6"> {% trans "Forum Proposal" %}</span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="container mt-5">
+        <div class="col-sm-10 col-12">
+          <div class="mt-5 mb-5">
+            <div class="pr-5 pl-5 pb-5">
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row d-flex justify-content-center">
+                  <div class="col-8 mb-4">
+                    {{ form.name|as_crispy_field }}
+                  </div>
+                  <div class="col-8 mb-4">
+                    {{ form.description|as_crispy_field }}
+                  </div>
+                  <div class="col-8 mb-4">
+                    {{ form.image|as_crispy_field }}
+                  </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                  <div class="col-8 mb-1">
+                    <button class="btn btn-pink6 submit">
+                        <i class="fas fa-share-square"></i> {% trans "Save" %}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock list_of_items %}
+
+{% block scripts %}
+  {{ block.super }}
+  {{ form.media.js }}
+{% endblock %}

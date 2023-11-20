@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }} :: {% trans "Editors" %}{% endblock %}
+
+{% block list_of_items %}
+<div class="container">
+    <div class="col-12">
+        <div class="container-fluid p-0 savedInfo"></div>
+    </div>
+</div>
+
+<div class="intro-form mt-5 mb-5 pb-5 pt-5">
+  <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>{% trans "Editors" %}<span class="text-pink6"> {{ project }}</span></h1>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  {% if has_permission_to_edit %}
+    <form action="#" id='form_invite_project' class="edit-project" method="post" enctype="multipart/form-data">
+      <div class="row">
+        {% csrf_token %}
+        <div class="col-12">
+          <div class="row d-flex justify-content-center">
+            <div class="col-8">
+              <h4 class="leftborder mt-5">{% trans "Invite editors to this project" %}</h4>
+              {{ invite_project_form.project_id|as_crispy_field }}
+              {{ invite_project_form.email|as_crispy_field }}
+              <div class="mb-5"></div>
+              <button class="btn btn-pink6 submit-invite"><i class="fas fa-share-square"></i> {% trans "Invite" %}</button>
+              <div class="mb-5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {% endif %}
+
+  <div class="row">
+    <div class="col-12">
+      {% if project_permissions or activationtasks %}
+        <div class="row">
+          {% for project_permission in project_permissions %}
+            {% with project_permission.user.profile as member %}
+              <div class="col-12 col-sm-6 col-lg-4 card-item" id="item-{{ project_permission.pk }}">
+                {% include "projects/_project_permission_member_card.html" %}
+              </div>
+            {% endwith %}
+          {% endfor %}
+
+          {% for activationtask in activationtasks %}
+              <div class="col-12 col-sm-6 col-lg-4 card-item" id="item-task-{{ activationtask.pk }}">
+                {% include "projects/_project_permission_non_member_card.html" %}
+              </div>
+          {% endfor %}
+        </div>
+    {% else %}
+       <div class="row d-flex justify-content-center">
+         <div class="col-8"><h3>{% trans 'No invites accepted' %}</h3></div>
+       </div>
+    {% endif %}
+    </div>
+  </div>
+  <div class="row">
+      {% with page_obj as users %}
+        <div class="col-12 mt-3 mb-3">
+            {% include "profiles/_paginator.html" %}
+        </div>
+      {% endwith %}
+  </div>
+</div>
+{% endblock list_of_items %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script type = "text/javascript">
+      (function($) {
+          $(document).ready(function() {
+              $('.submit-invite').click(function(e) {
+                  changeBtn(true);
+
+                  e.preventDefault();
+
+                  $('.myerror').remove();
+
+                  $.ajax({
+                      type: 'POST',
+                      url: '/project_invite/',
+                      processData: false,
+                      contentType: false,
+                      data: new FormData(document.getElementById("form_invite_project")),
+                      success: function(response) {
+                          window.location.href = '/project_permissions/' + response.project_id + '/';
+                      },
+                      error: function(response) {
+                          if (response.status == 500) {
+                              alert('Unexpected error, please contact with the administrator');
+                          }
+
+                          $.each(response.responseJSON, function(i, val) {
+                              let input = $('#id_' + i);
+                              input.addClass('error');
+                              input.parent().find('.select2-selection--multiple').addClass('error');
+                              $('#hint_id_' + i).append('<div class="myerror small text-danger">' + val + '</div>');
+                              $('#cke_id_' + i).addClass('error');
+                          });
+
+                          let myerror = $('.myerror:visible:first');
+
+                          if (myerror.length) {
+                              $('html, body').animate({
+                                  scrollTop: myerror.offset().top - 100
+                              }, 1000);
+                          }
+
+                          changeBtn(false);
+                      }
+                  });
+              });
+
+              function changeBtn(bool) {
+                  $("button.submit-invite").attr('disabled', bool);
+              }
+
+              $('.delete-member-permission').click(function() {
+                  let btn = $(this);
+                  let parent_id = btn.data('parent-id');
+                  if (confirm("{% trans 'Do you want to delete this editor? This action is permanent.'%}")) {
+                      $.ajax({
+                          type: 'GET',
+                          url: btn.data('delete-url'),
+                          processData: false,
+                          contentType: false,
+                          success: function(response) {
+                              $('#' + parent_id).hide();
+
+                              if (!$('.card-item').is(':visible')) {
+                                  window.location.href = '/project_permissions/' + response.project_id + '/';
+                              } else {
+                                  $('.savedInfo').html('<div class="alert alert-success alert-dismissible" role="alert">' +
+                                      '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                                      '<span aria-hidden="true">&times;</span></button>' + response.msg + '</div>').show().fadeOut(2500);
+                              }
+                          },
+                          error: function(response) {
+                              if (response.status == 500) {
+                                  alert('Unexpected error, please contact with the administrator');
+                              }
+                              if (response.status == 403) {
+                                  alert('Permission Denied');
+                              }
+                          }
+                      });
+                  }
+              })
+          });
+      })(jQuery);
+  </script>
+{% endblock scripts %}

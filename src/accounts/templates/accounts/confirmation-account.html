@@ -1,0 +1,15 @@
+{% extends "accounts/confirm-base.html" %}
+{% load i18n %}
+
+{% block list_of_items %}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3>{% trans "Thanks, you are in" %}</h3>
+      <br/>
+      {% trans "You can start by filling " %} <a href="/users/me/edit/">{% trans "your personal profile." %}</a>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

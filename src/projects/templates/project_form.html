@@ -1,0 +1,358 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load leaflet_tags %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
+{% load eucs_platform_tags %}
+
+{% block head %}
+{{block.super }}
+<link rel="stylesheet" href="{% static 'styles/jquery-ui.css' %}">
+<link rel="stylesheet" href="{% static 'site/css/leaflet-geosearch_3_9.css' %}">
+<link rel="stylesheet" href="{% static 'site/css/forms.css' %}">
+{% leaflet_js %}
+{% leaflet_css %}
+{{ form.media.css }}
+{{ form.media.js }}
+{% endblock head %}
+
+{% block title %}{{ block.super }} :: Nome da iniciativa{% endblock %}
+
+{% block navbar-left %}
+{% include "_navbar.html" with active_link="projects" %}
+{% endblock %}
+
+
+{% block list_of_items %}
+{% include '_crop_zone.html' %}
+
+<div class="intro-form mt-5 mb-5 pb-5 pt-5">
+  <div class="container">
+    {% include "_intro_form_project.html" %}
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="container mt-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-sm-10 col-12">
+          <div class="mt-5 mb-5">
+            <div class="pr-5 pl-5 pb-5">
+              <form action="#" id='form_project' class="edit-project" method="post" enctype="multipart/form-data">
+                <div class="row d-flex justify-content-center">
+                  {% csrf_token %}
+                  <div class="col-12">
+                    <input type="hidden" id="projectID" name="projectID" value={{project.id}}>
+                    <div class="row">
+                      <div class="col-12">
+                        <div id="errors"></div>
+                      </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-8">
+                        <h3 class="leftborder">{% trans "Main information" %}</h3>
+                        {{ form.project_name|as_crispy_field }}
+                        {{ form.url|as_crispy_field }}
+                        {{ form.description|as_crispy_field }}
+                        {{ form.description_citizen_science_aspects|as_crispy_field }}
+                        {{ form.status|as_crispy_field }}
+                        {{ form.keywords|as_crispy_field }}
+                        {% include "_save_zone.html" %}
+                      </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-8">
+                        <h4 class="leftborder mt-5">{% trans "Useful information to classify the project" %}</h4>
+                        {{ form.start_date|as_crispy_field }}
+                        {{ form.end_date|as_crispy_field }}
+                        {{ form.topic|as_crispy_field }}
+                        {% include "_save_zone.html" %}
+                      </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-8">
+                        <h4 class="leftborder mt-5">{% trans "Participation information" %}</h4>
+                        {{ form.participationTask |as_crispy_field }}
+                        {{ form.how_to_participate|as_crispy_field }}
+                        {{ form.equipment|as_crispy_field }}
+                        {% include "_save_zone.html" %}
+                      </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-8">
+                        <h3 class="leftborder mt-5">{% trans "Location" %}*</h3>
+                        <p id="hint_id_logo" class="help-block">{% trans "Locate the city or region and country of your initiative on the map or inform this information in the field below." %}</p>
+                        {% leaflet_map "map" callback="window.map_init_basic" %}
+                        {{ form.latitude|as_crispy_field }}
+                        {{ form.longitude|as_crispy_field }}
+                        <div class="row mt-2 mb-3">
+                            <div class="col-11">
+                            {% include "_save_zone.html" %}
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-8">
+                        <h4 class="leftborder mt-5">{% trans "Contact details" %}</h4>
+                        {{ form.contact_person|as_crispy_field }}
+                        {{ form.contact_person_email|as_crispy_field }}
+                        {{ form.mainOrganisation|as_crispy_field }}
+                        {{ form.organisation|as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-8">
+                        <h4 class="leftborder mt-5">{% trans "Funding information" %}</h4>
+                        <!-- {{ form.funding_body|as_crispy_field }} -->
+                        <input type="hidden" id="funding_body" name="funding_body" value="">
+                        {{ form.funding_program|as_crispy_field }}
+                        {% include "_save_zone.html" %}
+                      </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-8 mb-4">
+                        <h4 class="leftborder mt-5">{% trans "Project profile images" %}</h4>
+                        <img class="img-fluid img-zoom"
+                        id="imageResult1"
+                        src="{% thumbnail project.image1|safe_image 600x400 %}">
+                        {{ form.image1|as_crispy_field }}
+                        {{ form.x1|as_crispy_field }}
+                        {{ form.y1|as_crispy_field }}
+                        {{ form.height1|as_crispy_field }}
+                        {{ form.width1|as_crispy_field }}
+                        {{ form.withImage1|as_crispy_field }}
+                        {{ form.image_credit1|as_crispy_field }}
+                        <div class="mb-5"></div>
+
+                        <!-- <img class="img-fluid img-zoom"
+                              id="imageResult2"
+                              src="{% thumbnail project.image2|safe_image 600x400 %}">
+                        {{ form.image2|as_crispy_field }}
+                        {{ form.x2|as_crispy_field }}
+                        {{ form.y2|as_crispy_field }}
+                        {{ form.height2|as_crispy_field }}
+                        {{ form.width2|as_crispy_field }}
+                        {{ form.withImage2|as_crispy_field }}
+                        {{ form.image_credit2|as_crispy_field }}
+                        <div class="mb-5"></div> -->
+                        <input type="hidden" id="image2" name="image2" value={{project.id}}>
+                        <input type="hidden" id="x2" name="x2" value={{project.id}}>
+                        <input type="hidden" id="y2" name="y2" value={{project.id}}>
+                        <input type="hidden" id="height2" name="height2" value={{project.id}}>
+                        <input type="hidden" id="width2" name="width2" value={{project.id}}>
+                        <input type="hidden" id="withImage2" name="withImage2" value={{project.id}}>
+                        <input type="hidden" id="image_credit2" name="image_credit2" value={{project.id}}>
+
+                        <img class="img-fluid mt-3"
+                              id="imageResult3"
+                              src="{% thumbnail project.image3|safe_image:'void_1100.png' 1100x400 %}" alt="Image not upload">
+                        {{ form.withImage3|as_crispy_field }}
+                        {{ form.image3|as_crispy_field }}
+                        {{ form.x3|as_crispy_field }}
+                        {{ form.y3|as_crispy_field }}
+                        {{ form.height3|as_crispy_field }}
+                        {{ form.width3|as_crispy_field }}
+                        {{ form.image_credit3|as_crispy_field }}
+                      </div>
+                      <div class="col-8 mb-1">
+                        <button class="btn btn-pink6 submit"><i class="fas fa-share-square"></i> {% trans "Save" %}</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            {% if user.is_staff and project.id and project.approved == None %}
+              <div class="row d-flex justify-content-center">
+                <div class="col-8">
+                  <a href="{% url 'approve_project' project.id 1 %}"
+                     class="btn btn-pink6"><i class="fas fa-thumbs-up"></i> {% trans "Approve" %}
+                  </a>
+                  <a href="{% url 'approve_project' project.id 0 %}"
+                     class="btn btn-pink6"><i class="fas fa-thumbs-down"></i> {% trans "Do not" %} {% trans "Approve" %}
+                  </a>
+                </div>
+              </div>
+            {% endif %}
+            <div class="mb-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock list_of_items %}
+
+{% block scripts %}
+<script src="{% static 'scripts/jquery-ui.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.ui.touch-punch.min.js' %}"></script>
+<script src="{% static 'site/js/site.js' %}"></script>
+<script src="{% static 'scripts/cropper.min.js' %}"></script>
+<script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
+<script src="{% static 'site/js/leaflet-geosearch_3_9.min.js' %}"></script>
+<script src="{% static 'site/js/modal-crop.js' %}?v=1"></script>
+<script>
+    $(function () {
+        $('input').on('focus', function(){
+            if($(this).is('.error'))
+                $(this).removeClass('error');
+        });
+
+        $('select').on('focus', function(){
+            if($(this).is('.error'))
+                $(this).removeClass('error');
+        });
+
+        $('.select2-selection--multiple').on('focus', function(){
+            if($(this).is('.error'))
+                $(this).removeClass('error');
+        });
+
+        for(var instanceName in CKEDITOR.instances){
+            CKEDITOR.instances[instanceName].on('focus', function(e){
+                id='#cke_'+$(this).attr('name')
+                if($(id).is('.error'))
+                    $(id).removeClass('error');
+            })
+        }
+
+        let handle_ajax_error = function (response){
+            if(response.status==500){
+                alert('Unexpected error, please contact with the administrator');
+            }
+
+            $.each(response.responseJSON, function(i,val){
+              let input = $('#id_'+i);
+              input.addClass('error');
+              input.parent().find('.select2-selection--multiple').addClass('error');
+              $('#hint_id_'+i).append('<div class="myerror small text-danger">'+val+'</div>');
+              $('#cke_id_'+i).addClass('error');
+            });
+
+            let myerror = $('.myerror:visible:first');
+
+            if (myerror.length) {
+              $('html, body').animate({
+                  scrollTop: myerror.offset().top-100
+              }, 1000);
+            }
+
+            changeBtn(false);
+        }
+
+        $('.submit').click(function (e) {
+            changeBtn(true);
+            e.preventDefault();
+            /* To check that we click on Save & continue  */
+            let contin = $(this).hasClass('continue');
+
+            $('.myerror').remove();
+
+            $.ajaxSettings.traditional = true;
+
+            for(var instanceName in CKEDITOR.instances)
+                CKEDITOR.instances[instanceName].updateElement();
+
+            $.ajax({
+                type: 'POST',
+                url: '/saveProjectAjax',
+                processData: false,
+                contentType: false,
+                data: new FormData(document.getElementById("form_project")),
+                success: function (response){
+                    if(contin){
+                        $('#projectID').val(response.Project);
+                        $('.savedInfo').html('<span class="alert alert-success fade show">'+
+                            '<i class="fas fa-check"></i> Saved</span>').show().fadeOut(2500);
+                    }
+                    else{
+                        window.location.href = '/project/'+response.Project+'?prev='+window.location.pathname;
+                    }
+                    changeBtn(false);
+                },
+                error: handle_ajax_error
+            });
+        });
+    });
+
+    function changeBtn (bool) {
+      $("button.submit").attr('disabled', bool);
+      $("button.submit.continue").attr('disabled', bool);
+      $("button[type=submit]").attr('disabled', bool);
+    }
+</script>
+
+<script type="text/javascript">
+  var map;
+  var coord_lat = $("#id_latitude").val();
+  var coord_long = $("#id_longitude").val();
+  var marker_layer = new L.marker([50.5, 30.5]);
+  
+
+  function editMarker(e){
+    map.removeLayer(marker_layer);
+    marker_layer = new L.marker(e.latlng, {draggable:true});
+    marker_layer.on('drag', function (e) {
+      $("#id_latitude").val((e.latlng.lat).toFixed(6));
+      $("#id_longitude").val((e.latlng.lng).toFixed(6));
+    });
+    map.addLayer(marker_layer);
+    $("#id_latitude").val((e.latlng.lat).toFixed(6));
+    $("#id_longitude").val((e.latlng.lng).toFixed(6));
+  }
+
+  function searchedMarker(e){
+    map.removeLayer(marker_layer);
+    marker_layer = new L.marker([e.location.y,e.location.x], {draggable:true});
+    marker_layer.on('drag', function (e) {
+      $("#id_latitude").val((e.latlng.lat).toFixed(6));
+      $("#id_longitude").val((e.latlng.lng).toFixed(6));
+    });
+    map.addLayer(marker_layer);
+    $("#id_latitude").val(parseFloat(e.location.y).toFixed(6));
+    $("#id_longitude").val(parseFloat(e.location.x).toFixed(6));
+  }
+
+  function map_init_basic (leafmap, options) {
+    map = leafmap;
+    var obj = { latlng: {
+      lat: parseFloat($("#id_latitude").val()),
+      lng: parseFloat($("#id_longitude").val()) }
+    }
+    if($("#id_latitude").val() && $("#id_latitude").val() != 0)
+    editMarker(obj);
+    map.on('click', editMarker);
+    if(coord_lat !== null && coord_lat !== "" && coord_lat != 0) {
+      map.flyTo([coord_lat, coord_long], 8)
+    }
+    
+
+    var GeoSearchControl = window.GeoSearch.GeoSearchControl;
+    var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+    var provider = new OpenStreetMapProvider({});
+
+    //  Define search controls
+    var searchControl = new GeoSearchControl({
+      provider: provider,
+      style: 'bar',
+      showMarker: false,
+      autoClose: true,
+      keepResult: true,
+      //retainZoomLevel: true,
+    });
+
+    map.addControl(searchControl);
+    map.on('geosearch/showlocation', searchedMarker);
+  }
+</script>
+{{ form.media.js }}
+{% endblock scripts %}

@@ -1,0 +1,17 @@
+{% load i18n %}
+
+
+{% block html_body  %}
+<p>Temos o prazer de informar que seu recurso de formação <a href="{{domain}}/training_resource/{{id}}">{{name}}</a> recebeu uma avaliação de um membro da comunidade.</p>
+
+<p>Você pode ler esta revisão acessando o perfil do seu recurso na seção Minhas submissões <a href="{{domain}}/users/me/"> na sua Área Pessoal </a> (consulte o canto superior direito do menu da plataforma).</p>
+
+<p>Você também pode responder a esta avaliação em seu perfil de recurso usando o formulário de avaliação.</p>
+
+<p>
+Se precisar de ajuda, tiver dúvidas ou quiser fazer alguma sugestão, escreva para civis@ibict.br.
+Este é um e-mail automático, NÃO responda.
+</p>
+
+<p>Saudações, <br> Equipe Civis</p>
+{% endblock html_body %}

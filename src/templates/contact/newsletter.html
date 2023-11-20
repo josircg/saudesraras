@@ -1,0 +1,511 @@
+{% load static %}
+{% load thumbnail eucs_platform_tags %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="address=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="x-apple-disable-message-reformatting">
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;900&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+.flex-grow {
+    flex-grow: 1 !important;
+}
+
+.linha {
+    display: table;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.linha > div {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: calc(50% - 20px);
+    float: left;
+}
+
+.linha > * {
+    max-width: 100%;
+}
+
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+.text-pink {
+    color: #ae4a74;
+}
+
+.text-gray {
+    color: #667085;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.container {
+    padding: 0px 40px;
+}
+
+.flex {
+    display: flex;
+}
+
+.fill {
+    flex: 1 1 auto !important;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.m-0 {
+    margin: 0px;
+}
+
+p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    margin-bottom: 10px;
+    color: #667085;
+}
+
+#content {
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section.browserop {
+    text-align: right;
+    margin: 20px 0px;
+}
+
+section.browserop a {
+    font-family: "Poppins", sans-serif;
+    color: #111111;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+section.margin {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+#email {
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.header {
+    background-image: url({{ domain }}/static/site/newsletter/cabecalho2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    border-radius: 5px;
+}
+
+.header .topo {
+    display: table;
+    width: 100%;
+}
+
+.header .col1 {
+    float: left;
+    width: 50%;
+    margin-top: 50px;
+}
+
+.header .col1 > div {
+    padding-left: 40px;
+}
+
+.header .col2 {
+    width: 50%;
+    float: right;
+    text-align: right;
+    margin-top: 50px;
+}
+
+.header .col2 > div {
+    padding-right: 90px;
+}
+
+.header .col1 img {
+    width: 225px;
+}
+
+.title-pink {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ae4a74;
+    margin: 0px;
+    font-family: "Poppins", sans-serif !important;
+}
+
+.title-gray {
+    font-size: 16px;
+    font-weight: 600;
+    color: #667085;
+    margin: 0px;
+    margin-bottom: 10px;
+    font-family: "Poppins", sans-serif !important;
+}
+
+.img-destaque {
+    margin: 15px 0px;
+    text-align: center;
+}
+
+.img-destaque img {
+    width: 100%;
+}
+
+.btn-pink {
+    font-family: "Lato", sans-serif !important;
+    border: 1px solid #ae4a74 !important;
+    border-radius: 5px !important;
+    padding: 11px 33px !important;
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    color: #ae4a74 !important;
+    transition: all ease 0.5s !important;
+}
+
+.btn-pink:hover {
+    background-color: #ae4a74 !important;
+    color: #ffffff !important;
+}
+
+.bottom {
+    display: block;
+    margin: 20px 0px;
+    text-align: right;
+}
+
+.col-50 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+
+.card {
+}
+
+.card-acontece {
+    min-height: 145px;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+    color: #667085;
+}
+
+.card-top .icon {
+    margin-right: 10px;
+}
+
+.card-body {
+    margin: 10px 0px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.card-submissao {
+    margin: 15px 0px;
+}
+
+.card-submissao .imagem {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 132px;
+    height: 90px;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+a.link {
+    color: #667085;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+.card-submissao p {
+    color: #667085;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+}
+
+footer {
+    background-color: #1d2939;
+    padding: 40px !important;
+}
+
+footer,
+footer p,
+footer a,
+footer a:hover {
+    color: #ffffff !important;
+}
+
+footer p {
+    font-size: 12px;
+    margin: 20px 0px;
+}
+
+footer .text {
+    padding-right: 30px;
+}
+
+footer .ibict img {
+    width: 85px;
+    height: auto;
+    margin-right: 20px;
+}
+
+footer .gov img {
+    width: 170px;
+    height: auto;
+}
+
+footer .logos {
+    margin-top: 25px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.poppins {
+    font-family: "Poppins", sans-serif;
+}
+
+.lato {
+    font-family: "Lato", sans-serif;
+}
+
+    </style>
+    <title>{{ news.headline }}</title>
+</head>
+
+<body class="mlBodyBackground"
+    style="padding: 0; margin: 0; -webkit-font-smoothing:antialiased; background-color:#f6f8f9; -webkit-text-size-adjust:none;">
+      <img src="{{tracking_url}}" alt="" width="1" height="1">
+      <div id="content" role="article" aria-roledescription="email" aria-label="">
+        <section class="browserop">
+          <div {{invisible | safe}}><a href="{{ news.get_absolute_url }}">View in browser</a></div>
+        </section>
+
+        <div id="email">
+          <section class="header">
+            <div class="container topo" style="height: 138px;">
+
+              <div class="fill col1">
+                 <div>
+                   <a href="{{ domain }}" target='_blank'><img src="{{ domain }}{% static 'site/newsletter/Logo_Civis.png' %}" alt="" srcset=""></a>
+                 </div>
+              </div>
+              <div class="col2">
+                <div>
+                <h4 class="text-pink fw-600 m-0 poppins">Newsletter</h4>
+                <h5 class="fw-300 m-0 text-pink poppins">{{ news.headline }}</h5>
+            </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- INTRO -->
+          <section class="container margin">
+            <h3 class="title-pink">{{ news.featured_title }}</h3>
+             <p class="poppins">{{ news.featured_text }}</p>
+          </section>
+
+          <!-- DESTAQUE -->
+          {% if news.blog %}
+          <section class="container margin">
+            <h3 class="title-pink">{{ news.blog.title }}</h3>
+            <div class="img-destaque">
+                    {% if news.blog.image %}
+                    <img src="{{ domain }}{% thumbnail news.blog.image 560x382 upscale crop %}" alt="">
+                    {% else %}
+                    <img src="{{ domain }}/media/void_600.png" alt="">
+                    {% endif %}
+            </div>
+             <p class="poppins">{{ news.blog.excerpt }}</p>
+            <div class="bottom">
+              <a href="{{ domain }}{{ news.blog.get_absolute_url }}" class="btn-pink">Veja mais</a>
+            </div>
+          </section>
+          {% endif %}
+
+          <!-- ACONTECE -->
+          <section class="container margin">
+            <h3 class="title-pink">Acontece</h3>
+            <div class="linha">
+              {% for evento in acontece %}
+              <div class="card">
+                <div class="card-acontece">
+                  <div class="card-top">
+                    <img src="{{ domain }}{% static 'site/newsletter/calendar.png' %}" class="icon" alt="" srcset="">
+                    <span class="fw-300 text-gray poppins">{{ evento.period }}</span>
+                  </div>
+                  <div class="card-body fw-700 text-pink poppins">{{ evento.title }}</div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="bottom">
+              <a href="{{ domain }}/events" class="btn-pink">Veja mais</a>
+            </div>
+          </section>
+
+          <!-- SUBMISSÕES -->
+          <section class="container margin">
+            <h3 class="title-pink">Novas submissões</h3>
+            <p class="poppins">Conheça os novos projetos e iniciativas cadastrados na Civis este mês</p>
+            {% for project in projects %}
+            <div class="flex card-submissao">
+              <div>
+                <div class="imagem" style="background-image: url({{ domain }}{% thumbnail project.image 132x90 upscale crop %});"></div>
+              </div>
+              <div>
+                <h3 class="text-gray m-0">
+                  <a href="{{ domain }}/project/{{ project.id }}" target="_blank" class="link">{{ project.title }}</a>
+                </h3>
+                {{ project.description | safe | truncate_summary:20}}
+              </div>
+            </div>
+            {% endfor %}
+
+            <div class="bottom">
+              <a href="{{ domain }}/projects" class="btn-pink">Veja mais</a>
+            </div>
+          </section>
+
+          <!-- DESTAQUE -->
+          {% if news.featured_resource %}
+          <section class="container margin">
+            <h3 class="title-pink">Recurso em destaque</h3>
+
+            <div class="flex card-submissao">
+              <div>
+                <div class="imagem" style="background-image: url({{ domain }}{% thumbnail news.featured_resource.safe_image 132x90 upscale crop %});"></div>
+              </div>
+              <div>
+                <h3 class="title-gray m-0 poppins">
+                    <a href="{{ domain }}/resource/{{ news.featured_resource.id }}" target="_blank" class="link">
+                        {{ news.featured_resource.name }}
+                    </a>
+                </h3>
+                <p class="poppins">{{ news.featured_resource.abstract | safe | truncate_summary:30 }}</p>
+              </div>
+            </div>
+            {% endif %}
+
+            <div class="bottom">
+              <a href="{{ domain }}/resources" class="btn-pink">Veja mais</a>
+            </div>
+          </section>
+
+          <footer>
+            <a href="{{ domain }}"><img src="{{ domain }}{% static 'site/newsletter/Civis-rodape.png' %}" alt=""></a>
+            <div class="flex">
+              <div class="text col-50">
+                <p class="fw-400 lato">
+                  Plataforma de Ciência Cidadã desenvolvida em código
+                  aberto a partir da plataforma EU-Citizen.Science
+                </p>
+                <div class="flex-grow">
+                    <p class="fw-400">Seguir</p>
+                    <a href="https://twitter.com/civisbr" target="_blank"><img src="{{ domain }}{% static 'site/newsletter/twitter.png' %}" class="icon" alt="" srcset="" style="margin-right: 10px;"></a>
+                    <a href="https://www.youtube.com/channel/UCxDAX5WfOPlH06blXIkGOHg" target="_blank"><img src="{{ domain }}{% static 'site/newsletter/youtube.png' %}" alt="" srcset=""></a>
+                  </div>
+              </div>
+              <div class="logos">
+                <div>
+                    <a href="https://www.gov.br/ibict/pt-br" target="_blank" class="ibict"><img src="{{ domain }}{% static 'site/newsletter/Logo_IBICT.png' %}" alt=""></a>
+                    <a href="https://www.gov.br/mcti/pt-br" class="gov" target="_blank"><img src="{{ domain }}{% static 'site/newsletter/Logo_MCTI.png' %}" alt=""></a>
+                </div>
+                <div class="text-right" {{invisible | safe}}>
+                    <p class="fw-400 lato">Você recebeu este e-mail por estar inscrito<br /> na lista da Civis ou do IBICT</p>
+                     <p class="lato"><a href="{{unsubscribe}}">Cancelar assinatura</a></p>
+                 </div>
+              </div>
+            </div>
+            <div class="flex">
+            </div>
+          </footer>
+
+        </div>
+      </div>
+</body>

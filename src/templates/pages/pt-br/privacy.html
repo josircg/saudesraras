@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }} :: Privacidade{% endblock %}
+{% block splash %}
+<div class="jumbotron jumbotron-fluid jumbotron-default">
+	<div class="container">
+		<h1 class="display-4 pt-4 pb-4 text-white">Privacidade</h1>
+	</div>
+</div>
+{% endblock splash %}
+
+{% block navbar-left %}
+{% include "_navbar.html" %}
+{% endblock %}
+
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-5"><br>Privacidade</h1>
+		<p class="lead text-light"></p>
+	</div>
+</div>
+{% block list_of_items %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-12 mt-4 mb-4">
+			<h3>Que informação a Civis coleta?</h3>
+		</div>
+		<div class="col-sm-8 col-12 mt-4 mb-4">
+			<p>
+				“Informação Pessoal de Usuário” é qualquer informação sobre um de nossos usuários que pode,
+				sozinha ou em conjunto com outra informação, pessoalmente identificar esse usuário ou estar
+				a ele relacionada de algum modo. Informações como nome de usuário e senha, um endereço de
+				e-mail, um nome real, um endereço de Protocolo da Internet (IP) e uma fotografia são
+				exemplos de “Informação Pessoal de Usuário”.
+			</p>
+			<p>
+				Informação Pessoal de Usuário não inclui informação agregada e informação não-pessoal,
+				que não identificam um usuário ou que não podem ser vinculadas a ele. Podemos usar tal
+				informação agregada e não-pessoal para fins de pesquisa e para operar, analisar,
+				melhorar e otimizar nosso Website e Serviço.
+			</p>
+			<br><br>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-12 mt-4 mb-4">
+			<h3>Informações que os usuários fornecem diretamente à Civis</h3>
+		</div>
+		<div class="col-sm-8 col-12 mt-4 mb-4">
+			<h4>Informações de cadastro</h4>
+			<p>
+				Requeremos algumas informações básicas no momento de criação de contas. Quando você
+				cria seu nome de usuário e senha, solicitamos que nos forneça um endereço de e-mail
+				válido.
+			</p>
+			<br>
+			<h4>Informações de perfil</h4>
+			<p>
+				Você pode optar por fornecer informações adicionais ao completar o seu perfil, como
+				seu nome completo, um avatar, uma fotografia, seus dados biográficos, sua
+				localização, seu vínculo institucional ou empresarial e uma URL para um site
+				externo. Essas informações podem incluir Informação Pessoal de Usuário.
+				Considere que suas informações de perfil podem estar visíveis a outros usuários
+				do nosso Serviço, caso você autorize.
+			</p>
+			<br><br>
+		</div>
+	</div>
+</div>
+<div class="container-fluid bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-12 mt-4 mb-4">
+				<h3>Como a Civis usa as informações que você fornece</h3>
+			</div>
+			<div class="col-sm-8 col-12 mt-4 mb-4">
+				Podemos usar suas informações para os seguintes propósitos:
+				<ul>
+					<li>usamos suas Informações de Cadastro para criar sua conta, e para lhe fornecer nosso Serviço;
+					</li>
+					<li>usamos sua Informação Pessoal de Usuário, especificamente seu nome de usuário, para que você se
+						identifique na plataforma Civis;</li>
+					<li>usamos seu endereço de e-mail para nos comunicarmos com você, caso você tenha autorizado, e
+						somente nos casos em que você tenha autorizado;</li>
+					<li>usamos Informação Pessoal de Usuário no atendimento a demandas por suporte;</li>
+					<li>podemos usar Informação Pessoal de Usuário para convidar você a participar de levantamentos,
+						versões beta, ou outros projetos de pesquisa sujeitos, quando necessário, ao seu consentimento;
+					</li>
+					<li>podemos utilizar Informação Pessoal de Usuário caso necessário por razões de segurança ou para
+						investigar possíveis fraudes ou tentativas de dano a Civis e seus Usuários;</li>
+					<li>podemos usar Informação Pessoal de Usuário para atender a obrigações legais, proteger e fazer
+						valer nossa licença de uso, direitos de propriedade intelectual e nossos <a href="/terms">Termos
+							de Uso</a>;</li>
+					<li>limitamos nosso uso de Informação Pessoal de Usuário aos propósitos listados nesta Política de
+						Privacidade. Se necessitarmos utilizar sua Informação Pessoal de Usuário para outros fins,
+						primeiramente pediremos
+						sua autorização. Você pode sempre consultar que informação nós temos, como nós a estamos
+						utilizando e quais permissões você nos deu por meio do seu perfil de usuário.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-12 mt-4 mb-4">
+			<h3>Nossas bases legais para processamento de informações</h3>
+		</div>
+		<div class="col-sm-8 col-12 mt-4 mb-4">
+			Uma vez que nosso processamento Informação Pessoal de Usuário está sujeito às leis nacionais (incluindo, mas
+			não se limitando à Lei Geral de Proteção de Dados – LGPD), a Civis deve notificar você sobre as bases legais
+			sob as quais
+			nós processamos sua Informação Pessoal de Usuário:
+			<br><br>
+
+			<h4>Informações de perfil</h4>
+			<p>
+				Ao criar uma conta na Civis, você nos fornece sua Informação de Cadastro. Requeremos essa
+				informação para que celebremos o acordo de Termos de Uso e processamos essa informação a fim de
+				executar esse acordo. Também processamos suas informações de nome de usuário e endereço de
+				e-mail sob outras bases legais, como descrito a seguir.
+			</p>
+			<br>
+			<h4>Consentimento</h4>
+			<p>
+				Contamos com seu consentimento para usar suas Informações Pessoais de Usuário nas seguintes
+				circunstâncias: quando você preenche as informações em seu perfil de usuário; quando você decide
+				participar de uma pesquisa ou programa beta; e para fins de marketing, quando aplicável.
+				Todas essas Informações Pessoais de usuário são opcionais e você pode acessá-las, modificá-las
+				e excluí-las a qualquer momento. Embora não seja possível excluir totalmente seu endereço de
+				e-mail, você pode torná-lo privado. Você pode retirar seu consentimento a qualquer momento.
+			</p>
+			<br>
+			<h4>Interesses Legítimos</h4>
+			<p>
+				Geralmente, o restante do processamento de Informações Pessoais de Usuário que realizamos é
+				necessário para fins de nosso interesse legítimo, por exemplo, para fins de conformidade legal, fins
+				de segurança ou para manter a confidencialidade, integridade, disponibilidade e resiliência,
+				disponibilidade do Website e Serviços da Civis.
+			</p>
+
+		</div>
+	</div>
+</div>
+<div class="container-fluid bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-12 mt-4 mb-4">
+				<h3>Como você pode acessar e controlar as informações que coletamos</h3>
+			</div>
+			<div class="col-sm-8 col-12 mt-4 mb-4">
+				Se você já é um usuário da Civis, pode acessar, atualizar, alterar ou excluir suas informações básicas
+				de usuário editando seu perfil de usuário. Como usuário da Civis, você sempre poderá levar seus dados
+				com você.
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-12 mt-4 mb-4">
+			<h3>Nosso uso de cookies e rastreamento</h3>
+      <a id="cookies" class="privacy-anchor"></a>
+		</div>
+		<div class="col-sm-8 col-12 mt-4 mb-4">
+			A Civis usa cookies para tornar as interações com nosso serviço fáceis e relevantes. Cookies são pequenos
+			arquivos de texto que os sites geralmente armazenam nos discos rígidos dos computadores ou nos dispositivos
+			móveis dos visitantes. Usamos cookies (e tecnologias semelhantes, como HTML5 localStorage) para manter você
+			conectado, lembrar suas preferências e fornecer informações para o desenvolvimento futuro da plataforma
+			Civis. Por motivos de segurança, usamos cookies para identificar um dispositivo. Ao usar nosso site, você
+			concorda que podemos colocar esses tipos de cookies em seu computador ou dispositivo. Se você desativar a
+			capacidade do seu navegador ou dispositivo de aceitar esses cookies, não poderá fazer login ou usar os
+			serviços da Civis.
+		</div>
+	</div>
+</div>
+<div class="container-fluid bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-12 mt-4 mb-4">
+				<b>Créditos: </b>Texto baseado e adaptado de <a
+					href="https://eu-citizen.science/privacy/">https://eu-citizen.science/privacy/</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock list_of_items %}

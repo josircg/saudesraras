@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{% if object.approved is None %}
+<div class="small text-danger">{% trans "Not yet moderated" %}</div>
+{% elif not object.approved %}
+<div class="small text-danger">{% trans "Not approved" %}</div>
+{% endif %}

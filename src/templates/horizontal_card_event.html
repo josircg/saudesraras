@@ -1,0 +1,12 @@
+{% extends "horizontal_card.html" %}
+{% load thumbnail %}
+{% load eucs_platform_tags %}
+{% block img %}
+<a href="/event/{{event.id}}">
+<img title="event picture" class="img-fluid lazyload" data-src="{% thumbnail project.image1|safe_image:'default_profile.png' 200x133 crop %}">
+</a>
+{% endblock img %}
+{% block title %}
+<a href="/editEvent/{{event.id}}">{{ event.title }}</a>
+{% include '_card_moderation_info.html' with object=event %}
+{% endblock title %}

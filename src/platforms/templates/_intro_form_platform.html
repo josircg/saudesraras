@@ -1,0 +1,20 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-12">
+        {% if id %}
+        <h1>{% trans "Editing" %}<span class="text-pink6"> {{form.initial.name}}</span></h1>
+        {% else %}
+        <h1>{% trans "New" context "fem" %}<span class="text-pink6"> {% trans "platform" %}</span></h1>
+        {% endif %}
+        {% if not id %}
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="small mb-2">
+                {% trans "Thank you for registering a citizen science platform on the Civis platform. After submitting this form, the platform will undergo moderation by the Civis team. This step is simply to prevent use of platform for purposes other than supporting citizen science." %}
+            </div>
+            <div class="col-11">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

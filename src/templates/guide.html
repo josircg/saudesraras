@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}{{ block.super }} :: Terms{% endblock %}
+{% block splash %}
+<div class="jumbotron jumbotron-fluid jumbotron-default">
+	<div class="container">
+		<h1 class="display-4 pt-4 pb-4 text-white">Terms of use</h1>
+	</div>
+</div>
+{% endblock splash %}
+
+{% block navbar-left %}
+{% include "_navbar.html" %}
+{% endblock %}
+
+
+{% block list_of_items %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-12 mb-5">
+			<h2>Plataforma Civis - Guia de Uso</h2>
+		</div>
+		<h4>Página em Construção</h4>
+	</div>
+
+	
+		{% endblock list_of_items%}

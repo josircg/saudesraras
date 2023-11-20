@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Page not found' %}{% endblock %}
+
+{% block list_of_items %}
+  <div class="erroPagina">
+    <h1>404</h1>
+    <h3>{% trans "Sorry, page not found" %}</h3>
+    <a href="{% url 'home' %}">{% trans "Go back to home" %}</a>
+  </div>
+{% endblock list_of_items %}

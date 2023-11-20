@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }} :: Privacy{% endblock %}
+{% block splash %}
+<div class="jumbotron jumbotron-fluid jumbotron-default">
+	<div class="container">
+		<h1 class="display-4 pt-4 pb-4 text-white">Privacy</h1>
+	</div>
+</div>
+{% endblock splash %}
+
+{% block navbar-left %}
+{% include "_navbar.html" %}
+{% endblock %}
+
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-5"><br>Privacy</h1>
+		<p class="lead text-light"></p>
+	</div>
+</div>
+{% block list_of_items %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-12 mt-4 mb-4">
+			<h3>What information Civis collects</h3>
+		</div>
+		<div class="col-sm-8 col-12 mt-4 mb-4">
+			<p>
+				"Personal User Information" is any information about one of our Users which could, alone or together with other information, personally identify them or otherwise be reasonably linked or connected with them. Information such as a username and password, an email address, a real name, an Internet Protocol (IP) address, and a photograph are examples of “Personal User Information.”
+			</p>
+			<p>
+				Personal User Information does not include aggregated, non-personally identifying information that does not identify a User or cannot otherwise be reasonably linked or connected with them. We may use such aggregated, non-personally identifying information for research purposes and to operate, analyse, improve, and optimize our Website and Service.
+			</p>
+			<br><br>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-12 mt-4 mb-4">
+			<h3>Information users provide directly to Civis</h3>
+		</div>
+		<div class="col-sm-8 col-12 mt-4 mb-4">
+			<h4>Registration Information</h4>
+			<p>
+                We require basic information at the time of account creation. When you create your username and password, we ask you for a valid email address.
+			</p>
+			<br>
+			<h4>Profile Information</h4>
+			<p>
+				You may choose to give us more information for your Account profile, such as your full name, an avatar that may include a photograph, your biography, your location, your institutional or business relationship, and a URL to a third-party website. This information may include User Personal Information. Please note that your profile information may be visible to other Users of our Service if you authorize this disclosure.
+			</p>
+			<br><br>
+		</div>
+	</div>
+</div>
+<div class="container-fluid bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-12 mt-4 mb-4">
+				<h3>How Civis uses the information you provide</h3>
+			</div>
+			<div class="col-sm-8 col-12 mt-4 mb-4">
+				We may use your information for the following purposes:
+				<ul>
+					<li>We use your Registration Information to create your account and to provide you with the Service.</li>
+					<li>We use your Personal User Information, specifically your username, to identify you on Civis.</li>
+					<li>We use your email address to communicate with you if you've said that's okay, and only for the reasons you’ve said that’s okay.</li>
+					<li>We use Personal User Information when providing customer service and responding to support requests.</li>
+					<li>We may use Personal User Information to invite you to take part in surveys, beta programs, or other research projects, subject, when necessary, to your consent.</li>
+					<li>We may use your Personal User Information if it is necessary for security purposes or to investigate possible fraud or attempts to harm Civis or our Users.</li>
+					<li>We may use your Personal User Information to comply with our legal obligations, protect and enforce our license to use, intellectual property, and <a href="/terms">Terms of Use</a></li>
+					<li>We limit our use of your Personal User Information to the purposes listed in this Privacy Policy. If we need to use your Personal User Information for other purposes, we will ask your permission first. You can always see what information we have, how we're using it, and what permissions you have given us in your user profile.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-12 mt-4 mb-4">
+			<h3>Our legal bases for processing information</h3>
+		</div>
+		<div class="col-sm-8 col-12 mt-4 mb-4">
+			To the extent that our processing of your Personal User Information is subject to certain international
+            laws (including, but not limited to, the Brazilian General Data Protection Law (LGPD),
+            Civis is required to notify you about the legal basis on which we process Personal User Information:
+			<br><br>
+
+			<h4>Profile Information</h4>
+			<p>
+            When you create a Civis Account, you provide your Registration Information. We require this information for you to enter into the Terms of Use with us, and we process that information based on the performance of that contract. We also process your username and email address on other legal bases, as described below.
+			</p>
+			<br>
+			<h4>Consent</h4>
+			<p>We rely on your consent to use your Personal User Information under the following circumstances: when you fill out the information in your user profile; when you decide to participate in a research project or beta program; and for marketing purposes, where applicable. All this Personal User Information is entirely optional, and you can access, modify, and delete it at any time. While you are not able to delete your email address entirely, you can make it private. You may withdraw your consent at any time.</p>
+			<br>
+			<h4>Legitimate Interests</h4>
+			<p>
+				Generally, the remainder of the processing of Personal User Information we perform is necessary for our legitimate interest, for example, for Civis Website and Services’ legal compliance purposes, security purposes, or to maintain ongoing confidentiality, integrity, availability, and resilience.
+			</p>
+
+		</div>
+	</div>
+</div>
+<div class="container-fluid bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-12 mt-4 mb-4">
+				<h3>How you can access and control the information we collect</h3>
+			</div>
+			<div class="col-sm-8 col-12 mt-4 mb-4">
+				If you're already a Civis user, you may access, update, alter, or delete your basic user profile information by editing your user profile. As a Civis user, you can always take your data with you.
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-12 mt-4 mb-4">
+			<h3>Our use of cookies and tracking</h3>
+      <a id="cookies" class="privacy-anchor"></a>
+		</div>
+		<div class="col-sm-8 col-12 mt-4 mb-4">
+            Civis uses cookies to make interactions with our service easy and meaningful.
+            Cookies are small text files that websites often store on visitors’ computer hard drives or mobile devices.
+            We use cookies (and similar technologies, like HTML5 localStorage) to keep you logged in,
+            remember your preferences, and provide information for future development of the Civis platform.
+            For security purposes, we use cookies to identify a device. By using our website, you agree that we can
+            place these types of cookies on your computer or device. If you disable your browser or device’s ability
+            to accept these cookies, you will not be able to log in or use Civis services.
+		</div>
+	</div>
+</div>
+<div class="container-fluid bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-12 mt-4 mb-4">
+				<b>Credits: </b>Text based on and adapted from  <a
+					href="https://eu-citizen.science/privacy/">https://eu-citizen.science/privacy/</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock list_of_items %}

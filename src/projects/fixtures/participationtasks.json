@@ -1,0 +1,134 @@
+[
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Análise de amostras"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Análise de Dados"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Classificação ou Rotulagem"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Colaboração no desenho da pesquisa"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Coleta de amostras"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Coleta de dados"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Computação distribuída"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Coprodução"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Desenvolvimento de software"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Fabricação"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Faça você mesmo (DIY)"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Fotografia"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Geolocalização"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Gravação de áudio ou vídeo"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Medição"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Observação"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Realização de entrevistas"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Registro de dados"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Resolução de problemas"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Seleção ou descrição de ambientes"
+        }
+    },
+    {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Transcrição"
+        }
+    },
+        {
+        "model": "projects.participationTask",
+        "fields": {
+            "participationTask": "Outro"
+        }
+    }
+]

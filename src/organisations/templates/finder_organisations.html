@@ -1,0 +1,55 @@
+{% load i18n %}
+{% load static %}
+{% load l10n %}
+{% load countries %}
+{% get_countries as countries %}
+
+<div class="row">
+	<form class="form-inline float-lg-right" id="searchOrganisations" action="{% url 'organisations' %}">
+		<input type="hidden" name="keywords" value="{{filters.keywords}}">
+		<div class="col-12 col-lg-9 d-none d-sm-block">
+			<div class="float-left">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<div class="input-group-text"><i class="fas fa-filter"></i></div>
+					</div>
+
+					<select id="orgType" name="orgType" class="custom-select orgType-select form-control">
+						<option value="">{% trans "Type" %}
+						</option>
+						{% for s in orgTypes %}
+						<option {% if s.id ==  filters.orgType %} selected {% endif %} value="{{s.id}}">
+							{{s.type|capfirst}}
+						</option>
+						{% endfor %}
+					</select>
+
+					<select id="country" name="country" class="custom-select form-control">
+						<option value="">{% trans "Country" %}
+						</option>
+						{% for country in countries %}
+						{% for cwc in countriesWithContent %}
+						{% if country.code == cwc %}
+						<option {% if country.code ==  filters.country %} selected {% endif %} value="{{ country.code }}">
+							{{ country.name }}
+						</option>
+						{% endif %}
+						{% endfor %}
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 mt-3 mb-3 text">
+			{{ counter }}
+			{% if counter != 1 %} {% trans "organisations found" %}{% else %} {% trans "organisation found" %}{% endif %}
+		</div>
+		{% if request.get_full_path != "/organisations" %}
+		<div class="col-lg-6 text-right mb-3">
+			<a class="text-decoration-none text-muted mb-4" href="/organisations"><i class="fas fa-times"></i> {% trans "Clear current search query and filters" %}</a>
+			</div>
+			{% endif %}
+		</form>
+	</div>
+
+ </a>

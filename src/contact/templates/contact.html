@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }} :: Contact{% endblock %}
+{% block splash %}
+<div class="jumbotron jumbotron-fluid jumbotron-default">
+	<div class="container">
+		<h1 class="display-4 pt-4 pb-4 text-white">{% trans "Contact" %}</h1>
+	</div>
+</div>
+{% endblock splash %}
+{% block navbar-left %}
+{% include "_navbar.html" with active_link="contact" %}
+{% endblock %}
+
+{% block page_title %}
+{% trans "Contact" %}
+{% endblock page_title %}
+
+{% block list_of_items %}
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-sm-12">
+			<div class="mb-4">
+				<div class="p-3">
+					<h1 class="text-pink6">{% trans "Contact" %}</h1><br>
+					<p>{% trans "You can reach out by this form, or through the email: <a href='mailto:civis@ibict.br'>civis@ibict.br</a>" %}</p><br>
+					<form method="post" autocomplete="off">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-6">
+								{{ form.name | as_crispy_field}}
+							</div>
+							<div class="col-6">
+								{{ form.surname | as_crispy_field}}
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-12 col-sm-12">
+								{{ form.from_email | as_crispy_field}}
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-12 col-sm-12">
+								{{ form.message | as_crispy_field}}
+							</div>
+						</div>
+            <div class="m-4"></div>
+            <div class="row">
+							<div class="col-12 col-sm-12">
+								{{ form.newsletter | as_crispy_field}}
+							</div>
+						</div>
+						<br>
+            <div class="row">
+							<div class="col-12 col-mt-4">
+								{{ form.captcha | as_crispy_field}}
+							</div>
+						</div>
+						<br>
+						<div>
+              <a class='btn btn-pink6 captcha' href="#">{% trans "Refresh captcha" %} <i class="fas fa-sync-alt"></i></a>
+							<button type="submit" class="btn btn-pink6">{% trans "Send" %}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><br><br><br>
+{% endblock list_of_items %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script>
+    $('.captcha').click(function (event) {
+        event.preventDefault();
+        $.getJSON("{% url 'captcha-refresh'%}", function (result) {
+            $('.captcha').attr('src', result['image_url']);
+            $('#id_captcha_0').val(result['key'])
+        });
+    });
+  </script>
+{% endblock %}

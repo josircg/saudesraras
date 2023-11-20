@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Server error (500)' %}{% endblock %}
+
+{% block list_of_items %}
+  <div class="erroPagina">
+    <h1>500</h1>
+    <h3>{% trans "There's been an unexpected error. We are working to fix this and it should resolve shortly. Please try again later." %}</h3>
+    <a href="{% url 'home' %}">{% trans "Go back to home" %}</a>
+  </div>
+{% endblock list_of_items %}

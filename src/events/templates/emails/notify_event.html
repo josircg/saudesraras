@@ -1,0 +1,6 @@
+{% load i18n %}
+
+{% block html_body  %}
+  <h1>Um novo Evento foi submetido na plataforma Civis.</h1>
+  <p>Acesse o novo evento, <a href="{{ domain }}{% url 'editEvent' pk=eventid %}">{{ submissionName }}</a>, para fazer a moderação.</p>
+{% endblock html_body %}

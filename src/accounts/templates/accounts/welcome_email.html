@@ -1,0 +1,44 @@
+{% load i18n %}
+{% block html_body %}
+<!DOCTYPE html>
+<html>
+<body>
+<p>
+{% autoescape off %}
+Olá, {{ user.name }}
+{% endautoescape %}
+</p>
+<p>
+    <p>A plataforma de Ciência Cidadã Civis dá as boas-vindas! Estamos muito felizes por você ter se juntado a nós.</p>
+
+    <p>
+        Nesta versão beta da plataforma, você vai encontrar recursos úteis para planejar e desenvolver projetos de ciência cidadã,
+        além de uma variedade de iniciativas com as quais é possível contribuir e aprender com a experiência e o conhecimento de outras pessoas.
+    </p>
+
+    <p>
+        Ao se inscrever na Civis, você será capaz de acompanhar iniciativas de seu interesse e adicionar recursos à sua biblioteca,
+        que podem ser encontrados em <a href="{{domain}}{% url 'profiles:show_self' %}">Minha Área</a>
+    </p>
+
+    <p>Mas atenção: o sucesso da plataforma depende da contribuição de todas, todes e todos!</p>
+    <p>
+        Por isso, convidamos você a compartilhar seus próprios recursos de ciência cidadã e a cadastrar iniciativas de ciência cidadã das
+        quais participa ou tenha participado. Para isso, basta usar o botão “Nova Submissão”, no menu superior, e escolher a opção desejada.
+    </p>
+
+    <p>
+        <b>Se quiser tornar seu perfil e suas submissões visíveis para o público, marque essas opções em Meu centro de privacidade.</b>
+    </p>
+
+<p> Se precisar de ajuda, tiver dúvidas ou quiser fazer alguma sugestão, escreva para civis@ibict.br.
+Este é um e-mail automático, NÃO responda.
+</p>
+<p>
+    Saudações, <br>
+    Equipe Civis
+</p>
+</body>
+
+</html>
+{% endblock html_body %}

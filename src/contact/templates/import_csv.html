@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Import CSV" %}{% endblock %}
+
+{% block list_of_items %}
+<div class="container">
+  <div class="row">
+    <div class="container mt-5">
+      <form action="/import_subscriber_csv/" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="row d-flex justify-content-center">
+          <div class="col-8 mb-4">
+          <p>{% trans "Select a CSV UTF-8 file with the following fields separated by commas" %}: <b>{% trans "Email, Full Name (Optional), Organisation (Optional)" %}</b></p>
+          </div>
+          <div class="col-8 mb-4">
+              {{ form.file | as_crispy_field }}
+          </div>
+          <div class="col-8 mb-4">
+              {{ form.source | as_crispy_field }}
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-8 mb-4">
+              <button type="submit" class="btn btn-pink6">
+              <i class="fas fa-upload"></i> {% trans 'Upload' %}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load i18n %}
+{% load static %}
+{% load thumbnail eucs_platform_tags eucs_platform_translate %}
+
+{% for organisation in organisations %}
+<div class="col-lg-3 col-sm-6 col-xs-12 mb-5">
+    <div class="card h-100 border-1 rounded"> 
+        <a href="/organisation/{{organisation.id}}">
+        <img  class="card-img-top lazyload" data-src="{% thumbnail organisation.logo|safe_image 306x204 crop %}" />
+        </a>
+        <div class="card-body">
+            <a href="/organisations?country={{organisation.country.code}}" class="badge rounded-pill bg-pill text-decoration-none">
+                {{organisation.country.name}}
+            </a>
+            {% with orgType=organisation.orgType|translate_instance %}
+              <a href="/organisations?orgTypes={{ orgType }}" class="badge rounded-pill bg-pill text-decoration-none">{{ orgType }}</a>
+            {% endwith %}
+            <h5 class="mt-2 mb-3">
+                <a href="/organisation/{{organisation.id }}" class="card-title">{{ organisation.name }}</a>
+            </h5>
+            <p class="mt-4">{{organisation.description | safe | truncate_summary:30 }}</p>
+        </div><!-- End of card-body -->
+    </div><!-- end of card -->
+</div>
+{% endfor %}
+{% if 'organisations' in request.get_full_path %}
+<div class="col-lg-12">
+    {% include "organisations_paginator.html" %}
+</div>
+{% endif %}

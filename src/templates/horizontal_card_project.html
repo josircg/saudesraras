@@ -1,0 +1,17 @@
+{% extends "horizontal_card.html" %}
+{% load thumbnail %}
+{% load i18n %}
+{% load eucs_platform_tags %}
+{% block img %}
+<a href="/project/{{project.id}}">
+    <img title="project picture" class="img-fluid lazyload" data-src="{% thumbnail project.image1|safe_image:'default_profile.png' 200x133 crop %}">
+</a>
+{% endblock img %}
+{% block title %}
+<a href="/project/{{project.id}}">{{ project.name | truncatechars:30}}</a>
+<div class="small text-muted">{{ project.dateCreated }}</div>
+{% include '_card_moderation_info.html' with object=project %}
+{% if project_permission is not None and not project_permission.accepted %}
+<div class="small text-danger">{% trans "Waiting to accept the invitation" %}</div>
+{% endif %}
+{% endblock title %}

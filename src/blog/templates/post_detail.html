@@ -1,0 +1,52 @@
+{% extends 'baseblog.html' %}
+{% load reviews %}
+{% block meta %}
+<link href="/static/reviews/css/star-rating.css" type="text/css" media="all" rel="stylesheet">
+<meta property="og:title" content="{{post.title}}" />
+<meta property="og:description" content="{{post.excerpt}}" />
+<meta property="og:image" content="{{domain}}/media/{{post.image}}" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{post.title}}" />
+<meta name="twitter:description" content="{{post.excerpt}}" />
+<meta name="twitter:image" content="{{domain}}/media/{{post.image}}" />
+{% endblock meta %}
+
+{% block list_of_items %}
+
+<div class="container" id="blog-single">
+  <div class="row">
+    <div class="container mt-5">
+      <div class="row d-flex justify-content-center">
+
+        <div class="col-sm-10 col-12">
+          <div class="mt-5 mb-5">
+            <div class="">
+
+              <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+              <p class=" text-muted">
+                {% if post.author.name != "Empty user" %}
+								  {{ post.author.name }} {% endif %} <br /> {{ post.created_on }}
+              </p>
+
+              {% if post.image.width > post.image.height %}              
+              <div class="mb-4 mt-5">
+                <img class="img-fluid img-responsive img-zoom lazyload" data-src="/media/{{post.image}}" alt="Card image">
+              </div>              
+              {% endif %}
+              {% if post.image.width < post.image.height %}
+                <img class="img-fluid img-responsive img-zoom lazyload" style="float: right; margin: 0px 0px 15px 15px;" width="300px" data-src="/media/{{post.image}}" alt="Card image">
+              {% endif %}              
+
+              <div class="blog-text-content mt-5">{{ post.content | safe }}</div>
+
+
+              <hr />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock list_of_items %}

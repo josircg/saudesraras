@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{% block html_body  %}
+{% blocktrans %}
+  <p>You were removed from the project <a href='{{ domain }}/project/{{ project_id }}'>{{ project }}</a>.</p>
+{% endblocktrans %}
+{% endblock html_body %}

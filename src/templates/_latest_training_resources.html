@@ -1,0 +1,26 @@
+{% load i18n %}
+<div class="container-fluid">
+    <div class="container">
+        <div class="row rowTitleBtn">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="mt-5 mb-5">{% trans "Training" %}</h2>
+            </div>
+            <div class="col-xs-12 col-sm-6 btnLatest">
+                <div class="mt-5 mb-5">
+                    <div class="float-end">
+                        <a class="btn btn-all-home my-1 my-md-0 ms-md-2 d-flex align-items-center justify-content-center"
+                            href="{% url 'training_resources' %}">
+                            {% trans "See all training resources" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% include "resources_cards.html" with resources=trainingResources endPoint='training_resources' %}
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
+

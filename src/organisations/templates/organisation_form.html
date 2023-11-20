@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load thumbnail %}
+{% load leaflet_tags %}
+{% load crispy_forms_tags %}
+{% load eucs_platform_tags %}
+{% block head %}
+{{block.super }}
+<link rel="stylesheet" href="{% static 'styles/jquery-ui.css' %}">
+<link rel="stylesheet" href="{% static 'site/css/leaflet-geosearch_3_9.css' %}">
+<link rel="stylesheet" href="{% static 'site/css/forms.css' %}">
+{% leaflet_js %}
+{% leaflet_css %}
+{{ form.media.css }}
+{{ form.media.js }}
+
+{% endblock head %}
+
+{% block title %}{{ block.super }} :: Edit organisation{% endblock %}
+
+
+{% block list_of_items %}
+{% include '_crop_zone.html' %}
+<!-- END MODAL TO CROP -->
+
+
+<div class="intro-form mt-5 mb-5 pb-5 pt-5">
+  <div class="container">
+    {% include "_intro_form_organisation.html" %}
+  </div>
+</div>
+
+<!-- TODO: This form like the others -->
+<div class="container mt-5">
+    <form
+        {% if organisation.id %}
+        action="/edit_organisation/{{organisation.id}}"
+        {% else %}
+        action="/new_organisation"
+        {% endif %}
+        method="post"
+        enctype="multipart/form-data"
+        class="edit-organisation"
+        autocomplete="off">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-8">
+                        <h3 class="leftborder">{% trans "Main information" %}</h3>
+                          <input type="hidden" id="organisationID" name="organisationID" value={{organisation.id}}>
+                          {{ form.name|as_crispy_field }}
+                          {{ form.url|as_crispy_field }}
+                          {{ form.description|as_crispy_field }}
+                          {{ form.orgType|as_crispy_field }}                            
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">                    
+                    <div class="col-8">
+                        <h3 class="leftborder mt-5">{% trans  "Contact information" %}</h3>
+                        {{ form.contact_point|as_crispy_field }}
+                        {{ form.contact_point_email|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">                    
+                    <div class="col-8">
+                        <h3 class="leftborder mt-5">{% trans "Organisation logo" %}</h3>
+                          <a id="imgResult" href="#"> <img
+                                            class="img-fluid img-zoom"
+                                            id="imageResult"
+                                            src="{% thumbnail organisation.logo|safe_image 600x400 crop%}"> </a>
+
+                          {{ form.logo|as_crispy_field }}
+                          {{ form.x|as_crispy_field }}
+                          {{ form.y|as_crispy_field }}
+                          {{ form.height|as_crispy_field }}
+                          {{ form.width|as_crispy_field }}                            
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">                    
+                    <div class="col-8">
+                        <h3 class="leftborder mt-5">{% trans "Location" %}*</h3>
+                        <p id="hint_id_map" class="help-block">{% trans "Locate on the map or inform in the field below the city or region and country of your initiative or organization." %}</p>
+                        <p class="help-block"><strong>{{ error }}</strong></p>
+                        {% leaflet_map "map" callback="window.map_init_basic" %}
+                        {{ form.latitude|as_crispy_field }}
+                        {{ form.longitude|as_crispy_field }}
+                        <div class="row mt-5 mb-5">
+                            <div class="col-11">
+                                <button type="submit" class="btn btn-pink6"><i class="fas fa-share-square"></i> {% trans "Save" %}</button>
+                            </div>
+                        </div>
+                        <div class="row mt-5 mb-5">
+                            <div class="col-11">
+                                {% if user.is_staff and organisation.id and organisation.approved == None %}
+                                    <a href="{% url 'approve_organisation' organisation.id 1 %}"
+                                       class="btn btn-pink6"><i class="fas fa-thumbs-up"></i> {% trans "Approve" %}
+                                    </a>
+                                    <a href="{% url 'approve_organisation' organisation.id 0 %}"
+                                       class="btn btn-pink6"><i class="fas fa-thumbs-down"></i> {% trans "Do not" %} {% trans "Approve" %}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock list_of_items %}
+
+{% block scripts %}
+<script src="{% static 'scripts/jquery-ui.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.ui.touch-punch.min.js' %}"></script>
+<script src="{% static 'site/js/site.js' %}"></script>
+<script src="{% static 'scripts/cropper.min.js' %}"></script>
+<script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
+<script src="{% static 'site/js/leaflet-geosearch_3_9.min.js' %}"></script>
+<script src="{% static 'site/js/modal-crop.js' %}?v=1"></script>
+<script>
+
+$('form').on('submit', function(e) {
+  $("button[type=submit]").attr('disabled','true'); 
+});
+
+</script>
+
+<script type="text/javascript">
+  var map;
+  var coord_lat = $("#id_latitude").val();
+  var coord_long = $("#id_longitude").val();
+  var marker_layer = new L.marker([50.5, 30.5]);
+
+  function editMarker(e){
+    map.removeLayer(marker_layer);
+    marker_layer = new L.marker(e.latlng, {draggable:true});
+    marker_layer.on('drag', function (e) {
+      $("#id_latitude").val((e.latlng.lat).toFixed(6));
+      $("#id_longitude").val((e.latlng.lng).toFixed(6));
+    });
+    map.addLayer(marker_layer);
+    $("#id_latitude").val((e.latlng.lat).toFixed(6));
+    $("#id_longitude").val((e.latlng.lng).toFixed(6));
+  }
+
+  function searchedMarker(e){
+    map.removeLayer(marker_layer);
+    marker_layer = new L.marker([e.location.y,e.location.x], {draggable:true});
+    marker_layer.on('drag', function (e) {
+      $("#id_latitude").val((e.latlng.lat).toFixed(6));
+      $("#id_longitude").val((e.latlng.lng).toFixed(6));
+    });
+    map.addLayer(marker_layer);
+    $("#id_latitude").val(parseFloat(e.location.y).toFixed(6));
+    $("#id_longitude").val(parseFloat(e.location.x).toFixed(6));
+  }
+
+  function map_init_basic (leafmap, options) {
+    map = leafmap;
+    var obj = { latlng: {
+      lat: parseFloat($("#id_latitude").val()),
+      lng: parseFloat($("#id_longitude").val()) }
+    }
+    if($("#id_latitude").val() && $("#id_latitude").val() != 0)
+    editMarker(obj);
+    map.on('click', editMarker);
+    if(coord_lat !== null && coord_lat !== "" && coord_lat != 0) {
+      map.flyTo([coord_lat, coord_long], 8)
+    }
+
+    var GeoSearchControl = window.GeoSearch.GeoSearchControl;
+    var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+    var provider = new OpenStreetMapProvider({});
+
+    //  Define search controls
+    var searchControl = new GeoSearchControl({
+      provider: provider,
+      style: 'bar',
+      showMarker: false,
+      autoClose: true,
+      keepResult: true,
+      //retainZoomLevel: true,
+    });
+
+    map.addControl(searchControl);
+    map.on('geosearch/showlocation', searchedMarker);
+  }
+</script>
+{{ form.media.js }}
+{% endblock scripts %}

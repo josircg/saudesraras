@@ -1,0 +1,110 @@
+[
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Introdução à Ciência Cidadã"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Boas práticas"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Gerenciamento de projetos"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Planejamento e métodos de pesquisa"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Engajamento do público"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Cocriação"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Comunicação"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Planejamento de eventos"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Casod de Ciência Cidadã"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Qualidade e padronização de dados"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Instruções e orientações"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Relação com a educação formal"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Regulações e ética"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Impacto"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Avaliação da ciência cidadã"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Sustentabilidade do projeto"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Reflexões sobre a ciência"
+        }
+    },
+    {
+        "model": "resources.theme",
+        "fields": {
+            "theme": "Outros"
+        }
+    }
+]

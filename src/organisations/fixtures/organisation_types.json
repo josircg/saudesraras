@@ -1,0 +1,38 @@
+[
+    {
+        "model": "organisations.OrganisationType",
+        "fields": {
+            "type": "Governmental"
+        }
+    },
+    {
+        "model": "organisations.OrganisationType",
+        "fields": {
+            "type":  "Non-governmental"
+        }
+    },
+    {
+        "model": "organisations.OrganisationType",
+        "fields": {
+            "type": "Academic"
+        }
+    },
+    {
+        "model": "organisations.OrganisationType",
+        "fields": {
+            "type": "Private sector"
+        }
+    },
+    {
+        "model": "organisations.OrganisationType",
+        "fields": {
+            "type": "Community-led"
+        }
+    },
+    {
+        "model": "organisations.OrganisationType",
+        "fields": {
+            "type": "Consortium"
+        }
+    }
+]

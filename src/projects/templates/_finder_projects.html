@@ -1,0 +1,131 @@
+{% load i18n %}
+{% load static %}
+{% load countries %}
+{% get_countries as countries %}
+<div class="row">
+    <form class="form-inline float-lg-right" id="searchProjects" action="{% url 'projects' %}">
+        <input type="hidden" name="keywords" value="{{filters.keywords}}"/>
+        <div class="col-12 d-flex">
+
+            <div id="div-ordenacao">
+                <div class="title-filtros">{% trans "Order by" %}</div>
+                <div class="input-group input-group-sm filter-bar">
+                    <div class="input-group-text filter-img">
+                        <img src="{% static '../static/site/icons/order-icon.png' %}" alt="">
+                    </div>
+                    <select id="orderby" name="orderby" class="custom-select status-select form-control">
+                        <option value="" {% if filters.orderby == "" %} selected {% endif %}>{% trans "Most Recent" %}</option>
+                        <option value="name" {% if filters.orderby == "name" %} selected {% endif %}>{% trans "By Name" %}</option>
+                        {% if FEATURED_MGT %}
+                          <option value="featured" {% if filters.orderby == "featured" %} selected {% endif %}>{% trans "Featured" %}</option>
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+
+
+            <div id="div-filtros">
+                <div class="title-filtros">{% trans "Filter by" %}</div>
+                <div class="input-group input-group-sm filter-bar">
+                    <div class="input-group-text filter-img">
+                        <img src="{% static '../static/site/icons/filter-icon.png' %}" alt="">
+                    </div>
+                    <select id="country" name="country" class="custom-select status-select form-control">
+                        <option value="">{% trans "Country" %}<option>
+                        {% for country in countries %}
+                            {% for cwc in countriesWithContent %}
+                                {% if country.code == cwc %}
+                            <option {% if country.code ==  filters.country %} selected {% endif %} value="{{ country.code }}">{{ country.name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </select>
+
+                    <select id="status" name="status" class="custom-select status-select form-control">
+                        <option value="">{% trans "Status" %}<option>
+                        {% for s in status %}
+                            <option {% if s|safe ==  filters.status %} selected {% endif %} value="{{s}}">
+                                {{s|capfirst}}
+                            </option>
+                        {% endfor %}
+                    </select>
+
+                    <select id="topic" name="topic" class="custom-select status-select form-control">
+                        <option value="">{% trans "Topic" %}</option>
+                        {% for topic in topics %}
+                        <option {% if topic|safe ==  filters.topic %} selected {% endif %} value="{{topic}}">
+                        {{topic|capfirst}}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+                    <select id="participationTask" name="participationTask" class="custom-select status-select form-control">
+                        <option value="">{% trans "Participation Task" %}</option>
+                        {% for p in participationTask %}
+                        <option {% if p|safe ==  filters.participationTask %} selected {% endif %} value="{{p}}">
+                        {{p|capfirst}}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+                    {% if user.is_staff %}
+                    <select id="approved" name="approved" class="custom-select status-select form-control">
+                        <option value="approved" {% if filters.approved == "approved" %} selected {% endif %}>{% trans "Approved" %}</option>
+                        <option value="notApproved" {% if filters.approved == "notApproved" %} selected {% endif %}>{% trans "Not approved" %}</option>
+                        <option value="notYetModerated" {% if filters.approved == "notYetModerated" %} selected {% endif %}>{% trans "Not yet moderated" %}</option>
+                    </select>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-4">
+  		          {% if filters.country %}
+                <a class="badge rounded-pill bg-pink6 mt-4" id="pill-country">
+                    <i class="fas fa-times"></i>
+                    {% trans "country" %}: {{filters.country}}
+                </a>
+                {% endif %}
+
+                {% if filters.keywords %}
+                <a class="badge rounded-pill bg-pink2 search-filter mt-4">
+                    <i class="fas fa-times"></i> {% trans "keyword:" %} {{filters.keywords}}
+                </a>
+                {% endif %}
+                {% if filters.topic %}
+                <a class="badge rounded-pill bg-pink3 mt-4" id="pill-topic">
+                    <i class="fas fa-times"></i>
+                    {% trans "Topic" %}: {{filters.topic}}
+                </a>
+                {% endif %}
+                {% if filters.status %}
+                <a class="badge rounded-pill bg-pink4 mt-4" id="pill-status">
+                    <i class="fas fa-times"></i>
+                    {% trans "Status" %}: {{filters.status}}
+                </a>
+                {% endif %}
+                {% if filters.participationTask %}
+                <a class="badge rounded-pill bg-pink7 mt-4" id="pill-participationTask">
+                    <i class="fas fa-times"></i>
+                    {% trans "Participation task" %}: {{filters.participationTask}}
+                </a>
+                {% endif %}
+                <!-- TODO: improve next condition -->
+                {% if request.get_full_path != "/projects" %}
+                <a class="badge rounded-pill bg-pink8 text-decoration-none mt-4" href="/projects">
+                    <i class="fas fa-times"></i> {% trans "Clear current search query and filters" %}
+                </a>
+                {% endif %}
+                <div class="small result mb-3 mt-3">
+                    {{ counter }}
+                    {% if counter != 1 %}
+                    {% trans "Projects found" %}
+                    {% else %}
+                    {% trans "Project found" %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ block.super }} :: Sobre{% endblock %}
+
+{% block list_of_items %}
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h1 class="mt-5 mb-5">
+                Sobre <span class="text-pink6">civis</span>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-12"></div>
+        <div class="col-sm-8 col-11">
+
+            <div class="row mb-5">                
+                <div class="col-12">
+                    <p>
+                        Civis es una plataforma de ciencia ciudadana desarrollada por el Instituto Brasileño de Información en Ciencia y Tecnología (IBICT), de código abierto a partir
+                        de <a href="https://eu-citizen.science/">EU-Citizen.Science</a>.
+                    </p>
+                    <p>
+                        Nuestro objetivo es proporcionar infraestructura y contenidos que ayuden a ampliar la comprensión de la ciencia ciudadana, difundir su uso y apoyar el desarrollo de iniciativas y la aplicación de metodologías en este campo, con un enfoque en América Latina y el Caribe.
+                    </p> 
+                    <p>
+                        Civis está abierto para que cualquier persona pueda registrar iniciativas, recursos y otros contenidos de ciencia ciudadana.
+                    </p> 
+                    <p>
+                        La plataforma está dirigida a un público amplio y plural, que incluye:
+                    </p> 
+                    <ul>
+                        <li>investigadores, científicos y docentes interesados en desarrollar proyectos e iniciativas de ciencia ciudadana, así como en conocer y utilizar metodologías y resultados de iniciativas ya existentes;</li>
+                        <li>individuos, grupos y organizaciones, con o sin formación académica, que deseen participar, iniciar o mejorar acciones utilizando este enfoque;</li>
+                        <li>gestores públicos y privados interesados en apoyar y desarrollar proyectos e iniciativas de esta naturaleza.</li>
+                    </ul>
+                    
+                    <h1 class="mt-5 mb-5">¿Qué es la <span class="text-pink6">ciencia ciudadana</span></h1>
+    
+                    <p>
+                        La ciencia ciudadana es una de las vertientes del movimiento de ciencia abierta. Se trata de un concepto amplio que engloba una extensa diversidad de iniciativas, enfoques y metodologías que buscan mejorar y promover la contribución y el compromiso de los no científicos en las actividades de producción y análisis de conocimientos, datos e información relevantes para la ciencia y las cuestiones de importancia social, medioambiental y territorial.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock list_of_items %}

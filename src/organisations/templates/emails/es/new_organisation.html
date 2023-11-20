@@ -1,0 +1,17 @@
+{% block html_body  %}
+  <p>Hola, {{ username }}</p>
+  <p>
+   Gracias por registrar la organización <a href="{{ domain }}{% url 'organisation' pk=id %}">{{ submissionName }}</a>
+   en la plataforma Civis.
+  </p>
+  <p>A partir de ahora será moderada por nuestro equipo.</p>
+  <p>El objetivo es evitar que la plataforma se utilice para fines distintos del apoyo a la ciencia ciudadana.</p>
+  <p>Si tenemos alguna duda, nos pondremos en contacto con usted.</p>
+  <p>Si todo es correcto, recibirá una notificación de que la organización ha sido aprobada y está publicada en la plataforma.</p>
+  <p>Puede realizar actualizaciones o cambios en este perfil de organización en cualquier momento accediendo a la sección Mis envíos de su
+    <a href="{{ domain }}{% url 'profiles:show_self' %}">Área Personal</a> (véase la esquina superior derecha del menú de la plataforma).</p>
+  <p>Si desea ponerse en contacto con nosotros, escríbanos a civis@ibict.br.</p>
+  <p>Este es un correo electrónico automático, NO responda.</p>
+  <p>Gracias,</p>
+  <p>Equipo Civis</p>
+{% endblock html_body %}

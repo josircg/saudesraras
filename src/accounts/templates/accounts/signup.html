@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }} :: Sign Up{% endblock %}
+
+{% block list_of_items %}
+<div class="container d-flex mt-2 mb-5">
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="col-lg-4 col-12 mt-0">
+            <div class="mt-2 form-accounts">
+                <h1 class="mb-5 d-flex justify-content-center">{% trans "Sign up" %}</h1>
+                {% block form %}
+                {% crispy form %}
+                <div class="form-message">
+                    <p>
+                        <br />
+                        {% trans "Already signed up?" %}<a href="{% url 'accounts:login' %}"> {% trans "Log in" %}</a>.
+                    </p>
+                    <br>
+                    {% trans "By clicking on Register, you accept our <a href='/terms'>Terms of Use</a> " %}
+                    {% trans "and <a href='/privacy'>Privacy Policy</a>, as well as our use of <a href='/privacy#cookies'>cookies</a>." %}
+                    </p>
+                </div>
+                {% endblock form %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock list_of_items %}

@@ -1,0 +1,30 @@
+{% load static %}
+{% load i18n %}
+<div class="row">
+    <div class="col-12">
+        {% if resource.id %}
+        <h1>{% trans "Editing" %}<span class="text-pink6"> {{resource.name}}</span></h1>
+        {% else %}
+        <h1>{% trans "New" context "femi" %}<span class="text-pink6"> {% trans "training resource" %}</span></h1>
+        {% endif %}
+
+        {% if not resource.id %}
+        <div class="row">
+            <div class="col-12">
+                <div class="small mb-2">{% trans "Thank you for registering a new citizen science training resource or educational material on the Civis platform. Please fill in all the mandatory information (indicated with an asterisk*), and as much optional information as possible." %}</div>
+                <div class="small mb-2">{% trans "Training Resources can include documents such as courses, sessions, workshops, seminars, educational games, among others, which contribute to the initiation and improvement of citizen science projects and project practices." %}</div>
+                <div class="small mb-2">{% trans "After submitting this form, the training resource will undergo moderation by the Civis team. This step is simply to prevent use of the platform for purposes other than supporting citizen science." %}</div>
+                <div class="small mb-2">{% trans "Please note that we strongly recommend that you ensure that your training resource is available, or make it available, on a website, repository, or publishers with a permanent link, especially those considered open access, like " %}
+                    <a href="https://zenodo.org/" target="_blank">Zenodo</a>,
+                    <a href="https://osf.io/" target="_blank">OSF</a>,
+                    <a href="https://riojournal.com/" target="_blank">{% trans "the RIO Journal" %}</a>.
+                </div>
+                <div class="small mb-2">{% trans "We would like to point out that, upon registration of a document or information, you have to clear the image rights and copyrights of the content you are submitting. Please indicate the author or copyright holder of all pictures and content, when applicable. You may need to obtain express written permission from them." %}</div>
+                <div class="small mb-2">{% trans "If you have any doubts about filling it out, consult our " %}
+                    <a href="/guide" target="_blank">{% trans "User Guide" %}</a>.
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
