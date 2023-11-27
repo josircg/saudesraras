@@ -1,0 +1,522 @@
+.pag-ajuda {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .pag-ajuda .div {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 1398px;
+    height: 2536px;
+    position: relative;
+  }
+  
+  .pag-ajuda .overlap {
+    position: absolute;
+    width: 1586px;
+    height: 350px;
+    top: 0;
+    left: -75px;
+    background-color: #a167a5;
+    border-radius: 53px;
+  }
+  
+  .pag-ajuda .element {
+    position: absolute;
+    width: 702px;
+    height: 172px;
+    top: 89px;
+    left: 232px;
+  }
+  
+  .pag-ajuda .t-TULO {
+    width: 700px;
+    top: 0;
+    left: 0;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    font-size: 82px;
+    line-height: 86px;
+    position: absolute;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+  
+  .pag-ajuda .LOGO-BRANCO {
+    position: absolute;
+    width: 167px;
+    height: 206px;
+    top: 57px;
+    left: 1123px;
+    object-fit: cover;
+  }
+  
+  .pag-ajuda .agrupar {
+    position: absolute;
+    width: 1398px;
+    height: 94px;
+    top: 2442px;
+    left: 0;
+    object-fit: cover;
+  }
+  
+  .pag-ajuda .overlap-group {
+    position: absolute;
+    width: 1262px;
+    height: 259px;
+    top: 1213px;
+    left: 65px;
+  }
+  
+  .pag-ajuda .element-2 {
+    position: absolute;
+    width: 558px;
+    height: 86px;
+    top: 100px;
+    left: 0;
+  }
+  
+  .pag-ajuda .text-wrapper {
+    position: absolute;
+    width: 556px;
+    top: 0;
+    left: 0;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #a167a5;
+    font-size: 96px;
+    letter-spacing: 0;
+    line-height: 86px;
+  }
+  
+  .pag-ajuda .element-3 {
+    position: absolute;
+    width: 558px;
+    height: 86px;
+    top: 100px;
+    left: 349px;
+  }
+  
+  .pag-ajuda .element-4 {
+    position: absolute;
+    width: 558px;
+    height: 86px;
+    top: 100px;
+    left: 704px;
+  }
+  
+  .pag-ajuda .ENCONTRE {
+    position: absolute;
+    width: 422px;
+    height: 259px;
+    top: 0;
+    left: 66px;
+  }
+  
+  .pag-ajuda .overlap-group-2 {
+    position: relative;
+    width: 410px;
+    height: 259px;
+  }
+  
+  .pag-ajuda .rectangle {
+    position: absolute;
+    width: 305px;
+    height: 232px;
+    top: 27px;
+    left: 72px;
+    background-color: #a167a5;
+    border-radius: 30px;
+  }
+  
+  .pag-ajuda .rectangle-2 {
+    position: absolute;
+    width: 80px;
+    height: 83px;
+    top: 0;
+    left: 48px;
+    background-color: #9bc2c1;
+    border-radius: 21px;
+  }
+  
+  .pag-ajuda .t-TULO-2 {
+    width: 176px;
+    top: 12px;
+    left: 0;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    font-size: 31px;
+    text-align: center;
+    line-height: 53px;
+    white-space: nowrap;
+    position: absolute;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+  
+  .pag-ajuda .t-TULO-3 {
+    width: 369px;
+    top: 83px;
+    left: 29px;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    font-size: 15px;
+    text-align: center;
+    line-height: 35px;
+    position: absolute;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+  
+  .pag-ajuda .t-TULO-4 {
+    width: 369px;
+    top: 41px;
+    left: 41px;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    font-size: 21px;
+    text-align: center;
+    line-height: 35px;
+    position: absolute;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+  
+  .pag-ajuda .t-TULO-5 {
+    width: 369px;
+    top: 157px;
+    left: 29px;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    font-size: 15px;
+    text-align: center;
+    line-height: 35px;
+    position: absolute;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+  
+  .pag-ajuda .p {
+    width: 242px;
+    top: 109px;
+    left: 111px;
+    font-family: "Exo-Regular", Helvetica;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    position: absolute;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+  
+  .pag-ajuda .t-TULO-6 {
+    width: 242px;
+    top: 185px;
+    left: 111px;
+    font-family: "Exo-Regular", Helvetica;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    position: absolute;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+  
+  .pag-ajuda .overlap-wrapper {
+    position: absolute;
+    width: 422px;
+    height: 259px;
+    top: 0;
+    left: 414px;
+  }
+  
+  .pag-ajuda .t-TULO-7 {
+    width: 369px;
+    top: 41px;
+    left: 41px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    font-size: 21px;
+    text-align: center;
+    line-height: 35px;
+    position: absolute;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+  
+  .pag-ajuda .overlap-group-wrapper {
+    position: absolute;
+    width: 422px;
+    height: 259px;
+    top: 0;
+    left: 770px;
+  }
+  
+  .pag-ajuda .overlap-2 {
+    position: absolute;
+    width: 1262px;
+    height: 259px;
+    top: 1543px;
+    left: 65px;
+  }
+  
+  .pag-ajuda .element-5 {
+    position: absolute;
+    width: 558px;
+    height: 86px;
+    top: 97px;
+    left: 0;
+  }
+  
+  .pag-ajuda .overlap-3 {
+    position: absolute;
+    width: 1262px;
+    height: 259px;
+    top: 1849px;
+    left: 65px;
+  }
+  
+  .pag-ajuda .element-6 {
+    position: absolute;
+    width: 1021px;
+    height: 559px;
+    top: 518px;
+    left: 189px;
+    background-image: url(./img/mask-group.png);
+    background-size: 100% 100%;
+  }
+  
+  .pag-ajuda .overlap-4 {
+    position: absolute;
+    width: 1106px;
+    height: 117px;
+    top: 2244px;
+    left: 85px;
+  }
+  
+  .pag-ajuda .rectangle-3 {
+    position: absolute;
+    width: 247px;
+    height: 40px;
+    top: 5px;
+    left: 84px;
+    background-color: #a167a5;
+    border-radius: 58px;
+  }
+  
+  .pag-ajuda .rectangle-4 {
+    position: absolute;
+    width: 247px;
+    height: 40px;
+    top: 64px;
+    left: 343px;
+    background-color: #a167a5;
+    border-radius: 58px;
+  }
+  
+  .pag-ajuda .rectangle-5 {
+    position: absolute;
+    width: 247px;
+    height: 40px;
+    top: 62px;
+    left: 856px;
+    background-color: #a167a5;
+    border-radius: 58px;
+  }
+  
+  .pag-ajuda .rectangle-6 {
+    position: absolute;
+    width: 247px;
+    height: 40px;
+    top: 61px;
+    left: 84px;
+    background-color: #a167a5;
+    border-radius: 58px;
+  }
+  
+  .pag-ajuda .rectangle-7 {
+    position: absolute;
+    width: 247px;
+    height: 40px;
+    top: 64px;
+    left: 594px;
+    background-color: #a167a5;
+    border-radius: 58px;
+  }
+  
+  .pag-ajuda .rectangle-8 {
+    position: absolute;
+    width: 247px;
+    height: 40px;
+    top: 5px;
+    left: 343px;
+    background-color: #a167a5;
+    border-radius: 58px;
+  }
+  
+  .pag-ajuda .rectangle-9 {
+    position: absolute;
+    width: 247px;
+    height: 40px;
+    top: 6px;
+    left: 856px;
+    background-color: #a167a5;
+    border-radius: 58px;
+  }
+  
+  .pag-ajuda .rectangle-10 {
+    position: absolute;
+    width: 247px;
+    height: 40px;
+    top: 6px;
+    left: 594px;
+    background-color: #a167a5;
+    border-radius: 58px;
+  }
+  
+  .pag-ajuda .barra-final {
+    position: absolute;
+    width: 1106px;
+    height: 117px;
+    top: 0;
+    left: 0;
+  }
+  
+  .pag-ajuda .overlap-5 {
+    position: absolute;
+    width: 544px;
+    height: 116px;
+    top: 0;
+    left: 0;
+  }
+  
+  .pag-ajuda .text-wrapper-2 {
+    position: absolute;
+    width: 413px;
+    top: 0;
+    left: 0;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pag-ajuda .text-wrapper-3 {
+    position: absolute;
+    width: 144px;
+    top: 55px;
+    left: 139px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pag-ajuda .text-wrapper-4 {
+    position: absolute;
+    width: 155px;
+    top: 1px;
+    left: 389px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pag-ajuda .text-wrapper-5 {
+    position: absolute;
+    width: 140px;
+    top: 58px;
+    left: 396px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pag-ajuda .overlap-6 {
+    position: absolute;
+    width: 228px;
+    height: 112px;
+    top: 1px;
+    left: 862px;
+  }
+  
+  .pag-ajuda .noticias {
+    position: absolute;
+    width: 82px;
+    top: 54px;
+    left: 78px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pag-ajuda .text-wrapper-6 {
+    position: absolute;
+    width: 228px;
+    top: 0;
+    left: 0;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pag-ajuda .seja-parceiro {
+    position: absolute;
+    width: 161px;
+    top: 1px;
+    left: 641px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pag-ajuda .text-wrapper-7 {
+    position: absolute;
+    width: 140px;
+    top: 59px;
+    left: 650px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  

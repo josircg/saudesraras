@@ -1,0 +1,1755 @@
+.pagina-principal {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .pagina-principal .div {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 1440px;
+    height: 5525px;
+    position: relative;
+  }
+  
+  .pagina-principal .overlap {
+    position: absolute;
+    width: 1915px;
+    height: 1665px;
+    top: 901px;
+    left: -118px;
+  }
+  
+  .pagina-principal .background {
+    position: absolute;
+    width: 1915px;
+    height: 1463px;
+    top: 91px;
+    left: 0;
+  }
+  
+  .pagina-principal .image {
+    width: 501px;
+    top: 0;
+    left: 118px;
+    position: absolute;
+    height: 541px;
+    object-fit: cover;
+  }
+  
+  .pagina-principal .img {
+    width: 262px;
+    top: 922px;
+    left: 1296px;
+    position: absolute;
+    height: 541px;
+    object-fit: cover;
+  }
+  
+  .pagina-principal .publicidade-social {
+    position: absolute;
+    width: 1467px;
+    height: 347px;
+    top: 205px;
+    left: 96px;
+  }
+  
+  .pagina-principal .overlap-group {
+    position: relative;
+    width: 1463px;
+    height: 347px;
+    background-color: #9bc2c1;
+  }
+  
+  .pagina-principal .lorem-ipsum-is {
+    position: absolute;
+    width: 1096px;
+    top: 119px;
+    left: 170px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 32px;
+  }
+  
+  .pagina-principal .t-TULO {
+    width: 606px;
+    top: 40px;
+    left: 439px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 45px;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .barra-de-aes {
+    position: absolute;
+    width: 1154px;
+    height: 104px;
+    top: 1063px;
+    left: 252px;
+    background-color: #a167a5;
+    border-radius: 25px;
+  }
+  
+  .pagina-principal .opo-justia {
+    left: 477px;
+    position: absolute;
+    width: 208px;
+    height: 48px;
+    top: 28px;
+  }
+  
+  .pagina-principal .overlap-group-2 {
+    position: relative;
+    width: 206px;
+    height: 48px;
+  }
+  
+  .pagina-principal .rectangle {
+    position: absolute;
+    width: 206px;
+    height: 45px;
+    top: 3px;
+    left: 0;
+  }
+  
+  .pagina-principal .text-wrapper {
+    position: absolute;
+    width: 163px;
+    top: 0;
+    left: 19px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #a167a5;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .opo-sus {
+    position: absolute;
+    width: 208px;
+    height: 47px;
+    top: 29px;
+    left: 701px;
+  }
+  
+  .pagina-principal .overlap-2 {
+    position: relative;
+    width: 206px;
+    height: 47px;
+  }
+  
+  .pagina-principal .rectangle-2 {
+    position: absolute;
+    width: 206px;
+    height: 45px;
+    top: 2px;
+    left: 0;
+  }
+  
+  .pagina-principal .opo-lorem {
+    left: 925px;
+    position: absolute;
+    width: 208px;
+    height: 48px;
+    top: 28px;
+  }
+  
+  .pagina-principal .op-o-lorem {
+    position: absolute;
+    width: 163px;
+    top: 0;
+    left: 24px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #a167a5;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .opo-mdicos {
+    height: 48px;
+    top: 28px;
+    left: 253px;
+    position: absolute;
+    width: 208px;
+  }
+  
+  .pagina-principal .op-o-m-dicos {
+    position: absolute;
+    width: 163px;
+    top: 0;
+    left: 26px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #a167a5;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .opo-diagnostico {
+    height: 46px;
+    top: 25px;
+    left: 29px;
+    position: absolute;
+    width: 208px;
+  }
+  
+  .pagina-principal .overlap-3 {
+    position: relative;
+    width: 206px;
+    height: 46px;
+  }
+  
+  .pagina-principal .rectangle-3 {
+    position: absolute;
+    width: 206px;
+    height: 45px;
+    top: 1px;
+    left: 0;
+  }
+  
+  .pagina-principal .t-TULO-2 {
+    width: 163px;
+    top: 0;
+    left: 17px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #a167a5;
+    font-size: 18px;
+    white-space: nowrap;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .barra-de-buscar {
+    position: absolute;
+    width: 1148px;
+    height: 94px;
+    top: 0;
+    left: 265px;
+  }
+  
+  .pagina-principal .t-TULO-wrapper {
+    position: relative;
+    width: 1146px;
+    height: 94px;
+    border-radius: 76px;
+    border: 5px solid;
+    border-color: #a167a5;
+  }
+  
+  .pagina-principal .p {
+    width: 395px;
+    top: 15px;
+    left: 103px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #d0d0d0;
+    font-size: 26px;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .vdeos-e {
+    position: absolute;
+    width: 1150px;
+    height: 420px;
+    top: 592px;
+    left: 252px;
+  }
+  
+  .pagina-principal .text-wrapper-2 {
+    position: absolute;
+    width: 227px;
+    top: 3px;
+    left: 169px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #c287c6;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .text-wrapper-3 {
+    position: absolute;
+    width: 339px;
+    top: 0;
+    left: 705px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #c287c6;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .rectangle-4 {
+    position: absolute;
+    width: 548px;
+    height: 359px;
+    top: 61px;
+    left: 0;
+    background-color: #d9d9d9;
+    border-radius: 35px;
+    border: 5px solid;
+    border-color: #a167a5;
+  }
+  
+  .pagina-principal .rectangle-5 {
+    position: absolute;
+    width: 551px;
+    height: 359px;
+    top: 61px;
+    left: 595px;
+    background-color: #d9d9d9;
+    border-radius: 35px;
+    border: 5px solid;
+    border-color: #a167a5;
+  }
+  
+  .pagina-principal .NOTICIAS {
+    position: absolute;
+    width: 1536px;
+    height: 455px;
+    top: 1210px;
+    left: 71px;
+  }
+  
+  .pagina-principal .overlap-4 {
+    position: relative;
+    width: 1522px;
+    height: 455px;
+    background-color: #9bc2c1;
+  }
+  
+  .pagina-principal .overlap-group-3 {
+    position: absolute;
+    width: 1100px;
+    height: 312px;
+    top: 117px;
+    left: 202px;
+  }
+  
+  .pagina-principal .rectangle-6 {
+    position: absolute;
+    width: 1081px;
+    height: 150px;
+    top: 162px;
+    left: 5px;
+  }
+  
+  .pagina-principal .rectangle-7 {
+    position: absolute;
+    width: 329px;
+    height: 217px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+  
+  .pagina-principal .rectangle-8 {
+    position: absolute;
+    width: 329px;
+    height: 217px;
+    top: 0;
+    left: 380px;
+    object-fit: cover;
+  }
+  
+  .pagina-principal .HPM-inaugura-servi-o {
+    position: absolute;
+    width: 311px;
+    top: 258px;
+    left: 25px;
+    font-family: "Exo-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 16px;
+  }
+  
+  .pagina-principal .text-wrapper-4 {
+    position: absolute;
+    width: 268px;
+    top: 242px;
+    left: 402px;
+    font-family: "Exo-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 16px;
+  }
+  
+  .pagina-principal .rectangle-9 {
+    position: absolute;
+    width: 160px;
+    height: 30px;
+    top: 155px;
+    left: 789px;
+    background-color: #9bc2c1;
+    border-radius: 28px;
+    border: 2px solid;
+  }
+  
+  .pagina-principal .rectangle-10 {
+    position: absolute;
+    width: 329px;
+    height: 217px;
+    top: 0;
+    left: 759px;
+    object-fit: cover;
+  }
+  
+  .pagina-principal .text-wrapper-5 {
+    position: absolute;
+    width: 268px;
+    top: 245px;
+    left: 789px;
+    font-family: "Exo-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 16px;
+  }
+  
+  .pagina-principal .text-wrapper-6 {
+    position: absolute;
+    width: 311px;
+    top: 227px;
+    left: 25px;
+    font-family: "Exo-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 21px;
+  }
+  
+  .pagina-principal .text-wrapper-7 {
+    position: absolute;
+    width: 311px;
+    top: 217px;
+    left: 402px;
+    font-family: "Exo-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 21px;
+  }
+  
+  .pagina-principal .text-wrapper-8 {
+    position: absolute;
+    width: 311px;
+    top: 215px;
+    left: 789px;
+    font-family: "Exo-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 21px;
+  }
+  
+  .pagina-principal .t-TULO-3 {
+    width: 413px;
+    top: 35px;
+    left: 524px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 45px;
+    white-space: nowrap;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .overlap-5 {
+    position: absolute;
+    width: 1463px;
+    height: 205px;
+    top: 0;
+    left: -16px;
+  }
+  
+  .pagina-principal .barra-inicial {
+    width: 1463px;
+    height: 205px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .pagina-principal .overlap-6 {
+    position: absolute;
+    width: 1463px;
+    height: 143px;
+    top: 0;
+    left: 0;
+    background-color: #a167a5;
+  }
+  
+  .pagina-principal .overlap-7 {
+    position: absolute;
+    width: 452px;
+    height: 55px;
+    top: 55px;
+    left: 287px;
+  }
+  
+  .pagina-principal .caixa-vazia {
+    position: absolute;
+    width: 94px;
+    height: 47px;
+    top: 2px;
+    left: 358px;
+    background-color: #ffffff;
+    border-radius: 92px;
+  }
+  
+  .pagina-principal .inicio {
+    position: absolute;
+    width: 381px;
+    height: 53px;
+    top: 0;
+    left: 0;
+  }
+  
+  .pagina-principal .overlap-group-4 {
+    position: relative;
+    width: 379px;
+    height: 53px;
+  }
+  
+  .pagina-principal .rectangle-11 {
+    position: absolute;
+    width: 94px;
+    height: 47px;
+    top: 2px;
+    left: 141px;
+    background-color: #ffffff;
+    border-radius: 92px;
+  }
+  
+  .pagina-principal .text-wrapper-9 {
+    width: 379px;
+    color: #a167a5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .sobre {
+    position: absolute;
+    width: 130px;
+    height: 53px;
+    top: 2px;
+    left: 233px;
+  }
+  
+  .pagina-principal .overlap-8 {
+    position: relative;
+    width: 128px;
+    height: 53px;
+  }
+  
+  .pagina-principal .rectangle-12 {
+    position: absolute;
+    width: 93px;
+    height: 47px;
+    top: 0;
+    left: 18px;
+    background-color: #ffffff;
+    border-radius: 92px;
+  }
+  
+  .pagina-principal .text-wrapper-10 {
+    width: 128px;
+    top: 0;
+    left: 0;
+    color: #a167a5;
+    position: absolute;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .eventos {
+    position: absolute;
+    width: 130px;
+    height: 47px;
+    top: 57px;
+    left: 742px;
+  }
+  
+  .pagina-principal .overlap-9 {
+    position: relative;
+    width: 128px;
+    height: 47px;
+  }
+  
+  .pagina-principal .rectangle-13 {
+    position: absolute;
+    width: 94px;
+    height: 47px;
+    top: 0;
+    left: 17px;
+    background-color: #ffffff;
+    border-radius: 92px;
+  }
+  
+  .pagina-principal .criar-conta {
+    position: absolute;
+    width: 154px;
+    height: 53px;
+    top: 57px;
+    left: 1158px;
+  }
+  
+  .pagina-principal .overlap-10 {
+    position: relative;
+    width: 152px;
+    height: 53px;
+  }
+  
+  .pagina-principal .rectangle-14 {
+    position: absolute;
+    width: 152px;
+    height: 47px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 61px;
+  }
+  
+  .pagina-principal .criar-conta-2 {
+    width: 128px;
+    left: 12px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #a167a5;
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .entrar {
+    position: absolute;
+    width: 154px;
+    height: 53px;
+    top: 57px;
+    left: 988px;
+  }
+  
+  .pagina-principal .text-wrapper-11 {
+    width: 128px;
+    left: 12px;
+    color: #a167a5;
+    position: absolute;
+    top: 0;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .linha {
+    position: absolute;
+    width: 1346px;
+    height: 5px;
+    top: 200px;
+    left: 52px;
+  }
+  
+  .pagina-principal .LOGO-BRANCO {
+    position: absolute;
+    width: 210px;
+    height: 92px;
+    top: 28px;
+    left: 100px;
+    object-fit: cover;
+  }
+  
+  .pagina-principal .titulo {
+    position: absolute;
+    width: 175px;
+    top: 50px;
+    left: 230px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 29px;
+    letter-spacing: 0;
+    line-height: 27px;
+  }
+  
+  .pagina-principal .overlap-11 {
+    position: absolute;
+    width: 1460px;
+    height: 383px;
+    top: 5141px;
+    left: -2px;
+  }
+  
+  .pagina-principal .barra-final {
+    width: 1460px;
+    height: 383px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .pagina-principal .overlap-12 {
+    position: relative;
+    width: 1438px;
+    height: 383px;
+    left: 2px;
+    background-image: url(./img/barra.svg);
+    background-size: 100% 100%;
+  }
+  
+  .pagina-principal .overlap-group-5 {
+    position: absolute;
+    width: 570px;
+    height: 159px;
+    top: 110px;
+    left: 28px;
+  }
+  
+  .pagina-principal .text-wrapper-12 {
+    width: 413px;
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .noticias {
+    position: absolute;
+    width: 82px;
+    top: 0;
+    left: 417px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .text-wrapper-13 {
+    position: absolute;
+    width: 144px;
+    top: 33px;
+    left: 412px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .text-wrapper-14 {
+    position: absolute;
+    width: 155px;
+    top: 65px;
+    left: 415px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .seja-parceiro {
+    position: absolute;
+    width: 161px;
+    top: 101px;
+    left: 402px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .text-wrapper-15 {
+    width: 140px;
+    top: 33px;
+    left: 138px;
+    color: #ffffff;
+    position: absolute;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .text-wrapper-16 {
+    width: 140px;
+    top: 65px;
+    left: 148px;
+    color: #ffffff;
+    position: absolute;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .text-wrapper-17 {
+    position: absolute;
+    width: 228px;
+    top: 98px;
+    left: 155px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .overlap-13 {
+    position: absolute;
+    width: 277px;
+    height: 58px;
+    top: 52px;
+    left: 966px;
+  }
+  
+  .pagina-principal .text-wrapper-18 {
+    width: 140px;
+    left: 0;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .text-wrapper-19 {
+    width: 140px;
+    left: 137px;
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .copyright {
+    position: absolute;
+    width: 376px;
+    height: 22px;
+    top: 329px;
+    left: 154px;
+  }
+  
+  .pagina-principal .group {
+    position: relative;
+    width: 378px;
+    height: 22px;
+  }
+  
+  .pagina-principal .text-wrapper-20 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: "Nunito-Regular", Helvetica;
+    font-weight: 400;
+    color: var(--d-9d-9d-9);
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .pagina-principal .RODAP {
+    position: absolute;
+    width: 126px;
+    height: 22px;
+    top: 322px;
+    left: 1062px;
+  }
+  
+  .pagina-principal .cliente {
+    position: relative;
+    width: 128px;
+    height: 22px;
+  }
+  
+  .pagina-principal .overlap-14 {
+    position: absolute;
+    width: 1332px;
+    height: 586px;
+    top: 277px;
+    left: 43px;
+  }
+  
+  .pagina-principal .espaos-videos-e {
+    position: absolute;
+    width: 1332px;
+    height: 307px;
+    top: 129px;
+    left: 0;
+  }
+  
+  .pagina-principal .overlap-15 {
+    position: relative;
+    width: 1328px;
+    height: 307px;
+  }
+  
+  .pagina-principal .TITULO {
+    position: absolute;
+    width: 567px;
+    height: 307px;
+    top: 0;
+    left: 91px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+  }
+  
+  .pagina-principal .TITULO-2 {
+    position: absolute;
+    width: 553px;
+    height: 306px;
+    top: 1px;
+    left: 684px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+  }
+  
+  .pagina-principal .t-TULO-4 {
+    width: 737px;
+    top: 123px;
+    left: 0;
+    font-family: var(--t-tulo-font-family);
+    font-weight: var(--t-tulo-font-weight);
+    color: #9bc2c1;
+    font-size: var(--t-tulo-font-size);
+    position: absolute;
+    text-align: center;
+    letter-spacing: var(--t-tulo-letter-spacing);
+    line-height: var(--t-tulo-line-height);
+    font-style: var(--t-tulo-font-style);
+  }
+  
+  .pagina-principal .t-TULO-5 {
+    width: 737px;
+    top: 132px;
+    left: 591px;
+    font-family: var(--t-tulo-font-family);
+    font-weight: var(--t-tulo-font-weight);
+    color: #9bc2c1;
+    font-size: var(--t-tulo-font-size);
+    position: absolute;
+    text-align: center;
+    letter-spacing: var(--t-tulo-letter-spacing);
+    line-height: var(--t-tulo-line-height);
+    font-style: var(--t-tulo-font-style);
+  }
+  
+  .pagina-principal .titulos {
+    position: absolute;
+    width: 828px;
+    height: 586px;
+    top: 0;
+    left: 265px;
+  }
+  
+  .pagina-principal .titulo-2 {
+    position: absolute;
+    width: 824px;
+    top: 0;
+    left: 0;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #a167a5;
+    font-size: 71px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .titulo-3 {
+    position: absolute;
+    width: 387px;
+    top: 519px;
+    left: 188px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #a167a5;
+    font-size: 45px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .NOSSAS-REDES {
+    position: absolute;
+    width: 1088px;
+    height: 104px;
+    top: 4368px;
+    left: 148px;
+  }
+  
+  .pagina-principal .overlap-16 {
+    position: relative;
+    width: 1080px;
+    height: 104px;
+    background-color: #9bc2c1;
+    border-radius: 25px;
+  }
+  
+  .pagina-principal .overlap-17 {
+    position: absolute;
+    width: 236px;
+    height: 48px;
+    top: 26px;
+    left: 262px;
+  }
+  
+  .pagina-principal .opo {
+    position: absolute;
+    width: 236px;
+    height: 45px;
+    top: 3px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 42px;
+  }
+  
+  .pagina-principal .element {
+    position: absolute;
+    width: 153px;
+    top: 0;
+    left: 49px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #9bc2c1;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .overlap-group-6 {
+    position: absolute;
+    width: 236px;
+    height: 48px;
+    top: 26px;
+    left: 520px;
+  }
+  
+  .pagina-principal .text-wrapper-21 {
+    position: absolute;
+    width: 153px;
+    top: 0;
+    left: 40px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #9bc2c1;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .overlap-18 {
+    position: absolute;
+    width: 236px;
+    height: 49px;
+    top: 25px;
+    left: 772px;
+  }
+  
+  .pagina-principal .opo-2 {
+    position: absolute;
+    width: 236px;
+    height: 45px;
+    top: 4px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 42px;
+  }
+  
+  .pagina-principal .nossas-redes {
+    position: absolute;
+    width: 195px;
+    top: 22px;
+    left: 20px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 62px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .parceiro {
+    position: absolute;
+    width: 976px;
+    height: 124px;
+    top: 4111px;
+    left: 235px;
+  }
+  
+  .pagina-principal .overlap-19 {
+    position: relative;
+    width: 970px;
+    height: 124px;
+    border-radius: 53px;
+  }
+  
+  .pagina-principal .boto {
+    position: absolute;
+    width: 970px;
+    height: 124px;
+    top: 0;
+    left: 0;
+    background-color: #a167a5;
+    border-radius: 53px;
+  }
+  
+  .pagina-principal .text-wrapper-22 {
+    position: absolute;
+    top: 42px;
+    left: 187px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 51px;
+    letter-spacing: 0;
+    line-height: 40.5px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .text-wrapper-23 {
+    position: absolute;
+    top: 35px;
+    left: 817px;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .text-wrapper-24 {
+    position: absolute;
+    top: 31px;
+    left: 39px;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .DVIDAS {
+    position: absolute;
+    width: 686px;
+    height: 466px;
+    top: 4561px;
+    left: 386px;
+  }
+  
+  .pagina-principal .seo {
+    position: absolute;
+    width: 668px;
+    height: 377px;
+    top: 89px;
+    left: 0;
+  }
+  
+  .pagina-principal .CTA {
+    position: relative;
+    height: 377px;
+  }
+  
+  .pagina-principal .overlap-20 {
+    position: absolute;
+    width: 669px;
+    height: 118px;
+    top: 0;
+    left: 1px;
+  }
+  
+  .pagina-principal .overlap-group-wrapper {
+    position: absolute;
+    width: 669px;
+    height: 74px;
+    top: 0;
+    left: 0;
+  }
+  
+  .pagina-principal .overlap-group-7 {
+    position: relative;
+    width: 667px;
+    height: 74px;
+  }
+  
+  .pagina-principal .rectangle-15 {
+    position: absolute;
+    width: 667px;
+    height: 54px;
+    top: 0;
+    left: 0;
+    background-color: #c287c6;
+    border-radius: 44px;
+  }
+  
+  .pagina-principal .text-wrapper-25 {
+    position: absolute;
+    top: 16px;
+    left: 190px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--light);
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .pagina-principal .overlap-wrapper {
+    position: absolute;
+    width: 669px;
+    height: 54px;
+    top: 64px;
+    left: 0;
+  }
+  
+  .pagina-principal .div-wrapper {
+    position: relative;
+    width: 667px;
+    height: 54px;
+    background-color: #a167a5;
+    border-radius: 44px;
+  }
+  
+  .pagina-principal .text-wrapper-26 {
+    position: absolute;
+    width: 478px;
+    top: 18px;
+    left: 94px;
+    font-family: "Montserrat-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--light);
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 19px;
+  }
+  
+  .pagina-principal .element-2 {
+    position: absolute;
+    width: 669px;
+    height: 54px;
+    top: 129px;
+    left: 1px;
+  }
+  
+  .pagina-principal .overlap-21 {
+    position: relative;
+    width: 667px;
+    height: 54px;
+    background-color: #c287c6;
+    border-radius: 44px;
+  }
+  
+  .pagina-principal .text-wrapper-27 {
+    position: absolute;
+    width: 620px;
+    top: 18px;
+    left: 23px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--light);
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 19px;
+  }
+  
+  .pagina-principal .element-3 {
+    position: absolute;
+    width: 669px;
+    height: 54px;
+    top: 193px;
+    left: 1px;
+  }
+  
+  .pagina-principal .text-wrapper-28 {
+    position: absolute;
+    width: 556px;
+    top: 18px;
+    left: 55px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--light);
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 19px;
+  }
+  
+  .pagina-principal .element-4 {
+    position: absolute;
+    width: 669px;
+    height: 54px;
+    top: 257px;
+    left: 1px;
+  }
+  
+  .pagina-principal .text-wrapper-29 {
+    position: absolute;
+    width: 412px;
+    top: 18px;
+    left: 127px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--light);
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 19px;
+  }
+  
+  .pagina-principal .element-5 {
+    position: absolute;
+    width: 670px;
+    height: 56px;
+    top: 321px;
+    left: 0;
+  }
+  
+  .pagina-principal .overlap-22 {
+    position: relative;
+    width: 668px;
+    height: 56px;
+  }
+  
+  .pagina-principal .rectangle-16 {
+    position: absolute;
+    width: 667px;
+    height: 54px;
+    top: 0;
+    left: 1px;
+    background-color: #a167a5;
+    border-radius: 44px;
+  }
+  
+  .pagina-principal .text-wrapper-30 {
+    position: absolute;
+    width: 668px;
+    top: 18px;
+    left: 0;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--light);
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 19px;
+  }
+  
+  .pagina-principal .duvidas-frequentes {
+    position: absolute;
+    width: 631px;
+    top: 0;
+    left: 53px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #a167a5;
+    font-size: 45px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+    white-space: nowrap;
+  }
+  
+  .pagina-principal .encontre-ajuda {
+    position: absolute;
+    width: 1105px;
+    height: 468px;
+    top: 3033px;
+    left: 159px;
+  }
+  
+  .pagina-principal .DEPOIMENTOS {
+    position: absolute;
+    width: 1094px;
+    height: 351px;
+    top: 2624px;
+    left: 161px;
+  }
+  
+  .pagina-principal .t-TULO-6 {
+    width: 413px;
+    top: 0;
+    left: 334px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #9bc2c1;
+    font-size: 45px;
+    white-space: nowrap;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .overlap-23 {
+    position: absolute;
+    width: 321px;
+    height: 273px;
+    top: 78px;
+    left: 0;
+  }
+  
+  .pagina-principal .rectangle-17 {
+    position: absolute;
+    width: 321px;
+    height: 232px;
+    top: 41px;
+    left: 0;
+    border-radius: 30px;
+    border: 3px solid;
+    border-color: #9bc2c1;
+    box-shadow: 0px 4px 4px #00000040;
+  }
+  
+  .pagina-principal .ellipse {
+    left: 34px;
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    top: 0;
+    background-color: #9bc2c1;
+    border-radius: 41px;
+  }
+  
+  .pagina-principal .text-wrapper-31 {
+    position: absolute;
+    width: 256px;
+    top: 93px;
+    left: 38px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 19.5px;
+  }
+  
+  .pagina-principal .text-wrapper-32 {
+    position: absolute;
+    top: 233px;
+    left: 38px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: 13px;
+  }
+  
+  .pagina-principal .overlap-24 {
+    position: absolute;
+    width: 320px;
+    height: 273px;
+    top: 78px;
+    left: 380px;
+  }
+  
+  .pagina-principal .rectangle-18 {
+    position: absolute;
+    width: 320px;
+    height: 232px;
+    top: 41px;
+    left: 0;
+    border-radius: 30px;
+    border: 3px solid;
+    border-color: #9bc2c1;
+    box-shadow: 0px 4px 4px #00000040;
+  }
+  
+  .pagina-principal .ellipse-2 {
+    left: 38px;
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    top: 0;
+    background-color: #9bc2c1;
+    border-radius: 41px;
+  }
+  
+  .pagina-principal .text-wrapper-33 {
+    position: absolute;
+    top: 234px;
+    left: 38px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: 13px;
+  }
+  
+  .pagina-principal .overlap-25 {
+    position: absolute;
+    width: 321px;
+    height: 273px;
+    top: 78px;
+    left: 759px;
+  }
+  
+  .pagina-principal .ellipse-3 {
+    left: 35px;
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    top: 0;
+    background-color: #9bc2c1;
+    border-radius: 41px;
+  }
+  
+  .pagina-principal .text-wrapper-34 {
+    white-space: nowrap;
+    position: absolute;
+    top: 234px;
+    left: 38px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: 13px;
+  }
+  
+  .pagina-principal .group-2 {
+    position: absolute;
+    width: 1534px;
+    height: 455px;
+    top: 3579px;
+    left: -36px;
+  }
+  
+  .pagina-principal .overlap-26 {
+    position: absolute;
+    width: 343px;
+    height: 359px;
+    top: 48px;
+    left: 197px;
+    background-color: #ffffff;
+    border-radius: 35px;
+    border: 5px solid;
+    border-color: #a167a5;
+  }
+  
+  .pagina-principal .t-TULO-7 {
+    width: 299px;
+    top: 24px;
+    left: 12px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #a167a5;
+    font-size: 35px;
+    white-space: nowrap;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .lorem-ipsum-is-2 {
+    top: 96px;
+    left: 4px;
+    color: #040404;
+    line-height: 19px;
+    position: absolute;
+    width: 321px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 9px;
+    text-align: center;
+    letter-spacing: 0;
+  }
+  
+  .pagina-principal .overlap-group-8 {
+    position: absolute;
+    width: 344px;
+    height: 359px;
+    top: 48px;
+    left: 576px;
+    background-color: #ffffff;
+    border-radius: 35px;
+    border: 5px solid;
+    border-color: #a167a5;
+  }
+  
+  .pagina-principal .t-TULO-8 {
+    width: 299px;
+    top: 24px;
+    left: 18px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #a167a5;
+    font-size: 35px;
+    white-space: nowrap;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 53px;
+  }
+  
+  .pagina-principal .lorem-ipsum-is-3 {
+    top: 96px;
+    left: 5px;
+    color: #000000;
+    line-height: 17px;
+    position: absolute;
+    width: 321px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 9px;
+    text-align: center;
+    letter-spacing: 0;
+  }
+  
+  .pagina-principal .overlap-27 {
+    position: absolute;
+    width: 343px;
+    height: 359px;
+    top: 48px;
+    left: 956px;
+    background-color: #ffffff;
+    border-radius: 35px;
+    border: 5px solid;
+    border-color: #a167a5;
+  }
+  
+  .pagina-principal .cord-o-de-girass-is {
+    position: absolute;
+    width: 299px;
+    top: 24px;
+    left: 14px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #a167a5;
+    font-size: 35px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 35px;
+  }
+  
+  .pagina-principal .lorem-ipsum-is-4 {
+    top: 124px;
+    left: 7px;
+    color: #000000;
+    line-height: 17px;
+    position: absolute;
+    width: 321px;
+    font-family: "Axiforma-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 9px;
+    text-align: center;
+    letter-spacing: 0;
+  }
+  

@@ -1,0 +1,316 @@
+.pag-parceiro {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .pag-parceiro .div {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 1398px;
+    height: 2536px;
+    position: relative;
+  }
+  
+  .pag-parceiro .overlap {
+    position: absolute;
+    width: 1586px;
+    height: 350px;
+    top: 0;
+    left: -75px;
+    background-color: #a167a5;
+    border-radius: 53px;
+  }
+  
+  .pag-parceiro .LOGO-BRANCO {
+    position: absolute;
+    width: 167px;
+    height: 206px;
+    top: 57px;
+    left: 1123px;
+    object-fit: cover;
+  }
+  
+  .pag-parceiro .element {
+    position: absolute;
+    width: 716px;
+    height: 172px;
+    top: 89px;
+    left: 255px;
+  }
+  
+  .pag-parceiro .t-TULO {
+    position: absolute;
+    width: 714px;
+    top: 0;
+    left: 0;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 82px;
+    letter-spacing: 0;
+    line-height: 86px;
+  }
+  
+  .pag-parceiro .overlap-group {
+    position: absolute;
+    width: 1054px;
+    height: 964px;
+    top: 1369px;
+    left: 114px;
+  }
+  
+  .pag-parceiro .element-2 {
+    position: absolute;
+    width: 587px;
+    height: 86px;
+    top: 0;
+    left: 0;
+  }
+  
+  .pag-parceiro .text-wrapper {
+    width: 585px;
+    top: 0;
+    left: 0;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #a167a5;
+    font-size: 96px;
+    line-height: 86px;
+    position: absolute;
+    letter-spacing: 0;
+  }
+  
+  .pag-parceiro .what-is-lorem-ipsum {
+    position: absolute;
+    width: 910px;
+    top: 42px;
+    left: 144px;
+    font-family: "Exo-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #aeaeae;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 32px;
+  }
+  
+  .pag-parceiro .overlap-2 {
+    position: absolute;
+    width: 1005px;
+    height: 955px;
+    top: 414px;
+    left: 199px;
+  }
+  
+  .pag-parceiro .element-3 {
+    position: absolute;
+    width: 1005px;
+    height: 955px;
+    top: 0;
+    left: 0;
+  }
+  
+  .pag-parceiro .t-TULO-wrapper {
+    position: absolute;
+    width: 999px;
+    height: 352px;
+    top: 0;
+    left: 0;
+    background-color: #aeaeae;
+    border-radius: 45px;
+  }
+  
+  .pag-parceiro .t-TULO-2 {
+    width: 537px;
+    top: 112px;
+    left: 230px;
+    font-family: var(--t-tulo-font-family);
+    font-weight: var(--t-tulo-font-weight);
+    color: #ffffff;
+    font-size: var(--t-tulo-font-size);
+    text-align: center;
+    line-height: var(--t-tulo-line-height);
+    position: absolute;
+    letter-spacing: var(--t-tulo-letter-spacing);
+    font-style: var(--t-tulo-font-style);
+  }
+  
+  .pag-parceiro .t-TULO-3 {
+    width: 173px;
+    top: 587px;
+    left: 84px;
+    font-family: var(--t-tulo-font-family);
+    font-weight: var(--t-tulo-font-weight);
+    color: #a167a5;
+    font-size: var(--t-tulo-font-size);
+    line-height: var(--t-tulo-line-height);
+    position: absolute;
+    letter-spacing: var(--t-tulo-letter-spacing);
+    font-style: var(--t-tulo-font-style);
+  }
+  
+  .pag-parceiro .p {
+    width: 898px;
+    top: 902px;
+    left: 59px;
+    font-family: "Axiforma-Heavy", Helvetica;
+    font-weight: 400;
+    color: #a167a5;
+    font-size: 37px;
+    line-height: 53px;
+    position: absolute;
+    letter-spacing: 0;
+  }
+  
+  .pag-parceiro .FORM {
+    position: absolute;
+    width: 561px;
+    height: 371px;
+    top: 444px;
+    left: 396px;
+  }
+  
+  .pag-parceiro .FORM-2 {
+    position: relative;
+    width: 563px;
+    height: 371px;
+  }
+  
+  .pag-parceiro .overlap-3 {
+    position: absolute;
+    width: 555px;
+    height: 204px;
+    top: 0;
+    left: 6px;
+  }
+  
+  .pag-parceiro .rectangle {
+    height: 61px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 555px;
+    background-color: #f8bdfc;
+    border-radius: 44px;
+    opacity: 0.8;
+  }
+  
+  .pag-parceiro .rectangle-2 {
+    height: 62px;
+    top: 71px;
+    left: 0;
+    position: absolute;
+    width: 555px;
+    background-color: #f8bdfc;
+    border-radius: 44px;
+    opacity: 0.8;
+  }
+  
+  .pag-parceiro .rectangle-3 {
+    height: 61px;
+    top: 143px;
+    left: 0;
+    position: absolute;
+    width: 555px;
+    background-color: #f8bdfc;
+    border-radius: 44px;
+    opacity: 0.8;
+  }
+  
+  .pag-parceiro .flexcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 49px;
+    position: absolute;
+    width: 108px;
+    height: 176px;
+    top: 19px;
+    left: 34px;
+  }
+  
+  .pag-parceiro .text {
+    position: relative;
+    align-self: stretch;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #282828;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .pag-parceiro .span {
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #282828;
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+  
+  .pag-parceiro .rectangle-4 {
+    height: 61px;
+    top: 218px;
+    left: 1px;
+    position: absolute;
+    width: 555px;
+    background-color: #f8bdfc;
+    border-radius: 44px;
+    opacity: 0.8;
+  }
+  
+  .pag-parceiro .CTA {
+    position: absolute;
+    width: 557px;
+    height: 64px;
+    top: 307px;
+    left: 0;
+    all: unset;
+    box-sizing: border-box;
+  }
+  
+  .pag-parceiro .enviar-wrapper {
+    position: relative;
+    width: 555px;
+    height: 64px;
+    background-color: #a167a5;
+    border-radius: 44px;
+  }
+  
+  .pag-parceiro .enviar {
+    position: absolute;
+    width: 94px;
+    top: 17px;
+    left: 231px;
+    font-family: "Montserrat-Black", Helvetica;
+    font-weight: 900;
+    color: var(--light);
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .pag-parceiro .text-wrapper-2 {
+    position: absolute;
+    top: 680px;
+    left: 436px;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #282828;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .pag-parceiro .agrupar {
+    position: absolute;
+    width: 1398px;
+    height: 94px;
+    top: 2442px;
+    left: 0;
+    object-fit: cover;
+  }
+  
