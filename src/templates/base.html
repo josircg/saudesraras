@@ -42,9 +42,45 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-light navbar-expand-lg sticky-top bg-white" id="navTop">
-        <!-- Navbar -->
-        <div class="container-fluid">
+<!-- navbar raras -->
+<nav class="navbar d-flex  sticky-top mb-4 p-3"  style="background-color: #A167A5;">
+    <div class="col-8 flex-fill" >
+        <div class="container-fluid d-flex flex-row ">
+            <div style="background-color: #A32432;" >
+                <img src="{% static 'site/img/logos/logo_raras.svg'%}" alt="" style="height:5rem;" >
+                    
+            </div>
+            <div class="d-flex bg-primary justify-content-around">
+                <div class="d-flex flex-column pt-3">
+                    <div>Saudes</div>
+                    <div>Raras</div>
+                </div>
+                <div class="pt-3">
+                    <button class="btn btn-outline-light">Inicio</button>
+                </div>
+                <div class="pt-3">
+                    <button class="btn btn-outline-light">Sobre</button>
+                </div>
+                <div class="pt-3">
+                    <button class="btn btn-outline-light"> News</button>
+                </div>
+                <div class="pt-3">
+                    <button class="btn btn-outline-light">Eventos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="createAccount" class="d-flex justify-content-end col-4">
+        <button class="btn btn-outline-light" type="submit">Entrar</button>
+        <button class="btn btn-outline-light" type="submit">Criar Conta</button>
+    </div>
+</nav>
+
+
+    <!-- navbar CIVIS -->
+    <!-- <nav class="navbar navbar-light navbar-expand-lg sticky-top bg-white" id="navTop">
+        Navbar 
+         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrincipal"
                 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -152,7 +188,7 @@
                 {% endif %}
             </div>
         </div>
-    </nav>
+    </nav> -->
     <!--/.Navbar-->
 
     <main class="flex-fill">
