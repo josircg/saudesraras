@@ -7,13 +7,328 @@
 <meta name="Description" content="CIVIS - Ciência cidadã">
 {% endblock %}
 {% block navbar-left %}
-{% include "_navbar_r2.html"  %}
+{% include "_navbar_r2.html" %}
 {% endblock %}
 {% block splash %}
 {% if request.get_full_path == "/" %}
 
-<div id="banner" class="container-fluid" >
-    <div class="container" >
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}">
+
+<div class="border-top my-3" style="margin-top: 2rem; border: 3px solid #A167A5; margin-right: 5%; margin-left: 5%;">
+</div>
+
+<div class="container pb-4" style="padding-right: 5%; padding-left: 5%;">
+    <div class="col-12 text-center pt-5">
+        <div class="mb-5">
+            <h1 class="text-home">Como
+                você se sente?</h1>
+        </div>
+        <div class="row">
+            <div class="card text-center col-xs-6 col-md-6 col-sm-12 p-3"
+                style="border: transparent;border-radius: 20px; ">
+                <iframe style="height: 20rem; border-radius: 20px;" src="https://www.youtube.com/embed/dN7uqQZTJmM"
+                    frameborder="0"></iframe>
+            </div>
+            <div class="card text-center col-xs-6 col-md-6 col-sm-12 p-3" style="border-radius: 20px;">
+                <iframe style="height: 20rem;border-radius: 20px;" src="https://www.youtube.com/embed/dN7uqQZTJmM"
+                    frameborder="0"></iframe>
+            </div>
+        </div>
+        <div class="mt-5">
+            <h1 class="text-home mb-5">Título</h1>
+        </div>
+        <div class="col-12">
+            <input type="text" placeholder="Busque em toda a plataforma" class="input-container">
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex align-items-center pb-4 pt-4"
+    style="background-color: #9BC2C1; padding-left: 15%; padding-right: 15%;">
+    <div class="text-center pb-4">
+        <h2 class="text-publicidade">Publicidade social</h2>
+    </div>
+    <div>
+        <p style="color: white;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+            Ipsum
+            has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+            of
+            type and scrambled it to make a type specimen book. It has survived not only five centuries, but also
+            the
+            leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+            the
+            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+            software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+</div>
+
+
+<div class="container  text-center pt-5">
+    <div class="row mb-5">
+        <div class="card text-center col-xs-5 col-md-6 col-sm-12 p-3" style="border: transparent;border-radius: 20px; ">
+            <p style="color: #A167A5; font-weight: 950; font-size: 1.3rem;">Sintomas</p>
+            <iframe
+                style="height: 25rem; border-radius: 20px; border: 5px solid #A167A5; margin-right: 5%; margin-left: 5%;"
+                src="https://www.youtube.com/embed/dN7uqQZTJmM" frameborder="0"></iframe>
+        </div>
+        <div class="card text-center col-xs-5 col-md-6 col-sm-12 p-3" style="border-radius: 20px;">
+            <p style="color: #A167A5; font-weight: 950; font-size: 1.3rem;">Polos de atendimentos</p>
+            <iframe
+                style="height: 25rem;border-radius: 20px; border: 5px solid #A167A5; margin-left: 5%; margin-right: 5%;"
+                src="https://www.youtube.com/embed/dN7uqQZTJmM" frameborder="0"></iframe>
+        </div>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center p-2 mb-5"
+        style="background-color: #A167A5; border-radius: 15px;">
+        <div class="row d-flex align-items-center justify-content-center p-2"
+            style="background-color: #A167A5; border-radius: 15px;">
+
+            <button type="button" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2">Diagnóstico</button>
+            <button type="button" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2">Médicos</button>
+            <button type="button" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2">Justiça</button>
+            <button type="button" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2">SUS</button>
+            <button type="button" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2">Other</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="d-flex align-items-center pb-4 pt-4"
+    style="background-color: #9BC2C1; padding-left: 15%; padding-right: 15%;">
+    <div class="col-12">
+        <div class="text-center">
+            <h1 class="mb-5" style="color: white; font-weight: 950;
+            size: 45px; line-height: 53px;">Notícias</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-12 mb-4">
+                <a href="sua-outra-pagina.html" style="text-decoration: none; color: inherit;">
+                    <div style="background-color: #A167A5; border-radius: 50px; cursor: pointer;">
+                        <img src="{% static '/site/img/Rectangle 126.png'%}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-white">São Paulo</h5>
+                            <p class="card-text text-white">Some quick example text to build on the card title and make
+                                up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-12 mb-4">
+                <a href="sua-outra-pagina.html" style="text-decoration: none; color: inherit;">
+                    <div style="background-color: #A167A5; border-radius: 50px; cursor: pointer;">
+                        <img src="{% static '/site/img/Rectangle 127.png'%}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-white">São Paulo</h5>
+                            <p class="card-text text-white">Some quick example text to build on the card title and make
+                                up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-12 mb-4">
+                <a href="sua-outra-pagina.html" style="text-decoration: none; color: inherit;">
+                    <div style="background-color: #A167A5; border-radius: 50px; cursor: pointer; ">
+                        <img src="{% static '/site/img/Rectangle 128.png'%}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-white">São Paulo</h5>
+                            <p class="card-text text-white">Some quick example text to build on the card title and make
+                                up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container pt-4 pb-4">
+    <div class="col-12 text-center">
+        <h1 style="color: #9BC2C1;">Depoimentos</h1>
+    </div>
+    <div class="row justify-content-center align-items-center pb-4 pt-4">
+        <div class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4" style="border-radius: 30px; border: 3px solid #9BC2C1;">
+            <p>A equipe foi um verdadeiro salvador para mim. Eu estava lidando com uma condição complicada e não sabia
+                por onde começar. Foi aqui que encontrei informações detalhada</p>
+            <h5>Mariana Costa</h5>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4" style="border-radius: 30px; border: 3px solid #9BC2C1; ">
+            <p>A equipe foi um verdadeiro salvador para mim. Eu estava lidando com uma condição complicada e não sabia
+                por onde começar. Foi aqui que encontrei informações detalhada</p>
+            <h5>Mariana Costa</h5>
+        </div>
+        <div class="col-1"></div>
+
+        <div class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4" style="border-radius: 30px; border: 3px solid #9BC2C1; ">
+            <p>A equipe foi um verdadeiro salvador para mim. Eu estava lidando com uma condição complicada e não sabia
+                por onde começar. Foi aqui que encontrei informações detalhada</p>
+            <h5>Mariana Costa</h5>
+        </div>
+    </div>
+    <div class="text-center mb-5">
+        <h1 class="text-home">Encontre ajuda perto de você!</h1>
+    </div>
+    <div class="col-12 mb-5">
+        <img src="{% static 'site/img/map.png'%}" alt="" style="width: 100%; border-radius: 30px;">
+    </div>
+
+</div>
+
+
+<div class="container-fluid w-100" style="background-color: #9BC2C1;">
+    <div class="row justify-content-center align-items-center pb-4 pt-4" style="margin: 0% 5% 0% 5%;">
+        <div class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4 bg-white text-center"
+            style="border-radius: 30px; border: 5px solid #A167A5; margin-right: 2%;">
+            <h3 style="color: #A167A5;">Associações</h3>
+            <p style="font-size: 11px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4 bg-white text-center"
+            style="border-radius: 30px; border: 5px solid #A167A5; margin-right: 2%;">
+            <h3 style="color: #A167A5;">Universidades</h3>
+            <p style="font-size: 11px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4 bg-white text-center"
+            style="border-radius: 30px; border: 5px solid #A167A5; margin-right: 2%;">
+            <h3 style="color: #A167A5;">Cordão de girasóis</h3>
+            <p style="font-size: 11px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container pt-5">
+    <div class="col-12 text-center p-2 text-white "
+        style="margin-bottom: 5rem;background-color: #A167A5; border-radius: 30px;">
+        <h1 style="font-size: 55px;">Quer ser um parceiro ?</h1>
+    </div>
+    <div class="row pt-4 pb-4 align-items-center" style="background-color: #9BC2C1; border-radius: 20px;">
+        <div class="col-lg-3 col-md-12 pt-3 pb-3 text-center">
+            <h3 class="text-white">Nossas redes</h3>
+        </div>
+        <div class="col-lg-3 col-md-12">
+            <input type="text" placeholder="@xxxxxxxxxxxxxxxxxx" class="pt-3 pb-3 text-center"
+                style="border-radius: 30px; border: 1px solid #9BC2C1; color: #9BC2C1;">
+        </div>
+        <div class="col-lg-3 col-md-12">
+            <input type="text" placeholder="@xxxxxxxxxxxxxxxxxx" class="pt-3 pb-3 text-center"
+                style="border-radius: 30px; border: 1px solid #9BC2C1; color: #9BC2C1;">
+        </div>
+        <div class="col-lg-3 col-md-12 pt-3 pb-3 text-center">
+            <button class="btn pb-3 pt-3" style="color: #9BC2C1;">Fale conosco</button>
+        </div>
+    </div>
+
+    <div class="row text-center" style="margin-top: 5rem;color: #A167A5;">
+        <h1 style="font-size: 55px;">Dúvidas frequentes</h1>
+    </div>
+    <div class="row">
+        <a href="#" class="col-12 text-center p-3 mt-3 link-div text-white"
+            style="text-decoration: none; color: inherit; background-color: #A167A5; width: 60%; margin-left: 20%; border-radius: 30px;">Doenças
+            raras são
+            contagiosas?</a>
+        <a href="#" class="col-12 text-center p-3 mt-3 link-div text-white"
+            style="text-decoration: none; color: inherit; background-color: #C388C7; width: 60%; margin-left: 20%; border-radius: 30px;">Doenças
+            Como podemos apoiar pessoas com doenças raras?</a>
+        <a href="#" class="col-12 text-center p-3 mt-3 link-div text-white"
+            style="text-decoration: none; color: inherit; background-color: #A167A5; width: 60%; margin-left: 20%; border-radius: 30px;">Doenças
+            CPor que é complicado encontrar tratamentos para doenças raras?</a>
+        <a href="#" class="col-12 text-center p-3 mt-3 link-div text-white"
+            style="text-decoration: none; color: inherit; background-color: #C388C7; width: 60%; margin-left: 20%; border-radius: 30px;">Doenças
+            raras são
+            contagiosas?</a>
+        <a href="#" class="col-12 text-center p-3 mt-3 link-div text-white"
+            style="text-decoration: none; color: inherit; background-color: #A167A5; width: 60%; margin-left: 20%; border-radius: 30px;">Doenças
+            Como as famílias lidam com doenças raras?</a>
+        <a href="#" class="col-12 text-center p-3 mt-3 link-div text-white"
+            style="text-decoration: none; color: inherit; background-color: #C388C7; width: 60%; margin-left: 20%; border-radius: 30px;">Doenças
+            As crianças também podem ter doenças raras?
+        </a>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="rounded p-3">
+                <img src="{% static '/site/img/Rectangle 128.png'%}" class="card-img-top" alt="...">
+                <h5>Div 1</h5>
+                <p>Conteúdo da Div 1.</p>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="rounded p-3" style="background-color: #A167A5;">
+                <img src="{% static '/site/img/Rectangle 127.png'%}" class="card-img-top" alt="...">
+
+                <h5>Div 2</h5>
+                <p>Conteúdo da Div 2.</p>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="rounded p-3" style="background-color: #A167A5;">
+                <img src="{% static '/site/img/Rectangle 126.png'%}" class="card-img-top" alt="...">
+                <h5>Div 3</h5>
+                <p>Conteúdo da Div 3.</p>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+<!-- Aqui é o código da civis -->
+<!--<div id="banner" class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-12 col-md-12 mt-0 headerText">
                 <div class="">
@@ -21,13 +336,14 @@
                         {% trans "Science built through collaboration among everyone" %}
                         {% get_current_language as LANGUAGE_CODE %}
                         {% if LANGUAGE_CODE == "pt-br" %}
-                            <img data-src="{% static 'site/img/todxs.gif' %}" alt="todos" style="width: 127px; margin-bottom: 7px;" class="lazyload">
+                        <img data-src="{% static 'site/img/todxs.gif' %}" alt="todos"
+                            style="width: 127px; margin-bottom: 7px;" class="lazyload">
                         {% endif %}
                     </span>
                     <span class="headerSubTitle">
-                        <a href="{% url 'accounts:signup' %}">{% trans "Join us" %}</a>! 
+                        <a href="{% url 'accounts:signup' %}">{% trans "Join us" %}</a>!
                     </span>
-                </div>                
+                </div>
             </div>
 
             {% include "_subnavbar.html" %}
@@ -39,19 +355,17 @@
                                 <div class="input-group-text inhead clickable bg-white border-end-0" id="mysearch">
                                     <i class="fas fa-search"></i>
                                 </div>
-                                <input type="text" 
-                                       id="keywords"
-                                       name="keywords" 
-                                       autocomplete="off"                                                                            
-                                       class="basicAutoComplete form-control opacity-25 border-start-0 border-end-0"
-                                       placeholder="{% trans 'Search the entire platform...' %}"
-                                       data-url="/home_autocomplete/">
-                                <div class="input-group-text inhead clickable border-start-0 bg-white" id="backsign"></div>
+                                <input type="text" id="keywords" name="keywords" autocomplete="off"
+                                    class="basicAutoComplete form-control opacity-25 border-start-0 border-end-0"
+                                    placeholder="{% trans 'Search the entire platform...' %}"
+                                    data-url="/home_autocomplete/">
+                                <div class="input-group-text inhead clickable border-start-0 bg-white" id="backsign">
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
-                <!-- <div class="col-md-6 col-12 mt-5 pb-5">
+                 <div class="col-md-6 col-12 mt-5 pb-5">
                     {% if user.is_authenticated %}
                     <h3 class="mb-5 mt-5">Go to your 
                         <a class="lightBlue-color" href="/users/me">personal area</a><br/>
@@ -59,49 +373,58 @@
                     {% else %}
                     <h3 class="mb-5 mt-5"><a href='signup'>join the community</a> <div>and participate</div></h3>
                     {% endif %}
-                </div> -->
-            </div>
-        </div>
-    </div>    
-</div>
-{% endif %}
-{% endblock splash %}
-{% block list_of_items %}
-    <div class="container-fluid pb-5" id="div-sobre">
-        <div class="container">
-            <div class="row">
-                <h5 class="text-pink5">{% trans "About the platform" %}</h5>
-                    <div class="col-xs-12 col-sm-6">
-                    <span class="title-m title d-block mt-3">{% trans "What is Civis?" %}</span>
-                    <p>{% trans "Civis is a citizen science platform developed by the Brazilian Institute of Information in Science and Technology (IBICT) using open-source code, based on " %}
-                       <a href="https://eu-citizen.science/" target="_blank">EU-Citizen.Science</a>.
-                       {% trans "Our goal is to provide infrastructure and content that help broaden the understanding of citizen science, promote its use, and support the development of initiatives and the application of methodologies in this field, with a focus on Latin America and the Caribbean." %}
-                    </p>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <span class="title-m title d-block mt-3">{% trans "What is citizen science?" %}</span>
-                    <p>{% trans "Citizen science is a branch of the open science movement. It focuses on promoting non-scientist contributions and engagement in knowledge, data, and information analysis and production that are relevant to science and issues of social, environmental, and territorial importance." %}
-                    </p>
-                </div>
-                <div class="col-12 pt-3 ">
-                    <a href="/about" class="btn btn-pink6">{% trans "Learn more" %}</a>
-                </div>
+                </div> 
             </div>
         </div>
     </div>
-    {% include '_latest_events.html' %}
-    {% if visao_endpoint %}
-        {% include '_mapa_interativo.html' %}
-    {% endif %}
-    {% include '_latest_projects.html' %}
-    {% include '_latest_resources.html' %}
-    {% include '_latest_training_resources.html' %}
-    {% include '_latest_platforms.html' %}
-{% endblock list_of_items %}
+</div>-->
+<!-- {% endif %}
+{% endblock splash %}
+{% block list_of_items %}
+<div class="container-fluid pb-5" id="div-sobre">
+    <div class="container">
+        <div class="row">
+            <h5 class="text-pink5">{% trans "About the platform" %}</h5>
+            <div class="col-xs-12 col-sm-6">
+                <span class="title-m title d-block mt-3">{% trans "What is Civis?" %}</span>
+                <p>{% trans "Civis is a citizen science platform developed by the Brazilian Institute of Information
+                    in
+                    Science and Technology (IBICT) using open-source code, based on " %}
+                    <a href="https://eu-citizen.science/" target="_blank">EU-Citizen.Science</a>.
+                    {% trans "Our goal is to provide infrastructure and content that help broaden the understanding
+                    of
+                    citizen science, promote its use, and support the development of initiatives and the application
+                    of
+                    methodologies in this field, with a focus on Latin America and the Caribbean." %}
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <span class="title-m title d-block mt-3">{% trans "What is citizen science?" %}</span>
+                <p>{% trans "Citizen science is a branch of the open science movement. It focuses on promoting
+                    non-scientist contributions and engagement in knowledge, data, and information analysis and
+                    production that are relevant to science and issues of social, environmental, and territorial
+                    importance." %}
+                </p>
+            </div>
+            <div class="col-12 pt-3 ">
+                <a href="/about" class="btn btn-pink6">{% trans "Learn more" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% include '_latest_events.html' %}
+{% if visao_endpoint %}
+{% include '_mapa_interativo.html' %}
+{% endif %}
+{% include '_latest_projects.html' %}
+{% include '_latest_resources.html' %}
+{% include '_latest_training_resources.html' %}
+{% include '_latest_platforms.html' %}
+{% endblock list_of_items %} -->
 
 {% block scripts %}
-  <script src="{% static 'site/js/bootstrap-autocomplete.js'%}"></script>
-  <script>
+<script src="{% static 'site/js/bootstrap-autocomplete.js'%}"></script>
+<script>
     $('.basicAutoComplete').autoComplete(
         { minLength: 3 }
     );
@@ -109,5 +432,5 @@
         $('#finder').submit();
         $('#searchTop').submit();
     });
-  </script>
+</script>
 {% endblock scripts %}
