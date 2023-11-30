@@ -43,154 +43,45 @@
 
 <body class="d-flex flex-column min-vh-100">
 <!-- navbar raras -->
-<nav class="navbar d-flex  sticky-top mb-4 p-3"  style="background-color: #A167A5;">
-    <div class="col-8 flex-fill" >
-        <div class="container-fluid d-flex flex-row ">
-            <div style="background-color: #A32432;" >
-                <img src="{% static 'site/img/logos/logo_raras.svg'%}" alt="" style="height:5rem;" >
-                    
+<!-- bootstrap  -->
+  
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-5" style="background-color: #A167A5; padding-bottom:1rem; padding-top: 1rem;">
+    <div class="container" style="padding-left: 5rem; padding-right: 5rem;">
+        <!-- Logo e Texto -->
+        <a class="navbar-brand d-flex mb-2" href="#">
+            <img src="{% static 'site/img/logos/logo_raras.svg'%}" alt="Logo" class="d-inline-block align-top">
+            <div class="text-white ms-3" style="align-self: center;">
+                <div>
+                    Saúdes
+                </div>
+                <div>
+                    Raras
+                </div>
             </div>
-            <div class="d-flex bg-primary justify-content-around">
-                <div class="d-flex flex-column pt-3">
-                    <div>Saudes</div>
-                    <div>Raras</div>
-                </div>
-                <div class="pt-3">
-                    <button class="btn btn-outline-light">Inicio</button>
-                </div>
-                <div class="pt-3">
-                    <button class="btn btn-outline-light">Sobre</button>
-                </div>
-                <div class="pt-3">
-                    <button class="btn btn-outline-light"> News</button>
-                </div>
-                <div class="pt-3">
-                    <button class="btn btn-outline-light">Eventos</button>
-                </div>
+        </a>
+
+        <!-- Botão de alternância para menu responsivo -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links no Meio -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="navbar-nav mx-auto mb-2">
+                <button class="btn bg-white me-2 mt-2" style="color: #A167A5; border-radius: 25px;  font-weight: 600;" type="button">Home</button>
+                <button class="btn bg-white me-2 mt-2" style="color: #A167A5; border-radius: 25px;  font-weight: 600;" type="button">Sobre</button>
+                <button class="btn bg-white me-2 mt-2" style="color: #A167A5; border-radius: 25px;  font-weight: 600;" type="button">Eventos</button>
+                <button class="btn bg-white me-2 mt-2" style="color: #A167A5; border-radius: 25px;  font-weight: 600;" type="button">Notícias</button>
             </div>
         </div>
-    </div>
-    <div id="createAccount" class="d-flex justify-content-end col-4">
-        <button class="btn btn-outline-light" type="submit">Entrar</button>
-        <button class="btn btn-outline-light" type="submit">Criar Conta</button>
+
+        <!-- Botões à Direita -->
+        <div class="d-flex">
+            <button class="btn me-2 bg-white" type="button" style="color: #A167A5; border-radius: 25px; font-weight: 600;">Criar Conta</button>
+            <button class="btn bg-white" type="button" style="color: #A167A5; border-radius: 25px;  font-weight: 600;">Entrar</button>
+        </div>
     </div>
 </nav>
-
-
-    <!-- navbar CIVIS -->
-    <!-- <nav class="navbar navbar-light navbar-expand-lg sticky-top bg-white" id="navTop">
-        Navbar 
-         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrincipal"
-                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand d-flex align-items-center" href="/">
-                <img data-src="{% static 'site/img/logos/civis.svg' %}" width="90" height="" alt="" class="lazyload"/>
-                <div class="titulo-logo ms-2 ps-2">{% trans "Citizen Science <br> Platform" %}</div>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarPrincipal">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item top">
-                        <a class="nav-link main {% active_link 'all || projects || resources || training_resources || organisations'%}"
-                            href="{% url 'projects' %}">{% trans "Search" %}
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item top">
-                        <a class="nav-link main {% active_link  'about' %}" href="/about">{% trans "About" %}</a>
-                    </li>
-                     <li class="nav-item top">
-                        <a class="nav-link main {% active_link  'events' %}" href="{% url 'events' %}">{% trans "Events " %}</a>
-                    </li>
-                    <li class="nav-item top">
-                        <div class="d-block">
-                            {% if FORUM_ENABLED %}
-                              <a class="nav-link main {% active_link  'forum' %}" href="{% url 'forum:index' %}">{% trans "Forum" %}</a>
-                            {% else %}
-                              <a class="nav-link main {% active_link  'forum' %}" href="{% url 'coming_soon' %}">{% trans "Forum" %}</a>
-                            {% endif %}
-                        </div>
-                    </li>
-                    <li class="nav-item top">
-                        <div class="d-block">
-                            <a class="nav-link main {% active_link  'blog' %}" href="{% url 'blog' %}">{% trans "Blog" %}</a>
-                        </div>
-                    </li>
-                    <li class="nav-item top">
-                        <div class="d-block">
-                            <a class="nav-link main {% active_link  'guide' %}" href="{% url 'guide' %}">{% trans "User Guide" %}</a>
-                        </div>
-                    </li>
-                    <li class="nav-item top">
-                        <div class="d-block">
-                            <a class="nav-link main {% active_link  'contact' %}" href="{% url 'contact' %}">{% trans "Contact" %}</a>
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" href="#">
-                            {{LANGUAGE_CODE}}
-                        </a>
-
-                        <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
-                            <form action="/i18n/setlang/" method="post" style="display: inline;" name="languageForm">
-                                {% csrf_token %}
-                                <div style="display: inline;">
-                                    <input id="language" name="language" type="hidden" value="en">
-                                    {% for lang in TRANSLATED_LANGUAGES %}
-                                    <li><a class="dropdown-item" style="cursor: pointer;"
-                                            onclick="javascript:document.getElementById('language').value='{{ lang.0 }}';languageForm.submit()">
-                                            {{ lang.1 }}
-                                        </a>
-                                    </li>
-                                    {% endfor %}
-                                </div>
-                            </form>
-                        </ul>
-                    </li>
-                </ul>
-
-                {% if not user.is_authenticated %}
-                <a class="btn btn-my-outline-darkBlue d-lg-inline-block my-1 my-md-0 ms-md-2"
-                    href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
-                <a class="btn btn-my-outline-darkGreen d-lg-inline-block my-1 my-md-0 ms-md-2"
-                    href="{% url 'accounts:signup' %}">{% trans "Signup" %}</a>
-                {% else %}
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdownRegistered" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-edit"></i>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownRegistered">
-                            <li><a class="dropdown-item" href="{% url 'profiles:show_self' %}">{% trans "My personal area" %}</a></li>
-                            <li><a class="dropdown-item" href="{% url 'profiles:self_submissions' %}">{% trans "My submissions" %}</a></li>
-                            <li><a class="dropdown-item" href="{% url 'profiles:bookmarks' %}">{% trans "My bookmarks" %}</a></li>
-                            <li><a class="dropdown-item" href="{% url 'profiles:privacyCenter' %}">{% trans "My privacy center" %}</a></li>
-
-                            {% if user.is_staff %}
-                            <li><a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
-                            {% endif %}
-                            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a>
-                            </li>
-                        </ul>
-
-                    </li>
-                </ul>
-                <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn btn-my-outline-darkBlue"
-                    type="submit">
-                    <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;{% trans "New submission" %}
-                </button>
-
-                {% endif %}
-            </div>
-        </div>
-    </nav> -->
-    <!--/.Navbar-->
-
     <main class="flex-fill">
         {% include "_modalsubmit.html" %}
         {% block splash %}
