@@ -46,40 +46,42 @@
 <!-- bootstrap  -->
   
   <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-5" style="background-color: #A167A5; padding-bottom:1rem; padding-top: 1rem;">
-    <div class="container" style="padding-left: 5rem; padding-right: 5rem;">
+    <div class="container d-flex" style="padding-left: 5rem; padding-right: 5rem;">
         <!-- Logo e Texto -->
         <a class="navbar-brand d-flex mb-2" href="#">
             <img src="{% static 'site/img/logos/logo_raras.svg'%}" alt="Logo" class="d-inline-block align-top">
-            <div class="text-white ms-3" style="align-self: center;">
-                <div>
+            <div class="text-white ms-3 mt-3" style="align-self: center;">
+                <div class="lh-1" style="font-size: 1.7rem;">
                     Saúdes
                 </div>
-                <div>
+                <div class="lh-1" style="font-size: 1.7rem;">
                     Raras
                 </div>
             </div>
         </a>
 
         <!-- Botão de alternância para menu responsivo -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="align-self: center;">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Links no Meio -->
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <div class="navbar-nav mx-auto mb-2">
-                <button class="btn bg-white me-2 mt-2" style="color: #A167A5; border-radius: 25px;  font-weight: 600;" type="button">Home</button>
-                <button class="btn bg-white me-2 mt-2" style="color: #A167A5; border-radius: 25px;  font-weight: 600;" type="button">Sobre</button>
-                <button class="btn bg-white me-2 mt-2" style="color: #A167A5; border-radius: 25px;  font-weight: 600;" type="button">Eventos</button>
-                <button class="btn bg-white me-2 mt-2" style="color: #A167A5; border-radius: 25px;  font-weight: 600;" type="button">Notícias</button>
+                <a href="#" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Home</a>
+                <a href="#" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Sobre</a>
+                <a href="#" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Eventos</a>
+                <a href="#" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Notícias</a>
             </div>
         </div>
+        
 
         <!-- Botões à Direita -->
-        <div class="d-flex">
-            <button class="btn me-2 bg-white" type="button" style="color: #A167A5; border-radius: 25px; font-weight: 600;">Criar Conta</button>
-            <button class="btn bg-white" type="button" style="color: #A167A5; border-radius: 25px;  font-weight: 600;">Entrar</button>
+        <div class="d-flex flex-nowrap ">
+            <a href="#" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Criar Conta</a>
+            <a href="#" class="btn bg-white text-decoration-none " style="border-radius: 25px; font-weight: 600;      color: #A167A5; justify-content: center;">Entrar</a>
         </div>
+        
     </div>
 </nav>
     <main class="flex-fill">
