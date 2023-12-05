@@ -1,8 +1,8 @@
 {% load i18n %}
 {% load static %}
 <!--Footer-->
-<footer class="">
-  <div class="text-white header-footer">
+<footer class="pt-5">
+  <div class="text-white header-footer" style="background-color: #9BC2C1;">
     <div class="container">
       <!-- Grid row-->
       <div class="row ">
@@ -25,20 +25,12 @@
     </div>
   </div>
   <!-- Footer Links -->
-  <div class="content-footer">
+  <div class="content-footer" style="background-color: #A167A5;">
     <div class="container  pt-5 text-light">
       <!-- Grid row -->
       <div class="row mt-3">
 
         <!-- Grid column -->
-        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4 pe-5">
-          <!-- Content -->
-          <img data-src="{% static 'site/img/logo-civis-white.png' %}" alt="" class="lazyload">
-          <p class="mt-4">{% trans "Citizen science platform developed using open-source code based on the" %}<br>
-            <a href="https://eu-citizen.science/" target="_blank">EU-Citizen.Science</a>
-          </p>
-
-        </div>
         <!-- Grid column -->
         <!-- Grid column -->
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
@@ -78,6 +70,7 @@
 
       </div>
 
+      <!-- DIV PARA COLOCAR LOGOS DAS PARCERIAS-->
       <div id="parcerias" class="mt-5">
         <span class="d-block pb-3">{% trans "Partnerships" %}</span>
         <div class="d-flex align-items-center">
