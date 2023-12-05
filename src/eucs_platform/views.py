@@ -127,6 +127,8 @@ def home(request):
 def all(request):
     return home(request)
 
+def noticias(request):
+    return render(request, 'pages/%s/noticias.html' % get_language())
 
 def about(request):
     return render(request, 'pages/%s/about.html' % get_language())

@@ -54,6 +54,7 @@ urlpatterns = [
     path("home_autocomplete/", views.home_autocomplete, name="home_autocomplete"),
     path("development/", views.development, name="development"),
     path("about/", views.about, name="about"),
+    path("noticias/", views.noticias, name="noticias"),
     path("users/", include(profiles.urls)),
     path("admin/", admin.site.urls),
     path("admin_tools/", include('admin_tools.urls')),
