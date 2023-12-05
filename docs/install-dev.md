@@ -53,6 +53,7 @@ cp eucs_platform/settings/local.sample.reference.env eucs_platform/settings/loca
 
 ```
 python manage.py check
+python manage.py collectstatic
 ```
 
 3) Install flake8 pre-commit hook (optional) to check PEP8 before commit. 
@@ -75,7 +76,6 @@ python manage.py migrate
 python manage.py loaddata projects/fixtures/topics.json
 python manage.py loaddata projects/fixtures/status.json
 python manage.py loaddata projects/fixtures/participationtasks.json
-python manage.py loaddata projects/fixtures/geographicextend.json
 python manage.py loaddata resources/fixtures/categories.json
 python manage.py loaddata resources/fixtures/themes.json
 python manage.py loaddata organisations/fixtures/organisation_types.json
