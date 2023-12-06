@@ -4,5 +4,201 @@
 {% block title %}{{ block.super }} :: {% trans "Parceiro" %}{% endblock %}
 {% block list_of_items %}
 <link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
-<!-- code here -->
+
+<body>
+
+  <div class="d-flex flex-column min-vh-100 div">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-5"
+      style="background-color: #a167a5; padding-bottom: 1rem; padding-top: 1rem">
+      <div class="container d-flex" style="padding-left: 5rem; padding-right: 5rem">
+        <!-- Logo e Texto -->
+        <a class="navbar-brand d-flex mb-2" href="#">
+          <img src="{% static 'site/img/logos/logo_raras.svg'%}" alt="Logo" class="d-inline-block align-top" />
+          <div class="text-white ms-3 mt-3" style="align-self: center">
+            <div class="lh-1" style="font-size: 1.7rem">Saúdes</div>
+            <div class="lh-1" style="font-size: 1.7rem">Raras</div>
+          </div>
+        </a>
+
+        <!-- Botão de alternância para menu responsivo -->
+        <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+          style="align-self: center">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links no Meio -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <div class="navbar-nav mx-auto mb-2">
+            <a href="#" class="btn bg-white me-2 mt-2 text-decoration-none"
+              style="border-radius: 25px; font-weight: 600; color: #a167a5">Home</a>
+            <a href="#" class="btn bg-white me-2 mt-2 text-decoration-none"
+              style="border-radius: 25px; font-weight: 600; color: #a167a5">Sobre</a>
+            <a href="#" class="btn bg-white me-2 mt-2 text-decoration-none"
+              style="border-radius: 25px; font-weight: 600; color: #a167a5">Eventos</a>
+            <a href="#" class="btn bg-white me-2 mt-2 text-decoration-none"
+              style="border-radius: 25px; font-weight: 600; color: #a167a5">Notícias</a>
+          </div>
+        </div>
+
+        <!-- Botões à Direita -->
+        <div class="d-flex flex-nowrap">
+          <a href="#" class="btn me-2 bg-white text-decoration-none text-nowrap"
+            style="border-radius: 25px; font-weight: 600; color: #a167a5">Criar Conta</a>
+          <a href="#" class="btn bg-white text-decoration-none" style="
+              border-radius: 25px;
+              font-weight: 600;
+              color: #a167a5;
+              justify-content: center;
+            ">Entrar</a>
+        </div>
+      </div>
+    </nav>
+
+    <h1 class="text-center mb-5 title-formulario"
+                  style="font-family: Exo-ExtraBold, Helvetica;
+                  font-weight: 800;
+                  color: #a167a5;
+                  font-size: 45px;
+                  letter-spacing: 0px;
+                  line-height: 52.993289947509766px;
+                  font-style: normal;">Quer ser um parceiro ?</h1>
+
+    <div class="container mx-auto my-2 justify-content-center">
+      <div class="ratio ratio-16x9 text-center video-sejaumparceiro" style="text-align: center;">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qxOkaU6RVz4?si=Vt0tWELxwHqwKe47"
+          allowfullscreen style="border-radius: 35px;"></iframe>
+      </div>
+    </div>
+
+    <div class="my-5 container">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-5 max-vw-80">
+          <div class="text-center title-formulario" 
+                  style="font-family: Exo-ExtraBold, Helvetica;
+                  font-weight: 800;
+                  color: #a167a5;
+                  font-size: 45px;
+                  letter-spacing: 0px;
+                  line-height: 52.993289947509766px;
+                  font-style: normal;">Titulo</div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <form class="form-group">
+            <div class="input-group mb-3 input-form" 
+                  style="
+                    width: 555px;
+                    height: 61px;
+                    max-width: 100%;
+                    background-color: rgba(250, 203, 253, 1);
+                    border-radius: 92px;
+                    overflow: hidden;">
+              <span class="input-group-text" id="basic-addon1" style="background-color: rgba(250, 203, 253, 1);">Nome</span>
+              <input type="text" class="form-control" aria-label="Nome" aria-describedby="basic-addon1" style="background-color: rgba(250, 203, 253, 1);">
+            </div>
+            <div class="input-group mb-3 input-form"
+                  style="
+                    width: 555px;
+                    height: 61px;
+                    max-width: 100%;
+                    background-color: rgba(250, 203, 253, 1);
+                    border-radius: 92px;
+                    overflow: hidden;">
+              <span class="input-group-text" id="basic-addon2" style="background-color: rgba(250, 203, 253, 1);">Email</span>
+              <input type="email" class="form-control" aria-label="Email" aria-describedby="basic-addon2" style="background-color: rgba(250, 203, 253, 1);">
+            </div>
+            <div class="input-group mb-3 input-form"
+                  style="
+                    width: 555px;
+                    height: 61px;
+                    max-width: 100%;
+                    background-color: rgba(250, 203, 253, 1);
+                    border-radius: 92px;
+                    overflow: hidden;">
+              <span class="input-group-text" id="basic-addon3" style="background-color: rgba(250, 203, 253, 1);">Telefone</span>
+              <input type="text" class="form-control" aria-label="Telefone" aria-describedby="basic-addon3" style="background-color: rgba(250, 203, 253, 1);">
+            </div>
+            <div class="input-group mb-3 input-form"
+                    style="
+                      width: 555px;
+                      height: 61px;
+                      max-width: 100%;
+                      background-color: rgba(250, 203, 253, 1);
+                      border-radius: 92px;
+                      overflow: hidden;">
+              <span class="input-group-text" id="basic-addon4" style="background-color: rgba(250, 203, 253, 1);">Forma</span>
+              <input type="text" class="form-control" aria-label="Forma" aria-describedby="basic-addon4" style="background-color: rgba(250, 203, 253, 1);">
+            </div>
+            <div class="col-12">
+              <button class="btn button-enviar" type="submit"
+                    style="
+                      width: 555px;
+                      height: 61px;
+                      max-width: 100%;
+                      font-family: Montserrat, Helvetica;
+                      color: rgba(255,255,255,1);
+                      background-color: rgba(161, 103, 165, 1);
+                      overflow: hidden;
+                      border-radius: 92px;">ENVIAR</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-5 container">
+      <p class="col-9 mx-auto title-orientacoes"
+                    style="
+                      font-family: Roboto, Helvetica;
+                      font-weight: 700;
+                      color: #a167a5;
+                      font-size: 37px;
+                      letter-spacing: 0;
+                      line-height: 53px;">Orientações e Normas para ser um parceiro</p>
+      <p class="col-9 mx-auto text-orientacoes"
+                    style="
+                      font-family: Exo, Helvetica;
+                      font-weight: 800;
+                      color: #aeaeae;
+                      font-size: 14px;
+                      letter-spacing: 0;
+                      line-height: 32px;">
+        What is Lorem Ipsum?<br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+        Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+        also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+        publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br />Why do we use it?<br />It
+        is a long established fact that a reader will be distracted by the readable content of a page when looking
+        at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+        as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop
+        publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for
+        &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over
+        the years, sometimes by accident, sometimes on purpose (injected humour and the like).<br /><br />Where does
+        it come from?<br />Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+        piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
+        professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
+        from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
+        undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &#34;de Finibus Bonorum et
+        Malorum&#34; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the
+        theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &#34;Lorem ipsum dolor
+        sit amet..&#34;, comes from a line in section 1.10.32.<br />The standard chunk of Lorem Ipsum used since the
+        1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &#34;de Finibus Bonorum et
+        Malorum&#34; by Cicero are also reproduced in their exact original form, accompanied by English versions
+        from the 1914 translation by H. Rackham.<br />Where can I get some?<br />There are many variations of
+        passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected
+        humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage
+        of Lorem Ipsum, you need to be sure there isn&#39;t anything embarrassing hidden in the middle of text. All
+        the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the
+        first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
+        of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is
+        therefore always free from repetition, injected humour, or non-characteristic words etc
+      </p>
+
+    </div>
+
+  </div>
+
+</body>
+
 {% endblock %}
