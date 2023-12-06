@@ -12,7 +12,6 @@
 {% block splash %}
 {% if request.get_full_path == "/" %}
 
-<!-- {% load static %} -->
 <link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
 <body class="d-flex flex-column min-vh-100">
   <div
@@ -113,7 +112,7 @@
         style="border-radius: 20px"
       >
         <p style="color: #a167a5; font-weight: 950; font-size: 1.3rem">
-          Polos de atendimentos
+          Cordão de girasóis
         </p>
         <iframe
           style="
@@ -366,7 +365,7 @@
         class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4 bg-white text-center"
         style="border-radius: 30px; border: 5px solid #a167a5; margin-right: 2%"
       >
-        <h3 style="color: #a167a5">Cordão de girasóis</h3>
+        <h3 style="color: #a167a5">Polos de atendimentos</h3>
         <p style="font-size: 11px">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -510,7 +509,5 @@
   </div>
 {% endif %}
 {% endblock splash %}
- 
-
 
 </body>

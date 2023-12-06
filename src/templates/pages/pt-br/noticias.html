@@ -3,6 +3,8 @@
 {% load static %}
 {% block title %}{{ block.super }} :: {% trans "Noticias" %}{% endblock %}
 {% block list_of_items %}
+
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
 <body class="d-flex flex-column min-vh-100">
     <div
       class="border-top my-3"
