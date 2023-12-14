@@ -1,74 +1,184 @@
 /* style.css */
+
+
+/* style.css */
 @font-face {
-  font-family: "Axiforma";
-  src: url("/static/bootstrap/fonts/axiforma-regular.otf") format("opentype");
-  /* Adicione outras variações da fonte conforme necessário */
+font-family: "Axiforma";
+src: url("/static/bootstrap/fonts/axiforma-regular.otf") format("opentype");
+/* Adicione outras variações da fonte conforme necessário */
 }
 
 body {
-  font-family: "Axiforma", sans-serif;
+font-family: "Axiforma", sans-serif;
 }
 
 /* Aplicar Axiforma a todos os parágrafos, links e títulos */
 p, a, h1, h2, h3, h4, h5, h6 {
     font-family: "Axiforma", sans-serif;
-  }
+}
 
 .custom-input-container {
-  text-align: center;
+text-align: center;
 }
 .input-container {
-  width: 80%;
-  border-radius: 40px;
-  border: 5px solid #a167a5;
-  height: 5rem;
-  text-align: left;
-  font-size: 2vh;
-  padding-left: 3rem;
+width: 80%;
+border-radius: 40px;
+border: 5px solid #a167a5;
+height: 5rem;
+text-align: left;
+font-size: 2vh;
+padding-left: 3rem;
 }
 
 .input-container:focus {
-  outline: none;
-  box-shadow: none;
+outline: none;
+box-shadow: none;
 }
 
 .text-home {
-  font-weight: 950;
-  font-size: 65px;
-  line-height: 53px;
-  text-align: center;
-  color: #a167a5;
-  font-family: "Axiforma", sans-serif;
+font-weight: 950;
+font-size: 65px;
+line-height: 53px;
+text-align: center;
+color: #a167a5;
+font-family: "Axiforma", sans-serif;
 }
 
 .text-publicidade {
-  font-weight: 950;
-  size: 45px;
-  line-height: 53px;
-  align-self: center;
-  color: #ffffff;
+font-weight: 950;
+size: 45px;
+line-height: 53px;
+align-self: center;
+color: #ffffff;
 }
 
 .col-12 publicidade {
-  background-color: #a167a5;
+background-color: #a167a5;
 }
 
 .row button {
-  background-color: #ffffff;
-  text-decoration: none;
-  color: #a167a5;
-  border-radius: 20px;
-  padding-top: 0.8%;
-  padding-bottom: 0.8%;
-  flex-wrap: wrap;
+background-color: #ffffff;
+text-decoration: none;
+color: #a167a5;
+border-radius: 20px;
+padding-top: 0.8%;
+padding-bottom: 0.8%;
+flex-wrap: wrap;
 }
 
 .row button:hover {
-  color: #a167a5;
+color: #a167a5;
 }
 
 .row .col-lg-4 {
-  border-radius: 50px;
-  border-color: #9bc2c1;
-  background-color: #9bc2c1;
+border-radius: 50px;
+border-color: #9bc2c1;
+background-color: #9bc2c1;
+}
+
+.custom-input-container {
+    text-align: center;
+}
+
+.input-container {
+    width: 80%;
+    border-radius: 40px;
+    border: 5px solid #A167A5;
+    height: 5rem;
+    text-align: left;
+    font-size: 2vh;
+    padding-left: 3rem;
+}
+
+.input-container:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.text-home {
+    font-weight: 950;
+    font-size: 65px;
+    line-height: 53px;
+    text-align: center;
+    color: #A167A5;
+}
+
+
+.text-publicidade {
+    font-weight: 950;
+    size: 45px;
+    line-height: 53px;
+    align-self: center;
+    color: #ffffff;
+}
+
+.col-12 publicidade {
+    background-color: #A167A5;
+}
+
+.row button {
+    background-color: #ffffff;
+    text-decoration: none;
+    color: #A167A5;
+    border-radius: 20px;
+    padding-top: .8%;
+    padding-bottom: .8%;
+    flex-wrap: wrap;
+}
+
+.row button:hover {
+    color: #A167A5;
+}
+
+.row .col-lg-4 {
+    border-radius: 50px;
+    border-color: #9BC2C1;
+    background-color: #9BC2C1;
+}
+.line{
+    margin-top: 2rem;
+    border: 3px solid #a167a5;
+    margin-right: 5%;
+    margin-left: 5%;
+    
+}
+.center{
+    align-self: center
+}
+
+.pg-tittle{
+    color: #a167a5;; 
+    font-size: 50px; 
+    font-weight: 900; 
+    text-align: justify; 
+}
+
+.pg-subtittle{
+    color: #a167a5; 
+    font-size: xx-large; 
+    font-weight: 900; 
+    text-align: justify;
+}
+
+.bttn{
+    background-color: white;
+    outline-color: slategray;
+    border: 1px #D0D5DD solid; 
+    border-radius: 8px; 
+    color: black;
+}
+.bttn:hover{
+    background-color: #D0D5DD;
+    border: 1px #D0D5DD solid;
+    color: white;
+}
+.imgcontent{
+    border-radius: 35px; 
+    width: 100%;
+}
+.boxcontent{
+    width: 18rem; 
+    border-radius: 25px; 
+    padding-bottom: 10rem;
+    text-align: start;
 }
