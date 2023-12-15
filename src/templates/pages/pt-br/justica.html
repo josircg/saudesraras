@@ -21,135 +21,9 @@ block.super }} :: {% trans "Doencas" %}{% endblock %} {% block list_of_items %}
     <h7 class="pg-tittle">Justiça</h7>
   </div>
 
-  <div class="border-top my-3 line"></div>
-
-  <!-- CONTEÚDO PÁGINA DOENÇAS -->
-
-  <br />
-
-  <!-- Busca -->
-
-  <div
-    class="input-group mb-3"
-    style="margin-left: 17.5%; margin-right: 18.5%; width: auto"
-  >
-    <button class="btn btn-outline-secondary" type="button" id="button-addon1">
-      bttn
-    </button>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Busca..."
-      aria-label="Example text with button addon"
-      aria-describedby="button-addon1"
-    />
-  </div>
-
-  <!-- Botoes de filtro e ordenação-->
-
-  <div class="btn-group" role="group" style="margin-left: 17.5%">
-    <!-- Botao de ordenar o conteúdo -->
-
-    <div
-      class="btn-group"
-      role="group"
-      aria-label="Button group with nested dropdown"
-      style="background: #f2f4f7; border-radius: 0.25rem; margin-right: 1rem"
-    >
-      <div class="container center">
-        <img src="img/order-icon.png" alt="" width="20" height="20" />
-      </div>
-      <div class="btn-group" role="group">
-        <button
-          type="button bot"
-          class="btn btn-primary dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          style="background-color: white; color: black; border-color: #f2f4f7"
-        >
-          Ordernar por:
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Ordem Alfabetica</a></li>
-          <li><a class="dropdown-item" href="#">Sintomas</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Filtros (grupo) -->
-
-    <div class="input-group input-group-sm filter-bar">
-      <div
-        class="input-group-text filter-img"
-        style="background-color: #f2f4f7; border-color: #f2f4f7"
-      >
-        <img src="img/filter-icon.png" alt="" />
-      </div>
-
-      <!-- filtro1 -->
-      <select
-        id="country"
-        name="country"
-        class="custom-select status-select form-control"
-        style="border-color: #f2f4f7"
-      >
-        <option value="">Estado</option>
-        <option></option>
-        <option value="AC">Acre</option>
-        <option value="AL">Alagoas</option>
-        <option value="AP">Amapa</option>
-        <option value="AM">Amazonas</option>
-        <option value="BA">Bahia</option>
-        <option value="CE">Ceara</option>
-        <option value="DF">Distrito Federal</option>
-        <option value="ES">Espirito Santo</option>
-        <option value="GO">Goiais</option>
-        <option value="MA">Maranhao</option>
-        <option value="MT">Mato Grosso</option>
-        <option value="MS">Mato Grosso do Sul</option>
-        <option value="MG">Minas Gerais</option>
-        <option value="PA">Para</option>
-        <option value="PB">Paraiba</option>
-        <option value="PR">Parana</option>
-        <option value="PE">Pernambuco</option>
-        <option value="PI">Piaui</option>
-        <option value="RJ">Rio de Janeirp</option>
-        <option value="RN">Rio Grande do Norte</option>
-        <option value="RS">Rio Grande do Sul</option>
-        <option value="RO">Rondonia</option>
-        <option value="RR">Roraima</option>
-        <option value="SC">Santa Catarina</option>
-        <option value="SP">Sao Paulo</option>
-        <option value="SE">Sergipe</option>
-        <option value="TO">Tocantins</option>
-      </select>
-      <!-- filtro2 -->
-      <select
-        id="status"
-        name="status"
-        class="custom-select status-select form-control"
-        style="border-color: #f2f4f7"
-      >
-        <option value="">Sintomas</option>
-        <option></option>
-        <option value="Ativo">Ativo</option>
-        <option value="Concluído">Concluído</option>
-        <option value="Inativo">Inativo</option>
-        <option value="Não iniciado">Não iniciado</option>
-        <option value="Pausado">Pausado</option>
-        <option value="Sem informação">Sem informação</option>
-      </select>
-    </div>
-  </div>
 
   <br /><br />
 
-  <div class="container" style="margin-left: 17%">
-    <i>Foram encontrados 3 resultados</i>
-  </div>
-  <!-- Necessario implementar uma forma de que corresponda ao numero de resultados -->
-
-  <br /><br />
 
   <div class="container text-center">
     <!-- grupo de cards de doenças-->
@@ -165,7 +39,7 @@ block.super }} :: {% trans "Doencas" %}{% endblock %} {% block list_of_items %}
       >
         <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">Advogados Recomendados</h5>
           <p class="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
@@ -179,7 +53,7 @@ block.super }} :: {% trans "Doencas" %}{% endblock %} {% block list_of_items %}
       >
         <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">Não consegui médico no sus, e agora?</h5>
           <p class="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
@@ -193,7 +67,7 @@ block.super }} :: {% trans "Doencas" %}{% endblock %} {% block list_of_items %}
       >
         <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">Precisa de Ajuda?</h5>
           <p class="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
@@ -202,130 +76,6 @@ block.super }} :: {% trans "Doencas" %}{% endblock %} {% block list_of_items %}
         </div>
       </div>
 
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
-      </div>
-
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
-      </div>
-
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
-      </div>
-
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
-      </div>
-
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
-      </div>
-
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
-      </div>
-
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
-      </div>
-
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
-      </div>
-
-      <div
-        class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent"
-      >
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
-        </div>
       </div>
     </div>
   </div>
