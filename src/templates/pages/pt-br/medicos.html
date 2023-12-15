@@ -1,5 +1,8 @@
-<meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ block.super }} :: {% trans "Medicos" %}{% endblock %}
+{% block list_of_items %}
     <link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
 
     <!-- Bootstrap CSS -->
@@ -992,4 +995,4 @@
   <br>  
   
 </body>
-
+{% endblock %}
