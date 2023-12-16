@@ -310,13 +310,11 @@
     <div class="text-center mb-5">
       <h1 class="text-home">Encontre ajuda perto de você!</h1>
     </div>
-    <div class="col-12 mb-5">
-      <img
-        src="{% static 'site/img/map.png'%}"
-        alt=""
-        style="width: 100%; border-radius: 30px"
-      />
-    </div>
+      <div class="row pb-5">
+              <iframe id="frame-visao" style="border-radius: 20px; height: 25rem;"
+                  src="https://visao.ibict.br/visao2/viewGroupCategory/238?l=462&amp;amp&amp;ui=f&amp;amp&amp;header=f&amp;amp&amp;hideIndicator=t"
+                  frameborder="0"></iframe>
+      </div>
   </div>
 
   <div class="container-fluid w-100" style="background-color: #9bc2c1">
@@ -389,33 +387,41 @@
     >
       <h1 style="font-size: 55px">Quer ser um parceiro ?</h1>
     </div>
-    <div
-      class="row pt-4 pb-4 align-items-center"
-      style="background-color: #9bc2c1; border-radius: 20px"
-    >
-      <div class="col-lg-3 col-md-12 pt-3 pb-3 text-center">
-        <h3 class="text-white">Nossas redes</h3>
+
+    <!-- Nossas redes -->
+    <div class="container text-center text-white pt-3 pb-1" 
+        style="background-color: #9bc2c1; border-radius: 30px;">
+      <div class="row mb-2">
+        <div class="col-lg-3 col-md-12 col-sm-12">
+          <h3>
+            Nossas redes
+          </h3>
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+          <input type="text"
+              class="p-2"
+              placeholder="@XXXXXXXXXXXXXXXXXXXXXXXXXX"
+              style="border-radius: 30px; text-decoration:none; outline: none; 
+              transition: border-color 0.2s ease-in-out;
+              border: 1px solid transparent;
+              color: #9bc2c1; font-size: 1rem;">
       </div>
-      <div class="col-lg-3 col-md-12">
-        <input
-          type="text"
-          placeholder="@xxxxxxxxxxxxxxxxxx"
-          class="pt-3 pb-3 text-center"
-          style="border-radius: 30px; border: 1px solid #9bc2c1; color: #9bc2c1"
-        />
-      </div>
-      <div class="col-lg-3 col-md-12">
-        <input
-          type="text"
-          placeholder="@xxxxxxxxxxxxxxxxxx"
-          class="pt-3 pb-3 text-center"
-          style="border-radius: 30px; border: 1px solid #9bc2c1; color: #9bc2c1"
-        />
-      </div>
-      <div class="col-lg-3 col-md-12 pt-3 pb-3 text-center">
-        <button class="btn pb-3 pt-3" style="color: #9bc2c1">
-          Fale conosco
-        </button>
+      
+
+        <div class="col-lg-3 col-md-12 col-sm-12 mb-2" >
+          <input type="text"
+          class="p-2"
+          placeholder="@XXXXXXXXXXXXXXXXXXXXXXXXXX"
+          style="border-radius: 30px; text-decoration:none; outline: none; 
+          transition: border-color 0.2s ease-in-out;
+          border: 1px solid transparent;">
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-sm-12">
+          <input class="btn" type="button" value="Fale conosco" 
+            style="background-color: white; color: #9bc2c1; border-radius: 30px;">
+        </div>
       </div>
     </div>
 
