@@ -74,43 +74,44 @@
                 <a href="/eventos/" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Eventos</a>
                 <a href="/noticias/" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Notícias</a>
             </div>
-        </div>
-        
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" href="#">
-                            {{LANGUAGE_CODE}}
-                        </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" href="#">
+                        {{LANGUAGE_CODE}}
+                    </a>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
-                            <form action="/i18n/setlang/" method="post" style="display: inline;" name="languageForm">
-                                {% csrf_token %}
-                                <div style="display: inline;">
-                                    <input id="language" name="language" type="hidden" value="en">
-                                    {% for lang in TRANSLATED_LANGUAGES %}
-                                    <li><a class="dropdown-item" style="cursor: pointer;"
-                                            onclick="javascript:document.getElementById('language').value='{{ lang.0 }}';languageForm.submit()">
-                                            {{ lang.1 }}
-                                        </a>
-                                    </li>
-                                    {% endfor %}
-                                </div>
-                            </form>
-                        </ul>
-                    </li>
-                </ul>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+                        <form action="/i18n/setlang/" method="post" style="display: inline;" name="languageForm">
+                            {% csrf_token %}
+                            <div style="display: inline;">
+                                <input id="language" name="language" type="hidden" value="en">
+                                {% for lang in TRANSLATED_LANGUAGES %}
+                                <li><a class="dropdown-item" style="cursor: pointer;"
+                                        onclick="javascript:document.getElementById('language').value='{{ lang.0 }}';languageForm.submit()">
+                                        {{ lang.1 }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </ul>
+                </li>
+            </ul>
 
-        
-        <!-- Botões à Direita -->
-        {% if not user.is_authenticated %}
-        <div class="d-flex flex-nowrap ">
-            <a href="/signup/" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Criar Conta</a>
-            <a href="/login/" class="btn bg-white text-decoration-none " style="border-radius: 25px; font-weight: 600;      color: #A167A5; justify-content: center;">Entrar</a>
-        </div>
-        {% endif %}
-        
+    
+    <!-- Botões à Direita -->
+    {% if not user.is_authenticated %}
+    <div class="d-flex flex-nowrap ">
+        <a href="/signup/" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Criar Conta</a>
+        <a href="/login/" class="btn bg-white text-decoration-none " style="border-radius: 25px; font-weight: 600;      color: #A167A5; justify-content: center;">Entrar</a>
     </div>
+    {% endif %}
+    
+</div>
+        </div>
+        
+                
 </nav>
     <main class="flex-fill">
         {% include "_modalsubmit.html" %}
