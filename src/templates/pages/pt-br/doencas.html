@@ -21,29 +21,30 @@
   </head>
   <body >
     
-    <div class="container" style="
-    margin-left: 5%;">
+    <div class="container" style="margin-left: 5%;">
       <h7 class="pg-tittle">Doenças</h7>
-   </div>
+    </div>
 
     <div class="border-top my-3 line"></div>
 
     <!-- CONTEÚDO PÁGINA DOENÇAS -->
 
    <br>
-   
+
+   <div class="container mt-5" >
+        
    <!-- Busca -->
 
-  <div class="input-group mb-3 " style="margin-left: 17.5%; margin-right: 18.5%; width: auto;">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon1">
-      bttn
-    </button>
-    <input type="text" class="form-control" placeholder="Busca..." aria-label="Example text with button addon" aria-describedby="button-addon1">
-  </div>
+    <div class="input-group mb-3 " style=" width: auto;">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+        bttn
+      </button>
+      <input type="text" class="form-control" placeholder="Busca..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+    </div>
 
   <!-- Botoes de filtro e ordenação-->
 
-  <div class="btn-group" role="group" style="margin-left: 17.5%;">
+  <div class="btn-group" role="group" >
     
     
     <!-- Botao de ordenar o conteúdo -->
@@ -103,7 +104,9 @@
             <option value="TO">Tocantins</option>
 
       </select>
+
       <!-- filtro2 -->
+
       <select id="status" name="status" class="custom-select status-select form-control" style="border-color: #F2F4F7;"> 
           <option value="">Sintomas</option>
           <option></option>
@@ -118,9 +121,9 @@
     </div>
   </div>
 
-  <br><br>
+  <br><br><br>
 
-  <div class="container" style="margin-left: 17%;"><i>Foram encontrados 3 resultados</i></div>  <!-- Necessario implementar uma forma de que corresponda ao numero de resultados -->
+  <div class="container" ><i>Foram encontrados 3 resultados</i></div>  <!-- Necessario implementar uma forma de que corresponda ao numero de resultados -->
 
   <br><br>
 
@@ -128,156 +131,225 @@
     
     <!-- grupo de cards de doenças-->
 
-    <div class="row row-cols-lg-4 g-2 g-lg-3" style="align-items: center; justify-content:center;">
-
+    <div class="row">
+        
       <!-- cards -->
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5 ">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3 boxcontent">
-        <img src="/img/img1.png" class="card-img-top imgcontent" alt="..."  />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
         </div>
       </div>
+
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-12 mb-5">
+        <div class="card h-100 border-1 " style=" border-radius: 25px; text-align: start;">
+          <img src="img/img1.png" class="img-fluid imgcard img-card ls-is-cached lazyloaded" alt="..."  />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text" style="text-align: justify;">
+              En este proyecto nos podés ayudar a recopilar datos que nos permitan entender la problemática de los microplásticos en el país. Nuestro objetivo es realizar de manera colaborativa un estudio …
+              tex
+                    
+            </p>
+            <a href="#" class="btn btn-primary bttn">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-</div>
-    
+  
+  </div>
+  </div>
+  
 
 
     <!-- Optional JavaScript; choose one of the two! -->
