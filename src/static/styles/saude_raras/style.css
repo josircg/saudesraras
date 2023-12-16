@@ -198,3 +198,8 @@ background-color: #9bc2c1;
     padding: 0%;
     border: 0;
 }
+
+.imgcard{
+    border-radius: 25px 25px 0px 0px;
+}
+
