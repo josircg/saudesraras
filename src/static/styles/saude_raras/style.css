@@ -203,4 +203,21 @@ background-color: #9bc2c1;
 .imgcard{
     border-radius: 25px 25px 0px 0px;
 }
+.share{
+        background-color:  #F9FAFB;
+        border-radius: 12px;
+    }
 
+ 
+    .sharebttn{
+        background-color: #F9FAFB;
+        border-radius: 8px;
+        border: 0;
+        width: 37px; 
+        height: 37px;
+        
+    }
+    .sharebttn:hover{
+        background-color: #D0D5DD;
+       
+    }
