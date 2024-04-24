@@ -19,8 +19,8 @@ msgstr ""
 
 #, fuzzy
 #| msgid "Confirm password:"
-msgid "Forgot password?"
-msgstr "Esqueci a senha"
+
+
 
 msgid "Enter Email"
 msgstr "Informe o e-mail"
@@ -30,6 +30,10 @@ msgstr "Informe a senha"
 
 msgid "Log in"
 msgstr "Entrar"
+
+msgid "Forgot password?"
+msgstr "Esqueceu a senha?"
+
 
 msgid ""
 "We see that your email address is already in our database, but that you have "
