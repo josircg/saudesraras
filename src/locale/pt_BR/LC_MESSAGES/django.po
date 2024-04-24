@@ -38,6 +38,9 @@ msgstr ""
 "confirmado. Para ativar a sua conta, procure o e-mail de confirmação na sua "
 "caixa de entrada (ou spam). "
 
+msgid "I want to receive the newsletter from Civis"
+msgstr "Quero receber a newsletter da Civis"
+
 msgid "Enter your first name and surname"
 msgstr "Informe seu nome e sobrenome"
 
@@ -232,9 +235,6 @@ msgstr "Sobrenome"
 
 msgid "Message"
 msgstr "Mensagem"
-
-msgid "I want to receive the newsletter from Civis"
-msgstr "Quero receber a newsletter da Civis"
 
 msgid "Subject"
 msgstr "Assunto"
