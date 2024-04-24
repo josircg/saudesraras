@@ -20,8 +20,6 @@ msgstr ""
 msgid "Forgot password?"
 msgstr "Esqueceu a senha?"
 
-#, fuzzy
-#| msgid "Confirm password:"
 msgid "Enter Email"
 msgstr "Informe o e-mail"
 
