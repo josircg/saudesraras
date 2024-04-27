@@ -1,0 +1,681 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ block.super }} :: {% trans "Ajuda" %}{% endblock %}
+{% block list_of_items %}
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
+
+<body>
+
+    <div class="d-flex flex-column min-vh-100 div">
+
+        <main class="flex-fill">
+
+            <div id="mapaAjuda" class="container pb-4"
+                style="padding-right: 13%; padding-left: 13%; margin-bottom: 4rem;">
+                <div class="col-12 text-center">
+                    <div class="mb-1">
+                        <h3 class="text-center mb-4" style="font-family: Exo-ExtraBold, Helvetica;
+                        font-weight: 800;
+                        color: #a167a5;
+                        font-size: 2.8rem;
+                        letter-spacing: 0px;
+                        line-height: 3.3rem;
+                        font-style: normal;">Encontre ajuda perto de você!</h1>
+                    </div>
+                    <div class="row">
+                        <div class="card text-center p-3 ratio ratio-16x9"
+                            style="border: transparent; border-radius: 20px">
+                            <iframe id="frame-visao" style="border-radius: 20px"
+                                src="https://visao.ibict.br/visao2/viewGroupCategory/238?l=462&amp;amp&amp;ui=f&amp;amp&amp;header=f&amp;amp&amp;hideIndicator=t"
+                                frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="padding-right: 2%; padding-left: 2%; margin-bottom: 4rem;">
+                <div class="row pb-5 d-flex justify-content-around">
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row pb-5 d-flex justify-content-around">
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row pb-5 d-flex justify-content-around">
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="position: relative; background-color: transparent;">
+
+                        <div class="shadow m-3" style="position: relative;
+                        width: 19rem;
+                        height: 14.5rem;
+                        border-radius: 35px;
+                        background-color: #a167a5;">
+
+                            <h4 style="padding-top: 1rem;
+                        padding-left: 1.5rem;
+                        color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.3125rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 2.1875rem;">RIO DE JANEIRO</h4>
+                            <div style="padding-left: 2rem;
+                        padding-right: 2rem;
+                        padding-top: 0.1rem;">
+                                <h6 style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        margin-bottom: 0;
+                        line-height: 2.1875rem;">Associação Solidariedade Rara</h6>
+                                <p style="color: #FFF;
+                        font-family: Exo, Helvetica;
+                        font-size: 0.75rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.125rem;">
+                                    Endereço: Rua Esperança, 123, Bairro Esperança Feliz, Cidade Nova.
+                                </p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="container d-flex justify-content-center" style="position: absolute;
+                        top: 0; 
+                        left: 0;
+                        width: 4.5rem;
+                        height: 4.5rem;
+                        align-items:center;
+                        border-radius: 21px;
+                        background-color: #9BC2C1;">
+                            <h3 class="text-center" style="color: #FFF;
+                        text-align: center;
+                        font-family: Exo;
+                        font-size: 1.9375rem;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: 3.31206rem;">RJ</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div
+        class="row d-flex align-items-center justify-content-center p-2 mx-2">
+
+        <button
+          type="button"
+          class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2"
+          style="
+          text-decoration: none;
+          color: white;
+          background-color: #a167a5;
+          border-radius: 30px;
+          "
+        >
+          Início
+        </button>
+        <button
+          type="button"
+          class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2"
+          style="
+          text-decoration: none;
+          color: white;
+          background-color: #a167a5;
+          border-radius: 30px;
+          "
+        >
+          Encontre Ajuda
+        </button>
+        <button
+          type="button"
+          class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2"
+          style="
+          text-decoration: none;
+          color: white;
+          background-color: #a167a5;
+          border-radius: 30px;
+          "
+        >
+          Seja Parceiro
+        </button>
+        <button
+          type="button"
+          class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2"
+          style="
+          text-decoration: none;
+          color: white;
+          background-color: #a167a5;
+          border-radius: 30px;
+          "
+        >
+          Publicidade Social
+        </button>
+        <button
+          type="button"
+          class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2"
+          style="
+          text-decoration: none;
+          color: white;
+          background-color: #a167a5;
+          border-radius: 30px;
+          "
+        >
+          Depoimentos
+        </button>
+	<button
+          type="button"
+          class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2"
+          style="
+          text-decoration: none;
+          color: white;
+          background-color: #a167a5;
+          border-radius: 30px;
+          "
+        >
+          Sobre
+        </button>
+	<button
+          type="button"
+          class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2"
+          style="
+          text-decoration: none;
+          color: white;
+          background-color: #a167a5;
+          border-radius: 30px;
+          "
+        >
+          Eventos
+        </button>
+	<button
+          type="button"
+          class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2"
+          style="
+          text-decoration: none;
+          color: white;
+          background-color: #a167a5;
+          border-radius: 30px;
+          "
+        >
+          Notícias
+        </button>
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+{% endblock %}

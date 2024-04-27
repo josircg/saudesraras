@@ -53,7 +53,8 @@ urlpatterns = [
     path("translations/", views.translations, name="translations"),
     path("home_autocomplete/", views.home_autocomplete, name="home_autocomplete"),
     path("development/", views.development, name="development"),
-    path("about/", views.about, name="about"),
+    path("projeto/", views.projeto, name="projeto"),
+    path("ajuda/", views.ajuda, name="ajuda"),
     path("users/", include(profiles.urls)),
     path("admin/", admin.site.urls),
     path("admin_tools/", include('admin_tools.urls')),
@@ -91,7 +92,17 @@ urlpatterns = [
     # add the robots.txt file
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     # sitemaps
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps.sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps.sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+        
+    # PATHS SAUDESRARAS
+    path("about/", views.about, name="about"),
+    path("noticias/", views.noticias, name="noticias"),
+    path("medicos/", views.medicos, name="medicos"),
+    path("diagnostico/", views.diagnostico, name="diagnostico"),
+    path("doencas/", views.doencas, name="doencas"),
+    path("justica/", views.justica, name="justica"),
+    path("eventos/", views.eventos, name="eventos"),
+    path("parceiro/", views.parceiro, name="parceiro"),
 ]
 
 # User-uploaded files like profile pics need to be served in development

@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ block.super }} :: {% trans "Eventos" %}{% endblock %}
+{% block list_of_items %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Eventos</title>
+  </head>
+
+
+
+  <body>
+
+    <!-- divisao - eventos atuais/futuros/passados -->
+
+    <div style="text-align: start; margin-left: 5%;">
+        <h7 class="pg-subtittle"> Eventos Atuais</h7>
+    </div>
+
+    <br><br>
+    
+    <!-- evento -->
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%;">
+                    <h5 class="card-title">Card title</h5>
+                    <br>
+                    <i>data do evento: 00/00/0000</i>
+                </div>    
+                <div class="container">
+                    <p class="card-text">O prazo de submissão é até 20 de fevereiro de 2024. Participe do dossiê "Cuidados-em-interação: práticas, saberes e reflexividade na saúde" e contribua para o avanço do conhecimento sobre a interação nos cuidados em saúde. Um dos eixos temáticos que terão as contribuições privilegiadas é o de "Participação de cidadãos em dispositivos de coanálise das práticas de serviço e de atendimento (ciência cidadã)". O dossiê tem o objetivo de mobilizar o conceito de cuidados-em-interação, compreendendo a noção de interação como indissociável e constitutiva da comunicação. Para isso, lança duas perguntas iniciais: 1. Como a interatividade está sendo operada em diferentes ambientes e cenas, sobretudo com relação a temas da saúde? 2. De que formas as abordagens microanalíticas dos estudos sobre as interações podem contribuir para a compreensão dos processos sociais? Confira mais informações na página do evento. A Reciis é um periódico interdisciplinar trimestral editada pelo Instituto de Comunicação e Informação Científica e Tecnológica em Saúde da Fundação Oswaldo Cruz (Icict/Fiocruz) de acesso aberto, revisado por pares e sem ônus para o autor. Recebe textos em fluxo contínuo e a partir de chamadas públicas para dossiês temáticos. Publica textos inéditos de interesse para as áreas de comunicação, informação e saúde; em português, inglês, espanhol ou francês. Ao submeter o trabalho, é necessário preencher a categoria Dossiê Cuidados-em-interação: práticas, saberes e reflexividade na saúde. Caso a categoria não esteja indicada, o manuscrito será considerado para a avaliação do fluxo regular da revista..</p>
+                    <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex;">  
+                <div class="container" style="width: 30%;">
+                    <h5 class="card-title">Card title</h5>
+                    <br>
+                    <i>data do evento: 00/00/0000</i>
+                </div>    
+                <div class="container">
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex;">  
+                <div class="container" style="width: 30%;">
+                    <h5 class="card-title">Card title</h5>
+                    <br>
+                    <i>data do evento: 00/00/0000</i>
+                </div>    
+                <div class="container">
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- linha divisoria -->
+
+    <div class="border-top  line"></div>
+
+    <br>
+
+
+    
+    <div style="text-align: start; margin-left: 5%;">
+        <h7 class="pg-subtittle"> Eventos Futuros</h7>
+     </div>
+     
+    <br><br>  
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%;">
+                    <h5 class="card-title">Card title</h5>
+                    <br>
+                    <i>data do evento: 00/00/0000</i>
+                </div>    
+                <div class="container">
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex;">  
+                <div class="container" style="width: 30%;">
+                    <h5 class="card-title">Card title</h5>
+                    <br>
+                    <i>data do evento: 00/00/0000</i>
+                </div>    
+                <div class="container">
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex;">  
+                <div class="container" style="width: 30%;">
+                    <h5 class="card-title">Card title</h5>
+                    <br>
+                    <i>data do evento: 00/00/0000</i>
+                </div>    
+                <div class="container">
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="border-top line"></div>
+
+    <br>
+
+    <div style="text-align: start; margin-left: 5%;">
+      <h7 class="pg-subtittle"> Eventos passados</h7>
+    </div>
+    
+    <br><br>
+
+
+    <div class="card " style=" margin-right: 5%; border: 0;">  
+      <div class="card-body">
+          <div class="container" style="display: flex; ">  
+              <div class="container" style="width: 30%;">
+                  <h5 class="card-title">Card title</h5>
+                  <br>
+                  <i>data do evento: 00/00/0000</i>
+              </div>    
+              <div class="container">
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="card " style=" margin-right: 5%; border: 0;">
+      <div class="card-body">
+          <div class="container" style="display: flex;">  
+              <div class="container" style="width: 30%;">
+                  <h5 class="card-title">Card title</h5>
+                  <br>
+                  <i>data do evento: 00/00/0000</i>
+              </div>    
+              <div class="container">
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="card " style=" margin-right: 5%; border: 0;">
+      <div class="card-body">
+          <div class="container" style="display: flex;">  
+              <div class="container" style="width: 30%;">
+                  <h5 class="card-title">Card title</h5>
+                  <br>
+                  <i>data do evento: 00/00/0000</i>
+              </div>    
+              <div class="container">
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <button class="btn btn-primary bttn "  type="button"> Saiba mais...</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <br>  
+  
+</body>
+{% endblock %}

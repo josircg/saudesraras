@@ -127,6 +127,32 @@ def home(request):
 def all(request):
     return home(request)
 
+def noticias(request):
+    return render(request, 'pages/%s/noticias.html' % get_language())
+
+def doencas(request):
+    return render(request, 'pages/%s/doencas.html' % get_language())
+
+def diagnostico(request):
+    return render(request, 'pages/%s/diagnostico.html' % get_language())
+
+def justica(request):
+    return render(request, 'pages/%s/justica.html' % get_language())
+
+def medicos(request):
+    return render(request, 'pages/%s/medicos.html' % get_language())
+
+def ajuda(request):
+    return render(request, 'pages/%s/ajuda.html' % get_language())
+
+def eventos(request):
+    return render(request, 'pages/%s/eventos.html' % get_language())
+
+def projeto(request):
+    return render(request, 'pages/%s/projeto.html' % get_language())
+
+def parceiro(request):
+    return render(request, 'pages/%s/parceiro.html' % get_language())
 
 def about(request):
     return render(request, 'pages/%s/about.html' % get_language())

@@ -1,0 +1,998 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ block.super }} :: {% trans "Medicos" %}{% endblock %}
+{% block list_of_items %}
+    <link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    
+    <title>Médicos</title>
+  </head>
+
+
+
+  <body>
+    <div class="container" style="
+    margin-left: 5%;">
+      <h7 class="pg-tittle">Médicos</h7>
+   </div>
+
+    <div class="border-top line"></div>
+    
+    <!-- Busca -->
+
+    <div class="input-group mb-3 " style="margin-left: 17.5%; margin-right: 18.5%; width: auto;">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+          bttn
+        </button>
+        <input type="text" class="form-control" placeholder="Busca..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+      </div>
+    
+      <!-- Botoes de filtro e ordenação-->
+    
+      <div class="btn-group" role="group" style="margin-left: 17.5%;">
+        
+        
+        <!-- Botao de ordenar o conteúdo -->
+    
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="background: #F2F4F7; border-radius: 0.25rem; margin-right: 1rem;">
+          <div class="container center" > 
+            <img src="img/order-icon.png"  alt="" width="20" height="20">
+          </div>
+          <div class="btn-group" role="group">
+            <button type="button bot" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black; border-color:  #F2F4F7;">
+              Ordernar por:
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Ordem Alfabetica</a></li>
+              <li><a class="dropdown-item" href="#">Sintomas</a></li>
+            </ul>
+          </div>
+        </div>
+    
+    
+        <!-- Filtros (grupo) -->
+    
+        <div class="input-group input-group-sm filter-bar" >
+          <div class="input-group-text filter-img" style="background-color:  #F2F4F7; border-color: #F2F4F7;">
+              <img src="img/filter-icon.png" alt="">
+          </div>
+    
+          <!-- filtro1 -->
+          <select id="country" name="country" class="custom-select status-select form-control" style="border-color: #F2F4F7;">
+              <option value="">Estado</option><option></option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapa</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceara</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espirito Santo</option>
+                <option value="GO">Goiais</option>
+                <option value="MA">Maranhao</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Para</option>
+                <option value="PB">Paraiba</option>
+                <option value="PR">Parana</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piaui</option>
+                <option value="RJ">Rio de Janeirp</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondonia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">Sao Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+    
+          </select>
+
+          <!-- filtro2 -->
+        
+          <select id="status" name="status" class="custom-select status-select form-control" style="border-color: #F2F4F7;"> 
+            <option value="">Município</option>
+            <option></option>
+            <option value="Ativo">Ativo</option>
+            <option value="Concluído">Concluído</option>
+            <option value="Inativo">Inativo</option>
+            <option value="Não iniciado">Não iniciado</option>
+            <option value="Pausado">Pausado</option>
+            <option value="Sem informação">Sem informação</option>
+            
+          </select>     
+
+          <!-- filtro3 -->
+
+          <select id="status" name="status" class="custom-select status-select form-control" style="border-color: #F2F4F7;"> 
+                <option value="">Indicaçao</option>
+                <option></option>
+                <option value="Ativo">Ativo</option>
+                <option value="Concluído">Concluído</option>
+                <option value="Inativo">Inativo</option>
+                <option value="Não iniciado">Não iniciado</option>
+                <option value="Pausado">Pausado</option>
+                <option value="Sem informação">Sem informação</option>
+                
+          </select>     
+
+          <!-- filtro4 -->
+
+          <select id="status" name="status" class="custom-select status-select form-control" style="border-color: #F2F4F7;"> 
+              <option value="">Doença</option>
+              <option></option>
+              <option value="Ativo">Ativo</option>
+              <option value="Concluído">Concluído</option>
+              <option value="Inativo">Inativo</option>
+              <option value="Não iniciado">Não iniciado</option>
+              <option value="Pausado">Pausado</option>
+              <option value="Sem informação">Sem informação</option>
+              
+          </select>      
+        </div>
+      </div>
+      
+
+      <br><br> <br>
+
+    <!-- divisao - por doenças -->
+
+    <div style="text-align: start; margin-left: 5%;">
+        <h7 class="pg-subtittle"> Nome da doenca</h7>
+    </div>
+
+    <br><br>
+    
+    <!-- Medico -->
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    
+    <br>
+
+    <!-- linha divisoria -->
+
+    <div class="border-top my-3 line"></div>
+
+    <br>
+
+
+    
+    <div style="text-align: start; margin-left: 5%;">
+        <h7 class="pg-subtittle"> Doença</h7>
+     </div>
+     
+    <br><br>  
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    
+    <br>
+
+    <div class="border-top my-3 line"></div>
+
+    <br>
+
+    <div style="text-align: start; margin-left: 5%;">
+      <h7 class="pg-subtittle"> Doença tal</h7>
+    </div>
+    
+    <br><br>
+
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card " style=" margin-right: 5%; border: 0;">
+        <div class="card-body">
+            <div class="container" style="display: flex; ">  
+                <div class="container" style="width: 30%; justify-content: center;">
+                    <div class="container" style="justify-content: center; padding: 0%;">
+                        <img src="img/transferir-removebg-preview.png" alt="" width="70%" height="auto">
+                    </div>
+                    
+                    <br>
+                    <p>Nome do Medico</p>
+                    <i>indicado por: Fulano de tal</i>
+                </div>    
+                <div class="container" style="justify-content: start;" >
+                    <p class="card-text">textinho falando do medico, o que fez e afins, textotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                        textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                    </p>
+                    <div class="container" style="justify-content: start; padding: 0px;">
+                        <div class="container" style="justify-content: start; padding: 0px;">
+                        
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000 </p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/wpp.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">(00)00000-0000</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/tel.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="padding-right: 5px;"><p style="margin: 0%;">fulanodt@gmail.com</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/email-removebg-preview.png" alt="" width="20px" height="20px"></button>
+                            </div>
+                            <div class=" txtbox" >
+                                <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">endereço: rua dos ferreiros, nº1111, bairro baixada das pulgas, cidade Kings Landing, estado Terras da coroa, Pais Westeros</p></div>
+                                <button type="button" class="btn btn-outline-light  boxbttn" style="padding: 0%;"><img src="img/map.png" alt="" width="30px" height="30px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <br>  
+  
+</body>
+{% endblock %}

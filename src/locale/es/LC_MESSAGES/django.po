@@ -2146,11 +2146,6 @@ msgstr "Recortar la foto"
 msgid "Crop and upload"
 msgstr "Recortar y subir"
 
-msgid "Citizen science platform developed using open-source code based on the"
-msgstr ""
-"Plataforma de ciencia ciudadana desarrollada utilizando código abierto "
-"basado en la"
-
 msgid "About"
 msgstr "Acerca de"
 
@@ -2178,7 +2173,7 @@ msgstr "Siga-nos"
 msgid "Partnerships"
 msgstr "Asociaciones"
 
-msgid "CC BY 4.0 License"
+msgid "© Lorem Ipsum 2023 - Todos os direitos reservados."
 msgstr ""
 
 msgid "See all events"
@@ -2239,24 +2234,6 @@ msgstr "Organización o red"
 msgid "Register your organisation or network"
 msgstr "Registre su organización o red"
 
-msgid "SEARCH"
-msgstr "BUSCAR"
-
-msgid "BLOG"
-msgstr "BLOG"
-
-msgid "EVENTS"
-msgstr "EVENTOS"
-
-msgid "MOOCS"
-msgstr ""
-
-msgid "CALL"
-msgstr ""
-
-msgid "ABOUT"
-msgstr "ACERCA DE"
-
 msgid "Save & continue editing"
 msgstr "Guardar y continuar editando"
 
@@ -2275,50 +2252,20 @@ msgstr "Histórico"
 msgid "View on site"
 msgstr "Visualizar en site"
 
-msgid "Citizen Science <br> Platform"
-msgstr "Ciencia Ciudadana <br> Plataforma"
-
-msgid "Events "
-msgstr "Eventos"
-
-msgid "Blog"
-msgstr "Blog"
+msgid "FORUM"
+msgstr "FORO"
 
 msgid "Login"
 msgstr "Iniciar sesión"
-
-msgid "Signup"
-msgstr "Registrarse"
-
-msgid "My personal area"
-msgstr "Mi area personal"
-
-msgid "My submissions"
-msgstr "Mis envíos"
-
-msgid "My bookmarks"
-msgstr "Mis favoritos"
-
-msgid "My privacy center"
-msgstr "Mi centro de privacidad"
-
-msgid "Admin"
-msgstr "Administrar"
-
-msgid "Logout"
-msgstr "Cerrar sesión"
-
-msgid "New submission"
-msgstr "Nuevo envío"
-
-msgid "FORUM"
-msgstr "FORO"
 
 msgid "profile"
 msgstr "perfil"
 
 msgid "logout"
 msgstr "cerrar sesión"
+
+msgid "Admin"
+msgstr "Administrar"
 
 msgid "Company"
 msgstr "Empresa"
@@ -2786,58 +2733,6 @@ msgstr[1] "%(topic_length)s tema no leído encontrado"
 msgid "There are no unread topics."
 msgstr "No hay temas sin leer."
 
-msgid "Science built through collaboration among everyone"
-msgstr "La ciencia se construye mediante la colaboración entre todos"
-
-msgid "Join us"
-msgstr "Únase a nosotros"
-
-msgid "Search the entire platform..."
-msgstr "Busca en toda la plataforma..."
-
-msgid "About the platform"
-msgstr "Sobre la plataforma"
-
-msgid "What is Civis?"
-msgstr "¿Qué es Civis?"
-
-msgid ""
-"Civis is a citizen science platform developed by the Brazilian Institute of "
-"Information in Science and Technology (IBICT) using open-source code, based "
-"on "
-msgstr ""
-"Civis es una plataforma de ciencia ciudadana desarrollada por el Instituto "
-"Brasileño de Información en Ciencia y Tecnología (IBICT), de código abierto "
-"a partir de eu-citizen.science."
-
-msgid ""
-"Our goal is to provide infrastructure and content that help broaden the "
-"understanding of citizen science, promote its use, and support the "
-"development of initiatives and the application of methodologies in this "
-"field, with a focus on Latin America and the Caribbean."
-msgstr ""
-"Nuestro objetivo es proporcionar infraestructura y contenidos que ayuden a "
-"ampliar la comprensión de la ciencia ciudadana, difundir su uso y apoyar el "
-"desarrollo de iniciativas y la aplicación de metodologías en este campo, con "
-"un enfoque en América Latina y el Caribe."
-
-msgid "What is citizen science?"
-msgstr "¿Qué es la ciencia ciudadana?"
-
-msgid ""
-"Citizen science is a branch of the open science movement. It focuses on "
-"promoting non-scientist contributions and engagement in knowledge, data, and "
-"information analysis and production that are relevant to science and issues "
-"of social, environmental, and territorial importance."
-msgstr ""
-"La ciencia ciudadana es una de las vertientes del movimiento de ciencia "
-"abierta. Se trata de un concepto amplio que engloba una extensa diversidad "
-"de iniciativas, enfoques y metodologías que buscan mejorar y promover la "
-"contribución y el compromiso de los no científicos en las actividades de "
-"producción y análisis de conocimientos, datos e información relevantes para "
-"la ciencia y las cuestiones de importancia social, medioambiental y "
-"territorial."
-
 msgid "Imprint"
 msgstr "Imprimir"
 
@@ -3150,6 +3045,34 @@ msgstr ""
 msgid "Frequently <span class='text-pink6'>asked questions</span>"
 msgstr "Preguntas <span class='text-pink6'>frecuentes</span>"
 
+msgid "Diagnostico"
+msgstr ""
+
+msgid "Ajuda"
+msgstr ""
+
+msgid "Doencas"
+msgstr ""
+
+#, fuzzy
+#| msgid "Events"
+msgid "Eventos"
+msgstr "Evento"
+
+msgid "Medicos"
+msgstr ""
+
+msgid "Noticias"
+msgstr ""
+
+msgid "Parceiro"
+msgstr ""
+
+#, fuzzy
+#| msgid "Project"
+msgid "Projeto"
+msgstr "Proyecto"
+
 msgid "Forum index"
 msgstr "Índice del Foro"
 
@@ -3271,3 +3194,103 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
+
+#~ msgid ""
+#~ "Citizen science platform developed using open-source code based on the"
+#~ msgstr ""
+#~ "Plataforma de ciencia ciudadana desarrollada utilizando código abierto "
+#~ "basado en la"
+
+#~ msgid "SEARCH"
+#~ msgstr "BUSCAR"
+
+#~ msgid "BLOG"
+#~ msgstr "BLOG"
+
+#~ msgid "EVENTS"
+#~ msgstr "EVENTOS"
+
+#~ msgid "ABOUT"
+#~ msgstr "ACERCA DE"
+
+#~ msgid "Citizen Science <br> Platform"
+#~ msgstr "Ciencia Ciudadana <br> Plataforma"
+
+#~ msgid "Events "
+#~ msgstr "Eventos"
+
+#~ msgid "Blog"
+#~ msgstr "Blog"
+
+#~ msgid "Signup"
+#~ msgstr "Registrarse"
+
+#~ msgid "My personal area"
+#~ msgstr "Mi area personal"
+
+#~ msgid "My submissions"
+#~ msgstr "Mis envíos"
+
+#~ msgid "My bookmarks"
+#~ msgstr "Mis favoritos"
+
+#~ msgid "My privacy center"
+#~ msgstr "Mi centro de privacidad"
+
+#~ msgid "Logout"
+#~ msgstr "Cerrar sesión"
+
+#~ msgid "New submission"
+#~ msgstr "Nuevo envío"
+
+#~ msgid "Science built through collaboration among everyone"
+#~ msgstr "La ciencia se construye mediante la colaboración entre todos"
+
+#~ msgid "Join us"
+#~ msgstr "Únase a nosotros"
+
+#~ msgid "Search the entire platform..."
+#~ msgstr "Busca en toda la plataforma..."
+
+#~ msgid "About the platform"
+#~ msgstr "Sobre la plataforma"
+
+#~ msgid "What is Civis?"
+#~ msgstr "¿Qué es Civis?"
+
+#~ msgid ""
+#~ "Civis is a citizen science platform developed by the Brazilian Institute "
+#~ "of Information in Science and Technology (IBICT) using open-source code, "
+#~ "based on "
+#~ msgstr ""
+#~ "Civis es una plataforma de ciencia ciudadana desarrollada por el "
+#~ "Instituto Brasileño de Información en Ciencia y Tecnología (IBICT), de "
+#~ "código abierto a partir de eu-citizen.science."
+
+#~ msgid ""
+#~ "Our goal is to provide infrastructure and content that help broaden the "
+#~ "understanding of citizen science, promote its use, and support the "
+#~ "development of initiatives and the application of methodologies in this "
+#~ "field, with a focus on Latin America and the Caribbean."
+#~ msgstr ""
+#~ "Nuestro objetivo es proporcionar infraestructura y contenidos que ayuden "
+#~ "a ampliar la comprensión de la ciencia ciudadana, difundir su uso y "
+#~ "apoyar el desarrollo de iniciativas y la aplicación de metodologías en "
+#~ "este campo, con un enfoque en América Latina y el Caribe."
+
+#~ msgid "What is citizen science?"
+#~ msgstr "¿Qué es la ciencia ciudadana?"
+
+#~ msgid ""
+#~ "Citizen science is a branch of the open science movement. It focuses on "
+#~ "promoting non-scientist contributions and engagement in knowledge, data, "
+#~ "and information analysis and production that are relevant to science and "
+#~ "issues of social, environmental, and territorial importance."
+#~ msgstr ""
+#~ "La ciencia ciudadana es una de las vertientes del movimiento de ciencia "
+#~ "abierta. Se trata de un concepto amplio que engloba una extensa "
+#~ "diversidad de iniciativas, enfoques y metodologías que buscan mejorar y "
+#~ "promover la contribución y el compromiso de los no científicos en las "
+#~ "actividades de producción y análisis de conocimientos, datos e "
+#~ "información relevantes para la ciencia y las cuestiones de importancia "
+#~ "social, medioambiental y territorial."

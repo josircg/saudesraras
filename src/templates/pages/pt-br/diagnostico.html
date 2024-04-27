@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ block.super }} :: {% trans "Diagnostico" %}{% endblock %}
+{% block list_of_items %}
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
+
+<body>
+     <!-- Busca -->
+    
+ 
+  <div class="container" style="margin-left: 5%;">
+    <h7 class="pg-tittle">Diagnostico</h7>
+ </div>
+
+  <div class="border-top  line"></div>
+  <div class="container mt-5" >
+
+    
+  <!-- Busca -->
+  <div class="input-group mb-3 " style=" width: auto;">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+      bttn
+    </button>
+    <input type="text" class="form-control" placeholder="Busca..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+  </div>
+
+<!-- Botoes de filtro e ordenação-->
+
+<div class="btn-group" role="group" >
+  
+  
+  <!-- Botao de ordenar o conteúdo -->
+
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="background: #F2F4F7; border-radius: 0.25rem; margin-right: 1rem;">
+    <div class="container center" > 
+      <img src="img/order-icon.png"  alt="" width="20" height="20">
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button bot" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black; border-color:  #F2F4F7;">
+        Ordernar por:
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Ordem Alfabetica</a></li>
+        <li><a class="dropdown-item" href="#">Sintomas</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- Filtros (grupo) -->
+
+  <div class="input-group input-group-sm filter-bar" >
+    <div class="input-group-text filter-img" style="background-color:  #F2F4F7; border-color: #F2F4F7;">
+        <img src="img/filter-icon.png" alt="">
+    </div>
+
+    <!-- filtro1 -->
+    <select id="country" name="country" class="custom-select status-select form-control" style="border-color: #F2F4F7;">
+        <option value="">Estado</option><option></option>
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapa</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceara</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espirito Santo</option>
+          <option value="GO">Goiais</option>
+          <option value="MA">Maranhao</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Para</option>
+          <option value="PB">Paraiba</option>
+          <option value="PR">Parana</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piaui</option>
+          <option value="RJ">Rio de Janeirp</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondonia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">Sao Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+
+    </select>
+
+    <!-- filtro2 -->
+
+    <select id="status" name="status" class="custom-select status-select form-control" style="border-color: #F2F4F7;"> 
+        <option value="">Sintomas</option>
+        <option></option>
+        <option value="Ativo">Ativo</option>
+        <option value="Concluído">Concluído</option>
+        <option value="Inativo">Inativo</option>
+        <option value="Não iniciado">Não iniciado</option>
+        <option value="Pausado">Pausado</option>
+        <option value="Sem informação">Sem informação</option>
+        
+    </select>      
+  </div>
+</div>
+
+<br><br>
+
+<div style="text-align: start; ">
+  <h7 class="pg-subtittle"> Onde Conseguir?</h7>
+</div>
+<br>
+<p> What is Lorem Ipsum?
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</p>
+<div class="border-top  line" style="margin: 0;" ></div>
+
+<br><br>
+
+<div style="text-align: start; ">
+  <h7 class="pg-subtittle"> Como Conseguir?</h7>
+</div>
+<br>
+<p> What is Lorem Ipsum?
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</p>
+
+<br><br>
+<div class="card share" style=" margin-right: 5%; border: 0;">
+  <div class="card-body">
+    
+      <div class="card-title">Share this project</div>
+      <p style="color: #6C737F; font-size: 14px;">Your new project has been created. Invite colleagues to collaborate on this project.</p>
+      <div class="container" style="justify-content: start; padding: 0; display: flex;">
+        <div class="container txtbox" style=" margin-left: 0; margin-bottom: 1rem; height: 44px; max-width: 95%;" >
+          <div style="margin: 0%;padding-right: 5px;"> <p style="margin: 0%;">join.yourcompany.io/project</p></div>
+        </div>
+        <button class="btn btn-primary sharebttn "  type="button"> <img src="img/92c82dd1-66e6-4d3b-b4b1-b723f8111232.png" alt="" width="20" height="20"></button>
+      
+
+      </div>
+      <button class="btn btn-primary bttn "  type="button" style="color: #6C737F;"> Ir para iniciativa <img src="img/92c82dd1-66e6-4d3b-b4b1-b723f8111232.png" alt="" width="20" height="20"></button>
+      <button class="btn btn-primary bttn "  type="button" style="color: #6C737F;"> Email de contato <img src="img/92c82dd1-66e6-4d3b-b4b1-b723f8111232.png" alt="" width="20" height="20"></button>
+      <button class="btn btn-primary bttn "  type="button" style="color: #6C737F;"> Traduções <img src="img/92c82dd1-66e6-4d3b-b4b1-b723f8111232.png" alt="" width="20" height="20"></button>
+                
+  </div>
+</div>
+ 
+  
+</body>
+{% endblock %}

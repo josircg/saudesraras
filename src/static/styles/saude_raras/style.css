@@ -1,0 +1,353 @@
+/* style.css */
+
+
+/* style.css */
+@font-face {
+font-family: "Axiforma";
+src: url("/static/bootstrap/fonts/axiforma-regular.otf") format("opentype");
+/* Adicione outras variações da fonte conforme necessário */
+}
+
+body {
+font-family: "Axiforma", sans-serif;
+}
+
+/* Aplicar Axiforma a todos os parágrafos, links e títulos */
+p, a, h1, h2, h3, h4, h5, h6 {
+    font-family: "Axiforma", sans-serif;
+}
+
+.custom-input-container {
+text-align: center;
+}
+.input-container {
+width: 80%;
+border-radius: 40px;
+border: 5px solid #a167a5;
+height: 5rem;
+text-align: left;
+font-size: 2vh;
+padding-left: 3rem;
+}
+
+.input-container:focus {
+outline: none;
+box-shadow: none;
+}
+
+.text-home {
+font-weight: 950;
+font-size: 65px;
+line-height: 53px;
+text-align: center;
+color: #a167a5;
+font-family: "Axiforma", sans-serif;
+}
+
+.text-publicidade {
+font-weight: 950;
+size: 45px;
+line-height: 53px;
+align-self: center;
+color: #ffffff;
+}
+
+.col-12 publicidade {
+background-color: #a167a5;
+}
+
+.row button {
+background-color: #ffffff;
+text-decoration: none;
+color: #a167a5;
+border-radius: 20px;
+padding-top: 0.8%;
+padding-bottom: 0.8%;
+flex-wrap: wrap;
+}
+
+.row button:hover {
+color: #a167a5;
+}
+
+.row .col-lg-4 {
+border-radius: 50px;
+border-color: #9bc2c1;
+background-color: #9bc2c1;
+}
+
+.custom-input-container {
+    text-align: center;
+}
+
+.input-container {
+    width: 80%;
+    border-radius: 40px;
+    border: 5px solid #A167A5;
+    height: 5rem;
+    text-align: left;
+    font-size: 2vh;
+    padding-left: 3rem;
+}
+
+.input-container:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.text-home {
+    font-weight: 950;
+    font-size: 65px;
+    line-height: 53px;
+    text-align: center;
+    color: #A167A5;
+}
+
+
+.text-publicidade {
+    font-weight: 950;
+    size: 45px;
+    line-height: 53px;
+    align-self: center;
+    color: #ffffff;
+}
+
+.col-12 publicidade {
+    background-color: #A167A5;
+}
+
+.row button {
+    background-color: #ffffff;
+    text-decoration: none;
+    color: #A167A5;
+    border-radius: 20px;
+    padding-top: .8%;
+    padding-bottom: .8%;
+    flex-wrap: wrap;
+}
+
+.row button:hover {
+    color: #A167A5;
+}
+
+.row .col-lg-4 {
+    border-radius: 50px;
+    border-color: #9BC2C1;
+    background-color: #9BC2C1;
+}
+.line{
+    margin-top: 0;
+    border: 3px solid #a167a5;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 1rem;
+    
+}
+.center{
+    align-self: center
+}
+
+.pg-tittle{
+    color: #a167a5;; 
+    font-size: 50px; 
+    font-weight: 900; 
+    text-align: justify; 
+}
+
+.pg-subtittle{
+    color: #a167a5; 
+    font-size: xx-large; 
+    font-weight: 900; 
+    text-align: justify;
+}
+
+.bttn{
+    background-color: white;
+    outline-color: slategray;
+    border: 1px #D0D5DD solid; 
+    border-radius: 8px; 
+    color: black;
+}
+.bttn:hover{
+    background-color: #D0D5DD;
+    border: 1px #D0D5DD solid;
+    color: white;
+}
+.imgcontent{
+    border-radius: 35px; 
+    width: 100%;
+}
+.boxcontent{
+    width: 18rem; 
+    border-radius: 25px; 
+    padding-bottom: 10rem;
+    text-align: start;
+}
+
+.txtbox{
+    background-color: white;
+    outline-color: slategray;
+    border: 1px #D0D5DD solid; 
+    border-radius: 8px; 
+    color: black;
+    margin: 0px; 
+    display: inline-flex; 
+    padding: 6px 12px;
+}
+
+.boxbttn{
+    padding: 0%;
+    border: 0;
+}
+
+.imgcard{
+    border-radius: 25px 25px 0px 0px;
+}
+
+.share{
+        background-color:  #F9FAFB;
+        border-radius: 12px;
+    }
+
+ 
+    .sharebttn{
+        background-color: #F9FAFB;
+        border-radius: 8px;
+        border: 0;
+        width: 37px; 
+        height: 37px;
+        
+    }
+    .sharebttn:hover{
+        background-color: #D0D5DD;
+       
+    }
+.rod{
+    justify-content: flex-start;
+    align-items:flex-start;
+    gap: 16px;
+    display: inline-flex
+}
+
+.rod-brd{
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: white;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px; 
+    overflow: hidden;
+    border: 1px #D0D5DD solid;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    display: flex
+}
+
+.rod-bttn{
+    width: 20px; 
+    height: 20px; 
+    position: relative
+}
+
+.rod-txt{
+    color: #384250;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    word-wrap: break-word
+}
+
+.block{
+    padding-left: 8px; 
+    padding-right: 8px; 
+    padding-top: 2px; 
+    padding-bottom: 2px;
+    mix-blend-mode: multiply;
+    /*background: #EFF8FF;*/
+    border-radius: 16px;
+    justify-content: flex-start;
+    align-items: center;
+    display: inline-flex
+}
+
+.tit-block{
+    align-self: stretch;
+    color: #111927;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    word-wrap: break-word
+}
+
+.column{
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 8px; 
+    display: inline-flex
+}
+
+.column2{
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 8px; 
+    display: flex
+}
+
+.sob-block{
+    align-self: stretch;
+    height: 88px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex
+}
+
+.txt{
+    text-align: center; 
+    /*color: #175CD3;*/
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    word-wrap: break-word
+}
+
+.cont{
+    align-self: stretch; 
+    height: 120px; 
+    padding: 16px; 
+    background: #F9FAFB; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 32px; 
+    display: flex
+}
+
+.tag-button-txt{
+    text-align: center; 
+    color: #384250; 
+    font-size: 12px; 
+    font-weight: 500; 
+    line-height: 18px; 
+    word-wrap: break-word;
+    
+}
+
+.tag-button{
+    padding-left: 8px; 
+    padding-right: 8px; 
+    padding-top: 2px; 
+    padding-bottom: 2px; 
+    mix-blend-mode: multiply; 
+    background: #F3F4F6; 
+    border-radius: 16px; 
+    justify-content: flex-start; 
+    align-items: center; 
+    display: flex;
+    outline: none;
+}

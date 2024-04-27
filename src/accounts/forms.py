@@ -28,7 +28,7 @@ class LoginForm(AuthenticationForm):
             HTML('<div class="m-4"></div>'),
             Field("password", placeholder=_("Enter Password")),
             HTML(f'<div class="mt-3 mb-4"><a href="{reset_pwd_url}" class="pt-1 mb-5">{reset_pwd_msg}</a></div>'),
-            StrictButton(_("Log in"), css_class="btn btn-submit-account", type="Submit")
+            StrictButton(_("Log in"), css_class="btn btn-submit-account", type="Submit", style="background-color: #A167A5;")
 
         )
 
@@ -90,7 +90,7 @@ class SignupForm(authtoolsforms.UserCreationForm):
             Field("password2", placeholder=_("Re-enter Password")),
             HTML('<div class="m-4"></div>'),
             Field("newsletter"),
-            StrictButton(_("Sign up"), css_class="btn btn-submit-account mt-3", type="Submit"),
+            StrictButton(_("Sign up"), css_class="btn btn-submit-account mt-3", type="Submit", style="background-color: #A167A5;")
         )
 
 

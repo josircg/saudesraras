@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block head %}
+{% block navbar-left %}
+{% include "_navbar_r2.html" %}
+{% endblock %}
+{% block splash %}
+{% if request.get_full_path == "/" %}
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
+<body class="d-flex flex-column min-vh-100"></body>
+{% endif %}
+{% endblock %}
+{% block content %}
