@@ -93,7 +93,7 @@ urlpatterns = [
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     # sitemaps
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps.sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-        
+
     # PATHS SAUDESRARAS
     path("about/", views.about, name="about"),
     path("noticias/", views.noticias, name="noticias"),

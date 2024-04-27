@@ -7,6 +7,7 @@ from datetime import datetime
 
 from invoke import UnexpectedExit
 
+HML_SERVER = 'webapp@3.89.127.179'
 
 def deploy(connection, path):
     with connection.cd(path):
@@ -19,24 +20,24 @@ def deploy(connection, path):
         print('Fim do processo...')
 
 
-@task
-def deploy_hml(context):
-    deploy(Connection('webapp@3.89.127.179'), '/var/webapp/raras/saudesraras')
-
-
-@task
-def deploy_producao(context):
-    connection = Connection('')
-    with connection.cd('/var/webapp/raras/saudesraras/src'):
+def deploy(connection, path):
+    with connection.cd(path):
         connection.run('git pull')
-        connection.run('./deploy.sh')
+        connection.run('../../bin/python3 manage.py migrate')
+        connection.run('../../bin/python3 manage.py compilemessages')
+        connection.run('../../bin/python3 manage.py collectstatic --noinput')
         connection.run('supervisorctl restart raras')
         print('Atualização efetuada com sucesso!')
 
 
 @task
+def deploy_hml(context):
+    deploy(Connection(HML_SERVER), '/var/webapp/raras/saudesraras/src')
+
+
+@task
 def upgrade_requirements_hml(context):
-    connection = Connection('webapp@3.89.127.179')
+    connection = Connection(HML_SERVER)
     with connection.cd('/var/webapp/raras/saudesraras/src'):
         connection.run('git pull')
         connection.run('../../bin/pip install django_select2 --upgrade')
@@ -46,7 +47,7 @@ def upgrade_requirements_hml(context):
 
 @task
 def connect_hml(context):
-    connection = Connection('webapp@3.89.127.179')
+    connection = Connection(HML_SERVER)
     with connection.cd('/var/webapp/'):
         result = connection.run('ls', hide=True)
     msg = "Ran {0.command!r} on {0.connection.host}, got stdout:\n{0.stdout}"
