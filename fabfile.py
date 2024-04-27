@@ -14,37 +14,30 @@ def deploy(connection, path):
         connection.run('../../bin/python3 manage.py migrate')
         connection.run('../../bin/python3 manage.py compilemessages')
         connection.run('../../bin/python3 manage.py collectstatic --noinput')
-        connection.run('supervisorctl restart civis')
+        connection.run('supervisorctl restart raras')
         print('Atualização efetuada com sucesso!')
-        print('Executando flake8...')
-        connection.run('../../bin/python3 -m flake8')
         print('Fim do processo...')
 
 
 @task
-def deploy_hml_old(context):
-    deploy(Connection('webapp@172.16.17.126', port=25000), '/var/webapp/civis/civis/src/')
-
-
-@task
 def deploy_hml(context):
-    deploy(Connection('webapp@172.16.17.126', port=25000), '/var/webapp/civis-django-3.2/civis/src')
+    deploy(Connection('webapp@3.89.127.179'), '/var/webapp/raras/saudesraras')
 
 
 @task
 def deploy_producao(context):
-    connection = Connection('webapp@172.16.16.126', port=25000)
-    with connection.cd('/var/webapp/civis/civis/src/'):
+    connection = Connection('')
+    with connection.cd('/var/webapp/raras/saudesraras/src'):
         connection.run('git pull')
         connection.run('./deploy.sh')
-        connection.run('supervisorctl restart civis')
+        connection.run('supervisorctl restart raras')
         print('Atualização efetuada com sucesso!')
 
 
 @task
 def upgrade_requirements_hml(context):
-    connection = Connection('webapp@172.16.17.126', port=25000)
-    with connection.cd('/var/webapp/civis/civis/src'):
+    connection = Connection('webapp@3.89.127.179')
+    with connection.cd('/var/webapp/raras/saudesraras/src'):
         connection.run('git pull')
         connection.run('../../bin/pip install django_select2 --upgrade')
         connection.run('../../bin/pip install -r ../requirements.txt')
@@ -53,7 +46,7 @@ def upgrade_requirements_hml(context):
 
 @task
 def connect_hml(context):
-    connection = Connection('webapp@172.16.17.126', port=25000)
+    connection = Connection('webapp@3.89.127.179')
     with connection.cd('/var/webapp/'):
         result = connection.run('ls', hide=True)
     msg = "Ran {0.command!r} on {0.connection.host}, got stdout:\n{0.stdout}"
@@ -100,7 +93,7 @@ def get_mediafiles(connection, path):
     with connection.cd(path):
         filename = os.path.join(path, 'media%s.zip' % datetime.strftime(datetime.now(), '%Y%m%d'))
         print(filename)
-        connection.run(f'zip -r {filename} civis/src/media')
+        connection.run(f'zip -r {filename} saudesraras/src/media')
         connection.get(filename)
 
 
@@ -110,33 +103,9 @@ def backup_local(context):
 
 
 @task
-def teste(context):
-    # with Connection('webapp@172.16.17.126', port=25000, connect_timeout=10) as conn:
-    #    result = file_exists(conn, '/home/webapp/.bashrc')
-    #    print(result)
-
-    with Connection('supervisor@192.168.0.6', connect_timeout=5) as conn:
-        home_dir = conn.run('echo $HOME', hide=True).stdout.strip()
-        print(home_dir)
-        if file_exists(conn, 'lacie2.key'):
-            print('ok')
-        else:
-            print('nok')
-
-
-@task
 def backup_hml(context):
-    connection = Connection('webapp@172.16.17.126', port=25000)
-    get_database(connection, banco='localhost/civis', path='/var/webapp/backup')
-    get_mediafiles(connection, '/var/webapp/civis')
-
-
-@task
-def backup_producao(context):
-    # get_database(Connection('webapp@172.16.16.126', port=25000),
-    #       banco='eucitizenscience_usr@localhost:5432/eucitizenscience_db',
-    #       path='/var/webapp/backup')
-    get_mediafiles(Connection('webapp@172.16.16.126', port=25000), '/var/webapp/civis')
+    connection = Connection('webapp@3.89.127.179')
+    get_database(connection, banco='localhost/raras', path='/var/webapp/raras')
 
 
 if __name__ == '__main__':
