@@ -164,7 +164,7 @@ def parceiro(request):
 
 
 def about(request):
-    return render(request, 'pages/%s/about.html' % get_language())
+    return render(request, 'pages/%s/ajuda.html' % get_language())
 
 
 def terms(request):
