@@ -204,6 +204,9 @@ INSTALLED_APPS = (
     'django_cleanup.apps.CleanupConfig',
 
     'utilities',
+    
+    #SAUDERARAS
+    'eucs_platform',
 )
 
 MIDDLEWARE = [
