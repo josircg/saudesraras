@@ -129,7 +129,7 @@ def all(request):
     return home(request)
 
 def noticias(request):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(status=1).order_by('-created_on')
     return render(request, 'pages/{}/noticias.html'.format(get_language()), {'posts': posts})
 
 def doencas(request):
