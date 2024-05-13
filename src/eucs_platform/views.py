@@ -13,7 +13,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django_countries import countries
 from django_countries.templatetags.countries import get_country
-from blog.models import Post
+from eucs_platform.models import Post
 from events.models import Event
 from machina.apps.forum.models import Forum
 from machina.apps.forum_conversation.models import Topic
