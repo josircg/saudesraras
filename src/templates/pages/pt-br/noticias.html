@@ -20,100 +20,20 @@
 
     <div class="container">
       <div class="row pb-5 d-flex justify-content-center">
+        {% for post in posts %}
         <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3" style="width: 18rem; border-radius: 35px; padding-bottom: 10rem;">
-          <img src="{% static '/site/img/img-teste.png'%}" class="card-img-top" alt="..." style="border-radius: 35px; width: 100%;" />
+          <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" style="border-radius: 35px; width: 100%;" />
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.excerpt }}</p>
+            <a href="{{ post.get_absolute_url }}" class="btn btn-primary">{% trans "Read more" %}</a>
           </div>
         </div>
-        <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3" style="width: 18rem; border-radius: 35px; padding-bottom: 10rem;">
-          <img src="{% static '/site/img/img-teste.png'%}" class="card-img-top" alt="..." style="border-radius: 35px; width: 100%;" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3" style="width: 18rem; border-radius: 35px; padding-bottom: 10rem;">
-          <img src="{% static '/site/img/img-teste.png'%}" class="card-img-top" alt="..." style="border-radius: 35px; width: 100%;" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3" style="width: 18rem; border-radius: 35px; padding-bottom: 10rem;">
-          <img src="{% static '/site/img/img-teste.png'%}" class="card-img-top" alt="..." style="border-radius: 35px; width: 100%;" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="row pb-5 d-flex justify-content-center">
-        <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3" style="width: 18rem; border-radius: 35px; padding-bottom: 10rem;">
-          <img src="{% static '/site/img/img-teste.png'%}" class="card-img-top" alt="..." style="border-radius: 35px; width: 100%;" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3" style="width: 18rem; border-radius: 35px; padding-bottom: 10rem;">
-          <img src="{% static '/site/img/img-teste.png'%}" class="card-img-top" alt="..." style="border-radius: 35px; width: 100%;" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3" style="width: 18rem; border-radius: 35px; padding-bottom: 10rem;">
-          <img src="{% static '/site/img/img-teste.png'%}" class="card-img-top" alt="..." style="border-radius: 35px; width: 100%;" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card col-lg-3 col-md-6 col-sm-12 shadow bg-body me-3 mt-3" style="width: 18rem; border-radius: 35px; padding-bottom: 10rem;">
-          <img src="{% static '/site/img/img-teste.png'%}" class="card-img-top" alt="..." style="border-radius: 35px; width: 100%;" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
 
-  </body>
+</body>
 {% endblock %}
 
 
