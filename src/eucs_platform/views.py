@@ -13,6 +13,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django_countries import countries
 from django_countries.templatetags.countries import get_country
+from blog.models import Post
 from events.models import Event
 from machina.apps.forum.models import Forum
 from machina.apps.forum_conversation.models import Topic
@@ -129,8 +130,8 @@ def all(request):
 
 
 def noticias(request):
-    return render(request, 'pages/%s/noticias.html' % get_language())
-
+    posts = Post.objects.filter(status=1).order_by('-created_on')
+    return render(request, 'pages/{}/noticias.html'.format(get_language()), {'posts': posts})
 
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())

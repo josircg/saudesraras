@@ -317,21 +317,22 @@ EMAIL_HOST_USER = env("FROM_EMAIL")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
-# EMAIL_BACKEND = 'django_ses.SESBackend'
 DEFAULT_FROM_EMAIL = env("FROM_EMAIL")
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
 # These are optional -- if they're set as environment variables they won't need to be set here as well
 # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 # Additionally, if you are not using the default AWS region of us-east-1,
 # you need to specify a region, like so:
+# EMAIL_BACKEND = 'django_ses.SESBackend'
 # AWS_SES_REGION_NAME = env('AWS_SES_REGION_NAME')
 # AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT')
 
-SITE_NAME = 'civis'
-EMAIL_RECIPIENT_LIST = ["civis@apps.ibict.br"]
-EMAIL_CONTACT_RECIPIENT_LIST = ["civis@apps.ibict.br"]
-EMAIL_CIVIS = ["civis@ibict.br"]
+SITE_NAME = 'Saúdes Raras'
+EMAIL_RECIPIENT_LIST = ["josircg@gmail.com"]
+EMAIL_CONTACT_RECIPIENT_LIST = ["josircg@gmail.com"]
+EMAIL_CIVIS = ["laccops.gco.ega@id.uff.br"]
 EMAIL_TAG = env("EMAIL_TAG")
 HOST = env("HOST")
 DOMAIN = env("DOMAIN")
