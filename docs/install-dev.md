@@ -1,23 +1,31 @@
-# CIVIS Installation for developers
+# Installation for developers
 
-## Requirements
+## Package Requirements (Debian 10 or Ubuntu 20.04 or superior)
 
-    sudo apt install python3-venv python3-pip libpq-dev gettext python-is-python3 libjpeg-dev zlib1g-dev
+    sudo apt install python3-venv python3-pip libpq-dev gettext python-is-python3 libjpeg-dev zlib1g-dev gdal-bin
 
 ## Configure postgres
 
-1) If you are going to install postgresql in the app server:
+1) To use postgresql
+
+In the app server:
 
    ```
    sudo apt install postgresql postgis postgresql-12-postgis-3
    ```
 
-Or for postgresql 14 or superior:
+For postgresql 14 or superior:
 
    ```
    sudo apt install postgresql postgis
    ```
-   
+
+On a external postgres Server:
+
+   ```
+   sudo apt install postgresql-client-14
+   ```
+
 
 2) Open psql console:
 ```
@@ -45,6 +53,7 @@ cp eucs_platform/settings/local.sample.reference.env eucs_platform/settings/loca
 
 ```
 python manage.py check
+python manage.py collectstatic
 ```
 
 3) Install flake8 pre-commit hook (optional) to check PEP8 before commit. 
