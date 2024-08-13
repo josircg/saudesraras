@@ -9,6 +9,7 @@ from invoke import UnexpectedExit
 
 HML_SERVER = 'webapp@3.89.127.179'
 
+
 def deploy(connection, path):
     with connection.cd(path):
         connection.run('git pull')
@@ -104,7 +105,7 @@ def backup_local(context):
 
 
 @task
-def backup_hml(context):
+def backup(context):
     connection = Connection('webapp@3.89.127.179')
     get_database(connection, banco='localhost/raras', path='/var/webapp/raras')
 

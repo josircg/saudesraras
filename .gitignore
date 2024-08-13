@@ -57,17 +57,13 @@ Thumbs.db
 Desktop.ini
 
 # Project settings
-./site/
-src/media/images/
 src/eucs_platform/settings/development.py
 src/eucs_platform/settings/local.env
 src/recreate_db.sh
+src/backup.sh
 
 #media
 src/media/*
-
-#Profile picutes
-src/media/profile_pics/*
 
 #out
 *.out
