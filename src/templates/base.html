@@ -20,7 +20,7 @@
         Saúdes Raras - Plataforma de Ciência Cidadã
         {% endblock title%}
     </title>
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="{% static 'bootstrap/fonts/Recoleta-Regular.ttf' %}" rel='stylesheet' type='text/css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{% static 'site/css/eu-citizen_science.css' %}?v=2" rel="stylesheet" />
@@ -45,50 +45,43 @@
 <body class="d-flex flex-column min-vh-100" style="height: 2rem;">
 <!-- navbar raras -->
 <!-- bootstrap  -->
-  
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-5 navbar-secondary" style="background-color: #A167A5; padding-bottom:1rem; padding-top: 1rem;">
-    <div class="container d-flex" style="padding-left: 5rem; padding-right: 5rem;">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top navbar-secondary" style="align-items: center; background-color:#114D7F; padding-bottom:1rem; padding-top: 1rem; justify-content: space-around; padding-right: 10%; padding-left: 10%; min-height: 120px; height: auto;">
+    <div class="container-fluid d-flex justify-content-between" style="padding-left: 0; padding-right: 0; margin: 0;">
+
         <!-- Logo e Texto -->
-        <a class="navbar-brand d-flex mb-2" href="/">
-            <img src="{% static 'site/img/logos/logo_raras.svg'%}" alt="Logo" class="d-inline-block align-top">
-            <div class="text-white ms-3 mt-3" style="align-self: center;">
-                <div class="lh-1" style="font-size: 1.7rem;">
-                    Saúdes
-                </div>
-                <div class="lh-1" style="font-size: 1.7rem;">
-                    Raras
-                </div>
-            </div>
-        </a>
+        <a href="/">
+            <img   src="{% static 'site/img/logos/Logo.svg'%}" alt="Logo" class="d-inline-block align-top" >
+        </a>    
+        
 
         <!-- Botão de alternância para menu responsivo -->
         <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="align-self: center;">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Links no Meio -->
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <!-- Menu Responsivo -->
+        <div class="collapse navbar-collapse" id="navbarResponsive" style="background-color: #114D7F;">
+            <!-- Links no Meio -->
             <div class="navbar-nav mx-auto mb-2">
-                <a href="/" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Home</a>
-                <a href="/about/" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Sobre</a>
-                <a href="/events" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Eventos</a>
-                <a href="/noticias/" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Notícias</a>
+                <a href="/" class="btn me-2 mt-2 nav-bttn sbld d-flex align-items-center justify-content-center">Início</a>
+                <a href="/about/" class="btn me-2 mt-2 nav-bttn sbld d-flex align-items-center justify-content-center">Sobre</a>
+                <a href="/events" class="btn me-2 mt-2 nav-bttn sbld d-flex align-items-center justify-content-center">Eventos</a>
+                <a href="/noticias/" class="btn me-2 mt-2 nav-bttn sbld d-flex align-items-center justify-content-center">Notícias</a>
             </div>
+
+            <!-- Dropdown de Idioma -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" href="#">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                         {{LANGUAGE_CODE}}
                     </a>
-
                     <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
                         <form action="/i18n/setlang/" method="post" style="display: inline;" name="languageForm">
                             {% csrf_token %}
                             <div style="display: inline;">
                                 <input id="language" name="language" type="hidden" value="en">
                                 {% for lang in TRANSLATED_LANGUAGES %}
-                                <li><a class="dropdown-item" style="cursor: pointer;"
-                                        onclick="javascript:document.getElementById('language').value='{{ lang.0 }}';languageForm.submit()">
+                                <li><a class="dropdown-item" style="cursor: pointer;" onclick="javascript:document.getElementById('language').value='{{ lang.0 }}';languageForm.submit()">
                                         {{ lang.1 }}
                                     </a>
                                 </li>
@@ -99,22 +92,20 @@
                 </li>
             </ul>
 
-    
-    <!-- Botões à Direita -->
-    {% if not user.is_authenticated %}
-    <div class="d-flex flex-nowrap ">
-        <a href="/signup/" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Criar Conta</a>
-        <a href="/login/" class="btn bg-white text-decoration-none " style="border-radius: 25px; font-weight: 600;      color: #A167A5; justify-content: center;">Entrar</a>
-    </div>
-    {% else %}
-        <a href="/new_organisation" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Nova Organização</a>
-    {% endif %}
-    
-</div>
-        </div>
-        
+            <!-- Botões à Direita -->
+            {% if not user.is_authenticated %}
+            <div class="d-flex flex-nowrap align-items-center justify-content-center">
                 
+                <a href="/login/" class="btn sng btn-outline-light me-2 d-flex align-items-center justify-content-center">Entrar</a>
+
+                
+                <a href="/signup/" class="btn sngup btn-outline-light me-2 d-flex align-items-center justify-content-center">Criar Conta</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
 </nav>
+
     <main class="flex-fill">
         {% include "_modalsubmit.html" %}
         {% block splash %}
