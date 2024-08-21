@@ -46,19 +46,19 @@
 <!-- navbar raras -->
 <!-- bootstrap  -->
   
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-5 navbar-secondary" style="background-color: #A167A5; padding-bottom:1rem; padding-top: 1rem;">
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-5 navbar-secondary" style="background-color: #114d7f; padding-bottom:1rem; padding-top: 1rem;">
     <div class="container d-flex" style="padding-left: 5rem; padding-right: 5rem;">
         <!-- Logo e Texto -->
         <a class="navbar-brand d-flex mb-2" href="/">
-            <img src="{% static 'site/img/logos/logo_raras.svg'%}" alt="Logo" class="d-inline-block align-top">
-            <div class="text-white ms-3 mt-3" style="align-self: center;">
+            <img src="{% static 'site/img/logos/logo_raras_new.svg'%}" alt="Logo" class="d-inline-block align-top">
+            <!-- <div class="text-white ms-3 mt-3" style="align-self: center;">
                 <div class="lh-1" style="font-size: 1.7rem;">
                     Saúdes
                 </div>
                 <div class="lh-1" style="font-size: 1.7rem;">
                     Raras
                 </div>
-            </div>
+            </div> -->
         </a>
 
         <!-- Botão de alternância para menu responsivo -->
@@ -69,10 +69,10 @@
         <!-- Links no Meio -->
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <div class="navbar-nav mx-auto mb-2">
-                <a href="/" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Home</a>
-                <a href="/about/" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Sobre</a>
-                <a href="/events" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Eventos</a>
-                <a href="/noticias/" class="btn bg-white me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Notícias</a>
+                <a href="/" class="btn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; color: #5cdcff;">Home</a>
+                <a href="/about/" class="btn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; color: #5cdcff;">Sobre</a>
+                <a href="/events" class="btn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; color: #5cdcff;">Eventos</a>
+                <a href="/noticias/" class="btn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; color: #5cdcff;">Notícias</a>
             </div>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
@@ -103,11 +103,12 @@
     <!-- Botões à Direita -->
     {% if not user.is_authenticated %}
     <div class="d-flex flex-nowrap ">
-        <a href="/signup/" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Criar Conta</a>
-        <a href="/login/" class="btn bg-white text-decoration-none " style="border-radius: 25px; font-weight: 600;      color: #A167A5; justify-content: center;">Entrar</a>
+        <a href="/login/" class="btn me-2 bg-white text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #114d7f; justify-content: center;">Entrar</a>
+        <a href="/signup/" class="btn  bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #114d7f;">Criar Conta</a>
     </div>
+    
     {% else %}
-        <a href="/new_organisation" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #A167A5;">Nova Organização</a>
+        <a href="/new_organisation" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #114d7f;">Nova Organização</a>
     {% endif %}
     
 </div>
