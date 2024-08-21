@@ -9,40 +9,31 @@
     <div class="container  py-3 text-light">
       <!-- Grid row -->
       <div class="row align-items-center" style="justify-content: space-between;" >
-        <img src="{% static 'site/img/logos/Logo.svg'%}" alt="Logo" class="d-inline-block align-top" style="width: 367px; height: 126px; margin-right: 5%;">
-        <!-- Grid column -->
-        <!-- Grid column -->
-        <!-- Grid column -->
-         <div class="row w-auto">
-        <div class="col-md-3 col-lg-3 col-xl-3 " style="width: 200px;">
-          <!-- Links -->
-          <h6 class="title-sec-footer">{% trans "Platform" %}</h6>
-          <a href="/" class="item-footer">{% trans "Início" %}</a>
-          <a href="/about" class="item-footer">{% trans "About" %}</a>
-          <a href="/news" class="item-footer">{% trans "Noticias" %}</a>
-          <a href="/contact" class="item-footer">{% trans "Contact" %}</a>
-          <a href="/faq" class="item-footer">{% trans "FAQ" %}</a>
-
-        </div>
-        <!-- Grid column -->
-
-        <div class="col-md-3 col-lg-3 col-xl-3 " style="width: 200px;">
-          <!-- Links -->
-          <h6 class="title-sec-footer">{% trans "Policies" %}</h6>
-          <a href="/terms" class="item-footer">{% trans "Terms of Use" %}</a>
-          <a href="/privacy" class="item-footer">{% trans "Privacy" %}</a>
-          <a href="/guide" class="item-footer" target="_blank">{% trans "User Guide" %}</a>
-          <a href="https://git.redemoara.ibict.br/ibict/cgti/civis" class="item-footer">{% trans "Source Code" %}</a>
-        </div>
-      </div>
-        <!-- Grid column -->
+        <img src="{% static 'site/img/logos/logo_raras_footer.svg'%}" alt="Logo" class="d-inline-block align-top mb-3 mb-md-0" style="width: 367px; height: 126px; margin-right: 5%;">
         
         <!-- Grid column -->
+        <div class="row w-auto">
+          <div class="col-md-3 col-lg-3 col-xl-3 mb-3 mb-md-0" style="width: 200px;">
+            <!-- Links -->
+            <h6 class="title-sec-footer">{% trans "Platform" %}</h6>
+            <a href="/" class="item-footer">{% trans "Início" %}</a>
+            <a href="/about" class="item-footer">{% trans "About" %}</a>
+            <a href="/news" class="item-footer">{% trans "Noticias" %}</a>
+            <a href="/contact" class="item-footer">{% trans "Contact" %}</a>
+            <a href="/faq" class="item-footer">{% trans "FAQ" %}</a>
+          </div>
 
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3" style="width: 200px;">
+            <!-- Links -->
+            <h6 class="title-sec-footer">{% trans "Policies" %}</h6>
+            <a href="/terms" class="item-footer">{% trans "Terms of Use" %}</a>
+            <a href="/privacy" class="item-footer">{% trans "Privacy" %}</a>
+            <a href="/guide" class="item-footer" target="_blank">{% trans "User Guide" %}</a>
+            <a href="https://git.redemoara.ibict.br/ibict/cgti/civis" class="item-footer">{% trans "Source Code" %}</a>
+          </div>
+        </div>
       </div>
-
-      <!-- Grid row -->
-
     </div>
   </div>
   <!-- Footer Links -->
@@ -51,14 +42,14 @@
   <div class="footer-copyright bck-azul-escuro" >
     <div class="container">
       <div class="bottom">
-        <div class="row align-items-center" style="justify-content: space-between; " >
-          <div class="col-12 w-auto">
+        <div class="row align-items-center text-center text-md-left" style="justify-content: space-between;">
+          <div class="col-12 col-md-auto mb-2 mb-md-0">
             <span class="title-sec-footer azul">
               <a href="https://creativecommons.org/licenses/by/4.0/deed.pt_BR" target="_blank">{% trans "© Lorem Ipsum 2023 - Todos os direitos reservados." %}</a>
             </span>
           </div>
-          <div class="col-12 w-auto ">
-            <span class="title-sec-footer azul" style="right: 265px; position: relative;">
+          <div class="col-12 col-md-auto">
+            <span class="title-sec-footer azul">
               <a href="..." target="_blank">{% trans "Desenvolvido por:" %}</a>
             </span>
           </div>
