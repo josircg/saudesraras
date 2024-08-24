@@ -167,6 +167,12 @@
     font-weight: 400; 
     line-height: 53px;
 }
+.text-about{
+    font-size: 30px;
+    font-family: Recoleta-SemiBold !important;
+    font-weight: 600;
+    color: #114D7F;
+}
 
 .botinfo{
     border-radius: 10px;
@@ -266,13 +272,13 @@
     }
     
     .bck-azul-escuro{
-        background-color: #114D7F;
+        background-color: #114D7F !important;
     }
     .bck-azul-claro{
-        background-color: #5CDCFF; 
+        background-color: #5CDCFF !important; 
     }
     .bck-azul{
-        background-color: #3D99F4;
+        background-color: #3D99F4 !important;
     }
 
     .bttn{
