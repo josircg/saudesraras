@@ -2,10 +2,13 @@
 {% load i18n %}
 
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}{{ block.super }} :: Sign Up{% endblock %}
 
 {% block list_of_items %}
+
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
 <div class="container d-flex mt-2 mb-5">
     <div class="container d-flex justify-content-center mt-5">
         <div class="col-lg-4 col-12 mt-0">
