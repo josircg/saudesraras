@@ -21,15 +21,27 @@ class LoginForm(AuthenticationForm):
         self.fields["username"].widget.input_type = "email"  # ugly hack
         self.fields["username"].label = ""
         self.fields["password"].label = ""
+
         reset_pwd_msg = _('Forgot password?')
         reset_pwd_url = reverse("accounts:password-reset")
+
+        # Adicionando bordas arredondadas mais pronunciadas
+        custom_field_class = "form-control"
+        custom_field_style = "border-color: #114D7F; border-radius: 25px; border-width: 2px;"
+
         self.helper.layout = Layout(
-            Field("username", label="", placeholder=_("Enter Email"), autofocus=""),
+            Field("username", label="", placeholder=_("Enter Email"), autofocus="",
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
-            Field("password", placeholder=_("Enter Password")),
-            HTML(f'<div class="mt-3 mb-4"><a href="{reset_pwd_url}" class="pt-1 mb-5">{reset_pwd_msg}</a></div>'),
-            StrictButton(_("Log in"), css_class="btn btn-submit-account", type="Submit",
-                         style="background-color: #A167A5;")
+            Field("password", placeholder=_("Enter Password"),
+                  css_class=custom_field_class, style=custom_field_style),
+            HTML(f'<div class="mt-3 mb-4"><a href="{reset_pwd_url}" class="pt-1 mb-5 text-light">{reset_pwd_msg}</a></div>'),
+            StrictButton(
+                _("Log in"),
+                css_class="btn btn-submit-account",
+                type="Submit",
+                style="background-color: #114D7F; color: #FFFFFF;"
+            )
         )
 
     def clean(self):
@@ -90,7 +102,7 @@ class SignupForm(authtoolsforms.UserCreationForm):
             Field("password2", placeholder=_("Re-enter Password")),
             HTML('<div class="m-4"></div>'),
             Field("newsletter"),
-            StrictButton(_("Sign up"), css_class="btn btn-submit-account mt-3", type="Submit",
+            StrictButton(_("Sign up"), css_class="btn btn-submit-account mt-3 text-light", type="Submit",
                          style="background-color: #A167A5;")
         )
 
