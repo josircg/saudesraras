@@ -38,6 +38,12 @@ def home(request):
     items_per_page = 4
     page = request.GET.get('page')
 
+    # Blog
+    posts = Post.objects.all().order_by('id')
+    paginatorposts = Paginator(posts, items_per_page)
+    posts = paginatorposts.get_page(page)
+    counterposts = paginatorposts.count
+    
     # Projects
     projects = Project.objects.filter(approved=True, hidden=False).order_by('-dateCreated')
     paginatorprojects = Paginator(projects, items_per_page)
@@ -115,6 +121,7 @@ def home(request):
         'organisations': organisations,
         'counterorganisations': counterorganisations,
         'platforms': platforms,
+        'posts': posts,
         'events': events,
         'counterPlatforms': counter_platforms,
         'counterUsers': counter_users,
