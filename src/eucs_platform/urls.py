@@ -101,7 +101,7 @@ urlpatterns = [
     path("diagnostico/", views.diagnostico, name="diagnostico"),
     path("doencas/", views.doencas, name="doencas"),
     path("justica/", views.justica, name="justica"),
-    path("eventos/", views.eventos, name="eventos"),
+    path("eventos/", views.events, name="events"),
     path("parceiro/", views.parceiro, name="parceiro"),
 ]
 

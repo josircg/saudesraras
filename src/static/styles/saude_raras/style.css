@@ -49,6 +49,8 @@
         max-height: 66px;
 }
 
+
+
 }
 
     body {
@@ -79,10 +81,7 @@
         background-color: #F2F6F9;
         
     }
-    .a{
-        text-decoration: none !important;
-    }
-    
+ 
     .sngup{
         width: 133px; 
         height: 47px;    
@@ -158,14 +157,30 @@
     font-weight: 400; 
 }
 
+.text-home2{
+    font-size: min(3vw, 20px);
+}
 .text-home {
     
     border: none;
-font-size: 45px;
+    font-size: clamp(21px, 6vw, 45px);
+    font-weight: 400; 
+    line-height: 53px;
+}
+.text-about{
+    font-size: 30px;
+    font-family: Recoleta-SemiBold !important;
+    font-weight: 600;
+    color: #114D7F;
+}
 
-font-weight: 400; 
-line-height: 53px;
-text-align: center;
+.botinfo{
+    border-radius: 10px;
+    width:174px; 
+    height: 250px; 
+    background-color: white; 
+    font-size: 20px; 
+    text-decoration: none;
 }
     
     .text-publicidade {
@@ -257,13 +272,13 @@ text-align: center;
     }
     
     .bck-azul-escuro{
-        background-color: #114D7F;
+        background-color: #114D7F !important;
     }
     .bck-azul-claro{
-        background-color: #5CDCFF; 
+        background-color: #5CDCFF !important; 
     }
     .bck-azul{
-        background-color: #3D99F4;
+        background-color: #3D99F4 !important;
     }
 
     .bttn{
@@ -279,19 +294,31 @@ text-align: center;
         color: white;
     }
 
-
     .bttn2{
         color: #3D99F4; 
         border: 3px solid #3D99F4; 
+        border-radius: clamp(8px, 1vw, 10px);
+        width: 12vw; 
+        height: 16vw; 
+        max-height: 230px;
+        max-width: 173px;
+        min-width: 90px; 
+        min-height: 120px;
     }
     .bttn2:hover{
         color: #5CDCFF; 
         border: 3px solid #5CDCFF; 
+        text-decoration: none;
+        ;
     }
 
     .bttn3{
         color: white; 
-        background-color:  #3D99F4; 
+        background-color:  #3D99F4;
+        width: 100%;
+        max-width: 650px;
+        border-radius: 30px;
+        height: auto;
     }
     .bttn3:hover{
         background-color: #5CDCFF; 
@@ -496,7 +523,7 @@ text-align: center;
     
     input::placeholder {
         color: #ffffff;
-        font-size: 20px;
+        font-size: min(3vw,20px);
       }
     
     

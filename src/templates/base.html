@@ -45,14 +45,21 @@
 <body class="d-flex flex-column min-vh-100" style="height: 2rem;">
 <!-- navbar raras -->
 <!-- bootstrap  -->
-<nav class="navbar navbar-expand-lg navbar-light sticky-top navbar-secondary" style="align-items: center; background-color:#114D7F; padding-bottom:1rem; padding-top: 1rem; justify-content: space-around; padding-right: 10%; padding-left: 10%; min-height: 120px; height: auto;">
-    <div class="container-fluid d-flex justify-content-between" style="padding-left: 0; padding-right: 0; margin: 0;">
-
+  
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-5 navbar-secondary" style="background-color: #114d7f; padding-bottom:1rem; padding-top: 1rem;">
+    <div class="container d-flex" style="padding-left: 5rem; padding-right: 5rem;">
         <!-- Logo e Texto -->
-        <a href="/">
-            <img   src="{% static 'site/img/logos/Logo.svg'%}" alt="Logo" class="d-inline-block align-top" >
-        </a>    
-        
+        <a class="navbar-brand d-flex mb-2" href="/">
+            <img src="{% static 'site/img/logos/logo_raras_new.svg'%}" alt="Logo" class="d-inline-block align-top">
+            <!-- <div class="text-white ms-3 mt-3" style="align-self: center;">
+                <div class="lh-1" style="font-size: 1.7rem;">
+                    Saúdes
+                </div>
+                <div class="lh-1" style="font-size: 1.7rem;">
+                    Raras
+                </div>
+            </div> -->
+        </a>
 
         <!-- Botão de alternância para menu responsivo -->
         <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="align-self: center;">
@@ -63,10 +70,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive" style="background-color: #114D7F;">
             <!-- Links no Meio -->
             <div class="navbar-nav mx-auto mb-2">
-                <a href="/" class="btn me-2 mt-2 nav-bttn sbld d-flex align-items-center justify-content-center">Início</a>
-                <a href="/about/" class="btn me-2 mt-2 nav-bttn sbld d-flex align-items-center justify-content-center">Sobre</a>
-                <a href="/events" class="btn me-2 mt-2 nav-bttn sbld d-flex align-items-center justify-content-center">Eventos</a>
-                <a href="/noticias/" class="btn me-2 mt-2 nav-bttn sbld d-flex align-items-center justify-content-center">Notícias</a>
+                <a href="/" class="btn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; color: #5cdcff;">Home</a>
+                <a href="/about/" class="btn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; color: #5cdcff;">Sobre</a>
+                <a href="/events" class="btn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; color: #5cdcff;">Eventos</a>
+                <a href="/noticias/" class="btn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; color: #5cdcff;">Notícias</a>
             </div>
 
             <!-- Dropdown de Idioma -->
@@ -92,18 +99,51 @@
                 </li>
             </ul>
 
-            <!-- Botões à Direita -->
-            {% if not user.is_authenticated %}
-            <div class="d-flex flex-nowrap align-items-center justify-content-center">
-                
-                <a href="/login/" class="btn sng btn-outline-light me-2 d-flex align-items-center justify-content-center">Entrar</a>
-
-                
-                <a href="/signup/" class="btn sngup btn-outline-light me-2 d-flex align-items-center justify-content-center">Criar Conta</a>
-            </div>
-            {% endif %}
-        </div>
+    
+    <!-- Botões à Direita -->
+    {% if not user.is_authenticated %}
+    <div class="d-flex flex-nowrap ">
+        <a href="/login/" class="btn me-2"
+        style="
+            background-color: #114D7F;  
+            color: #FFFFFF;             
+            border: 2px solid #FFFFFF;  
+            border-radius: 25px;        
+            font-weight: 600;           
+            text-decoration: none;      
+            display: flex;              
+            align-items: center;        
+            justify-content: center;   
+            padding: 10px 20px;         
+        ">
+        Entrar
+     </a>
+    
+     <a href="/signup/" class="btn me-2"
+       style="
+           background-color: #FFFFFF;  
+           color: #114D7F;             
+           border: 2px solid #114D7F;  
+           border-radius: 25px;        
+           font-weight: 600;           
+           text-decoration: none;      
+           display: flex;              
+           align-items: center;        
+           justify-content: center;   
+           padding: 10px 20px;         
+       ">
+       Criar Conta
+    </a>
     </div>
+    
+    {% else %}
+        <a href="/new_organisation" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #114d7f;">Nova Organização</a>
+    {% endif %}
+    
+</div>
+        </div>
+        
+                
 </nav>
 
     <main class="flex-fill">
