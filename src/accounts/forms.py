@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 
 User = get_user_model()
 
-
 class LoginForm(AuthenticationForm):
     remember_me = forms.BooleanField(required=False, initial=False)
 
@@ -36,7 +35,7 @@ class LoginForm(AuthenticationForm):
                 _("Log in"),
                 css_class="btn btn-submit-account",
                 type="Submit",
-                style="background-color: #114D7F; color: #FFFFFF;"
+                style="background-color: #114D7F; color: #FFFFFF; border-radius: 25px;"
             )
         )
 
@@ -74,33 +73,44 @@ class LoginForm(AuthenticationForm):
 
         return self.cleaned_data
 
-
 class SignupForm(authtoolsforms.UserCreationForm):
     newsletter = forms.BooleanField(label=_('I want to receive the newsletter from Civis'), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.fields["email"].widget.input_type = "email"  # ugly hack
+
+        custom_field_class = "form-control"
+        custom_field_style = "border-color: #114D7F; border-radius: 25px; border-width: 2px;"
+
+        self.fields["email"].widget.input_type = "email"
         self.fields["email"].label = ""
         self.fields["name"].label = ""
         self.fields["password1"].label = ""
         self.fields["password2"].label = ""
-        #       self.fields["captcha"] = ReCaptchaField()
-        #       self.fields["captcha"].label = ""
+
         self.helper.layout = Layout(
-            Field("email", placeholder=_("Enter Email"), autofocus=""),
+            Field("email", placeholder=_("Enter Email"), autofocus="",
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
-            Field("name", placeholder=_("Enter your first name and surname")),
+            Field("name", placeholder=_("Enter your first name and surname"),
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
-            Field("password1", placeholder=_("Enter Password")),
+            Field("password1", placeholder=_("Enter Password"),
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
-            Field("password2", placeholder=_("Re-enter Password")),
+            Field("password2", placeholder=_("Re-enter Password"),
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
             Field("newsletter"),
-            StrictButton(_("Sign up"), css_class="btn btn-submit-account mt-3 text-light", type="Submit",
-                         style="background-color: #A167A5;")
+            StrictButton(
+                _("Sign up"),
+                css_class="btn btn-submit-account mt-3",
+                type="Submit",
+                style="background-color: #114D7F; color: #FFFFFF; border-radius: 25px;"
+            )
         )
+
 
 
 class PasswordChangeForm(authforms.PasswordChangeForm):
