@@ -21,14 +21,10 @@ class LoginForm(AuthenticationForm):
         self.fields["username"].widget.input_type = "email"  # ugly hack
         self.fields["username"].label = ""
         self.fields["password"].label = ""
-
         reset_pwd_msg = _('Forgot password?')
         reset_pwd_url = reverse("accounts:password-reset")
-
-        # Adicionando bordas arredondadas mais pronunciadas
         custom_field_class = "form-control"
         custom_field_style = "border-color: #114D7F; border-radius: 25px; border-width: 2px;"
-
         self.helper.layout = Layout(
             Field("username", label="", placeholder=_("Enter Email"), autofocus="",
                   css_class=custom_field_class, style=custom_field_style),
