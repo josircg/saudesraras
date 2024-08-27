@@ -11,17 +11,17 @@
                     <span class="card-title">{{event.title | truncatewords_html:10 }}</span>
                 </h4>        
                 <br>    
-                <span class="text-pink6">
+                <span>
                     {% if event.end_date %}{% trans "From "%}{% endif %}
                     {{event.start_date | date:" d M"}}
                     {% if event.end_date %}{% trans " until " %}{{event.end_date | date:" d M, Y"}}{%endif%}
                 </span> 
                 <br>
-                <i>{% if event.place %}{{event.place}} {%endif%}</i>
+                <i class="text-blue3">{% if event.place %}{{event.place}} {%endif%}</i>
                 
             </div>            
             <div class="mt-4">
-                <a href="{{event.url}}" class="btn btn-pink6" target="_blank">{% trans "Learn more" %}</a>
+                <a href="{{event.url}}" class="btn btn-blue3" target="_blank">{% trans "Learn more" %}</a>
             </div>
         </div><!-- End of card-body -->
     </div><!-- end of card -->

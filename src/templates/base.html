@@ -103,8 +103,37 @@
     <!-- Botões à Direita -->
     {% if not user.is_authenticated %}
     <div class="d-flex flex-nowrap ">
-        <a href="/login/" class="btn me-2 bg-white text-decoration-none " style="border-radius: 25px; font-weight: 600; color: #114d7f; justify-content: center;">Entrar</a>
-        <a href="/signup/" class="btn  bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #114d7f;">Criar Conta</a>
+        <a href="/login/" class="btn me-2"
+        style="
+            background-color: #114D7F;  
+            color: #FFFFFF;             
+            border: 2px solid #FFFFFF;  
+            border-radius: 25px;        
+            font-weight: 600;           
+            text-decoration: none;      
+            display: flex;              
+            align-items: center;        
+            justify-content: center;   
+            padding: 10px 20px;         
+        ">
+        Entrar
+     </a>
+    
+     <a href="/signup/" class="btn me-2"
+       style="
+           background-color: #FFFFFF;  
+           color: #114D7F;             
+           border: 2px solid #114D7F;  
+           border-radius: 25px;        
+           font-weight: 600;           
+           text-decoration: none;      
+           display: flex;              
+           align-items: center;        
+           justify-content: center;   
+           padding: 10px 20px;         
+       ">
+       Criar Conta
+    </a>
     </div>
     
     {% else %}

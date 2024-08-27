@@ -204,9 +204,6 @@ INSTALLED_APPS = (
     'django_cleanup.apps.CleanupConfig',
 
     'utilities',
-    
-    #SAUDERARAS
-    'eucs_platform',
 )
 
 MIDDLEWARE = [
@@ -346,8 +343,6 @@ VISAO_PASSWORD = env('VISAO_PASSWORD')
 VISAO_GROUP = env('VISAO_GROUP')
 VISAO_LAYER = env('VISAO_LAYER')
 VISAO_URL = env('VISAO_URL')
-VISAO_LAYOUT = env('VISAO_LAYOUT')
-VISAO_CATEGORY = env('VISAO_CATEGORY')
 
 # Debug Options
 DEBUG = env('DEBUG')
