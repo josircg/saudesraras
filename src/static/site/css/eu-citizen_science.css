@@ -510,9 +510,7 @@ a {
     transition: 0.3s;
 }
 
-.card:hover {
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important
-}
+
 
 .link-menu-submit {
     color: var(--pink6);
@@ -618,9 +616,6 @@ a {
     border-radius: 16px 16px 0 0 !important;
 }
 
-.card {
-    border: 1px solid #EAECF0 !important;
-}
 
 .card.rounded {
     border-radius: 16px !important;
