@@ -53,6 +53,11 @@
 
 }
 
+
+.ratio-16x7 {
+    aspect-ratio: 20 / 7;
+  }
+
     body {
     font-family: "Recoleta", sans-serif;
     }
@@ -332,6 +337,17 @@
     .bttn4:hover{
         background-color: #5CDCFF;  
         color:  #3D99F4; 
+    }
+    .bttn5{
+        color: #3D99F4; 
+        height: 50px;
+        font-family: Recoleta-SemiBold !important;
+        font-weight: 600;        
+    }
+    .bttn5:hover{
+        color: #5CDCFF; 
+        
+        text-decoration: none;
     }
 
     .imgcontent{
