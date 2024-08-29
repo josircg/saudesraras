@@ -89,17 +89,17 @@
                         {{ form.longitude|as_crispy_field }}
                         <div class="row mt-5 mb-5">
                             <div class="col-11">
-                                <button type="submit" class="btn btn-pink6"><i class="fas fa-share-square"></i> {% trans "Save" %}</button>
+                                <button type="submit" class="btn btn-blue3"><i class="fas fa-share-square"></i> {% trans "Save" %}</button>
                             </div>
                         </div>
                         <div class="row mt-5 mb-5">
                             <div class="col-11">
                                 {% if user.is_staff and organisation.id and organisation.approved == None %}
                                     <a href="{% url 'approve_organisation' organisation.id 1 %}"
-                                       class="btn btn-pink6"><i class="fas fa-thumbs-up"></i> {% trans "Approve" %}
+                                       class="btn btn-blue3"><i class="fas fa-thumbs-up"></i> {% trans "Approve" %}
                                     </a>
                                     <a href="{% url 'approve_organisation' organisation.id 0 %}"
-                                       class="btn btn-pink6"><i class="fas fa-thumbs-down"></i> {% trans "Do not" %} {% trans "Approve" %}
+                                       class="btn btn-blue3"><i class="fas fa-thumbs-down"></i> {% trans "Do not" %} {% trans "Approve" %}
                                     </a>
                                 {% endif %}
                             </div>

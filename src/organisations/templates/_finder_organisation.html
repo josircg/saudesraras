@@ -56,12 +56,12 @@
         <div class="row">
             <div class="col-12 mb-4">
                 {% if filters.keywords %}
-                <a href="#" class="badge rounded-pill bg-pink6 mt-4 search-filter">
+                <a href="#" class="badge rounded-pill bg-blue3 mt-4 search-filter">
                     <i class="fas fa-times"></i> {% trans "keyword:" %} {{filters.keywords}}
                 </a>
                 {% endif %}
                 {% if filters.country %}
-                <a href="#" class="badge rounded-pill bg-pink5 mt-4" id="pill-country">
+                <a href="#" class="badge rounded-pill bg-blue1 mt-4" id="pill-country">
                     <i class="fas fa-times"></i>
                     {% for country in countries %}
                     {% if country.code == filters.country %}
@@ -71,13 +71,13 @@
                 </a>
                 {% endif %}
                 {% if filters.orgTypes %}
-                <a href="#" class="badge rounded-pill bg-pink4 mt-4" id="pill-orgTypes">
+                <a href="#" class="badge rounded-pill bg-blue2 mt-4" id="pill-orgTypes">
                     <i class="fas fa-times"></i>
                     {% trans "type:" %} {{filters.orgTypes}}
                 </a>
                 {% endif %}
                 {% if request.get_full_path != "/organisations" %}
-                <a class="badge rounded-pill bg-pink8 text-decoration-none mt-4" href="/organisations">
+                <a class="badge rounded-pill bg-blue3 text-decoration-none mt-4" href="/organisations">
                     <i class="fas fa-times"></i> {% trans "Clear current search query and filters" %}
                 </a>
                 {% endif %}
