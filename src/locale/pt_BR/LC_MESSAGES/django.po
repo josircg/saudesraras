@@ -148,18 +148,30 @@ msgstr ""
 msgid "Already signed up?"
 msgstr "Já possui conta?"
 
-msgid ""
-"By clicking on Register, you accept our <a href='/terms'>Terms of Use</a> "
+#, fuzzy
+#| msgid ""
+#| "By clicking on Register, you accept our <a href='/terms'>Terms of Use</a> "
+msgid "By clicking on Register, you accept our "
 msgstr ""
 "Ao clicar em Cadastre-se, você aceita nossos <a href='/terms'>Termos de uso</"
 "a> "
 
-msgid ""
-"and <a href='/privacy'>Privacy Policy</a>, as well as our use of <a href='/"
-"privacy#cookies'>cookies</a>."
+msgid "Terms of Use"
+msgstr "Termos de Uso"
+
+msgid "and "
 msgstr ""
-"e <a href='/privacy'>Política de Privacidade</a>, bem como nossos uso de <a "
-"href='/privacy#cookies'>cookies</a>."
+
+#, fuzzy
+#| msgid "Privacy"
+msgid "Privacy Policy"
+msgstr "Privacidade"
+
+msgid "as well as our use of "
+msgstr ""
+
+msgid "cookies"
+msgstr ""
 
 msgid "Welcome!"
 msgstr "Boas vindas!"
@@ -199,11 +211,17 @@ msgstr "Salvar e publicar"
 msgid "Save as draft"
 msgstr "Salvar como em edição"
 
-msgid "Want to send a text or suggestions for the blog?"
-msgstr "Quer enviar um texto ou sugestões para o blog?"
+msgid "News"
+msgstr "Notícias"
+
+msgid "Want to send a news to our site?"
+msgstr "Quer enviar uma notícia para o nosso site?"
 
 msgid "Contact us"
 msgstr "Entre em contato"
+
+msgid "Access page"
+msgstr "Acessar página"
 
 msgid "Not moderated"
 msgstr "Não moderado"
@@ -330,12 +348,16 @@ msgstr "Importar CSV"
 msgid "Contact"
 msgstr "Contato"
 
+#, fuzzy
+#| msgid ""
+#| "You can reach out by this form, or through the email: <a href='mailto:"
+#| "laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 msgid ""
 "You can reach out by this form, or through the email: <a href='mailto:"
-"civis@ibict.br'>civis@ibict.br</a>"
+"laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 msgstr ""
 "Entre em contato pelo formulário ou envie um e-mail para: <a href='mailto:"
-"civis@ibict.br'>civis@ibict.br</a>"
+"laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 
 msgid "Refresh captcha"
 msgstr "Atualizar captcha"
@@ -636,14 +658,16 @@ msgstr "Aprovar"
 msgid "Do not"
 msgstr "Não"
 
-msgid "Ongoing <span class='text-pink6'>events</span>"
-msgstr "Eventos <span class='text-pink6'>atuais</span>"
+#, fuzzy
+#| msgid "Ongoing events"
+msgid "Ongoing events"
+msgstr "Eventos atuais"
 
-msgid "Upcoming <span class='text-pink6'>Events</span>"
-msgstr "Eventos <span class='text-pink6'>futuros</span>"
+msgid "Upcoming Events"
+msgstr "Eventos futuros"
 
-msgid "Past <span class='text-pink6'>events</span>"
-msgstr "Eventos <span class='text-pink6'>passados</span>"
+msgid "Past events"
+msgstr "Eventos passados"
 
 msgid "From "
 msgstr "De "
@@ -2150,20 +2174,20 @@ msgstr "Cortar a fotografia"
 msgid "Crop and upload"
 msgstr "Cortar e submeter"
 
+msgid "Início"
+msgstr ""
+
 msgid "About"
 msgstr "Sobre"
+
+msgid "Noticias"
+msgstr ""
 
 msgid "FAQ"
 msgstr "Perguntas frequentes"
 
-msgid "Newsletter"
-msgstr ""
-
 msgid "Policies"
 msgstr "Políticas"
-
-msgid "Terms of Use"
-msgstr "Termos de Uso"
 
 msgid "Privacy"
 msgstr "Privacidade"
@@ -2171,17 +2195,19 @@ msgstr "Privacidade"
 msgid "Source Code"
 msgstr "Código Fonte"
 
-msgid "Follow us"
-msgstr "Seguir"
-
-msgid "Partnerships"
-msgstr "Parcerias"
-
 msgid "© Lorem Ipsum 2023 - Todos os direitos reservados."
 msgstr ""
 
+msgid "Desenvolvido por:"
+msgstr ""
+
+#, fuzzy
+#| msgid "See all projects"
 msgid "See all events"
-msgstr "Ver todos os eventos"
+msgstr "Ver todas as iniciativas"
+
+msgid "See more news here +"
+msgstr "Veja mais notícias aqui +"
 
 msgid "See all platforms"
 msgstr "Ver todas as plataformas"
@@ -3059,15 +3085,25 @@ msgid "Doencas"
 msgstr ""
 
 #, fuzzy
-#| msgid "Events"
-msgid "Eventos"
-msgstr "Eventos"
+#| msgid "Submitted <span class='text-pink6'>events</span>"
+msgid "Ongoing <span class='text-pink6'>events</span>"
+msgstr "<span class='text-pink6'> Eventos</span> submetidos"
+
+#, fuzzy
+#| msgid "Submitted <span class='text-pink6'>events</span>"
+msgid "Upcoming <span class='text-pink6'>Events</span>"
+msgstr "<span class='text-pink6'> Eventos</span> submetidos"
+
+#, fuzzy
+#| msgid "Submitted <span class='text-pink6'>events</span>"
+msgid "Past <span class='text-pink6'>events</span>"
+msgstr "<span class='text-pink6'> Eventos</span> submetidos"
 
 msgid "Medicos"
 msgstr ""
 
-msgid "Noticias"
-msgstr ""
+msgid "Read more"
+msgstr "Leia mais"
 
 msgid "Parceiro"
 msgstr ""
@@ -3087,9 +3123,6 @@ msgstr "AINDA NÃO MODERADO"
 
 msgid "MODERATED"
 msgstr "MODERADO"
-
-msgid "Read more"
-msgstr "Leia mais"
 
 msgid "Thanks for spending some quality time with the platform today."
 msgstr "Agradecemos por dedicar seu tempo à plataforma hoje"
@@ -3198,6 +3231,27 @@ msgstr "Texto Traduzido"
 
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid ""
+#~ "and <a href='/privacy'>Privacy Policy</a>, as well as our use of <a "
+#~ "href='/privacy#cookies'>cookies</a>."
+#~ msgstr ""
+#~ "e <a href='/privacy'>Política de Privacidade</a>, bem como nossos uso de "
+#~ "<a href='/privacy#cookies'>cookies</a>."
+
+#~ msgid "See all events here +"
+#~ msgstr "Veja todos eventos aqui +"
+
+#~ msgid "Follow us"
+#~ msgstr "Seguir"
+
+#~ msgid "Partnerships"
+#~ msgstr "Parcerias"
+
+#, fuzzy
+#~| msgid "Events"
+#~ msgid "Eventos"
+#~ msgstr "Eventos"
 
 #~ msgid ""
 #~ "Citizen science platform developed using open-source code based on the"

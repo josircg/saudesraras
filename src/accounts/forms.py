@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 
 User = get_user_model()
 
-
 class LoginForm(AuthenticationForm):
     remember_me = forms.BooleanField(required=False, initial=False)
 
@@ -23,13 +22,21 @@ class LoginForm(AuthenticationForm):
         self.fields["password"].label = ""
         reset_pwd_msg = _('Forgot password?')
         reset_pwd_url = reverse("accounts:password-reset")
+        custom_field_class = "form-control"
+        custom_field_style = "border-color: #114D7F; border-radius: 25px; border-width: 2px;"
         self.helper.layout = Layout(
-            Field("username", label="", placeholder=_("Enter Email"), autofocus=""),
+            Field("username", label="", placeholder=_("Enter Email"), autofocus="",
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
-            Field("password", placeholder=_("Enter Password")),
-            HTML(f'<div class="mt-3 mb-4"><a href="{reset_pwd_url}" class="pt-1 mb-5">{reset_pwd_msg}</a></div>'),
-            StrictButton(_("Log in"), css_class="btn btn-submit-account", type="Submit",
-                         style="background-color: #A167A5;")
+            Field("password", placeholder=_("Enter Password"),
+                  css_class=custom_field_class, style=custom_field_style),
+            HTML(f'<div class="mt-3 mb-4"><a href="{reset_pwd_url}" class="pt-1 mb-5 text-light">{reset_pwd_msg}</a></div>'),
+            StrictButton(
+                _("Log in"),
+                css_class="btn btn-submit-account",
+                type="Submit",
+                style="background-color: #114D7F; color: #FFFFFF; border-radius: 25px;"
+            )
         )
 
     def clean(self):
@@ -66,33 +73,44 @@ class LoginForm(AuthenticationForm):
 
         return self.cleaned_data
 
-
 class SignupForm(authtoolsforms.UserCreationForm):
     newsletter = forms.BooleanField(label=_('I want to receive the newsletter from Civis'), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.fields["email"].widget.input_type = "email"  # ugly hack
+
+        custom_field_class = "form-control"
+        custom_field_style = "border-color: #114D7F; border-radius: 25px; border-width: 2px;"
+
+        self.fields["email"].widget.input_type = "email"
         self.fields["email"].label = ""
         self.fields["name"].label = ""
         self.fields["password1"].label = ""
         self.fields["password2"].label = ""
-        #       self.fields["captcha"] = ReCaptchaField()
-        #       self.fields["captcha"].label = ""
+
         self.helper.layout = Layout(
-            Field("email", placeholder=_("Enter Email"), autofocus=""),
+            Field("email", placeholder=_("Enter Email"), autofocus="",
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
-            Field("name", placeholder=_("Enter your first name and surname")),
+            Field("name", placeholder=_("Enter your first name and surname"),
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
-            Field("password1", placeholder=_("Enter Password")),
+            Field("password1", placeholder=_("Enter Password"),
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
-            Field("password2", placeholder=_("Re-enter Password")),
+            Field("password2", placeholder=_("Re-enter Password"),
+                  css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
             Field("newsletter"),
-            StrictButton(_("Sign up"), css_class="btn btn-submit-account mt-3", type="Submit",
-                         style="background-color: #A167A5;")
+            StrictButton(
+                _("Sign up"),
+                css_class="btn btn-submit-account mt-3",
+                type="Submit",
+                style="background-color: #114D7F; color: #FFFFFF; border-radius: 25px;"
+            )
         )
+
 
 
 class PasswordChangeForm(authforms.PasswordChangeForm):

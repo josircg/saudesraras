@@ -96,12 +96,10 @@ urlpatterns = [
 
     # PATHS SAUDESRARAS
     path("about/", views.about, name="about"),
-    path("noticias/", views.noticias, name="noticias"),
     path("medicos/", views.medicos, name="medicos"),
     path("diagnostico/", views.diagnostico, name="diagnostico"),
     path("doencas/", views.doencas, name="doencas"),
     path("justica/", views.justica, name="justica"),
-    path("eventos/", views.eventos, name="eventos"),
     path("parceiro/", views.parceiro, name="parceiro"),
 ]
 

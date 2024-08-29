@@ -2,24 +2,23 @@
 
 {% if events %}
   <div class="container-fluid">
-      <div class="container">
+      <div class="container" style="max-width: 1120px;">
           <div class="row rowTitleBtn">
               <div class="col-xs-12 col-sm-6">
-                  <h2 class="mt-5 mb-5">{% trans "Events" %}</h2>
+                  <h2 class="mt-5 mb-5 text-home azul-escuro">{% trans "Events" %}</h2>
               </div>
               <div class="col-xs-12 col-sm-6 btnLatest">
                   <div class="mt-5 mb-5">
                       <div class="float-end">
-                          <a class="btn btn-all-home my-1 my-md-0 ms-md-2 d-flex align-items-center justify-content-center"
-                              href="{% url 'events' %}">
-                              {% trans "See all events" %}
+                        <a class=" azul-escuro" href="{% url 'events' %}" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
+                              {% trans "See all events here +" %}
                           </a>
                       </div>
                   </div>
               </div>
           </div>
-          <div class="row">
-            {% for event in events %}
+          <div class="row justify-content-between">
+            {% for event in events|slice:":3" %}
                 {% include "events_cards.html" %}
             {% endfor %}
           </div>

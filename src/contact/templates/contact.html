@@ -25,8 +25,12 @@
 		<div class="col-12 col-sm-12">
 			<div class="mb-4">
 				<div class="p-3">
-					<h1 class="text-pink6">{% trans "Contact" %}</h1><br>
-					<p>{% trans "You can reach out by this form, or through the email: <a href='mailto:civis@ibict.br'>civis@ibict.br</a>" %}</p><br>
+					<h1 class="text-blue3">{% trans "Contact" %}</h1><br>
+					<p>
+						<!-- {% trans "You can reach out by this form, or through the email: <a href='mailto:laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>" %} -->
+						Entre em contato pelo formulário ou envie um e-mail para: <a href='mailto:laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>
+					</p>
+					<br>
 					<form method="post" autocomplete="off">
 						{% csrf_token %}
 						<div class="row">
@@ -50,11 +54,7 @@
 							</div>
 						</div>
             <div class="m-4"></div>
-            <div class="row">
-							<div class="col-12 col-sm-12">
-								{{ form.newsletter | as_crispy_field}}
-							</div>
-						</div>
+
 						<br>
             <div class="row">
 							<div class="col-12 col-mt-4">
@@ -63,8 +63,8 @@
 						</div>
 						<br>
 						<div>
-              <a class='btn btn-pink6 captcha' href="#">{% trans "Refresh captcha" %} <i class="fas fa-sync-alt"></i></a>
-							<button type="submit" class="btn btn-pink6">{% trans "Send" %}</button>
+              <a class='btn btn-blue3 captcha' href="#">{% trans "Refresh captcha" %} <i class="fas fa-sync-alt"></i></a>
+							<button type="submit" class="btn btn-blue3">{% trans "Send" %}</button>
 						</div>
 					</form>
 				</div>
