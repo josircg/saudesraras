@@ -2,14 +2,15 @@
 {% load static %}
 {% load reviews %}
 {% load thumbnail %}
-    
+
+<link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}" />
 <div class="col-lg-3 col-sm-6 col-12 mb-5">
-    <div class="card h-100 border-1 rounded">
+    <div class="card h-100 " style="border: none; border-left: 5px solid #3D99F4; border-radius: 0;">
         <div class="card-body d-flex flex-column">
             <div class="mb-auto">
-                <h4 class="mt-2 mb-0">
-                    <span class="card-title">{{event.title | truncatewords_html:10 }}</span>
-                </h4>        
+                <h2 class="mt-2 mb-0">
+                    <span class="text-blue3 sbld" style="font-size: 30px;">{{event.title | truncatewords_html:10 }}</span>
+                </h2>        
                 <br>    
                 <span>
                     {% if event.end_date %}{% trans "From "%}{% endif %}
@@ -20,7 +21,7 @@
                 <i class="text-blue3">{% if event.place %}{{event.place}} {%endif%}</i>
                 
             </div>            
-            <div class="mt-4">
+            <div class="mt-4 ">
                 <a href="{{event.url}}" class="btn btn-blue3" target="_blank">{% trans "Learn more" %}</a>
             </div>
         </div><!-- End of card-body -->
