@@ -96,13 +96,13 @@ urlpatterns = [
 
     # PATHS SAUDESRARAS
     path("about/", views.about, name="about"),
-    path("noticias/", views.noticias, name="noticias"),
     path("medicos/", views.medicos, name="medicos"),
     path("diagnostico/", views.diagnostico, name="diagnostico"),
     path("doencas/", views.doencas, name="doencas"),
     path("justica/", views.justica, name="justica"),
-    path("eventos/", views.events, name="events"),
     path("parceiro/", views.parceiro, name="parceiro"),
+    path("events", views.eventos, name="eventos"),
+    path("blog", views.noticias, name="noticias"),
 ]
 
 # User-uploaded files like profile pics need to be served in development
