@@ -153,6 +153,18 @@ body {
     color: #F2F6F9;
 }
 
+.bg-blue3 {
+    background-color: #114D7F;
+}
+
+.bg-blue2{ 
+    background-color: #3D99F4; 
+}
+
+.bg-blue1{ 
+    background-color:#5CDCFF;
+}
+
 .bg-pink1 {
     background-color: #EFDBE3;
 }
@@ -488,7 +500,7 @@ a {
 
 /* HOME */
 .bg-pill {
-    background-color: var(--pink1) !important;
+    background-color: var(--ice) !important;
     color: var(--pink6) !important;
 }
 
@@ -733,11 +745,11 @@ footer #parcerias .parceiros-logos img {
 }
 
 #searchNav .nav-link.active {
-    border-bottom: 2px solid var(--pink5);
+    border-bottom: 2px solid var(--blue2);
 }
 
 #navTop ul.navbar-nav .nav-item.top a:hover {
-    color: var(--pink5) !important;
+    color: var(--blue2) !important;
     transition: 0.3s;
 }
 

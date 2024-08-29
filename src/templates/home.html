@@ -30,7 +30,6 @@
       
       <div class="row justify-content-center " style="margin: 0 9%;" >
         <img data-src="{% static 'site/img/sozinhe.gif' %}" alt="todos" style="width: max-content; margin-bottom: 7px;" class="lazyload">
-        <!-- <img data-src="{% static '/site/img/gif.gif' %}" alt="sozinho" style="width: 127px; margin-bottom: 7px;" class="lazyload">-->
         <div class="row justify-content-center col-12 px-0" style="margin: 2% 5%; margin-top: 0%;">
           <div
               class="card text-center col-lg-6 col-md-8 col-sm-12"
@@ -44,7 +43,7 @@
                     loop
                     controls
                     >
-                    <source src="static/site/img/v1.mp4" type="video/mp4">
+                    <source src="{% static 'site/vids/v1.mp4' %}" type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video>
           </div>
@@ -60,7 +59,7 @@
             loop
             controls
             >
-            <source src="static/site/img/v2.mp4" type="video/mp4">
+            <source src="{% static 'site/vids/v2.mp4' %}" type="video/mp4">
             Seu navegador não suporta a tag de vídeo.
             </video>
         </div>
@@ -69,7 +68,7 @@
         <div class="row justify-content-center" style="margin: 22px 9%; height: auto; padding: 0;">
           <div class="mt-0">
               <h1 class="text-home azul-escuro reg " style="margin-bottom: 1%; padding: 0 0px; text-align: center; overflow-wrap: break-word; font-size: clamp(19px, 6vw, 45px);">
-                  Você não vê, a gente sente
+                {% trans "Don't you see, we feel" %}
               </h1>
           </div>
           <div class="row" style="max-width: 1120px;">
@@ -77,50 +76,50 @@
                 <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
                     <ul class="nav justify-content-between w-100" >
                         <li class="nav-item text-start">
-                            <a href="/diagnostico/">
+                            <a href="/#">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="static/site/img/diagnostico.svg" class="diagnostico-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    Diagnóstico
+                                    <img src="{% static 'site/img/diagnostico.svg' %}" class="diagnostico-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Diagnosis" %}
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/medicos/">
+                            <a href="/#">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="static/site/img/medicos.svg" class="medicos-img " style="width: 30px; height: 30px; margin-right: 4px">
-                                    Médicos
+                                    <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img " style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Doctors" %}
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/justica/">
+                            <a href="{% url 'blog' %}">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="static/site/img/justica.svg" class="justica-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    Justiça
+                                    <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Justice" %}
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/sus/">
+                            <a href="/#">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="static/site/img/sus.svg" class="sus-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 30px; height: 30px; margin-right: 4px">
                                     SUS
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/sintomas/">
+                            <a href="/#">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="static/site/img/sintomas.svg" class="sintomas-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    Sintomas
+                                    <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Symptoms" %}
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/publicacoes/">
+                            <a href="/#">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="static/site/img/publicacoes.svg" class="publicacoes-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    Publicações
+                                    <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Publications" %}
                                 </div>
                             </a>
                         </li>
@@ -136,7 +135,7 @@
             </div>
         </div>
           <div class="container-fluid row" style="border: none; height: 8vw; border-radius: 76px; width: 100%; max-width: 1120px; display: flex; align-items: center; padding: 0%; max-height: 60px; min-height: 40px;">
-              <input type="text" placeholder="faça sua busca aqui..." class="col-11 input-container mdm text-home2" style="
+              <input type="text" placeholder="{% trans 'search here...' %}" class="col-11 input-container mdm text-home2" style="
                   border: none; 
                   color: white;
                   height: 100%; 
@@ -154,7 +153,7 @@
                   align-items: center;
                   width: 15%;
                   ">
-                  buscar
+                  {% trans "search" %}
               </div>
           </div>
       </div>
@@ -173,7 +172,7 @@
   >
   <div class="flex-center text-center px-0 pb-1 center-text-trick">
     <h2 class="text-home sbld" style="color: white; word-wrap: break-word; word-break: break-word; overflow-wrap: break-word;">
-        Publicidade social
+        {% trans "Social adversity" %}
     </h2>
 </div>
 
@@ -196,7 +195,7 @@
         <div class="row justify-content-between">
             <div class="card text-center col-lg-6 col-sm-12 p-0" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
                 <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
-                    Cordão de girassóis
+                    {% trans "Hidden Disabilities Sunflower" %}
             </p>
                     
             <video
@@ -206,7 +205,7 @@
             loop
             controls
           >
-          <source src="static/site/img/vc.mp4" type="video/mp4">
+          <source src="{% static 'site/vids/vc.mp4' %}" type="video/mp4">
                     
             Seu navegador não suporta a tag de vídeo.
           </video>
@@ -214,7 +213,7 @@
     
             <div class="card text-center col-lg-6 col-sm-12 p-0" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
                 <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
-                    Polos de atendimento
+                    {% trans "Service centers" %}
                 </p>
                 <video
                
@@ -224,7 +223,7 @@
                 loop
                 controls
                 >
-                    <source src="static/site/img/v2.mp4" type="video/mp4">
+                    <source src="{% static 'site/vids/v2.mp4' %}"" type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video> 
 
@@ -238,23 +237,23 @@
 
       <div class="container-fluid d-flex justify-content-center align-items-center ">
         <div class="container px-0" style="max-width: 1120px;">
-            <h1 class="text-left mb-4 azul text-home reg">Informações sobre:</h1>
+            <h1 class="text-left mb-4 azul text-home reg">{% trans "Information about:" %}</h1>
             <div class="row justify-content-center">
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/diagnostico/" class="btn bttn2">
+                    <a href="/#" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
-                            <img class="diagnostico-img" src="/static/site/img/diagnostico.svg" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Diagnóstico">
-                            <span style="font-size: clamp(10px, 2vw, 20px);">Diagnóstico</span>
+                            <img class="diagnostico-img" src="{% static 'site/img/diagnostico.svg' %}" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Diagnóstico">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Diagnosis" %}</span>
                         </div>
                     </a>
                 </div>
    
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/medicos/" class="btn bttn2">
+                    <a href="/#" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <!-- Imagem padrão -->
-                            <img src="/static/site/img/medicos.svg" class="medicos-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Médicos">
-                            <span style="font-size: clamp(10px, 2vw, 20px);">Médicos</span>
+                            <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Médicos">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Doctors" %}</span>
                         </div>
                     </a>
                 </div>
@@ -262,33 +261,33 @@
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
                     <a href="{% url 'blog' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
-                            <img src="/static/site/img/justica.svg" class="justica-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Justiça">
-                            <span style="font-size: clamp(10px, 2vw, 20px);">Justiça</span>
+                            <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Justiça">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Justice" %}</span>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/sus/" class="btn bttn2">
+                    <a href="/#" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
-                            <img src="/static/site/img/sus.svg" class="sus-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="SUS">
+                            <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="SUS">
                             <span style="font-size: clamp(10px, 2vw, 20px);">SUS</span>
                         </div>
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/sintomas/" class="btn bttn2">
+                    <a href="/#" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
-                            <img src="/static/site/img/sintomas.svg" class="sintomas-img"  style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Sintomas">
-                            <span style="font-size: clamp(10px, 2vw, 20px);">Sintomas</span>
+                            <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img"  style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Sintomas">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Symptoms" %}</span>
                         </div>
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/publicacoes/" class="btn bttn2">
+                    <a href="/#" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
-                            <img src="/static/site/img/publicacoes.svg" class="publicacoes-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Publicações">
-                            <span style="font-size: clamp(10px, 2vw, 20px);">Publicações</span>
+                            <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Publicações">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Publications" %}</span>
                         </div>
                     </a>
                 </div>
@@ -313,12 +312,12 @@
       <div class="row justify-content-between align-items-center text-center mb-4 w-100">
           <div class="text-center sbld col-lg-auto col-md-6 col-12 mb-2">
               <h1 class="azul reg" style="font-weight: 950; line-height: 53px; display: inline-block; margin: 0; overflow-wrap: break-word; ">
-                  Depoimentos
+                {% trans "Testimonials" %}
               </h1>
           </div>
           <div class="text-center col-lg-auto col-md-6 col-12 mb-2">
-              <a class=" azul" href="/noticias/" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
-                  Veja mais depoimentos+
+              <a class=" azul" href="/#" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
+                {% trans "See others testimonials here +" %}
               </a>
           </div>
       </div>
@@ -340,8 +339,8 @@
                   <!-- Conteúdo da carta com espaçamento fixo -->
                   <div style="padding-top: 40px; margin-bottom: 60px;">
                       <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                          Esse espaço online me proporcionou apoio emocional e informações valiosas que fizeram toda a diferença durante meu processo e no processo do meu filho.
-                      </p>
+                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
+                    </p>
                   </div>
 
                   <!-- Título fixo na parte inferior -->
@@ -366,8 +365,8 @@
                   <!-- Conteúdo da carta com espaçamento fixo -->
                   <div style="padding-top: 40px; margin-bottom: 60px;">
                       <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                          Esse espaço online me proporcionou apoio emocional e informações valiosas que fizeram toda a diferença durante meu processo e no processo do meu filho.
-                      </p>
+                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
+                    </p>
                   </div>
 
                   <!-- Título fixo na parte inferior -->
@@ -392,8 +391,8 @@
                   <!-- Conteúdo da carta com espaçamento fixo -->
                   <div style="padding-top: 40px; margin-bottom: 60px;">
                       <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                          Esse espaço online me proporcionou apoio emocional e informações valiosas que fizeram toda a diferença durante meu processo e no processo do meu filho.
-                      </p>
+                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
+                    </p>
                   </div>
 
                   <!-- Título fixo na parte inferior -->
@@ -416,11 +415,11 @@
   <div class="row pb-5">
     <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center m-0 reg" style="width: 100%; height: auto;">
       <h1 class="text-home reg azul-escuro col-lg-7 col-12 text-start mb-3 mb-lg-0" style="overflow-wrap: break-word;">
-        Encontre ajuda perto de você!
+        {% trans "Find help near to you!" %}
       </h1>
       
       <div class="container-fluid col-lg-5 col-12 " style="border: none; height: 8vw; border-radius: 76px; display: flex; align-items: center; padding: 0%; height: 40px;">
-        <input type="text" placeholder="faça sua busca aqui..." class="col-sm-10 col-9 input-container mdm text-home2" style="
+        <input type="text" placeholder="{% trans 'search here...' %}" class="col-sm-10 col-9 input-container mdm text-home2" style="
             border: none; 
             color: white;
             height: 100%; 
@@ -439,7 +438,7 @@
             
             font-size: clamp(15px, 1vw, 20px);
             ">
-            buscar
+            {% trans "search" %}
         </div>
     </div>
     </div>
@@ -462,11 +461,11 @@
     <div class="col-2 d-flex justify-content-center align-items-center" style="padding: 0; margin: 0;">
       <div class="container-fluid d-flex flex-column justify-content-center" style="max-width: 290px; padding: 0; margin: 0;">
         <h1 class="text-home reg par" style="color: white; font-size:  min(3vw, 45px); font-weight: 400; text-align: start; margin: 0; line-height: 1.2; min-width: 0; ">
-          Quer ser um parceiro?
+            {% trans "Wanna be a partner?" %}
         </h1>
         
         <a href="/parceiro/" class="btn mdm" style="display: inline-block; width: 100%; margin-top: 10px; background-color: #3D99F4; color: white; text-align: center; border: none; border-radius: 42px; font-size: 1.5vw; padding: 10px; text-decoration: none;">
-          Saiba como
+            {% trans "Know how" %}
       </a>
       
       </div>
@@ -482,7 +481,7 @@
   <div class="container mt-5" style="max-width:  1120px;">
     <div class="row align-items-center justify-content-center w-auto" style="max-width: 1120px;">
         <div class="col-12 col-xl-auto m-0 text-start text-xl-start azul-escuro w-auto justify-self-start">
-            <h1 class="reg m-0" style="font-size: 25px;">Nossas redes:</h1>
+            <h1 class="reg m-0" style="font-size: 25px;">{% trans "Our medias:" %}</h1>
         </div>
         <div class="my-3 p-0 col-12 col-xl-auto d-flex flex-wrap flex-xl-nowrap justify-content-center gap-2">
             <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
@@ -506,7 +505,7 @@
             <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
               <a 
               href="https://www.instagram.com/laccops/" 
-              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">Fale conosco</a>
+              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">{% trans "Contact" %}</a>
           </div>
         </div>
             </div>
@@ -515,15 +514,27 @@
 
     <div class="container-fluid justify-content-center mdm m-0">
       <div class="row text-center azul" style="margin-top: 5rem;">
-        <h1 class="text-home reg" style=" overflow-wrap: break-word; text-align: center;">Dúvidas frequentes</h1>
+        <h1 class="text-home reg" style=" overflow-wrap: break-word; text-align: center;">{% trans "FAQ" %}</h1>
       </div>
       <div class="container-fluid justify-content-center d-flex flex-column align-items-center m-0" style="font-size: 20px;">
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Doenças raras são contagiosas?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Como podemos apoiar pessoas com doenças raras?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Por que é complicado encontrar tratamentos para doenças raras?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Doenças raras são contagiosas?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Como as famílias lidam com doenças raras?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">As crianças também podem ter doenças raras?</a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "Are rare diseases contagious?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "How can we support people with rare diseases?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "Why is difficult to find treatments for rare diseases?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "Are rare diseases contagious?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "How do families deal with rare diseases?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "Can children also have rare diseases?" %}
+        </a>
       </div>
       
     </div>

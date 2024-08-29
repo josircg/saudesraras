@@ -2,16 +2,16 @@
 <div class="row">
     <div class="col-12">
         {% if organisation.id %}
-        <h1>{% trans "Editing" %}<span class="text-pink6"> {{organisation.name}}</span></h1>
+        <h1>{% trans "Editing" %}<span class="text-blue3"> {{organisation.name}}</span></h1>
         {% else %}
-        <h1>{% trans "New" context "fem" %}<span class="text-pink6"> {% trans "organisation" %}</span></h1>
+        <h1>{% trans "New" context "fem" %}<span class="text-blue3"> {% trans "organisation" %}</span></h1>
         {% endif %}
         {% if not organisation.id %}
         <div class="row">
             <div class="col-12">
-                <div class="small mb-2">{% trans "Thank you for registering your citizen science organisation or network on the Civis platform. The organisation or network profile can be linked with the personal profiles of the people in your organisation, the profiles of projects that your organisation is involved in, and the resource profiles that were published by your organisation." %}</div>
+                <div class="small mb-2">{% trans "Thank you for registering your rare health organisation or network on the Saúdes Raras platform. The organisation or network profile can be linked with the personal profiles of the people in your organisation, the profiles of projects that your organisation is involved in, and the resource profiles that were published by your organisation." %}</div>
                 <div class="small mb-2">{% trans "Please fill in all mandatory information (indicated with an asterisk*) and as much optional information as possible." %}</div>
-                <div class="small mb-2">{% trans "After submitting this form, your organisation or network will undergo moderation by the Civis team. This step is simply to prevent use of the platform for purposes other than supporting citizen science." %}</div>
+                <div class="small mb-2">{% trans "After submitting this form, your organisation or network will undergo moderation by the Saúdes Raras team. This step is simply to prevent use of the platform for purposes other than supporting the health of rare people." %}</div>
                 <div class="small mb-2">{% trans "We would like to point out that, upon registration of a document or information, you have to clear the image rights and copyrights of the content you are submitting. Please indicate the author or copyright holder of all pictures and content, when applicable. You may need to obtain express written permission from them." %}</div>
             </div>
         </div>
