@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 15:40-0300\n"
+"POT-Creation-Date: 2024-08-29 15:48-0300\n"
 "PO-Revision-Date: 2023-05-19 14:40-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1449,8 +1449,8 @@ msgid "Platform images"
 msgstr "Imagens de perfil da plataforma"
 
 #: platforms/templates/platforms.html:9
-msgid "platform <span class='text-pink5'>search</span>"
-msgstr "<span class='text-pink5'>busca</span> Plataforma"
+msgid "platform <span class='text-blue3'>search</span>"
+msgstr "<span class='text-blue3'>busca de</span> Plataformas"
 
 #: platforms/views.py:85
 msgid "Platform added correctly"
@@ -4464,6 +4464,9 @@ msgstr "Texto Traduzido"
 #: utilities/models.py:20
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid "platform <span class='text-pink5'>search</span>"
+#~ msgstr "<span class='text-pink5'>busca</span> Plataforma"
 
 #~ msgid ""
 #~ "Thank you for registering your citizen science organisation or network on "
