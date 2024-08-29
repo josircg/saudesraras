@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}{{ block.super }} :: Events{% endblock %}
+
+{% block list_of_items %}
+<div class="container">
+    {% if ongoing_events %}
+    <h2>Teste</h2>
+    <h1 class="mt-5 mb-5 text-center">{% trans "Ongoing <span class='text-pink6'>events</span>" %}</h1>
+    <div class="row">
+        <div class="col-12">
+            {% for event in ongoing_events %}
+            {% include "_event_card.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    <hr>
+    {% endif %}
+
+    {% if upcoming_events %}
+    <h1 class="mb-5 text-center">{% trans "Upcoming <span class='text-pink6'>Events</span>" %}</h1>
+    <div class="row">
+        <div class="col-12">
+            {% for event in upcoming_events %}
+            {% include "_event_card.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    <hr>
+    {% endif %}
+
+    {% if past_events %}
+    <h1 class="mb-5 text-center">{% trans "Past <span class='text-pink6'>events</span>" %}</h1>
+    <div class="row">
+        <div class="col-12">
+            {% for event in past_events %}
+            {% include "_event_card.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if page_obj %}
+    <div class="row">
+      <div class="col-12 mt-3 mb-3">
+          {% include "_paginator.html" %}
+      </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock list_of_items %}
+
+{% block scripts %}
+<script src="{% static 'site/js/pagination.min.js' %}"></script>
+<script>
+    function setFeaturedEvent(idEvent, featured){
+        let htmlId = "featured" + idEvent;
+        let request = $.ajax(
+            {
+                type: "POST",
+                url: "{% url 'setFeaturedEvent' %}",
+                data: {
+                    "event_id": idEvent,
+                    "featured": featured,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function (response) {
+                    window.location = window.location.href.split("?")[0];
+                }
+            }
+        );
+    }
+</script>
+{% endblock scripts %}

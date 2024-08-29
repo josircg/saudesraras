@@ -6,7 +6,6 @@ from django.contrib.admin.views.main import SEARCH_VAR
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.utils import translation
 from django.utils.safestring import mark_safe
@@ -137,10 +136,6 @@ def all(request):
     return home(request)
 
 
-def noticias(request):
-    posts = Post.objects.filter(status=1).order_by('-created_on')
-    return render(request, 'pages/{}/noticias.html'.format(get_language()), {'posts': posts})
-
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
 
@@ -158,10 +153,6 @@ def medicos(request):
 
 def ajuda(request):
     return render(request, 'pages/%s/ajuda.html' % get_language())
-
-
-def eventos(request):
-    return render(request, 'pages/%s/eventos.html' % get_language())
 
 
 def projeto(request):
@@ -319,38 +310,3 @@ def country_translation(country_iterator):
 def get_country_translated_name(language, country):
     with translation.override(language):
         return translation.gettext(country.countries.name(country.code))
-
-
-def events(request):
-    user = request.user
-    page = request.GET.get('page', 1)
-    upcoming_events = Event.objects.upcoming_events()
-    ongoing_events = Event.objects.ongoing_events()
-    past_events = Event.objects.past_events()
-
-    if not user.is_staff:
-        upcoming_events = upcoming_events.approved_events()
-        ongoing_events = ongoing_events.approved_events()
-        past_events = past_events.approved_events()
-
-    paginator_upcoming = Paginator(upcoming_events, 10)
-    paginator_ongoing = Paginator(ongoing_events, 10)
-    paginator_past = Paginator(past_events, 10)
-
-    page_list = []
-
-    upcoming_events = set_pages_and_get_object_list(paginator_upcoming, page_list, page)
-    ongoing_events = set_pages_and_get_object_list(paginator_ongoing, page_list, page)
-    past_events = set_pages_and_get_object_list(paginator_past, page_list, page)
-    # Return the page object from paginator with max pages, to command pagination
-    if page_list:
-        page_obj = max(page_list, key=lambda item: item.paginator.num_pages)
-    else:
-        page_obj = None
-
-    return render(request, 'events.html', {
-        'upcoming_events': upcoming_events,
-        'ongoing_events': ongoing_events,
-        'past_events': past_events,
-        'page_obj': page_obj,
-        'user': user})
