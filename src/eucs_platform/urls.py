@@ -101,8 +101,6 @@ urlpatterns = [
     path("doencas/", views.doencas, name="doencas"),
     path("justica/", views.justica, name="justica"),
     path("parceiro/", views.parceiro, name="parceiro"),
-    path("events", views.eventos, name="eventos"),
-    path("blog", views.noticias, name="noticias"),
 ]
 
 # User-uploaded files like profile pics need to be served in development

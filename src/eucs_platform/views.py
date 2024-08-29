@@ -136,11 +136,6 @@ def all(request):
     return home(request)
 
 
-def noticias(request):
-    posts = Post.objects.filter(status=1).order_by('-created_on')
-    return render(request, 'pages/{}/noticias.html'.format(get_language()), {'posts': posts})
-
-
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
 
@@ -158,10 +153,6 @@ def medicos(request):
 
 def ajuda(request):
     return render(request, 'pages/%s/ajuda.html' % get_language())
-
-
-def eventos(request):
-    return render(request, 'pages/%s/eventos.html' % get_language())
 
 
 def projeto(request):
