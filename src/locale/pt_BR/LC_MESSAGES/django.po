@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 15:52-0300\n"
+"POT-Creation-Date: 2024-08-29 15:55-0300\n"
 "PO-Revision-Date: 2023-05-19 14:40-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2819,12 +2819,12 @@ msgid "Resource profile images"
 msgstr "Imagens de perfil do recurso"
 
 #: resources/templates/resources.html:15
-msgid "Training resource <span class='text-pink5'> search</span>"
-msgstr "<span class='text-pink5'>busca</span> Formação"
+msgid "Training resource <span class='text-blue3'> search</span>"
+msgstr "<span class='text-blue3'>busca de</span> Formações"
 
 #: resources/templates/resources.html:17
-msgid "Resource <span class='text-pink5'> search</span>"
-msgstr "<span class='text-pink5'>busca </span> Recurso"
+msgid "Resource <span class='text-blue3'> search</span>"
+msgstr "<span class='text-blue3'>busca de</span> Recursos"
 
 #: resources/views.py:270
 msgid "Training Resource added correctly!"
@@ -4464,6 +4464,12 @@ msgstr "Texto Traduzido"
 #: utilities/models.py:20
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid "Training resource <span class='text-pink5'> search</span>"
+#~ msgstr "<span class='text-pink5'>busca</span> Formação"
+
+#~ msgid "Resource <span class='text-pink5'> search</span>"
+#~ msgstr "<span class='text-pink5'>busca </span> Recurso"
 
 #~ msgid "<span class='text-pink5'>search</span> project"
 #~ msgstr "<span class='text-pink5'>busca</span> Iniciativa"
