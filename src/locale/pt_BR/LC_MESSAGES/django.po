@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 15:48-0300\n"
+"POT-Creation-Date: 2024-08-29 15:52-0300\n"
 "PO-Revision-Date: 2023-05-19 14:40-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2287,8 +2287,8 @@ msgid "Rate and comment"
 msgstr "Avalie e comente"
 
 #: projects/templates/projects.html:19
-msgid "<span class='text-pink5'>search</span> project"
-msgstr "<span class='text-pink5'>busca</span> Iniciativa"
+msgid "<span class='text-blue3'>search</span> project"
+msgstr "<span class='text-blue3'>busca de</span> Iniciativas"
 
 #: projects/templates/projects/_project_permission_member_card.html:8
 msgid "Delete editor"
@@ -4464,6 +4464,9 @@ msgstr "Texto Traduzido"
 #: utilities/models.py:20
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid "<span class='text-pink5'>search</span> project"
+#~ msgstr "<span class='text-pink5'>busca</span> Iniciativa"
 
 #~ msgid "platform <span class='text-pink5'>search</span>"
 #~ msgstr "<span class='text-pink5'>busca</span> Plataforma"
