@@ -10,23 +10,23 @@
             </div>
             <div class="modal-body">
                 <div class="menu-item mb-5">
-                    <h4><a  href="/newProject" class="link-menu-submit" class="colorred"> {% trans "Project" %}</a></h4>
-                    <p class="fw-500">{% trans "Register a Saudes Raras project" %}</p>
+                    <h4><a  href="/#" class="link-menu-submit" class="colorred"> {% trans "Project" %}</a></h4>
+                    <p class="fw-500">{% trans "Register a new rare health project" %}</p>
                 </div>
                 <div class="menu-item mb-5">
                     <h4><a href="/new_organisation" class="link-menu-submit" class="colorgreen"> {% trans "Organisation" %}</a></h4>
-                    <p class="fw-500">{% trans "Register a Saudes Raras organisation" %}</p>
+                    <p class="fw-500">{% trans "Register a new rare health organisation" %}</p>
                 </div>
                
                 <div class="menu-item mb-5">
                     <h4><a href="/new_event" class="link-menu-submit" class="colororange"> {% trans "Event" %}</a></h4>
-                    <p class="fw-500">{% trans "Register a Saudes Raras event" %}</p>
+                    <p class="fw-500">{% trans "Register a new rare health event" %}</p>
                 </div>
                 
                 {% if user.is_staff %}
                 <div class="menu-item mb-5">
                     <h4><a href="/admin/blog/post/add/" class="link-menu-submit"> {% trans "News" %}</a></h4>
-                    <p class="fw-500">{% trans "Register a Saudes Raras news" %}</p>
+                    <p class="fw-500">{% trans "Register a new rare health news" %}</p>
                 </div>
                 {% endif %} 
                 
