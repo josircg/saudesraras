@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 15:03-0300\n"
+"POT-Creation-Date: 2024-08-29 15:40-0300\n"
 "PO-Revision-Date: 2023-05-19 14:40-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -190,6 +190,11 @@ msgstr "Redefinição de senha"
 #: accounts/templates/accounts/login.html:18
 msgid "Don't have an account?"
 msgstr "Ainda não tem conta?"
+
+#: accounts/templates/accounts/password-change.html:16
+#: eucs_platform/dashboard.py:104
+msgid "Change password"
+msgstr "Alterar senha"
 
 #: accounts/templates/accounts/password-reset-done.html:19
 #, fuzzy
@@ -488,10 +493,6 @@ msgid "Contact"
 msgstr "Contato"
 
 #: contact/templates/contact.html:30
-#, fuzzy
-#| msgid ""
-#| "You can reach out by this form, or through the email: <a href='mailto:"
-#| "laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 msgid ""
 "You can reach out by this form, or through the email: <a href='mailto:"
 "laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
@@ -499,11 +500,11 @@ msgstr ""
 "Entre em contato pelo formulário ou envie um e-mail para: <a href='mailto:"
 "laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 
-#: contact/templates/contact.html:66
+#: contact/templates/contact.html:65
 msgid "Refresh captcha"
 msgstr "Atualizar captcha"
 
-#: contact/templates/contact.html:67
+#: contact/templates/contact.html:66
 #: contact/templates/submitter_contact.html:46
 #: contact/templates/subscribe.html:52
 msgid "Send"
@@ -745,10 +746,6 @@ msgstr "Links rápidos"
 msgid "Return to site"
 msgstr "Home"
 
-#: eucs_platform/dashboard.py:104
-msgid "Change password"
-msgstr "Alterar senha"
-
 #: eucs_platform/dashboard.py:106
 msgid "Log out"
 msgstr "Sair"
@@ -830,7 +827,7 @@ msgstr "Evento"
 msgid "Your event \"%s\" has been approved!"
 msgstr "Seu evento \"%s\" foi aprovado!"
 
-#: events/templates/_event_card.html:15
+#: events/templates/_event_card.html:10
 msgid "Go to event page"
 msgstr "Acessar a página do evento"
 
@@ -919,8 +916,6 @@ msgid "Do not"
 msgstr "Não"
 
 #: events/templates/events.html:18
-#, fuzzy
-#| msgid "Ongoing events"
 msgid "Ongoing events"
 msgstr "Eventos atuais"
 
@@ -1147,17 +1142,17 @@ msgstr "encontradas"
 
 #: organisations/templates/_intro_form_organisation.html:12
 msgid ""
-"Thank you for registering your citizen science organisation or network on "
-"the Civis platform. The organisation or network profile can be linked with "
-"the personal profiles of the people in your organisation, the profiles of "
-"projects that your organisation is involved in, and the resource profiles "
+"Thank you for registering your rare health organisation or network on the "
+"Saúdes Raras platform. The organisation or network profile can be linked "
+"with the personal profiles of the people in your organisation, the profiles "
+"of projects that your organisation is involved in, and the resource profiles "
 "that were published by your organisation."
 msgstr ""
-"Agradecemos por registrar sua organização ou rede de ciência cidadã na "
-"plataforma Civis. O perfil da organização ou rede poderá ser associado aos "
-"perfis pessoais dos integrantes de sua organização, às iniciativas em que "
-"sua organização está envolvida e aos recursos publicados pela sua "
-"organização."
+"Agradecemos por registrar sua organização ou rede de saúde rara na "
+"plataforma Saúdes Raras. O perfil da organização ou rede poderá ser "
+"associado aos perfis pessoais dos integrantes de sua organização, às "
+"iniciativas em que sua organização está envolvida e aos recursos publicados "
+"pela sua organização."
 
 #: organisations/templates/_intro_form_organisation.html:13
 msgid ""
@@ -1170,12 +1165,12 @@ msgstr ""
 #: organisations/templates/_intro_form_organisation.html:14
 msgid ""
 "After submitting this form, your organisation or network will undergo "
-"moderation by the Civis team. This step is simply to prevent use of the "
-"platform for purposes other than supporting citizen science."
+"moderation by the Saúdes Raras team. This step is simply to prevent use of "
+"the platform for purposes other than supporting the health of rare people."
 msgstr ""
 "Após o envio deste formulário, a organização ou rede passará por uma etapa "
-"de moderação pela equipe da Civis. O objetivo é prevenir o uso da plataforma "
-"para outros fins que não sejam o suporte à ciência cidadã."
+"de moderação pela equipe da Saúdes Raras. O objetivo é prevenir o uso da "
+"plataforma para outros fins que não sejam o suporte à saúde de pessoas raras."
 
 #: organisations/templates/_intro_form_organisation.html:15
 #: resources/templates/_intro_form_resource.html:23
@@ -1272,8 +1267,8 @@ msgstr ""
 "iniciativa ou organização"
 
 #: organisations/templates/organisations.html:11
-msgid "organisation or network <span class='text-pink5'>search</span>"
-msgstr "<span class='text-pink5'>busca</span> Organização ou Rede"
+msgid "organisation or network <span class='text-blue3'>search</span>"
+msgstr "<span class='text-blue3'>busca de</span> Organização ou Rede"
 
 #: organisations/views.py:49 organisations/views.py:50
 msgid "Organisation added correctly!"
@@ -4469,6 +4464,31 @@ msgstr "Texto Traduzido"
 #: utilities/models.py:20
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid ""
+#~ "Thank you for registering your citizen science organisation or network on "
+#~ "the Civis platform. The organisation or network profile can be linked "
+#~ "with the personal profiles of the people in your organisation, the "
+#~ "profiles of projects that your organisation is involved in, and the "
+#~ "resource profiles that were published by your organisation."
+#~ msgstr ""
+#~ "Agradecemos por registrar sua organização ou rede de ciência cidadã na "
+#~ "plataforma Civis. O perfil da organização ou rede poderá ser associado "
+#~ "aos perfis pessoais dos integrantes de sua organização, às iniciativas em "
+#~ "que sua organização está envolvida e aos recursos publicados pela sua "
+#~ "organização."
+
+#~ msgid ""
+#~ "After submitting this form, your organisation or network will undergo "
+#~ "moderation by the Civis team. This step is simply to prevent use of the "
+#~ "platform for purposes other than supporting citizen science."
+#~ msgstr ""
+#~ "Após o envio deste formulário, a organização ou rede passará por uma "
+#~ "etapa de moderação pela equipe da Civis. O objetivo é prevenir o uso da "
+#~ "plataforma para outros fins que não sejam o suporte à ciência cidadã."
+
+#~ msgid "organisation or network <span class='text-pink5'>search</span>"
+#~ msgstr "<span class='text-pink5'>busca</span> Organização ou Rede"
 
 #, fuzzy
 #~| msgid "Register a citizen science project"
