@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+@font-face {
+    font-family: "Recoleta";
+    src: url("/static/bootstrap/fonts/Recoleta-Regular.ttf") format("opentype");
+    /* Adicione outras variações da fonte conforme necessário */
+    }
+@font-face {
+    font-family: "Recoleta-SemiBold";
+    src: url("/static/bootstrap/fonts/Recoleta-SemiBold.ttf") format("opentype");
+    /* Adicione outras variações da fonte conforme necessário */
+    }
+       
+
 :root {
     --wood: #494a42;
     --lightBlue: #6ccde7;
@@ -16,9 +28,9 @@
 
     --black: #000;
     --pink9: #230F17;
-    --pink8: #461E2E;
-    --pink7: #682C46;
-    --pink6: #8B3B5D;
+    --pink8: #114D7F;
+    --pink7: #114D7F;
+    --pink6: #114D7F;
     --pink5: #AE4A74;
     --pink4: #BE6E90;
     --pink3: #CE92AC;
@@ -33,18 +45,19 @@
 
 h1,
 h3 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Recoleta';
     font-weight: 600 !important;
 }
 
 h4,
 h5 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400 !important;
+    font-family: 'Recoleta-SemiBold';
+    font-weight: 600 !important;
+    color: #114D7F !important;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Recoleta';
 }
 
 .dropdown-item.active,
@@ -109,15 +122,15 @@ body {
 }
 
 .text-pink6 {
-    color: #8B3B5D;
+    color: #114D7F;
 }
 
 .text-pink7 {
-    color: #682C46;
+    color: #114D7F;
 }
 
 .text-pink8 {
-    color: #461E2E;
+    color: #114D7F;
 }
 
 .text-pink9 {
@@ -161,15 +174,15 @@ body {
 }
 
 .bg-pink6 {
-    background-color: #8B3B5D;
+    background-color: #114D7F;
 }
 
 .bg-pink7 {
-    background-color: #682C46;
+    background-color: #114D7F;
 }
 
 .bg-pink8 {
-    background-color: #461E2E;
+    background-color: #114D7F;
 }
 
 .bg-pink9 {
@@ -188,14 +201,6 @@ span.card-title {
 a.card-title:hover {
     color: var(--pink6) !important;
     transition: 0.3s;
-}
-
-.card p {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    color: #667085;
 }
 
 .bg-dark {
@@ -345,7 +350,7 @@ a {
 }
 
 .headerText {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Recoleta';
     width: 625px;
     text-align: center;
     margin-left: auto;
@@ -510,12 +515,10 @@ a {
     transition: 0.3s;
 }
 
-.card:hover {
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important
-}
+
 
 .link-menu-submit {
-    color: var(--pink6);
+    color: var(--blue3);
 }
 
 .link-menu-submit:hover {
@@ -618,9 +621,7 @@ a {
     border-radius: 16px 16px 0 0 !important;
 }
 
-.card {
-    border: 1px solid #EAECF0 !important;
-}
+
 
 .card.rounded {
     border-radius: 16px !important;
@@ -904,7 +905,7 @@ footer #parcerias .parceiros-logos img {
 
 #blog-single .blog-text-content p span,
 #blog-single .blog-text-content p {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Recoleta' !important;
     font-style: normal !important;
     font-weight: 400 !important;
     font-size: 17px !important;
@@ -1173,7 +1174,7 @@ footer #parcerias .parceiros-logos img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: sans-serif;
+    font-family: "Recoleta";
     height: 650px;
     text-align: center;
     padding: 0 20px;

@@ -53,6 +53,11 @@
 
 }
 
+
+.ratio-16x7 {
+    aspect-ratio: 20 / 7;
+  }
+
     body {
     font-family: "Recoleta", sans-serif;
     }
@@ -99,15 +104,10 @@
         box-shadow: none !important; 
     }
     .nav-bttn{
-        width: 92px; 
-        height: 53px;
-        font-size: 17px;
-        font-weight: 600; 
         color: #5CDCFF;
     }
     .nav-bttn:hover{
         color: #F2F6F9;
-        text-decoration: underline;
         
         
     }
@@ -295,7 +295,7 @@
     }
 
     .bttn2{
-        color: #3D99F4; 
+        
         border: 3px solid #3D99F4; 
         border-radius: clamp(8px, 1vw, 10px);
         width: 12vw; 
@@ -306,10 +306,39 @@
         min-height: 120px;
     }
     .bttn2:hover{
-        color: #5CDCFF; 
+        
         border: 3px solid #5CDCFF; 
         text-decoration: none;
         ;
+    }
+
+    
+
+    .bttn2:hover .diagnostico-img {
+        content: url('/static/site/img/diag-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    .bttn2:hover .medicos-img {
+        content: url('/static/site/img/medicos-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    .bttn2:hover .justica-img {
+        content: url('/static/site/img/jus-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    .bttn2:hover .sus-img {
+        content: url('/static/site/img/sus-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    .bttn2:hover .sintomas-img {
+        content: url('/static/site/img/sin-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    .bttn2:hover .publicacoes-img {
+        content: url('/static/site/img/publi-hover.svg'); /* Imagem ao passar o mouse */
+    }    
+
+
+    .bttn2 span{
+        color: #3D99F4;
+    }
+    .bttn2:hover span{
+        color: #5CDCFF;
     }
 
     .bttn3{
@@ -332,6 +361,44 @@
     .bttn4:hover{
         background-color: #5CDCFF;  
         color:  #3D99F4; 
+    }
+    li .bttn5{
+        color: #3D99F4; 
+        height: 50px;
+        font-family: Recoleta-SemiBold !important;
+        font-weight: 600;        
+    }
+    li .bttn5:hover{
+        color: #5CDCFF; 
+        transition: color 0s ease, background-color 0s ease;
+        text-decoration: none;
+    }
+
+    li .bttn5:hover .diagnostico-img {
+        content: url('/static/site/img/diag-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    li .bttn5:hover .medicos-img {
+        content: url('/static/site/img/medicos-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    li .bttn5:hover .justica-img {
+        content: url('/static/site/img/jus-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    li .bttn5:hover .sus-img {
+        content: url('/static/site/img/sus-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    li .bttn5:hover .sintomas-img {
+        content: url('/static/site/img/sin-hover.svg'); /* Imagem ao passar o mouse */
+    }
+    li .bttn5:hover .publicacoes-img {
+        content: url('/static/site/img/publi-hover.svg'); /* Imagem ao passar o mouse */
+    }    
+
+
+    .imgbot{
+        background-color: #3D99F4;
+    }
+    .imgbot:hover{
+        background-color: #5CDCFF;
     }
 
     .imgcontent{
