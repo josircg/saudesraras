@@ -29,45 +29,109 @@
     <div class="col-12 text-center ">
       
       <div class="row justify-content-center " style="margin: 0 9%;" >
-        <img data-src="{% static 'site/img/sozinho.gif' %}" alt="todos" style="width: max-content; margin-bottom: 7px;" class="lazyload">
+        <img data-src="{% static 'site/img/sozinhe.gif' %}" alt="todos" style="width: max-content; margin-bottom: 7px;" class="lazyload">
         <!-- <img data-src="{% static '/site/img/gif.gif' %}" alt="sozinho" style="width: 127px; margin-bottom: 7px;" class="lazyload">-->
         <div class="row justify-content-center col-12 px-0" style="margin: 2% 5%; margin-top: 0%;">
           <div
               class="card text-center col-lg-6 col-md-8 col-sm-12"
               style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px;max-height: 335px;"
           >
-              <video
-                  style="height: 40vw; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
-                  src="static/site/img/logos/video_default.mp4"
-                  frameborder="0"
-                  autoplay
-                  muted
-                  loop
-                  controls
-              ></video>
+                <video
+                    style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
+                    frameborder="0"
+                    autoplay
+                    muted
+                    loop
+                    controls
+                    >
+                    <source src="static/site/video/v1.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
           </div>
           <div
               class="card text-center col-lg-6 col-md-8 col-sm-12"
               style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px;max-height: 335px;"
           >
-              <video
-                  style="height: 40vw; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
-                  src="static/site/img/logos/video_default.mp4"
-                  frameborder="0"
-                  autoplay
-                  muted
-                  loop
-                  controls
-              ></video>
-          </div>
+            <video
+            style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
+            frameborder="0"
+            autoplay
+            muted
+            loop
+            controls
+            >
+            <source src="static/site/video/v2.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+            </video>
+        </div>
       </div>
         </div>
         <div class="row justify-content-center" style="margin: 22px 9%; height: auto; padding: 0;">
           <div class="mt-0">
-              <h1 class="text-home azul-escuro reg mdm " style="margin-bottom: 1%; padding: 0 0px; text-align: center; overflow-wrap: break-word; font-size: clamp(20px, 6vw, 45px);">
+              <h1 class="text-home azul-escuro reg " style="margin-bottom: 1%; padding: 0 0px; text-align: center; overflow-wrap: break-word; font-size: clamp(19px, 6vw, 45px);">
                   Você não vê, a gente sente
               </h1>
           </div>
+          <div class="row" style="max-width: 1120px;">
+            <div class="col-12">
+                <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
+                    <ul class="nav justify-content-between w-100" >
+                        <li class="nav-item text-start">
+                          <a href="/diagnostico/">
+                          <div class="btn btn-sm  bttn5  d-flex align-items-center" style="font-size: 20px;"> <img src="static/site/img/diagnostico.svg" style="width: 30px; height: 30px; " >
+                            Diagnóstico
+                          </div>
+                        </a>
+                        </li>
+                        <li class="nav-item ">
+                          <a href="/medicos/">
+                            <div class="btn btn-sm bttn5  d-flex align-items-center" style="font-size: 20px;"> <img src="static/site/img/medicos.svg" style="width: 30px; height: 30px; " >
+                            Médicos
+                          </div>
+                          </a>
+                          
+                        </li>
+                        <li class="nav-item ">
+                          <a href="/justica/">
+                          <div class="btn btn-sm bttn5  d-flex align-items-center" style="font-size: 20px;"> <img src="static/site/img/justica.svg" style="width: 30px; height: 30px; " >
+                            Justiça
+                          </div>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="/sus/">
+                          <div class="btn btn-sm bttn5  d-flex align-items-center" style="font-size: 20px;"> <img src="static/site/img/sus.svg" style="width: 30px; height: 30px; " >
+                            SUS
+                          </div>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="/sintomas/">
+                          <div class="btn btn-sm bttn5  d-flex align-items-center" style="font-size: 20px;"> <img src="static/site/img/sintomas.svg" style="width: 30px; height: 30px; " >
+                            Sintomas
+                          </div>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="/publicacoes/">
+                          <div class="btn btn-sm bttn5  d-flex align-items-center" style="font-size: 20px;"> <img src="static/site/img/publicacoes.svg" style="width: 30px; height: 30px; " >
+                            Publicações
+                          </div>
+                          </a>
+                            
+                        </li>
+                        
+                    </ul>
+                    <!-- <ul class="nav navbar-nav navbar-right ">
+                        <li class="nav-item">
+                            <a class="nav-link ps-4 pe-4 " href="/curated/">
+                                <i class="fas fa-star"></i>Nossa seleção
+                            </a>
+                        </li>
+                    </ul> -->
+                </nav>
+            </div>
+        </div>
           <div class="container-fluid row" style="border: none; height: 8vw; border-radius: 76px; width: 100%; max-width: 1120px; display: flex; align-items: center; padding: 0%; max-height: 60px; min-height: 40px;">
               <input type="text" placeholder="faça sua busca aqui..." class="col-11 input-container mdm text-home2" style="
                   border: none; 
@@ -123,51 +187,55 @@
   </div>
 
 
-   <div class="col-12 text-center ">
+   <div class="col-12 text-center my-5">
         
-    <div class="row justify-content-center px-0 azul-escuro bld" style="margin: 2% 9%;">
-      <div
-          class="card text-center col-lg-6 col-md-8 col-sm-12"
-          style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px;max-height: 400px;"
-      >
-          <p class="container-fluid" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
-              Cordão de girassóis
-          </p>
-          <video
-              style="height: 40vw; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
-              src="static/site/img/logos/video_default.mp4"
-              autoplay
-              muted
-              loop
-              controls
-          ></video>
-      </div>
-  
-      <div
-          class="card text-center col-lg-6 col-md-8 col-sm-12"
-          style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px;max-height: 400px;"
-      >
-          <p class="container-fluid" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
-              Polos de atendimento
-          </p>
-          <video
-              style="height: 40vw; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
-              src="static/site/img/logos/video_default.mp4"
-              autoplay
-              muted
-              loop
-              controls
-          ></video>
-      </div>
-  </div>
-  
+    <div class="container justify-content-center p-0" style="max-width: 1120px;">
+        <div class="row justify-content-between">
+            <div class="card text-center col-lg-6 col-sm-12 p-0" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
+                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
+                    Cordão de girassóis
+            </p>
+                    
+            <video
+            style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
+            autoplay
+            muted
+            loop
+            controls
+          >
+          <source src="static/site/video/vc.mp4" type="video/mp4">
+                    
+            Seu navegador não suporta a tag de vídeo.
+          </video>
+        </div>
+    
+            <div class="card text-center col-lg-6 col-sm-12 p-0" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
+                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
+                    Polos de atendimento
+                </p>
+                <video
+               
+                style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
+                autoplay
+                muted
+                loop
+                controls
+                >
+                    <source src="static/site/video/v2.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video> 
+
+</div>
+        </div>
+    </div>
+    
     </div>
     
       </div>
 
       <div class="container-fluid d-flex justify-content-center align-items-center ">
-        <div class="container px-0" style="max-width: 1160px;">
-            <h1 class="text-left mb-4 azul text-home">Informações sobre:</h1>
+        <div class="container px-0" style="max-width: 1120px;">
+            <h1 class="text-left mb-4 azul text-home reg">Informações sobre:</h1>
             <div class="row justify-content-center">
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
                     <a href="/diagnostico/" class="btn bttn2">
@@ -236,11 +304,11 @@
   
 
 <div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-5 sbld mx-0" >
-  <div class="container d-flex flex-column align-items-center" style="width: auto;">
+  <div class="container d-flex flex-column align-items-center" style="max-width: 1120px;">
       <!-- Títulos e links -->
       <div class="row justify-content-between align-items-center text-center mb-4 w-100">
           <div class="text-center sbld col-lg-auto col-md-6 col-12 mb-2">
-              <h1 class="azul" style="font-weight: 950; line-height: 53px; display: inline-block; margin: 0; overflow-wrap: break-word; ">
+              <h1 class="azul reg" style="font-weight: 950; line-height: 53px; display: inline-block; margin: 0; overflow-wrap: break-word; ">
                   Depoimentos
               </h1>
           </div>
@@ -252,7 +320,7 @@
       </div>
 
       <!-- Novos Cards -->
-      <div class="row justify-content-center mt-3">
+      <div class="row justify-content-between mt-3">
           <!-- Card 1 -->
           <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
               <div class="p-4 mb-4 card-container" 
@@ -343,7 +411,7 @@
 <div class="container pb-4 px-5" style="max-width: 1140px;">
   <div class="row pb-5">
     <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center m-0 reg" style="width: 100%; height: auto;">
-      <h1 class="text-home azul-escuro col-lg-7 col-12 text-start mb-3 mb-lg-0" style="overflow-wrap: break-word;">
+      <h1 class="text-home reg azul-escuro col-lg-7 col-12 text-start mb-3 mb-lg-0" style="overflow-wrap: break-word;">
         Encontre ajuda perto de você!
       </h1>
       
@@ -407,50 +475,51 @@
     </div>
   </div>
   
-  <div class="container mt-5">
-    <div class="row align-items-center justify-content-center">
-        <div class="col-12 col-xl-auto text-start text-xl-start azul-escuro w-auto align-self-start">
-            <h1 style="font-size: 25px;">Nossas redes:</h1>
+  <div class="container mt-5" style="max-width:  1120px;">
+    <div class="row align-items-center justify-content-center w-auto" style="max-width: 1120px;">
+        <div class="col-12 col-xl-auto m-0 text-start text-xl-start azul-escuro w-auto justify-self-start">
+            <h1 class="reg m-0" style="font-size: 25px;">Nossas redes:</h1>
         </div>
-        <div class="p-0 col-12 col-xl-auto d-flex flex-wrap flex-xl-nowrap justify-content-center gap-2">
-          <div class="col-12 col-md-5 col-xl-auto d-flex justify-content-center align-items-center">
+        <div class="my-3 p-0 col-12 col-xl-auto d-flex flex-wrap flex-xl-nowrap justify-content-center gap-2">
+            <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
             <a 
             href="https://www.instagram.com/laccops/" 
-            class="btn  bck-azul-escuro" 
-            style="color: white; width: 250px; height: 50px; border-radius: 30px; font-size: 20px;text-decoration: none;">@Usuario</a></div>
-            
-            <div class="col-12 col-md-5 col-xl-auto d-flex justify-content-center align-items-center">
+            class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
+            style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">@Usuario</a></div>
+        
+            <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
               <a 
               href="https://www.instagram.com/laccops/" 
-              class="btn bck-azul-escuro" 
-              style="color: white; width: 250px; height: 50px; border-radius: 30px; font-size: 20px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
+              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
+              style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
               </div>
-              <div class="col-12 col-md-5 col-xl-auto d-flex justify-content-center align-items-center">
+              <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
                 <a 
               href="https://www.instagram.com/laccops/" 
-              class="btn bck-azul-escuro" 
-              style="color: white; width: 250px; height: 50px; border-radius: 30px; font-size: 20px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
+              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
+              style="color: white; width:230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
               </div>
-            <div class="col-12 col-md-5 col-xl-auto d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
               <a 
               href="https://www.instagram.com/laccops/" 
-              class="btn  bck-azul-escuro" style="color: white; width: 250px; height: 50px; border-radius: 30px; font-size: 20px;text-decoration: none;">Fale conosco</a>
+              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">Fale conosco</a>
           </div>
+        </div>
             </div>
     </div>
 </div>
 
     <div class="container-fluid justify-content-center mdm m-0">
       <div class="row text-center azul" style="margin-top: 5rem;">
-        <h1 class="text-home" style=" overflow-wrap: break-word; text-align: center;">Dúvidas frequentes</h1>
+        <h1 class="text-home reg" style=" overflow-wrap: break-word; text-align: center;">Dúvidas frequentes</h1>
       </div>
       <div class="container-fluid justify-content-center d-flex flex-column align-items-center m-0" style="font-size: 20px;">
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">Doenças raras são contagiosas?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">Como podemos apoiar pessoas com doenças raras?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">Por que é complicado encontrar tratamentos para doenças raras?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">Doenças raras são contagiosas?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">Como as famílias lidam com doenças raras?</a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">As crianças também podem ter doenças raras?</a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Doenças raras são contagiosas?</a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Como podemos apoiar pessoas com doenças raras?</a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Por que é complicado encontrar tratamentos para doenças raras?</a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Doenças raras são contagiosas?</a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">Como as famílias lidam com doenças raras?</a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link" style="margin-left: 0">As crianças também podem ter doenças raras?</a>
       </div>
       
     </div>
