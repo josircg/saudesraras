@@ -1,6 +1,6 @@
 {% load i18n %}
 {% block subject %}
-{% blocktrans %}Activate your CIVIS account.{% endblocktrans %}
+{% blocktrans %}Activate your account.{% endblocktrans %}
 {% endblock subject %}
 
 {% block html_body  %}
@@ -8,7 +8,7 @@
 <p>Olá, {{ user.name }}</p>
 
 <p>
-    Agradecemos por se registrar para fazer parte da comunidade da plataforma de Ciência Cidadã Civis.<br>
+    Agradecemos por se registrar para fazer parte da comunidade da plataforma Saúdes Raras.<br>
     Seu cadastro está quase pronto. Para concluí-lo, confirme o seu endereço de e-mail clicando no
     <a href="{{domain}}{% url 'accounts:activate' uidb64=uid token=token %}">link de ativação</a>, ou copie e cole o link abaixo no seu navegador.
 </p>
