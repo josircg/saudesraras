@@ -26,23 +26,32 @@ def authenticate(username=None):
         username = username or settings.VISAO_USERNAME
         password = settings.VISAO_PASSWORD
         endpoint = settings.VISAO_URL
+        login = {'username': username, 'password': password}
+        try:
+            requests.packages.urllib3.disable_warnings()
+            response = requests.post(f'{endpoint}/app/api/authenticate', json=login, verify=False, timeout=20)
+            if response.status_code == 200:
+                token = json.loads(response.text).get('id_token', '')
+                if token:
+                    return {'Authorization': 'Bearer %s' % token}
+        except Exception as e:
+            return e.__str__()
+
+
+# Retorna o header de autorização ou mensagem de erro
+def authenticate2(username=None):
+    if username or settings.VISAO_USERNAME:
+        username = username or settings.VISAO_USERNAME
+        password = settings.VISAO_PASSWORD
+        endpoint = settings.VISAO_URL
         token = b64encode(f"{username}:{password}".encode('utf-8')).decode("ascii")
         token = f'Basic {token}'
         headers = {'Content-Type': 'application/json',
                    'Access-Control-Allow-Origin': '*',
                    'Authorization': token}
         requests.packages.urllib3.disable_warnings()
-        # response = requests.post(f'{endpoint}/visao2/api2/session/getAccessTokenVisaoMonolitico',
-        #                         verify=False, timeout=20, headers=headers)
-        # if response.status_code == 200:
-        #     token = response.content.decode('utf-8')
-        #     if token:
-        #         return {'Authorization': 'Bearer %s' % token}
-        # else:
-        #     raise error_detail(response)
-
         response = requests.post(f'{endpoint}/visao2/api2/session/getAccessToken',
-                                  verify=False, timeout=20, headers=headers)
+                                 verify=False, timeout=20, headers=headers)
         if response.status_code == 200:
             return response.cookies
         else:

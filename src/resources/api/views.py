@@ -11,7 +11,6 @@ from rest_framework.permissions import BasePermission
 from rest_framework.response import Response
 from rest_framework.status import (HTTP_201_CREATED, HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST)
 from rest_framework.views import APIView
-from reviews.models import Review
 
 
 class AdminPermissionsClass(BasePermission):
@@ -141,13 +140,10 @@ class ResourceDetail(APIView):
             return Response({"This user can't update this resource"}, status=HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         resource = self.get_object(pk)
         if request.user == resource.creator or request.user.is_staff or request.user.id in getCooperators(pk):
             resource.delete()
-            reviews = Review.objects.filter(content_type=ContentType.objects.get(model="resource"), object_pk=pk)
-            for r in reviews:
-                r.delete()
             return Response(status=HTTP_204_NO_CONTENT)
         else:
             return Response({"This user can't delete this resource"}, status=HTTP_400_BAD_REQUEST)
@@ -251,9 +247,6 @@ class TrainingResourceDetail(APIView):
         resource = self.get_object(pk)
         if request.user == resource.creator or request.user.is_staff or request.user.id in getCooperators(pk):
             resource.delete()
-            reviews = Review.objects.filter(content_type=ContentType.objects.get(model="resource"), object_pk=pk)
-            for r in reviews:
-                r.delete()
             return Response(status=HTTP_204_NO_CONTENT)
         else:
             return Response({"This user can't delete this resource"}, status=HTTP_400_BAD_REQUEST)
