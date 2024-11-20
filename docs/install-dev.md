@@ -73,6 +73,7 @@ git commit -m "feat: pre-commit hooks" --no-verify
 
 ```
 python manage.py migrate
+python manage.py createcachetable
 python manage.py loaddata projects/fixtures/topics.json
 python manage.py loaddata projects/fixtures/status.json
 python manage.py loaddata projects/fixtures/participationtasks.json
@@ -80,6 +81,9 @@ python manage.py loaddata projects/fixtures/geographicextend.json
 python manage.py loaddata resources/fixtures/categories.json
 python manage.py loaddata resources/fixtures/themes.json
 python manage.py loaddata organisations/fixtures/organisation_types.json
+python manage.py loaddata utilities/fixtures/translation.json
+cp src/static/site/default/* media
+mkdir media/images
 ```
 
 5) To restore a existing database:
@@ -102,7 +106,8 @@ python manage.py runcrons --force
 
 And to do this automatically:
 ```
-python manage.py crontab add
+crontab -e
+*/5 * * * * source your-project-virtualenv/bin/activate && python your-project-path/src/manage.py runcrons > your-log-path/cronjob.log
 ```
 
 [1]: https://eu-citizen.science/
