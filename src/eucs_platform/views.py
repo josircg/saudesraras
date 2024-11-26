@@ -240,47 +240,6 @@ def home_autocomplete(request):
         return HttpResponse("No cookies")
 
 
-def getTopicsResponded(request):
-    response = {}
-    topics = {}
-    if not request.user.is_anonymous and not request.user.is_staff:
-        own_topics = Topic.objects.get_queryset().filter(status=0, poster_id=request.user, posts_count__gt=1)
-        suscribed_topics = request.user.topic_subscriptions.all()
-        result = own_topics | suscribed_topics
-        result = result.distinct()
-        topics = TrackingHandler.get_unread_topics(request, result, request.user)
-
-    topicshtml = "</br>"
-
-    for topic in topics:
-        slug = '' + topic.slug + '-' + str(topic.id)
-        forum = get_object_or_404(Forum, id=topic.forum_id)
-        forum_slug = forum.slug + '-' + str(forum.id)
-        topicshtml += (
-                '<p class="alert alert-info" role="alert">There is a response in a topic that you follow'
-                ' <a href="' + settings.HOST + '/forum/forum/' + forum_slug + '/topic/' + slug + '">%s</a></p>' %
-                topic.subject
-        )
-
-    response['topics'] = topicshtml
-    return JsonResponse(response)
-
-
-def getForumResponsesNumber(request):
-    response = {}
-    forumresponses = 0
-    if not request.user.is_anonymous and not request.user.is_staff:
-        own_topics = Topic.objects.get_queryset().filter(status=0, poster_id=request.user, posts_count__gt=1)
-        suscribed_topics = request.user.topic_subscriptions.all()
-        result = own_topics | suscribed_topics
-        result = result.distinct()
-        result = TrackingHandler.get_unread_topics(request, result, request.user)
-        forumresponses = len(result)
-
-    response['forumresponses'] = forumresponses
-    return JsonResponse(response)
-
-
 @staff_member_required(login_url='/login')
 def country_list(request):
     """Page with admin style to list countries from django-countries"""

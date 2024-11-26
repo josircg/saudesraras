@@ -102,7 +102,7 @@ msgstr "Descrição da tarefa"
 
 #, fuzzy
 #| msgid "Activate your Civis account."
-msgid "Activate your CIVIS account."
+msgid "Activate your account."
 msgstr "Ative sua conta Civis"
 
 msgid "Almost done!"
@@ -2269,9 +2269,6 @@ msgstr "Histórico"
 msgid "View on site"
 msgstr "Visualizar no site"
 
-msgid "FORUM"
-msgstr "FÓRUM"
-
 msgid "Login"
 msgstr "Entrar"
 
@@ -3297,6 +3294,14 @@ msgstr "Adicionar à biblioteca"
 msgid "Translations"
 msgstr "Traduções"
 
+#, fuzzy
+#| msgid "Import CSV"
+msgid "Export as CSV"
+msgstr "Importar CSV"
+
+msgid "There was an error adapting the image. Try with another image."
+msgstr ""
+
 #, python-format
 msgid "File %s does not exists"
 msgstr "Arquivo %s não existe"
@@ -3306,3 +3311,6 @@ msgstr "Texto Traduzido"
 
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid "FORUM"
+#~ msgstr "FÓRUM"

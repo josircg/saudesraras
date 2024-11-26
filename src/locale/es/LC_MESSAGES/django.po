@@ -93,7 +93,9 @@ msgstr "Parámetros de la tarea"
 msgid "Task Description"
 msgstr "Descripción de la tarea"
 
-msgid "Activate your CIVIS account."
+#, fuzzy
+#| msgid "Activate your CIVIS account."
+msgid "Activate your account."
 msgstr "Active su cuenta CIVIS."
 
 msgid "Almost done!"
@@ -2298,9 +2300,6 @@ msgstr "Histórico"
 msgid "View on site"
 msgstr "Visualizar en site"
 
-msgid "FORUM"
-msgstr "FORO"
-
 msgid "Login"
 msgstr "Iniciar sesión"
 
@@ -3329,6 +3328,14 @@ msgstr "Añadir a mi biblioteca"
 msgid "Translations"
 msgstr "Traducciones"
 
+#, fuzzy
+#| msgid "Import CSV"
+msgid "Export as CSV"
+msgstr "Importar CSV"
+
+msgid "There was an error adapting the image. Try with another image."
+msgstr ""
+
 #, python-format
 msgid "File %s does not exists"
 msgstr "El fichero %s no existe"
@@ -3338,6 +3345,9 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
+
+#~ msgid "FORUM"
+#~ msgstr "FORO"
 
 #~ msgid "Register a citizen science resource"
 #~ msgstr "Registrar un recurso de ciencia ciudadana"
