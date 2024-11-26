@@ -77,7 +77,7 @@ class NewForumResponseCronJob(CronJobBase):
                                                                updated__range=(one_hour_before, this_hour))
                     for post in posts:
                         if user.id is not post.poster_id:
-                            mail_subject = 'EU-Citizen.Science - New forum message'
+                            mail_subject = 'Nova mensagem no Fórum'
                             slug = '' + topic.slug + '-' + str(topic.id)
                             forum = get_object_or_404(Forum, id=topic.forum_id)
                             forum_slug = forum.slug + '-' + str(forum.id)

@@ -1,8 +1,10 @@
 from django.core.mail import EmailMessage
 from django.conf import settings as django_settings
 from django.core.paginator import EmptyPage
+from django.utils.translation import LANGUAGE_SESSION_KEY
 
 
+# to, reply_to, bcc devem ser listas
 def send_email(subject, message, to, reply_to=None, bcc=None, headers=None):
     tag = getattr(django_settings, 'EMAIL_TAG', 'XXX')
     if tag != 'DEV':
@@ -30,3 +32,20 @@ def get_main_page(page_list):
         page_obj = None
 
     return page_obj
+
+
+def set_language_preference(request, response, language):
+    if hasattr(request, 'session'):
+        # Storing the language in the session is deprecated and will be removed in django 4.0
+        request.session[LANGUAGE_SESSION_KEY] = language
+
+    response.set_cookie(
+        django_settings.LANGUAGE_COOKIE_NAME, language,
+        max_age=django_settings.LANGUAGE_COOKIE_AGE,
+        path=django_settings.LANGUAGE_COOKIE_PATH,
+        domain=django_settings.LANGUAGE_COOKIE_DOMAIN,
+        secure=django_settings.LANGUAGE_COOKIE_SECURE,
+        httponly=django_settings.LANGUAGE_COOKIE_HTTPONLY,
+        samesite=django_settings.LANGUAGE_COOKIE_SAMESITE,
+    )
+    return response
