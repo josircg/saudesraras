@@ -185,31 +185,7 @@
     <script src="{% static 'scripts/cropper.min.js' %}"></script>
     <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
     <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
-    <script>
-        $(document).ready(function () {
 
-            getForumResponsesNumber();
-
-            function getForumResponsesNumber() {
-                var request = $.ajax(
-                    {
-                        type: "GET",
-                        url: "{% url 'getForumResponsesNumber' %}",
-                        data: {
-
-                        },
-                        success: function (response) {
-                            var forumresponses = response.forumresponses
-                            if (forumresponses > 0) {
-                                $("#forumHeader").html('<a class="nav-link main" href="/forum">{% trans "FORUM" %}<sup>' + forumresponses + '</sup></a>');
-                            }
-                        }
-                    }
-                );
-            }
-
-        });
-    </script>
     <script>
         $(".navbar-toggler-icon").click(function () {
             if ($(".ribbon-top-left").is(":visible")) {
