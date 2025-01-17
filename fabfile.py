@@ -105,7 +105,7 @@ def backup_local(context):
 
 
 @task
-def backup_hml(context):
+def backup(context):
     connection = Connection('webapp@3.89.127.179')
     get_database(connection, banco='localhost/raras', path='/var/webapp/raras')
 
