@@ -54,7 +54,7 @@
             <video
             style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
             frameborder="0"
-            autoplay
+            
             muted
             loop
             controls
@@ -75,7 +75,7 @@
             <div class="col-12">
                 <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
                     <ul class="nav justify-content-between w-100" >
-                        <li class="nav-item col-12 col-md-6 col-lg-auto ">
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
                             <a href="/#">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
                                     <img src="{% static 'site/img/diagnostico.svg' %}" class="diagnostico-img" style="width: 30px; height: 30px; margin-right: 4px">
@@ -84,7 +84,7 @@
                             </a>
                         </li>
                         <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="/#">
+                            <a href="{% url 'medicos' %}">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
                                     <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img " style="width: 30px; height: 30px; margin-right: 4px">
                                     {% trans "Doctors" %}
@@ -124,13 +124,7 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- <ul class="nav navbar-nav navbar-right ">
-                        <li class="nav-item col-12 col-md-auto">
-                            <a class="nav-link ps-4 pe-4 " href="/curated/">
-                                <i class="fas fa-star"></i>Nossa seleção
-                            </a>
-                        </li>
-                    </ul> -->
+                    
                 </nav>
             </div>
         </div>
@@ -196,7 +190,7 @@
                     
             <video
             style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
-            autoplay
+            
             muted
             loop
             controls
@@ -214,12 +208,12 @@
                 <video
                
                 style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
-                autoplay
+                
                 muted
                 loop
                 controls
                 >
-                    <source src="{% static 'site/vids/v2.mp4' %}"" type="video/mp4">
+                    <source src="{% static 'site/vids/v2.mp4' %}" type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video> 
 
@@ -245,7 +239,7 @@
                 </div>
    
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/#" class="btn bttn2">
+                    <a href="{% url 'medicos' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <!-- Imagem padrão -->
                             <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Médicos">
@@ -329,7 +323,7 @@
                      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
                   <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
                   <!-- Conteúdo da carta com espaçamento fixo -->
@@ -355,7 +349,7 @@
                      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
                   <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
                   <!-- Conteúdo da carta com espaçamento fixo -->
@@ -381,7 +375,7 @@
                      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
                   <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
                   <!-- Conteúdo da carta com espaçamento fixo -->
@@ -472,25 +466,24 @@
         <div class="my-3 p-0 col-12 col-xl-auto d-flex flex-wrap flex-xl-nowrap justify-content-center gap-2">
             <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
             <a 
-            href="https://www.instagram.com/laccops/" 
+            href="https://www.instagram.com/saudesraras_/" 
             class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
-            style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">@Usuario</a></div>
+            style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;" 
+            target="_blank">@saudesraras_</a></div>
         
             <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
-              <a 
-              href="https://www.instagram.com/laccops/" 
+              <a
+              target="_blank" 
+              
+              href="mailto:laccops.gco.ega@id.uff.br"
               class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
               style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
               </div>
-              <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
-                <a 
-              href="https://www.instagram.com/laccops/" 
-              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
-              style="color: white; width:230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
-              </div>
+              
             <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
               <a 
-              href="https://www.instagram.com/laccops/" 
+              target="_blank" 
+              hre="" 
               class="btn bck-azul-escuro d-flex justify-content-center align-items-center" style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">{% trans "Contact" %}</a>
           </div>
         </div>
