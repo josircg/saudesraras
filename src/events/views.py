@@ -12,6 +12,8 @@ from django.utils import formats
 from django.utils.translation import ugettext_lazy as _
 from eucs_platform import send_email
 from eucs_platform.logger import log_message
+from PIL import Image, ImageOps
+from utilities.file import save_image_with_path
 
 from .forms import EventForm
 from .models import Event
@@ -70,8 +72,22 @@ def new_event(request):
     if request.method == 'POST':
         form = EventForm(request.POST)
         if form.is_valid():
-            pk = form.save(request)
-            sendEventEmail(pk, request, form)
+            if request.FILES.get('logo'):
+                x = form.cleaned_data.get('x')
+                y = form.cleaned_data.get('y')
+                w = form.cleaned_data.get('width')
+                h = form.cleaned_data.get('height')
+                photo = request.FILES['logo']
+                image = Image.open(photo)
+                cropped_image = image.crop((x, y, w + x, h + y))
+                resized_image = cropped_image.resize((600, 400), Image.LANCZOS)
+                image_path = save_image_with_path(resized_image, photo.name)
+            else:
+                image_path = None
+
+            event = form.save(request, image_path)
+            log_message(event, 'Event added!', request.user)
+            sendEventEmail(event.id, request, form)
             return redirect('/events')
         else:
             print(form.errors)
@@ -134,6 +150,7 @@ def editEvent(request, pk):
         'title': event.title,
         'description': event.description,
         'place': event.place,
+        'logo': event.logo,
         'start_date': start_datetime,
         'end_date': end_datetime,
         'hour': event.hour,
@@ -141,7 +158,21 @@ def editEvent(request, pk):
     if request.method == 'POST':
         form = EventForm(request.POST)
         if form.is_valid():
-            form.save(request)
+            if request.FILES.get('logo'):
+                x = form.cleaned_data.get('x')
+                y = form.cleaned_data.get('y')
+                w = form.cleaned_data.get('width')
+                h = form.cleaned_data.get('height')
+                photo = request.FILES['logo']
+                image = Image.open(photo)
+                # Fix image orientation based on EXIF information
+                image = ImageOps.exif_transpose(image)
+                cropped_image = image.crop((x, y, w + x, h + y))
+                resized_image = cropped_image.resize((600, 400), Image.LANCZOS)
+                image_path = save_image_with_path(resized_image, photo.name)
+            else:
+                image_path = None
+            form.save(request, image_path)
             return redirect('/events')
     return render(request, 'event_form.html', {'form': form, 'user': user, 'event': event})
 

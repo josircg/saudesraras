@@ -20,8 +20,16 @@ class EventForm(forms.Form):
                          widget=forms.TextInput(
                              attrs={'placeholder': _('Please provide a URL to the event website. '
                                                      'Include http:// or https://')}), required=False)
+    logo = forms.ImageField(
+        required=False,
+        help_text=_("The image (.jpg or .png) will be resized to 600 x 400 pixels."
+                    "Image files with dimensions that greatly differ from this size may be "
+                    "drastically cropped. To learn how to avoid this, see our <a href='/"
+                    "guide' target='_blank'>User Guide.</a>"),
+        widget=forms.FileInput(attrs={'data-image-suffix': '', 'data-image-width-option': 0}))
 
-    def save(self, args):
+
+    def save(self, args, logo_path):
         pk = self.data.get('eventID', '')
         hour = self.data['hour']
         if hour == '':
@@ -42,6 +50,10 @@ class EventForm(forms.Form):
                           url=self.cleaned_data['url'],
                           creator=args.user
                           )
+
+        if logo_path:
+            event.logo = logo_path
+
         event.save()
 
         return event.pk
