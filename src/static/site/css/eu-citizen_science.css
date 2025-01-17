@@ -675,7 +675,7 @@ a {
 }
 
 footer a {
-    color: #5BBABF;
+    color: #3D99F4;
     transition: 0.3s;
 }
 
@@ -699,7 +699,7 @@ footer .title-sec-footer {
     margin-bottom: 16px;
     display: block;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     color: #98A2B3;
