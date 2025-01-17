@@ -19,7 +19,6 @@ from django.utils.translation import ugettext_lazy as _
 from eucs_platform import send_email
 from eucs_platform.logger import log_message
 from rest_framework import status
-from reviews.models import Review
 from utilities.file import save_image_with_path
 
 from .forms import ResourceForm, ResourcePermissionForm

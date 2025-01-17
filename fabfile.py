@@ -9,6 +9,7 @@ from invoke import UnexpectedExit
 
 HML_SERVER = 'webapp@3.89.127.179'
 
+
 def deploy(connection, path):
     with connection.cd(path):
         connection.run('git pull')

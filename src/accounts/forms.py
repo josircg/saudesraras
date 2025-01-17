@@ -11,6 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 User = get_user_model()
 
+
 class LoginForm(AuthenticationForm):
     remember_me = forms.BooleanField(required=False, initial=False)
 
