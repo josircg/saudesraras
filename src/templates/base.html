@@ -75,6 +75,7 @@
                 <a href="{% url 'home' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Home</a>
                 <a href="{% url 'about' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Sobre</a>
                 <a href="{% url 'events' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Eventos</a>
+                <a href="{% url 'organisations' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Organizações</a>
                 <a href="{% url 'blog' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Notícias</a>
 
             </div>
@@ -184,6 +185,31 @@
     <script src="{% static 'scripts/cropper.min.js' %}"></script>
     <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
     <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+
+            getForumResponsesNumber();
+
+            function getForumResponsesNumber() {
+                var request = $.ajax(
+                    {
+                        type: "GET",
+                        url: "{% url 'getForumResponsesNumber' %}",
+                        data: {
+
+                        },
+                        success: function (response) {
+                            var forumresponses = response.forumresponses
+                            if (forumresponses > 0) {
+                                $("#forumHeader").html('<a class="nav-link main" href="/forum">{% trans "FORUM" %}<sup>' + forumresponses + '</sup></a>');
+                            }
+                        }
+                    }
+                );
+            }
+
+        });
+    </script>
     <script>
         $(".navbar-toggler-icon").click(function () {
             if ($(".ribbon-top-left").is(":visible")) {
