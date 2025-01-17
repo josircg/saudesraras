@@ -195,7 +195,7 @@
     .row button {
     background-color: #ffffff;
     text-decoration: none;
-    color: #a167a5;
+    color: #114D7F;
     border-radius: 20px;
     padding-top: 0.8%;
     padding-bottom: 0.8%;
@@ -203,7 +203,7 @@
     }
     
     .row button:hover {
-    color: #a167a5;
+    color: #114D7F;
     }
     
     
@@ -233,7 +233,7 @@
     .row button {
         background-color: #ffffff;
         text-decoration: none;
-        color: #A167A5;
+        color: #114D7F;
         border-radius: 20px;
         padding-top: .8%;
         padding-bottom: .8%;
@@ -241,13 +241,13 @@
     }
     
     .row button:hover {
-        color: #A167A5;
+        color: #114D7F;
     }
     
     
     .line{
         margin-top: 0;
-        border: 3px solid #a167a5;
+        border: 3px solid #114D7F;
         margin-right: 5%;
         margin-left: 5%;
         margin-bottom: 1rem;
@@ -258,14 +258,14 @@
     }
     
     .pg-tittle{
-        color: #a167a5;; 
+        color: #114D7F; 
         font-size: 50px; 
         font-weight: 900; 
         text-align: justify; 
     }
     
     .pg-subtittle{
-        color: #a167a5; 
+        color: #114D7F; 
         font-size: xx-large; 
         font-weight: 900; 
         text-align: justify;
