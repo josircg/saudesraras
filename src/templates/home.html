@@ -12,504 +12,520 @@
 {% block splash %}
 {% if request.get_full_path == "/" %}
 
-<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
+<link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}" />
 <body class="d-flex flex-column min-vh-100">
   <div
-    class="border-top my-3"
+    class="border-top "
     style="
-      margin-top: 2rem;
-      border: 3px solid #a167a5;
-      margin-right: 5%;
-      margin-left: 5%;
+      margin-left: 9%;
+      margin-right: 9%;
+      margin-top: 0%;
+      margin-bottom: 3%;
+      border: 3px solid #114D7F;
     "
   ></div>
-
-  <div class="container pb-4" style="padding-right: 5%; padding-left: 5%">
-    <div class="col-12 text-center pt-5">
-      <div class="mb-5">
-        <h1 class="text-home">Como você se sente?</h1>
-      </div>
-      <div class="row">
-        <div
-          class="card text-center col-xs-6 col-md-6 col-sm-12 p-3"
-          style="border: transparent; border-radius: 20px"
-        >
-          <iframe
-            style="height: 20rem; border-radius: 20px"
-            src="https://www.youtube.com/embed/dN7uqQZTJmM"
+<div class="row justify-content-center align-items-center mx-0 px-0">
+  <div class="container pb-4 justify-content-center" style="padding-right: 0%; padding-left: 0%">
+    <div class="col-12 text-center ">
+      
+      <div class="row justify-content-center " style="margin: 0 9%;" >
+        <img data-src="{% static 'site/img/sozinhe.gif' %}" alt="todos" style="width: max-content; margin-bottom: 7px;" class="lazyload">
+        <div class="row justify-content-center col-12 px-0" style="margin: 2% 5%; margin-top: 0%;">
+          <div
+              class="card text-center col-lg-6 col-md-8 col-sm-12"
+              style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px;max-height: 335px;"
+          >
+                <video
+                    style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
+                    frameborder="0"
+                    autoplay
+                    muted
+                    loop
+                    controls
+                    >
+                    <source src="{% static 'site/vids/v1.mp4' %}" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+          </div>
+          <div
+              class="card text-center col-lg-6 col-md-8 col-sm-12"
+              style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px;max-height: 335px;"
+          >
+            <video
+            style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
             frameborder="0"
-          ></iframe>
-        </div>
-        <div
-          class="card text-center col-xs-6 col-md-6 col-sm-12 p-3"
-          style="border-radius: 20px"
-        >
-          <iframe
-            style="height: 20rem; border-radius: 20px"
-            src="https://www.youtube.com/embed/dN7uqQZTJmM"
-            frameborder="0"
-          ></iframe>
+            autoplay
+            muted
+            loop
+            controls
+            >
+            <source src="{% static 'site/vids/v2.mp4' %}" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+            </video>
         </div>
       </div>
-      <div class="mt-5">
-        <h1 class="text-home mb-5">Título</h1>
+        </div>
+        <div class="row justify-content-center" style="margin: 22px 9%; height: auto; padding: 0;">
+          <div class="mt-0">
+              <h1 class="text-home azul-escuro reg " style="margin-bottom: 1%; padding: 0 0px; text-align: center; overflow-wrap: break-word; font-size: clamp(19px, 6vw, 45px);">
+                {% trans "Don't you see, we feel" %}
+              </h1>
+          </div>
+          <div class="row" style="max-width: 1120px;">
+            <div class="col-12">
+                <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
+                    <ul class="nav justify-content-between w-100" >
+                        <li class="nav-item col-12 col-md-6 col-lg-auto ">
+                            <a href="/#">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/diagnostico.svg' %}" class="diagnostico-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Diagnosis" %}
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="/#">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img " style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Doctors" %}
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="{% url 'blog' %}">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Justice" %}
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="/#">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    SUS
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="/#">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Symptoms" %}
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="/#">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Publications" %}
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- <ul class="nav navbar-nav navbar-right ">
+                        <li class="nav-item col-12 col-md-auto">
+                            <a class="nav-link ps-4 pe-4 " href="/curated/">
+                                <i class="fas fa-star"></i>Nossa seleção
+                            </a>
+                        </li>
+                    </ul> -->
+                </nav>
+            </div>
+        </div>
+          <div class="container-fluid row" style="border: none; height: 8vw; border-radius: 76px; width: 100%; max-width: 1120px; display: flex; align-items: center; padding: 0%; max-height: 60px; min-height: 40px;">
+              <input type="text" placeholder="{% trans 'search here...' %}" class="col-11 input-container mdm text-home2" style="
+                  border: none; 
+                  color: white;
+                  height: 100%; 
+                  background: #114D7F; 
+                  border-top-left-radius: 76px; 
+                  border-bottom-left-radius: 76px; 
+                  padding-left: 35px;
+                  width: 85%;">
+              <div class="btn bttn4 col-1 text-center mdm text-home2" style="
+                  height: 100%; 
+                  border-top-right-radius: 76px; 
+                  border-bottom-right-radius: 76px; 
+                  display: flex; 
+                  justify-content: center; 
+                  align-items: center;
+                  width: 15%;
+                  ">
+                  {% trans "search" %}
+              </div>
+          </div>
       </div>
-      <div class="col-12">
-        <input
-          type="text"
-          placeholder="Busque em toda a plataforma"
-          class="input-container"
-        />
-      </div>
-    </div>
+      
+      
+      
+     
+    
   </div>
+  </div>
+
 
   <div
-    class="container-fluid align-items-center pb-4 pt-4"
-    style="background-color: #9bc2c1; padding-left: 15%; padding-right: 15%"
+    class="container-fluid  justify-content-center align-items-center pb-4 pt-0"
+    style=" height: auto;; background-color: #3D99F4; padding-left: 5%; padding-right: 5%; width: 100%;"
   >
-    <div class="text-center pb-4">
-      <h2 class="text-publicidade">Publicidade social</h2>
-    </div>
-    <div>
-      <p style="color: white">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
+  <div class="flex-center text-center px-0 pb-1 center-text-trick">
+    <h2 class="text-home sbld" style="color: white; word-wrap: break-word; word-break: break-word; overflow-wrap: break-word;">
+        {% trans "Social adversity" %}
+    </h2>
+</div>
+
+    <div class="container-fluid d-flex justify-content-center align-items-center text-home2" style="height: auto;">
+      <p class="reg" style="max-width: 1140px; width: auto; height:auto; color: white;  text-align: center;">
+          A Plataforma Saúdes Raras foi construída com base na metodologia de “Publicidade Social de Interesse Público”, que promove o genuíno INTERESSE DA SOCIEDADE CIVIL. Nosso ponto de partida é a “escuta” das reais demandas de uma parcela significativa da humanidade. A ideia central é pensar coletivamente em resoluções legais, com propostas concretas de políticas públicas pela visão e pela fala de quem vive o drama das doenças raras. 
       </p>
-    </div>
+  </div>
+  
   </div>
 
-  <div class="container text-center pt-5">
-    <div class="row mb-5">
-      <div
-        class="card text-center col-xs-5 col-md-6 col-sm-12 p-3"
-        style="border: transparent; border-radius: 20px"
-      >
-        <p style="color: #a167a5; font-weight: 950; font-size: 1.3rem">
-          Sintomas
-        </p>
-        <iframe
-          style="
-            height: 25rem;
-            border-radius: 20px;
-            border: 5px solid #a167a5;
-            margin-right: 5%;
-            margin-left: 5%;
-          "
-          src="https://www.youtube.com/embed/dN7uqQZTJmM"
-          frameborder="0"
-        ></iframe>
-      </div>
-      <div
-        class="card text-center col-xs-5 col-md-6 col-sm-12 p-3"
-        style="border-radius: 20px"
-      >
-        <p style="color: #a167a5; font-weight: 950; font-size: 1.3rem">
-          Cordão de girasóis
-        </p>
-        <iframe
-          style="
-            height: 25rem;
-            border-radius: 20px;
-            border: 5px solid #a167a5;
-            margin-left: 5%;
-            margin-right: 5%;
-          "
-          src="https://www.youtube.com/embed/dN7uqQZTJmM"
-          frameborder="0"
-        ></iframe>
-      </div>
-    </div>
-    <div
-      class="row d-flex align-items-center justify-content-center p-2 mb-5"
-      style="background-color: #a167a5; border-radius: 15px"
-    >
-    <div class="row d-flex align-items-center justify-content-center p-2" 
-          style="background-color: #a167a5; border-radius: 15px">
 
-      <a href="/diagnostico/" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2" role="button" style="border-radius: 30px; 
-      color: #a167a5; border: 1px solid #a167a5; background-color: white; 
-      font-weight: 400; font-size: 1rem; line-height: 1.4rem;">
+   <div class="col-12 text-center my-5">
         
-        Diagnóstico
-      </a>
+    <div class="container justify-content-center p-0" style="max-width: 1120px;">
+        <div class="row justify-content-between">
+            <div class="card text-center col-lg-6 col-sm-12 p-0" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
+                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
+                    {% trans "Hidden Disabilities Sunflower" %}
+            </p>
+                    
+            <video
+            style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
+            autoplay
+            muted
+            loop
+            controls
+          >
+          <source src="{% static 'site/vids/vc.mp4' %}" type="video/mp4">
+                    
+            Seu navegador não suporta a tag de vídeo.
+          </video>
+        </div>
+    
+            <div class="card text-center col-lg-6 col-sm-12 p-0" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
+                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
+                    {% trans "Service centers" %}
+                </p>
+                <video
+               
+                style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
+                autoplay
+                muted
+                loop
+                controls
+                >
+                    <source src="{% static 'site/vids/v2.mp4' %}"" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video> 
 
-      <a href="/medicos/" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2" 
-            style="border-radius: 30px; 
-          color: #a167a5; border: 1px solid #a167a5; background-color: white; 
-          font-weight: 400; font-size: 1rem; line-height: 1.4rem;" role="button">
-        Médicos</a>
-      
-        <a href="/justica/" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2" role="button"
-        style="border-radius: 30px; 
-          color: #a167a5; border: 1px solid #a167a5; background-color: white; 
-          font-weight: 400; font-size: 1rem; line-height: 1.4rem;">Justiça/SUS</a>
-      
-        <a href="#" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2" role="button" 
-        style="border-radius: 30px; 
-          color: #a167a5; border: 1px solid #a167a5; background-color: white; 
-          font-weight: 400; font-size: 1rem; line-height: 1.4rem;">TO DO</a>
-      
-        <a href="/doencas/" class="btn btn-light col-xs-12 col-sm-6 col-lg-2 mb-2 mx-2" role="button" 
-        style="border-radius: 30px; 
-          color: #a167a5; border: 1px solid #a167a5; background-color: white; 
-          font-weight: 400; font-size: 1rem; line-height: 1.4rem;">Doenças</a>
+</div>
+        </div>
+    </div>
+    
+    </div>
+    
+      </div>
+
+      <div class="container-fluid d-flex justify-content-center align-items-center ">
+        <div class="container px-0" style="max-width: 1120px;">
+            <h1 class="text-left mb-4 azul text-home reg">{% trans "Information about:" %}</h1>
+            <div class="row justify-content-center">
+                <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
+                    <a href="/#" class="btn bttn2">
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
+                            <img class="diagnostico-img" src="{% static 'site/img/diagnostico.svg' %}" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Diagnóstico">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Diagnosis" %}</span>
+                        </div>
+                    </a>
+                </div>
+   
+                <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
+                    <a href="/#" class="btn bttn2">
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
+                            <!-- Imagem padrão -->
+                            <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Médicos">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Doctors" %}</span>
+                        </div>
+                    </a>
+                </div>
+  
+                <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
+                    <a href="{% url 'blog' %}" class="btn bttn2">
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
+                            <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Justiça">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Justice" %}</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
+                    <a href="/#" class="btn bttn2">
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
+                            <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="SUS">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">SUS</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
+                    <a href="/#" class="btn bttn2">
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
+                            <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img"  style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Sintomas">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Symptoms" %}</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
+                    <a href="/#" class="btn bttn2">
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
+                            <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Publicações">
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Publications" %}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+      <div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-5 sbld mx-0" style="background-color: #114D7F;">
+            <!-- Títulos e links -->
+            {% include '_latest_news.html' %}
+        </div>
+    </div>
+  
+  {% include '_latest_events.html' %}
+  
+</div>
+  
+
+<div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-5 sbld mx-0" >
+  <div class="container d-flex flex-column align-items-center" style="max-width: 1120px;">
+      <!-- Títulos e links -->
+      <div class="row justify-content-between align-items-center text-center mb-4 w-100">
+          <div class="text-center sbld col-lg-auto col-md-6 col-12 mb-2">
+              <h1 class="azul reg" style="font-weight: 950; line-height: 53px; display: inline-block; margin: 0; overflow-wrap: break-word; ">
+                {% trans "Testimonials" %}
+              </h1>
+          </div>
+          <div class="text-center col-lg-auto col-md-6 col-12 mb-2">
+              <a class=" azul" href="/#" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
+                {% trans "See others testimonials here +" %}
+              </a>
+          </div>
+      </div>
+
+      <!-- Novos Cards -->
+      <div class="row justify-content-between mt-3">
+          <!-- Card 1 -->
+          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
+              <div class="p-4 mb-4 card-container" 
+                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
+                  <!-- Link sobrepondo o conteúdo -->
+                  <a href="SEU_LINK_AQUI"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
+
+                  <!-- Imagem no topo -->
+                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
+
+                  <!-- Conteúdo da carta com espaçamento fixo -->
+                  <div style="padding-top: 40px; margin-bottom: 60px;">
+                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
+                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
+                    </p>
+                  </div>
+
+                  <!-- Título fixo na parte inferior -->
+                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
+                      Mariana Costa
+                  </h5>
+              </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
+              <div class="p-4 mb-4 card-container" 
+                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
+                  <!-- Link sobrepondo o conteúdo -->
+                  <a href="SEU_LINK_AQUI"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
+
+                  <!-- Imagem no topo -->
+                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
+
+                  <!-- Conteúdo da carta com espaçamento fixo -->
+                  <div style="padding-top: 40px; margin-bottom: 60px;">
+                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
+                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
+                    </p>
+                  </div>
+
+                  <!-- Título fixo na parte inferior -->
+                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
+                      Mariana Costa
+                  </h5>
+              </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
+              <div class="p-4 mb-4 card-container" 
+                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
+                  <!-- Link sobrepondo o conteúdo -->
+                  <a href="SEU_LINK_AQUI"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
+
+                  <!-- Imagem no topo -->
+                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
+
+                  <!-- Conteúdo da carta com espaçamento fixo -->
+                  <div style="padding-top: 40px; margin-bottom: 60px;">
+                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
+                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
+                    </p>
+                  </div>
+
+                  <!-- Título fixo na parte inferior -->
+                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
+                      Mariana Costa
+                  </h5>
+              </div>
+          </div>
+      </div>
   </div>
+</div>
+
+<div class="container pb-4 px-5" style="max-width: 1140px;">
+  <div class="row pb-5">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center m-0 reg" style="width: 100%; height: auto;">
+      <h1 class="text-home reg azul-escuro col-lg-7 col-12 text-start mb-3 mb-lg-0" style="overflow-wrap: break-word;">
+        {% trans "Find help near to you!" %}
+      </h1>
+      
+      <div class="container-fluid col-lg-5 col-12 " style="border: none; height: 8vw; border-radius: 76px; display: flex; align-items: center; padding: 0%; height: 40px;">
+        <input type="text" placeholder="{% trans 'search here...' %}" class="col-sm-10 col-9 input-container mdm text-home2" style="
+            border: none; 
+            color: white;
+            height: 100%; 
+            background: #114D7F; 
+            border-top-left-radius: 76px; 
+            border-bottom-left-radius: 76px; 
+            padding-left: 35px;"
+            >
+        <div class="btn bttn4 col-sm-2 col-3 text-center mdm " style="
+            height: 100%; 
+            border-top-right-radius: 76px; 
+            border-bottom-right-radius: 76px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            
+            font-size: clamp(15px, 1vw, 20px);
+            ">
+            {% trans "search" %}
+        </div>
+    </div>
+    </div>
+
+    <!-- iframe id="frame-visao" class="w-100 mt-3" style="height: 37.5rem;" src="https://visao.ibict.br/visao2/viewGroupCategory/238?l=462&amp;amp&amp;ui=f&amp;amp&amp;header=f&amp;amp&amp;hideIndicator=t" frameborder="0"></iframe-->
+  </div>
+</div>
+
+
+  <div class="container-fluid row" style="background-color: #5CDCFF; padding: 0; margin: 0;">
+    <div class="row no-gutters align-items-center" style="margin: 0; padding: 0;">
+
+      <div class="col-4 d-flex justify-content-start align-items-center" style="padding: 0; margin: 0;">
+        <img src="{% static '/site/img/Vector.svg'%}" alt="Imagem" style="max-width: 100%; max-height: 400px; width: auto; height: auto;">
+      </div>
+        
+    
+    <div class="col-2 d-flex justify-content-center align-items-center" style="padding: 0; margin: 0;">
+      <div class="container-fluid d-flex flex-column justify-content-center" style="max-width: 290px; padding: 0; margin: 0;">
+        <h1 class="text-home reg par" style="color: white; font-size:  min(3vw, 45px); font-weight: 400; text-align: start; margin: 0; line-height: 1.2; min-width: 0; ">
+            {% trans "Wanna be a partner?" %}
+        </h1>
+        
+        <a href="/parceiro/" class="btn mdm" style="display: inline-block; width: 100%; margin-top: 10px; background-color: #3D99F4; color: white; text-align: center; border: none; border-radius: 42px; font-size: 1.5vw; padding: 10px; text-decoration: none;">{% trans "Know how" %}</a>
+      
+      </div>
+  </div>
+  
+      <div class="col-6  d-flex justify-content-center align-items-center" style="padding: 0 20px; margin: 0;">
+        <img src="{% static '/site/img/img.svg'%}" alt="Imagem" class="img-fluid" style="height: auto;">
+      </div>
   
     </div>
   </div>
-
-  <div
-    class="d-flex align-items-center pb-4 pt-4"
-    style="background-color: #9bc2c1; padding-left: 15%; padding-right: 15%"
-  >
-    <div class="col-12">
-      <div class="text-center">
-        <h1
-          class="mb-5"
-          style="color: white; font-weight: 950; size: 45px; line-height: 53px"
-        >
-          Notícias
-        </h1>
-      </div>
-      <div class="row">
-        <div class="col-lg-4 col-md-12 mb-4">
-          <a
-            href="sua-outra-pagina.html"
-            style="text-decoration: none; color: inherit"
-          >
-            <div
-              style="
-                background-color: #a167a5;
-                border-radius: 50px;
-                cursor: pointer;
-              "
-            >
-              <img
-                src="{% static '/site/img/Rectangle 126.png'%}"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title text-white">São Paulo</h5>
-                <p class="card-text text-white">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+  
+  <div class="container mt-5" style="max-width:  1120px;">
+    <div class="row align-items-center justify-content-center w-auto" style="max-width: 1120px;">
+        <div class="col-12 col-xl-auto m-0 text-start text-xl-start azul-escuro w-auto justify-self-start">
+            <h1 class="reg m-0" style="font-size: 25px;">{% trans "Our medias:" %}</h1>
+        </div>
+        <div class="my-3 p-0 col-12 col-xl-auto d-flex flex-wrap flex-xl-nowrap justify-content-center gap-2">
+            <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
+            <a 
+            href="https://www.instagram.com/laccops/" 
+            class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
+            style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">@Usuario</a></div>
+        
+            <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
+              <a 
+              href="https://www.instagram.com/laccops/" 
+              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
+              style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
               </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-md-12 mb-4">
-          <a
-            href="sua-outra-pagina.html"
-            style="text-decoration: none; color: inherit"
-          >
-            <div
-              style="
-                background-color: #a167a5;
-                border-radius: 50px;
-                cursor: pointer;
-              "
-            >
-              <img
-                src="{% static '/site/img/Rectangle 127.png'%}"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title text-white">São Paulo</h5>
-                <p class="card-text text-white">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+              <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
+                <a 
+              href="https://www.instagram.com/laccops/" 
+              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
+              style="color: white; width:230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
               </div>
+            <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
+              <a 
+              href="https://www.instagram.com/laccops/" 
+              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">{% trans "Contact" %}</a>
+          </div>
+        </div>
             </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-md-12 mb-4">
-          <a
-            href="sua-outra-pagina.html"
-            style="text-decoration: none; color: inherit"
-          >
-            <div
-              style="
-                background-color: #a167a5;
-                border-radius: 50px;
-                cursor: pointer;
-              "
-            >
-              <img
-                src="{% static '/site/img/Rectangle 128.png'%}"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title text-white">São Paulo</h5>
-                <p class="card-text text-white">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <div class="container pt-4 pb-4">
-    <div class="col-12 text-center">
-      <h1 style="color: #9bc2c1">Depoimentos</h1>
-    </div>
-    <div class="row justify-content-center align-items-center pb-4 pt-4">
-      <div
-        class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4"
-        style="border-radius: 30px; border: 3px solid #9bc2c1"
-      >
-        <p>
-          A equipe foi um verdadeiro salvador para mim. Eu estava lidando com
-          uma condição complicada e não sabia por onde começar. Foi aqui que
-          encontrei informações detalhada
-        </p>
-        <h5>Mariana Costa</h5>
+    <div class="container-fluid justify-content-center mdm m-0">
+      <div class="row text-center azul" style="margin-top: 5rem;">
+        <h1 class="text-home reg" style=" overflow-wrap: break-word; text-align: center;">{% trans "FAQ" %}</h1>
       </div>
-      <div class="col-1"></div>
-      <div
-        class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4"
-        style="border-radius: 30px; border: 3px solid #9bc2c1"
-      >
-        <p>
-          A equipe foi um verdadeiro salvador para mim. Eu estava lidando com
-          uma condição complicada e não sabia por onde começar. Foi aqui que
-          encontrei informações detalhada
-        </p>
-        <h5>Mariana Costa</h5>
-      </div>
-      <div class="col-1"></div>
-
-      <div
-        class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4"
-        style="border-radius: 30px; border: 3px solid #9bc2c1"
-      >
-        <p>
-          A equipe foi um verdadeiro salvador para mim. Eu estava lidando com
-          uma condição complicada e não sabia por onde começar. Foi aqui que
-          encontrei informações detalhada
-        </p>
-        <h5>Mariana Costa</h5>
-      </div>
-    </div>
-    <div class="text-center mb-5">
-      <h1 class="text-home">Encontre ajuda perto de você!</h1>
-    </div>
-      <div class="row pb-5">
-              <iframe id="frame-visao" style="border-radius: 20px; height: 25rem;"
-                  src="https://visao.ibict.br/visao2/viewGroupCategory/238?l=462&amp;amp&amp;ui=f&amp;amp&amp;header=f&amp;amp&amp;hideIndicator=t"
-                  frameborder="0"></iframe>
-      </div>
-  </div>
-
-  <div class="container-fluid w-100" style="background-color: #9bc2c1">
-    <div
-      class="row justify-content-center align-items-center pb-4 pt-4"
-      style="margin: 0% 5% 0% 5%"
-    >
-      <div
-        class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4 bg-white text-center"
-        style="border-radius: 30px; border: 5px solid #a167a5; margin-right: 2%"
-      >
-        <h3 style="color: #a167a5">Associações</h3>
-        <p style="font-size: 11px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </p>
-      </div>
-      <div
-        class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4 bg-white text-center"
-        style="border-radius: 30px; border: 5px solid #a167a5; margin-right: 2%"
-      >
-        <h3 style="color: #a167a5">Universidades</h3>
-        <p style="font-size: 11px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </p>
-      </div>
-      <div
-        class="col-lg-3 col-md-12 col-sm-12 p-4 mb-4 bg-white text-center"
-        style="border-radius: 30px; border: 5px solid #a167a5; margin-right: 2%"
-      >
-        <h3 style="color: #a167a5">Polos de atendimentos</h3>
-        <p style="font-size: 11px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="container pt-5">
-    <div
-      class="col-12 text-center p-2 text-white"
-      style="
-        margin-bottom: 5rem;
-        background-color: #a167a5;
-        border-radius: 30px;
-      "
-    >
-      <h1 style="font-size: 55px">Quer ser um parceiro ?</h1>
-    </div>
-
-    <!-- Nossas redes -->
-    <div class="container text-center text-white pt-3 pb-1" 
-        style="background-color: #9bc2c1; border-radius: 30px;">
-      <div class="row mb-2">
-        <div class="col-lg-3 col-md-12 col-sm-12">
-          <h3>
-            Nossas redes
-          </h3>
-        </div>
-
-        <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
-          <input type="text"
-              class="p-2"
-              placeholder="@XXXXXXXXXXXXXXXXXXXXXXXXXX"
-              style="border-radius: 30px; text-decoration:none; outline: none; 
-              transition: border-color 0.2s ease-in-out;
-              border: 1px solid transparent;
-              color: #9bc2c1; font-size: 1rem;">
+      <div class="container-fluid justify-content-center d-flex flex-column align-items-center m-0" style="font-size: 20px;">
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "Are rare diseases contagious?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "How can we support people with rare diseases?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "Why is difficult to find treatments for rare diseases?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "Are rare diseases contagious?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "How do families deal with rare diseases?" %}
+        </a>
+        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
+            {% trans "Can children also have rare diseases?" %}
+        </a>
       </div>
       
-
-        <div class="col-lg-3 col-md-12 col-sm-12 mb-2" >
-          <input type="text"
-          class="p-2"
-          placeholder="@XXXXXXXXXXXXXXXXXXXXXXXXXX"
-          style="border-radius: 30px; text-decoration:none; outline: none; 
-          transition: border-color 0.2s ease-in-out;
-          border: 1px solid transparent;">
-        </div>
-
-        <div class="col-lg-3 col-md-12 col-sm-12">
-          <input class="btn" type="button" value="Fale conosco" 
-            style="background-color: white; color: #9bc2c1; border-radius: 30px;">
-        </div>
-      </div>
     </div>
-
-    <div class="row text-center" style="margin-top: 5rem; color: #a167a5">
-      <h1 style="font-size: 55px">Dúvidas frequentes</h1>
-    </div>
-    <div class="row">
-      <a
-        href="#"
-        class="col-12 text-center p-3 mt-3 link-div text-white"
-        style="
-          text-decoration: none;
-          color: inherit;
-          background-color: #a167a5;
-          width: 60%;
-          margin-left: 20%;
-          border-radius: 30px;
-        "
-        >Doenças raras são contagiosas?</a
-      >
-      <a
-        href="#"
-        class="col-12 text-center p-3 mt-3 link-div text-white"
-        style="
-          text-decoration: none;
-          color: inherit;
-          background-color: #c388c7;
-          width: 60%;
-          margin-left: 20%;
-          border-radius: 30px;
-        "
-        >Doenças Como podemos apoiar pessoas com doenças raras?</a
-      >
-      <a
-        href="#"
-        class="col-12 text-center p-3 mt-3 link-div text-white"
-        style="
-          text-decoration: none;
-          color: inherit;
-          background-color: #a167a5;
-          width: 60%;
-          margin-left: 20%;
-          border-radius: 30px;
-        "
-        >Doenças CPor que é complicado encontrar tratamentos para doenças
-        raras?</a
-      >
-      <a
-        href="#"
-        class="col-12 text-center p-3 mt-3 link-div text-white"
-        style="
-          text-decoration: none;
-          color: inherit;
-          background-color: #c388c7;
-          width: 60%;
-          margin-left: 20%;
-          border-radius: 30px;
-        "
-        >Doenças raras são contagiosas?</a
-      >
-      <a
-        href="#"
-        class="col-12 text-center p-3 mt-3 link-div text-white"
-        style="
-          text-decoration: none;
-          color: inherit;
-          background-color: #a167a5;
-          width: 60%;
-          margin-left: 20%;
-          border-radius: 30px;
-        "
-        >Doenças Como as famílias lidam com doenças raras?</a
-      >
-      <a
-        href="#"
-        class="col-12 text-center p-3 mt-3 link-div text-white"
-        style="
-          text-decoration: none;
-          color: inherit;
-          background-color: #c388c7;
-          width: 60%;
-          margin-left: 20%;
-          border-radius: 30px;
-        "
-        >Doenças As crianças também podem ter doenças raras?
-      </a>
-    </div>
-  </div>
+    
+</div>
 {% endif %}
 {% endblock splash %}
 

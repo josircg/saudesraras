@@ -62,6 +62,7 @@ src/recreate_db.sh
 src/backup.sh
 
 #media
+static/
 src/media/*
 
 #out

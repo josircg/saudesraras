@@ -1,11 +1,15 @@
+import logging
 import os
 import uuid
 from xml.dom.minidom import parse
 
 from PIL import Image, ImageOps
 from django.conf import settings
+from django.contrib import messages
 from django.core.files.storage import get_storage_class
 from django.utils.translation import ugettext_lazy as _
+
+logger = logging.getLogger("django.request")
 
 
 def save_image_with_path(image, photo_name):
@@ -19,6 +23,69 @@ def save_image_with_path(image, photo_name):
     image_path = fs.get_available_name(image_path)
 
     image.save(os.path.join(settings.MEDIA_ROOT, image_path))
+
+    return image_path
+
+
+def crop_and_save(request, form, filefield, field_suffix=None, final_width=600, final_height=400):
+    """
+    Crop and save an image.
+    :param filefield: FileField object name in request.FILES
+    :param field_suffix: Form withImage, x, y, width, height field suffix identifiers
+    :param final_width: final width to resize image
+    :param final_height: final height to resize image
+    """
+
+    if field_suffix is None:
+        field_suffix = ''
+
+    original_image = request.FILES.get(filefield, False)
+    with_image = form.cleaned_data.get(f'withImage{field_suffix}', False)
+
+    if original_image:
+        x = form.cleaned_data.get(f'x{field_suffix}')
+        y = form.cleaned_data.get(f'y{field_suffix}')
+        w = form.cleaned_data.get(f'width{field_suffix}')
+        h = form.cleaned_data.get(f'height{field_suffix}')
+
+        try:
+            image = Image.open(original_image)
+            # Fix image orientation based on EXIF information
+            fixed_image = ImageOps.exif_transpose(image)
+
+            cropped_image = image.crop((x, y, w + x, h + y))
+            resized_image = cropped_image.resize((final_width, final_height), Image.LANCZOS)
+
+            if cropped_image.width > fixed_image.width:
+                size = (
+                    abs(int((final_width - (final_width / cropped_image.width * fixed_image.width)) / 2)), final_height
+                )
+                white_background = Image.new(mode='RGBA', size=size, color=(255, 255, 255, 0))
+                position = ((final_width - white_background.width), 0)
+                resized_image.paste(white_background, position)
+                position = (0, 0)
+                resized_image.paste(white_background, position)
+
+            if cropped_image.height > fixed_image.height:
+                size = (
+                    final_width,
+                    abs(int((final_height - (final_height / cropped_image.height * fixed_image.height)) / 2))
+                )
+                white_background = Image.new(mode='RGBA', size=size, color=(255, 255, 255, 0))
+                position = (0, (final_height - white_background.height))
+                resized_image.paste(white_background, position)
+                position = (0, 0)
+                resized_image.paste(white_background, position)
+
+            image_path = save_image_with_path(resized_image, original_image.name)
+        except Exception as e:
+            logger.exception(f'Error when trying to crop an resize image: {e}', extra={'request': request})
+            messages.warning(request, _('There was an error adapting the image. Try with another image.'))
+            image_path = ''
+    elif with_image:
+        image_path = '/'
+    else:
+        image_path = ''
 
     return image_path
 
@@ -75,10 +142,10 @@ def assign_image(image_filename, image_field, width=600, height=400):
 
             if image_with < width or image_height < height:
                 # Try to crop central region of image
-                left = (image_with - width) / 2
-                upper = (image_height - height) / 2
-                right = (image_with + width) / 2
-                lower = (image_height + height) / 2
+                left = (image_with - width) // 2
+                upper = (image_height - height) // 2
+                right = (image_with + width) // 2
+                lower = (image_height + height) // 2
 
                 fixed_image = fixed_image.crop((left, upper, right, lower))
 

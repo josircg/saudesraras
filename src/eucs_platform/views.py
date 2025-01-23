@@ -6,7 +6,6 @@ from django.contrib.admin.views.main import SEARCH_VAR
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.utils import translation
 from django.utils.safestring import mark_safe
@@ -15,6 +14,7 @@ from django_countries import countries
 from django_countries.templatetags.countries import get_country
 from blog.models import Post
 from events.models import Event
+from events.views import set_pages_and_get_object_list
 from machina.apps.forum.models import Forum
 from machina.apps.forum_conversation.models import Topic
 from machina.apps.forum_tracking.handler import TrackingHandler
@@ -37,6 +37,12 @@ def home(request):
     items_per_page = 4
     page = request.GET.get('page')
 
+    # Blog
+    posts = Post.objects.all().order_by('id')
+    paginatorposts = Paginator(posts, items_per_page)
+    posts = paginatorposts.get_page(page)
+    counterposts = paginatorposts.count
+    
     # Projects
     projects = Project.objects.filter(approved=True, hidden=False).order_by('-dateCreated')
     paginatorprojects = Paginator(projects, items_per_page)
@@ -114,6 +120,7 @@ def home(request):
         'organisations': organisations,
         'counterorganisations': counterorganisations,
         'platforms': platforms,
+        'posts': posts,
         'events': events,
         'counterPlatforms': counter_platforms,
         'counterUsers': counter_users,
@@ -128,10 +135,6 @@ def home(request):
 def all(request):
     return home(request)
 
-
-def noticias(request):
-    posts = Post.objects.filter(status=1).order_by('-created_on')
-    return render(request, 'pages/{}/noticias.html'.format(get_language()), {'posts': posts})
 
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
@@ -152,10 +155,6 @@ def ajuda(request):
     return render(request, 'pages/%s/ajuda.html' % get_language())
 
 
-def eventos(request):
-    return render(request, 'pages/%s/eventos.html' % get_language())
-
-
 def projeto(request):
     return render(request, 'pages/%s/projeto.html' % get_language())
 
@@ -165,7 +164,7 @@ def parceiro(request):
 
 
 def about(request):
-    return render(request, 'pages/%s/ajuda.html' % get_language())
+    return render(request, 'pages/%s/about.html' % get_language())
 
 
 def terms(request):
@@ -239,47 +238,6 @@ def home_autocomplete(request):
         return JsonResponse(response, safe=False)
     else:
         return HttpResponse("No cookies")
-
-
-def getTopicsResponded(request):
-    response = {}
-    topics = {}
-    if not request.user.is_anonymous and not request.user.is_staff:
-        own_topics = Topic.objects.get_queryset().filter(status=0, poster_id=request.user, posts_count__gt=1)
-        suscribed_topics = request.user.topic_subscriptions.all()
-        result = own_topics | suscribed_topics
-        result = result.distinct()
-        topics = TrackingHandler.get_unread_topics(request, result, request.user)
-
-    topicshtml = "</br>"
-
-    for topic in topics:
-        slug = '' + topic.slug + '-' + str(topic.id)
-        forum = get_object_or_404(Forum, id=topic.forum_id)
-        forum_slug = forum.slug + '-' + str(forum.id)
-        topicshtml += (
-                '<p class="alert alert-info" role="alert">There is a response in a topic that you follow'
-                ' <a href="' + settings.HOST + '/forum/forum/' + forum_slug + '/topic/' + slug + '">%s</a></p>' %
-                topic.subject
-        )
-
-    response['topics'] = topicshtml
-    return JsonResponse(response)
-
-
-def getForumResponsesNumber(request):
-    response = {}
-    forumresponses = 0
-    if not request.user.is_anonymous and not request.user.is_staff:
-        own_topics = Topic.objects.get_queryset().filter(status=0, poster_id=request.user, posts_count__gt=1)
-        suscribed_topics = request.user.topic_subscriptions.all()
-        result = own_topics | suscribed_topics
-        result = result.distinct()
-        result = TrackingHandler.get_unread_topics(request, result, request.user)
-        forumresponses = len(result)
-
-    response['forumresponses'] = forumresponses
-    return JsonResponse(response)
 
 
 @staff_member_required(login_url='/login')

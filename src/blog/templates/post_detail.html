@@ -22,7 +22,7 @@
           <div class="mt-5 mb-5">
             <div class="">
 
-              <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+              <h1 class="text-blue3">{% block title %} {{ post.title }} {% endblock title %}</h1>
               <p class=" text-muted">
                 {% if post.author.name != "Empty user" %}
 								  {{ post.author.name }} {% endif %} <br /> {{ post.created_on }}

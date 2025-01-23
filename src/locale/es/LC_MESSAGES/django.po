@@ -93,7 +93,9 @@ msgstr "Parámetros de la tarea"
 msgid "Task Description"
 msgstr "Descripción de la tarea"
 
-msgid "Activate your CIVIS account."
+#, fuzzy
+#| msgid "Activate your CIVIS account."
+msgid "Activate your account."
 msgstr "Active su cuenta CIVIS."
 
 msgid "Almost done!"
@@ -138,16 +140,25 @@ msgstr "¿Ya se ha registrado?"
 
 #, fuzzy
 #| msgid "By clicking on Register, you accept our"
-msgid ""
-"By clicking on Register, you accept our <a href='/terms'>Terms of Use</a> "
+msgid "By clicking on Register, you accept our "
 msgstr "Al hacer clic en Registrarse, acepta nuestros"
 
-msgid ""
-"and <a href='/privacy'>Privacy Policy</a>, as well as our use of <a href='/"
-"privacy#cookies'>cookies</a>."
+msgid "Terms of Use"
+msgstr "Términos de Uso"
+
+msgid "and "
 msgstr ""
-"<a href='/privacy'>Política de Privacidad</a>, así como sobre el uso que "
-"hacemos de las <a href='/privacy#cookies'>cookies</a>."
+
+#, fuzzy
+#| msgid "Privacy"
+msgid "Privacy Policy"
+msgstr "Privacidad"
+
+msgid "as well as our use of "
+msgstr ""
+
+msgid "cookies"
+msgstr ""
 
 msgid "Welcome!"
 msgstr "Bienvenido!"
@@ -179,11 +190,19 @@ msgstr "Guardar y subir"
 msgid "Save as draft"
 msgstr "Guardar como borrador"
 
-msgid "Want to send a text or suggestions for the blog?"
+msgid "News"
+msgstr ""
+
+#, fuzzy
+#| msgid "Want to send a text or suggestions for the blog?"
+msgid "Want to send a news to our site?"
 msgstr "¿Quiere enviar un texto o sugerencias para el blog?"
 
 msgid "Contact us"
 msgstr "Contacta con nosotros"
+
+msgid "Access page"
+msgstr ""
 
 msgid "Not moderated"
 msgstr "Aún no revisados"
@@ -303,9 +322,13 @@ msgstr "Importar CSV"
 msgid "Contact"
 msgstr "Contacto"
 
+#, fuzzy
+#| msgid ""
+#| "You can reach out by this form, or through the email: <a href='mailto:"
+#| "civis@ibict.br'>civis@ibict.br</a>"
 msgid ""
 "You can reach out by this form, or through the email: <a href='mailto:"
-"civis@ibict.br'>civis@ibict.br</a>"
+"laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 msgstr ""
 "Puede ponerse en contacto mediante este formulario o a través del correo "
 "electrónico: <a href='mailto:civis@ibict.br'>civis@ibict.br</a>"
@@ -619,14 +642,16 @@ msgstr "Aprobar"
 msgid "Do not"
 msgstr "No aprobar"
 
-msgid "Ongoing <span class='text-pink6'>events</span>"
-msgstr "Eventos <span class='text-white'>ciencia ciudadana?</span>"
+msgid "Ongoing events"
+msgstr ""
 
-msgid "Upcoming <span class='text-pink6'>Events</span>"
-msgstr "Eventos <span class='text-white'>ciencia ciudadana?</span>"
+msgid "Upcoming Events"
+msgstr ""
 
-msgid "Past <span class='text-pink6'>events</span>"
-msgstr "Eeventos <span class='text-white'>ciencia ciudadana?</span>"
+#, fuzzy
+#| msgid "See all events"
+msgid "Past events"
+msgstr "Ver todos los eventos"
 
 msgid "From "
 msgstr "Desde"
@@ -768,11 +793,18 @@ msgstr "organización"
 msgid "found"
 msgstr "encontradas"
 
+#, fuzzy
+#| msgid ""
+#| "Thank you for registering your citizen science organisation or network on "
+#| "the Civis platform. The organisation or network profile can be linked "
+#| "with the personal profiles of the people in your organisation, the "
+#| "profiles of projects that your organisation is involved in, and the "
+#| "resource profiles that were published by your organisation."
 msgid ""
-"Thank you for registering your citizen science organisation or network on "
-"the Civis platform. The organisation or network profile can be linked with "
-"the personal profiles of the people in your organisation, the profiles of "
-"projects that your organisation is involved in, and the resource profiles "
+"Thank you for registering your rare health organisation or network on the "
+"Saúdes Raras platform. The organisation or network profile can be linked "
+"with the personal profiles of the people in your organisation, the profiles "
+"of projects that your organisation is involved in, and the resource profiles "
 "that were published by your organisation."
 msgstr ""
 "Gracias por proponer un nuevo recurso de ciencia ciudadana y compartirlo en "
@@ -788,10 +820,15 @@ msgstr ""
 "campos(marcados por un asterisco*), así como la información no esencialque "
 "sea posible"
 
+#, fuzzy
+#| msgid ""
+#| "After submitting this form, your organisation or network will undergo "
+#| "moderation by the Civis team. This step is simply to prevent use of the "
+#| "platform for purposes other than supporting citizen science."
 msgid ""
 "After submitting this form, your organisation or network will undergo "
-"moderation by the Civis team. This step is simply to prevent use of the "
-"platform for purposes other than supporting citizen science."
+"moderation by the Saúdes Raras team. This step is simply to prevent use of "
+"the platform for purposes other than supporting the health of rare people."
 msgstr ""
 "Tras enviar este formulario, su organización o red se someterá a la "
 "moderación del equipo de Civis. Este paso es simplemente para evitar el uso "
@@ -863,7 +900,9 @@ msgstr ""
 "Localice en el mapa o informe en el campo inferior la ciudad o región y el "
 "país de su iniciativa u organización."
 
-msgid "organisation or network <span class='text-pink5'>search</span>"
+#, fuzzy
+#| msgid "organisation or network <span class='text-pink5'>search</span>"
+msgid "organisation or network <span class='text-blue3'>search</span>"
 msgstr "busca <span class='text-pink5'>Organização</span>"
 
 msgid "Organisation added correctly!"
@@ -1010,7 +1049,9 @@ msgstr "Alcance geográfico"
 msgid "Platform images"
 msgstr "Imágenes de la plataforma"
 
-msgid "platform <span class='text-pink5'>search</span>"
+#, fuzzy
+#| msgid "platform <span class='text-pink5'>search</span>"
+msgid "platform <span class='text-blue3'>search</span>"
 msgstr "plataforma <span class='text-white'>ciencia ciudadana?</span>"
 
 msgid "Platform added correctly"
@@ -1158,6 +1199,30 @@ msgstr "Usuário <span class='text-pink5'>search</span>"
 msgid "Profile details saved!"
 msgstr "Datos del perfil guardados!"
 
+msgid "Featured"
+msgstr "Destacado"
+
+msgid "Topic"
+msgstr "Tema"
+
+msgid "Participation Task"
+msgstr "Tarea de los Participantes"
+
+msgid "Not approved"
+msgstr "No aprobado"
+
+msgid "Not yet moderated"
+msgstr "Aún no moderado"
+
+msgid "Participation task"
+msgstr "Tarea de participación"
+
+msgid "Projects found"
+msgstr "Proyectos encontrados"
+
+msgid "Project found"
+msgstr "Proyecto encontrado"
+
 msgid "Project"
 msgstr "Proyecto"
 
@@ -1221,14 +1286,8 @@ msgstr ""
 "Por favor, seleccione el tema o campo(s) científico(s) relacionado(s) con el "
 "proyecto, opciones múltiples."
 
-msgid "Topic"
-msgstr "Tema"
-
 msgid "Please select the task(s) undertaken by participants."
 msgstr "Seleccione la(s) tarea(s) realizada(s) por los participantes."
-
-msgid "Participation Task"
-msgstr "Tarea de los Participantes"
 
 msgid ""
 "Please describe how people can get involved in the project (max 2000 "
@@ -1387,6 +1446,75 @@ msgstr "Permiso de proyecto"
 msgid "Project Permissions"
 msgstr "Permisos de proyecto"
 
+msgid "Created"
+msgstr "Creado"
+
+msgid "Updated"
+msgstr "Actualizado"
+
+msgid "This translation was done before the last project update."
+msgstr ""
+"Esta traducción se realizó antes de la última actualización del proyecto."
+
+msgid "Plase help the community by improving it"
+msgstr "Por favor ayude a la comunidad mejorandola"
+
+msgid "here"
+msgstr "aquí"
+
+msgid "This project profile is not available in your selected language."
+msgstr "Este perfil de proyecto no está disponible en el idioma seleccionado."
+
+msgid "Please help the community by translating it."
+msgstr "Por favor, ayude a la comunidad traduciéndolo."
+
+msgid "from"
+msgstr "De"
+
+msgid "until"
+msgstr "hasta"
+
+msgid "Science Topics"
+msgstr "Temas científicos"
+
+msgid "Participation tasks"
+msgstr "Tareas de los Participantes"
+
+msgid "Lead organization"
+msgstr "Organización principal"
+
+msgid "Go to Project"
+msgstr "Ir al proyecto"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Editors"
+msgstr "Editores"
+
+#, fuzzy
+#| msgid "Invite new Cooperators"
+msgid "Invite new Editors"
+msgstr "Invitar a nuevos cooperadores"
+
+msgid "Translate"
+msgstr "Traducir"
+
+msgctxt "fem"
+msgid "Not Approved"
+msgstr "No aprobado"
+
+msgid "Is featured"
+msgstr "Destacado"
+
+msgid "Contact project submitter"
+msgstr "Contactar con el remitente del proyecto"
+
+#, fuzzy
+#| msgid "<span class='text-pink5'>search</span> project"
+msgid "<span class='text-blue3'>search</span> project"
+msgstr "búsqueda <span class='text-white'>proyeto</span>"
+
 #, python-format
 msgid "Your project \"%s\" has been approved!"
 msgstr "¡Su proyecto \"%s\" ha sido aprobado!"
@@ -1394,24 +1522,6 @@ msgstr "¡Su proyecto \"%s\" ha sido aprobado!"
 #, python-format
 msgid "You were removed from project %s"
 msgstr "Usted fue removido del proyecto %s"
-
-msgid "Featured"
-msgstr "Destacado"
-
-msgid "Not approved"
-msgstr "No aprobado"
-
-msgid "Not yet moderated"
-msgstr "Aún no moderado"
-
-msgid "Participation task"
-msgstr "Tarea de participación"
-
-msgid "Projects found"
-msgstr "Proyectos encontrados"
-
-msgid "Project found"
-msgstr "Proyecto encontrado"
 
 msgid "project"
 msgstr "proyecto"
@@ -1566,70 +1676,6 @@ msgstr "Leer más sobre nuestro"
 
 msgid "moderation process"
 msgstr "proceso de moderación"
-
-msgid "Created"
-msgstr "Creado"
-
-msgid "Updated"
-msgstr "Actualizado"
-
-msgid "This translation was done before the last project update."
-msgstr ""
-"Esta traducción se realizó antes de la última actualización del proyecto."
-
-msgid "Plase help the community by improving it"
-msgstr "Por favor ayude a la comunidad mejorandola"
-
-msgid "here"
-msgstr "aquí"
-
-msgid "This project profile is not available in your selected language."
-msgstr "Este perfil de proyecto no está disponible en el idioma seleccionado."
-
-msgid "Please help the community by translating it."
-msgstr "Por favor, ayude a la comunidad traduciéndolo."
-
-msgid "from"
-msgstr "De"
-
-msgid "until"
-msgstr "hasta"
-
-msgid "Science Topics"
-msgstr "Temas científicos"
-
-msgid "Participation tasks"
-msgstr "Tareas de los Participantes"
-
-msgid "Lead organization"
-msgstr "Organización principal"
-
-msgid "Go to Project"
-msgstr "Ir al proyecto"
-
-msgid "Edit"
-msgstr "Editar"
-
-msgid "Editors"
-msgstr "Editores"
-
-#, fuzzy
-#| msgid "Invite new Cooperators"
-msgid "Invite new Editors"
-msgstr "Invitar a nuevos cooperadores"
-
-msgid "Translate"
-msgstr "Traducir"
-
-msgctxt "fem"
-msgid "Not Approved"
-msgstr "No aprobado"
-
-msgid "Is featured"
-msgstr "Destacado"
-
-msgid "Contact project submitter"
-msgstr "Contactar con el remitente del proyecto"
 
 msgid "Useful information to classify the project"
 msgstr "Información útil para clasificar el proyecto"
@@ -2088,10 +2134,14 @@ msgstr "Enlaces con proyectos y/u organizaciones."
 msgid "Resource profile images"
 msgstr "Imágenes del perfil de los recursos."
 
-msgid "Training resource <span class='text-pink5'> search</span>"
+#, fuzzy
+#| msgid "Training resource <span class='text-pink5'> search</span>"
+msgid "Training resource <span class='text-blue3'> search</span>"
 msgstr "Recurso de Formación <span class='text-pink5'> search</span>"
 
-msgid "Resource <span class='text-pink5'> search</span>"
+#, fuzzy
+#| msgid "Resource <span class='text-pink5'> search</span>"
+msgid "Resource <span class='text-blue3'> search</span>"
 msgstr "Recurso <span class='text-pink5'> search</span>"
 
 msgid "Training Resource added correctly!"
@@ -2146,20 +2196,20 @@ msgstr "Recortar la foto"
 msgid "Crop and upload"
 msgstr "Recortar y subir"
 
+msgid "Início"
+msgstr ""
+
 msgid "About"
 msgstr "Acerca de"
+
+msgid "Noticias"
+msgstr ""
 
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
-msgid "Newsletter"
-msgstr ""
-
 msgid "Policies"
 msgstr "Políticas"
-
-msgid "Terms of Use"
-msgstr "Términos de Uso"
 
 msgid "Privacy"
 msgstr "Privacidad"
@@ -2167,17 +2217,19 @@ msgstr "Privacidad"
 msgid "Source Code"
 msgstr "Código Fonte"
 
-msgid "Follow us"
-msgstr "Siga-nos"
-
-msgid "Partnerships"
-msgstr "Asociaciones"
-
 msgid "© Lorem Ipsum 2023 - Todos os direitos reservados."
 msgstr ""
 
-msgid "See all events"
+msgid "Desenvolvido por:"
+msgstr ""
+
+#, fuzzy
+#| msgid "See all events"
+msgid "See all events here +"
 msgstr "Ver todos los eventos"
+
+msgid "See more news here +"
+msgstr ""
 
 msgid "See all platforms"
 msgstr "Ver todas as plataformas"
@@ -2212,27 +2264,23 @@ msgstr "Alejar"
 msgid "What do you want to submit?"
 msgstr "¿Qué quiere presentar?"
 
-msgid "Register a citizen science project"
+#, fuzzy
+#| msgid "Register a citizen science project"
+msgid "Register a new rare health project"
 msgstr "Registrar un proyecto de ciencia ciudadana"
 
-msgid "Register a citizen science resource"
-msgstr "Registrar un recurso de ciencia ciudadana"
+#, fuzzy
+#| msgid "Register your organisation or network"
+msgid "Register a new rare health organisation"
+msgstr "Registre su organización o red"
 
-msgid "Register a course or educational material related to citizen science"
-msgstr ""
-"Registrar un curso o material educativo relacionado con la ciencia ciudadana"
-
-msgid "Register a citizen science event"
+#, fuzzy
+#| msgid "Register a citizen science event"
+msgid "Register a new rare health event"
 msgstr "Registrar un evento de ciencia ciudadana"
 
-msgid "Register a citizen science platform"
-msgstr "Registrar una plataforma de ciencia ciudadana"
-
-msgid "Organisation or Network"
-msgstr "Organización o red"
-
-msgid "Register your organisation or network"
-msgstr "Registre su organización o red"
+msgid "Register a new rare health news"
+msgstr ""
 
 msgid "Save & continue editing"
 msgstr "Guardar y continuar editando"
@@ -2251,9 +2299,6 @@ msgstr "Histórico"
 
 msgid "View on site"
 msgstr "Visualizar en site"
-
-msgid "FORUM"
-msgstr "FORO"
 
 msgid "Login"
 msgstr "Iniciar sesión"
@@ -2733,6 +2778,91 @@ msgstr[1] "%(topic_length)s tema no leído encontrado"
 msgid "There are no unread topics."
 msgstr "No hay temas sin leer."
 
+msgid "Don't you see, we feel"
+msgstr ""
+
+msgid "Diagnosis"
+msgstr ""
+
+msgid "Doctors"
+msgstr ""
+
+msgid "Justice"
+msgstr ""
+
+msgid "Symptoms"
+msgstr ""
+
+#, fuzzy
+#| msgid "Communications"
+msgid "Publications"
+msgstr "organizaciones"
+
+#, fuzzy
+#| msgid "Search..."
+msgid "search here..."
+msgstr "Buscar..."
+
+#, fuzzy
+#| msgid "Search"
+msgid "search"
+msgstr "Buscar"
+
+msgid "Social adversity"
+msgstr ""
+
+msgid "Hidden Disabilities Sunflower"
+msgstr ""
+
+#, fuzzy
+#| msgid "Privacy center"
+msgid "Service centers"
+msgstr "Privacidad"
+
+#, fuzzy
+#| msgid "Confirmation Done!"
+msgid "Information about:"
+msgstr "Confirmado"
+
+msgid "Testimonials"
+msgstr ""
+
+msgid "See others testimonials here +"
+msgstr ""
+
+msgid ""
+"This online space provided me with emotional support and valuable "
+"information that made all the difference during my process and my son's "
+"process."
+msgstr ""
+
+msgid "Find help near to you!"
+msgstr ""
+
+msgid "Wanna be a partner?"
+msgstr ""
+
+msgid "Know how"
+msgstr ""
+
+msgid "Our medias:"
+msgstr ""
+
+msgid "Are rare diseases contagious?"
+msgstr ""
+
+msgid "How can we support people with rare diseases?"
+msgstr ""
+
+msgid "Why is difficult to find treatments for rare diseases?"
+msgstr ""
+
+msgid "How do families deal with rare diseases?"
+msgstr ""
+
+msgid "Can children also have rare diseases?"
+msgstr ""
+
 msgid "Imprint"
 msgstr "Imprimir"
 
@@ -3054,15 +3184,28 @@ msgstr ""
 msgid "Doencas"
 msgstr ""
 
-#, fuzzy
-#| msgid "Events"
-msgid "Eventos"
-msgstr "Evento"
+msgid "Ongoing <span class='text-pink6'>events</span>"
+msgstr "Eventos <span class='text-white'>ciencia ciudadana?</span>"
+
+msgid "Upcoming <span class='text-pink6'>Events</span>"
+msgstr "Eventos <span class='text-white'>ciencia ciudadana?</span>"
+
+msgid "Past <span class='text-pink6'>events</span>"
+msgstr "Eeventos <span class='text-white'>ciencia ciudadana?</span>"
 
 msgid "Medicos"
 msgstr ""
 
-msgid "Noticias"
+msgid "Notícias"
+msgstr ""
+
+msgid "Quer enviar uma notícia para o nosso site?"
+msgstr ""
+
+msgid "Entre em contato"
+msgstr ""
+
+msgid "Acessar página"
 msgstr ""
 
 msgid "Parceiro"
@@ -3185,6 +3328,14 @@ msgstr "Añadir a mi biblioteca"
 msgid "Translations"
 msgstr "Traducciones"
 
+#, fuzzy
+#| msgid "Import CSV"
+msgid "Export as CSV"
+msgstr "Importar CSV"
+
+msgid "There was an error adapting the image. Try with another image."
+msgstr ""
+
 #, python-format
 msgid "File %s does not exists"
 msgstr "El fichero %s no existe"
@@ -3194,6 +3345,41 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
+
+#~ msgid "FORUM"
+#~ msgstr "FORO"
+
+#~ msgid "Register a citizen science resource"
+#~ msgstr "Registrar un recurso de ciencia ciudadana"
+
+#~ msgid "Register a course or educational material related to citizen science"
+#~ msgstr ""
+#~ "Registrar un curso o material educativo relacionado con la ciencia "
+#~ "ciudadana"
+
+#~ msgid "Register a citizen science platform"
+#~ msgstr "Registrar una plataforma de ciencia ciudadana"
+
+#~ msgid "Organisation or Network"
+#~ msgstr "Organización o red"
+
+#~ msgid ""
+#~ "and <a href='/privacy'>Privacy Policy</a>, as well as our use of <a "
+#~ "href='/privacy#cookies'>cookies</a>."
+#~ msgstr ""
+#~ "<a href='/privacy'>Política de Privacidad</a>, así como sobre el uso que "
+#~ "hacemos de las <a href='/privacy#cookies'>cookies</a>."
+
+#~ msgid "Follow us"
+#~ msgstr "Siga-nos"
+
+#~ msgid "Partnerships"
+#~ msgstr "Asociaciones"
+
+#, fuzzy
+#~| msgid "Events"
+#~ msgid "Eventos"
+#~ msgstr "Evento"
 
 #~ msgid ""
 #~ "Citizen science platform developed using open-source code based on the"

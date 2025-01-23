@@ -1,0 +1,28 @@
+{% load i18n %}
+
+  <div class="container-fluid">
+      <div class="container" style="max-width: 1120px;">
+          <div class="row rowTitleBtn">
+              <div class="col-xs-12 col-sm-6">
+                  <h2 class="mt-5 mb-3" style="color: #FFF;">{% trans "News" %}</h2>
+              </div>
+              <div class="col-xs-12 col-sm-6 btnLatest">
+                  <div class="mt-5 mb-3">
+                      <div class="float-end">
+                        <u style="color: #FFF;">
+                            <a class="my-1 my-md-0 ms-md-2 d-flex align-items-center justify-content-center"
+                              href="{% url 'blog' %}" style="color: #FFF;">
+                              {% trans "See more news here +" %}
+                            </a>
+                        </u>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row justify-content-center mb-4">
+            {% for post in posts|slice:":3" %}
+                {% include "news_card.html" %}
+            {% endfor %}
+          </div>
+      </div>
+  </div>

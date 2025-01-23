@@ -17,7 +17,6 @@ from django.views.defaults import server_error
 from django.views.generic import TemplateView
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-from machina import urls as machina_urls
 from rest_framework import permissions
 
 from . import sitemaps
@@ -25,17 +24,17 @@ from . import views
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="CIVIS API",
+        title="Raras API",
         default_version='v1',
-        description="CIVIS API",
+        description="Raras API",
     ),
     public=False,
     permission_classes=(permissions.IsAuthenticated,),
 )
 
 # Personalized admin site settings like title and header
-admin.site.site_title = "Civis Administração"
-admin.site.site_header = "Civis Administração"
+admin.site.site_title = "Administração"
+admin.site.site_header = "Administração"
 
 urlpatterns = [
     path("", views.home, name="home"),
@@ -70,11 +69,7 @@ urlpatterns = [
     path("", include(digest.urls)),
     path("", include(platforms.urls)),
     path('summernote/', include('django_summernote.urls')),
-    path('forum/', include(machina_urls)),
-    path('getTopicsResponded', views.getTopicsResponded, name='getTopicsResponded'),
-    path('getForumResponsesNumber', views.getForumResponsesNumber, name='getForumResponsesNumber'),
     re_path(r'^i18n/', include('django.conf.urls.i18n')),
-    re_path(r'^reviews/', include('reviews.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     re_path(r'^api/auth/', include('djoser.urls')),
     re_path(r'^api/auth/', include('djoser.urls.authtoken')),
@@ -96,12 +91,10 @@ urlpatterns = [
 
     # PATHS SAUDESRARAS
     path("about/", views.about, name="about"),
-    path("noticias/", views.noticias, name="noticias"),
     path("medicos/", views.medicos, name="medicos"),
     path("diagnostico/", views.diagnostico, name="diagnostico"),
     path("doencas/", views.doencas, name="doencas"),
     path("justica/", views.justica, name="justica"),
-    path("eventos/", views.eventos, name="eventos"),
     path("parceiro/", views.parceiro, name="parceiro"),
 ]
 
