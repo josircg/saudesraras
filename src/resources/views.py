@@ -11,15 +11,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.core.paginator import Paginator
 from django.core.validators import EMPTY_VALUES
-from django.db.models import Q
-from django.http import HttpResponse, JsonResponse, StreamingHttpResponse
+from django.db import ProgrammingError
+from django.http import JsonResponse, StreamingHttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from eucs_platform import send_email
 from eucs_platform.logger import log_message
+from eucs_platform.utils import get_message_list
 from rest_framework import status
+from reviews.models import Review
 from utilities.file import save_image_with_path
+from utilities.models import SearchIndex, SearchIndexType
 
 from .forms import ResourceForm, ResourcePermissionForm
 from .models import Resource, Keyword, SavedResources, BookmarkedResources, Theme, Category
@@ -32,16 +35,16 @@ def training_resources(request):
     return resources(request, True)
 
 
-def resources(request, isTrainingResource=False):
+def resources(request, is_training_resource=False):
     user = request.user
-    if isTrainingResource:
+    if is_training_resource:
         endPoint = 'training_resources'
     else:
         endPoint = 'resources'
 
-    resources = Resource.objects.all().filter(isTrainingResource=isTrainingResource).order_by('-dateUpdated')
+    resources = Resource.objects.all().filter(isTrainingResource=is_training_resource).order_by('-dateUpdated')
     languagesWithContent = Resource.objects.all().filter(
-        isTrainingResource=isTrainingResource).values_list('inLanguage', flat=True).distinct()
+        isTrainingResource=is_training_resource).values_list('inLanguage', flat=True).distinct()
 
     resources = resources.order_by('id')
 
@@ -49,7 +52,7 @@ def resources(request, isTrainingResource=False):
     categories = Category.objects.translated_sorted_by_text()
 
     filters = {'keywords': '', 'inLanguage': ''}
-    resources = applyFilters(request, resources)
+    resources = applyFilters(request, resources, is_training_resource)
     filters = setFilters(request, filters)
     resources = resources.distinct()
 
@@ -73,7 +76,12 @@ def resources(request, isTrainingResource=False):
     else:
         resources = resources.order_by('-dateUpdated')
 
-    counter = len(resources)
+    try:
+        counter = len(resources)
+    except ProgrammingError:
+        counter = 0
+        resources = Resource.objects.none()
+
     paginator = Paginator(resources, 16)
     page = request.GET.get('page')
     resources = paginator.get_page(page)
@@ -86,7 +94,7 @@ def resources(request, isTrainingResource=False):
         'languagesWithContent': languagesWithContent,
         'themes': themes,
         'categories': categories,
-        'isTrainingResource': isTrainingResource,
+        'isTrainingResource': is_training_resource,
         'endPoint': endPoint,
         'isSearchPage': True})
 
@@ -111,8 +119,8 @@ def training_resource(request, pk):
 
 
 def resource(request, pk):
-    resource = get_object_or_404(Resource, id=pk)
-    isTrainingResource = resource.isTrainingResource
+    resource_obj = get_object_or_404(Resource, id=pk)
+    isTrainingResource = resource_obj.isTrainingResource
     user = request.user
 
     if isTrainingResource:
@@ -142,11 +150,11 @@ def resource(request, pk):
                     "id": pk}),
                 to=to)
 
-    users = getOtherUsers(resource.creator)
+    users = getOtherUsers(resource_obj.creator)
     cooperators = getCooperatorsEmail(pk)
-    if (not resource.approved or resource.hidden) and \
+    if (not resource_obj.approved or resource_obj.hidden) and \
             (user.is_anonymous or
-             (user != resource.creator and not user.is_staff and user.id not in getCooperators(pk))):
+             (user != resource_obj.creator and not user.is_staff and user.id not in getCooperators(pk))):
         return redirect('../resources', {})
     permissionForm = ResourcePermissionForm(initial={
         'usersCollection': users,
@@ -156,7 +164,7 @@ def resource(request, pk):
     bookmarkedResource = BookmarkedResources.objects.all().filter(user_id=user.id, resource_id=pk).exists()
 
     return render(request, 'resource.html', {
-        'resource': resource,
+        'resource': resource_obj,
         'savedResources': savedResources,
         'bookmarkedResource': bookmarkedResource,
         'cooperators': getCooperators(pk),
@@ -243,22 +251,28 @@ def saveResourceAjax(request):
     request.POST = updateAuthors(request.POST)
     form = ResourceForm(request.POST, request.FILES)
 
-    isTrainingResource = request.POST.get('isTrainingResource') == 'True'
+    is_training_resource = request.POST.get('isTrainingResource') == 'True'
 
     if form.is_valid():
         images = setImages(request, form)
         pk = form.save(request, images)
 
         if pk and not request.POST.get('resourceID').isnumeric():
-            sendResourceEmail(pk, request, isTrainingResource, form)
+            sendResourceEmail(pk, request, is_training_resource, form)
+        elif pk and request.POST.get('resourceID').isnumeric():
+            if is_training_resource:
+                messages.success(request, _('Training Resource updated correctly!'))
+            else:
+                messages.success(request, _('Resource updated correctly!'))
 
-        if isTrainingResource:
+        if is_training_resource:
             redirect_to = f'/training_resource/{pk}'
         else:
             redirect_to = f'/resource/{pk}'
 
         return JsonResponse(
-            {'ResourceCreated': 'OK', 'Resource': pk, 'redirect_to': redirect_to}, status=status.HTTP_200_OK
+            {'ResourceCreated': 'OK', 'Resource': pk, 'redirect_to': redirect_to,
+             'messages': get_message_list(request)}, status=status.HTTP_200_OK
         )
     else:
         return JsonResponse(form.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
@@ -346,49 +360,6 @@ def deleteResource(request, pk, isTrainingResource):
         return redirect('resources')
 
 
-def trainingsAutocompleteSearch(request):
-    return resourcesAutocompleteSearch(request, True)
-
-
-def resourcesAutocompleteSearch(request, isTrainingResource=False):
-    if request.GET.get('q'):
-        text = request.GET['q']
-        resources = getResourcesAutocomplete(text, isTrainingResource)
-        resources = list(resources)
-        return JsonResponse(resources, safe=False)
-    else:
-        return HttpResponse("No cookies")
-
-
-def getResourcesAutocomplete(text, isTrainingResource=False):
-    resources = Resource.objects.filter(approved=True).filter(name__icontains=text)
-    if isTrainingResource:
-        resources = resources.filter(isTrainingResource=True)
-    else:
-        resources = resources.filter(isTrainingResource=False)
-    resources = resources.values_list('id', 'name').distinct()
-    keywords = Keyword.objects.filter(
-        keyword__icontains=text).values_list('keyword', flat=True).distinct()
-    report = []
-    for resource in resources:
-        if isTrainingResource:
-            report.append({"type": "training", "id": resource[0], "text": resource[1]})
-        else:
-            report.append({"type": "resource", "id": resource[0], "text": resource[1]})
-    for keyword in keywords:
-        if isTrainingResource:
-            numberElements = Resource.objects.filter(
-                Q(keywords__keyword__icontains=keyword)).filter(
-                isTrainingResource=True).count()
-            report.append({"type": "trainingKeyword", "text": keyword, "numberElements": numberElements})
-        else:
-            numberElements = Resource.objects.filter(
-                Q(keywords__keyword__icontains=keyword)).filter(
-                ~Q(isTrainingResource=True)).count()
-            report.append({"type": "resourceKeyword", "text": keyword, "numberElements": numberElements})
-    return report
-
-
 def getOtherUsers(creator):
     users = list(User.objects.all().exclude(is_superuser=True).exclude(id=creator.id).values_list('name', 'email'))
     return users
@@ -459,16 +430,16 @@ def saveImage(request, form, element, ref):
     return image_path
 
 
-def preFilteredResources(request):
-    resources = Resource.objects.all().order_by('id')
-    return applyFilters(request, resources)
+def applyFilters(request, resources, is_training_resource):
+    if is_training_resource:
+        index_type = SearchIndexType.TRAINING.value
+    else:
+        index_type = SearchIndexType.RESOURCE.value
 
-
-def applyFilters(request, resources):
     if request.GET.get('keywords'):
         resources = resources.filter(
-            Q(name__icontains=request.GET['keywords']) |
-            Q(keywords__keyword__icontains=request.GET['keywords'])).distinct()
+            pk__in=SearchIndex.objects.full_text_search_ids(request.GET['keywords'], index_type)
+        )
     if request.GET.get('inLanguage'):
         resources = resources.filter(inLanguage=request.GET['inLanguage'])
     if request.GET.get('license'):

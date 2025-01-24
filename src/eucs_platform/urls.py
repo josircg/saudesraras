@@ -51,6 +51,7 @@ urlpatterns = [
     path("moderation_quality_criteria", views.moderation_quality_criteria, name="moderation_quality_criteria"),
     path("translations/", views.translations, name="translations"),
     path("home_autocomplete/", views.home_autocomplete, name="home_autocomplete"),
+    path("home_autocomplete/<str:index_type>/", views.home_autocomplete, name="home_autocomplete_by_index_type"),
     path("development/", views.development, name="development"),
     path("projeto/", views.projeto, name="projeto"),
     path("ajuda/", views.ajuda, name="ajuda"),

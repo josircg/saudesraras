@@ -753,11 +753,6 @@ footer #parcerias .parceiros-logos img {
     transition: 0.3s;
 }
 
-#searchTop.finder-page>div,
-#finder.finder-page .input-group {
-    height: 48px;
-}
-
 .form-control:focus {
     box-shadow: none;
     outline: none;

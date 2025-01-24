@@ -622,49 +622,44 @@
 	                else {
 	                    itemHtml = itemText;
                     }
-                    if(item.type==='keyword'){
-                        console.log('keyword')
-                        prefix='<i class="fas fa-key"></i>';
-                    }else if(item.type==='projectKeyword'){
-                        prefix='<i class="fas fa-key"></i> <i class="fas fa-binoculars"></i>'
-                    }else if(item.type==='resourceKeyword'){
-                        prefix='<i class="fas fa-key"></i> <i class="fas fa-book"></i>'
-                    }else if(item.type==='trainingKeyword'){
-                        prefix='<i class="fas fa-key"></i> <i class="fas fa-graduation-cap"></i>'
-                    }else if(item.type==='platformKeyword'){
-                        prefix='<i class="fas fa-key"></i> <i class="fas fa-graduation-cap"></i>'
-                    } else if(item.type==='project'){
-                        console.log('project')
-                        prefix='<i class="fas fa-binoculars"></i>'
-                    }else if(item.type==='organisation'){
-                        prefix='<i class="fas fa-university"></i>'
-                    }else if(item.type==='resource'){
-                        console.log('resource')
-                        prefix='<i class="fas fa-book"></i>'
-                    }else if(item.type==='training'){
-                        console.log('training')
-                        prefix='<i class="fas fa-graduation-cap"></i>'
-                    }else if(item.type==='platform'){
-                        console.log('platform')
-                        prefix='<i class="fas fa-globe-europe"></i>'
+					if(item.type==='event' | item.type==='eventKeyword') {
+						console.log('event');
+						prefix = '<i class="fas fa-calendar-day"></i>';
+					} else if(item.type==='project' | item.type==='projectKeyword'){
+                        console.log('project');
+                        prefix='<i class="fas fa-binoculars"></i>';
+                    }else if(item.type==='organisation' | item.type==='organisationKeyword'){
+                        prefix='<i class="fas fa-university"></i>';
+                    }else if(item.type==='resource' | item.type==='resourceKeyword'){
+                        console.log('resource');
+                        prefix='<i class="fas fa-tools"></i>';
+                    }else if(item.type==='training' | item.type==='trainingKeyword'){
+                        console.log('training');
+                        prefix='<i class="fas fa-graduation-cap"></i>';
+                    }else if(item.type==='platform' | item.type==='platformKeyword'){
+                        console.log('platform');
+                        prefix='<i class="fas fa-globe"></i>';
                     }else if(item.type==='profile'){
-                        console.log('profile')
-                        urlprefix='/user/'
-                        prefix='<i class="fas fa-user-friends"></i>'
-                    }else if(item.type==='profileInterestArea'){
-                        console.log('prddofile')
-                        prefix='<i class="fas fa-key"></i> <i class="fas fa-user-friends"></i>'
+                        console.log('profile');
+                        urlprefix='/user/';
+                        prefix='<i class="fas fa-user"></i>';
+                    }else if(item.type==='profileKeyword'){
+                        console.log('prddofile');
+                        prefix='<i class="fas fa-users"></i>';
                     }else{
                         prefix=''
                     }
                     var li = $('<li class="p-1">');
-                    if(item.type==='projectKeyword' | item.type==='profileInterestArea'){
-                        if(item.numberElements > 0){
-                            li.append($('<a class="text-decoration-none link-secondary">')
-                                .attr('href', urlprefix+item.id).html(prefix+' '+itemHtml+' ('+item.numberElements+')'))
-	                            .data('item', item);
-	                        liList.push(li);
-                        }
+                    if(item.type.indexOf('Keyword') > 0) {
+						if (item.numberElements > 0) {
+							li.append($('<a class="text-decoration-none link-secondary">')
+								.attr('href', urlprefix + item.id).html(prefix + ' ' + itemHtml + ' (' + item.numberElements + ')'))
+								.data('item', item);
+							liList.push(li);
+						}
+					} else if (item.type === 'error') {
+						li.append($('<a>').attr('href', '#').html(itemHtml)).addClass('disabled');
+	            		liList.push(li);
                     }else{
                         li.append($('<a class="text-decoration-none link-secondary">')
                             .attr('href', urlprefix+item.id).html(prefix+' '+itemHtml))
@@ -688,19 +683,21 @@
             if(item.type==='keyword'){
                 this._$el.trigger('autocomplete.select', item);
             }else if(item.type==='profile'){
-                window.location.href='/users/'+item.slug
-            }else if(item.type==='profileInterestArea'){
-                window.location.href='/users?keywords='+item.text
+                window.location.href='/users/'+item.id
+            }else if(item.type==='profileKeyword'){
+                window.location.href='/users?keywords='+item.keyword
             }else if(item.type==='project'){
                 window.location.href='/project/'+item.id
             }else if(item.type==='projectKeyword'){
-                window.location.href='/projects?keywords='+item.text
+                window.location.href='/projects?keywords='+item.keyword
             }else if(item.type==='resourceKeyword'){
-                window.location.href='/resources?keywords='+item.text
+                window.location.href='/resources?keywords='+item.keyword
             }else if(item.type==='trainingKeyword'){
-                window.location.href='/training_resources?keywords='+item.text
+                window.location.href='/training_resources?keywords='+item.keyword
             }else if(item.type==='platformKeyword'){
-                window.location.href='/platforms?keywords='+item.text
+                window.location.href='/platforms?keywords='+item.keyword
+            }else if(item.type==='organisationKeyword'){
+                window.location.href='/organisations?keywords='+item.keyword
             }else if(item.type==='resource'){
                 window.location.href='/resource/'+item.id
             }else if(item.type==='training'){
@@ -709,6 +706,10 @@
                 window.location.href='/organisation/'+item.id
             }else if(item.type==='platform'){
                 window.location.href='/platform/'+item.id
+            }else if(item.type==='event'){
+                window.location.href='/events?pk='+item.id
+            }else if(item.type==='eventKeyword'){
+                window.location.href='/events?keywords='+item.keyword
             }
 	    };
 	    return Dropdown;

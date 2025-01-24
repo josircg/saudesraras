@@ -6,8 +6,9 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.db.models import Q, ProtectedError
-from django.http import HttpResponse, JsonResponse
+from django.db import ProgrammingError
+from django.db.models import ProtectedError
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.loader import render_to_string
 from django.utils import translation
@@ -18,6 +19,7 @@ from profiles.models import Profile
 from projects.models import Project
 from resources.models import Resource
 from utilities.file import save_image_with_path
+from utilities.models import SearchIndex, SearchIndexType
 
 from .forms import OrganisationForm, OrganisationPermissionForm
 from .models import Organisation, OrganisationType, OrganisationPermission
@@ -193,9 +195,11 @@ def organisations(request):
 
     org_countries = organisations.order_by('country').values_list('country', flat=True).distinct()
     filters = {'keywords': '', 'orgTypes': '', 'country': ''}
+
     if request.GET.get('keywords'):
         organisations = organisations.filter(
-            Q(name__icontains=request.GET['keywords'])).distinct()
+            pk__in=SearchIndex.objects.full_text_search_ids(request.GET['keywords'], SearchIndexType.ORGANISATION.value)
+        )
         filters['keywords'] = request.GET['keywords']
     if request.GET.get('country'):
         organisations = organisations.filter(country=request.GET['country'])
@@ -207,7 +211,11 @@ def organisations(request):
         organisations = organisations.filter(orgType__pk__in=organisationtype_qs)
         filters['orgTypes'] = request.GET['orgTypes']
 
-    counter = len(organisations)
+    try:
+        counter = len(organisations)
+    except ProgrammingError:
+        counter = 0
+        organisations = Organisation.objects.none()
 
     # Ordering
     order_by = request.GET.get('orderby', '-dateUpdated')
@@ -241,41 +249,6 @@ def delete_organisation(request, pk):
     except ProtectedError:
         messages.error(request, _('The Organisation cannot be removed because there are projects associated to it'))
         return redirect('organisation', pk=pk)
-
-
-def organisationsAutocompleteSearch(request):
-    if request.GET.get('q'):
-        text = request.GET['q']
-        is_admin = request.user and request.user.is_staff
-        organisations = getOrganisationAutocomplete(text, is_admin)
-        organisations = list(organisations)
-        return JsonResponse(organisations, safe=False)
-    else:
-        return HttpResponse("No cookies")
-
-
-def getOrganisationAutocomplete(text, is_admin):
-    organisations = Organisation.objects.filter(name__icontains=text)
-    if not is_admin:
-        organisations = organisations.filter(approved=True)
-    organisations = organisations.values_list('id', 'name')
-    report = []
-    for organisation in organisations:
-        report.append({"type": "organisation", "id": organisation[0], "text": organisation[1]})
-    return report
-
-
-def preFilteredOrganisations(request):
-    organisations = Organisation.objects.get_queryset().order_by('id')
-    return applyFilters(request, organisations)
-
-
-def applyFilters(request, organisations):
-    if request.GET.get('country'):
-        organisations = organisations.filter(country=request.GET['country'])
-    if request.GET.get('orgType'):
-        organisations = organisations.filter(orgType=request.GET['orgType'])
-    return organisations
 
 
 def getOtherUsers(creator, members):

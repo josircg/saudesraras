@@ -1,5 +1,4 @@
-from itertools import chain
-
+from blog.models import Post
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.admin.views.main import SEARCH_VAR
@@ -12,22 +11,13 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django_countries import countries
 from django_countries.templatetags.countries import get_country
-from blog.models import Post
 from events.models import Event
-from events.views import set_pages_and_get_object_list
-from machina.apps.forum.models import Forum
-from machina.apps.forum_conversation.models import Topic
-from machina.apps.forum_tracking.handler import TrackingHandler
 from organisations.models import Organisation
-from organisations.views import getOrganisationAutocomplete
 from platforms.models import Platform
-from platforms.views import getPlatformsAutocomplete
 from profiles.models import Profile
-from profiles.views import getProfilesAutocomplete
 from projects.models import Project, Topic as PTopic
-from projects.views import getProjectsAutocomplete
 from resources.models import Resource, ResourceGroup, ResourcesGrouped
-from resources.views import getResourcesAutocomplete
+from utilities.models import SearchIndex
 
 
 def home(request):
@@ -41,8 +31,7 @@ def home(request):
     posts = Post.objects.all().order_by('id')
     paginatorposts = Paginator(posts, items_per_page)
     posts = paginatorposts.get_page(page)
-    counterposts = paginatorposts.count
-    
+
     # Projects
     projects = Project.objects.filter(approved=True, hidden=False).order_by('-dateCreated')
     paginatorprojects = Paginator(projects, items_per_page)
@@ -143,6 +132,7 @@ def doencas(request):
 def diagnostico(request):
     return render(request, 'pages/%s/diagnostico.html' % get_language())
 
+
 def justica(request):
     return render(request, 'pages/%s/justica.html' % get_language())
 
@@ -223,19 +213,12 @@ def guide(request):
         return render(request, 'guide.html')
 
 
-def home_autocomplete(request):
+def home_autocomplete(request, index_type=None):
     if request.GET.get('q'):
         text = request.GET['q']
         is_admin = request.user and request.user.is_staff
-        projects = getProjectsAutocomplete(text)
-        resources = getResourcesAutocomplete(text, False)
-        training = getResourcesAutocomplete(text, True)
-        organisations = getOrganisationAutocomplete(text, is_admin)
-        platforms = getPlatformsAutocomplete(text)
-        profiles = getProfilesAutocomplete(text)
-        report = chain(resources, projects, training, organisations, platforms, profiles)
-        response = list(report)
-        return JsonResponse(response, safe=False)
+        response = SearchIndex.objects.full_text_search_as_json(text, index_type, only_public=not is_admin)
+        return JsonResponse(list(response), safe=False)
     else:
         return HttpResponse("No cookies")
 

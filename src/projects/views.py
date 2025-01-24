@@ -27,6 +27,7 @@ from eucs_platform.logger import log_message
 from rest_framework import status
 from reviews.models import Review
 from utilities.file import save_image_with_path
+from utilities.models import SearchIndex, SearchIndexType
 
 from .forms import ProjectForm, ProjectTranslationForm, ProjectGeographicLocationForm, \
     InviteProjectForm
@@ -403,40 +404,16 @@ def getOtherUsers(creator):
     return users
 
 
-def projectsAutocompleteSearch(request):
-    if request.GET.get('q'):
-        text = request.GET['q']
-        projects = getProjectsAutocomplete(text)
-        projects = list(projects)
-        return JsonResponse(projects, safe=False)
-    else:
-        return HttpResponse("No cookies")
-
-
-def getProjectsAutocomplete(text):
-    projects = Project.objects.filter(~Q(hidden=True)).filter(approved=True).filter(
-        name__icontains=text).values_list('id', 'name').distinct()
-    keywords = Keyword.objects.filter(keyword__icontains=text).values_list('keyword', flat=True).distinct()
-    report = []
-    for project in projects:
-        report.append({"type": "project", "id": project[0], "text": project[1]})
-    for keyword in keywords:
-        numberElements = Project.objects.filter(Q(keywords__keyword__icontains=keyword)).count()
-        report.append({"type": "projectKeyword", "text": keyword, "numberElements": numberElements})
-    return report
-
-
 def preFilteredProjects(request):
     projects = Project.objects.get_queryset().order_by('id')
     return applyFilters(request, projects)
 
 
 def applyFilters(request, projects):
-    # approvedProjects = ApprovedProjects.objects.all().values_list('project_id', flat=True)
     if request.GET.get('keywords'):
         projects = projects.filter(
-            Q(name__icontains=request.GET['keywords']) |
-            Q(keywords__keyword__icontains=request.GET['keywords'])).distinct()
+            pk__in=SearchIndex.objects.full_text_search_ids(request.GET['keywords'], SearchIndexType.PROJECT.value)
+        )
 
     if request.GET.get('topic'):
         topic_qs = Topic.objects.translated().filter(translated_text=request.GET['topic']).values_list('pk')
