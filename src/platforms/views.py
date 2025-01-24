@@ -8,8 +8,8 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator
-from django.db.models import Q
-from django.http import JsonResponse, HttpResponse
+from django.db import ProgrammingError
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.template.loader import render_to_string
@@ -17,9 +17,10 @@ from django.utils import formats
 from django.utils.translation import ugettext_lazy as _
 from eucs_platform import send_email
 from rest_framework import status
+from utilities.models import SearchIndex, SearchIndexType
 
 from .forms import PlatformForm
-from .models import Platform, Keyword, GeographicExtend
+from .models import Platform, GeographicExtend
 
 
 @staff_member_required(login_url='/login')
@@ -129,7 +130,11 @@ def platforms(request):
     else:
         platforms = platforms.order_by('-dateUpdated')
 
-    counter = len(platforms)
+    try:
+        counter = len(platforms)
+    except ProgrammingError:
+        counter = 0
+        platforms = Platform.objects.none()
 
     paginator = Paginator(platforms, 16)
     page = request.GET.get('page')
@@ -145,11 +150,10 @@ def platforms(request):
 
 
 def applyFilters(request, platforms):
-    # approvedProjects = ApprovedProjects.objects.all().values_list('project_id', flat=True)
     if request.GET.get('keywords'):
         platforms = platforms.filter(
-            Q(name__icontains=request.GET['keywords']) |
-            Q(keywords__keyword__icontains=request.GET['keywords'])).distinct()
+            pk__in=SearchIndex.objects.full_text_search_ids(request.GET['keywords'], SearchIndexType.PLATFORM.value)
+        )
 
     if request.GET.get('country'):
         platforms = platforms.filter(countries__contains=request.GET['country'])
@@ -171,28 +175,6 @@ def setFilters(request, filters):
     if request.GET.get('geographicExtend'):
         filters['geographicExtend'] = request.GET['geographicExtend']
     return filters
-
-
-def platformsAutocompleteSearch(request):
-    if request.GET.get('q'):
-        text = request.GET['q']
-        platforms = getPlatformsAutocomplete(text)
-        platforms = list(platforms)
-        return JsonResponse(platforms, safe=False)
-    else:
-        return HttpResponse("No cookies")
-
-
-def getPlatformsAutocomplete(text):
-    platforms = Platform.objects.filter(name__icontains=text).values_list('id', 'name').distinct()
-    keywords = Keyword.objects.filter(keyword__icontains=text).values_list('keyword', flat=True).distinct()
-    report = []
-    for platform in platforms:
-        report.append({"type": "platform", "id": platform[0], "text": platform[1]})
-    for keyword in keywords:
-        numberElements = Platform.objects.filter(Q(keywords__keyword__icontains=keyword)).count()
-        report.append({"type": "platformKeyword", "text": keyword, "numberElements": numberElements})
-    return report
 
 
 def setImages(request, form):

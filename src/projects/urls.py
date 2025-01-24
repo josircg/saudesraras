@@ -14,7 +14,6 @@ urlpatterns = [
     path('approve_project/<int:pk>/<int:status>', views.approve_project, name='approve_project'),
     path('deleteProject/<int:pk>', views.deleteProject, name='deleteProject'),
     path('translateProject/<int:pk>', views.translateProject, name='translateProject'),
-    path('projectsAutocompleteSearch/', views.projectsAutocompleteSearch, name='projectsAutocompleteSearch'),
     path('clearfilters/', views.clearFilters, name='clearfilters'),
     path('setHidden/', views.setHidden, name='setHidden'),
     path('setFeatured/', views.setFeatured, name='setFeatured'),

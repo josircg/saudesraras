@@ -25,3 +25,18 @@ def notify_approved_organisation(sender, instance, **kwargs):
                 ),
                 to=to
             )
+
+
+def add_search_index(sender, instance, created, **kwargs):
+    from utilities.models import add_searchindex_text, SearchIndexType
+    # Only approved items can be marked as public. Admin has access to approved (public) and non approved info.
+    # Organisation.approved can be null. We must use bool to evaluate as True or False.
+    add_searchindex_text(
+        SearchIndexType.ORGANISATION.value, instance.pk, instance.name, f'{instance.name} {instance.description}',
+        is_public=bool(instance.approved)
+    )
+
+
+def delete_search_index(sender, instance, **kwargs):
+    from utilities.models import delete_searchindex, SearchIndexType
+    delete_searchindex(SearchIndexType.ORGANISATION.value, instance.pk)

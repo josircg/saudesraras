@@ -71,97 +71,8 @@
                 {% trans "Don't you see, we feel" %}
               </h1>
           </div>
-          <div class="row" style="max-width: 1120px;">
-            <div class="col-12">
-                <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
-                    <ul class="nav justify-content-between w-100" >
-                        <li class="nav-item col-12 col-md-6 col-lg-auto ">
-                            <a href="/#">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/diagnostico.svg' %}" class="diagnostico-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Diagnosis" %}
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="/#">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img " style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Doctors" %}
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="{% url 'blog' %}">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Justice" %}
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="/#">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    SUS
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="/#">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Symptoms" %}
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="/#">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Publications" %}
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- <ul class="nav navbar-nav navbar-right ">
-                        <li class="nav-item col-12 col-md-auto">
-                            <a class="nav-link ps-4 pe-4 " href="/curated/">
-                                <i class="fas fa-star"></i>Nossa seleção
-                            </a>
-                        </li>
-                    </ul> -->
-                </nav>
-            </div>
-        </div>
-          <div class="container-fluid row" style="border: none; height: 8vw; border-radius: 76px; width: 100%; max-width: 1120px; display: flex; align-items: center; padding: 0%; max-height: 60px; min-height: 40px;">
-              <input type="text" placeholder="{% trans 'search here...' %}" class="col-11 input-container mdm text-home2" style="
-                  border: none; 
-                  color: white;
-                  height: 100%; 
-                  background: #114D7F; 
-                  border-top-left-radius: 76px; 
-                  border-bottom-left-radius: 76px; 
-                  padding-left: 35px;
-                  width: 85%;">
-              <div class="btn bttn4 col-1 text-center mdm text-home2" style="
-                  height: 100%; 
-                  border-top-right-radius: 76px; 
-                  border-bottom-right-radius: 76px; 
-                  display: flex; 
-                  justify-content: center; 
-                  align-items: center;
-                  width: 15%;
-                  ">
-                  {% trans "search" %}
-              </div>
-          </div>
+          {% include "_subnavbar_finder.html" %}
       </div>
-      
-      
-      
-     
-    
   </div>
   </div>
 
@@ -528,5 +439,17 @@
 </div>
 {% endif %}
 {% endblock splash %}
+
+{% block scripts %}
+  <script src="{% static 'site/js/bootstrap-autocomplete.js'%}?v=5"></script>
+  <script>
+    $('.basicAutoComplete').autoComplete(
+        { minLength: 3 }
+    );
+    $('.basicAutoComplete').on('autocomplete.select', function (evt, item) {
+        $('#searchTop').submit();
+    });
+  </script>
+{% endblock scripts %}
 
 </body>
