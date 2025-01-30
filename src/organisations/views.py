@@ -210,7 +210,7 @@ def organisations(request):
     counter = len(organisations)
 
     # Ordering
-    order_by = request.GET.get('orderby', '-dateUpdated')
+    order_by = request.GET.get('orderby', 'name')
     organisations = organisations.order_by(order_by)
 
     filters['orderby'] = order_by

@@ -14,8 +14,8 @@
                         <img src="{% static '../static/site/icons/order-icon.png' %}" height="14px;" alt="">
                     </div>
                     <select id="orderby" name="orderby" class="custom-select form-control">
+                        <option value="name" {% if filters.orderby == "name" or filters.orderby is None %}selected{% endif %}>{% trans "By Name" %}</option>
                         <option value="-dateUpdated" {% if filters.orderby == "-dateUpdated" %}selected{% endif %}>{% trans "Most Recent" %}</option>
-                        <option value="name" {% if filters.orderby == "name" %}selected{% endif %}>{% trans "By Name" %}</option>
                     </select>
                 </div>
             </div>
