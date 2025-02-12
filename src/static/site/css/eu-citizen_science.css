@@ -85,6 +85,7 @@ body {
     font-weight: 500;
 }
 
+
 .fw-600 {
     font-weight: 600;
 }
@@ -946,30 +947,83 @@ footer #parcerias .parceiros-logos img {
     margin-bottom: 15px;
 }
 
-/* FAQ */
-.accordion-item,
-.accordion-header:focus {
-    border: none;
-    outline: none;
+
+.my-accordion:not(.expanded):hover {
+    background-color: var(--blue1);
+    border: 2px solid var(--blue1);
+    border-radius: 30px;
+    transition: none;
 }
+
+.my-accordion.expanded {
+    border: 2px solid var(--blue1);
+    background-color: var(--blue1); /
+    border-radius: 30px;
+    transition: none;
+}
+
+
+.my-accordion.expanded .accordion-button {
+    background-color: var(--blue1);
+    color: #114D7F;
+    transition: none !important;
+}
+
+.my-accordion:not(.expanded) .accordion-button:hover {
+    background-color: var(--blue1);
+    color: #114D7F;
+    border-radius: 30px;
+    transition: none;
+}
+
+.my-accordion {
+    border-radius: 30px;
+    border: 2px solid var(--blue2); 
+    background-color: var(--blue2); 
+    transition: none;
+    overflow: hidden; 
+}
+
 
 .accordion-button {
     font-weight: 500;
+    border-radius: 25px 25px 0 0;
+    width: 100%; /* O botão ocupará a largura completa */
+    margin: 0; /* Remove qualquer margem extra que possa estar empurrando o botão para fora */
+    padding: 10px 15px; /* Ajusta o padding conforme necessário */
+    box-sizing: border-box; /* Garante que o padding não cause estouro do layout */
 }
+
+.accordion-button.collapsed {
+    border-radius: 25px 25px 0 0;
+}
+
+.accordion-collapse {
+    border-radius: 0 0 25px 25px;
+}
+
 
 .accordion-button:focus {
     border-color: #fff;
     box-shadow: none;
 }
 
-.accordion-body {
-    border: 1px solid rgba(0, 0, 0, .125);
+.accordion-collapse.show {
+    max-height: 500px; 
+}
+.accordion-button::after {
+    display: none !important;
 }
 
-.accordion-button:not(.collapsed),
-.accordion-button:hover {
-    color: var(--pink6);
-    background-color: var(--pink1);
+
+
+.accordion-body {
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--blue3);
+    background-color: var(--blue1);
 }
 
 .breadcrumb-item a,
