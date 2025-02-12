@@ -344,10 +344,11 @@
     .bttn3{
         color: white; 
         background-color:  #3D99F4;
-        width: 100%;
-        max-width: 650px;
-        border-radius: 30px;
+        width: 700px;
+        max-width: 700px;
+        transition: none;
         height: auto;
+
     }
     .bttn3:hover{
         background-color: #5CDCFF; 
@@ -393,6 +394,17 @@
         content: url('/static/site/img/publi-hover.svg'); /* Imagem ao passar o mouse */
     }    
 
+    .bttn6{
+        color:  #114D7F; 
+        background-color:  #5CDCFF;
+        width: 100%;
+        max-width: 750px;
+        height: auto;
+    }
+    .bttn6:hover{
+        background-color: #114D7F; 
+        color: #5CDCFF; 
+    }
 
     .imgbot{
         background-color: #3D99F4;
@@ -405,6 +417,12 @@
         border-radius: 35px; 
         width: 100%;
     }
+
+    .input-about::placeholder {
+        color: white; /* Cor do placeholder */
+        font-size: 20px; /* Tamanho da fonte */
+    }
+
     .boxcontent{
         width: 18rem; 
         border-radius: 25px; 
