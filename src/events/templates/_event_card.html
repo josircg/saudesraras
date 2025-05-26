@@ -14,7 +14,7 @@
         </i></span>
     </div>
     <div class="col-sm-7 col-12 mt-4 mb-4">
-        {{ event.description}} <br><br>
+        {{ event.description}} <br>
         <span class="text-blue3">
             {% if event.hour %}{{event.hour | time:'H:i'}} {% endif %} <br>
             {{event.start_date | date:" M d, Y"}}                 
