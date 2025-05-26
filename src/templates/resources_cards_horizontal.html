@@ -3,7 +3,6 @@
 {% load l10n %}
 {% if resources %}
 {% for rsc in resources  %}
-{% load reviews %}
 <div class="col-12 mb-4">
   <div class="row">
     <div class="col-3">
@@ -31,16 +30,6 @@
     </div>
     <div class="col-8">
       <h6 class=""><a class="card-link card-link-resource" href="/resource/{{rsc.id}}" class="card-link">{{ rsc.name | truncatewords:12 }}</a></h6>
-      {% get_rating for rsc as avg_rating %}
-      {% get_review_count for rsc as review_count %}
-      <span class="gl-star-rating-stars s{{ avg_rating | stringformat:'d'}}0 readonly">
-        <span data-value="1" data-text="Terrible"></span>
-        <span data-value="2" data-text="Poor"></span>
-        <span data-value="3" data-text="Average"></span>
-        <span data-value="4" data-text="Very Good"></span>
-        <span data-value="5" data-text="Excellent"></span>
-      </span>
-      {{ review_count }} {% if review_count == 1 %} {% trans "review" %} {% else %} {% trans "reviews" %} {% endif %}
       <div class="card-text">{{rsc.abstract | safe | truncatewords:25 }}
         <a class="" href="/resource/{{rsc.id}}" target="_blank">{% trans "Read more" %}</a>
       </div>

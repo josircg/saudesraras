@@ -29,7 +29,7 @@ from events.models import Event
 from projects.models import Project
 from resources.models import Resource
 
-from .forms import ContactForm, SubmitterContactForm, SubscribeForm, ImportForm, ForumProposalForm
+from .forms import ContactForm, SubmitterContactForm, SubscribeForm, ImportForm
 
 
 def contactView(request):
@@ -299,29 +299,3 @@ def load_image(request, image_name):
     image.save(response, "PNG")
 
     return response
-
-
-class NewForumProposal(CreateView, LoginRequiredMixin):
-    form_class = ForumProposalForm
-    template_name = 'forum_proposal.html'
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.creator = self.request.user
-        self.object.save()
-        # Save forum proposal and send notification
-        messages.success(self.request, _('Forum Proposal added correctly'))
-        # Subject and notification message must be sent based on settings.LANGUAGE_CODE
-        with translation.override(settings.LANGUAGE_CODE):
-            subject = _('Notification - New Forum Proposal "%s" submitted') % self.object.name
-        # Templates must be a list, to raise exception if template for LANGUAGE_CODE does not exist.
-        templates = ['emails/%s/notify_forumproposal.html' % settings.LANGUAGE_CODE]
-        change_url = reverse('admin:contact_forumproposal_change', args=(self.object.pk,))
-        message = render_to_string(templates, {
-            'forumproposal': self.object.name,
-            'forumproposal_url': f'{settings.DOMAIN}{change_url}'
-        })
-
-        send_email(subject=subject, message=message, reply_to=[self.request.user.email], to=settings.EMAIL_CIVIS)
-
-        return redirect('forum:index')

@@ -81,11 +81,6 @@ class CustomIndexDashboard(Dashboard):
         ]
 
         self.children.append(modules.ModelList(
-            _('Forum'),
-            models=('machina.*', 'machina_apps.*')
-        ))
-
-        self.children.append(modules.ModelList(
             title=_('Administration'),
             models=('django_cron.*', 'django_summernote.*', 'oauth2_provider.*', 'oidc_provider.*'),
             extra=[
