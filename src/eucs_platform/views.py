@@ -13,6 +13,7 @@ from django.utils.translation import get_language
 from django_countries import countries
 from django_countries.templatetags.countries import get_country
 from blog.models import Post
+from organisations.models import Organisation
 from events.models import Event
 from events.views import set_pages_and_get_object_list
 from machina.apps.forum.models import Forum
@@ -135,10 +136,8 @@ def home(request):
 def all(request):
     return home(request)
 
-
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
-
 
 def diagnostico(request):
     return render(request, 'pages/%s/diagnostico.html' % get_language())
@@ -146,6 +145,68 @@ def diagnostico(request):
 def justica(request):
     return render(request, 'pages/%s/justica.html' % get_language())
 
+def diagnostico(request):
+    items_per_page = 4 #trocar o numero de itens por pag
+    page = request.GET.get('page')
+
+    # Blog
+    posts = Post.objects.filter(author__name='Leonardo Sobrinho Carvalho de Castro').order_by('id')  #filtro de teste
+    paginatorposts = Paginator(posts, items_per_page)
+    posts_page = paginatorposts.get_page(page)
+    
+    # Organizaçao 
+    organisations = Organisation.objects.order_by('name')
+
+    context = {
+        'posts': posts_page,
+        'is_paginated': posts_page.has_other_pages(),
+        'page_obj': posts_page,
+        'paginator': paginatorposts,
+    }
+
+    return render(request, 'pages/pt-br/diagnostico.html', context)
+
+def justica(request):
+    items_per_page = 4 #trocar o numero de itens por pag
+    page = request.GET.get('page')
+
+    # Blog
+    posts = Post.objects.filter(author__name='Luiz Carlos').order_by('id') #filtro de teste
+    paginatorposts = Paginator(posts, items_per_page)
+    posts_page = paginatorposts.get_page(page)
+    
+    # Organizaçao 
+    organisations = Organisation.objects.order_by('name')
+
+    context = {
+        'posts': posts_page,
+        'is_paginated': posts_page.has_other_pages(),
+        'page_obj': posts_page,
+        'paginator': paginatorposts,
+    }
+
+    return render(request, 'pages/pt-br/justica.html', context)
+
+def SUS(request):
+    items_per_page = 4 #trocar o numero de itens por pag
+    page = request.GET.get('page')
+
+    # Blog
+    posts = Post.objects.all().order_by('id')
+    paginatorposts = Paginator(posts, items_per_page)
+    posts_page = paginatorposts.get_page(page)
+    
+    # Organizaçao 
+    organisations = Organisation.objects.order_by('name')
+
+    context = {
+        'posts': posts_page,
+        'is_paginated': posts_page.has_other_pages(),
+        'page_obj': posts_page,
+        'paginator': paginatorposts,
+    }
+
+    return render(request, 'pages/pt-br/SUS.html', context)
 
 def medicos(request):
     return render(request, 'pages/%s/medicos.html' % get_language())
