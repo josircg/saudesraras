@@ -46,8 +46,8 @@
 <!-- navbar raras -->
 <!-- bootstrap  -->
   
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-5 navbar-secondary" style="background-color: #114d7f; padding-bottom:1rem; padding-top: 1rem;">
-    <div class="container d-flex" style="padding-left: 5rem; padding-right: 5rem;">
+  <nav class="navbar navbar-expand-lg sticky-top mb-5 navbar-secondary" style="background-color: #114d7f; padding-bottom:1rem; padding-top: 1rem;">
+    <div class="container d-flex" style="padding-left: 5%; padding-right: 5%;">
         <!-- Logo e Texto -->
         <a class="navbar-brand d-flex mb-2" href="/">
             <img src="{% static 'site/img/logos/logo_raras_new.svg'%}" alt="Logo" class="d-inline-block align-top">
@@ -62,7 +62,7 @@
         </a>
 
         <!-- Botão de alternância para menu responsivo -->
-        <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="align-self: center;">
+        <button class="navbar-toggler navbartoggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="align-self: center;">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -73,6 +73,7 @@
                 <a href="{% url 'home' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Home</a>
                 <a href="{% url 'about' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Sobre</a>
                 <a href="{% url 'events' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Eventos</a>
+                <a href="{% url 'organisations' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Organizações</a>
                 <a href="{% url 'blog' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Notícias</a>
             </div>
 
@@ -134,13 +135,26 @@
        ">
        Criar Conta
     </a>
-    </div>
-    
     {% else %}
-        <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #114d7f;" type="submit">
-            <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Nova submissão
-        </button>
+    <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn me-2 bg-white text-decoration-none text-nowrap" style="border-radius: 25px; font-weight: 600; color: #114d7f;" type="submit">
+        <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Nova submissão
+    </button>
+    
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle profile-menu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{% thumbnail user.profile.picture|default:'default_profile.png' 30x30 crop %}" alt="" />
+            {{ user.get_full_name|truncatechars:20 }}
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'profiles:show_self' %}">{% trans "Profile" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
+            {% if user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
+            {% endif %}
+        </ul>
+    </div>      
     {% endif %}
+    </div>
     
 </div>
         </div>
@@ -181,6 +195,7 @@
     <script src="{% static 'scripts/cropper.min.js' %}"></script>
     <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
     <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
+
     <script>
         $(".navbar-toggler-icon").click(function () {
             if ($(".ribbon-top-left").is(":visible")) {
