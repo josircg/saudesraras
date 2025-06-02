@@ -135,14 +135,27 @@
        ">
        Criar Conta
     </a>
-    </div>
-    
     {% else %}
-        <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn me-2 bg-white text-decoration-none text-nowrap " style="border-radius: 25px; font-weight: 600; color: #114d7f;" type="submit">
-            <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Nova submissão
-        </button>
+    <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn me-2 bg-white text-decoration-none text-nowrap" style="border-radius: 25px; font-weight: 600; color: #114d7f;" type="submit">
+        <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Nova submissão
+    </button>
+
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle profile-menu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{% thumbnail user.profile.picture|default:'default_profile.png' 30x30 crop %}" alt="" />
+            {{ user.get_full_name|truncatechars:20 }}
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'profiles:show_self' %}">{% trans "Profile" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
+            {% if user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
+            {% endif %}
+        </ul>
+    </div>
     {% endif %}
-    
+    </div>
+
 </div>
         </div>
         
