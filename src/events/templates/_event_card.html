@@ -1,36 +1,64 @@
 {% load i18n %}
-<div class="row">
-    <div class="col-sm-4 col-12 mt-4 mb-4 text-blue3">
-        <h3>{{event.title}}</h3> 
-        <span><i>
-                {% if event.place %}{{event.place}} {%endif%} <br>
-                {% if event.url %} 
-                <div class="mt-3 mb-5">
-                    <a class="btn btn-blue3" href="{{event.url}}" target="_blank">
-                        {% trans "Go to event page" %}
-                    </a>
-                </div>
-                {% endif %}     
-        </i></span>
+{% load static %}
+<div class="row" style="margin-bottom: 5rem;" >
+    <!-- Coluna com a imagem -->
+    <div class="col-md-2 col-5 mt-4 mb-4">
+        <div class="p-0 w-100">
+            <img class="card-img lazyload"
+                 src="{% static 'site/img/iamcr.png'%}"
+                 alt="Card image">
+        </div>
     </div>
-    <div class="col-sm-7 col-12 mt-4 mb-4">
-        {{ event.description}} <br>
-        <span class="text-blue3">
-            {% if event.hour %}{{event.hour | time:'H:i'}} {% endif %} <br>
-            {{event.start_date | date:" M d, Y"}}                 
-            {% if event.end_date %}to {{event.end_date | date:" M d, Y"}}{% endif %}
-        </span>
+
+    <!-- Coluna com o conteúdo à direita da imagem (Título, Lugar, Data e Botão) -->
+    <div class="col-md-3 col-6 mt-4 mb-4 " style="margin-right: 8%;">
+        <!-- Título -->
+        <h3 class="text-blue3">{{ event.title }}</h3>
+        
+        
+
+        <!-- Data -->
+        <div class="text-blue3 h-auto mt-4" style="font-size:20px">
+            {% if event.hour %}{{ event.hour | time:'H:i' }},{% endif %}
+            {{ event.start_date | date:" M d, Y" }}
+            {% if event.end_date %} - {{ event.end_date | date:" M d, Y" }}{% endif %}
+        </div>
+
+        <!-- Lugar -->
+        {% if event.place %}
+        <p class="m-0 text-blue3 sbld" style="font-size:20px">{{ event.place }}</p>
+        {% endif %}
+
+        <!-- Botão -->
+        {% if event.url %}
+        <div class="mt-3">
+            <a class="btn btn-blue3 w-100" style="border-radius: 25px; font-size: 18px;" href="{{ event.url }}" target="_blank">
+                {% trans "Go to event page" %}
+            </a>
+        </div>
+        {% endif %}
     </div>
+
+    <!-- Coluna com a descrição à direita -->
+    <div class="col-md-6 col-12 mt-4 mb-4 p-0" style="font-size: 20px;">
+        {{ event.description }} <br><br>
+    </div>
+
+    <!-- Ações do Admin (caso seja admin) -->
     {% if user.is_staff %}
     <div class="col-sm-1 col-12 mt-4 mb-4">
-        <span id="featured{{event.id}}">
+        <span id="featured{{ event.id }}">
             {% if event.featured %}
-            <a class="btn btn-red float-left mt-1" onclick="setFeaturedEvent({{event.id}}, false)"><i class="fas fa-arrow-alt-circle-up"></i></a>
+            <a class="btn btn-red float-left mt-1" onclick="setFeaturedEvent({{ event.id }}, false)">
+                <i class="fas fa-arrow-alt-circle-up"></i>
+            </a>
             {% else %}
-            <a class="btn btn-red float-left mt-1" onclick="setFeaturedEvent({{event.id}}, true)"><i class="far fa-arrow-alt-circle-up"></i></a>
+            <a class="btn btn-red float-left mt-1" onclick="setFeaturedEvent({{ event.id }}, true)">
+                <i class="far fa-arrow-alt-circle-up"></i>
+            </a>
             {% endif %}
         </span>
-        <a class="btn btn-red float-left mt-1" href="{% url 'editEvent' event.id %}" ><i class="fas fa-edit"></i></a>
+        <a class="btn btn-red float-left mt-1" href="{% url 'editEvent' event.id %}"><i class="fas fa-edit"></i></a>
         <a class="btn btn-red float-left mt-1" href="{% url 'deleteEvent' event.id %}"><i class="fas fa-trash-alt"></i></a>
     </div>
     {% endif %}
