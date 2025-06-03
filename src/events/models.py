@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.files.storage import default_storage
 from django.db import models
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
@@ -21,6 +22,7 @@ class Event(models.Model):
     url = models.URLField(null=True, blank=True)
     featured = models.BooleanField(null=True, default=False)
     approved = models.BooleanField(_('Approved'), null=True)
+    logo = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
 
     objects = EventQuerySet.as_manager()
 
@@ -33,9 +35,15 @@ class Event(models.Model):
 
     def safe_url(self):
         return mark_safe(f'<a href="/editEvent/{self.id}" target="_blank">URL</a>')
-
     safe_url.allow_tags = True
     safe_url.short_description = 'Site URL'
+
+    @property
+    def safe_image(self):
+        if self.logo and default_storage.exists(self.logo.path):
+            return self.logo
+        else:
+            return 'void_600.png'
 
     def save(self, *args, **kwargs):
         # approved can be null (not moderated), so we can't put self.approved = ... in one line

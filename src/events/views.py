@@ -69,8 +69,10 @@ def new_event(request):
     form = EventForm()
     if request.method == 'POST':
         form = EventForm(request.POST)
+        if request.FILES.get('logo'):
+            logo_path = request.FILES.get('logo')
         if form.is_valid():
-            pk = form.save(request)
+            pk = form.save(request, logo_path)
             sendEventEmail(pk, request, form)
             return redirect('/events')
         else:
@@ -137,11 +139,13 @@ def editEvent(request, pk):
         'start_date': start_datetime,
         'end_date': end_datetime,
         'hour': event.hour,
+        'logo': event.logo,
         'url': event.url})
     if request.method == 'POST':
         form = EventForm(request.POST)
         if form.is_valid():
-            form.save(request)
+            logo_path = request.FILES.get('logo')
+            form.save(request, logo_path)
             return redirect('/events')
     return render(request, 'event_form.html', {'form': form, 'user': user, 'event': event})
 
