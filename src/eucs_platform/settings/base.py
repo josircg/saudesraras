@@ -16,7 +16,6 @@ import environ
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from machina import MACHINA_MAIN_TEMPLATE_DIR, MACHINA_MAIN_STATIC_DIR
 
 # instalando o GDAL windows
 if os.name == 'nt':
@@ -33,7 +32,7 @@ if os.name == 'nt':
 
 # Build paths inside the project like this: BASE_DIR / "directory"
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-STATICFILES_DIRS = [str(BASE_DIR / "static"), MACHINA_MAIN_STATIC_DIR]
+STATICFILES_DIRS = [str(BASE_DIR / "static"), ]
 MEDIA_ROOT = str(BASE_DIR / "media")
 MEDIA_URL = "/media/"
 STATIC_ROOT = str(BASE_DIR.parent / "static")
@@ -46,10 +45,6 @@ LOCALE_PATHS = [
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    },
-    'machina_attachments': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/tmp',
     },
     # … default cache config and others
     "select2": {
@@ -73,7 +68,6 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             str(BASE_DIR / "templates"),
-            MACHINA_MAIN_TEMPLATE_DIR
             # insert more TEMPLATE_DIRS here
         ],
         "APP_DIRS": False,
@@ -89,8 +83,6 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 'django.template.context_processors.request',
-                # Machina
-                'machina.core.context_processors.metadata',
                 # Wwn
                 'eucs_platform.context_processors.global_settings',
 
@@ -160,7 +152,6 @@ INSTALLED_APPS = (
     "django_countries",
     "authors",
     "contact",
-    "reviews",
     'django.contrib.sites',
     'cookielaw',
     'events',
@@ -174,26 +165,6 @@ INSTALLED_APPS = (
     'active_link',
     'oauth2_provider',
     'django.contrib.gis',
-
-    # Machina dependencies:
-    'mptt',
-    'haystack',
-    'widget_tweaks',
-
-    # Machina apps:
-    'machina',
-    'machina.apps.forum',
-    'machina.apps.forum_conversation',
-    'machina.apps.forum_conversation.forum_attachments',
-    'machina.apps.forum_conversation.forum_polls',
-    'machina.apps.forum_feeds',
-    'machina.apps.forum_moderation',
-    'machina.apps.forum_search',
-    'machina.apps.forum_tracking',
-    # 'machina.apps.forum_member',
-    'machina.apps.forum_permission',
-    # Machina overriden apps
-    'machina_apps.forum_member',
 
     'organisations',
     "django_cron",
@@ -214,8 +185,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # Machina
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 ]
 
@@ -397,39 +366,6 @@ LOGOUT_URL = 'rest_framework:logout'
 RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
 RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 
-# Machina - search for forum conversations
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': str(Path(__file__).parents[2] / 'whoosh_index'),
-    },
-}
-
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
-
-MACHINA_BASE_TEMPLATE_NAME = 'base_forum_new.html'
-MACHINA_FORUM_NAME = 'Community Forums'
-MACHINA_USER_DISPLAY_NAME_METHOD = 'get_full_name'
-
-MACHINA_DEFAULT_AUTHENTICATED_USER_FORUM_PERMISSIONS = [
-    'can_see_forum',
-    'can_read_forum',
-    'can_start_new_topics',
-    'can_reply_to_topics',
-    'can_edit_own_posts',
-    'can_post_without_approval',
-    'can_create_polls',
-    'can_vote_in_polls',
-    'can_download_file',
-]
-
-MACHINA_MARKUP_LANGUAGE = None
-MACHINA_MARKUP_WIDGET = 'ckeditor_uploader.widgets.CKEditorUploadingWidget'
-MACHINA_PROFILE_AVATARS_ENABLED = False
-ATTACHMENT_FILE_UPLOAD_TO = 'forum/atch'
-MACHINA_FORUM_IMAGE_UPLOAD_TO = 'forum/img'
-MACHINA_PROFILE_AVATAR_UPLOAD_TO = 'forum/avatar'
-
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_REQUIRE_STAFF = False
@@ -486,11 +422,6 @@ COUNTRIES_OVERRIDE = {
 
 ADMIN_TOOLS_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomIndexDashboard'
 ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomAppIndexDashboard'
-
-# Machina migrations for overriden apps
-MIGRATION_MODULES = {
-    'forum_member': 'machina.apps.forum_member.migrations',
-}
 
 # geopy Nominatim user agent
 USER_AGENT = env('USER_AGENT')

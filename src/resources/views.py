@@ -120,28 +120,6 @@ def resource(request, pk):
     else:
         endPoint = '/resources'
 
-    previous_page = request.META.get('HTTP_REFERER')
-    if previous_page and 'review' in previous_page:
-        # Send email
-        to = copy.copy(settings.EMAIL_RECIPIENT_LIST)
-        to.append(resource.creator.email)
-        if resource.isTrainingResource:
-            send_email(
-                subject='Seu recurso de formação “%s” recebeu uma avaliação!' % resource.name,
-                message=render_to_string('emails/training_resource_review.html', {
-                    "domain": settings.HOST,
-                    "name": resource.name,
-                    "id": pk}),
-                to=to)
-        else:
-            send_email(
-                subject='Seu recurso “%s“ recebeu uma avaliação!' % resource.name,
-                message=render_to_string('emails/resource_review.html', {
-                    "domain": settings.HOST,
-                    "name": resource.name,
-                    "id": pk}),
-                to=to)
-
     users = getOtherUsers(resource.creator)
     cooperators = getCooperatorsEmail(pk)
     if (not resource.approved or resource.hidden) and \
@@ -337,9 +315,6 @@ def deleteResource(request, pk, isTrainingResource):
     obj = get_object_or_404(Resource, id=pk)
     if request.user == obj.creator or request.user.is_staff or request.user.id in getCooperators(pk):
         obj.delete()
-        reviews = Review.objects.filter(content_type=ContentType.objects.get(model="resource"), object_pk=pk)
-        for r in reviews:
-            r.delete()
     if isTrainingResource:
         return redirect('training_resources')
     else:
@@ -691,10 +666,6 @@ def allowUserResource(request):
         resourcePermission.save()
 
     return JsonResponse(response, safe=False)
-
-
-def resource_review(request, pk):
-    return render(request, 'resource_review.html', {'resourceID': pk})
 
 
 # Download all resources in a CSV file

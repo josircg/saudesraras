@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
     <title>
         {% block title %}
-        Saúdes Raras - Plataforma de Ciência Cidadã
+        Saúdes Raras
         {% endblock title%}
     </title>
     <link href="{% static 'bootstrap/fonts/Recoleta-Regular.ttf' %}" rel='stylesheet' type='text/css'>
@@ -46,7 +46,7 @@
 <!-- navbar raras -->
 <!-- bootstrap  -->
   
-  <nav class="navbar navbar-expand-lg sticky-top mb-5 navbar-secondary" style="background-color: #114d7f; padding-bottom:1rem; padding-top: 1rem;">
+<nav class="navbar navbar-expand-lg sticky-top mb-5 navbar-secondary" style="background-color: #114d7f; padding-bottom:1rem; padding-top: 1rem;">
     <div class="container d-flex" style="padding-left: 5%; padding-right: 5%;">
         <!-- Logo e Texto -->
         <a class="navbar-brand d-flex mb-2" href="/">
@@ -78,125 +78,119 @@
             </div>
 
             <!-- Dropdown de Idioma -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                        {{LANGUAGE_CODE}}
+
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item dropdown d-flex align-items-center">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center mb-1 mb-md-0 py-0" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                        {{ LANGUAGE_CODE }}
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
-                        <form action="/i18n/setlang/" method="post" style="display: inline;" name="languageForm">
+                    <ul class="dropdown-menu">
+                        <form action="/i18n/setlang/" method="post" name="languageForm">
                             {% csrf_token %}
-                            <div style="display: inline;">
-                                <input id="language" name="language" type="hidden" value="en">
-                                {% for lang in TRANSLATED_LANGUAGES %}
-                                <li><a class="dropdown-item" style="cursor: pointer;" onclick="javascript:document.getElementById('language').value='{{ lang.0 }}';languageForm.submit()">
+                            <input id="language" name="language" type="hidden" value="en">
+                            {% for lang in TRANSLATED_LANGUAGES %}
+                                <li>
+                                    <a class="dropdown-item" style="cursor: pointer;" onclick="document.getElementById('language').value='{{ lang.0 }}';languageForm.submit()">
                                         {{ lang.1 }}
                                     </a>
                                 </li>
-                                {% endfor %}
-                            </div>
+                            {% endfor %}
                         </form>
                     </ul>
                 </li>
             </ul>
+            <!-- Botões à Direita -->
+            <div class="d-flex flex-wrap flex-column flex-md-row align-items-center justify-content-center text-center">
+                {% if not user.is_authenticated %}
+                    <a href="/login/" class="btn mx-2"
+                        style="
+                            background-color: #114D7F;
+                            color: #FFFFFF;
+                            border: 2px solid #FFFFFF;
+                            border-radius: 25px;
+                            font-weight: 600;
+                            text-decoration: none;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px 20px;
+                        ">
+                        Entrar
+                    </a>
 
-    
-    <!-- Botões à Direita -->
-    {% if not user.is_authenticated %}
-    <div class="d-flex flex-nowrap ">
-        <a href="/login/" class="btn me-2"
-        style="
-            background-color: #114D7F;  
-            color: #FFFFFF;             
-            border: 2px solid #FFFFFF;  
-            border-radius: 25px;        
-            font-weight: 600;           
-            text-decoration: none;      
-            display: flex;              
-            align-items: center;        
-            justify-content: center;   
-            padding: 10px 20px;         
-        ">
-        Entrar
-     </a>
-    
-     <a href="/signup/" class="btn me-2"
-       style="
-           background-color: #FFFFFF;  
-           color: #114D7F;             
-           border: 2px solid #114D7F;  
-           border-radius: 25px;        
-           font-weight: 600;           
-           text-decoration: none;      
-           display: flex;              
-           align-items: center;        
-           justify-content: center;   
-           padding: 10px 20px;         
-       ">
-       Criar Conta
-    </a>
-    {% else %}
-    <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn me-2 bg-white text-decoration-none text-nowrap" style="border-radius: 25px; font-weight: 600; color: #114d7f;" type="submit">
-        <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Nova submissão
-    </button>
-    
-    <div class="dropdown">
-        <a href="#" class="dropdown-toggle profile-menu" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{% thumbnail user.profile.picture|default:'default_profile.png' 30x30 crop %}" alt="" />
-            {{ user.get_full_name|truncatechars:20 }}
-        </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'profiles:show_self' %}">{% trans "Profile" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
-            {% if user.is_staff %}
-                <li><a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
-            {% endif %}
-        </ul>
-    </div>      
-    {% endif %}
-    </div>
-    
-</div>
-        </div>
-        
-                
-</nav>
+                    <a href="/signup/" class="btn mx-2"
+                        style="
+                            background-color: #FFFFFF;
+                            color: #114D7F;
+                            border: 2px solid #114D7F;
+                            border-radius: 25px;
+                            font-weight: 600;
+                            text-decoration: none;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px 20px;
+                        ">
+                        Criar Conta
+                    </a>
+                {% else %}
+                    <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                        <div class="dropdown mx-2 mb-2 mb-md-0 d-flex justify-content-center align-items-center">
+                            <a href="#" class="dropdown-toggle profile-menu d-flex align-items-center justify-content-center" data-bs-toggle="dropdown" aria-expanded="false" style="color: #5CDCFF !important;">
+                                <i class="fas fa-user-edit"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'profiles:show_self' %}">{% trans "Profile" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
+                                {% if user.is_staff %}
+                                    <li><a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
 
-    <main class="flex-fill">
-        {% include "_modalsubmit.html" %}
-        {% block splash %}
-        {% endblock splash %}
-        <div class="container">
-            <div class="col-12">
-                {% for message in messages %}
-                <div class="container-fluid p-0">
-                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                        <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn mx-2 bg-white text-decoration-none text-nowrap" style="border-radius: 25px; font-weight: 600; color: #114d7f;" type="submit">
+                            <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Nova submissão
                         </button>
-                        {{ message }}
                     </div>
-                </div>
-                {% endfor %}
+                {% endif %}
             </div>
         </div>
-        {% block list_of_items %}
-        {% endblock list_of_items %}
-    </main>
-    {% cookielaw_banner %}
-    {% block footer %}
-    {% include "_footer.html" %}
-    {% endblock footer %}
+    </div>
+</nav>
+<main class="flex-fill">
+    {% include "_modalsubmit.html" %}
+    {% block splash %}
+    {% endblock splash %}
+    <div class="container">
+        <div class="col-12">
+            {% for message in messages %}
+            <div class="container-fluid p-0">
+                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% block list_of_items %}
+    {% endblock list_of_items %}
+</main>
+{% cookielaw_banner %}
+{% block footer %}
+{% include "_footer.html" %}
+{% endblock footer %}
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <!--link href="/static/reviews/css/star-rating.css" type="text/css" media="all" rel="stylesheet"-->
-    <link rel="stylesheet" href="{% static 'styles/cropper.min.css' %}">
-    <script type="text/javascript" src="{% static 'scripts/lazysizes.min.js' %}"></script>
-    <script src="{% static 'scripts/cropper.min.js' %}"></script>
-    <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
-    <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+<link rel="stylesheet" href="{% static 'styles/cropper.min.css' %}">
+<script type="text/javascript" src="{% static 'scripts/lazysizes.min.js' %}"></script>
+<script src="{% static 'scripts/cropper.min.js' %}"></script>
+<script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
+<script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
 
-    <script>
+<script>
         $(".navbar-toggler-icon").click(function () {
             if ($(".ribbon-top-left").is(":visible")) {
                 $(".ribbon-top-left").hide();
@@ -221,10 +215,9 @@
             }
         });
 
-    </script>
-    {% block scripts %}
-    {% endblock scripts %}
+</script>
+{% block scripts %}
+{% endblock scripts %}
 
 </body>
-
 </html>

@@ -14,10 +14,6 @@ from django_countries import countries
 from django_countries.templatetags.countries import get_country
 from blog.models import Post
 from events.models import Event
-from events.views import set_pages_and_get_object_list
-from machina.apps.forum.models import Forum
-from machina.apps.forum_conversation.models import Topic
-from machina.apps.forum_tracking.handler import TrackingHandler
 from organisations.models import Organisation
 from organisations.views import getOrganisationAutocomplete
 from platforms.models import Platform

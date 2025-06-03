@@ -1,6 +1,5 @@
 {% load i18n %}
 {% load static %}
-{% load reviews %}
 {% load thumbnail %}
 
 <link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}" />
@@ -11,7 +10,6 @@
                 <h2 class="mt-2 mb-0">
                     <span class="text-blue3 sbld" style="font-size: 30px;">{{event.title | truncatewords_html:10 }}</span>
                 </h2>        
-                <br>    
                 <span>
                     {% if event.end_date %}{% trans "From "%}{% endif %}
                     {{event.start_date | date:" d M"}}
@@ -19,7 +17,6 @@
                 </span> 
                 <br>
                 <i class="text-blue3">{% if event.place %}{{event.place}} {%endif%}</i>
-                
             </div>            
             <div class="mt-4 ">
                 <a href="{{event.url}}" class="btn btn-blue3" target="_blank">{% trans "Learn more" %}</a>

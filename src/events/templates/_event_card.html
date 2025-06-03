@@ -1,7 +1,11 @@
 {% load i18n %}
+{% load thumbnail %}
 <div class="row">
     <div class="col-sm-4 col-12 mt-4 mb-4 text-blue3">
         <h3>{{event.title}}</h3> 
+        {% if event.logo %}
+        <img  class="card-img-top lazyload" data-src="{% thumbnail event.logo 306x204 crop %}" />
+        {% endif %}
         <span><i>
                 {% if event.place %}{{event.place}} {%endif%} <br>
                 {% if event.url %} 

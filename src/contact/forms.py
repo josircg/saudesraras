@@ -3,9 +3,6 @@ from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from .models import ForumProposal
-
-
 class ContactForm(forms.Form):
     from_email = forms.EmailField(
         label=_('From email'),
@@ -32,10 +29,3 @@ class SubscribeForm(forms.Form):
 class ImportForm(forms.Form):
     file = forms.FileField(label='', widget=forms.ClearableFileInput(attrs={'accept': '.csv'}), required=True)
     source = forms.CharField(label=_('Origin'), required=True, help_text=_('Describe the file origin'))
-
-
-class ForumProposalForm(forms.ModelForm):
-    class Meta:
-        model = ForumProposal
-        fields = ('name', 'description', 'image')
-        widgets = {'description': CKEditorWidget(config_name='frontpage')}

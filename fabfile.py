@@ -77,14 +77,13 @@ def get_database(connection, banco, path):
     with connection.cd(path):
         print('Conectado')
         # Verifica se o arquivo pgpass existe
-        home_dir = connection.run('echo $HOME', hide=True).stdout
+        home_dir = connection.run('echo $HOME', hide=True).stdout.strip()
         filename = f'{home_dir}/.pgpass'
         if not file_exists(connection, filename):
-            print('Senha não encontrada: %s' % filename)
+            print(f'Arquivo de senha não encontrado: {filename}')
             return
         filename = path + '/backup%s.gz' % datetime.strftime(datetime.now(), '%Y%m%d')
-        connection.run('pg_dump postgresql://%s | gzip > %s' %
-                       (banco, filename))
+        connection.run(f'pg_dump postgresql://{banco} | gzip > {filename}')
         print(f'Backup PostgreSQL gerado em {filename}')
         connection.get(filename)
         print('Backup copiado na pasta local')
@@ -101,13 +100,14 @@ def get_mediafiles(connection, path):
 
 @task
 def backup_local(context):
-    get_database(Connection('supervisor@192.168.0.24'), 'civis_hml', '')
+    get_database(Connection('supervisor@192.168.0.24'), 'raras_usr@localhost:5432/raras', '.')
 
 
 @task
 def backup(context):
     connection = Connection('webapp@3.89.127.179')
-    get_database(connection, banco='localhost/raras', path='/var/webapp/raras')
+    # get_database(connection, banco='raras_usr@db-postgres.cpklsdpnssqm.us-east-1.rds.amazonaws.com:5432/raras', path='/var/webapp/raras')
+    get_mediafiles(connection,path='/var/webapp/raras')
 
 
 if __name__ == '__main__':
