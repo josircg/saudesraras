@@ -9,69 +9,65 @@
 
   <div class="d-flex flex-column min-vh-100 div">
     <div class="mb-5">
-    <h1 class="text-center text-home reg azul mb-5 "
-                  style="
-                  
-                  letter-spacing: 0px;
-                  line-height: 3.3rem;
-                  font-style: normal;">Quer ser um parceiro ?</h1>
-
-    <div class="container my-2 justify-content-start" style="padding-right: 5%; padding-left: 5%">
-      <div class="ratio ratio-16x7 text-center video-sejaumparceiro" style="text-align: center;">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qxOkaU6RVz4?si=Vt0tWELxwHqwKe47"
-          allowfullscreen style="border-radius: 10px;"></iframe>
+      <h1 class="text-center text-home reg azul mb-5 "
+      style="
+      letter-spacing: 0px;
+      line-height: 3.3rem;
+      font-style: normal;">Quer ser um parceiro ?
+      </h1>
+      <div class="container my-2 justify-content-start" style="padding-right: 5%; padding-left: 5%">
+        <div class="ratio ratio-16x7 text-center video-sejaumparceiro" style="text-align: center;">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qxOkaU6RVz4?si=Vt0tWELxwHqwKe47"
+            allowfullscreen style="border-radius: 10px;"></iframe>
+        </div>
       </div>
     </div>
-  </div>
 
     <div class="container-fluid row" style="background-color: #5CDCFF; padding: 0; margin: 0;">
       <div class="row no-gutters align-items-center" style="margin: 0; padding: 0;">
   
         <div class="col-3 d-flex justify-content-start align-items-center my-2" style="padding: 0; margin: 0;">
           <img src="{% static '/site/img/Vector.png'%}" alt="Imagem" style="max-width: 100%; max-height: 473px; width: auto; height: auto;">
-      </div>
-      
-    
+        </div>
         
-      <div class="mx-4 col-7 col-sm-auto d-flex justify-content-center align-items-center" style="padding: 0; margin: 0;">
-        <div class="container-fluid d-flex flex-column justify-content-center" style="max-width: 290px; padding: 0; margin: 0;">
-          <h1 class="text-home reg azul-escuro" style=" font-size:  min(8vw, 60px); font-weight: 400; text-align: start; margin: 0; line-height: 1.2; min-width: 0; ">
-            Textinho sobre parceiros
-          </h1>
-          
-          
-        
+        <div class="mx-4 col-7 col-sm-auto d-flex justify-content-center align-items-center" style="padding: 0; margin: 0;">
+          <div class="container-fluid d-flex flex-column justify-content-center" style="max-width: 290px; padding: 0; margin: 0;">
+            <h1 class="text-home reg azul-escuro" style=" font-size:  min(8vw, 60px); font-weight: 400; text-align: start; margin: 0; line-height: 1.2; min-width: 0; ">
+              Textinho sobre parceiros
+            </h1>
+          </div>
         </div>
-    </div>
     
-    <div class=" my-3 col-lg-4 col-12 d-flex flex-column justify-content-center align-items-center" style="padding: 0 20px; margin: 0;">
-      <form class="w-100 justify-content-center" style="max-width: 463px;" >
-        <div class="mb-3 mx-auto" style="max-width: 463px;">
-            <label for="nome" class="form-label sbld azul-escuro">Nome:</label>
-            <input type="text" class="form-control rounded-pill bck-azul" id="nome" style="border: none; min-height: 50px; max-width: 463px; width: 100%; border-radius: 100px;">
+        <div class=" my-3 col-lg-4 col-12 d-flex flex-column justify-content-center align-items-center" style="padding: 0 20px; margin: 0;">
+          <form class="w-100 justify-content-center" style="max-width: 463px;" >
+            <div class="mb-3 mx-auto" style="max-width: 463px;">
+                <label for="nome" class="form-label sbld azul-escuro">Nome:</label>
+                <input type="text" class="form-control rounded-pill bck-azul" id="nome" style="border: none; min-height: 50px; max-width: 463px; width: 100%; border-radius: 100px;">
+            </div>
+            <div class="mb-3 mx-auto" style="max-width: 463px;">
+                <label for="email" class="form-label sbld azul-escuro">E-mail:</label>
+                <input type="email" class="form-control rounded-pill bck-azul" id="email" style="border: none; min-height: 50px; max-width: 463px; width: 100%;border-radius: 100px;">
+            </div>
+            <div class="mb-3 mx-auto" style="max-width: 463px;">
+                <label for="telefone" class="form-label sbld azul-escuro">Telefone:</label>
+                <input type="tel" class="form-control rounded-pill bck-azul" id="telefone" style="border: none; min-height: 50px; max-width: 463px; width: 100%;border-radius: 100px;">
+            </div>
+            <div class="mb-3 mx-auto" style="max-width: 463px;">
+              <label for="forma" class="form-label sbld azul-escuro">Forma:</label>
+              <textarea class="px-3 pt-3 bck-azul"
+                id="forma"
+                style="border: none; min-height: 135px; max-width: 463px; width: 100%; border-radius: 50px;"
+                rows="6">
+              </textarea>
+            </div>
+            <div class="d-flex justify-content-end" style="max-width: 600px ;">
+              <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn me-2 bg-white text-decoration-none text-nowrap sbld" style="font-size: 22px; border-radius: 25px; font-weight: 600; color: #114d7f; width: 100%; height: 50px;" type="submit">
+                Enviar
+              </button>
+            </div>
+          </form> 
         </div>
-        <div class="mb-3 mx-auto" style="max-width: 463px;">
-            <label for="email" class="form-label sbld azul-escuro">E-mail:</label>
-            <input type="email" class="form-control rounded-pill bck-azul" id="email" style="border: none; min-height: 50px; max-width: 463px; width: 100%;border-radius: 100px;">
-        </div>
-        <div class="mb-3 mx-auto" style="max-width: 463px;">
-            <label for="telefone" class="form-label sbld azul-escuro">Telefone:</label>
-            <input type="tel" class="form-control rounded-pill bck-azul" id="telefone" style="border: none; min-height: 50px; max-width: 463px; width: 100%;border-radius: 100px;">
-        </div>
-        <div class="mb-3 mx-auto" style="max-width: 463px;">
-            <label for="forma" class="form-label sbld azul-escuro">Forma:</label>
-            <input type="text" class="form-control bck-azul" id="forma" style="border: none; min-height: 135px; max-width: 463px; width: 100%;border-radius: 50px;">
-        </div>
-        <div class="d-flex justify-content-end " style="max-width: 463px; margin-left: auto; margin-right: 2%;">
-          <button data-bs-toggle="modal" data-bs-target="#modalsubmit" class="btn me-2 bg-white text-decoration-none text-nowrap sbld" style="border-radius: 25px; font-weight: 600; color: #114d7f; width: 173px;" type="submit">
-            Enviar
-        </button>
-        </div>
-    </form>
-    
-  </div>
   
-    
       </div>
     </div>
     <div class="my-5 container">
@@ -87,37 +83,9 @@
                       color: black;
                       letter-spacing: 0;
                       line-height: 2rem;">
-        What is Lorem Ipsum?<br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-        Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a
-        galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-        also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-        publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br />Why do we use it?<br />It
-        is a long established fact that a reader will be distracted by the readable content of a page when looking
-        at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop
-        publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for
-        &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over
-        the years, sometimes by accident, sometimes on purpose (injected humour and the like).<br /><br />Where does
-        it come from?<br />Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-        piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
-        professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
-        from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
-        undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &#34;de Finibus Bonorum et
-        Malorum&#34; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the
-        theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &#34;Lorem ipsum dolor
-        sit amet..&#34;, comes from a line in section 1.10.32.<br />The standard chunk of Lorem Ipsum used since the
-        1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &#34;de Finibus Bonorum et
-        Malorum&#34; by Cicero are also reproduced in their exact original form, accompanied by English versions
-        from the 1914 translation by H. Rackham.<br />Where can I get some?<br />There are many variations of
-        passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected
-        humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage
-        of Lorem Ipsum, you need to be sure there isn&#39;t anything embarrassing hidden in the middle of text. All
-        the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the
-        first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
-        of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is
-        therefore always free from repetition, injected humour, or non-characteristic words etc
-      </p>
+       Você sabia que mais de 13 milhões de brasileiros convivem com doenças raras, muitas vezes sem acesso adequado a informações, diagnósticos e tratamentos? Em um cenário onde a conscientização e o apoio são essenciais, nossa plataforma se tornou um espaço fundamental para informar, conectar e apoiar aqueles que enfrentam essas condições raras e complexas. Agora, estamos convidando você a se juntar a essa missão como parceiro da nossa plataforma!
+       Se você representa uma instituição de saúde, uma organização de apoio ou uma associação, tornar-se um parceiro pode ser uma maneira transformadora de impactar positivamente a vida de milhares de pessoas que precisam de apoio, informações e soluções sobre doenças raras.
+       Caso deseje mais informações sobre como ser parceiro da nossa plataforma, não hesite em entrar em contato. Vamos juntos criar uma rede de apoio vital para aqueles que convivem com condições raras.
 
     </div>
 
