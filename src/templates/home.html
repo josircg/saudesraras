@@ -92,15 +92,16 @@
                             </a>
                         </li>
                         <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="{% url 'justica' %}">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Justice" %}
-                                </div>
-                            </a>
+                          <a href="{% url 'justica' %}">
+                            <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                              <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                 {% trans "Justice" %}
+                            </div>
+                          </a>
                         </li>
                         <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="{% url 'SUS' %}">
+                            <a href="#/">
+                            <!--<a href="{% url 'SUS' %}">-->
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
                                     <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 30px; height: 30px; margin-right: 4px">
                                     SUS
@@ -108,7 +109,8 @@
                             </a>
                         </li>
                         <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="{% url 'sintomas' %}">
+                            <a href="#/">
+                            <!--<a href="{% url 'sintomas' %}">-->
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
                                     <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img" style="width: 30px; height: 30px; margin-right: 4px">
                                     {% trans "Symptoms" %}
@@ -116,7 +118,8 @@
                             </a>
                         </li>
                         <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="{% url 'publicacoes' %}">
+                            <a href="#/">
+                            <!--<a href="{% url 'publicacoes' %}">-->
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
                                     <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 30px; height: 30px; margin-right: 4px">
                                     {% trans "Publications" %}
@@ -257,7 +260,9 @@
                 </div>
 
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="{% url 'SUS' %}" class="btn bttn2">
+                  <a h">
+                     <a href="#/" class="btn bttn2">
+                    <!--<a href="{% url 'SUS' %}" class="btn bttn2">-->
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="SUS">
                             <span style="font-size: clamp(10px, 2vw, 20px);">SUS</span>
@@ -265,7 +270,8 @@
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="{% url 'sintomas' %}" class="btn bttn2">
+                    <a href="#/" class="btn bttn2">
+                    <!--<a href="{% url 'sintomas' %}" class="btn bttn2">-->
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img"  style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Sintomas">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Symptoms" %}</span>
@@ -273,7 +279,8 @@
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="publicacoes" class="btn bttn2">
+                    <a href="#/" class="btn bttn2">
+                    <!--<a href="{% url 'publicacoes' %}" class="btn bttn2">-->
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Publicações">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Publications" %}</span>
