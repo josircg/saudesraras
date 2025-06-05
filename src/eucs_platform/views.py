@@ -34,7 +34,7 @@ def home(request):
     page = request.GET.get('page')
 
     # Blog
-    posts = Post.objects.all().order_by('id')
+    posts = Post.objects.all().order_by('-created_on')
     paginatorposts = Paginator(posts, items_per_page)
     posts = paginatorposts.get_page(page)
     counterposts = paginatorposts.count
