@@ -191,33 +191,34 @@
 <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
 
 <script>
-        $(".navbar-toggler-icon").click(function () {
-            if ($(".ribbon-top-left").is(":visible")) {
-                $(".ribbon-top-left").hide();
-            } else {
-                $(".ribbon-top-left").show();
-            }
-        });
+    $(".navbar-toggler-icon").click(function () {
+        if ($(".ribbon-top-left").is(":visible")) {
+            $(".ribbon-top-left").hide();
+        } else {
+            $(".ribbon-top-left").show();
+        }
+    });
 
-        $('#mysearch').click(function () {
-            $('#finder').submit();
-        });
-        $('#backsign').click(function () {
-            $('#keywords').val('');
+    $('#mysearch').click(function () {
+        $('#finder').submit();
+    });
+    $('#backsign').click(function () {
+        $('#keywords').val('');
+        $('#backsign').html('')
+    });
+
+    $('.basicAutoComplete').keyup(function () {
+        if (($(".basicAutoComplete").val().length) > 0) {
+            $('#backsign').html('<i class="fas fa-backspace"></i>')
+        } else {
             $('#backsign').html('')
-        });
-
-        $('.basicAutoComplete').keyup(function () {
-            if (($(".basicAutoComplete").val().length) > 0) {
-                $('#backsign').html('<i class="fas fa-backspace"></i>')
-            } else {
-                $('#backsign').html('')
-            }
-        });
+        }
+    });
 
 </script>
 {% block scripts %}
 {% endblock scripts %}
 
 </body>
+
 </html>

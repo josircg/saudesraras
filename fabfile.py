@@ -18,17 +18,6 @@ def deploy(connection, path):
         connection.run('../../bin/python3 manage.py collectstatic --noinput')
         connection.run('supervisorctl restart raras')
         print('Atualização efetuada com sucesso!')
-        print('Fim do processo...')
-
-
-def deploy(connection, path):
-    with connection.cd(path):
-        connection.run('git pull')
-        connection.run('../../bin/python3 manage.py migrate')
-        connection.run('../../bin/python3 manage.py compilemessages')
-        connection.run('../../bin/python3 manage.py collectstatic --noinput')
-        connection.run('supervisorctl restart raras')
-        print('Atualização efetuada com sucesso!')
 
 
 @task
@@ -106,8 +95,8 @@ def backup_local(context):
 @task
 def backup(context):
     connection = Connection('webapp@3.89.127.179')
-    # get_database(connection, banco='raras_usr@db-postgres.cpklsdpnssqm.us-east-1.rds.amazonaws.com:5432/raras', path='/var/webapp/raras')
-    get_mediafiles(connection,path='/var/webapp/raras')
+    get_database(connection, banco='raras_usr@db-postgres.cpklsdpnssqm.us-east-1.rds.amazonaws.com:5432/raras', path='/var/webapp/raras')
+    # get_mediafiles(connection,path='/var/webapp/raras')
 
 
 if __name__ == '__main__':

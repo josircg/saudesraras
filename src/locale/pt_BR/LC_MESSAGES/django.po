@@ -38,8 +38,8 @@ msgstr ""
 "confirmado. Para ativar a sua conta, procure o e-mail de confirmação na sua "
 "caixa de entrada (ou spam). "
 
-msgid "I want to receive the newsletter from Civis"
-msgstr "Quero receber a newsletter da Civis"
+msgid "I want to receive the newsletter"
+msgstr "Quero receber o boletim informativo"
 
 msgid "Enter your first name and surname"
 msgstr "Informe seu nome e sobrenome"
@@ -210,10 +210,10 @@ msgid "Save as draft"
 msgstr "Salvar como em edição"
 
 msgid "News"
-msgstr "Notícias"
+msgstr "Informes"
 
 msgid "Want to send a news to our site?"
-msgstr "Quer enviar uma notícia para o nosso site?"
+msgstr "Quer enviar um informe para o nosso site?"
 
 msgid "Contact us"
 msgstr "Entre em contato"
@@ -222,7 +222,7 @@ msgid "Access page"
 msgstr "Acessar página"
 
 msgid "Newsletters"
-msgstr ""
+msgstr "Boletins"
 
 msgid "From email"
 msgstr "E-mail"
@@ -303,7 +303,7 @@ msgid "Read Count"
 msgstr "E-mails lidos"
 
 msgid "Test newsletter"
-msgstr "Testar envio da newsletter"
+msgstr "Testar envio do boletim"
 
 msgid "Import CSV"
 msgstr "Importar CSV"
@@ -342,10 +342,10 @@ msgid "This email will be sent to submitter of"
 msgstr "Esta mensagem será enviada para o responsável por "
 
 msgid "Subscribe to our newsletter"
-msgstr "Assine nossa newsletter"
+msgstr "Assine nosso boletim"
 
-msgid "Sign up to the Civis newsletter to get the latest updates"
-msgstr "Inscreva-se na newsletter da Civis para receber as novidades"
+msgid "Sign up to the newsletter to get the latest updates"
+msgstr "Inscreva-se na newsletter para receber novidades"
 
 msgid ""
 "You can unsubscribe at any time by clicking the link in the footer of our "
@@ -2155,7 +2155,7 @@ msgid "See all events here +"
 msgstr "Veja todos eventos aqui +"
 
 msgid "See more news here +"
-msgstr "Veja mais notícias aqui +"
+msgstr "Veja mais informes aqui +"
 
 msgid "See all platforms"
 msgstr "Ver todas as plataformas"
@@ -2202,7 +2202,7 @@ msgid "Register a new rare health event"
 msgstr "Registrar uma novo evento sobre saúde rara"
 
 msgid "Register a new rare health news"
-msgstr "Registrar uma nova notícia sobre saúde rara"
+msgstr "Registrar um novo informe sobre saúde rara"
 
 msgid "Save & continue editing"
 msgstr "Salvar e continuar editando"
