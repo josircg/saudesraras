@@ -236,6 +236,11 @@ msgstr "Sobrenome"
 msgid "Message"
 msgstr "Mensagem"
 
+#, fuzzy
+#| msgid "I want to receive the newsletter"
+msgid "I want to receive the newsletter from Civis"
+msgstr "Quero receber o boletim informativo"
+
 msgid "Subject"
 msgstr "Assunto"
 
@@ -344,7 +349,9 @@ msgstr "Esta mensagem será enviada para o responsável por "
 msgid "Subscribe to our newsletter"
 msgstr "Assine nosso boletim"
 
-msgid "Sign up to the newsletter to get the latest updates"
+#, fuzzy
+#| msgid "Sign up to the newsletter to get the latest updates"
+msgid "Sign up to the Civis newsletter to get the latest updates"
 msgstr "Inscreva-se na newsletter para receber novidades"
 
 msgid ""
@@ -534,6 +541,17 @@ msgstr ""
 msgid "Please provide a URL to the event website. Include http:// or https://"
 msgstr "Forneça uma URL para o site do evento. Inclua http:// ou https://"
 
+msgid ""
+"The image (.jpg or .png) will be resized to 600 x 400 pixels.Image files "
+"with dimensions that greatly differ from this size may be drastically "
+"cropped. To learn how to avoid this, see our <a href='/guide' "
+"target='_blank'>User Guide.</a>"
+msgstr ""
+"A imagem (.jpg ou .png) será reajustada para 600x400 pixels. Arquivos de "
+"imagem que apresentem dimensões muito diferentes podem sofrer grandes "
+"cortes. Para saber como evitar, consulte nosso consulte nosso <a href='/"
+"guide' target='_blank'>Guia de Uso.</a>"
+
 msgid "Approved"
 msgstr "Aprovado"
 
@@ -665,17 +683,6 @@ msgstr "Tipo de organização"
 msgid "Please select one."
 msgstr "Selecione uma opção"
 
-msgid ""
-"The image (.jpg or .png) will be resized to 600 x 400 pixels.Image files "
-"with dimensions that greatly differ from this size may be drastically "
-"cropped. To learn how to avoid this, see our <a href='/guide' "
-"target='_blank'>User Guide.</a>"
-msgstr ""
-"A imagem (.jpg ou .png) será reajustada para 600x400 pixels. Arquivos de "
-"imagem que apresentem dimensões muito diferentes podem sofrer grandes "
-"cortes. Para saber como evitar, consulte nosso consulte nosso <a href='/"
-"guide' target='_blank'>Guia de Uso.</a>"
-
 msgid "Please name the contact person or contact point for the organisation."
 msgstr "Nome do responsável ou contato da organização"
 
@@ -725,11 +732,11 @@ msgstr "Excluir"
 msgid "Order by"
 msgstr "Ordenar por"
 
-msgid "Most Recent"
-msgstr "Mais recentes"
-
 msgid "By Name"
 msgstr "Ordem alfabética"
+
+msgid "Most Recent"
+msgstr "Mais recentes"
 
 msgid "Filter by"
 msgstr "Filtrar"
@@ -2124,14 +2131,11 @@ msgstr "Cortar a fotografia"
 msgid "Crop and upload"
 msgstr "Cortar e submeter"
 
-msgid "Início"
-msgstr ""
+msgid "Home"
+msgstr "Página inicial"
 
 msgid "About"
 msgstr "Sobre"
-
-msgid "Noticias"
-msgstr ""
 
 msgid "FAQ"
 msgstr "Perguntas frequentes"
@@ -2145,7 +2149,7 @@ msgstr "Privacidade"
 msgid "Source Code"
 msgstr "Código Fonte"
 
-msgid "© Lorem Ipsum 2023 - Todos os direitos reservados."
+msgid "Todos os direitos reservados."
 msgstr ""
 
 msgid "Desenvolvido por:"
@@ -2222,6 +2226,15 @@ msgstr "Histórico"
 msgid "View on site"
 msgstr "Visualizar no site"
 
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "Logout"
+msgstr "Sair"
+
+msgid "Admin"
+msgstr "Admin"
+
 msgid "Login"
 msgstr "Entrar"
 
@@ -2230,9 +2243,6 @@ msgstr "perfil"
 
 msgid "logout"
 msgstr "sair"
-
-msgid "Admin"
-msgstr "Admin"
 
 msgid "Company"
 msgstr "Empresa"
@@ -2255,11 +2265,6 @@ msgstr "Mais informações"
 msgid "That's fine"
 msgstr "Tudo bem"
 
-msgid "Home"
-msgstr "Página inicial"
-
-#, fuzzy
-#| msgid "Countries"
 msgid "Country List"
 msgstr "Países"
 

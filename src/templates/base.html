@@ -70,11 +70,11 @@
         <div class="collapse navbar-collapse" id="navbarResponsive" style="background-color: #114D7F;">
             <!-- Links no Meio -->
             <div class="navbar-nav mx-auto mb-2">
-                <a href="{% url 'home' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Home</a>
-                <a href="{% url 'about' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Sobre</a>
-                <a href="{% url 'events' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Eventos</a>
-                <a href="{% url 'organisations' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Organizações</a>
-                <a href="{% url 'blog' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">Notícias</a>
+                <a href="{% url 'home' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "Home" %}</a>
+                <a href="{% url 'about' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "About" %}</a>
+                <a href="{% url 'events' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "Events" %}</a>
+                <a href="{% url 'organisations' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "Organisations" %}</a>
+                <a href="{% url 'blog' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "News" %}</a>
             </div>
 
             <!-- Dropdown de Idioma -->
@@ -104,32 +104,32 @@
                 {% if not user.is_authenticated %}
                     <a href="/login/" class="btn mx-2"
                         style="
-                            background-color: #114D7F;
-                            color: #FFFFFF;
-                            border: 2px solid #FFFFFF;
-                            border-radius: 25px;
-                            font-weight: 600;
-                            text-decoration: none;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            padding: 10px 20px;
+                            background-color: #114D7F;  
+                            color: #FFFFFF;             
+                            border: 2px solid #FFFFFF;  
+                            border-radius: 25px;        
+                            font-weight: 600;           
+                            text-decoration: none;      
+                            display: flex;              
+                            align-items: center;        
+                            justify-content: center;   
+                            padding: 10px 20px;         
                         ">
                         Entrar
                     </a>
 
                     <a href="/signup/" class="btn mx-2"
                         style="
-                            background-color: #FFFFFF;
-                            color: #114D7F;
-                            border: 2px solid #114D7F;
-                            border-radius: 25px;
-                            font-weight: 600;
-                            text-decoration: none;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            padding: 10px 20px;
+                            background-color: #FFFFFF;  
+                            color: #114D7F;             
+                            border: 2px solid #114D7F;  
+                            border-radius: 25px;        
+                            font-weight: 600;           
+                            text-decoration: none;      
+                            display: flex;              
+                            align-items: center;        
+                            justify-content: center;   
+                            padding: 10px 20px;         
                         ">
                         Criar Conta
                     </a>
