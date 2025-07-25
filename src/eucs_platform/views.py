@@ -34,7 +34,7 @@ def home(request):
     page = request.GET.get('page')
 
     # Blog
-    posts = Post.objects.all().order_by('id')
+    posts = Post.objects.all().order_by('-sticky', '-created_on')
     paginatorposts = Paginator(posts, items_per_page)
     posts = paginatorposts.get_page(page)
     counterposts = paginatorposts.count
@@ -131,7 +131,6 @@ def home(request):
 def all(request):
     return home(request)
 
-
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
 
@@ -160,7 +159,31 @@ def parceiro(request):
 
 
 def about(request):
-    return render(request, 'pages/%s/about.html' % get_language())
+    itens = [
+        {
+            'id': 1,
+            'nome': 'Jhonatan Oliveira da Silva',
+            'img_path': 'site/img/void_org.png',
+            'tempo': 'xxxx.x - xxxx.x',
+            'funcao': 'Desenvolvedor',
+            'o_que_fez': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum ante in orci faucibus auctor. Nunc pharetra augue vitae lacus pulvinar sagittis. Proin malesuada nulla nec enim porttitor, vel pulvinar.'
+        },{
+            'id': 2,
+            'nome': 'Matheus Balonecker Cruz',
+            'img_path': 'site/img/void_org.png',
+            'tempo': 'xxxx.x - xxxx.x',
+            'funcao': 'Designer',
+            'o_que_fez': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum ante in orci faucibus auctor. Nunc pharetra augue vitae lacus pulvinar sagittis. Proin malesuada nulla nec enim porttitor, vel pulvinar.'
+        },{
+            'id': 3,
+            'nome': 'Rayssa da Silva Pereira',
+            'img_path': 'site/img/void_org.png',
+            'tempo': 'xxxx.x - xxxx.x',
+            'funcao': 'Designer',
+            'o_que_fez': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum ante in orci faucibus auctor. Nunc pharetra augue vitae lacus pulvinar sagittis. Proin malesuada nulla nec enim porttitor, vel pulvinar.'
+        }
+    ]
+    return render(request, 'pages/%s/about.html' % get_language(), {'itens': itens})
 
 
 def terms(request):
