@@ -1,0 +1,553 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ block.super }} :: {% trans "About" %}{% endblock %}
+
+{% block list_of_items %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rio Farmes - Medicamentos Especiais</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <h1 class="text-center mb-5 text-blue3 fw-bold"> É o lugar onde se pode encontrar medicamentos caros que são disponibilizadas gratuitamente, mediante cadastro</h1>
+
+    <section class="mb-5">
+      <h2 class="text-home fw-bold" style="color: #000; font-weight: bold; ">Rio Farmes</h2>
+        <div class="badge bg-blue3 rounded-pill px-4 py-2 fs-5 fw-bold mb-3 d-inline-block">
+            <span class="bold" style="font-size: 25px;">
+            O que é:
+            </span>
+        </div>
+        <div class="mb-2 reg" style="color: #000;font-size: 21px; line-height: 26px;">
+            Farmácia Estadual de Medicamentos Especiais do Estado do Rio de Janeiro. Vinculada à Secretaria de 
+            Estado de Saúde, logo, só tem validade no Estado do RJ. 
+        </div>
+        <div class="mb-2 reg" style="color: #000;font-size: 21px; line-height: 26px;">
+            Como o nome sugere, a Rio Farmes é uma 
+            farmácia pública e distribui gratuitamente medicamentos especializados de alto custo para o público 
+            no Rio de Janeiro.
+        </div>
+        <div class="mb-2 reg" style="color: #000;font-size: 21px; line-height: 26px;">
+            No Brasil, a assistência Farmacêutica (AF) no Sistema Único de Saúde (SUS) é estruturada em três 
+            componentes: Básico (CBAF), Estratégico (CESAF) e Especializado (CEAF). O básico trata dos 
+            medicamentos gerais, de uso comum da população.
+        </div>
+        <div class="reg" style="color: #000;font-size: 21px; line-height: 26px;">
+            O Estratégico trata de medicamentos para tratar doenças doenças de impacto coletivo ou que 
+            precisam de controle epidemiológico. Tuberculose e AIDS, por exemplo. Já o Especializado, trata 
+            de medicamentos de alto custo, uso contínuo e para doenças complexas. No RJ, o programa 
+            responsável por executar o CEAF, é a Riofarmes
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <div class="badge bg-blue3 rounded-pill px-4 py-2 fs-5 fw-bold mb-3 d-inline-block">
+            <span class="bold" style="font-size: 25px;">
+            Cadastro
+            </span>
+        </div>
+        <p class="reg" style="color: #000;font-size: 25px; line-height: 26px; font-weight: bold;">
+         O cadastro é burocrático e a lista de documentos exigidos é extensa
+        </p>
+      <h5 style="font-size: 23px;">Documentos Pessoais</h5>
+      <ul style="color: #000;font-size: 21px;">
+        <li>Original e cópia do Cartão Nacional de Saúde (CNS);</li>
+        <li>Original e cópia do documento de identidade;</li>
+        <li>Original e cópia do CPF;</li>
+        <li>Comprovante de residência atual (menos de 90 dias).</li>
+      </ul>
+
+      <h5 style="font-size: 23px;">Documentos Médicos</h5>
+      <ul style="color: #000;font-size: 21px; word-wrap: break-word; overflow-wrap: break-word;">
+        <li>LME - Laudo de Solicitação de Medicamentos (para preenchimento manual);</li>
+        <li>LME - Laudo de Solicitação de Medicamentos (para preenchimento eletrônico);</li>
+        <li>LME – Plataforma Digital do CREMERJ;</li>
+        <li>Prescrição Médica devidamente preenchida (pela denominação comum brasileira);</li>
+        <li>Documentos exigidos nos Protocolos Clínicos e Diretrizes Terapêuticas do MS;</li>
+        <li>Receita Médica, em 2 vias, com a prescrição do medicamento feita pelo nome genérico do princípio ativo, 
+            emitida a menos de 90 dias (validade de 30 dias para medicamentos sob regime especial de controle);</li>
+        <li>Laudo médico detalhado com descrição do quadro clínico do paciente, menção expressa do diagnóstico, 
+            tendo como referência os critérios de inclusão previstos nos Protocolos Clínicos e Diretrizes Terapêuticas - 
+            PCDT do Ministério da Saúde, nível de gravidade, relato de tratamentos anteriores (medicamentos e 
+            período de tratamento), emitido a menos de 90 dias;</li>
+        <li> Exames laboratoriais e de imagem previstos nos critérios de inclusão do PCDT.</li>
+      </ul>
+
+      <div class="rounded bg-blue3" style="padding-left: 5%; padding-top: 2%; padding-bottom: 2%; padding-right: 1%;">
+        <p style="color: #F2F6F9; font-size: 23px; font-weight: bold;">Outros Documentos (Impressos)</p>
+        <ul style="color: #F2F6F9;font-size: 21px;">
+            <li>Termo de Esclarecimento e Responsabilidade preenchido (se houver). No caso de assinatura por 
+                responsável apresentar cópia de IDENTIDADE e CPF do mesmo. Os termos podem ser encontrados nos 
+                respectivos Protocolos Clínicos e Diretrizes Terapêuticas (PCDT);</li>
+            <li>Termo de Conhecimento de Risco (se houver);</li>
+            <li>Declaração autorizadora de retirada por terceiros acompanhada de cópia de RG, CPF, COMPROVANTE 
+                DE RESIDÊNCIA do representante e cópia de identidade do paciente (No caso de retirada por 
+                representante).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="badge bg-blue3 rounded-pill px-4 py-2 fs-5 fw-bold mb-3 d-inline-block">
+            <span class="bold" style="font-size: 25px;">
+            Unidades
+            </span>
+        </div>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3">
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Capital - Rio Farmes Praça XI</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Rio Farmes Parça XI</strong><br>
+                <a href="https://maps.app.goo.gl/nW7V3tAnf6GTUJ6B7" target="_blank" style="color: #FFF;">
+                    Rua Júlio do Carmo, 585 - Cidade Nova (ao lado 
+                    do metrô da Praça Onze)
+                </a><br>
+                Municípios: Rio de Janeiro, Itaguaí, Seropédica
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Angra dos Reis</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Fusar</strong><br>
+                <a href="https://maps.app.goo.gl/wb2nYpxAVsYgjgndA" target="_blank" style="color: #FFF;">Praça General Osório, 37 - Centro</a><br>
+                Tel: (24) 3368-7300<br>
+                Municípios: Angra dos Reis, Mangaratiba, Paraty
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Barra do Piraí</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia Central</strong><br>
+                <a href="https://maps.app.goo.gl/BuVs9GZXk2ET61Ms7" target="_blank" style="color: #FFF;">Rua Moreira dos Santos, 768 - Centro</a><br>
+                Tel: (24) 2444-4594<br>
+                Municípios: Angra dos Reis, Mangaratiba, Paraty
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Barra Mansa</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia Municipal de Barra Mansa</strong><br>
+                <a href="https://maps.app.goo.gl/erhbM97ZCPqULjq79" target="_blank" style="color: #FFF;">
+                    Rua Domingos Mariana, 1102 - Centro
+                </a><br>
+                Tel: (24) 3323-7130<br>
+                Municípios: Barra Mansa, Porto Real
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Bom Jesus do Itabapoana</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia e Almoxarifado Central</strong><br>
+                <a href="https://maps.app.goo.gl/pD2saU2gCiJbynDS8" target="_blank" style="color: #FFF;">
+                  Rua Gonçalves da Silva, 141 - Centro (ao lado do CAPS)
+                </a><br>
+                Tel: (22) 3831-1196<br>
+                Municípios: Bom Jesus do Itabapoana, Cardoso Moreira, Italva
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Cabo Frio</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia de Medicamentos Excepcionais</strong><br>
+                <a href="https://maps.app.goo.gl/tqM4T8NGCNvkQU9y9" target="_blank" style="color: #FFF;">
+                  Av. Teixeira e Souza, 2104 - São Cristóvão
+                </a><br>
+                Tel: (22) 2646-2506 Ramal: 2098<br>
+                Municípios: Cabo Frio, Armação de Búzios, Arraial do Cabo, Araruama, São Pedro da Aldeia, Iguaba Grande, Saquarema
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Campos dos Goytacazes</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Secretaria Municipal de Saúde</strong><br>
+                <a href="https://maps.app.goo.gl/1X3ALoLoFPhF5vC59" target="_blank" style="color: #FFF;">
+                    Rua Voluntários da Pátria, 161-185 - Centro
+                </a><br>
+                Municípios: Campos dos Goytacazes, São Fidelis, São Francisco de Itabapoana, São João da Barra, Quissamã
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Cordeiro</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Secretaria de Saúde de Cordeiro</strong><br>
+                <a href="https://maps.app.goo.gl/SUYiHY5wYMb7jiRi9" target="_blank" style="color: #FFF;">
+                  Rua Nacib Simão, 1325 - Rodolfo Gonçalves
+                </a><br>
+                Municípios: Cordeiro, Cantagalo, Macuco, São Sebastião do Alto, Santa Maria Madalena, Trajano de Moraes
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Duque de Caxias</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Riofarmes Duque de Caxias</strong><br>
+                <a href="https://maps.app.goo.gl/n8boGMFEwN1WAAWJ8" target="_blank" style="color: #FFF;">
+                  Rua Marechal Floriano, 586 A - Bairro 25 de Agosto
+                </a><br>
+                Tel: (21) 98235-0066 / 98092-2625<br>
+                Municípios: Duque de Caxias, São João de Meriti
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Itaboraí</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Secretaria Municipal de Saúde - Farmácia Básica</strong><br>
+                <a href="https://maps.app.goo.gl/JgXJQn7dv1eiFoeu9" target="_blank" style="color: #FFF;">
+                    Rua Desembargador Ferreira Pinto, 09 Fds. - Centro
+                </a><br>
+                Tel: (21) 2645-1802<br>
+                Municípios: Itaboraí, Tanguá
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Itaperuna</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia de Medicamentos Excepcionais</strong><br>
+                <a href="https://maps.app.goo.gl/mQoJvdjEYLtCfqpu8" target="_blank" style="color: #FFF;">
+                  Rua 10 de Maio nº 893 (anexo ao Centro de Saúde Dr. Raul Travassos) - Centro
+                </a><br>
+                Tel: (22) 3822-6752<br>
+                Municípios: Itaperuna, Laje de Muriaé, Natividade, Porciúncula, Varre e Sai, São José de Ubá
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Macaé</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Secretaria de Saúde</strong><br>
+                <a href="https://maps.app.goo.gl/Ydpvyxviw3EdN8oQ9" target="_blank" style="color: #FFF;">
+                  Rua Darcílio Possati, 134 - Visconde de Araújo
+                </a><br>
+                Tel: (22) 2763-6330 Ramal: 2067<br>
+                Municípios: Macaé, Carapebus, Conceição de Macabu
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Magé</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia Polo</strong><br>
+                <a href="https://maps.app.goo.gl/BEXTGZp3VHyCmXG19" target="_blank" style="color: #FFF;">
+                    Rua Papa Pio XII, 35 - Centro
+                </a><br>
+                Tel: (21) 2317-0217 Ramal: 117280 / WhatsApp: (21) 99876-1207<br>
+                Municípios: Magé, Guapimirim
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Miguel Pereira</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia do Posto de Saúde Senador Roberto Campos</strong><br>
+                <a href="https://maps.app.goo.gl/EDozgJYpSrGwbhyL6" target="_blank" style="color: #FFF;">
+                  Rua Prefeito Manuel Guilherme Barbosa, 371, loja 8 - Centro
+                </a><br>
+                Tel: (24) 99915-3866<br>
+                Municípios: Miguel Pereira, Paty do Alferes
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Niterói</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Policlínica Regional Carlos Antonio da Silva</strong><br>
+                <a href="https://maps.app.goo.gl/LGAP8ewintH2aCdM8" target="_blank" style="color: #FFF;">
+                  Avenida Jansem de Mello, s/nº - São Lourenço
+                </a><br>
+                Tel: (21) 2622-9331<br>
+                Municípios: Niterói, Maricá
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Nova Friburgo</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Centro de Saúde Dr. Silvio Henrique Braune</strong><br>
+                <a href="https://maps.app.goo.gl/vNbrtzdWV9GpscGF6" target="_blank" style="color: #FFF;">
+                    Rua Plínio Casado, s/nº - Centro
+                </a><br>
+                Tel: (22) 2522-7516<br>
+                Municípios: Nova Friburgo, Duas Barras, Bom Jardim, Cachoeiras de Macacu
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Nova Iguaçu</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Riofarmes Nova Iguaçu</strong><br>
+                <a href="https://maps.app.goo.gl/Nmjx3ZSPtj9dDv8AA" target="_blank" style="color: #FFF;">
+                  Rua Governador Roberto Silveira, 206 - Centro
+                </a><br>
+                Tel: (21) 98169-4917 / 98175-1921<br>
+                Municípios: Nova Iguaçu, Belford Roxo, Mesquita, Japeri, Queimados, Nilópolis
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Paraíba do Sul</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Centro de Atendimento Materno Infantil Asdrubal Alves de Souza</strong><br>
+                <a href="https://maps.app.goo.gl/2268oHXHVTos7KdB6" target="_blank" style="color: #FFF;">
+                  Praça Garcia, 30 - Centro
+                </a><br>
+                Tel: (24) 2050-4303 Ramal: farmácia<br>
+                Municípios: Paraíba do Sul
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Petrópolis</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia Municipal</strong><br>
+                <a href="https://maps.app.goo.gl/5acxmjEXFXvkcKim9" target="_blank" style="color: #FFF;">
+                    Rua Epitácio Pessoa, 56 - Centro
+                </a><br>
+                Tel: (24) 2237-6443<br>
+                Municípios: Petrópolis
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Piraí</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia Municipal</strong><br>
+                <a href="https://maps.app.goo.gl/CPPAbPWuYuQj9HVF9" target="_blank" style="color: #FFF;">
+                  Rua Moacir Barbosa, 73 - Centro
+                </a><br>
+                Tel: (24) 2411-9357 / (24) 2411-9324<br>
+                Municípios: Piraí, Rio Claro, Pinheiral
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Resende</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Posto de Saúde de Resende</strong><br>
+                <a href="https://maps.app.goo.gl/WmoeYsSrH1nodEaQ9" target="_blank" style="color: #FFF;">
+                  Rua Dr. João Maia, 56 - Centro
+                </a><br>
+                Tel: (24) 99914-8266<br>
+                Municípios: Resende, Itatiaia, Quatis
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Rio Bonito</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia Central</strong><br>
+                <a href="https://maps.app.goo.gl/YapobKta1od27P477" target="_blank" style="color: #FFF;">
+                    Rua Getúlio Vargas, 109 - Centro
+                </a><br>
+                WhatsApp: (21) 97508-1841<br>
+                Municípios: Rio Bonito, Silva Jardim
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Rio das Ostras</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Estratégia de Saúde da Família Avenida Linda</strong><br>
+                <a href="https://maps.app.goo.gl/iUMjG7c9pg8cXTR27" target="_blank" style="color: #FFF;">
+                  Av. Linda S/N - Nova Esperança
+                </a><br>
+                Tel: (22) 2771-6788<br>
+                Municípios: Rio das Ostras, Casimiro de Abreu
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Santo Antônio de Pádua</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Policlínica Dr. Juarez Amaral de Andrade</strong><br>
+                <a href="https://maps.app.goo.gl/Ds1pmCvxokP35yqN9" target="_blank" style="color: #FFF;">
+                  Rua Arthur Silva, 132 - Centro
+                </a><br>
+                Tel: (22) 3851-0890<br>
+                Municípios: Santo Antônio de Pádua, Aperibé, Cambuci, Itaocara, Miracema
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">São Gonçalo</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Secretaria Municipal de Saúde</strong><br>
+                <a href="https://maps.app.goo.gl/gYLwnYPjnfmTs6DF9" target="_blank" style="color: #FFF;">
+                    Travessa Jorge Soares, 157 - Centro
+                </a><br>
+                Municípios: São Gonçalo
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Teresópolis</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Secretaria Municipal de Saúde - Divisão de Farmácia</strong><br>
+                <a href="https://maps.app.goo.gl/ertCpU59aCaecdmo6" target="_blank" style="color: #FFF;">
+                  Rua Júlio Rosa, 366 - Tijuca
+                </a><br>
+                Tel: (21) 2742-3352 Ramal: 328<br>
+                Municípios: Teresópolis, Carmo, Sumidouro, São José do Vale do Rio Preto
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Três Rios</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Policlínica Walter Gomes Franklin</strong><br>
+                <a href="https://maps.app.goo.gl/r494XZfpVPQZHnrLA" target="_blank" style="color: #FFF;">
+                  Rua da Maçonaria, 320 sala 07 - Centro
+                </a><br>
+                Tel: (24) 2251-1236<br>
+                Municípios: Três Rios, Areal, Comendador Levy Gasparian, Sapucaia
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Valença</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia Municipal</strong><br>
+                <a href="https://maps.app.goo.gl/1CYYAr4maHF7crWV7" target="_blank" style="color: #FFF;">
+                    Praça Visconde do Rio Preto, 280, lojas D, E e F - Centro
+                </a><br>
+                Tel: (24) 2452-7533<br>
+                Municípios: Valença, Rio das Flores
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Vassouras</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Policlínica de Vassouras</strong><br>
+                <a href="https://maps.app.goo.gl/svcbrUS9JVqU56WJ9" target="_blank" style="color: #FFF;">
+                  Rua Velho de Avelar, 125 - Centro
+                </a><br>
+                Tel: (24) 2491-9650 Ramais: 300 / 301<br>
+                Municípios: Vassouras, Eng. Paulo de Frontin, Mendes, Paracambi
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 mb-2" style="padding: 0%; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+            <div class="card-body bg-blue3 p-4 w-100 h-100" style="width: 270px; border-bottom-left-radius: 25%; border-bottom-right-radius: 25%; border-top-right-radius: 25%;">
+              <p style="color: #FFF; font-size: 23px; font-weight: bold;">Volta Redonda</p>
+              <p class="card-text" style="color: #FFF;">
+                <strong>Farmácia Municipal de Volta Redonda</strong><br>
+                <a href="https://maps.app.goo.gl/P5B1anB2NoNj5YjU7" target="_blank" style="color: #FFF;">
+                  Rua 545 nº 616 - Jardim Paraíba (Estádio da Cidadania), 2º andar
+                </a><br>
+                Tel: (24) 3339-9465<br>
+                Municípios: Volta Redonda
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

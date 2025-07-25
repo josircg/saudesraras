@@ -34,7 +34,7 @@ def home(request):
     page = request.GET.get('page')
 
     # Blog
-    posts = Post.objects.all().order_by('id')
+    posts = Post.objects.all().order_by('-sticky', '-created_on')
     paginatorposts = Paginator(posts, items_per_page)
     posts = paginatorposts.get_page(page)
     counterposts = paginatorposts.count
@@ -142,6 +142,8 @@ def diagnostico(request):
 def justica(request):
     return render(request, 'pages/%s/justica.html' % get_language())
 
+def riofarmes(request):
+    return render(request, 'pages/%s/riofarmes.html' % get_language())
 
 def medicos(request):
     return render(request, 'pages/%s/medicos.html' % get_language())
