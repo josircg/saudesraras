@@ -90,6 +90,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps.sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     # PATHS SAUDESRARAS
+    path("riofarmes/", views.riofarmes, name="riofarmes"),
     path("about/", views.about, name="about"),
     path("medicos/", views.medicos, name="medicos"),
     path("diagnostico/", views.diagnostico, name="diagnostico"),
