@@ -90,13 +90,13 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps.sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     # PATHS SAUDESRARAS
+    path("riofarmes/", views.riofarmes, name="riofarmes"),
     path("about/", views.about, name="about"),
     path("medicos/", views.medicos, name="medicos"),
     path("diagnostico/", views.diagnostico, name="diagnostico"),
     path("doencas/", views.doencas, name="doencas"),
     path("justica/", views.justica, name="justica"),
     path("parceiro/", views.parceiro, name="parceiro"),
-    
 ]
 
 # User-uploaded files like profile pics need to be served in development
