@@ -1072,6 +1072,9 @@ msgstr ""
 msgid "Email verified"
 msgstr "Correo electrónico verificado"
 
+msgid "Team"
+msgstr ""
+
 msgid "{}'s profile"
 msgstr "perfil"
 
@@ -2233,21 +2236,28 @@ msgstr "¿Qué quiere presentar?"
 
 #, fuzzy
 #| msgid "Register a citizen science project"
-msgid "Register a new rare health project"
+msgid "Register a project"
 msgstr "Registrar un proyecto de ciencia ciudadana"
 
 #, fuzzy
 #| msgid "Register your organisation or network"
-msgid "Register a new rare health organisation"
+msgid "Register a new organisation"
 msgstr "Registre su organización o red"
 
 #, fuzzy
+#| msgid "Register a citizen science resource"
+msgid "Register a new resource"
+msgstr "Registrar un recurso de ciencia ciudadana"
+
+#, fuzzy
 #| msgid "Register a citizen science event"
-msgid "Register a new rare health event"
+msgid "Register a new event"
 msgstr "Registrar un evento de ciencia ciudadana"
 
-msgid "Register a new rare health news"
-msgstr ""
+#, fuzzy
+#| msgid "Register a citizen science project"
+msgid "Register a new blog post"
+msgstr "Registrar un proyecto de ciencia ciudadana"
 
 msgid "Save & continue editing"
 msgstr "Guardar y continuar editando"
@@ -2277,21 +2287,6 @@ msgstr "Cerrar sesión"
 
 msgid "Admin"
 msgstr "Administrar"
-
-msgid "Login"
-msgstr "Iniciar sesión"
-
-msgid "profile"
-msgstr "perfil"
-
-msgid "logout"
-msgstr "cerrar sesión"
-
-msgid "Company"
-msgstr "Empresa"
-
-msgid "Connect with us on"
-msgstr "Conecte con EU-Citizen Science en "
 
 msgid "Coming Soon"
 msgstr "Próximamente"
@@ -2356,11 +2351,6 @@ msgid "Symptoms"
 msgstr ""
 
 #, fuzzy
-#| msgid "Communications"
-msgid "Publications"
-msgstr "organizaciones"
-
-#, fuzzy
 #| msgid "Search..."
 msgid "search here..."
 msgstr "Buscar..."
@@ -2385,6 +2375,11 @@ msgstr "Privacidad"
 #| msgid "Confirmation Done!"
 msgid "Information about:"
 msgstr "Confirmado"
+
+#, fuzzy
+#| msgid "Communications"
+msgid "Publications"
+msgstr "organizaciones"
 
 msgid "Testimonials"
 msgstr ""
@@ -2737,7 +2732,7 @@ msgstr ""
 msgid "Frequently <span class='text-pink6'>asked questions</span>"
 msgstr "Preguntas <span class='text-pink6'>frecuentes</span>"
 
-msgid "Diagnostico"
+msgid "Diagnostic"
 msgstr ""
 
 msgid "Ajuda"
@@ -2904,6 +2899,21 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
+
+#~ msgid "Login"
+#~ msgstr "Iniciar sesión"
+
+#~ msgid "profile"
+#~ msgstr "perfil"
+
+#~ msgid "logout"
+#~ msgstr "cerrar sesión"
+
+#~ msgid "Company"
+#~ msgstr "Empresa"
+
+#~ msgid "Connect with us on"
+#~ msgstr "Conecte con EU-Citizen Science en "
 
 #~ msgid "Community Forums"
 #~ msgstr "Foros de la comunidad"
@@ -3325,9 +3335,6 @@ msgstr "Traducciones"
 
 #~ msgid "FORUM"
 #~ msgstr "FORO"
-
-#~ msgid "Register a citizen science resource"
-#~ msgstr "Registrar un recurso de ciencia ciudadana"
 
 #~ msgid "Register a course or educational material related to citizen science"
 #~ msgstr ""

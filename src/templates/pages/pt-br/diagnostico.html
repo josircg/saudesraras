@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
-{% block title %}{{ block.super }} :: {% trans "Diagnostico" %}{% endblock %}
+{% block title %}{{ block.super }} :: {% trans "Diagnosis" %}{% endblock %}
 {% block list_of_items %}
 <link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
 
@@ -10,7 +10,7 @@
     
  
   <div class="container" style="margin-left: 5%;">
-    <h7 class="pg-tittle">Diagnostico</h7>
+    <h7 class="pg-tittle">{% trans "Diagnosis" %}</h7>
  </div>
 
   <div class="border-top  line"></div>

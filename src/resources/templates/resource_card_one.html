@@ -4,11 +4,7 @@
 {% load thumbnail eucs_platform_tags eucs_platform_translate %}
 <div class="col-lg-3 col-sm-6 col-xs-12 mb-5">
     <div class="card h-100 border-1 rounded">
-        <a href="/resource/{{resource.id}}">
-            <img class="img-fluid img-card lazyload" data-src="{% thumbnail resource.image1|safe_image 306x204 crop %}"/>
-        </a>
         <div class="card-body">
-            
             {% if resource.featured %}
             <div class="small text-muted mb-2">Featured</div>
             {% else %}

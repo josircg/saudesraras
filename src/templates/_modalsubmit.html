@@ -11,22 +11,27 @@
             <div class="modal-body">
                 <!-- <div class="menu-item mb-5">
                     <h4><a  href="/#" class="link-menu-submit" class="colorred"> {% trans "Project" %}</a></h4>
-                    <p class="fw-500">{% trans "Register a new rare health project" %}</p>
+                    <p class="fw-500">{% trans "Register a project" %}</p>
                 </div> -->
                 <div class="menu-item mb-5">
                     <h4><a href="/new_organisation" class="link-menu-submit" class="colorgreen"> {% trans "Organisation" %}</a></h4>
-                    <p class="fw-500">{% trans "Register a new rare health organisation" %}</p>
+                    <p class="fw-500">{% trans "Register a new organisation" %}</p>
+                </div>
+
+                <div class="menu-item mb-5">
+                    <h4><a  href="/newResource" class="link-menu-submit" class="colorred"> {% trans "Resource" %}</a></h4>
+                    <p class="fw-500">{% trans "Register a new resource" %}</p>
                 </div>
                
                 <div class="menu-item mb-5">
                     <h4><a href="/new_event" class="link-menu-submit" class="colororange"> {% trans "Event" %}</a></h4>
-                    <p class="fw-500">{% trans "Register a new rare health event" %}</p>
+                    <p class="fw-500">{% trans "Register a new event" %}</p>
                 </div>
                 
                 {% if user.is_staff %}
                 <div class="menu-item mb-5">
                     <h4><a href="/admin/blog/post/add/" class="link-menu-submit"> {% trans "News" %}</a></h4>
-                    <p class="fw-500">{% trans "Register a new rare health news" %}</p>
+                    <p class="fw-500">{% trans "Register a new blog post" %}</p>
                 </div>
                 {% endif %} 
                 
