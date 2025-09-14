@@ -343,7 +343,52 @@
     .bck-azul{
         background-color: #3D99F4 !important;
     }
-
+    .bttn0{
+        background-color: #114D7F;
+        color: white;
+        border: 2px solid white;
+        border-radius: 25px;        
+        font-weight: 600;           
+        text-decoration: none;      
+        display: flex;              
+        align-items: center;        
+        justify-content: center;   
+        padding: 10px 20px;   
+    }
+    .bttn0:hover{
+        background-color: white;
+        color: #114D7F;
+        border: 2px solid #114D7F;
+        
+    }
+    .bttn01{
+        background-color: white;
+        color: #114D7F;
+        border: 2px solid #114D7F;
+        border-radius: 25px;        
+        font-weight: 600;           
+        text-decoration: none;      
+        display: flex;              
+        align-items: center;        
+        justify-content: center;   
+        padding: 10px 20px;   
+    }
+    .bttn01:hover{
+        background-color: #114D7F;
+        color: white;
+        border: 2px solid white;
+        
+    }
+    .bttnenviar{
+        background-color: white;
+        color: #114D7F;
+    }
+    
+    .bttnenviar:hover{
+        background-color: #114D7F !important;
+        color: #5CDCFF !important;
+    }
+    
     .bttn{
         background-color: white;
         outline-color: slategray;
@@ -407,7 +452,10 @@
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
 
-
+textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
 .carousel-control-prev,
 .carousel-control-next {
   top: 0;
