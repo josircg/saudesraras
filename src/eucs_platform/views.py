@@ -162,7 +162,11 @@ def parceiro(request):
 
 
 def about(request):
-    return render(request, 'pages/%s/about.html' % get_language())
+    equipe = Profile.objects.filter(team__lt=99).order_by('team','user__name')
+    alunos_antigos = Profile.objects.filter(team=99).order_by('user__name')
+    return render(request,
+                  'pages/%s/about.html' % get_language(),
+                  {'equipe': equipe, 'equipe_antiga': alunos_antigos})
 
 
 def terms(request):
@@ -188,10 +192,6 @@ def curated(request):
 
 def imprint(request):
     return render(request, 'imprint.html')
-
-
-def contact(request):
-    return render(request, 'contact.html')
 
 
 def development(request):

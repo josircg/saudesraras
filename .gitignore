@@ -74,3 +74,4 @@ src/whoosh_index
 .vscode/
 .idea/
 venv
+*.Zone.Identifier
