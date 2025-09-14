@@ -162,35 +162,11 @@ def parceiro(request):
 
 
 def about(request):
-
     equipe = Profile.objects.filter(team__lt=99).order_by('team','user__name')
     alunos_antigos = Profile.objects.filter(team=99).order_by('user__name')
     return render(request,
                   'pages/%s/about.html' % get_language(),
                   {'equipe': equipe, 'equipe_antiga': alunos_antigos})
-
-    itens = [
-        {
-            'id': 1,
-            'nome': 'Jhonatan Oliveira da Silva',
-            'img_path': 'site/img/void_org.png',
-            'tempo': 'xxxx.x - xxxx.x',
-            'funcao': 'Desenvolvedor',
-        },{
-            'id': 2,
-            'nome': 'Matheus Balonecker Cruz',
-            'img_path': 'site/img/void_org.png',
-            'tempo': 'xxxx.x - xxxx.x',
-            'funcao': 'Designer',
-        },{
-            'id': 3,
-            'nome': 'Rayssa da Silva Pereira',
-            'img_path': 'site/img/void_org.png',
-            'tempo': 'xxxx.x - xxxx.x',
-            'funcao': 'Designer',
-        }
-    ]
-    return render(request, 'pages/%s/about.html' % get_language(), {'itens': itens})
 
 
 def terms(request):
