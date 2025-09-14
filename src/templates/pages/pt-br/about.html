@@ -4,9 +4,6 @@
 {% block title %}{{ block.super }} :: {% trans "About" %}{% endblock %}
 
 {% block list_of_items %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
-<body>
     <div class="container p-0" >
       <div
           class="border-top "
@@ -47,40 +44,24 @@
               </div>
 
               <div class="mb-4 team-horizontal" style="max-width: 900px;">
+              {% for pessoa in equipe %}
                 <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
                   <div class="col-md-4">
-                    <img src="{% static '/site/img/team/Patricia_Saldanha.jpeg' %}"
+                    <img src="/media/{{ pessoa.picture }}"
                       class="img-fluid rounded-circle"
-                      alt="Patricia Goncalves Saldanha"
+                      alt="{{  pessoa.user.name }}"
                     >
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title mb-1">Patricia Gonçalves Saldanha</h5>
+                      <h5 class="card-title mb-1">{{ pessoa.user.name}}</h5>
                       <p class="text-muted mb-1"></p>
-                      <p class="text-muted mb-2">Professora Coordenadora</p>
-                      <p style="color: #000;">Mestre em Comunicação pela Universidade Federal do Rio de Janeiro e Doutora em Comunicação e Cultura pela Universidade Federal do Rio de Janeiro. Professora da graduação em Comunicação Social e da Pós-Graduação em Mídia e Cotidiano. Atual coordenadora do LACCOPS (Laboratório de Investigação em Comunicação Comunitária e Publicidade Social) e membro fundador do INPECC (Instituto Nacional de Pesquisas em Comunicação Comunitária). </p>
+                      <p class="text-muted mb-2">{{ pessoa.title }}</p>
+                      <p style="color: #000;">{{ pessoa.bio }}</p>
                     </div>
                   </div>
                 </div>
-                
-                <div class="mb-4 team-horizontal" style="max-width: 900px;">
-                <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
-                  <div class="col-md-4">
-                    <img src="{% static '/site/img/team/Josir_Cardoso_Gomes.jpg' %}"
-                      class="img-fluid rounded-circle"
-                      alt="Josir Cardoso Gomes"
-                    >
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title mb-1">Josir Cardoso Gomes</h5>
-                      <p class="text-muted mb-2">Desenvolvedor Coordenador</p>
-                      <p style="color: #000;">Doutor em Ciência da Informação no PPGCI/IBICT/UFRJ com mestrado em Administração e graduação em Sistemas de Informação. Pesquisador Bolsista no IBICT e Professor na Escola de Comunicação, Mídia e Informação (ECMI) da Fundação Getulio Vargas (FGV). Vice-coordenador do Laboratório em Rede de Humanidades Digitais e líder do Grupo de Pesquisa Perfil-I.</p>
-                    </div>
-                  </div>
-                </div>
-
+              {% endfor %}    
                 <div class="mb-4 team-horizontal" style="max-width: 900px;">
                 <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
                   <div class="col-md-4">
@@ -180,12 +161,11 @@
     </div>
   </div>
       
-<!--
 <div class="container mt-4">
   <h4 class="mb-3 fw-bold">Antigos Colaboradores</h4>
 
   <ul class="list-group">
-    {% for item in itens %}
+    {% for item in equipe_antiga %}
       <li class="list-group-item">
 
         <button class="btn btn-link text-start w-100"
@@ -194,22 +174,21 @@
                 data-bs-target="#collapse{{ item.id }}"
                 aria-expanded="false"
                 aria-controls="collapse{{ item.id }}">
-          <h5 class="mb-0">{{ item.nome }}</h5>
+          <h5 class="mb-0">{{ item.user.name }}</h5>
         </button>
 
         <div class="collapse mt-2" id="collapse{{ item.id }}">
           <div class="card card-body d-flex align-items-center flex-wrap gap-3">
             <div class="row gx-5 w-100">
               <div class="col-md-3">
-                <img src="{% static item.img_path %}"
+                <img src="/media/{{ item.picture }}"
                      alt="Foto de {{ item.nome }}"
                      class="img-circle rounded-circle"
                      style="width: 150px; height: 150px; object-fit: cover;" />
               </div>
               <div class="col-md-9">
-                <p class="text-muted mb-1"><strong>Tempo:</strong> {{ item.tempo }}</p>
-                <p class="text-muted mb-1"><strong>Função:</strong> {{ item.funcao }}</p>
-                <p class="mb-0" style="color: #000;"><strong>O que fez:</strong> {{ item.o_que_fez }}</p>
+                <p class="text-muted mb-1"><strong>Função:</strong> {{ item.title }}</p>
+                <p class="mb-0" style="color: #000;"><strong>O que fez:</strong> {{ item.bio }}</p>
               </div>
             </div>
           </div>
@@ -221,9 +200,11 @@
     {% endfor %}
   </ul>
 </div>
--->
-  </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

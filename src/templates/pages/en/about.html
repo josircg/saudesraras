@@ -3,10 +3,10 @@
 {% load static %}
 {% block title %}{{ block.super }} :: {% trans "About" %}{% endblock %}
 
+{% block  %}
 {% block list_of_items %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
-<body>
     <div class="container p-0" >
       <div
           class="border-top "
@@ -46,137 +46,14 @@
               <div class="text-about mb-3 font-weight-bold " style=" line-height: 26px;  word-wrap: break-word; overflow-wrap: break-word;">
                     Meet our Team
               </div>
-
-              <div class="mb-4 team-horizontal" style="max-width: 900px;">
-                <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
-                  <div class="col-md-4">
-                    <img src="{% static '/site/img/team/Patricia_Saldanha.jpeg' %}"
-                      class="img-fluid rounded-circle"
-                      alt="Patricia Goncalves Saldanha"
-                    >
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title mb-1">Patricia Gonçalves Saldanha</h5>
-                      <p class="text-muted mb-1"></p>
-                      <p class="text-muted mb-2">Professora Coordenadora</p>
-                      <p style="color: #000;"></p>
-                    </div>
-                  </div>
-                </div>
-
-              <div class="mb-4 team-horizontal" style="max-width: 900px;">
-                <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
-                  <div class="col-md-4">
-                    <img src="{% static '/site/img/team/Luiz_Carlos_Silva.jpg' %}" 
-                      class="img-fluid rounded-circle"  
-                      alt="Luiz Carlos da Silva Souza Silva"
-                    >
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title mb-1">Luiz Carlos da Silva Souza Silva</h5>
-                      <p class="text-muted mb-1">2023.2 - Present</p>
-                      <p class="text-muted mb-2">Developer</p>
-                      <p style="color: #000;">Responsável por desenvolver o site Saúdes Raras. Atuou ocasionalmente em sua construção visual, focado mais em suas funcionalidades e operações.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mb-4 team-horizontal" style="max-width: 900px;">
-                <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
-                  <div class="col-md-4">
-                    <img src="{% static '/site/img/team/Leonardo_Sobrinho_Carvalho.jpg' %}" 
-                      class="img-fluid rounded-circle" 
-                      alt="Leonardo Sobrinho Carvalho de Castro"
-                    >
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title mb-1">Leonardo Sobrinho Carvalho de Castro</h5>
-                      <p class="text-muted mb-1">2023.2 - Present</p>
-                      <p class="text-muted mb-2">Developer</p>
-                      <p style="color: #000;">Responsável por desenvolver o site Saúdes Raras. Atuou principalmente em sua construção visual, além de desenvolver algumas funcionalidades.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mb-4 team-horizontal" style="max-width: 900px;">
-                <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
-                  <div class="col-md-4">
-                    <img src="{% static '/site/img/team/Anna_Claudia_Goncalves.png' %}"
-                      class="img-fluid rounded-circle"
-                      alt="Anna Claudia Gonçalves Tiago"
-                    >
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title mb-1">Anna Claudia Gonçalves Tiago</h5>
-                      <p class="text-muted mb-1">2023.1 - Present</p>
-                      <p class="text-muted mb-2">Media</p>
-                      <p style="color: #000;">Organização e distribuição de demandas da equipe de mídia; Elaboração de peças para o instagram (feed e storie); Roteiro para gravação de conteúdos de áudio visual para o instagram e plataforma.</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>
       </div>
-      
-  
-<div class="container mt-4">
-  <h4 class="mb-3 fw-bold">Former Collaborators</h4>
-
-  <ul class="list-group">
-    {% for item in itens %}
-      <li class="list-group-item">
-
-        <!-- Botão que abre/fecha -->
-        <button class="btn btn-link text-start w-100"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapse{{ item.id }}"
-                aria-expanded="false"
-                aria-controls="collapse{{ item.id }}">
-          <h5 class="mb-0">{{ item.nome }}</h5>
-        </button>
-
-        <!-- Conteúdo colapsável -->
-        <div class="collapse mt-2" id="collapse{{ item.id }}">
-          <div class="card card-body d-flex align-items-center flex-wrap gap-3">
-            <div class="row gx-5 w-100">
-              <div class="col-md-3">
-                <img src="{% static item.img_path %}"
-                     alt="Foto de {{ item.nome }}"
-                     class="img-circle rounded-circle"
-                     style="width: 150px; height: 150px; object-fit: cover;" />
-              </div>
-              <div class="col-md-9">
-                <p class="text-muted mb-1"><strong>Tempo:</strong> {{ item.tempo }}</p>
-                <p class="text-muted mb-1"><strong>Função:</strong> {{ item.funcao }}</p>
-                <p class="mb-0" style="color: #000;"><strong>O que fez:</strong> {{ item.o_que_fez }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </li>
-    {% empty %}
-      <li class="list-group-item">No collaborator found.</li>
-    {% endfor %}
-  </ul>
-</div>
-
-<!-- Bootstrap 5 JS (ESSENCIAL!) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-
+    </div>
   </div>
 </div>
+</div>
+<!-- Bootstrap 5 JS (ESSENCIAL!) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 {% endblock %}

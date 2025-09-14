@@ -162,6 +162,13 @@ def parceiro(request):
 
 
 def about(request):
+
+    equipe = Profile.objects.filter(team__lt=99).order_by('team','user__name')
+    alunos_antigos = Profile.objects.filter(team=99).order_by('user__name')
+    return render(request,
+                  'pages/%s/about.html' % get_language(),
+                  {'equipe': equipe, 'equipe_antiga': alunos_antigos})
+
     itens = [
         {
             'id': 1,
@@ -169,21 +176,18 @@ def about(request):
             'img_path': 'site/img/void_org.png',
             'tempo': 'xxxx.x - xxxx.x',
             'funcao': 'Desenvolvedor',
-            'o_que_fez': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum ante in orci faucibus auctor. Nunc pharetra augue vitae lacus pulvinar sagittis. Proin malesuada nulla nec enim porttitor, vel pulvinar.'
         },{
             'id': 2,
             'nome': 'Matheus Balonecker Cruz',
             'img_path': 'site/img/void_org.png',
             'tempo': 'xxxx.x - xxxx.x',
             'funcao': 'Designer',
-            'o_que_fez': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum ante in orci faucibus auctor. Nunc pharetra augue vitae lacus pulvinar sagittis. Proin malesuada nulla nec enim porttitor, vel pulvinar.'
         },{
             'id': 3,
             'nome': 'Rayssa da Silva Pereira',
             'img_path': 'site/img/void_org.png',
             'tempo': 'xxxx.x - xxxx.x',
             'funcao': 'Designer',
-            'o_que_fez': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum ante in orci faucibus auctor. Nunc pharetra augue vitae lacus pulvinar sagittis. Proin malesuada nulla nec enim porttitor, vel pulvinar.'
         }
     ]
     return render(request, 'pages/%s/about.html' % get_language(), {'itens': itens})
@@ -212,10 +216,6 @@ def curated(request):
 
 def imprint(request):
     return render(request, 'imprint.html')
-
-
-def contact(request):
-    return render(request, 'contact.html')
 
 
 def development(request):
