@@ -1,58 +1,59 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
-{% block title %}{{ block.super }} :: About{% endblock %}
+{% block title %}{{ block.super }} :: {% trans "About" %}{% endblock %}
 
+{% block  %}
 {% block list_of_items %}
-<div class="container">
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <h1 class="mt-5 mb-5">
-                About <span class="text-pink6">Saúdes Raras</span>
-            </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2 col-12"></div>
-        <div class="col-sm-8 col-11">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}" />
+    <div class="container p-0" >
+      <div
+          class="border-top "
+          style=" 
+            margin-top: 0%;
+            margin-bottom: 3%;
+            border: 3px solid #114D7F;
+          "
+        ></div>
+        <div class="row justify-content-between mx-2" >
+            <!-- Coluna Principal -->
+            <div class="row gx-5">
+            <div class="col-md-6">
+                <div class="text-about mb-3 font-weight-bold " style=" line-height: 26px;  word-wrap: break-word; overflow-wrap: break-word;">
+                    About the Project
+                </div>
+                <div class="mt-4 mb-5 reg" style="color: #000;font-size: 20px; line-height: 26px;max-width: 749px;">
+                  <p>De acordo com a OMS, uma doença rara é a que afeta até 65 a cada 100 mil indivíduos. No entanto, como cada país tem critérios próprios e linhas de corte particulares sobre tais enfermidades, a ONU propôs a adoção de uma resolução para ser reconhecida em todo o mundo que diz que a “condição médica com um padrão específico de sinais, sintomas e achados clínicos, afetando até 1,3 em cada 2.000 pessoas.” (OMS,2024). No Brasil não se nota a participação da população desamparada em discussões de ampla visibilidade nem a representação em dados oficiais disponibilizados pelo Estado. Este apagamento não significa a inexistência da doença rara na população pobre, mas pode indicar que uma parcela da população afetada por esse tipo de patologia tenha sido excluída do processo antes mesmo de chegar à atenção primária à saúde (APS) em unidades básicas de saúde.</p>
 
-            <div class="row mb-5">                
-                <div class="col-12">
-                    <p>
-                        Civis is a citizen science platform developed by the Brazilian Institute of Information in
-                        Science and Technology (IBICT) using open-source code,
-                        based on <a href="https://eu-citizen.science/">EU-Citizen.Science</a>.
-                    </p>
-                    <p>
-                        Our goal is to provide infrastructure and content that help broaden the understanding of citizen science,
-                        promote its use, and support the development of initiatives and the application of methodologies in this field,
-                        with a focus on Latin America and the Caribbean.
-                    </p> 
-                    <p>
-                        Civis is open to anyone who wishes to register initiatives, resources, and other citizen science content.
-                    </p> 
-                    <p>
-                        The platform is targeted toward a comprehensive, plural audience, which includes:
-                    </p> 
-                    <ul>
-                        <li>Researchers, scientists, and teachers or professors interested in developing citizen science projects and initiatives, in addition to familiarizing themselves with and using methodologies and existing initiative results.</li>
-                        <li>Individuals, collectives, and organisations with or without an academic background who wish to participate, initiate, or perfect actions with this approach.</li>
-                        <li>Public administrators and private managers interested in supporting and developing projects and initiatives of this nature.</li>
-                    </ul>
-                    
-                    <h1 class="mt-5 mb-5">What is <span class="text-pink6">citizen science</span></h1>
-    
-                    <p>
-                        Citizen science is a branch of the open science movement. It is a broad concept, encompassing several diverse initiatives,
-                        approaches, and methodologies that seek to perfect and promote non-scientist contributions and engagement in knowledge,
-                        data, and information analysis and production activities that are relevant to science and issues of social,
-                        environmental, and territorial importance.
-                    </p>
+                  <p>Segundo Paiva (2003) a “Comunidade como Unidade de Gerência e Pressão” representa a ação contínua dos movimentos sociais brasileiros atuantes nas causas das doenças raras, pois, entendem que a “possibilidade comunitária quer dizer opor-se ou, pelo menos, não aceitar incondicionalmente o ideal societário, no qual a globalização traz como lógica os princípios de hegemonia e exclusão” (p. 123)
+                  Os movimentos contra-hegemônicos, pressionam tanto o mercado como o Estado e vêm colocando o Brasil, numa posição de destaque em relação aos outros países latino-americanos, pois não aceitam o manejo do mercado para fortalecer uma “catalaxia, ou seja, um ordenamento mercadológico do mundo, para além de qualquer desígnio humano” (Sodré, 2002, p. 14). </p>
+                  <p>Tais organizações sociais fazem a diferença no compartilhamento de informação que salvam vidas. É nesse ponto que duas tipificações da Publicidade Social brasileira vêm contribuindo não só com a criação da plataforma, como também com a elaboração do conteúdo através do próprio princípio que é envolver a Sociedade Civil em todas as etapas da causa em questão. Desta forma, a tipificação de causa tem fundamentos conectados à “agenda das organizações internacionais (OMS, OMC) e instituições intergovernamentais como a ONU (Saldanha, 2022, p. 297) e a tipologia de Interesse Público, se baseia na “escuta’ sem impor nem se pautar nos interesses da classe dominante (Saldanha, 2022, p. 297).</p>
 
+                  <p>Apesar de termos 13 milhões de pessoas no Brasil afetadas por algum tipo de doença rara, não se nota a participação da população desamparada em discussões de ampla visibilidade nem a representação em dados oficiais disponibilizados pelo Estado. 
+                      Este apagamento não significa a inexistência da doença rara na população pobre, mas pode indicar que uma parcela da população afetada por esse tipo de patologia tenha sido excluída do processo antes mesmo de chegar à atenção primária à saúde (APS) em unidades básicas de saúde.</p> 
+                  <p>Com base na “escuta’ sem impor nem nos pautarmos nos interesses da classe dominante convidamos quem vive o drama da doença rara  para participar da construção deste espaço de maneira coletiva, com linguagem fácil e acessível, com a própria voz.</p>
+                </div>
+
+                <div class=" mt-4 mb-5 reg" style="color: #000;font-size: 20px; line-height: 26px;max-width: 749px; word-wrap: break-word; overflow-wrap: break-word;">
+                  Nossa missão vai além de informar — queremos transformar informação em cidadania. 
+                  Conectamos pacientes, famílias e profissionais de saúde, criando uma rede de apoio e conscientização que fortalece a luta por direitos e inclusão.
+                  Conheça, compartilhe e faça parte desta causa para juntos, tornarmos o invisível visível. Porque você pode não ver, mas a gente sente.
                 </div>
             </div>
+
+            <div class="col-md-6">
+              <div class="text-about mb-3 font-weight-bold " style=" line-height: 26px;  word-wrap: break-word; overflow-wrap: break-word;">
+                    Meet our Team
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-{% endblock list_of_items %}
+</div>
+<!-- Bootstrap 5 JS (ESSENCIAL!) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
