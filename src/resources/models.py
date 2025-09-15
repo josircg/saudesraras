@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from organisations.models import Organisation
 from projects.models import Project
 from utilities.models import AbstractTranslatedModel
+import re # <-- Adicione esta linha
 
 from .managers import ResourceQuerySet, ThemeQuerySet, CategoryQuerySet, AudienceQuerySet
 
@@ -66,7 +67,6 @@ class Resource(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE)
 
-    # Main information, mandatory
     name = models.CharField(max_length=200)
     url = models.URLField(max_length=200)
     keywords = models.ManyToManyField(Keyword)
@@ -75,8 +75,6 @@ class Resource(models.Model):
     category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
     theme = models.ManyToManyField(Theme)
 
-    # Publish information
-    # TODO: Convert datePublished to Year
     authors = models.ManyToManyField(Author, blank=True)
     publisher = models.CharField(max_length=100, blank=True, null=True)
     datePublished = models.IntegerField(_('Year published'), null=True, blank=True)
@@ -84,29 +82,22 @@ class Resource(models.Model):
     inLanguage = models.CharField(max_length=100, null=True, blank=True)
     license = models.CharField(max_length=300, null=True, blank=True)
 
-    # Links
     organisation = models.ManyToManyField(Organisation, blank=True)
     project = models.ManyToManyField(Project, blank=True)
 
-    # Pictures
     image1 = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
     imageCredit1 = models.CharField(max_length=300, null=True, blank=True)
     image2 = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
     imageCredit2 = models.CharField(max_length=300, null=True, blank=True)
 
-    # Training resources fields
     isTrainingResource = models.BooleanField(_('Is Training Resource'), null=True, blank=True, default=False)
 
-    # Time
-    # Legacy TODO: delete dateUploaded
     dateUploaded = models.DateTimeField('Date Uploaded')
     dateCreated = models.DateTimeField('Created date', auto_now_add=True)
     dateUpdated = models.DateTimeField('Updated date', auto_now=True)
 
-    # Moderation
     approved = models.BooleanField(_('Approved'), null=True)
 
-    # Other
     hidden = models.BooleanField(null=True, blank=True)
     featured = models.BooleanField(default=False)
     own = models.BooleanField(null=True, blank=True)
@@ -118,6 +109,23 @@ class Resource(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def google_drive_id(self):
+        match = re.search(r'drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/', self.url or "")
+        return match.group(1) if match else None
+
+    @property
+    def preview_url(self):
+        if self.google_drive_id:
+            return f'https://drive.google.com/file/d/{self.google_drive_id}/preview'
+        return self.url
+
+    @property
+    def url_download(self):
+        if self.google_drive_id:
+            return f'https://drive.google.com/uc?id={self.google_drive_id}&export=download'
+        return None
 
     @property
     def safe_image(self):
@@ -139,12 +147,9 @@ class Resource(models.Model):
     safe_url.short_description = 'Site URL'
 
     def save(self, *args, **kwargs):
-        # approved can be null (not moderated), so we can't put self.approved = ... in one line
         if not self.pk and self.creator.is_staff:
             self.approved = True
-
         super().save(*args, **kwargs)
-
 
 class TrainingResource(Resource):
     class Meta:
