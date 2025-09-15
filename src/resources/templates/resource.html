@@ -16,23 +16,35 @@
 
 <div class="container">
     <div class="row mt-5">
-        <div class="col-12">
+        {% if 'https://drive.google' in resource.url %}
+        <iframe 
+        src="{{ resource.preview_url }}" 
+        style="width: 100%; height: 25vw; min-height: 100px; border: none;" 
+        allow="autoplay">
+        </iframe>
+        {%endif%}
+        <div class="col-12 mt-4">
+             
             <h1 class="text-blue3">{{resource.name}}</h1>
-            <div class="small"><i>{% trans "Created" %} {{resource.dateCreated}}</i></div>
-            <div class="small"><i>{% trans "Updated" %} {{resource.dateUpdated}}</i></div>
+            
         </div>
         <div class="col-xl-8 col-md-6 col-12">
             <p class="mt-3">{{ resource.abstract | safe }}</p>
             <h4 class="mt-4 leftborder">{% trans "Publisher information" %}</h4>
             <table class="table table-borderless">
-                {% if resource.authors.all %}
+                {% if resource.creator%}
                 <tr>
-                    <td><b>{% trans "Authors"}</b></td>
-                    <td>{% for author in resource.authors.all %}{{ author }}; {% endfor %}</td>
+                    <td style="width: auto;"><b>{% trans "Creator:" %}</b></td>
+                    <td>{{ resource.creator.name }}</td>
                 </tr>
                 {% endif %}
                 {% if resource.publisher %}
                 <tr><td><b>{% trans "Publisher" %} </b></td><td>{{resource.publisher}}</td></tr>
+                {% endif %}
+                {% if resource.dateCreated %}
+                <tr><td><b>{% trans "Created" %}: </b></td><td>{{resource.dateCreated}}</td></tr>
+                {% endif %}{% if resource.dateUpdated %}
+                <tr><td><b>{% trans "Updated" %}: </b></td><td>{{resource.dateUpdated}}</td></tr>
                 {% endif %}
                 {% if resource.datePublished %}
                 <tr><td><b>{% trans "Year of publication" %}: </b></td><td>{{resource.datePublished}}</td></tr>
@@ -44,102 +56,101 @@
                 <tr><td><b>DOI: </b></td><td>{{resource.resourceDOI}}</td></tr>
                 {% endif %}
             </table>
-            {% if resource.organisation.all %}
-            <h4 class="mt-4 leftborder">{% trans "Links with projects and/or organisations" %}</h4>
-            <div class="row">
-                {% for organisation in resource.organisation.all %}
-                <div class="col-12 col-md-6">
-                    {% include "horizontal_card_organisation.html" %}
-                </div>
-            </div>
-            <div class="row">
-                {% for project in resource.project.all %}
-                <div class="col-12 col-md-6">
-                    {% include "horizontal_card_project.html" %}
-                </div>
-                {% endfor %}
-            </div>
-            {% endfor %}
-            {% endif %}
+           
 
             <!-- Buttons -->
             <div class="row">
-                <div class="col-12 mt-4">
-                    <a target="_blank" 
-                       class="btn btn-my-darkBlue" 
-                       href="{% if 'http' not in resource.url %}//{%endif%}{{resource.url}}"
-                                                                   class="colorblue"><i class="fas fa-external-link-square-alt"></i>
-                                                                   {% if isTrainingResource %}
-                                                                   {% trans "Go to Training" %}
-                                                                   {% else %}
-                                                                   {% trans "Go to Resource" %}
-                                                                   {% endif %}
-                    </a>
+              <div class="col-12 mt-4 d-flex gap-2 flex-wrap">
 
-                    {% if resource.creator == user or user.is_staff or user.id in cooperators %}
-                    <a class="btn btn-warning" 
-                      href="{% if isTrainingResource %}
-                            {% url 'editTrainingResource' resource.id %}
-                            {% else %}
-                            {% url 'editResource' resource.id %}{% endif %}">
-                        <i class="fas fa-edit"></i> {% trans "Edit" %}
-                    </a>
-                    {% endif %}
-               
-                    {% if user.is_authenticated %}
-                    <button 
-                        {% if bookmarkedResource %}
-                        class="btn btn-my-darkBlue"
-                        {% else %}
-                        class="btn btn-my-outline-darkBlue"
-                        {% endif %}
-                        id="buttonBookmarkResource" bookmarked="{{bookmarkedResource}}">
-                        <i class="far fa-bookmark"></i> Bookmark
-                    </button>
+                <a target="_blank" 
+                   class="btn btn-my-darkBlue bttn0" 
+                   style="max-width: 250px;"
+                   href="{% if 'http' not in resource.url %}//{%endif%}{{resource.url}}">
+                   <i class="fas fa-external-link-square-alt me-2"></i>
+                   {% if isTrainingResource %}
+                     {% trans "Go to Training" %}
+                   {% else %}
+                     {% trans "Go to Resource" %}
+                   {% endif %}
+                </a>
+                {% if 'http' in resource.url_download %}
+                <a target="_blank" 
+                   class="btn btn-my-darkBlue bttn0" 
+                   style="max-width: 250px;"
+                   href="{{resource.url_download}}">
+                   <i class="fas fa-download me-2"></i>
+                     {% trans "Download Resource" %}
+                </a>
+                {%endif%}
 
-                    <!--a href="#" class="btn btn-secondary">{% trans "Comment" %}</a-->
+                {% if resource.creator == user or user.is_staff or user.id in cooperators %}
+                <a class="btn btn-warning bttn0" 
+                   href="/admin/resources/resource/{{resource.id}}/change/" 
+                   style="max-width: 140px;">
+                   <i class="fas fa-edit me-2"></i> {% trans "Edit" %}
+                </a>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                <a 
+                    {% if bookmarkedResource %}
+                    class="btn bttnBookmark"
+                    {% else %}
+                    class="btn bttn01"
                     {% endif %}
-                </div>
+                    id="buttonBookmarkResource"
+                    bookmarked="{{bookmarkedResource}}"
+                    style="max-width: 140px;"
+                    href="javascript:void(0)">
+                    <i class="far fa-bookmark me-2"></i> Bookmark
+                </a>
+                {% endif %}
+
+              </div>
             </div>
 
             <!-- Admin area -->
             {% if user.is_staff %}
-            <a href="mailto:{{ resource.creator.email }}" class="btn btn-secondary mt-3">
-            <i class="far fa-envelope"></i> {% trans "Contact submitter" %}</a>
+            <a href="mailto:{{ resource.creator.email }}" class="btn btn-secondary mt-3 bttn01" style="max-width: 450px; border-radius: 20px">
+            <i class="far fa-envelope me-2"></i> {% trans "Contact submitter" %}</a>
             <br/>
             {% endif %}
 
         </div>
         <div class="col-xl-4 col-md-6 col-12">
-
-            <h5 class="mt-3">{% trans "Language" %}</h5>
+            {% if resource.organisation.all %}
+            <h5 class="mt-3">{% trans "Organisations" %} </h5>
+            {% for org in resource.organisation.all %}
+                        <a class="badge rounded-pill bg-pill text-decoration-none my-2 me-2" href="{{endPoint}}?organisation={{org.pk}}">{{ org.name }}</a>
+                    {% endfor %}
+            {% endif %}
+            <h5 class="mt-3">{% trans "Language" %} </h5>
             {% get_language_info_list for LANGUAGES as languages %}
             {% for language in languages %}
             {% if language.code == resource.inLanguage %}
-            <a class="badge bg-dark" href="{{endPoint}}?inLanguage={{resource.inLanguage}}">{{language.name_translated | title}}</a>
+            <a class="badge rounded-pill bg-pill text-decoration-none" href="{{endPoint}}?inLanguage={{resource.inLanguage}}">{{language.name_translated | title}}</a>
             {% endif %}
             {% endfor %}
 
             <h5 class="mt-3">{% trans "Keywords" %}</h5>
             {% for keyword in resource.keywords.all %}
-            <a class="badge bg-my-darkGreen" href="{{endPoint}}?keywords={{keyword}}">{{keyword  | title}}</a>
+            <a class="badge rounded-pill bg-pill text-decoration-none" href="{{endPoint}}?keywords={{keyword}}">{{keyword  | title}}</a>
             {% endfor %}
 
             <h5 class="mt-3">{% trans "Theme" %}</h5>
             {% for theme in resource.theme.translated_sorted_by_text %}
-            <a class="badge bg-my-wood" href="{{endPoint}}?theme={{theme.theme}}">{{ theme | title }}</a>
+            <a class="badge rounded-pill bg-pill text-decoration-none" href="{{endPoint}}?theme={{theme.theme}}">{{ theme | title }}</a>
             {% endfor %}
 
             {% with category=resource.category|translate_instance %}
               <h5 class="mt-3">{% trans "Category" %}</h5>
-              <a class="badge bg-my-lightBlue"
+              <a class="badge rounded-pill bg-pill text-decoration-none"
                  href="{{endPoint}}?category={{ category }}">{{ category | title }}</a>
               <h5 class="mt-3"> </h5>
             {% endwith %}
         </div>
     </div>
 </div>
-
 
 {% endblock list_of_items %}
 
@@ -177,29 +188,43 @@
             }
         }
 
-        $("#buttonBookmarkResource").on("click", function(){
-            var bookmark = ($('#buttonBookmarkResource').attr('bookmarked')=="False" ? "true" : "false")
-            $.ajax({
-                type: 'POST',
-                url: '/bookmarkResource/',
-                data: {
-                    csrfmiddlewaretoken: '{{ csrf_token }}',
-                    bookmark: bookmark,
-                    resourceId: '{{resource.id}}'
-                },
-                success: function(response){
-                    if(response.success == 'Bookmark deleted')
-                        $('#buttonBookmarkResource').attr('bookmarked','False')
-                    else if(response.created == 'OK')
-                        $('#buttonBookmarkResource').attr('bookmarked','True')
-                    $('#buttonBookmarkResource').toggleClass('btn-my-darkBlue')
-                    $('#buttonBookmarkResource').toggleClass('btn-my-outline-darkBlue')
-                },
-                error: function(response){
-                }
-            })
-        })
+        // Bookmark button
+      
+      $("#buttonBookmarkResource").on("click", function(e){
+        e.preventDefault();
 
+        var btn = $(this);
+        var isBookmarked = btn.attr('bttn01') === "True";
+        var bookmark = isBookmarked ? "false" : "true";
+
+        $.ajax({
+            type: 'POST',
+            url: '/bookmarkResource/',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                bookmark: bookmark,
+                resourceId: '{{resource.id}}'
+            },
+            success: function(response){
+                if(response.success === 'Bookmark deleted') {
+                    btn.attr('bttn01','False')
+                    .removeClass('bttnBookmark')
+                    .addClass('bttn01');
+                    btn.find('i').removeClass('fas').addClass('far');
+                }
+                else if(response.created === 'OK') {
+                    btn.attr('bttn01','True')
+                    .removeClass('bttn01')
+                    .addClass('bttnBookmark');
+                    btn.find('i').removeClass('far').addClass('fas');
+                }
+            },
+            error: function(response){
+                console.log(response);
+            }
+        });
+        });
+        // Featured toggle
         $("#featured").change(function(){
             console.log('setFeatured')
             $.ajax({
@@ -218,6 +243,8 @@
                 }
             })
         })
+
+        // Training toggle
         $("#isTraining").change(function(){
             console.log('isTraining')
             $.ajax({
@@ -236,10 +263,7 @@
                 }
             })
         })
-
-
     });
-
 </script>
 {{ permissionForm.media.js }}
 {% endblock scripts %}
