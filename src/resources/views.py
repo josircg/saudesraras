@@ -20,7 +20,7 @@ from eucs_platform import send_email
 from eucs_platform.logger import log_message
 from rest_framework import status
 from utilities.file import save_image_with_path
-
+from django.urls import reverse
 from .forms import ResourceForm, ResourcePermissionForm
 from .models import Resource, Keyword, SavedResources, BookmarkedResources, Theme, Category
 from .models import ResourcesGrouped, ResourcePermission
@@ -203,7 +203,7 @@ def editResource(request, pk):
             form.save(request, images)
             if isTrainingResource:
                 return redirect('/training_resource/' + str(pk))
-            return redirect('/resource/' + str(pk))
+            return redirect(reverse('resources:resource', args=[pk]))
 
     return render(request, 'resource_form.html', {
         'form': form,
@@ -233,7 +233,7 @@ def saveResourceAjax(request):
         if isTrainingResource:
             redirect_to = f'/training_resource/{pk}'
         else:
-            redirect_to = f'/resource/{pk}'
+            redirect_to = reverse('resources:resource', args=[pk])
 
         return JsonResponse(
             {'ResourceCreated': 'OK', 'Resource': pk, 'redirect_to': redirect_to}, status=status.HTTP_200_OK

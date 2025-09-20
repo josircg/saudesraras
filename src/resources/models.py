@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from organisations.models import Organisation
 from projects.models import Project
 from utilities.models import AbstractTranslatedModel
+from django.urls import reverse
 import re # <-- Adicione esta linha
 
 from .managers import ResourceQuerySet, ThemeQuerySet, CategoryQuerySet, AudienceQuerySet
@@ -118,6 +119,7 @@ class Resource(models.Model):
     @property
     def preview_url(self):
         if self.google_drive_id:
+            print("legal") 
             return f'https://drive.google.com/file/d/{self.google_drive_id}/preview'
         return self.url
 
@@ -135,7 +137,8 @@ class Resource(models.Model):
             return 'void_600.png'
 
     def full_url(self):
-        return f'{settings.DOMAIN}/resource/{self.id}'
+        
+        return f"{settings.DOMAIN}{reverse('resource', args=[self.id])}"
 
     def safe_url(self):
         if self.isTrainingResource:

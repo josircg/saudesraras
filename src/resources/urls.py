@@ -3,8 +3,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    path('resources', views.resources, name='resources'),
-    path('resource/<int:pk>', views.resource, name='resource'),
+    path('publicacoes/', views.resources, name='resources'),
+    path('publicacao/<int:pk>', views.resource, name='resource'),
     path('clearfilters_resources', views.clearFilters, name='clearfilters_resources'),
     path('newResource', views.newResource, name='newResource'),
     path('editResource/<int:pk>', views.editResource, name='editResource'),
