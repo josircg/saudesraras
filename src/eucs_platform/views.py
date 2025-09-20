@@ -156,6 +156,8 @@ def ajuda(request):
 def projeto(request):
     return render(request, 'pages/%s/projeto.html' % get_language())
 
+def pag_em_construcao(request):
+    return render(request, 'pag_em_construcao.html')
 
 def parceiro(request):
     return render(request, 'pages/%s/parceiro.html' % get_language())

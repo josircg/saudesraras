@@ -3301,3 +3301,17 @@ msgstr "Tradução"
 
 #~ msgid "FORUM"
 #~ msgstr "FÓRUM"
+
+#: templates/pag_em_construcao.html:16
+msgid "Page Under Construction"
+msgstr "Página em construção"
+
+#: templates/pag_em_construcao.html:18
+msgid ""
+"We are working on this section to provide you with the best experience. "
+"Check back soon!"
+msgstr "Estamos trabalhando nesta seção para oferecer a você a melhor experiência. Volte em breve!"
+
+#: templates/pag_em_construcao.html:21
+msgid "Back to Home"
+msgstr "Voltar para a home"
