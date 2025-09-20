@@ -116,7 +116,7 @@
                             </a>
                         </li>
                         <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="/resources">
+                            <a href="{% url 'resources' %}">
                                 <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
                                     <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 30px; height: 30px; margin-right: 4px">
                                     {% trans "Resources" %}
@@ -270,7 +270,7 @@
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/resources" class="btn bttn2">
+                    <a href="{% url 'resources' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Publicações">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Publications" %}</span>
