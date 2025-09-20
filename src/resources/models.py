@@ -119,7 +119,6 @@ class Resource(models.Model):
     @property
     def preview_url(self):
         if self.google_drive_id:
-            print("legal") 
             return f'https://drive.google.com/file/d/{self.google_drive_id}/preview'
         return self.url
 
