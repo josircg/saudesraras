@@ -219,7 +219,7 @@
     font-size: clamp(21px, 6vw, 45px);
 }
 .text-tittle-publi{
-    font-size: clamp(17px, 1vw, 22px);
+    font-size: clamp(17px, 3vw, 25px);
 }
 .text-publi{
     font-size: clamp(14px, 0.8vw, 15px) !important;
@@ -304,7 +304,7 @@
     }
     
     .row button:hover {
-        color: #114D7F;
+        color: #111927;
     }
     
     
@@ -343,7 +343,74 @@
     .bck-azul{
         background-color: #3D99F4 !important;
     }
+    .bttnBookmark{
+        background-color: #3D99F4 !important;
+        color: white !important;
+        border: 2px solid #3D99F4!important;
+        border-radius: 25px!important;        
+        font-weight: 600!important;           
+        text-decoration: none!important;      
+        display: flex!important;              
+        align-items: center!important;        
+        justify-content: center!important;   
+        padding: 10px 20px;   
+    }
+    .bttnBookmark:hover{
+        background-color: #114D7F!important;
+        color: white!important;
+        border: 2px solid white!important;
+        
+    }
 
+
+
+
+    .bttn0{
+        background-color: #114D7F!important;
+        color: white!important;
+        border: 2px solid white;
+        border-radius: 25px;        
+        font-weight: 600;           
+        text-decoration: none;      
+        display: flex;              
+        align-items: center;        
+        justify-content: center;   
+        padding: 10px 20px;   
+    }
+    .bttn0:hover{
+        background-color: white!important;
+        color: #114D7F !important;
+        border: 2px solid #114D7F;
+        
+    }
+    .bttn01{
+        background-color: white!important;
+        color: #114D7F!important;
+        border: 2px solid #114D7F;
+        border-radius: 25px;        
+        font-weight: 600;           
+        text-decoration: none;      
+        display: flex;              
+        align-items: center;        
+        justify-content: center;   
+        padding: 10px 20px;   
+    }
+    .bttn01:hover{
+        background-color: #114D7F!important;
+        color: white !important;
+        border: 2px solid white;
+        
+    }
+    .bttnenviar{
+        background-color: white;
+        color: #114D7F;
+    }
+    
+    .bttnenviar:hover{
+        background-color: #114D7F !important;
+        color: #5CDCFF !important;
+    }
+    
     .bttn{
         background-color: white;
         outline-color: slategray;
@@ -407,7 +474,10 @@
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
 
-
+textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
 .carousel-control-prev,
 .carousel-control-next {
   top: 0;
