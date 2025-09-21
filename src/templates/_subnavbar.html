@@ -56,21 +56,21 @@
 <div class="row">
     <div class="col-12">
         <form id="searchTop" class="finder-page"
-              {% if 'all' in request.get_full_path %}
-              action="/all"
-              {% elif 'training_resources' in request.get_full_path %}
-              action="/training_resources"
-              {% elif 'resources' in request.get_full_path %}
-              action="/resources"
-              {% elif 'organisations' in request.get_full_path %}
-              action="/organisations"
-              {% elif 'platforms' in request.get_full_path %}
-              action= "platforms"
-              {% elif 'users' in request.get_full_path %}
-              action= "users"
-              {% else %}
-              action="/projects"
-              {% endif %}>
+            {% if 'all' in request.get_full_path %}
+            action="{% url 'all_view_name' %}"
+            {% elif 'training_resources' in request.get_full_path %}
+            action="{% url 'training_resources' %}"
+            {% elif 'resources' in request.get_full_path %}
+            action="{% url 'resources' %}"
+            {% elif 'organisations' in request.get_full_path %}
+            action="{% url 'organisations' %}"
+            {% elif 'platforms' in request.get_full_path %}
+            action="{% url 'platforms' %}"
+            {% elif 'users' in request.get_full_path %}
+            action="{% url 'profiles:userSearch' %}"
+            {% else %}
+            action="{% url 'projects' %}"
+            {% endif %}>
             <div class="input-group mb-3">
                 <span class="input-group-text bg-white border-end-0">
                     <i class="fas fa-search"></i>
@@ -87,7 +87,7 @@
                        {% elif 'training_resources' in request.get_full_path %}
                        data-url="/trainingsAutocompleteSearch/"
                        {% elif 'resources' in request.get_full_path %}
-                       data-url="/resourcesAutocompleteSearch/"
+                       data-url="/{% url 'resorces' %}AutocompleteSearch/"
                        {% elif 'organisations' in request.get_full_path %}
                        data-url="/organisationsAutocompleteSearch/"
                        {% elif 'platforms' in request.get_full_path %}
