@@ -103,7 +103,8 @@
         </a>
         {% endif %}
 
-        {% if request.get_full_path != "/resources" and filters.has_active_filters %}
+        {% url 'resources' as resources_url %}
+        {% if request.get_full_path != resources_url and filters.has_active_filters %}  
         <a class="badge rounded-pill bg-blue3 text-decoration-none mt-4"
            href="{% if isTrainingResource %} {% url 'training_resources' %} {% else %}{% url 'resources' %} {% endif %}">
             <i class="fas fa-times"></i>{% trans "Clear current search query and filters" %}
