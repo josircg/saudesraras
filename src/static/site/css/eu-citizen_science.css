@@ -15,31 +15,42 @@
 :root {
     --wood: #494a42;
     --lightBlue: #6ccde7;
-    --darkGreen: #8dbc41;
-    --darkGreen2: #7dac31;
+    --darkGreen: #5ED0CB;
+    --darkGreen2: #7DE2E0;
     --palid: #abb79b;
     --darkBlue: #24abe2;
     --darkBlue2: #149bd2;
-    --lightGreen: #d7e028;
-
+    --lightGreen: #2A7F7A;
+    
     --gray3: #333;
     --gray7: #777;
     --white: #fff;
 
     --black: #000;
-    --pink9: #230F17;
-    --pink8: #114D7F;
-    --pink7: #114D7F;
-    --pink6: #114D7F;
-    --pink5: #AE4A74;
-    --pink4: #BE6E90;
-    --pink3: #CE92AC;
-    --pink2: #DFB7C7;
-    --pink1: #EFDBE3;
+    --blue9: #111927;
+    --blue8: #114D7F;
+    --blue7: #114D7F;
+    --blue6: #114D7F;
+    --blue5: #114D7F;
+    --blue4: #2B9AE6;
+    --blue3: #91E4FF;
+    --blue2: #D0F5FF;
+    --blue1: #EBFBFF;
 
-    --blue3: #114D7F;
-    --blue2: #3D99F4;
-    --blue1: #5CDCFF;
+
+    --blue9: #111927;
+    --blue8: #114D7F;
+    --blue7: #2B9AE6;
+    --blue6: #42B6F0; 
+    --blue5: #5CDCFF;
+    --blue4: #91E4FF;
+    --blue3: #B8EEFF; 
+    --blue2: #D0F5FF;
+    --blue1: #EBFBFF;  
+    
+    --darkblue: #114D7F;
+    --normalblue: #3D99F4;
+    --ligthblue: #5CDCFF;
     --ice: #F2F6F9;
 }
 
@@ -102,23 +113,23 @@ body {
 }
 
 .text-pink1 {
-    color: #EFDBE3;
+    color: #EBFBFF;
 }
 
 .text-pink2 {
-    color: #DFB7C7;
+    color: #D0F5FF;
 }
 
 .text-pink3 {
-    color: #CE92AC;
+    color: #B8EEFF;
 }
 
 .text-pink4 {
-    color: #BE6E90;
+    color: #91E4FF;
 }
 
 .text-pink5 {
-    color: #AE4A74;
+    color: #5CDCFF;
 }
 
 .text-pink6 {
@@ -134,7 +145,7 @@ body {
 }
 
 .text-pink9 {
-    color: #230F17;
+    color: #111927;
 }
 
 .text-blue3 {
@@ -166,23 +177,23 @@ body {
 }
 
 .bg-pink1 {
-    background-color: #EFDBE3;
+    background-color: #EBFBFF;
 }
 
 .bg-pink2 {
-    background-color: #DFB7C7;
+    background-color: #D0F5FF;
 }
 
 .bg-pink3 {
-    background-color: #CE92AC;
+    background-color: #B8EEFF;
 }
 
 .bg-pink4 {
-    background-color: #BE6E90;
+    background-color: #91E4FF;
 }
 
 .bg-pink5 {
-    background-color: #AE4A74;
+    background-color: #5CDCFF;
 }
 
 .bg-pink6 {
@@ -198,7 +209,7 @@ body {
 }
 
 .bg-pink9 {
-    background-color: #230F17;
+    background-color: #111927;
 }
 
 a.card-title,
@@ -211,7 +222,7 @@ span.card-title {
 }
 
 a.card-title:hover {
-    color: var(--pink6) !important;
+    color: var(--blue6) !important;
     transition: 0.3s;
 }
 
@@ -248,13 +259,13 @@ a.card-title:hover {
 
 /* Buttons */
 .btn-my-outline-darkBlue {
-    border: 1px solid var(--pink6) !important;
-    color: var(--pink5);
+    border: 1px solid var(--blue6) !important;
+    color: var(--blue5);
 }
 
 .btn-my-outline-darkBlue:hover,
 .btn-my-outline-darkBlue:focus {
-    background-color: var(--pink6);
+    background-color: var(--blue6);
     color: var(--white);
     transition: 0.3s;
     outline: none;
@@ -376,7 +387,7 @@ a {
     line-height: 120%;
     display: block;
     margin-bottom: 30px;
-    color: var(--pink6) !important;
+    color: var(--blue6) !important;
 }
 
 .headerText .headerSubTitle {
@@ -384,17 +395,17 @@ a {
     font-size: 1.8rem;
     display: block;
     margin-bottom: 30px;
-    color: var(--pink6);
+    color: var(--blue6);
 }
 
 .headerText .headerSubTitle a {    
     transition: 0.3s;
-    color: var(--pink6);
+    color: var(--blue6);
     text-decoration: underline;
 }
 
 .headerText .headerSubTitle a:hover {
-    color: var(--pink4) !important;
+    color: var(--blue4) !important;
 }
 
 .navbar-brand img {
@@ -403,8 +414,8 @@ a {
 
 .navbar-brand .titulo-logo {
     font-size: 12px;
-    color: var(--pink5);
-    border-left: 2px solid var(--pink5);
+    color: var(--blue5);
+    border-left: 2px solid var(--blue5);
     font-weight: 600;
 }
 
@@ -469,11 +480,11 @@ a {
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #AE4A74;
+    color: #5CDCFF;
 }
 
 #div-sobre a:not(.btn) {
-    color: #AE4A74;
+    color: #5CDCFF;
 }
 
 #div-sobre p {
@@ -487,21 +498,21 @@ a {
 
 .tag-beta {
     display: block;
-    color: var(--pink4);
+    color: var(--blue4);
     text-align: center;
-    background-color: var(--pink1);
+    background-color: var(--blue1);
     padding: 10px;
 }
 
 .tag-beta a {
-    color: var(--pink6);
+    color: var(--blue6);
     text-decoration: underline;
 }
 
 /* HOME */
 .bg-pill {
     background-color: var(--ice) !important;
-    color: var(--pink6) !important;
+    color: var(--blue6) !important;
 }
 
 .btn-mapa-interativo {
@@ -530,11 +541,11 @@ a {
 
 
 .link-menu-submit {
-    color: var(--blue3);
+    color: var(--darkblue);
 }
 
 .link-menu-submit:hover {
-    color: var(--pink7);
+    color: var(--blue7);
 }
 
 #navTop .dropdown-menu {
@@ -567,39 +578,39 @@ a {
 }
 
 .pink1 {
-    color: var(--pink1) !important;
+    color: var(--blue1) !important;
 }
 
 .pink2 {
-    color: var(--pink2) !important;
+    color: var(--blue2) !important;
 }
 
 .pink3 {
-    color: var(--pink3) !important;
+    color: var(--blue3) !important;
 }
 
 .pink4 {
-    color: var(--pink4) !important;
+    color: var(--blue4) !important;
 }
 
 .pink5 {
-    color: var(--pink5) !important;
+    color: var(--blue5) !important;
 }
 
 .pink6 {
-    color: var(--pink6) !important;
+    color: var(--blue6) !important;
 }
 
 .pink7 {
-    color: var(--pink7) !important;
+    color: var(--blue7) !important;
 }
 
 .pink8 {
-    color: var(--pink8) !important;
+    color: var(--blue8) !important;
 }
 
 .pink9 {
-    color: var(--pink9) !important;
+    color: var(--blue9) !important;
 }
 
 .whiteText {
@@ -640,7 +651,7 @@ a {
 }
 
 .btn-all-home {
-    background-color: var(--blue3) !important;
+    background-color: var(--darkblue) !important;
     color: #FFF;
     width: 246px;
     border-radius: 8px;
@@ -652,7 +663,7 @@ a {
 }
 
 .btn-all-home:hover {
-    background-color: var(--blue2) !important;
+    background-color: var(--normalblue) !important;
     color: #FFF;
 }
 
@@ -745,11 +756,11 @@ footer #parcerias .parceiros-logos img {
 }
 
 #searchNav .nav-link.active {
-    border-bottom: 2px solid var(--blue2);
+    border-bottom: 2px solid var(--normalblue);
 }
 
 #navTop ul.navbar-nav .nav-item.top a:hover {
-    color: var(--blue2) !important;
+    color: var(--normalblue) !important;
     transition: 0.3s;
 }
 
@@ -821,21 +832,21 @@ footer #parcerias .parceiros-logos img {
 
 .btn-submit-account {
     width: 100%;
-    background-color: var(--pink6);
+    background-color: var(--blue6);
     color: #FFF;
 }
 
 .btn-submit-account:hover {
     color: #FFF;
-    background-color: var(--pink7);
+    background-color: var(--blue7);
 }
 
 .form-accounts a {
-    color: var(--blue3);
+    color: var(--darkblue);
 }
 
 .form-accounts a:hover {
-    color: var(--blue3);
+    color: var(--darkblue);
 }
 
 .form-accounts input:not([type='checkbox']) {
@@ -848,26 +859,28 @@ footer #parcerias .parceiros-logos img {
 
 /* FORMULÁRIOS */
 .intro-form a {
-    color: var(--pink6);
+    color: var(--blue6);
 }
 
 .btn-blue3 {
-    background-color: var(--blue3) !important;
-    color: var(--blue1) !important
+    background-color: var(--darkblue) !important;
+    color: var(--ligthblue) !important
+}
+.btn-blue3:hover {
+    background-color: var(--darkblue) !important;
+    color: white !important
 }
 
 .btn-blue3:focus {
     box-shadow: none;
 }
 
-.btn-blue3:hover{
-    background-color: var(--blue3) !important;
-    color: var(--blue1) !important
-
+.select2 {
+    width: 100% !important;
 }
 
 .btn-pink6 {
-    background-color: var(--pink6) !important;
+    background-color: var(--blue6) !important;
     color: #FFF;
 }
 
@@ -878,27 +891,27 @@ footer #parcerias .parceiros-logos img {
 .btn-pink6:hover,
 .btn-pink4:focus,
 .btn-pink2:focus {
-    background-color: var(--pink7) !important;
+    background-color: var(--blue7) !important;
     color: #FFF;
 }
 
 .btn-pink4 {
-    background-color: var(--pink4) !important;
+    background-color: var(--blue4) !important;
     color: #FFF;
 }
 
 .btn-pink4:hover {
-    background-color: var(--pink5) !important;
+    background-color: var(--blue5) !important;
     color: #FFF;
 }
 
 .btn-pink2 {
-    background-color: var(--pink2) !important;
+    background-color: var(--blue2) !important;
     color: #FFF;
 }
 
 .btn-pink2:hover {
-    background-color: var(--pink3) !important;
+    background-color: var(--blue3) !important;
     color: #FFF;
 }
 
@@ -933,8 +946,8 @@ footer #parcerias .parceiros-logos img {
 }
 
 .list-group-item-action.active {
-    background: #EFDBE3 !important;
-    color: var(--pink5);
+    background: var(--blue2) !important;
+    color: var(--darkblue);
     border-radius: 8px;
 }
 
@@ -968,13 +981,13 @@ footer #parcerias .parceiros-logos img {
 
 .accordion-button:not(.collapsed),
 .accordion-button:hover {
-    color: var(--pink6);
-    background-color: var(--pink1);
+    color: var(--blue6);
+    background-color: var(--blue1);
 }
 
 .breadcrumb-item a,
 .breadcrumb-item a i {
-    color: var(--pink7);
+    color: var(--blue7);
     font-size: 0.9rem;
 }
 
@@ -1006,7 +1019,7 @@ footer #parcerias .parceiros-logos img {
 
 .card.topiclist .card-body .topic-name i {
     margin-right: 20px;
-    color: var(--pink4);
+    color: var(--blue4);
 }
 
 .card a {
@@ -1025,7 +1038,7 @@ footer #parcerias .parceiros-logos img {
 .post-name-link:hover,
 .forum-name-link:hover,
 .subject a:hover {
-    color: var(--pink6);
+    color: var(--blue6);
 }
 
 .card.topiclist .topic-created {
@@ -1037,15 +1050,15 @@ footer #parcerias .parceiros-logos img {
 }
 
 .nav-tabs {
-    border-bottom: 1px solid var(--pink2);
+    border-bottom: 1px solid var(--blue2);
 }
 
 .nav-tabs .nav-link.active {
-    background-color: var(--pink2);
+    background-color: var(--blue2);
     border-color: transparent;
 }
 .nav-link.active {
-    color: var(--pink8) !important; 
+    color: var(--blue8) !important; 
 }
 
 .nav-link:not(.active) {
@@ -1053,7 +1066,7 @@ footer #parcerias .parceiros-logos img {
 }
 
 .tab-content {
-    border: 1px solid var(--pink2);
+    border: 1px solid var(--blue2);
     padding: 20px;
     margin-bottom: 30px;
     border-bottom-left-radius: 6px;
@@ -1193,7 +1206,7 @@ footer #parcerias .parceiros-logos img {
 }
 
 .erroPagina>h1 {
-    color: #AF4574;
+    color: #114D7F;
     font-size: 130px;
     margin: 0;
     padding: 0;
@@ -1208,16 +1221,16 @@ footer #parcerias .parceiros-logos img {
 
 .erroPagina>a {
     margin-top: 30px;
-    color: #AF4574;
+    color: #114D7F;
     padding: 10px 25px;
     font-size: 14px;
-    border: 2px solid #AF4574;
+    border: 2px solid #114D7F;
     border-radius: 3px;
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 700;
     transition: all 0.3s ease;
-    background: #AF4574;
+    background: #114D7F;
     color: #fff;
 }
 
