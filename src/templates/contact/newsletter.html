@@ -463,7 +463,8 @@ footer .logos {
               </div>
               <div>
                 <h3 class="title-gray m-0 poppins">
-                    <a href="{{ domain }}/resource/{{ news.featured_resource.id }}" target="_blank" class="link">
+                    <a href="{% url 'resources:resource' news.featured_resource.id %}" target="_blank" class="link">
+
                         {{ news.featured_resource.name }}
                     </a>
                 </h3>
