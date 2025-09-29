@@ -203,7 +203,7 @@ def editResource(request, pk):
             form.save(request, images)
             if isTrainingResource:
                 return redirect('/training_resource/' + str(pk))
-            return redirect(reverse('resources:resource', args=[pk]))
+            return redirect(reverse('resource', args=[pk]))
 
     return render(request, 'resource_form.html', {
         'form': form,
@@ -233,7 +233,7 @@ def saveResourceAjax(request):
         if isTrainingResource:
             redirect_to = f'/training_resource/{pk}'
         else:
-            redirect_to = reverse('resources:resource', args=[pk])
+            redirect_to = reverse('resource', args=[pk])
 
         return JsonResponse(
             {'ResourceCreated': 'OK', 'Resource': pk, 'redirect_to': redirect_to}, status=status.HTTP_200_OK
