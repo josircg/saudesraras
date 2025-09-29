@@ -1496,8 +1496,8 @@ msgid ""
 "platform for purposes other than supporting citizen science."
 msgstr ""
 "Após as informações registradas serem salvas, sua iniciativa passará por uma "
-"etapa de moderação. O objetivo é prevenir o uso da "
-"plataforma para outros fins que não sejam o suporte ao estudo de Doenças Raras."
+"etapa de moderação. O objetivo é prevenir o uso da plataforma para outros "
+"fins que não sejam o suporte ao estudo de Doenças Raras."
 
 msgid ""
 "We would like to point out that, upon registering information, you have to "
@@ -2031,8 +2031,10 @@ msgstr ""
 msgid "Publisher information"
 msgstr "Informações de publicação"
 
-msgid "Links with projects and/or organisations"
-msgstr "Vínculos com iniciativas e/ou organizações"
+#, fuzzy
+#| msgid "Creator"
+msgid "Creator:"
+msgstr "Criador"
 
 msgid "Go to Training"
 msgstr "Ir para a formação"
@@ -2040,11 +2042,22 @@ msgstr "Ir para a formação"
 msgid "Go to Resource"
 msgstr "Ir para a publicação"
 
-msgid "Comment"
-msgstr "Comentário"
+#, fuzzy
+#| msgid "Go to Resource"
+msgid "Download Resource"
+msgstr "Ir para a publicação"
 
 msgid "Language"
 msgstr "Idioma"
+
+msgid "Autor:"
+msgstr ""
+
+msgid "Abrir publicação"
+msgstr ""
+
+msgid "Baixar publicação"
+msgstr ""
 
 msgid "Please specify the primary language in which the resource is available"
 msgstr "Idioma principal da publicação"
@@ -2656,11 +2669,6 @@ msgstr "#missing"
 msgid "Frequently <span class='text-pink6'>asked questions</span>"
 msgstr "Perguntas <span class='text-pink6'>frequentes</span>"
 
-#, fuzzy
-#| msgid "Diagnosis"
-msgid "Diagnostic"
-msgstr "Diagnóstico"
-
 msgid "Ajuda"
 msgstr ""
 
@@ -2833,6 +2841,17 @@ msgstr "Texto Traduzido"
 
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid "Links with projects and/or organisations"
+#~ msgstr "Vínculos com iniciativas e/ou organizações"
+
+#~ msgid "Comment"
+#~ msgstr "Comentário"
+
+#, fuzzy
+#~| msgid "Diagnosis"
+#~ msgid "Diagnostic"
+#~ msgstr "Diagnóstico"
 
 #~ msgid "Login"
 #~ msgstr "Entrar"

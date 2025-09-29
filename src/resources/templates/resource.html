@@ -84,9 +84,12 @@
                 {%endif%}
 
                 {% if resource.creator == user or user.is_staff or user.id in cooperators %}
-                <a class="btn btn-warning bttn0" 
-                   href="/admin/resources/resource/{{resource.id}}/change/" 
-                   style="max-width: 140px;">
+                <a class="btn btn-warning bttn0" style="max-width: 140px;"
+                      href="{% if isTrainingResource %}
+                            {% url 'editTrainingResource' resource.id %}
+                            {% else %}
+                            {% url 'editResource' resource.id %}{% endif %}"
+                   >
                    <i class="fas fa-edit me-2"></i> {% trans "Edit" %}
                 </a>
                 {% endif %}

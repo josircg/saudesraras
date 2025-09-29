@@ -8,7 +8,7 @@ from organisations.models import Organisation
 from projects.models import Project
 from utilities.models import AbstractTranslatedModel
 from django.urls import reverse
-import re # <-- Adicione esta linha
+import re
 
 from .managers import ResourceQuerySet, ThemeQuerySet, CategoryQuerySet, AudienceQuerySet
 
@@ -68,6 +68,7 @@ class Resource(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE)
 
+    # Main information, mandatory
     name = models.CharField(max_length=200)
     url = models.URLField(max_length=200)
     keywords = models.ManyToManyField(Keyword)
@@ -76,6 +77,8 @@ class Resource(models.Model):
     category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
     theme = models.ManyToManyField(Theme)
 
+    # Publish information
+    # TODO: Convert datePublished to Year
     authors = models.ManyToManyField(Author, blank=True)
     publisher = models.CharField(max_length=100, blank=True, null=True)
     datePublished = models.IntegerField(_('Year published'), null=True, blank=True)
@@ -83,22 +86,29 @@ class Resource(models.Model):
     inLanguage = models.CharField(max_length=100, null=True, blank=True)
     license = models.CharField(max_length=300, null=True, blank=True)
 
+    # Links
     organisation = models.ManyToManyField(Organisation, blank=True)
     project = models.ManyToManyField(Project, blank=True)
 
+    # Pictures
     image1 = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
     imageCredit1 = models.CharField(max_length=300, null=True, blank=True)
     image2 = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
     imageCredit2 = models.CharField(max_length=300, null=True, blank=True)
 
+    # Training resources fields
     isTrainingResource = models.BooleanField(_('Is Training Resource'), null=True, blank=True, default=False)
 
+    # Time
+    # Legacy TODO: delete dateUploaded
     dateUploaded = models.DateTimeField('Date Uploaded')
     dateCreated = models.DateTimeField('Created date', auto_now_add=True)
     dateUpdated = models.DateTimeField('Updated date', auto_now=True)
 
+    # Moderation
     approved = models.BooleanField(_('Approved'), null=True)
 
+    # Other
     hidden = models.BooleanField(null=True, blank=True)
     featured = models.BooleanField(default=False)
     own = models.BooleanField(null=True, blank=True)

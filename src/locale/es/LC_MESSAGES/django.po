@@ -2082,8 +2082,10 @@ msgstr ""
 msgid "Publisher information"
 msgstr "Información de la editorial"
 
-msgid "Links with projects and/or organisations"
-msgstr "Enlaces con proyectos y/u organizaciones."
+#, fuzzy
+#| msgid "Creator"
+msgid "Creator:"
+msgstr "Creador"
 
 msgid "Go to Training"
 msgstr "Ir a Formación"
@@ -2091,11 +2093,22 @@ msgstr "Ir a Formación"
 msgid "Go to Resource"
 msgstr "Ir al Recurso"
 
-msgid "Comment"
-msgstr "Comentario"
+#, fuzzy
+#| msgid "Go to Resource"
+msgid "Download Resource"
+msgstr "Ir al Recurso"
 
 msgid "Language"
 msgstr "Idioma"
+
+msgid "Autor:"
+msgstr ""
+
+msgid "Abrir publicação"
+msgstr ""
+
+msgid "Baixar publicação"
+msgstr ""
 
 msgid "Please specify the primary language in which the resource is available"
 msgstr ""
@@ -2732,9 +2745,6 @@ msgstr ""
 msgid "Frequently <span class='text-pink6'>asked questions</span>"
 msgstr "Preguntas <span class='text-pink6'>frecuentes</span>"
 
-msgid "Diagnostic"
-msgstr ""
-
 msgid "Ajuda"
 msgstr ""
 
@@ -2899,6 +2909,12 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
+
+#~ msgid "Links with projects and/or organisations"
+#~ msgstr "Enlaces con proyectos y/u organizaciones."
+
+#~ msgid "Comment"
+#~ msgstr "Comentario"
 
 #~ msgid "Login"
 #~ msgstr "Iniciar sesión"
