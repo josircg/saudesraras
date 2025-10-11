@@ -15,5 +15,4 @@ urlpatterns = [
     path('newsletter/<int:pk>', views.newsletter, name='newsletter'),
     path('newsletters', views.NewsletterList.as_view(), name='newsletters'),
     path('load_image/<str:image_name>', views.load_image, name='load_image'),
-    path('forum_proposal/', views.NewForumProposal.as_view(), name='forum_proposal'),
 ]

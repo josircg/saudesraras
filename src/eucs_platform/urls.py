@@ -43,9 +43,9 @@ urlpatterns = [
     path("curated/", views.curated, name="curated"),
     path("imprint/", views.imprint, name="imprint"),
     path("terms/", views.terms, name="terms"),
-    path("privacy/", views.privacy, name="privacy"),
-    path("guide/", views.guide, name="guide"),
-    path("faq/", views.faq, name="faq"),
+    path("privacy/", views.pag_em_construcao, name="privacy"),
+    path("guide/", views.pag_em_construcao, name="guide"),
+    path("faq/", views.pag_em_construcao, name="faq"),
     path("moderation/", views.moderation, name="moderation"),
     path("criteria/", views.criteria, name="criteria"),
     path("moderation_quality_criteria", views.moderation_quality_criteria, name="moderation_quality_criteria"),
@@ -89,13 +89,29 @@ urlpatterns = [
     # sitemaps
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps.sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
-    # PATHS SAUDESRARAS
+     # PATHS SAUDESRARAS
+    path("emconstrucao/", views.pag_em_construcao, name="emconstrucao"),
+    path("riofarmes/", views.riofarmes, name="riofarmes"),
     path("about/", views.about, name="about"),
-    path("medicos/", views.medicos, name="medicos"),
-    path("diagnostico/", views.diagnostico, name="diagnostico"),
-    path("doencas/", views.doencas, name="doencas"),
-    path("justica/", views.justica, name="justica"),
+    path("medicos/", views.pag_em_construcao, name="medicos"),
+    path("diagnostico/", views.pag_em_construcao, name="diagnostico"),
+    path("doencas/", views.pag_em_construcao, name="doencas"),
+    path("justica/", views.pag_em_construcao, name="justica"),
     path("parceiro/", views.parceiro, name="parceiro"),
+    path("sintomas/", views.pag_em_construcao, name="sintomas"),
+    path("SUS/", views.pag_em_construcao, name="SUS"),
+    path("depoimentos/", views.pag_em_construcao, name="depoimentos"),
+   
+    # Mantive abaixo os links com dev no final para que consigamos acessar as pags via link
+    path("privacydev/", views.privacy, name="privacydev"),
+    path("guidedev/", views.guide, name="guidedev"),
+    path("faqdev/", views.faq, name="faqdev"),
+    path("medicosdev/", views.medicos, name="medicosdev"),
+    path("diagnosticodev/", views.diagnostico, name="diagnosticodev"),
+    path("doencasdev/", views.doencas, name="doencasdev"),
+    path("justicadev/", views.justica, name="justicadev"),
+    #path("sintomasdev/", views.sintomas, name="sintomasdev"),
+    #path("SUSdev/", views.SUS, name="SUSdev"),
 ]
 
 # User-uploaded files like profile pics need to be served in development

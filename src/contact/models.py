@@ -11,8 +11,6 @@ from django.utils.formats import date_format
 from django.utils.translation import ugettext_lazy as _
 from eucs_platform import send_email
 from events.models import Event
-from machina.conf import settings as machina_settings
-from machina.models.fields import ExtendedImageField
 from projects.models import Project
 from resources.models import Resource
 
@@ -131,28 +129,3 @@ class Newsletter(models.Model):
             message=message, to=[subscriber.email], reply_to=settings.EMAIL_CIVIS,
             headers=headers,
         )
-
-
-def forum_proposal_upload_to(instance, filename):
-    dummy, ext = os.path.splitext(filename)
-    file_id = str(uuid.uuid4()).replace('-', '')
-    return os.path.join('images', f'{file_id}{ext}')
-
-
-class ForumProposal(models.Model):
-    name = models.CharField(max_length=100, verbose_name=_('Name'))
-    description = models.TextField(verbose_name=_('Description'), null=True, blank=True)
-    image = ExtendedImageField(
-        null=True, blank=True, upload_to=forum_proposal_upload_to,
-        verbose_name=_('Forum image'), **machina_settings.DEFAULT_FORUM_IMAGE_SETTINGS
-    )
-    approved = models.BooleanField(verbose_name=_('Approved'), null=True)
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                                related_name='forumproposal_creator')
-
-    class Meta:
-        verbose_name = _('Forum Proposal')
-        verbose_name_plural = _('Forum Proposals')
-
-    def __str__(self):
-        return self.name

@@ -2,7 +2,6 @@
 
 import contact.models
 from django.db import migrations, models
-import machina.models.fields
 
 
 class Migration(migrations.Migration):
@@ -33,6 +32,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='forumproposal',
             name='image',
-            field=machina.models.fields.ExtendedImageField(blank=True, null=True, upload_to=contact.models.forum_proposal_upload_to, verbose_name='Forum image'),
+            field=models.ImageField(blank=True, null=True, verbose_name='Forum image'),
         ),
     ]

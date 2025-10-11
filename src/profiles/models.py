@@ -57,12 +57,11 @@ class BaseProfile(models.Model):
         blank=True)
 
     # Privacy and subscriptions
-    profileVisible = models.BooleanField(
-        default=False)
-    contentVisible = models.BooleanField(
-        default=True)
-    digest = models.BooleanField(
-        default=True)
+    profileVisible = models.BooleanField(default=False)
+    contentVisible = models.BooleanField(default=True)
+
+    # Indica que o perfil faz parte da equipe desenvolvedora (se for 99 indica que é ex-integrante)
+    team = models.SmallIntegerField(_('Team'), blank=True, null=True)
 
     # Permission to manage projects from a country
     manageProjectsFromCountry = CountryField(null=True, blank=True)

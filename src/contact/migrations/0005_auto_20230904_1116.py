@@ -3,8 +3,6 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import machina.apps.forum.abstract_models
-import machina.models.fields
 
 
 class Migration(migrations.Migration):
@@ -24,8 +22,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100, verbose_name='Name')),
-                ('description', machina.models.fields.MarkupTextField(blank=True, no_rendered_field=True, null=True, verbose_name='Description')),
-                ('image', machina.models.fields.ExtendedImageField(blank=True, null=True, upload_to=machina.apps.forum.abstract_models.get_forum_image_upload_to, verbose_name='Forum image')),
+                ('description', models.TextField(blank=True, null=True, verbose_name='Description')),
+                ('image', models.ImageField(blank=True, null=True, verbose_name='Forum image')),
                 ('approved', models.NullBooleanField()),
                 ('_description_rendered', models.TextField(blank=True, editable=False, null=True)),
                 ('creator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='forumproposal_creator', to=settings.AUTH_USER_MODEL)),

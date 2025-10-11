@@ -14,10 +14,6 @@ from django_countries import countries
 from django_countries.templatetags.countries import get_country
 from blog.models import Post
 from events.models import Event
-from events.views import set_pages_and_get_object_list
-from machina.apps.forum.models import Forum
-from machina.apps.forum_conversation.models import Topic
-from machina.apps.forum_tracking.handler import TrackingHandler
 from organisations.models import Organisation
 from organisations.views import getOrganisationAutocomplete
 from platforms.models import Platform
@@ -38,7 +34,7 @@ def home(request):
     page = request.GET.get('page')
 
     # Blog
-    posts = Post.objects.all().order_by('id')
+    posts = Post.objects.all().order_by('-sticky', '-created_on')
     paginatorposts = Paginator(posts, items_per_page)
     posts = paginatorposts.get_page(page)
     counterposts = paginatorposts.count
@@ -146,6 +142,8 @@ def diagnostico(request):
 def justica(request):
     return render(request, 'pages/%s/justica.html' % get_language())
 
+def riofarmes(request):
+    return render(request, 'pages/%s/riofarmes.html' % get_language())
 
 def medicos(request):
     return render(request, 'pages/%s/medicos.html' % get_language())
@@ -158,13 +156,19 @@ def ajuda(request):
 def projeto(request):
     return render(request, 'pages/%s/projeto.html' % get_language())
 
+def pag_em_construcao(request):
+    return render(request, 'pag_em_construcao.html')
 
 def parceiro(request):
     return render(request, 'pages/%s/parceiro.html' % get_language())
 
 
 def about(request):
-    return render(request, 'pages/%s/about.html' % get_language())
+    equipe = Profile.objects.filter(team__lt=99).order_by('team','user__name')
+    alunos_antigos = Profile.objects.filter(team=99).order_by('user__name')
+    return render(request,
+                  'pages/%s/about.html' % get_language(),
+                  {'equipe': equipe, 'equipe_antiga': alunos_antigos})
 
 
 def terms(request):
@@ -190,10 +194,6 @@ def curated(request):
 
 def imprint(request):
     return render(request, 'imprint.html')
-
-
-def contact(request):
-    return render(request, 'contact.html')
 
 
 def development(request):

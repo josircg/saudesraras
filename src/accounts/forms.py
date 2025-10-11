@@ -75,7 +75,7 @@ class LoginForm(AuthenticationForm):
         return self.cleaned_data
 
 class SignupForm(authtoolsforms.UserCreationForm):
-    newsletter = forms.BooleanField(label=_('I want to receive the newsletter from Civis'), required=False)
+    newsletter = forms.BooleanField(label=_('I want to receive the newsletter'), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
