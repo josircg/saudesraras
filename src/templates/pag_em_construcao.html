@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}{{ block.super }} :: Terms{% endblock %}
+
+{% block navbar-left %}
+{% include "_navbar.html" %}
+{% endblock %}
+
+
+{% block list_of_items %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex flex-column align-items-center text-center" style="min-height: 80vh; justify-content: center;">
+            <img src="{% static '../static/site/ico/favicon.png' %}" alt="" style="max-width: 500px; width: 50vw;">
+            <h4 class="mt-3" style="font-size: clamp(20px, 2vw, 40px);">{% trans "Page Under Construction" %}</h4>
+            <p class="reg" style="font-size: clamp(25px, 2vw, 30px);">
+                {% trans "We are working on this section to provide you with the best experience. Check back soon!" %}
+				
+            </p>
+            <a href="{% url 'home' %}" class="btn btn-primary bttn0">{% trans "Back to Home" %}
+				</a>
+        </div>
+    </div>
+</div>
+{% endblock list_of_items %}

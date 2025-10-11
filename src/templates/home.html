@@ -54,7 +54,7 @@
             <video
             style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
             frameborder="0"
-            autoplay
+            
             muted
             loop
             controls
@@ -72,6 +72,85 @@
               </h1>
           </div>
           {% include "_subnavbar_finder.html" %}
+          <div class="row" style="max-width: 1120px;">
+            <div class="col-12">
+                <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
+                    <ul class="nav justify-content-between w-100" >
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="{% url 'diagnostico' %}">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/diagnostico.svg' %}" class="diagnostico-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Diagnosis" %}
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="{% url 'medicos' %}">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img " style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Doctors" %}
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                          <a href="{% url 'justica' %}">
+                            <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                              <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                 {% trans "Justice" %}
+                            </div>
+                          </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="{% url 'riofarmes' %}">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    SUS
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="#/">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Symptoms" %}
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-6 col-lg-auto">
+                            <a href="#/">
+                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
+                                    <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 30px; height: 30px; margin-right: 4px">
+                                    {% trans "Publications" %}
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </nav>
+            </div>
+        </div>
+          <div class="container-fluid row" style="border: none; height: 8vw; border-radius: 76px; width: 100%; max-width: 1120px; display: flex; align-items: center; padding: 0%; max-height: 60px; min-height: 40px;">
+              <input type="text" placeholder="{% trans 'search here...' %}" class="col-11 input-container mdm text-home2" style="
+                  border: none; 
+                  color: white;
+                  height: 100%; 
+                  background: #114D7F; 
+                  border-top-left-radius: 76px; 
+                  border-bottom-left-radius: 76px; 
+                  padding-left: 35px;
+                  width: 85%;">
+              <div class="btn bttn4 col-1 text-center mdm text-home2" style="
+                  height: 100%; 
+                  border-top-right-radius: 76px; 
+                  border-bottom-right-radius: 76px; 
+                  display: flex; 
+                  justify-content: center; 
+                  align-items: center;
+                  width: 15%;
+                  ">
+                  {% trans "search" %}
+              </div>
+          </div>
       </div>
   </div>
   </div>
@@ -96,18 +175,18 @@
   </div>
 
 
-   <div class="col-12 text-center my-5">
+   <div class="col-12 text-center mt-5 mb-4">
         
     <div class="container justify-content-center p-0" style="max-width: 1120px;">
-        <div class="row justify-content-between">
-            <div class="card text-center col-lg-6 col-sm-12 p-0" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
+        <div class="row justify-content-lg-between justify-content-center">
+            <div class="card text-center col-lg-6 col-sm-12 p-0 mb-4" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
                 <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
                     {% trans "Hidden Disabilities Sunflower" %}
             </p>
                     
             <video
             style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
-            autoplay
+            
             muted
             loop
             controls
@@ -118,19 +197,19 @@
           </video>
         </div>
     
-            <div class="card text-center col-lg-6 col-sm-12 p-0" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
+            <div class="card text-center col-lg-6 col-sm-12 p-0 mb-4" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
                 <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
                     {% trans "Service centers" %}
                 </p>
                 <video
                
                 style="height: auto; min-height: 4rem; border-radius: 10px; width: 100%; max-height: 335px;"
-                autoplay
+                
                 muted
                 loop
                 controls
                 >
-                    <source src="{% static 'site/vids/v2.mp4' %}"" type="video/mp4">
+                    <source src="{% static 'site/vids/v2.mp4' %}" type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video> 
 
@@ -139,15 +218,14 @@
     </div>
     
     </div>
-    
-      </div>
+
 
       <div class="container-fluid d-flex justify-content-center align-items-center ">
         <div class="container px-0" style="max-width: 1120px;">
             <h1 class="text-left mb-4 azul text-home reg">{% trans "Information about:" %}</h1>
             <div class="row justify-content-center">
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/#" class="btn bttn2">
+                    <a href="{% url 'diagnostico' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img class="diagnostico-img" src="{% static 'site/img/diagnostico.svg' %}" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Diagnóstico">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Diagnosis" %}</span>
@@ -156,7 +234,7 @@
                 </div>
    
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/#" class="btn bttn2">
+                    <a href="{% url 'medicos' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <!-- Imagem padrão -->
                             <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Médicos">
@@ -166,7 +244,7 @@
                 </div>
   
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="{% url 'blog' %}" class="btn bttn2">
+                    <a href="{% url 'justica' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Justiça">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Justice" %}</span>
@@ -175,7 +253,8 @@
                 </div>
 
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/#" class="btn bttn2">
+                  <a h">
+                     <a href="{% url 'riofarmes' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="SUS">
                             <span style="font-size: clamp(10px, 2vw, 20px);">SUS</span>
@@ -183,7 +262,7 @@
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/#" class="btn bttn2">
+                    <a href="#/" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img"  style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Sintomas">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Symptoms" %}</span>
@@ -191,7 +270,7 @@
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="/#" class="btn bttn2">
+                    <a href="#/" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Publicações">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Publications" %}</span>
@@ -202,7 +281,7 @@
         </div>
     </div>
   
-      <div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-5 sbld mx-0" style="background-color: #114D7F;">
+      <div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-0 sbld mx-0" style="background-color: #114D7F; min-height: 500px;">
             <!-- Títulos e links -->
             {% include '_latest_news.html' %}
         </div>
@@ -240,7 +319,7 @@
                      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
                   <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
                   <!-- Conteúdo da carta com espaçamento fixo -->
@@ -266,7 +345,7 @@
                      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
                   <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
                   <!-- Conteúdo da carta com espaçamento fixo -->
@@ -292,7 +371,7 @@
                      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
                   <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/Rectangle 166.png'%}" alt="Imagem" class="card-image" 
+                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
                   <!-- Conteúdo da carta com espaçamento fixo -->
@@ -383,25 +462,24 @@
         <div class="my-3 p-0 col-12 col-xl-auto d-flex flex-wrap flex-xl-nowrap justify-content-center gap-2">
             <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
             <a 
-            href="https://www.instagram.com/laccops/" 
+            href="https://www.instagram.com/saudesraras_/" 
             class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
-            style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">@Usuario</a></div>
+            style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;" 
+            target="_blank">@saudesraras_</a></div>
         
             <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
-              <a 
-              href="https://www.instagram.com/laccops/" 
+              <a
+              target="_blank" 
+              
+              href="mailto:saudesraras@gmail.com"
               class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
-              style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
+              style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">saudesraras@gmail.com</a>
               </div>
-              <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
-                <a 
-              href="https://www.instagram.com/laccops/" 
-              class="btn bck-azul-escuro d-flex justify-content-center align-items-center" 
-              style="color: white; width:230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">laccops.gco.ega@id.uff.br</a>
-              </div>
+              
             <div class="col-12 col-md-auto col-xl-auto d-flex justify-content-center align-items-center">
               <a 
-              href="https://www.instagram.com/laccops/" 
+              target="_blank" 
+              hre="" 
               class="btn bck-azul-escuro d-flex justify-content-center align-items-center" style="color: white; width: 230px; height: 50px; border-radius: 30px; font-size: 15px;text-decoration: none;">{% trans "Contact" %}</a>
           </div>
         </div>
@@ -413,29 +491,81 @@
       <div class="row text-center azul" style="margin-top: 5rem;">
         <h1 class="text-home reg" style=" overflow-wrap: break-word; text-align: center;">{% trans "FAQ" %}</h1>
       </div>
-      <div class="container-fluid justify-content-center d-flex flex-column align-items-center m-0" style="font-size: 20px;">
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
-            {% trans "Are rare diseases contagious?" %}
-        </a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
-            {% trans "How can we support people with rare diseases?" %}
-        </a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
-            {% trans "Why is difficult to find treatments for rare diseases?" %}
-        </a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
-            {% trans "Are rare diseases contagious?" %}
-        </a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
-            {% trans "How do families deal with rare diseases?" %}
-        </a>
-        <a href="#" class="text-center p-3 mt-3 link-div bttn3 card-link">
-            {% trans "Can children also have rare diseases?" %}
-        </a>
-      </div>
-      
+
+
+
+
+      <div class="container" style="max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+  <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">
+    <div class="card-header bttn3 brdr-20-t" data-bs-toggle="collapse" data-bs-target="#collapseCard1" aria-expanded="false" aria-controls="collapseCard1" style="user-select:none;">
+       {% trans "Are rare diseases contagious?" %}
     </div>
-    
+    <div id="collapseCard1" class="collapse ">
+      <div class="card-body bg-light" style="background-color: transparent; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+        <p>Conteúdo do card 1.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">
+    <div class="card-header bttn3 brdr-20-t" data-bs-toggle="collapse" data-bs-target="#collapseCard2" aria-expanded="false" aria-controls="collapseCard2" style="user-select:none;">
+       {% trans "How can we support people with rare diseases?" %}
+    </div>
+    <div id="collapseCard2" class="collapse">
+      <div class="card-body bg-light" style="background-color: transparent; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+        <p>Conteúdo do card 2.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">
+    <div class="card-header bttn3 brdr-20-t" data-bs-toggle="collapse" data-bs-target="#collapseCard3" aria-expanded="false" aria-controls="collapseCard3" style="user-select:none;">
+      {% trans "Why is difficult to find treatments for rare diseases?" %}
+    </div>
+    <div id="collapseCard3" class="collapse">
+      <div class="card-body bg-light" style="background-color: transparent; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+        <p>Conteúdo do card 3. Texto Texto </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">
+    <div class="card-header bttn3 brdr-20-t" data-bs-toggle="collapse" data-bs-target="#collapseCard4" aria-expanded="false" aria-controls="collapseCard4" style="user-select:none;">
+       {% trans "Are rare diseases contagious?" %}
+    </div>
+    <div id="collapseCard4" class="collapse">
+      <div class="card-body bg-light" style="background-color: transparent; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+        <p>Conteúdo do card 4.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">
+    <div class="card-header bttn3 brdr-20-t" data-bs-toggle="collapse" data-bs-target="#collapseCard5" aria-expanded="false" aria-controls="collapseCard5" style="user-select:none;">
+       {% trans "How do families deal with rare diseases?" %}
+    </div>
+    <div id="collapseCard5" class="collapse">
+      <div class="card-body bg-light" style="background-color: transparent; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+        <p>Conteúdo do card 5.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">
+    <div class="card-header bttn3 brdr-20-t" data-bs-toggle="collapse" data-bs-target="#collapseCard6" aria-expanded="false" aria-controls="collapseCard6" style="user-select:none;">
+      {% trans "Can children also have rare diseases?" %}
+    </div>
+    <div id="collapseCard6" class="collapse">
+      <div class="card-body bg-light" style="background-color: transparent; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+        <p>Conteúdo do card 6.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
 </div>
 {% endif %}
 {% endblock splash %}

@@ -20,8 +20,14 @@ class EventForm(forms.Form):
                          widget=forms.TextInput(
                              attrs={'placeholder': _('Please provide a URL to the event website. '
                                                      'Include http:// or https://')}), required=False)
+    logo = forms.ImageField(
+        required=False,
+        help_text=_("The image (.jpg or .png) will be resized to 600 x 400 pixels."
+                    "Image files with dimensions that greatly differ from this size may be "
+                    "drastically cropped. To learn how to avoid this, see our <a href='/"
+                    "guide' target='_blank'>User Guide.</a>"))
 
-    def save(self, args):
+    def save(self, args, logo_path):
         pk = self.data.get('eventID', '')
         hour = self.data['hour']
         if hour == '':
@@ -35,11 +41,12 @@ class EventForm(forms.Form):
             event.end_date = self.data['end_date']
             event.hour = hour
             event.url = self.cleaned_data['url']
+            event.logo = logo_path
             event.creator = args.user
         else:
             event = Event(title=self.data['title'], description=self.data['description'], place=self.data['place'],
                           start_date=self.data['start_date'], end_date=self.data['end_date'], hour=hour,
-                          url=self.cleaned_data['url'],
+                          url=self.cleaned_data['url'], logo=self.cleaned_data['logo'],
                           creator=args.user
                           )
         event.save()

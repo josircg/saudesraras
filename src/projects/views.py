@@ -25,7 +25,6 @@ from django.utils.translation import ugettext as _
 from eucs_platform import send_email, visao, set_pages_and_get_object_list, get_main_page
 from eucs_platform.logger import log_message
 from rest_framework import status
-from reviews.models import Review
 from utilities.file import save_image_with_path
 from utilities.models import SearchIndex, SearchIndexType
 
@@ -333,11 +332,6 @@ def deleteProject(request, pk):
     obj = get_object_or_404(Project, id=pk)
     log_message(obj, '', request.user, DELETION)
     obj.delete()
-    reviews = Review.objects.filter(content_type=ContentType.objects.get(model="project"), object_pk=pk)
-
-    for r in reviews:
-        r.delete()
-
     return redirect('projects')
 
 
@@ -596,10 +590,6 @@ def allowUser(request):
         projectPermission.save()
 
     return JsonResponse(response, safe=False)
-
-
-def project_review(request, pk):
-    return render(request, 'project_review.html', {'projectID': pk})
 
 
 # Download all projects in a CSV file

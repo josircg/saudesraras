@@ -3,35 +3,85 @@
     <div class="col-sm-4 col-12 mt-4 mb-4 text-blue3">
         <h3>{{event.title}}</h3> 
         <span><i>
-                {% if event.place %}{{event.place}} {%endif%} <br>
-                {% if event.url %} 
-                <div class="mt-3 mb-5">
-                    <a class="btn btn-blue3" href="{{event.url}}" target="_blank">
-                        {% trans "Go to event page" %}
-                    </a>
-                </div>
-                {% endif %}     
+            <span class="text-blue3">{% if event.place %}{{event.place}} {% endif %}</span> <br>
+            <span class="text-blue3 sbld">
+                {% if event.hour %}{{event.hour | time:'H:i'}} {% endif %} 
+                {{event.start_date | date:" M d, Y"}}                 
+                {% if event.end_date %} - {{event.end_date | date:" M d, Y"}}{% endif %}
+            </span>
+
+            {% if event.url %} 
+            <div class="mt-3 mb-5">
+                <a class="btn btn-blue3" href="{{event.url}}" target="_blank">
+                    {% trans "Go to event page" %}
+                </a>
+            </div>
+            {% endif %}     
         </i></span>
     </div>
+
     <div class="col-sm-7 col-12 mt-4 mb-4">
-        {{ event.description}} <br><br>
-        <span class="text-blue3">
-            {% if event.hour %}{{event.hour | time:'H:i'}} {% endif %} <br>
-            {{event.start_date | date:" M d, Y"}}                 
-            {% if event.end_date %}to {{event.end_date | date:" M d, Y"}}{% endif %}
-        </span>
+        <!-- Descrição com Mostrar mais / Mostrar menos -->
+        <p id="event-desc-{{ event.id }}" class="text-description">
+            {{ event.description }}
+        </p>
+        <a href="javascript:void(0);" class="show-more-btn" id="show-more-btn-{{ event.id }}" onclick="toggleText('event-desc-{{ event.id }}', this)">
+            Mostrar mais
+        </a>
     </div>
+
     {% if user.is_staff %}
     <div class="col-sm-1 col-12 mt-4 mb-4">
         <span id="featured{{event.id}}">
             {% if event.featured %}
-            <a class="btn btn-red float-left mt-1" onclick="setFeaturedEvent({{event.id}}, false)"><i class="fas fa-arrow-alt-circle-up"></i></a>
+            <a class="btn btn-red float-left mt-1" onclick="setFeaturedEvent({{event.id}}, false)">
+                <i class="fas fa-arrow-alt-circle-up"></i>
+            </a>
             {% else %}
-            <a class="btn btn-red float-left mt-1" onclick="setFeaturedEvent({{event.id}}, true)"><i class="far fa-arrow-alt-circle-up"></i></a>
+            <a class="btn btn-red float-left mt-1" onclick="setFeaturedEvent({{event.id}}, true)">
+                <i class="far fa-arrow-alt-circle-up"></i>
+            </a>
             {% endif %}
         </span>
-        <a class="btn btn-red float-left mt-1" href="{% url 'editEvent' event.id %}" ><i class="fas fa-edit"></i></a>
+        <a class="btn btn-red float-left mt-1" href="{% url 'editEvent' event.id %}"><i class="fas fa-edit"></i></a>
         <a class="btn btn-red float-left mt-1" href="{% url 'deleteEvent' event.id %}"><i class="fas fa-trash-alt"></i></a>
     </div>
     {% endif %}
 </div>
+
+<!-- CSS para limitar linhas -->
+<style>
+.text-description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 8; /* número de linhas visíveis */
+    -webkit-box-orient: vertical;
+}
+</style>
+
+<!-- JavaScript para Mostrar mais / Mostrar menos -->
+<script>
+function toggleText(id, btn) {
+    const text = document.getElementById(id);
+
+    if (text.style.webkitLineClamp === "none") {
+        text.style.webkitLineClamp = "8";
+        btn.innerText = "Mostrar mais";
+    } else {
+        text.style.webkitLineClamp = "none";
+        btn.innerText = "Mostrar menos";
+    }
+}
+
+// Esconde botão se o texto não estiver cortado
+document.addEventListener("DOMContentLoaded", function() {
+    const texts = document.querySelectorAll(".text-description");
+    texts.forEach(function(text) {
+        const btn = document.getElementById("show-more-btn-" + text.id.split("-")[2]);
+        if (text.scrollHeight <= text.clientHeight) {
+            // texto não está cortado
+            btn.style.display = "none";
+        }
+    });
+});
+</script>

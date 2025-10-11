@@ -151,6 +151,7 @@ def resource(request, pk):
                 to=to)
 
     users = getOtherUsers(resource_obj.creator)
+    users = getOtherUsers(resource.creator)
     cooperators = getCooperatorsEmail(pk)
     if (not resource_obj.approved or resource_obj.hidden) and \
             (user.is_anonymous or
@@ -351,9 +352,6 @@ def deleteResource(request, pk, isTrainingResource):
     obj = get_object_or_404(Resource, id=pk)
     if request.user == obj.creator or request.user.is_staff or request.user.id in getCooperators(pk):
         obj.delete()
-        reviews = Review.objects.filter(content_type=ContentType.objects.get(model="resource"), object_pk=pk)
-        for r in reviews:
-            r.delete()
     if isTrainingResource:
         return redirect('training_resources')
     else:
@@ -662,10 +660,6 @@ def allowUserResource(request):
         resourcePermission.save()
 
     return JsonResponse(response, safe=False)
-
-
-def resource_review(request, pk):
-    return render(request, 'resource_review.html', {'resourceID': pk})
 
 
 # Download all resources in a CSV file

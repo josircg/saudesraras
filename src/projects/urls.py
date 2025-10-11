@@ -19,7 +19,6 @@ urlpatterns = [
     path('setFeatured/', views.setFeatured, name='setFeatured'),
     path('setFollowedProject/', views.setFollowedProject, name='setFollowedProject'),
     path('allowUser/', views.allowUser, name='allowUser'),
-    path('project_review/<int:pk>', views.project_review, name='project_review'),
     url(r'^api/', include('projects.api.urls')),
     path('downloadProjects', views.downloadProjects, name='downloadProjects'),
     path('test_visao/', views.test_visao, name='test_visao'),

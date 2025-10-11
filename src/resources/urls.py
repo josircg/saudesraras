@@ -17,7 +17,6 @@ urlpatterns = [
     path('bookmarkResource/', views.bookmarkResource, name='bookmarkResource'),
     path('setHiddenResource/', views.setHiddenResource, name='setHiddenResource'),
     path('allowUserResource/', views.allowUserResource, name='allowUserResource'),
-    path('resource_review/<int:pk>', views.resource_review, name='resource_review'),
     url(r'^api/', include('resources.api.urls')),
     path('downloadResources', views.downloadResources, name='downloadResources'),
     path('newTrainingResource', views.newTrainingResource, name='newTrainingResource'),
