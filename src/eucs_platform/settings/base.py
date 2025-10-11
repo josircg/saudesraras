@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
+    "django.contrib.postgres",
     "authtools",
     "crispy_forms",
     "crispy_bootstrap3",
@@ -168,7 +169,6 @@ INSTALLED_APPS = (
 
     'organisations',
     "django_cron",
-    'django_crontab',
     'ckeditor',
     'ckeditor_uploader',
 

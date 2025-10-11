@@ -71,6 +71,7 @@
                 {% trans "Don't you see, we feel" %}
               </h1>
           </div>
+          {% include "_subnavbar_finder.html" %}
           <div class="row" style="max-width: 1120px;">
             <div class="col-12">
                 <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
@@ -151,11 +152,6 @@
               </div>
           </div>
       </div>
-      
-      
-      
-     
-    
   </div>
   </div>
 
@@ -573,5 +569,17 @@
 </div>
 {% endif %}
 {% endblock splash %}
+
+{% block scripts %}
+  <script src="{% static 'site/js/bootstrap-autocomplete.js'%}?v=5"></script>
+  <script>
+    $('.basicAutoComplete').autoComplete(
+        { minLength: 3 }
+    );
+    $('.basicAutoComplete').on('autocomplete.select', function (evt, item) {
+        $('#searchTop').submit();
+    });
+  </script>
+{% endblock scripts %}
 
 </body>

@@ -83,19 +83,19 @@
                        class="basicAutoComplete form-control border-start-0 border-end-0" 
                        placeholder="{% trans 'Search...' %}"
                        {% if 'all' in request.get_full_path %}
-                       data-url="/home_autocomplete/"
+                       data-url="{% url 'home_autocomplete' %}"
                        {% elif 'training_resources' in request.get_full_path %}
-                       data-url="/trainingsAutocompleteSearch/"
+                       data-url="{% url 'home_autocomplete_by_index_type' 'training' %}"
                        {% elif 'resources' in request.get_full_path %}
-                       data-url="/resourcesAutocompleteSearch/"
+                       data-url="{% url 'home_autocomplete_by_index_type' 'resource' %}"
                        {% elif 'organisations' in request.get_full_path %}
-                       data-url="/organisationsAutocompleteSearch/"
+                       data-url="{% url 'home_autocomplete_by_index_type' 'organisation' %}"
                        {% elif 'platforms' in request.get_full_path %}
-                       data-url="/platformsAutocompleteSearch/"
+                       data-url="{% url 'home_autocomplete_by_index_type' 'platform' %}"
                        {% elif 'users' in request.get_full_path %}
-                       data-url="/users/me/usersAutocompleteSearch"
+                       data-url="{% url 'home_autocomplete_by_index_type' 'profile' %}"
                        {% else %}
-                       data-url="/projectsAutocompleteSearch/"
+                       data-url="{% url 'home_autocomplete_by_index_type' 'project' %}"
                        {% endif %}
                        >
                        <div class="input-group-text clickable border-start-0 bg-white" id="backsign"></div>
