@@ -20,7 +20,6 @@ from eucs_platform import send_email
 from eucs_platform.logger import log_message
 from eucs_platform.utils import get_message_list
 from rest_framework import status
-from reviews.models import Review
 from utilities.file import save_image_with_path
 from utilities.models import SearchIndex, SearchIndexType
 
