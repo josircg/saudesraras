@@ -1,22 +1,4 @@
-import copy
-import mimetypes
-import os
-from io import BytesIO
-
-from PIL import Image
-from ckeditor.widgets import CKEditorWidget
-from django.conf import settings
 from django.contrib import admin
-from django.contrib.admin.models import ADDITION
-from django.contrib.auth.models import AnonymousUser
-from django.core.files.storage import default_storage
-from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.template.loader import render_to_string
-from django.urls import reverse
-from django.utils import translation
-from django.utils.translation import gettext as _
-from eucs_platform import send_email
-from eucs_platform.logger import log_message
 
 from .models import Subscriber, Newsletter
 
