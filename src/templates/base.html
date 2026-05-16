@@ -7,6 +7,8 @@
 {% load active_link_tags %}
 {% get_countries as countries %}
 {% get_current_language as LANGUAGE_CODE %}
+{% load eucs_platform_translate %}
+
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
     {% block head %}
@@ -69,11 +71,46 @@
         <div class="collapse navbar-collapse" id="navbarResponsive" style="background-color: #114D7F;">
             <!-- Links no Meio -->
             <div class="navbar-nav mx-auto mb-2">
-                <a href="{% url 'home' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "Home" %}</a>
-                <a href="{% url 'about' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "About" %}</a>
-                <a href="{% url 'events' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "Events" %}</a>
-                <a href="{% url 'organisations' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "Organisations" %}</a>
-                <a href="{% url 'blog' %}" class="btn nav-bttn  me-2 mt-2 text-decoration-none " style="border-radius: 25px; font-weight: 800; ">{% trans "News" %}</a>
+                <a href="{% url 'home' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "Home" %}</a>
+                <a href="{% url 'about' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "About" %}</a>
+                <a href="{% url 'events' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "Events" %}</a>
+                <a href="{% url 'blog' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "News" %}</a>
+                
+                <div class="nav-item dropdown d-flex align-items-center">
+                    <a class="btn nav-bttn dropdown-toggle me-2 mt-2 text-decoration-none" href="#" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 25px; font-weight: 800;">
+                        {% trans "Organisations" %}
+                    </a>
+                    
+                    <div class="dropdown-menu p-3" aria-labelledby="orgDropdown" style="min-width: 550px; border-radius: 15px; border: none; box-shadow: 0px 4px 15px rgba(0,0,0,0.1);">
+                        <div class="row">
+                            <div class="col-4">
+                                {% for org_type in all_organisation_types|slice:":3" %}
+                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type.type }}">
+                                        {{ org_type.type }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-4 border-start border-end">
+                                {% for org_type in all_organisation_types|slice:"3:6" %}
+                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type.type }}">
+                                        {{ org_type.type }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-4">
+                                {% for org_type in all_organisation_types|slice:"6:" %}
+                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type.type }}">
+                                        {{ org_type.type }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-center fw-bold text-primary" href="{% url 'organisations' %}">{% trans "Ver todas" %}</a>
+                    </div>
+                </div>
             </div>
 
             <!-- Dropdown de Idioma -->
