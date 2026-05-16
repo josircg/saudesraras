@@ -47,10 +47,21 @@
               {% for pessoa in equipe %}
                 <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
                   <div class="col-md-4">
-                    <img src="/media/{{ pessoa.picture }}"
-                      class="img-fluid rounded-circle"
-                      alt="{{  pessoa.user.name }}"
-                    >
+                    
+
+                    {% if item.picture %}
+                        <img src="/media/{{ item.picture }}"
+                            alt="Foto de {{ item.nome }}"
+                            class="img-fluid rounded-circle" />
+
+
+                            
+                    {% else %}
+                        <img src="/media/default_profile.png"
+                            alt="Foto default"
+                            class="img-fluid rounded-circle"
+                             />
+                    {% endif %}
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
@@ -69,54 +80,204 @@
       </div>
       
 <div class="container mt-4">
-  <h4 class="mb-3 fw-bold">Antigos Colaboradores</h4>
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <h4 class="fw-bold mb-0">Outros Colaboradores</h4>
 
-  <ul class="list-group">
+    <!-- FILTRO -->
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary btn-sm dropdown-toggle"
+              type="button"
+              id="sortDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+        <i class="fas fa-sort-amount-down me-1"></i>
+        <span id="sortLabel">Mais recentes</span>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+          <a class="dropdown-item active"
+             href="#"
+             data-sort="recent-desc">
+             Mais recentes
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-sort="recent-asc">
+             Menos recentes
+          </a>
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-sort="name-asc">
+             Nome (A-Z)
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-sort="name-desc">
+             Nome (Z-A)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LISTA -->
+  <ul class="list-group shadow-sm" id="collaboratorsList">
+
     {% for item in equipe_antiga %}
-      <li class="list-group-item">
+      <li class="list-group-item p-0 border-bottom collaborator-item"
+          data-name="{{ item.user.name|lower }}"
+          data-date="{{ item.sort_saida }}">
 
-        <button class="btn btn-link text-start w-100"
+        <button class="btn btn-link text-start w-100 py-3 px-4 text-decoration-none d-flex justify-content-between align-items-center collaborator-toggle"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapse{{item.user.id }}"
+                data-bs-target="#collapse{{ item.user.id }}"
                 aria-expanded="false"
-                aria-controls="collapse{{item.user.id }}">
-          <h5 class="mb-0">{{ item.user.name }}</h5>
+                style="color: #333;">
+
+          <h5 class="mb-0 fw-semibold"
+              style="font-size: 1.1rem;">
+            {{ item.user.name }}
+          </h5>
+
+          <i class="fas fa-chevron-down small text-muted"></i>
         </button>
 
-        <div class="collapse mt-2" id="collapse{{item.user.id }}">
-          <div class="card card-body d-flex align-items-center flex-wrap gap-3">
-            <div class="row gx-5 w-100">
-              <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    {% if item.picture %}
-                        <img src="/media/{{ item.picture }}"
-                            alt="Foto de {{ item.nome }}"
-                            class="img-circle rounded-circle"
-                            style="width: 70px; height: 70px; object-fit: cover;" />
-                    {% else %}
-                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white" 
-                        style="width: 70px; height: 70px;">
-          
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                        </svg>
-                        
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="col-md-9">
-                <p class="text-muted mb-1"><strong>Função:</strong> {{ item.title }}</p>
-                <p class="mb-0" style="color: #000;"><strong>O que fez:</strong> {{ item.bio }}</p>
+        <div class="collapse" id="collapse{{ item.user.id }}">
+          <div class="card card-body border-0 bg-light mx-3 mb-3 rounded-3">
+            <div class="row align-items-center">
+
+              <div class="col-md-2 d-flex justify-content-center mb-3 mb-md-0">
+                {% if item.picture %}
+                  <img src="/media/{{ item.picture }}"
+                       alt="Foto de {{ item.user.name }}"
+                       class="rounded-circle border"
+                       style="width: 80px; height: 80px; object-fit: cover;" />
+                {% else %}
+                  <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white"
+                       style="width: 80px; height: 80px; font-size: 1.5rem;">
+                    <i class="fas fa-user"></i>
+                  </div>
+                {% endif %}
               </div>
+
+              <div class="col-md-10">
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                  <span class="badge rounded-pill bg-info text-dark">
+                    <i class="fas fa-id-badge me-1"></i>
+                    {{ item.title }}
+                  </span>
+                </div>
+
+                {% if item.bio %}
+                  <p class="mb-0 text-secondary"
+                     style="font-size: 0.95rem; line-height: 1.5;">
+                    <strong class="text-dark">O que fez:</strong>
+                    {{ item.bio }}
+                  </p>
+                {% endif %}
+              </div>
+
             </div>
           </div>
         </div>
 
       </li>
+
     {% empty %}
-      <li class="list-group-item">Nenhum colaborador encontrado.</li>
+      <li class="list-group-item text-center py-4 text-muted">
+        <i class="fas fa-users-slash d-block mb-2 fa-2x"></i>
+        Nenhum colaborador encontrado.
+      </li>
     {% endfor %}
+
   </ul>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const list = document.getElementById("collaboratorsList");
+  const sortItems = document.querySelectorAll(".dropdown-item");
+  const sortLabel = document.getElementById("sortLabel");
+
+  sortItems.forEach(item => {
+
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // REMOVE ACTIVE
+      sortItems.forEach(i => i.classList.remove("active"));
+      this.classList.add("active");
+
+      const sortType = this.dataset.sort;
+      sortLabel.textContent = this.textContent.trim();
+
+      let collaborators = Array.from(
+        list.querySelectorAll(".collaborator-item")
+      );
+
+      collaborators.sort((a, b) => {
+
+        const nameA = a.dataset.name;
+        const nameB = b.dataset.name;
+        const dateA = parseInt(a.dataset.date);
+        const dateB = parseInt(b.dataset.date);
+
+        console.log("------------");
+
+        console.log("A:", {
+            nome: nameA,
+            data_original: a.dataset.date,
+            data_convertida: dateA
+        });
+
+        console.log("B:", {
+            nome: nameB,
+            data_original: b.dataset.date,
+            data_convertida: dateB
+        });
+        switch (sortType) {
+
+          case "name-asc":
+            return nameA.localeCompare(nameB);
+
+          case "name-desc":
+            return nameB.localeCompare(nameA);
+
+          case "recent-asc":
+            return dateA - dateB;
+
+          case "recent-desc":
+          default:
+            return dateB - dateA;
+        }
+      });
+
+      collaborators.forEach(el => list.appendChild(el));
+    });
+  });
+
+  // NÃO SUBIR PRO MEIO DA PÁGINA
+  document.querySelectorAll(".dropdown-item").forEach(item => {
+    item.addEventListener("click", function(e) {
+      e.preventDefault();
+    });
+  });
+
+});
+</script>
 {% endblock %}
 

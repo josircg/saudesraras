@@ -1,5 +1,6 @@
+import re
+from django.utils import timezone
 from itertools import chain
-
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.admin.views.main import SEARCH_VAR
@@ -163,14 +164,119 @@ def parceiro(request):
     return render(request, 'pages/%s/parceiro.html' % get_language())
 
 
+
 def about(request):
-    equipe = Profile.objects.filter(team__lt=99).order_by('team','user__name')
-    alunos_antigos = Profile.objects.filter(team=99).order_by('user__name')
-    return render(request,
-                  'pages/%s/about.html' % get_language(),
-                  {'equipe': equipe, 'equipe_antiga': alunos_antigos})
 
+    equipe = Profile.objects.filter(
+        team__lt=99
+    ).order_by(
+        'team',
+        'user__name'
+    )
 
+    alunos_antigos = list(
+        Profile.objects.filter(team=99)
+    )
+
+    now = timezone.now()
+    current_period = 1 if now.month <= 6 else 2
+
+    # EX:
+    # 2026.1
+    current_value = f"{now.year}.{current_period}"
+
+    def normalize_period(period_str):
+        """
+        Aceita:
+        2022.1
+        2022/1
+
+        Retorna:
+        2022.1
+        """
+        return period_str.replace("/", ".")
+
+    def extract_periods(text):
+        """
+        Extrai:
+        2022.1
+        2022/1
+        """
+        matches = re.findall(
+            r'(\d{4}[./][12])',
+            text or ""
+        )
+
+        return [
+            normalize_period(p)
+            for p in matches
+        ]
+
+    def period_to_sortable(period):
+        """
+        2026.1 -> 20261
+        2026.2 -> 20262
+        """
+        year, semester = period.split(".")
+        return int(year) * 10 + int(semester)
+
+    def sort_key_colaboradores(profile):
+
+        periods = extract_periods(
+            profile.title
+        )
+
+        # SEM DATA
+        if len(periods) == 0:
+
+            entrada = "0.0"
+            saida = "0.0"
+
+        # UMA DATA = ATUAL
+        elif len(periods) == 1:
+
+            entrada = periods[0]
+            saida = current_value
+
+        # DUAS DATAS
+        else:
+
+            entrada = periods[0]
+            saida = periods[1]
+
+        entrada_sort = period_to_sortable(entrada)
+        saida_sort = period_to_sortable(saida)
+
+        # PRA USAR NO HTML
+        profile.sort_saida = saida_sort
+
+        print("\n================")
+        print("NOME:", profile.user.name)
+        print("TITLE:", profile.title)
+        print("ENTRADA:", entrada)
+        print("SAIDA:", saida)
+        print("SAIDA_SORT:", saida_sort)
+
+        return (
+            -saida_sort,
+            -entrada_sort,
+            profile.user.name.lower()
+        )
+
+    alunos_antigos.sort(
+        key=sort_key_colaboradores
+    )
+
+    return render(
+        request,
+        'pages/%s/about.html' % get_language(),
+        {
+            'equipe': equipe,
+            'equipe_antiga': alunos_antigos
+        }
+    )
+
+    
 def terms(request):
     return render(request, 'pages/%s/terms.html' % get_language())
 
