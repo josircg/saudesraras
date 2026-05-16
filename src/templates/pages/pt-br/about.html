@@ -166,10 +166,10 @@
                        class="rounded-circle border"
                        style="width: 80px; height: 80px; object-fit: cover;" />
                 {% else %}
-                  <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white"
-                       style="width: 80px; height: 80px; font-size: 1.5rem;">
-                    <i class="fas fa-user"></i>
-                  </div>
+                  <img src="/media/default_profile.png"
+                       alt="Foto de {{ item.user.name }}"
+                       class="rounded-circle border"
+                       style="width: 80px; height: 80px; object-fit: cover;" />
                 {% endif %}
               </div>
 
