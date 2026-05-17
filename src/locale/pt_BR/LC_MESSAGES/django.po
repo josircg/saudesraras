@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+# Plataforma Saúdes Raras
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -591,8 +591,8 @@ msgid ""
 "\n"
 "    <p>Hello,</p>\n"
 "    <p>\n"
-"      We are pleased to inform you that the event <a href=\"%(domain)s"
-"%(event_url)s\">%(title)s</a>\n"
+"      We are pleased to inform you that the event <a "
+"href=\"%(domain)s%(event_url)s\">%(title)s</a>\n"
 "      has been approved.\n"
 "    </p>\n"
 "    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
@@ -603,8 +603,8 @@ msgid ""
 msgstr ""
 "\n"
 "    <p>Olá,</p>\n"
-"    <p>Temos o prazer de informar que o evento <a href=\"%(domain)s"
-"%(event_url)s\">%(title)s</a> foi aprovado.</p>\n"
+"    <p>Temos o prazer de informar que o evento <a "
+"href=\"%(domain)s%(event_url)s\">%(title)s</a> foi aprovado.</p>\n"
 "    <p>Se quiser entrar em contato conosco, escreva para civis@ibict.br.</"
 "p>\n"
 "    <p>Este é um e-mail automático, NÃO responda.</p>\n"
@@ -1053,6 +1053,9 @@ msgstr ""
 
 msgid "Email verified"
 msgstr "E-mail verificado"
+
+msgid "Team"
+msgstr "Equipe"
 
 msgid "{}'s profile"
 msgstr "perfil de {}"
@@ -1818,8 +1821,8 @@ msgstr "Licença"
 
 msgid ""
 "Please select the organisation(s) contributing the resource, if any. If not "
-"listed, please add them <a href=\"/new_organisation\" target=\"_blank"
-"\">here</a > before submitting the resource."
+"listed, please add them <a href=\"/new_organisation\" "
+"target=\"_blank\">here</a > before submitting the resource."
 msgstr ""
 "Organização que desenvolveu o recurso, se houver. Se não estiver listada, "
 "será necessário adicioná-la <a href='http://civis.ibict.br/"
@@ -2149,12 +2152,6 @@ msgstr "Privacidade"
 msgid "Source Code"
 msgstr "Código Fonte"
 
-msgid "Todos os direitos reservados."
-msgstr ""
-
-msgid "Desenvolvido por:"
-msgstr ""
-
 msgid "See all events here +"
 msgstr "Veja todos eventos aqui +"
 
@@ -2235,21 +2232,6 @@ msgstr "Sair"
 msgid "Admin"
 msgstr "Admin"
 
-msgid "Login"
-msgstr "Entrar"
-
-msgid "profile"
-msgstr "perfil"
-
-msgid "logout"
-msgstr "sair"
-
-msgid "Company"
-msgstr "Empresa"
-
-msgid "Connect with us on"
-msgstr "Entre em cotato com a Civis"
-
 msgid "Coming Soon"
 msgstr "Em breve"
 
@@ -2263,7 +2245,7 @@ msgid "More info"
 msgstr "Mais informações"
 
 msgid "That's fine"
-msgstr "Tudo bem"
+msgstr "Ciente"
 
 msgid "Country List"
 msgstr "Países"
@@ -2683,35 +2665,42 @@ msgid ""
 "resource."
 msgstr "#missing"
 
-msgid "Frequently <span class='text-pink6'>asked questions</span>"
-msgstr "Perguntas <span class='text-pink6'>frequentes</span>"
+msgid "Page Under Construction"
+msgstr "Página em construção"
+
+msgid ""
+"We are working on this section to provide you with the best experience. "
+"Check back soon!"
+msgstr ""
+"Estamos trabalhando nesta seção para oferecer a você a melhor experiência. "
+"Volte em breve!"
+
+msgid "Back to Home"
+msgstr "Voltar para a home"
 
 msgid "Diagnostico"
-msgstr ""
-
-msgid "Ajuda"
 msgstr ""
 
 msgid "Doencas"
 msgstr ""
 
-#, fuzzy
-#| msgid "Submitted <span class='text-pink6'>events</span>"
-msgid "Ongoing <span class='text-pink6'>events</span>"
-msgstr "<span class='text-pink6'> Eventos</span> submetidos"
-
-#, fuzzy
-#| msgid "Submitted <span class='text-pink6'>events</span>"
-msgid "Upcoming <span class='text-pink6'>Events</span>"
-msgstr "<span class='text-pink6'> Eventos</span> submetidos"
-
-#, fuzzy
-#| msgid "Submitted <span class='text-pink6'>events</span>"
-msgid "Past <span class='text-pink6'>events</span>"
-msgstr "<span class='text-pink6'> Eventos</span> submetidos"
+msgid "Frequently <span class='text-pink6'>asked questions</span>"
+msgstr "Perguntas <span class='text-pink6'>frequentes</span>"
 
 msgid "Medicos"
 msgstr ""
+
+msgid "Ajuda"
+msgstr ""
+
+msgid "Ongoing <span class='text-pink6'>events</span>"
+msgstr "<span class='text-pink6'> Eventos</span> submetidos"
+
+msgid "Upcoming <span class='text-pink6'>Events</span>"
+msgstr "<span class='text-pink6'> Eventos</span> submetidos"
+
+msgid "Past <span class='text-pink6'>events</span>"
+msgstr "<span class='text-pink6'> Eventos</span> submetidos"
 
 msgid "Notícias"
 msgstr ""
@@ -2844,10 +2833,8 @@ msgstr "Adicionar à biblioteca"
 msgid "Translations"
 msgstr "Traduções"
 
-#, fuzzy
-#| msgid "Import CSV"
 msgid "Export as CSV"
-msgstr "Importar CSV"
+msgstr "Exportar como CSV"
 
 msgid "There was an error adapting the image. Try with another image."
 msgstr ""
@@ -2861,457 +2848,3 @@ msgstr "Texto Traduzido"
 
 msgid "Translation"
 msgstr "Tradução"
-
-#, fuzzy
-#~| msgid "Communications"
-#~ msgid "Community Forums"
-#~ msgstr "Fóruns da comunidade"
-
-#~ msgid "Forum proposal created"
-#~ msgstr "Proposta de fórum criada"
-
-#, fuzzy
-#~| msgid "Your resource \"%s\" has been approved!"
-#~ msgid "Your forum \"%s\" has been created!"
-#~ msgstr "Seu fórum \"%s\" foi criado!"
-
-#, fuzzy
-#~| msgid "Forum"
-#~ msgid "Forum image"
-#~ msgstr "Imagem do Fórum"
-
-#, fuzzy
-#~| msgid "Forums"
-#~ msgid "Forum Proposal"
-#~ msgstr "Proposta de Fórum"
-
-#~ msgid "Forum Proposals"
-#~ msgstr "Propostas de Fórum"
-
-#, fuzzy
-#~| msgid "Project added correctly"
-#~ msgid "Forum Proposal added correctly"
-#~ msgstr "Proposta de Fórum adicionada com sucesso!"
-
-#, fuzzy
-#~| msgid "Notification - New resource \"%s\" submitted"
-#~ msgid "Notification - New Forum Proposal \"%s\" submitted"
-#~ msgstr "Notificação - Nova Proposta de Fórum \"%s\" submetida"
-
-#~ msgid "Forum"
-#~ msgstr "Fórum"
-
-#~ msgid "Review"
-#~ msgstr "Avaliar"
-
-#~ msgid "Rate and comment"
-#~ msgstr "Avalie e comente"
-
-#~ msgid "Fórum"
-#~ msgstr "Fórum"
-
-#~ msgid "Advanced search"
-#~ msgstr "Busca avançada"
-
-#~ msgid "Subscriptions of topics"
-#~ msgstr "Tópicos assinados"
-
-#~ msgid "View my posts"
-#~ msgstr "Ver meus posts"
-
-#~ msgid "Moderation queue"
-#~ msgstr "Aguardando moderação"
-
-#~ msgid "Mark subforums as read"
-#~ msgstr "Marcar subfóruns como lidos"
-
-#~ msgid "New topic"
-#~ msgstr "Novo tópico"
-
-#~ msgid "Mark topics read"
-#~ msgstr "Marcar tópicos como lidos"
-
-#~ msgid "Announcements"
-#~ msgstr "Avisos"
-
-#~ msgid "Topics"
-#~ msgstr "Tópicos"
-
-#~ msgid "Posts"
-#~ msgstr "Posts"
-
-#~ msgid "Last post"
-#~ msgstr "Último post"
-
-#~ msgid "Forums"
-#~ msgstr "Fórum"
-
-#~ msgid "RSS feed"
-#~ msgstr "RSS"
-
-#~ msgid "By: <a href=\"%(poster_url)s\">%(username)s</a>"
-#~ msgstr "Por: <a href=\"%(poster_url)s\">%(username)s</a>"
-
-#~ msgid "By: %(poster_username)s"
-#~ msgstr "Por: %(poster_username)s"
-
-#~ msgid "No posts"
-#~ msgstr "Sem posts"
-
-#~ msgid "Total redirects:"
-#~ msgstr "Redirecionamentos totais:"
-
-#~ msgid "Subforums:"
-#~ msgstr "Subfóruns:"
-
-#~ msgid "No forums."
-#~ msgstr "Sem fóruns."
-
-#~ msgid "Index"
-#~ msgstr "Índice"
-
-#~ msgid "Mark forums as read"
-#~ msgstr "Marcar fóruns como lidos"
-
-#~ msgid "View unread topics"
-#~ msgstr "Ver tópicos não lidos"
-
-#~ msgid "Statistics"
-#~ msgstr "Estatísticas"
-
-#~ msgid "Total posts:"
-#~ msgstr "Total de posts:"
-
-#~ msgid "Total topics:"
-#~ msgstr "Total de tópicos:"
-
-#~ msgid "Add another file"
-#~ msgstr "Incluir outro arquivo"
-
-#~ msgid "Attachments"
-#~ msgstr "Anexos"
-
-#~ msgid "You may select <b>1</b> option"
-#~ msgstr "Você pode selecionar <b>1</b> opção"
-
-#~ msgid "You may select up to <b>%(max_options)s</b> options"
-#~ msgstr "Você pode selecionar no máximo <b>%(max_options)s</b> opções"
-
-#~ msgid "Vote"
-#~ msgstr "Votar"
-
-#~ msgid "Change your vote"
-#~ msgstr "Mude seu voto"
-
-#~ msgid "Poll options"
-#~ msgstr "Opções da enquete"
-
-#~ msgid "Add a poll option"
-#~ msgstr "Inclua uma opção na enquete"
-
-#~ msgid ""
-#~ "<b>Note:</b>&nbsp;Deleting poll options of an existing poll will delete "
-#~ "the associated votes."
-#~ msgstr ""
-#~ "<b>Atenção:</b>&nbsp;Excluir opções de uma enquete já existente irá "
-#~ "invalidar os respectivos votos."
-
-#~ msgid "Preview:"
-#~ msgstr "Visualizar:"
-
-#~ msgid "Results are currently hidden."
-#~ msgstr "Resultados estão ocultos"
-
-#~ msgid "Total votes:"
-#~ msgstr "Votos totais:"
-
-#~ msgid "Submit"
-#~ msgstr "Enviar"
-
-#~ msgid "View results"
-#~ msgstr "Ver resultados"
-
-#~ msgid "Options"
-#~ msgstr "Opções"
-
-#~ msgid "Post reply"
-#~ msgstr "Responder post"
-
-#~ msgid "Subscribe"
-#~ msgstr "Assinar"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Cancelar assinatura"
-
-#~ msgid "Lock topic"
-#~ msgstr "Bloquear tópico"
-
-#~ msgid "Unlock topic"
-#~ msgstr "Desbloquear tópico"
-
-#~ msgid "Delete topic"
-#~ msgstr "Excluir tópico"
-
-#~ msgid "Move topic"
-#~ msgstr "Mover tópico"
-
-#~ msgid "Change to sticky topic"
-#~ msgstr "Alterar para tópico fixo"
-
-#~ msgid "Change to announce"
-#~ msgstr "Alterar para anúncio"
-
-#~ msgid "Change to standard topic"
-#~ msgstr "Alterar para tópico padrão"
-
-#~ msgid "Poll"
-#~ msgstr "Enquete"
-
-#~ msgid "Post a reply"
-#~ msgstr "Postar uma resposta"
-
-#~ msgid "Topic review"
-#~ msgstr "Revisar tópico"
-
-#~ msgid "By: <a href=\"%(poster_url)s\">%(username)s</a> on %(creation_date)s"
-#~ msgstr ""
-#~ "Por: <a href=\"%(poster_url)s\">%(username)s</a> em %(creation_date)s"
-
-#~ msgid "By: %(poster_username)s on %(creation_date)s"
-#~ msgstr "Por: %(poster_username)s em %(creation_date)s"
-
-#~ msgid "Delete post"
-#~ msgstr "Excluir post"
-
-#~ msgid "Are you sure you want to delete this post?"
-#~ msgstr "Confirmar exclusão de post?"
-
-#~ msgid "Yes, I'm sure"
-#~ msgstr "Sim, confirmar"
-
-#~ msgid "No, take me back"
-#~ msgstr "Não, voltar"
-
-#~ msgid "Edit post"
-#~ msgstr "Editar post"
-
-#~ msgid "Post a new topic"
-#~ msgstr "Publique um novo tópico"
-
-#~ msgid "Last edited by:"
-#~ msgstr "Editado por:"
-
-#~ msgid "on"
-#~ msgstr "em"
-
-#~ msgid "edited %(counter)s time in total."
-#~ msgid_plural "edited %(counter)s times in total."
-#~ msgstr[0] "editado %(counter)s vez."
-#~ msgstr[1] "editado %(counter)s vezes."
-
-#~ msgid "Reason:"
-#~ msgstr "Razão:"
-
-#~ msgid "Posts:"
-#~ msgstr "Posts:"
-
-#~ msgid "Anonymous user"
-#~ msgstr "Usuário anônimo"
-
-#~ msgid "Replies"
-#~ msgstr "Respostas"
-
-#~ msgid "Views"
-#~ msgstr "Visualizações"
-
-#~ msgid "This topic is locked"
-#~ msgstr "Este tópico está bloqueado"
-
-#~ msgid "There are no topics in this forum."
-#~ msgstr "Não há tópicos neste fórum."
-
-#~ msgid "Go to the page:"
-#~ msgstr "Vá para a página:"
-
-#~ msgid "Posted by"
-#~ msgstr "Postado por"
-
-#~ msgid "%(username)s profile"
-#~ msgstr "Perfil de %(username)s"
-
-#~ msgid ""
-#~ "<h2><strong>%(counter)s</strong></h2>\n"
-#~ "                      <p><small>Post</small></p>"
-#~ msgid_plural ""
-#~ "<h2><strong>%(counter)s</strong></h2>\n"
-#~ "                      <p class=\"mb-1\"><small>Posts</small></p>"
-#~ msgstr[0] ""
-#~ "<h2><strong>%(counter)s</strong></h2>\n"
-#~ "                      <p><small>Post</small></p>"
-#~ msgstr[1] ""
-#~ "<h2><strong>%(counter)s</strong></h2>\n"
-#~ "                      <p class=\"mb-1\"><small>Posts</small></p>"
-
-#~ msgid ""
-#~ "<h2><strong>%(counter)s</strong></h2>\n"
-#~ "                      <p><small>Topic</small></p>"
-#~ msgid_plural ""
-#~ "<h2><strong>%(counter)s</strong></h2>\n"
-#~ "                      <p class=\"mb-1\"><small>Topics</small></p>"
-#~ msgstr[0] ""
-#~ "<h2><strong>%(counter)s</strong></h2>\n"
-#~ "                      <p><small>Tópico</small></p>"
-#~ msgstr[1] ""
-#~ "<h2><strong>%(counter)s</strong></h2>\n"
-#~ "                      <p class=\"mb-1\"><small>Tópicos</small></p>"
-
-#~ msgid "Recent posts"
-#~ msgstr "Posts recentes"
-
-#~ msgid "View all"
-#~ msgstr "Ver tudo"
-
-#~ msgid "On %(creation_date)s"
-#~ msgstr "Em %(creation_date)s"
-
-#, fuzzy
-#~| msgid "Edit profile"
-#~ msgid "Edit forum profile"
-#~ msgstr "Editar perfil do fórum"
-
-#~ msgid "Edit forum"
-#~ msgstr "Editar fórum"
-
-#~ msgid "Topics that you are subscribed to"
-#~ msgstr "Tópicos que você assinou"
-
-#~ msgid "%(counter)s topic found"
-#~ msgid_plural "%(counter)s topics found"
-#~ msgstr[0] "%(counter)s tópico encontrado"
-#~ msgstr[1] "%(counter)s tópicos encontrados"
-
-#~ msgid "No topics found."
-#~ msgstr "Nenhum tópico encontrado."
-
-#~ msgid "Subscribe to topic"
-#~ msgstr "Assinar tópico"
-
-#~ msgid "Would you like to subscribe to this topic?"
-#~ msgstr "Gostaria de assinar este tópico?"
-
-#~ msgid "Unsubscribe from topic"
-#~ msgstr "Cancelar assinatura do tópico"
-
-#~ msgid "Would you like to unsubscribe from this topic?"
-#~ msgstr "Gostaria de cancelar a assinatura deste tópico?"
-
-#~ msgid "My messages"
-#~ msgstr "Minhas mensagens"
-
-#~ msgid "%(username)s's posts"
-#~ msgstr "Posts de %(username)s"
-
-#~ msgid "%(counter)s post found"
-#~ msgid_plural "%(counter)s posts found"
-#~ msgstr[0] "%(counter)s post encontrado"
-#~ msgstr[1] "%(counter)s posts encontrados"
-
-#~ msgid "No posts found"
-#~ msgstr "Nenhum post encontrado"
-
-#~ msgid "Disapprove"
-#~ msgstr "Não aprovar"
-
-#~ msgid "New post"
-#~ msgstr "Novo post"
-
-#~ msgid "<b>1</b> option may be selected"
-#~ msgstr "<b>1</b> opção pode ser selecionada"
-
-#~ msgid "Up to <b>%(max_options)s</b> options may be selected"
-#~ msgstr "Até <b>%(max_options)s</b> opções podem ser selecionadas"
-
-#~ msgid "%(topic_length)s posts found"
-#~ msgstr "%(topic_length)s posts encontrados"
-
-#~ msgid "No posts awaiting approval."
-#~ msgstr "Nenhum post para aprovação"
-
-#~ msgid "Approve post"
-#~ msgstr "Aprovar post"
-
-#~ msgid "Are you sure you want to approve this post?"
-#~ msgstr "Aprovar este post?"
-
-#~ msgid "Disapprove post"
-#~ msgstr "Não aprovar"
-
-#~ msgid ""
-#~ "Are you sure you want to disapprove this post? This post will be deleted."
-#~ msgstr "Confirmar a não aprovação do post? Ele será deletado."
-
-#~ msgid "Are you sure you want to delete this topic?"
-#~ msgstr "Confirmar a não aprovação do tópico?"
-
-#~ msgid "Are you sure you want to lock this topic?"
-#~ msgstr "Confirmar o bloqueio do tópico?"
-
-#~ msgid "Are you sure you want to unlock this topic?"
-#~ msgstr "Confirmar o desbloqueio do tópico?"
-
-#~ msgid "Change topic type"
-#~ msgstr "Alterar tipo do tópico"
-
-#~ msgid "Search forums"
-#~ msgstr "Busca"
-
-#~ msgid "New search"
-#~ msgstr "Nova busca"
-
-#~ msgid "Your search has returned <b>%(number_of_results)s</b> result"
-#~ msgid_plural "Your search has returned <b>%(number_of_results)s</b> results"
-#~ msgstr[0] "Sua busca retornou <b>%(number_of_results)s</b> resultado"
-#~ msgstr[1] "Sua busca retornou <b>%(number_of_results)s</b> resultados"
-
-#~ msgid "Results"
-#~ msgstr "Resultados"
-
-#~ msgid "No results."
-#~ msgstr "Nenhum resultado encontrado"
-
-#~ msgid "Are you sure you want to mark forums as read?"
-#~ msgstr "Confirmar fóruns lidos?"
-
-#~ msgid "Are you sure you want to mark topics as read?"
-#~ msgstr "Confirmar tópicos lidos?"
-
-#~ msgid "%(topic_length)s unread topic found"
-#~ msgid_plural "%(topic_length)s unread topics found"
-#~ msgstr[0] "%(topic_length)s tópico não lido encontrado"
-#~ msgstr[1] "%(topic_length)s tópicos não lidos encontrados"
-
-#~ msgid "There are no unread topics."
-#~ msgstr "Não existem tópicos não lidos."
-
-#~ msgid "review"
-#~ msgstr "Avaliar"
-
-#~ msgid "reviews"
-#~ msgstr "avaliações"
-
-#~ msgid "FORUM"
-#~ msgstr "FÓRUM"
-
-#: templates/pag_em_construcao.html:16
-msgid "Page Under Construction"
-msgstr "Página em construção"
-
-#: templates/pag_em_construcao.html:18
-msgid ""
-"We are working on this section to provide you with the best experience. "
-"Check back soon!"
-msgstr "Estamos trabalhando nesta seção para oferecer a você a melhor experiência. Volte em breve!"
-
-#: templates/pag_em_construcao.html:21
-msgid "Back to Home"
-msgstr "Voltar para a home"
