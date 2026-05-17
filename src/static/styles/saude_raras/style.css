@@ -402,24 +402,49 @@
         color: white;
     }
 
-    .bttn2{
-        
+    .bttn2 {
+        display: flex !important;
+        flex-direction: row !important; /* Ícone ao lado do texto */
+        align-items: center;
+        justify-content: flex-start;
+        padding: 15px 20px;
         border: 3px solid #3D99F4; 
-        border-radius: clamp(8px, 1vw, 10px);
-        width: 12vw; 
-        height: 16vw; 
-        max-height: 230px;
-        max-width: 173px;
-        min-width: 90px; 
-        min-height: 120px;
-    }
-    .bttn2:hover{
-        
-        border: 3px solid #5CDCFF; 
-        text-decoration: none;
-        ;
+        border-radius: 12px;
+        width: 100%;
+        min-height: 90px;
+        background-color: white;
+        transition: none !important; /* Mantendo o fix do delay */
     }
 
+    .bttn2:hover {
+        border-color: #5CDCFF;
+        background-color: #f8fdff;
+        text-decoration: none;
+    }
+
+    .icon-container {
+        flex-shrink: 0; /* Impede o ícone de amassar */
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .btn-text {
+        text-align: left;
+        font-size: clamp(14px, 1.2vw, 18px);
+        color: #004a8c; /* Azul escuro da UFF */
+        font-weight: 600;
+        line-height: 1.2;
+    }
     
 
     .bttn2:hover .diagnostico-img {
