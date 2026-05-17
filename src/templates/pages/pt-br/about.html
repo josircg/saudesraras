@@ -15,7 +15,7 @@
         ></div>
         <div class="row justify-content-between mx-2" >
             <div class="row gx-5">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-12">
                 <div class="text-about mb-3 font-weight-bold " style=" line-height: 26px;  word-wrap: break-word; overflow-wrap: break-word;">
                     Sobre o projeto
                 </div>
@@ -38,24 +38,19 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-lg-6 col-12">
               <div class="text-about mb-3 font-weight-bold " style=" line-height: 26px;  word-wrap: break-word; overflow-wrap: break-word;">
                     Conheça Nossa Equipe
               </div>
 
               <div class="mb-4 team-horizontal" style="max-width: 900px;">
               {% for pessoa in equipe %}
-                <div class="row g-2 align-items-center" style="margin-bottom: 20px;">
+                <div class="row g-2 align-items-start" style="margin-bottom: 20px;">
                   <div class="col-md-4">
-                    
-
                     {% if item.picture %}
                         <img src="/media/{{ item.picture }}"
                             alt="Foto de {{ item.nome }}"
                             class="img-fluid rounded-circle" />
-
-
-                            
                     {% else %}
                         <img src="/media/default_profile.png"
                             alt="Foto default"
@@ -236,19 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const dateA = parseInt(a.dataset.date);
         const dateB = parseInt(b.dataset.date);
 
-        console.log("------------");
-
-        console.log("A:", {
-            nome: nameA,
-            data_original: a.dataset.date,
-            data_convertida: dateA
-        });
-
-        console.log("B:", {
-            nome: nameB,
-            data_original: b.dataset.date,
-            data_convertida: dateB
-        });
         switch (sortType) {
 
           case "name-asc":
@@ -270,7 +252,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // NÃO SUBIR PRO MEIO DA PÁGINA
   document.querySelectorAll(".dropdown-item").forEach(item => {
     item.addEventListener("click", function(e) {
       e.preventDefault();
@@ -280,4 +261,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 {% endblock %}
-
