@@ -2241,8 +2241,8 @@ msgstr "Retornar"
 msgid "This website uses cookies."
 msgstr "Este site utiliza cookies"
 
-msgid "Main information"
-msgstr "Informações principais"
+msgid "More info"
+msgstr "Mais informações"
 
 msgid "That's fine"
 msgstr "Ciente"

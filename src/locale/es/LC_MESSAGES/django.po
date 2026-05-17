@@ -2284,16 +2284,14 @@ msgstr "Volver"
 
 #, fuzzy
 #| msgid "This website uses cookies."
-msgid "Este site utiliza cookies."
+msgid "This website uses cookies."
 msgstr "Este sitio se utiliza de cookies"
 
-#, fuzzy
-#| msgid "Main information"
-msgid "Mais informações"
-msgstr "Revisión"
+msgid "More info"
+msgstr "Más información"
 
-msgid "Tudo bem"
-msgstr ""
+msgid "That's fine"
+msgstr "Listo"
 
 msgid "Country List"
 msgstr "País"
@@ -2905,6 +2903,11 @@ msgstr "Texto traducido"
 msgid "Translation"
 msgstr "Traducciones"
 
+#, fuzzy
+#~| msgid "Main information"
+#~ msgid "Mais informações"
+#~ msgstr "Revisión"
+
 #~ msgid "Login"
 #~ msgstr "Iniciar sesión"
 
@@ -2919,12 +2922,6 @@ msgstr "Traducciones"
 
 #~ msgid "Connect with us on"
 #~ msgstr "Conecte con EU-Citizen Science en "
-
-#~ msgid "More info"
-#~ msgstr "Más información"
-
-#~ msgid "That's fine"
-#~ msgstr "Listo"
 
 #~ msgid "Community Forums"
 #~ msgstr "Foros de la comunidad"
