@@ -1233,3 +1233,68 @@ footer #parcerias .parceiros-logos img {
   .slider-val-area #max-zoom-val {
     float: right;
   }
+
+
+
+  #cookieConsent {
+    background-color: #1a2b3c; /* Fundo escuro conforme a imagem */
+    color: #ffffff;
+    min-height: 45px;
+    padding: 10px 20px;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    border-top: 4px solid #4A90E2; /* Borda azul da identidade visual */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+#cookieConsent span {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#cookieConsent a {
+    color: #4A90E2; /* Azul para o link "Mais informações" */
+    text-decoration: none;
+}
+
+#cookieConsent a:hover {
+    text-decoration: underline;
+}
+
+/* Botão "Tudo bem" amarelo/dourado conforme a referência */
+.cookieConsentOK {
+    background-color: var(--blue2) ; 
+    color: white !important;
+    text-decoration: none !important;
+    padding: 5px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    float: right;
+    margin-top: -2px;
+    margin-right: 20px;
+    transition: background-color 0.2s;
+}
+
+.cookieConsentOK:hover {
+    background-color: var(--blue3);
+}
+
+#closeCookieConsent {
+    float: right;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 18px;
+    opacity: 0.7;
+    line-height: 20px;
+}
+
+#closeCookieConsent:hover {
+    opacity: 1;
+}
