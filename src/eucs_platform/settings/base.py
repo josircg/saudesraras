@@ -168,7 +168,6 @@ INSTALLED_APPS = (
 
     'organisations',
     "django_cron",
-    'django_crontab',
     'ckeditor',
     'ckeditor_uploader',
 

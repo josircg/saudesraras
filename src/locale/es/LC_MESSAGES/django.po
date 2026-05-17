@@ -2188,12 +2188,6 @@ msgstr "Privacidad"
 msgid "Source Code"
 msgstr "Código Fonte"
 
-msgid "Todos os direitos reservados."
-msgstr ""
-
-msgid "Desenvolvido por:"
-msgstr ""
-
 #, fuzzy
 #| msgid "See all events"
 msgid "See all events here +"
@@ -2288,6 +2282,8 @@ msgstr "Próximamente"
 msgid "Go back"
 msgstr "Volver"
 
+#, fuzzy
+#| msgid "This website uses cookies."
 msgid "This website uses cookies."
 msgstr "Este sitio se utiliza de cookies"
 
