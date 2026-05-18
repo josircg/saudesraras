@@ -2301,13 +2301,13 @@ msgid "Information about:"
 msgstr "Informações sobre:"
 
 msgid "Diagnosis"
-msgstr "A dificuldade do Diagnóstico"
+msgstr "A dificuldade de conseguir o diagnostico"
 
 msgid "Doctors"
-msgstr "Médicos"
+msgstr "Como devo ser tratada pela(os) médica(os?)"
 
 msgid "Justice"
-msgstr " Meus direitos"
+msgstr "Meus direitos"
 
 msgid "SUS"
 msgstr "Onde eu acho o meu remédio? (RJ)"
@@ -2316,7 +2316,7 @@ msgid "Symptoms"
 msgstr "Sintomas"
 
 msgid "Publications"
-msgstr "Publicações"
+msgstr "Cartilhas, artigos e publicações"
 
 msgid "Testimonials"
 msgstr "Depoimentos"
