@@ -59,10 +59,8 @@ class CustomIndexDashboard(Dashboard):
 
         self.children += [
             modules.ModelList(_('Events'), models=('events.models.*',)),
-        ]
-
-        self.children += [
             modules.ModelList(_('Organisations'), models=('organisations.models.*',)),
+            modules.ModelList(_('Diseases'), models=('diseases.models.*',)),
         ]
 
         self.children.append(modules.AppList(
@@ -87,11 +85,12 @@ class CustomIndexDashboard(Dashboard):
                     {'title': _('Countries'), 'change_url': reverse('country_list')},
             ]
         ))
+
         # append a link list module for "quick links"
         self.children.append(modules.LinkList(
             _('Quick links'),
             layout='inline',
-            draggable=False,
+            draggable=True,
             deletable=False,
             collapsible=False,
             children=[
