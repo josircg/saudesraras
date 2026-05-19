@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+# Plataforma Saúdes Raras
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -2152,12 +2152,6 @@ msgstr "Privacidade"
 msgid "Source Code"
 msgstr "Código Fonte"
 
-msgid "Todos os direitos reservados."
-msgstr ""
-
-msgid "Desenvolvido por:"
-msgstr ""
-
 msgid "See all events here +"
 msgstr "Veja todos eventos aqui +"
 
@@ -2251,7 +2245,7 @@ msgid "More info"
 msgstr "Mais informações"
 
 msgid "That's fine"
-msgstr "Tudo bem"
+msgstr "Ciente"
 
 msgid "Country List"
 msgstr "Países"
@@ -2307,13 +2301,13 @@ msgid "Information about:"
 msgstr "Informações sobre:"
 
 msgid "Diagnosis"
-msgstr "A dificuldade do Diagnóstico"
+msgstr "A dificuldade de conseguir o diagnostico"
 
 msgid "Doctors"
-msgstr "Médicos"
+msgstr "Como devo ser tratada pela(os) médica(os?)"
 
 msgid "Justice"
-msgstr " Meus direitos"
+msgstr "Meus direitos"
 
 msgid "SUS"
 msgstr "Onde eu acho o meu remédio? (RJ)"
@@ -2322,7 +2316,7 @@ msgid "Symptoms"
 msgstr "Sintomas"
 
 msgid "Publications"
-msgstr "Publicações"
+msgstr "Cartilhas, artigos e publicações"
 
 msgid "Testimonials"
 msgstr "Depoimentos"
@@ -2707,13 +2701,9 @@ msgstr ""
 msgid "Ongoing <span class='text-pink6'>events</span>"
 msgstr "<span class='text-pink6'> Eventos</span> submetidos"
 
-#, fuzzy
-#| msgid "Submitted <span class='text-pink6'>events</span>"
 msgid "Upcoming <span class='text-pink6'>Events</span>"
 msgstr "<span class='text-pink6'> Eventos</span> submetidos"
 
-#, fuzzy
-#| msgid "Submitted <span class='text-pink6'>events</span>"
 msgid "Past <span class='text-pink6'>events</span>"
 msgstr "<span class='text-pink6'> Eventos</span> submetidos"
 
@@ -2848,10 +2838,8 @@ msgstr "Adicionar à biblioteca"
 msgid "Translations"
 msgstr "Traduções"
 
-#, fuzzy
-#| msgid "Import CSV"
 msgid "Export as CSV"
-msgstr "Importar CSV"
+msgstr "Exportar como CSV"
 
 msgid "There was an error adapting the image. Try with another image."
 msgstr ""
