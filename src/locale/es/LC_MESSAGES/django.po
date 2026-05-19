@@ -575,8 +575,8 @@ msgstr ""
 #| "\n"
 #| "    <p>Hello,</p>\n"
 #| "    <p>\n"
-#| "      We are pleased to inform you that the event <a href=\"%(domain)s"
-#| "%(event_url)s\">%(title)s</a>\n"
+#| "      We are pleased to inform you that the event <a "
+#| "href=\"%(domain)s%(event_url)s\">%(title)s</a>\n"
 #| "      has been approved.\n"
 #| "    </p>\n"
 #| "    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
@@ -587,8 +587,8 @@ msgid ""
 "\n"
 "    <p>Hello,</p>\n"
 "    <p>\n"
-"      We are pleased to inform you that the event <a href=\"%(domain)s"
-"%(event_url)s\">%(title)s</a>\n"
+"      We are pleased to inform you that the event <a "
+"href=\"%(domain)s%(event_url)s\">%(title)s</a>\n"
 "      has been approved.\n"
 "    </p>\n"
 "    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
@@ -600,8 +600,8 @@ msgstr ""
 "    <p>Hello,</p>\n"
 "    <p>\n"
 "      \n"
-"      Nos complace informarle de que el acto  <a href=\"%(domain)s"
-"%(event_url)s\">%(title)s</a>\n"
+"      Nos complace informarle de que el acto  <a "
+"href=\"%(domain)s%(event_url)s\">%(title)s</a>\n"
 "     ha sido aprobado.\n"
 "    </p>\n"
 "    <p>Si desea ponerse en contacto con nosotros, escriba a civil@ibict.br.</"
@@ -1071,6 +1071,9 @@ msgstr ""
 
 msgid "Email verified"
 msgstr "Correo electrónico verificado"
+
+msgid "Team"
+msgstr ""
 
 msgid "{}'s profile"
 msgstr "perfil"
@@ -1785,8 +1788,9 @@ msgstr ""
 "Por favor, describa los aspectos de ciencia ciudadana del recurso que "
 "justifican su registro en Civis. Esta información no será visible en la "
 "plataforma y servirá simplemente como referencia cuando se someta a "
-"moderación. Puede consultar nuestra explicación sobre qué es <a href="
-"\"https://civis.ibict.br/about/\">citizen science</a> (max 2000 caracteres)."
+"moderación. Puede consultar nuestra explicación sobre qué es <a "
+"href=\"https://civis.ibict.br/about/\">citizen science</a> (max 2000 "
+"caracteres)."
 
 msgid ""
 "Please name the author(s) of the resource. Enter <i>First Initial Last Name</"
@@ -1843,8 +1847,8 @@ msgstr "Licencia"
 
 msgid ""
 "Please select the organisation(s) contributing the resource, if any. If not "
-"listed, please add them <a href=\"/new_organisation\" target=\"_blank"
-"\">here</a > before submitting the resource."
+"listed, please add them <a href=\"/new_organisation\" "
+"target=\"_blank\">here</a > before submitting the resource."
 msgstr ""
 "Organización(es) que han contribuido al recurso (en caso de selección "
 "múltiple, separe con comas o pulsando enter. Si no están en el listado, por "
@@ -2278,35 +2282,24 @@ msgstr "Cerrar sesión"
 msgid "Admin"
 msgstr "Administrar"
 
-msgid "Login"
-msgstr "Iniciar sesión"
-
-msgid "profile"
-msgstr "perfil"
-
-msgid "logout"
-msgstr "cerrar sesión"
-
-msgid "Company"
-msgstr "Empresa"
-
-msgid "Connect with us on"
-msgstr "Conecte con EU-Citizen Science en "
-
 msgid "Coming Soon"
 msgstr "Próximamente"
 
 msgid "Go back"
 msgstr "Volver"
 
-msgid "This website uses cookies."
+#, fuzzy
+#| msgid "This website uses cookies."
+msgid "Este site utiliza cookies."
 msgstr "Este sitio se utiliza de cookies"
 
-msgid "More info"
-msgstr "Más información"
+#, fuzzy
+#| msgid "Main information"
+msgid "Mais informações"
+msgstr "Revisión"
 
-msgid "That's fine"
-msgstr "Listo"
+msgid "Tudo bem"
+msgstr ""
 
 msgid "Country List"
 msgstr "País"
@@ -2385,6 +2378,9 @@ msgstr "Privacidad"
 #| msgid "Confirmation Done!"
 msgid "Information about:"
 msgstr "Confirmado"
+
+msgid "SUS"
+msgstr ""
 
 msgid "Testimonials"
 msgstr ""
@@ -2734,16 +2730,32 @@ msgid ""
 "resource."
 msgstr ""
 
-msgid "Frequently <span class='text-pink6'>asked questions</span>"
-msgstr "Preguntas <span class='text-pink6'>frecuentes</span>"
+msgid "Page Under Construction"
+msgstr ""
+
+msgid ""
+"We are working on this section to provide you with the best experience. "
+"Check back soon!"
+msgstr ""
+
+#, fuzzy
+#| msgid "Go back to home"
+msgid "Back to Home"
+msgstr "Volver a la página de inicio"
 
 msgid "Diagnostico"
 msgstr ""
 
-msgid "Ajuda"
+msgid "Doencas"
 msgstr ""
 
-msgid "Doencas"
+msgid "Frequently <span class='text-pink6'>asked questions</span>"
+msgstr "Preguntas <span class='text-pink6'>frecuentes</span>"
+
+msgid "Medicos"
+msgstr ""
+
+msgid "Ajuda"
 msgstr ""
 
 msgid "Ongoing <span class='text-pink6'>events</span>"
@@ -2754,9 +2766,6 @@ msgstr "Eventos <span class='text-white'>ciencia ciudadana?</span>"
 
 msgid "Past <span class='text-pink6'>events</span>"
 msgstr "Eeventos <span class='text-white'>ciencia ciudadana?</span>"
-
-msgid "Medicos"
-msgstr ""
 
 msgid "Notícias"
 msgstr ""
@@ -2904,6 +2913,27 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
+
+#~ msgid "Login"
+#~ msgstr "Iniciar sesión"
+
+#~ msgid "profile"
+#~ msgstr "perfil"
+
+#~ msgid "logout"
+#~ msgstr "cerrar sesión"
+
+#~ msgid "Company"
+#~ msgstr "Empresa"
+
+#~ msgid "Connect with us on"
+#~ msgstr "Conecte con EU-Citizen Science en "
+
+#~ msgid "More info"
+#~ msgstr "Más información"
+
+#~ msgid "That's fine"
+#~ msgstr "Listo"
 
 #~ msgid "Community Forums"
 #~ msgstr "Foros de la comunidad"
