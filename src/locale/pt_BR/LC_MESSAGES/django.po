@@ -162,8 +162,6 @@ msgstr "Termos de Uso"
 msgid "and "
 msgstr ""
 
-#, fuzzy
-#| msgid "Privacy"
 msgid "Privacy Policy"
 msgstr "Privacidade"
 
@@ -185,8 +183,6 @@ msgstr "Marcar posts selecionados como em edição"
 msgid "Draft"
 msgstr "Em edição"
 
-#, fuzzy
-#| msgid "Publisher"
 msgid "Published"
 msgstr "Publicado"
 
@@ -199,13 +195,9 @@ msgstr "Sim"
 msgid "Preview"
 msgstr "Visualizar"
 
-#, fuzzy
-#| msgid "Publisher"
 msgid "Save and publish"
 msgstr "Salvar e publicar"
 
-#, fuzzy
-#| msgid "Translations"
 msgid "Save as draft"
 msgstr "Salvar como em edição"
 
