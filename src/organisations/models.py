@@ -6,7 +6,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django_countries.fields import CountryField
 from utilities.models import AbstractTranslatedModel
-
+from diseases.models import Disease
 from .managers import OrganisationTypeQuerySet
 
 
@@ -35,10 +35,11 @@ class Organisation(models.Model):
     logo = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
     contactPoint = models.CharField(max_length=100, null=True, blank=True)
     contactPointEmail = models.EmailField(max_length=100, null=True, blank=True)
-    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     location = models.PointField(blank=True, null=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     country = CountryField(null=True, blank=True)
+    diseases = models.ManyToManyField(Disease, blank=True, verbose_name=_('Diseases'))
     approved = models.BooleanField(_('Approved'), null=True)
 
     class Meta:
