@@ -412,6 +412,7 @@
         max-width: 173px;
         min-width: 90px; 
         min-height: 120px;
+        transition: none !important;
     }
     .bttn2:hover{
         

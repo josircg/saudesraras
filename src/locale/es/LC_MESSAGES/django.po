@@ -2328,23 +2328,6 @@ msgstr "Desarrollo"
 msgid "Don't you see, we feel"
 msgstr ""
 
-msgid "Diagnosis"
-msgstr ""
-
-msgid "Doctors"
-msgstr ""
-
-msgid "Justice"
-msgstr ""
-
-msgid "Symptoms"
-msgstr ""
-
-#, fuzzy
-#| msgid "Communications"
-msgid "Publications"
-msgstr "organizaciones"
-
 #, fuzzy
 #| msgid "Search..."
 msgid "search here..."
@@ -2370,6 +2353,26 @@ msgstr "Privacidad"
 #| msgid "Confirmation Done!"
 msgid "Information about:"
 msgstr "Confirmado"
+
+msgid "Diagnosis"
+msgstr ""
+
+msgid "Doctors"
+msgstr ""
+
+msgid "Justice"
+msgstr ""
+
+msgid "SUS"
+msgstr ""
+
+msgid "Symptoms"
+msgstr ""
+
+#, fuzzy
+#| msgid "Communications"
+msgid "Publications"
+msgstr "organizaciones"
 
 msgid "Testimonials"
 msgstr ""
@@ -2902,11 +2905,6 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
-
-#, fuzzy
-#~| msgid "Main information"
-#~ msgid "Mais informações"
-#~ msgstr "Revisión"
 
 #~ msgid "Login"
 #~ msgstr "Iniciar sesión"
