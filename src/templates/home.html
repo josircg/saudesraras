@@ -82,7 +82,7 @@
                   border-bottom-left-radius: 76px; 
                   padding-left: 35px;
                   width: 85%;">
-              <div class="btn bttn4 col-1 text-center mdm text-home2" style="
+              <a class="btn bttn4 col-1 text-center mdm text-home2" style="
                   height: 100%; 
                   border-top-right-radius: 76px; 
                   border-bottom-right-radius: 76px; 
@@ -90,9 +90,9 @@
                   justify-content: center; 
                   align-items: center;
                   width: 15%;
-                  ">
+                  "  href="{% url 'emconstrucao' %}">
                   {% trans "search" %}
-              </div>
+          </a>
           </div>
       </div>
       
@@ -201,7 +201,7 @@
                 </div>
 
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                  <a h">
+                  <a>
                      <a href="{% url 'riofarmes' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="SUS">
@@ -210,7 +210,7 @@
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="#/" class="btn bttn2">
+                    <a href="{% url 'sintomas' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img"  style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Sintomas">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Symptoms" %}</span>
@@ -218,7 +218,7 @@
                     </a>
                 </div>
                 <div class="col-4 col-md-2 d-flex align-items-center justify-content-center mb-4 p-0">
-                    <a href="#/" class="btn bttn2">
+                    <a href="{% url 'emconstrucao' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="Publicações">
                             <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "Publications" %}</span>
@@ -356,7 +356,7 @@
             border-bottom-left-radius: 76px; 
             padding-left: 35px;"
             >
-        <div class="btn bttn4 col-sm-2 col-3 text-center mdm " style="
+        <a class="btn bttn4 col-sm-2 col-3 text-center mdm " style="
             height: 100%; 
             border-top-right-radius: 76px; 
             border-bottom-right-radius: 76px; 
@@ -365,9 +365,9 @@
             align-items: center;
             
             font-size: clamp(15px, 1vw, 20px);
-            ">
+            " href="{% url 'emconstrucao' %}">
             {% trans "search" %}
-        </div>
+      </a>
     </div>
     </div>
 
