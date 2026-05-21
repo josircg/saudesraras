@@ -81,28 +81,22 @@
                         {% trans "Organisations" %}
                     </a>
                     
-                    <div class="dropdown-menu p-3" aria-labelledby="orgDropdown" style="min-width: 550px; border-radius: 15px; border: none; box-shadow: 0px 4px 15px rgba(0,0,0,0.1);">
+                    <div class="dropdown-menu p-3" aria-labelledby="orgDropdown" style="min-width: 500px; border-radius: 15px; border: none; box-shadow: 0px 4px 15px rgba(0,0,0,0.1);">
                         <div class="row">
-                            <div class="col-4">
-                                {% for org_type in all_organisation_types|slice:":3" %}
-                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type.type }}">
-                                        {{ org_type.type }}
+                            <!-- Coluna 1: Primeira metade dos itens (ex: primeiros 4 se forem 8 no total) -->
+                            <div class="col-6">
+                                {% for org_type in all_organisation_types|slice:":4" %}
+                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type }}">
+                                        {{ org_type }}
                                     </a>
                                 {% endfor %}
                             </div>
 
-                            <div class="col-4 border-start border-end">
-                                {% for org_type in all_organisation_types|slice:"3:6" %}
-                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type.type }}">
-                                        {{ org_type.type }}
-                                    </a>
-                                {% endfor %}
-                            </div>
-
-                            <div class="col-4">
-                                {% for org_type in all_organisation_types|slice:"6:" %}
-                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type.type }}">
-                                        {{ org_type.type }}
+                            <!-- Coluna 2: Restante dos itens, com a borda separadora na esquerda -->
+                            <div class="col-6 border-start">
+                                {% for org_type in all_organisation_types|slice:"4:" %}
+                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type }}">
+                                        {{ org_type }}
                                     </a>
                                 {% endfor %}
                             </div>

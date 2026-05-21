@@ -2,7 +2,8 @@ from django.conf import settings
 from organisations.models import OrganisationType
 
 def global_settings(request):
-    org_types = OrganisationType.objects.values('type').distinct().order_by('type')
+    org_types = OrganisationType.objects.translated().order_by('type')
+    
     return {
         'TRANSLATED_LANGUAGES': settings.TRANSLATED_LANGUAGES,
         'FEATURED_MGT': settings.FEATURED_MGT,
