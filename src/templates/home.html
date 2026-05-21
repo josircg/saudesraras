@@ -71,63 +71,7 @@
                 {% trans "Don't you see, we feel" %}
               </h1>
           </div>
-          <div class="row" style="max-width: 1120px;">
-            <div class="col-12">
-                <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
-                    <ul class="nav justify-content-between w-100" >
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="{% url 'diagnostico' %}">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/diagnostico.svg' %}" class="diagnostico-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Diagnosis" %}
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="{% url 'medicos' %}">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img " style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Doctors" %}
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                          <a href="{% url 'justica' %}">
-                            <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                              <img src="{% static 'site/img/justica.svg' %}" class="justica-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                 {% trans "Justice" %}
-                            </div>
-                          </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="{% url 'riofarmes' %}">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    SUS
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="#/">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Symptoms" %}
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item col-12 col-md-6 col-lg-auto">
-                            <a href="#/">
-                                <div class="btn btn-sm bttn5 d-flex align-items-center" style="font-size: 20px;">
-                                    <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" style="width: 30px; height: 30px; margin-right: 4px">
-                                    {% trans "Publications" %}
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    
-                </nav>
-            </div>
-        </div>
+          
           <div class="container-fluid row" style="border: none; height: 8vw; border-radius: 76px; width: 100%; max-width: 1120px; display: flex; align-items: center; padding: 0%; max-height: 60px; min-height: 40px;">
               <input type="text" placeholder="{% trans 'search here...' %}" class="col-11 input-container mdm text-home2" style="
                   border: none; 
@@ -261,7 +205,7 @@
                      <a href="{% url 'riofarmes' %}" class="btn bttn2">
                         <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                             <img src="{% static 'site/img/sus.svg' %}" class="sus-img" style="width: 7vw; height: 7vw; min-width: 50px; min-height: 50px; max-width: 100px; max-height: 100px; border: 0; margin-bottom: 10%;" alt="SUS">
-                            <span style="font-size: clamp(10px, 2vw, 20px);">SUS</span>
+                            <span style="font-size: clamp(10px, 2vw, 20px);">{% trans "SUS" %}</span>
                         </div>
                     </a>
                 </div>

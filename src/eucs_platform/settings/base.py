@@ -141,12 +141,15 @@ INSTALLED_APPS = (
     "easy_thumbnails",
     "profiles",
     "accounts",
-    "projects",
-    "resources",
     "digest",
-    "platforms",
     "django_select2",
     "blog",
+    'events',
+    'diseases',
+    "projects",
+    'organisations',
+    "platforms",
+    "resources",
     "django_summernote",
     "leaflet",
     "django_countries",
@@ -154,7 +157,6 @@ INSTALLED_APPS = (
     "contact",
     'django.contrib.sites',
     'cookielaw',
-    'events',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
@@ -165,15 +167,10 @@ INSTALLED_APPS = (
     'active_link',
     'oauth2_provider',
     'django.contrib.gis',
-
-    'organisations',
-    "django_cron",
-    'django_crontab',
+    'django_cron',
     'ckeditor',
     'ckeditor_uploader',
-
     'django_cleanup.apps.CleanupConfig',
-
     'utilities',
 )
 

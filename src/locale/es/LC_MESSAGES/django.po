@@ -432,6 +432,27 @@ msgid_plural "%d test mails were sent"
 msgstr[0] "Se ha enviado %d correo de prueba"
 msgstr[1] "Se ha enviado %d correo de prueba"
 
+msgid "Diseases"
+msgstr "Doenças"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Symptom"
+msgstr "Sintoma"
+
+msgid "Symptoms"
+msgstr "Sintomas"
+
+msgid "ICD"
+msgstr "CID"
+
+msgid "Other names"
+msgstr "Otros Nomes"
+
+msgid "Disease"
+msgstr "Doença"
+
 msgid "Projects"
 msgstr "Proyectos"
 
@@ -497,9 +518,6 @@ msgstr "Nombre del evento"
 
 msgid "A brief description of the event"
 msgstr "Breve descripción del evento."
-
-msgid "Description"
-msgstr "Descripción"
 
 msgid "Location of the Event"
 msgstr "Localización del evento"
@@ -575,8 +593,8 @@ msgstr ""
 #| "\n"
 #| "    <p>Hello,</p>\n"
 #| "    <p>\n"
-#| "      We are pleased to inform you that the event <a href=\"%(domain)s"
-#| "%(event_url)s\">%(title)s</a>\n"
+#| "      We are pleased to inform you that the event <a "
+#| "href=\"%(domain)s%(event_url)s\">%(title)s</a>\n"
 #| "      has been approved.\n"
 #| "    </p>\n"
 #| "    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
@@ -587,8 +605,8 @@ msgid ""
 "\n"
 "    <p>Hello,</p>\n"
 "    <p>\n"
-"      We are pleased to inform you that the event <a href=\"%(domain)s"
-"%(event_url)s\">%(title)s</a>\n"
+"      We are pleased to inform you that the event <a "
+"href=\"%(domain)s%(event_url)s\">%(title)s</a>\n"
 "      has been approved.\n"
 "    </p>\n"
 "    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
@@ -600,8 +618,8 @@ msgstr ""
 "    <p>Hello,</p>\n"
 "    <p>\n"
 "      \n"
-"      Nos complace informarle de que el acto  <a href=\"%(domain)s"
-"%(event_url)s\">%(title)s</a>\n"
+"      Nos complace informarle de que el acto  <a "
+"href=\"%(domain)s%(event_url)s\">%(title)s</a>\n"
 "     ha sido aprobado.\n"
 "    </p>\n"
 "    <p>Si desea ponerse en contacto con nosotros, escriba a civil@ibict.br.</"
@@ -1071,6 +1089,9 @@ msgstr ""
 
 msgid "Email verified"
 msgstr "Correo electrónico verificado"
+
+msgid "Team"
+msgstr ""
 
 msgid "{}'s profile"
 msgstr "perfil"
@@ -1785,8 +1806,9 @@ msgstr ""
 "Por favor, describa los aspectos de ciencia ciudadana del recurso que "
 "justifican su registro en Civis. Esta información no será visible en la "
 "plataforma y servirá simplemente como referencia cuando se someta a "
-"moderación. Puede consultar nuestra explicación sobre qué es <a href="
-"\"https://civis.ibict.br/about/\">citizen science</a> (max 2000 caracteres)."
+"moderación. Puede consultar nuestra explicación sobre qué es <a "
+"href=\"https://civis.ibict.br/about/\">citizen science</a> (max 2000 "
+"caracteres)."
 
 msgid ""
 "Please name the author(s) of the resource. Enter <i>First Initial Last Name</"
@@ -1843,8 +1865,8 @@ msgstr "Licencia"
 
 msgid ""
 "Please select the organisation(s) contributing the resource, if any. If not "
-"listed, please add them <a href=\"/new_organisation\" target=\"_blank"
-"\">here</a > before submitting the resource."
+"listed, please add them <a href=\"/new_organisation\" "
+"target=\"_blank\">here</a > before submitting the resource."
 msgstr ""
 "Organización(es) que han contribuido al recurso (en caso de selección "
 "múltiple, separe con comas o pulsando enter. Si no están en el listado, por "
@@ -2184,12 +2206,6 @@ msgstr "Privacidad"
 msgid "Source Code"
 msgstr "Código Fonte"
 
-msgid "Todos os direitos reservados."
-msgstr ""
-
-msgid "Desenvolvido por:"
-msgstr ""
-
 #, fuzzy
 #| msgid "See all events"
 msgid "See all events here +"
@@ -2278,27 +2294,14 @@ msgstr "Cerrar sesión"
 msgid "Admin"
 msgstr "Administrar"
 
-msgid "Login"
-msgstr "Iniciar sesión"
-
-msgid "profile"
-msgstr "perfil"
-
-msgid "logout"
-msgstr "cerrar sesión"
-
-msgid "Company"
-msgstr "Empresa"
-
-msgid "Connect with us on"
-msgstr "Conecte con EU-Citizen Science en "
-
 msgid "Coming Soon"
 msgstr "Próximamente"
 
 msgid "Go back"
 msgstr "Volver"
 
+#, fuzzy
+#| msgid "This website uses cookies."
 msgid "This website uses cookies."
 msgstr "Este sitio se utiliza de cookies"
 
@@ -2343,23 +2346,6 @@ msgstr "Desarrollo"
 msgid "Don't you see, we feel"
 msgstr ""
 
-msgid "Diagnosis"
-msgstr ""
-
-msgid "Doctors"
-msgstr ""
-
-msgid "Justice"
-msgstr ""
-
-msgid "Symptoms"
-msgstr ""
-
-#, fuzzy
-#| msgid "Communications"
-msgid "Publications"
-msgstr "organizaciones"
-
 #, fuzzy
 #| msgid "Search..."
 msgid "search here..."
@@ -2385,6 +2371,23 @@ msgstr "Privacidad"
 #| msgid "Confirmation Done!"
 msgid "Information about:"
 msgstr "Confirmado"
+
+msgid "Diagnosis"
+msgstr ""
+
+msgid "Doctors"
+msgstr ""
+
+msgid "Justice"
+msgstr ""
+
+msgid "SUS"
+msgstr ""
+
+#, fuzzy
+#| msgid "Communications"
+msgid "Publications"
+msgstr "organizaciones"
 
 msgid "Testimonials"
 msgstr ""
@@ -2434,316 +2437,32 @@ msgstr "El proceso de revisión"
 msgid "The Moderation Process"
 msgstr "el Proceso de Revisión"
 
-msgid "moderation"
-msgstr "revisión"
-
-msgid "and"
-msgstr "y"
-
-msgid "quality criteria"
-msgstr "Criterios de calidad"
-
-msgid ""
-"The project and (training) resource profiles that you can find on the "
-"platform have been submitted by the citizen science community or the EU-"
-"Citizen.Science project consortium. Before publishing, they undergo a "
-"moderation process where the quality criteria framework developed within the "
-"EU-Citizen.Science project is applied. Below you can find a description of "
-"the moderation process and of all the criteria. IIASA and other partners in "
-"the project have developed these criteria and assessment framework as part "
-"of WP3 “Content - Framework, Quality Assurance and Curation” of the EU-"
-"Citizen.Science project. The work carried out can be found in <a "
-"href='https://zenodo.org/record/3716236#.YZNyLRwxlhE' target='_blank'>D3.1 "
-"<i>Framework Report Describing Criteria and Rationale for Sharing and "
-"Selecting State of the art Citizen Science Resources</i></a> and <a "
-"href='https://zenodo.org/record/5041332#.YZNxBRwxlhF' target='_blank'>D3.3 "
-"<i>Review of Framework Implementation Defined in D3.1</i></a>."
+msgid "Page Under Construction"
 msgstr ""
 
 msgid ""
-"Our ambitious goal is to become <b>the</b> place to share useful resources "
-"about planning, running, evaluating and participating in citizen science "
-"initiatives or simply learning about citizen science, including tools and "
-"guidelines, best practices and training modules. We hope to make practical "
-"guidance on citizen science findable and accessible to all, and enable "
-"people to initiate their own activities wherever they are. It is important "
-"to us, and the community of practitioners, that we have a way of ensuring "
-"that the resources profiled on the platform are of good quality, and that "
-"the projects profiled on the platform are indeed citizen science "
-"initiatives. This is why we have a moderation process for all submissions."
+"We are working on this section to provide you with the best experience. "
+"Check back soon!"
 msgstr ""
 
-msgid ""
-"When you create a profile for a resource or a project to share on the "
-"platform, you will be asked to provide a range of descriptive information "
-"about it, and once all of the mandatory data fields are completed, you will "
-"be able to submit the profile. Upon submission, it will be sent for "
-"moderation. Until it has been reviewed against our criteria, it will be "
-"marked as ‘not yet moderated’, and will not be automatically visible in "
-"search results. Once your resource profile has successfully been through the "
-"moderation process, it will be marked as ‘moderated’, and will be fully "
-"available in search results."
+#, fuzzy
+#| msgid "Go back to home"
+msgid "Back to Home"
+msgstr "Volver a la página de inicio"
+
+msgid "Diagnostico"
 msgstr ""
 
-msgid ""
-"We have developed a set of comprehensive quality criteria as a way of "
-"ensuring that the projects and resources that you can find on this platform "
-"are of good quality. The overarching criteria can be applied to both "
-"projects and resources. Specific and supporting criteria have been developed "
-"for resources. The table below provides an overview of all resources; "
-"further down on this page you can read about all the quality criteria in "
-"more detail."
-msgstr ""
-
-msgid "Overarching Criteria (for projects and resources)"
-msgstr ""
-
-msgid "About citizen science or relevant to citizen science (required)"
-msgstr ""
-
-msgid "All mandatory metadata is provided (required)"
-msgstr ""
-
-msgid ""
-"Engages with the <a target='_blank' href='https://zenodo.org/record/5127534#."
-"YV7PKt9CRhF'>ECSA 10 Principles of Citizen Science</a> (suggested)"
-msgstr ""
-
-msgid "Specific Criteria (for resources)"
-msgstr ""
-
-msgid "Access to the resource"
-msgstr "Ir al Recurso"
-
-msgid "Readability and Legibility"
-msgstr ""
-
-msgid "Clear structure"
-msgstr ""
-
-msgid "Clear language"
-msgstr "Limpiar Idioma"
-
-msgid "Basic formatting"
-msgstr "Formato básico"
-
-msgid "Content"
-msgstr "Contenido"
-
-msgid "Applicability"
-msgstr ""
-
-msgid "Easy to implement"
-msgstr ""
-
-msgid "Easy to adapt"
-msgstr ""
-
-msgid "Object"
-msgstr ""
-
-msgid "Clearly audible (audio object)"
-msgstr ""
-
-msgid "Good quality (video or image)"
-msgstr ""
-
-msgid "Supporting Criteria (for resources)"
-msgstr ""
-
-msgid "Evaluation"
-msgstr ""
-
-msgid "Used in the context of a citizen science initiative"
-msgstr ""
-
-msgid ""
-"Evaluated in terms of the quality of the content, methods, or results of the "
-"method"
-msgstr ""
-
-msgid "Impact"
-msgstr ""
-
-msgid "The overarching criteria for all resources"
-msgstr ""
-
-msgid " Required Criteria - Citizen Science"
-msgstr ""
-
-msgid ""
-"The first criterion that the moderator will look for, is that your "
-"<b>resource is relevant to citizen science</b>, or that your <b>project is a "
-"citizen science initiative</b>."
-msgstr ""
-
-msgid ""
-"Although there are no hard and fast definitions of what citizen science is "
-"and is not (nor should there be - citizen science should always remain a "
-"broad and inclusive concept), we turn to the recent work conducted by the "
-"citizen science community on the <a target='_blank' href='https://zenodo.org/"
-"communities/citscicharacteristics/?page=1&size=20'>ECSA Characteristics of "
-"Citizen Science</a> as guidance. Please consult these characteristics if you "
-"are uncertain whether the resource or the project you would like to share "
-"really does relate to citizen science. If the moderator has concerns they "
-"will contact you directly."
-msgstr ""
-
-msgid ""
-"The moderator will also check if all mandatory fields in the resource "
-"profile are completed. This is to ensure that all project and resource "
-"profiles provide sufficient information to enable users of the platform to "
-"see whether it is useful or relevant to them."
-msgstr ""
-
-msgid "Suggested Criteria - the Principles of Citizen Science"
-msgstr ""
-
-msgid ""
-"The moderator of your submitted profile will also consider whether your "
-"resource or project is in alignment with the <a href='https://zenodo.org/"
-"record/5127534#.YV7PKt9CRhF' target='_blank'>ECSA 10 Principles of Citizen "
-"Science</a>."
-msgstr ""
-
-msgid "Specific criteria"
-msgstr ""
-
-msgid ""
-"For the resources to be shared on the platform, we have developed a specific "
-"set of further criteria, which will be assessed during the moderation "
-"process. You can read more about how we developed these in the blog post ‘<a "
-"href='/blog/2020/04/30/how-we-developed-quality-criteria-resources/'>How we "
-"developed the quality criteria for resources’</a>."
-msgstr ""
-
-msgid ""
-"We consider good quality citizen science resources to be those that are easy "
-"to access, implement and adapt, well structured, clearly described and "
-"written in clear language, and ideally improve or support the desired impact "
-"of the initiative (eg. on science, policy or society, etc). For this purpose "
-"we have developed a range of criteria that the moderator will assess against "
-"a 5-point scale, from strongly disagree (1 point) to strongly agree (5 "
-"points)."
-msgstr ""
-
-msgid "Easy access to the resource"
-msgstr ""
-
-msgid ""
-"The resource should be easy to access, i.e. it doesn’t require registration, "
-"and is not behind a paywall."
-msgstr ""
-
-msgid ""
-"The resource should be <b>clearly structured</b> according to the type of "
-"the resource. For example, a scientific paper or report should include an "
-"introduction, methodology, results, discussion and/or conclusions, and "
-"methodology documents should include an introduction, audience description, "
-"step by step methodology, and an example."
-msgstr ""
-
-msgid ""
-"The resource should be <b>written in clear language</b> that is easy to read "
-"and understand for the intended target audience, and should be concise, "
-"unambiguous, and avoid the use of unusual words and jargon. Where technical "
-"terms are used, their meaning should be explained clearly."
-msgstr ""
-
-msgid ""
-"The resource should pay attention to <b>basic formatting</b>, such as clear "
-"titles and paragraphs, correct grammar and spelling, a legible font of large "
-"enough size to read, and clearly marked references."
-msgstr ""
-
-msgid "Clarity of Content"
-msgstr ""
-
-msgid ""
-"The resource should clearly describe its aims, goals and methods, so that it "
-"is easy for readers to understand how to apply the resource in their own "
-"context."
-msgstr ""
-
-msgid ""
-"The resource should be <b>easy to implement</b>, ideally with descriptions "
-"of how it can be implemented, the contexts that it is useful for, and "
-"recommendations for further use or development."
-msgstr ""
-
-msgid ""
-"The resource should be <b>easy to adapt</b> to different cases, ideally with "
-"an explanation of any limitations of the resource and the contexto in which "
-"it could be useful, and with guidelines or recommendations for its "
-"adaptation to different cases."
-msgstr ""
-
-msgid "Object Quality"
-msgstr ""
-
-msgid ""
-"If the resource is an audio object, it should be <b>clearly audible</b>, "
-"with no interruptions or background noise."
-msgstr ""
-
-msgid ""
-"If the resource is a video, an image or illustration, the quality should be "
-"good enough to <b>see clearly, with a sharp focus</b>."
-msgstr ""
-
-#, python-format
-msgid ""
-"The highest possible score is 40 points, if all criteria are applicable. But "
-"in most cases, only a selection of the above criteria will be applicable. "
-"The moderator will look to see that your resource exceeds 50%% of the total "
-"possible points for that type of resource. That is the threshold for being "
-"listed on the platform as a good quality resource."
-msgstr ""
-
-msgid "Supporting criteria"
-msgstr ""
-
-msgid ""
-"It really enhances the value and quality of your resources when you can say "
-"something about how it has been used and developed further in practice, and "
-"whether or not it has been evaluated for usefulness and applicability in "
-"practice. The moderator will also take it into positive consideration if "
-"there is evidence of the following criteria being met (but these are not "
-"part of the threshold calculation mentioned above):"
-msgstr ""
-
-msgid ""
-"The resource has been <b>used in the context of citizen science</b>, or is "
-"currently being used in a citizen science initiative, and the outcome of "
-"this has been shared."
-msgstr ""
-
-msgid ""
-"The resource has been <b>evaluated</b> in terms of the quality of the "
-"content, or the methods, or the results of the method, and the outcomes of "
-"these evaluations have been shared."
-msgstr ""
-
-msgid ""
-"The resource refers to any <b>impact</b> that it could have (or has had) on "
-"science, policy, society, etc."
-msgstr ""
-
-msgid ""
-"The impact of the resource has been <b>measured</b> and is shared in the "
-"resource."
+msgid "Doencas"
 msgstr ""
 
 msgid "Frequently <span class='text-pink6'>asked questions</span>"
 msgstr "Preguntas <span class='text-pink6'>frecuentes</span>"
 
-msgid "Diagnostico"
+msgid "Medicos"
 msgstr ""
 
 msgid "Ajuda"
-msgstr ""
-
-msgid "Doencas"
 msgstr ""
 
 msgid "Ongoing <span class='text-pink6'>events</span>"
@@ -2754,9 +2473,6 @@ msgstr "Eventos <span class='text-white'>ciencia ciudadana?</span>"
 
 msgid "Past <span class='text-pink6'>events</span>"
 msgstr "Eeventos <span class='text-white'>ciencia ciudadana?</span>"
-
-msgid "Medicos"
-msgstr ""
 
 msgid "Notícias"
 msgstr ""
@@ -2904,553 +2620,3 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
-
-#~ msgid "Community Forums"
-#~ msgstr "Foros de la comunidad"
-
-#~ msgid "Forum proposal created"
-#~ msgstr "Propuesta de foro creada"
-
-#~ msgid "Your forum \"%s\" has been created!"
-#~ msgstr "¡Su foro \"%s\" ha sido creado!"
-
-#~ msgid "Forum image"
-#~ msgstr "Plataformas"
-
-#~ msgid "Forum Proposal"
-#~ msgstr "Propuesta de Foro"
-
-#~ msgid "Forum Proposals"
-#~ msgstr "Propuestas de foros"
-
-#~ msgid "Forum Proposal added correctly"
-#~ msgstr "Plataforma añadida"
-
-#~ msgid "Notification - New Forum Proposal \"%s\" submitted"
-#~ msgstr "Notificación - Nueva propuesta de foro \"%s\" enviada"
-
-#~ msgid "Forum"
-#~ msgstr "Foro"
-
-#~ msgid "Review"
-#~ msgstr "Opinar"
-
-#~ msgid "Rate and comment"
-#~ msgstr "Puntuar y comentar"
-
-#~ msgid "Fórum"
-#~ msgstr "Foro"
-
-#~ msgid "Advanced search"
-#~ msgstr "Búsqueda avanzada"
-
-#~ msgid "Subscriptions of topics"
-#~ msgstr "Suscribirse al tema"
-
-#~ msgid "View my posts"
-#~ msgstr "Ver mis publicaciones"
-
-#~ msgid "Moderation queue"
-#~ msgstr "Revisión"
-
-#~ msgid "Mark subforums as read"
-#~ msgstr "Marcar subforos como leídos"
-
-#~ msgid "New topic"
-#~ msgstr "Nuevo tema"
-
-#~ msgid "Mark topics read"
-#~ msgstr "Marcar temas como leídos"
-
-#~ msgid "Announcements"
-#~ msgstr "Anuncios"
-
-#~ msgid "Topics"
-#~ msgstr "Temas científicos"
-
-#~ msgid "Posts"
-#~ msgstr "Publicaciones"
-
-#~ msgid "Last post"
-#~ msgstr "Última publicación"
-
-#~ msgid "Forums"
-#~ msgstr "Foros"
-
-#, fuzzy
-#~| msgid "By: <a href=\"%(poster_url)s\">%(username)s</a>"
-#~ msgid "By: <a href=\"%(poster_url)s\">%(username)s</a>"
-#~ msgstr "por"
-
-#, fuzzy
-#~| msgid "By: %(poster_username)s"
-#~ msgid "By: %(poster_username)s"
-#~ msgstr "por"
-
-#~ msgid "No posts"
-#~ msgstr "sin publicaciones"
-
-#~ msgid "Total redirects:"
-#~ msgstr "Total redirecciones:"
-
-#~ msgid "Subforums:"
-#~ msgstr "Subforos:"
-
-#~ msgid "No forums."
-#~ msgstr "No hay foros."
-
-#~ msgid "Index"
-#~ msgstr "Índice"
-
-#~ msgid "Mark forums as read"
-#~ msgstr "Marcar foros como leídos"
-
-#~ msgid "View unread topics"
-#~ msgstr "Ver temas no leídos"
-
-#~ msgid "Statistics"
-#~ msgstr "Estadísticas"
-
-#~ msgid "Total posts:"
-#~ msgstr "Mensajes totales:"
-
-#~ msgid "Total topics:"
-#~ msgstr "Total de temas:"
-
-#~ msgid "Add another file"
-#~ msgstr "Añadir otro fichero"
-
-#~ msgid "Attachments"
-#~ msgstr "Archivos adjuntos"
-
-#~ msgid "You may select <b>1</b> option"
-#~ msgstr "Puede seleccionar la opción <b>1</b>."
-
-#~ msgid "You may select up to <b>%(max_options)s</b> options"
-#~ msgstr "Puede seleccionar hasta <b>%(max_options)s</b> opciones."
-
-#~ msgid "Vote"
-#~ msgstr "Vota"
-
-#~ msgid "Change your vote"
-#~ msgstr "Cambia tu voto"
-
-#~ msgid "Poll options"
-#~ msgstr "Opciones de encuesta"
-
-#~ msgid "Add a poll option"
-#~ msgstr "Añadir una opción de encuesta"
-
-#~ msgid ""
-#~ "<b>Note:</b>&nbsp;Deleting poll options of an existing poll will delete "
-#~ "the associated votes."
-#~ msgstr ""
-#~ "<b>Nota:</b>&nbsp;Al eliminar las opciones de encuesta de una encuesta "
-#~ "existente se eliminarán los votos asociados."
-
-#~ msgid "Preview:"
-#~ msgstr "Opinar"
-
-#~ msgid "Results are currently hidden."
-#~ msgstr "Los resultados están actualmente ocultos."
-
-#~ msgid "Total votes:"
-#~ msgstr "Total de votos:"
-
-#~ msgid "Submit"
-#~ msgstr "Enviar"
-
-#~ msgid "View results"
-#~ msgstr "Resultados"
-
-#~ msgid "Options"
-#~ msgstr "Opciones"
-
-#~ msgid "Post reply"
-#~ msgstr "Publicar respuesta"
-
-#~ msgid "Subscribe"
-#~ msgstr "Suscríbase a"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Cancelar suscripción"
-
-#~ msgid "Lock topic"
-#~ msgstr "Bloquear tema"
-
-#~ msgid "Unlock topic"
-#~ msgstr "Desbloquear tema"
-
-#~ msgid "Delete topic"
-#~ msgstr "Eliminar tema"
-
-#~ msgid "Move topic"
-#~ msgstr "Mover tema"
-
-#~ msgid "Change to sticky topic"
-#~ msgstr "Cambiar a tema fijo"
-
-#~ msgid "Change to announce"
-#~ msgstr "Cambiar a anunciar"
-
-#~ msgid "Change to standard topic"
-#~ msgstr "Cambiar a tema estándar"
-
-#~ msgid "Poll"
-#~ msgstr "Encuesta"
-
-#~ msgid "Post a reply"
-#~ msgstr "Publicar una respuesta"
-
-#~ msgid "Topic review"
-#~ msgstr "Opinión del tema"
-
-#, fuzzy
-#~| msgid ""
-#~| "By: <a href=\"%(poster_url)s\">%(username)s</a> on %(creation_date)s"
-#~ msgid "By: <a href=\"%(poster_url)s\">%(username)s</a> on %(creation_date)s"
-#~ msgstr "Por:"
-
-#, fuzzy
-#~| msgid "By: %(poster_username)s on %(creation_date)s"
-#~ msgid "By: %(poster_username)s on %(creation_date)s"
-#~ msgstr "Por:"
-
-#~ msgid "Delete post"
-#~ msgstr "Eliminar"
-
-#~ msgid "Are you sure you want to delete this post?"
-#~ msgstr "¿Seguro que quiere borrar esta publicación?"
-
-#~ msgid "Yes, I'm sure"
-#~ msgstr "Sí, estoy seguro"
-
-#~ msgid "No, take me back"
-#~ msgstr "No, llévame de vuelta"
-
-#~ msgid "Edit post"
-#~ msgstr "Editar Perfil"
-
-#~ msgid "Post a new topic"
-#~ msgstr "Publicar un nuevo tema"
-
-#~ msgid "Last edited by:"
-#~ msgstr "Último editado por:"
-
-#~ msgid "on"
-#~ msgstr "No hay"
-
-#, fuzzy
-#~| msgid "edited %(counter)s time in total."
-#~ msgid "edited %(counter)s time in total."
-#~ msgid_plural "edited %(counter)s times in total."
-#~ msgstr[0] "editado %(counter)s de tiempo en total."
-#~ msgstr[1] "editado %(counter)s de tiempo en total."
-
-#~ msgid "Reason:"
-#~ msgstr "Razón:"
-
-#~ msgid "Posts:"
-#~ msgstr "Publicaciones:"
-
-#~ msgid "Anonymous user"
-#~ msgstr "Usuario anónimo"
-
-#~ msgid "Replies"
-#~ msgstr "Respuestas"
-
-#~ msgid "Views"
-#~ msgstr "Visualizaciones"
-
-#~ msgid "This topic is locked"
-#~ msgstr "Este tema está bloqueado"
-
-#~ msgid "There are no topics in this forum."
-#~ msgstr "No hay temas en este foro."
-
-#~ msgid "Go to the page:"
-#~ msgstr "Ir a la página:"
-
-#~ msgid "Posted by"
-#~ msgstr "Publicado por"
-
-#~ msgid "%(username)s profile"
-#~ msgstr "perfil de %(username)s"
-
-#~ msgid "Recent posts"
-#~ msgstr "Entradas recientes"
-
-#~ msgid "View all"
-#~ msgstr "Ver todos"
-
-#~ msgid "On %(creation_date)s"
-#~ msgstr "En %(creation_date)s"
-
-#~ msgid "Edit forum profile"
-#~ msgstr "Editar perfil del foro"
-
-#~ msgid "Edit forum"
-#~ msgstr "Editar foro"
-
-#~ msgid "Topics that you are subscribed to"
-#~ msgstr "Temas a los que estás suscrito"
-
-#, fuzzy
-#~| msgid "%(counter)s topic found"
-#~ msgid "%(counter)s topic found"
-#~ msgid_plural "%(counter)s topics found"
-#~ msgstr[0] "%(counter)s temas encontrados"
-#~ msgstr[1] "%(counter)s temas encontrados"
-
-#~ msgid "No topics found."
-#~ msgstr "No se han encontrado temas"
-
-#~ msgid "Subscribe to topic"
-#~ msgstr "Suscribirse al tema"
-
-#~ msgid "Would you like to subscribe to this topic?"
-#~ msgstr "¿Desea suscribirse a este tema?"
-
-#~ msgid "Unsubscribe from topic"
-#~ msgstr "Darse de baja de este tema"
-
-#~ msgid "Would you like to unsubscribe from this topic?"
-#~ msgstr "¿Desea darse de baja de este tema?"
-
-#~ msgid "My messages"
-#~ msgstr "Mis mensajes"
-
-#~ msgid "%(username)s's posts"
-#~ msgstr "%(username)s publicaciones"
-
-#, fuzzy
-#~| msgid "%(counter)s post found"
-#~ msgid "%(counter)s post found"
-#~ msgid_plural "%(counter)s posts found"
-#~ msgstr[0] "%(counter)s encontrado"
-#~ msgstr[1] "%(counter)s encontrado"
-
-#~ msgid "No posts found"
-#~ msgstr "No se ha encontrado ninguna publicación"
-
-#~ msgid "Disapprove"
-#~ msgstr "Desaprobar"
-
-#~ msgid "New post"
-#~ msgstr "Nueva publicación"
-
-#~ msgid "<b>1</b> option may be selected"
-#~ msgstr "<b>1</b> opción seleccionable"
-
-#~ msgid "Up to <b>%(max_options)s</b> options may be selected"
-#~ msgstr "Se pueden seleccionar hasta <b>%(max_options)s</b> opciones."
-
-#~ msgid "%(topic_length)s posts found"
-#~ msgstr "%(topic_length)s publicaciones encontradas"
-
-#~ msgid "No posts awaiting approval."
-#~ msgstr "No hay publicaciones pendientes de aprobación."
-
-#~ msgid "Approve post"
-#~ msgstr "Aprobar publicación"
-
-#~ msgid "Are you sure you want to approve this post?"
-#~ msgstr "¿Seguro que quiere aprobar este publicaciones?"
-
-#~ msgid "Disapprove post"
-#~ msgstr "Desaprobar publicación"
-
-#~ msgid ""
-#~ "Are you sure you want to disapprove this post? This post will be deleted."
-#~ msgstr ""
-#~ "¿Seguro que quiere desaprobar esta publicación? Esta publicación será "
-#~ "eliminada."
-
-#~ msgid "Are you sure you want to delete this topic?"
-#~ msgstr "¿Seguro que quiere borrar este tema?"
-
-#~ msgid "Are you sure you want to lock this topic?"
-#~ msgstr "¿Seguro que quiere bloquear este tema?"
-
-#~ msgid "Are you sure you want to unlock this topic?"
-#~ msgstr "¿Seguro que quiere desbloquear este tema?"
-
-#~ msgid "Change topic type"
-#~ msgstr "Cambiar el tipo de tema"
-
-#~ msgid "Search forums"
-#~ msgstr "Buscar en los foros"
-
-#~ msgid "New search"
-#~ msgstr "Nueva búsqueda"
-
-#, fuzzy
-#~| msgid "Your search has returned <b>%(number_of_results)s</b> result"
-#~ msgid "Your search has returned <b>%(number_of_results)s</b> result"
-#~ msgid_plural "Your search has returned <b>%(number_of_results)s</b> results"
-#~ msgstr[0] ""
-#~ "Su búsqueda ha devuelto <b>%\n"
-#~ "(number_of_results)s</b> resultado"
-#~ msgstr[1] ""
-#~ "Su búsqueda ha devuelto <b>%\n"
-#~ "(number_of_results)s</b> resultado"
-
-#~ msgid "Results"
-#~ msgstr "Resultados"
-
-#~ msgid "No results."
-#~ msgstr "No hay resultados."
-
-#~ msgid "Are you sure you want to mark forums as read?"
-#~ msgstr "¿Seguro que quiere marcar los foros como leídos?"
-
-#~ msgid "Are you sure you want to mark topics as read?"
-#~ msgstr "¿Seguro que quiere marcar los temas como leídos?"
-
-#, fuzzy
-#~| msgid "%(topic_length)s unread topic found"
-#~ msgid "%(topic_length)s unread topic found"
-#~ msgid_plural "%(topic_length)s unread topics found"
-#~ msgstr[0] "%(topic_length)s tema no leído encontrado"
-#~ msgstr[1] "%(topic_length)s tema no leído encontrado"
-
-#~ msgid "There are no unread topics."
-#~ msgstr "No hay temas sin leer."
-
-#~ msgid "review"
-#~ msgstr "Opinar"
-
-#~ msgid "reviews"
-#~ msgstr "Opiniones"
-
-#~ msgid "FORUM"
-#~ msgstr "FORO"
-
-#~ msgid "Register a citizen science resource"
-#~ msgstr "Registrar un recurso de ciencia ciudadana"
-
-#~ msgid "Register a course or educational material related to citizen science"
-#~ msgstr ""
-#~ "Registrar un curso o material educativo relacionado con la ciencia "
-#~ "ciudadana"
-
-#~ msgid "Register a citizen science platform"
-#~ msgstr "Registrar una plataforma de ciencia ciudadana"
-
-#~ msgid "Organisation or Network"
-#~ msgstr "Organización o red"
-
-#~ msgid ""
-#~ "and <a href='/privacy'>Privacy Policy</a>, as well as our use of <a "
-#~ "href='/privacy#cookies'>cookies</a>."
-#~ msgstr ""
-#~ "<a href='/privacy'>Política de Privacidad</a>, así como sobre el uso que "
-#~ "hacemos de las <a href='/privacy#cookies'>cookies</a>."
-
-#~ msgid "Follow us"
-#~ msgstr "Siga-nos"
-
-#~ msgid "Partnerships"
-#~ msgstr "Asociaciones"
-
-#, fuzzy
-#~| msgid "Events"
-#~ msgid "Eventos"
-#~ msgstr "Evento"
-
-#~ msgid ""
-#~ "Citizen science platform developed using open-source code based on the"
-#~ msgstr ""
-#~ "Plataforma de ciencia ciudadana desarrollada utilizando código abierto "
-#~ "basado en la"
-
-#~ msgid "SEARCH"
-#~ msgstr "BUSCAR"
-
-#~ msgid "BLOG"
-#~ msgstr "BLOG"
-
-#~ msgid "EVENTS"
-#~ msgstr "EVENTOS"
-
-#~ msgid "ABOUT"
-#~ msgstr "ACERCA DE"
-
-#~ msgid "Citizen Science <br> Platform"
-#~ msgstr "Ciencia Ciudadana <br> Plataforma"
-
-#~ msgid "Events "
-#~ msgstr "Eventos"
-
-#~ msgid "Blog"
-#~ msgstr "Blog"
-
-#~ msgid "Signup"
-#~ msgstr "Registrarse"
-
-#~ msgid "My personal area"
-#~ msgstr "Mi area personal"
-
-#~ msgid "My submissions"
-#~ msgstr "Mis envíos"
-
-#~ msgid "My bookmarks"
-#~ msgstr "Mis favoritos"
-
-#~ msgid "My privacy center"
-#~ msgstr "Mi centro de privacidad"
-
-#~ msgid "New submission"
-#~ msgstr "Nuevo envío"
-
-#~ msgid "Science built through collaboration among everyone"
-#~ msgstr "La ciencia se construye mediante la colaboración entre todos"
-
-#~ msgid "Join us"
-#~ msgstr "Únase a nosotros"
-
-#~ msgid "Search the entire platform..."
-#~ msgstr "Busca en toda la plataforma..."
-
-#~ msgid "About the platform"
-#~ msgstr "Sobre la plataforma"
-
-#~ msgid "What is Civis?"
-#~ msgstr "¿Qué es Civis?"
-
-#~ msgid ""
-#~ "Civis is a citizen science platform developed by the Brazilian Institute "
-#~ "of Information in Science and Technology (IBICT) using open-source code, "
-#~ "based on "
-#~ msgstr ""
-#~ "Civis es una plataforma de ciencia ciudadana desarrollada por el "
-#~ "Instituto Brasileño de Información en Ciencia y Tecnología (IBICT), de "
-#~ "código abierto a partir de eu-citizen.science."
-
-#~ msgid ""
-#~ "Our goal is to provide infrastructure and content that help broaden the "
-#~ "understanding of citizen science, promote its use, and support the "
-#~ "development of initiatives and the application of methodologies in this "
-#~ "field, with a focus on Latin America and the Caribbean."
-#~ msgstr ""
-#~ "Nuestro objetivo es proporcionar infraestructura y contenidos que ayuden "
-#~ "a ampliar la comprensión de la ciencia ciudadana, difundir su uso y "
-#~ "apoyar el desarrollo de iniciativas y la aplicación de metodologías en "
-#~ "este campo, con un enfoque en América Latina y el Caribe."
-
-#~ msgid "What is citizen science?"
-#~ msgstr "¿Qué es la ciencia ciudadana?"
-
-#~ msgid ""
-#~ "Citizen science is a branch of the open science movement. It focuses on "
-#~ "promoting non-scientist contributions and engagement in knowledge, data, "
-#~ "and information analysis and production that are relevant to science and "
-#~ "issues of social, environmental, and territorial importance."
-#~ msgstr ""
-#~ "La ciencia ciudadana es una de las vertientes del movimiento de ciencia "
-#~ "abierta. Se trata de un concepto amplio que engloba una extensa "
-#~ "diversidad de iniciativas, enfoques y metodologías que buscan mejorar y "
-#~ "promover la contribución y el compromiso de los no científicos en las "
-#~ "actividades de producción y análisis de conocimientos, datos e "
-#~ "información relevantes para la ciencia y las cuestiones de importancia "
-#~ "social, medioambiental y territorial."
