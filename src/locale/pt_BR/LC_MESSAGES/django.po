@@ -2250,13 +2250,11 @@ msgstr "Retornar"
 
 #, fuzzy
 #| msgid "This website uses cookies."
-msgid "Este site utiliza cookies."
+msgid "This website uses cookies."
 msgstr "Este site utiliza cookies"
 
-#, fuzzy
-#| msgid "Main information"
-msgid "Mais informações"
-msgstr "Informações principais"
+msgid "More info"
+msgstr "Mais informações"
 
 msgid "That's fine"
 msgstr "Ciente"
@@ -2314,13 +2312,6 @@ msgstr "Polos de atendimento"
 msgid "Information about:"
 msgstr "Informações sobre:"
 
-
-msgid "Diseases"
-msgstr "Doenças"
-
-msgid "Platform Saúdes Raras"
-msgstr "Plataforma Saúdes Raras"
-
 msgid "Diagnosis"
 msgstr "A dificuldade de conseguir o diagnostico"
 
@@ -2335,6 +2326,9 @@ msgstr "Onde eu acho o meu remédio? (RJ)"
 
 msgid "Publications"
 msgstr "Cartilhas, artigos e publicações"
+
+msgid "Platform Saúdes Raras"
+msgstr "Plataforma Saúdes Raras"
 
 msgid "Testimonials"
 msgstr "Depoimentos"
@@ -2572,8 +2566,7 @@ msgstr "Texto Traduzido"
 msgid "Translation"
 msgstr "Tradução"
 
-#~ msgid "More info"
-#~ msgstr "Mais informações"
-
-#~ msgid "That's fine"
-#~ msgstr "Ciente"
+#, fuzzy
+#~| msgid "Main information"
+#~ msgid "Mais informações"
+#~ msgstr "Informações principais"

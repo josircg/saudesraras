@@ -2306,11 +2306,11 @@ msgid "This website uses cookies."
 msgstr "Este sitio se utiliza de cookies"
 
 #, fuzzy
-#| msgid "Main information"
-msgid "Mais informações"
-msgstr "Revisión"
+#| msgid "Event info"
+msgid "More info"
+msgstr "Información del evento"
 
-msgid "Tudo bem"
+msgid "That's fine"
 msgstr ""
 
 msgid "Country List"
@@ -2347,11 +2347,6 @@ msgstr "Desarrollo"
 
 msgid "Don't you see, we feel"
 msgstr ""
-
-#, fuzzy
-#| msgid "Platform"
-msgid "Plataforma"
-msgstr "Plataforma"
 
 #, fuzzy
 #| msgid "Search..."
@@ -2395,6 +2390,11 @@ msgstr ""
 #| msgid "Communications"
 msgid "Publications"
 msgstr "organizaciones"
+
+#, fuzzy
+#| msgid "Platform images"
+msgid "Platform Saúdes Raras"
+msgstr "Imágenes de la plataforma"
 
 msgid "Testimonials"
 msgstr ""
@@ -2462,24 +2462,18 @@ msgstr ""
 
 msgid "Doencas"
 msgstr ""
-
-msgid "Page Under Construction"
-msgstr ""
-
-msgid ""
 "We are working on this section to provide you with the best experience. "
 "Check back soon!"
-msgstr ""
 
 #, fuzzy
-#| msgid "Go back to home"
-msgid "Back to Home"
-msgstr "Volver a la página de inicio"
+#| msgid "Past <span class='text-pink6'>events</span>"
+msgid "Frequently <span class='text-pink6'>asked questions</span>"
+msgstr "Eeventos <span class='text-white'>ciencia ciudadana?</span>"
 
 msgid "Medicos"
 msgstr ""
 
-msgid "Doencas"
+msgid "Ajuda"
 msgstr ""
 
 msgid "Ongoing <span class='text-pink6'>events</span>"
@@ -2637,3 +2631,13 @@ msgstr "Texto traducido"
 
 msgid "Translation"
 msgstr "Traducciones"
+
+#, fuzzy
+#~| msgid "Main information"
+#~ msgid "Mais informações"
+#~ msgstr "Revisión"
+
+#, fuzzy
+#~| msgid "Platform"
+#~ msgid "Plataforma"
+#~ msgstr "Plataforma"
