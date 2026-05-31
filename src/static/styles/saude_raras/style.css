@@ -465,7 +465,12 @@
     .bttn2:hover .publicacoes-img {
         content: url('/static/site/img/publi-hover.svg'); /* Imagem ao passar o mouse */
     }    
-
+    .bttn2:hover .doencas-img {
+        content: url('/static/site/img/doencas-azul-claro.png'); /* Imagem ao passar o mouse */
+    }
+    .bttn2:hover .plataforma-img {
+        content: url('/static/site/img/icone-azul-claro.png'); /* Imagem ao passar o mouse */
+    }
 
     .bttn2 span{
         color: #3D99F4;

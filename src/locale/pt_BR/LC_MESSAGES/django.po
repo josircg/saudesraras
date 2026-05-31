@@ -2152,6 +2152,12 @@ msgstr "Privacidade"
 msgid "Source Code"
 msgstr "Código Fonte"
 
+msgid "Todos os direitos reservados."
+msgstr ""
+
+msgid "Desenvolvido por:"
+msgstr ""
+
 msgid "See all events here +"
 msgstr "Veja todos eventos aqui +"
 
@@ -2238,14 +2244,18 @@ msgstr "Em breve"
 msgid "Go back"
 msgstr "Retornar"
 
-msgid "This website uses cookies."
+#, fuzzy
+#| msgid "This website uses cookies."
+msgid "Este site utiliza cookies."
 msgstr "Este site utiliza cookies"
 
-msgid "More info"
-msgstr "Mais informações"
+#, fuzzy
+#| msgid "Main information"
+msgid "Mais informações"
+msgstr "Informações principais"
 
-msgid "That's fine"
-msgstr "Ciente"
+msgid "Tudo bem"
+msgstr ""
 
 msgid "Country List"
 msgstr "Países"
@@ -2294,8 +2304,16 @@ msgstr "Justiça"
 msgid "Symptoms"
 msgstr "Sintomas"
 
+msgid "Deseases"
+msgstr "Doenças"
+
 msgid "Publications"
 msgstr "Publicações"
+
+#, fuzzy
+#| msgid "Platform"
+msgid "Plataforma"
+msgstr "Plataforma"
 
 msgid "search here..."
 msgstr "faça sua busca aqui..."
@@ -2314,6 +2332,15 @@ msgstr "Polos de atendimento"
 
 msgid "Information about:"
 msgstr "Informações sobre:"
+
+msgid "SUS"
+msgstr "Onde eu encontro m"
+
+msgid "Diseases"
+msgstr "Doenças"
+
+msgid "Platform Saúdes Raras"
+msgstr "Plataforma Saúdes Raras"
 
 msgid "Testimonials"
 msgstr "Depoimentos"
@@ -2848,3 +2875,9 @@ msgstr "Texto Traduzido"
 
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid "More info"
+#~ msgstr "Mais informações"
+
+#~ msgid "That's fine"
+#~ msgstr "Ciente"

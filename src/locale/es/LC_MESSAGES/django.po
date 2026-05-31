@@ -2348,10 +2348,18 @@ msgstr ""
 msgid "Symptoms"
 msgstr ""
 
+msgid "Deseases"
+msgstr ""
+
 #, fuzzy
 #| msgid "Communications"
 msgid "Publications"
 msgstr "organizaciones"
+
+#, fuzzy
+#| msgid "Platform"
+msgid "Plataforma"
+msgstr "Plataforma"
 
 #, fuzzy
 #| msgid "Search..."
@@ -2381,6 +2389,14 @@ msgstr "Confirmado"
 
 msgid "SUS"
 msgstr ""
+
+msgid "Diseases"
+msgstr ""
+
+#, fuzzy
+#| msgid "Platform images"
+msgid "Platform Saúdes Raras"
+msgstr "Imágenes de la plataforma"
 
 msgid "Testimonials"
 msgstr ""
