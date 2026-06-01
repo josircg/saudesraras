@@ -21,5 +21,5 @@ class DiseaseAdmin(admin.ModelAdmin):
     class Media:
         css = {
             # 'all' significa que o CSS será aplicado a todos os tipos de media (telas, impressões, etc.)
-            'all': ('css/autocomplete.css',)
+            'all': ('css/autocomplete-d.css',)
         }
