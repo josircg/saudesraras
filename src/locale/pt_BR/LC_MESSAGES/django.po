@@ -1065,7 +1065,7 @@ msgid "Email verified"
 msgstr "E-mail verificado"
 
 msgid "Team"
-msgstr ""
+msgstr "Equipe"
 
 msgid "{}'s profile"
 msgstr "perfil de {}"
@@ -2248,6 +2248,8 @@ msgstr "Em breve"
 msgid "Go back"
 msgstr "Retornar"
 
+#, fuzzy
+#| msgid "This website uses cookies."
 msgid "This website uses cookies."
 msgstr "Este site utiliza cookies"
 
@@ -2324,6 +2326,9 @@ msgstr "Onde eu acho o meu remédio? (RJ)"
 
 msgid "Publications"
 msgstr "Cartilhas, artigos e publicações"
+
+msgid "Platform Saúdes Raras"
+msgstr "Plataforma Saúdes Raras"
 
 msgid "Testimonials"
 msgstr "Depoimentos"
@@ -2560,3 +2565,8 @@ msgstr "Texto Traduzido"
 
 msgid "Translation"
 msgstr "Tradução"
+
+#, fuzzy
+#~| msgid "Main information"
+#~ msgid "Mais informações"
+#~ msgstr "Informações principais"
