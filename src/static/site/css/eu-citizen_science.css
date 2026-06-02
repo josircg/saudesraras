@@ -861,8 +861,8 @@ footer #parcerias .parceiros-logos img {
 }
 
 .btn-blue3:hover{
-    background-color: var(--blue3) !important;
-    color: var(--blue1) !important
+    background-color:var(--blue1)  !important;
+    color: var(--blue3)  !important
 
 }
 
