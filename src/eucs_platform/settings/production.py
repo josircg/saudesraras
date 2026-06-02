@@ -45,6 +45,16 @@ STATIC_ROOT = str(BASE_DIR.parent / "static")
 # Log everything to the logs directory at the top
 LOGFILE_ROOT = str(BASE_DIR.parent) + "/logs"
 
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (-15.125159, -57.636719),
+    'DEFAULT_ZOOM': 3,
+    'MIN_ZOOM': 2,
+    'RESET_VIEW': False,
+    'MAX_ZOOM': 18,
+    'TILES': 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    'ATTRIBUTION': '© OpenStreetMap contributors © CARTO',
+}
+
 # Reset logging
 LOGGING_CONFIG = None
 LOGGING = {
