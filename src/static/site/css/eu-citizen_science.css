@@ -1298,3 +1298,28 @@ footer #parcerias .parceiros-logos img {
 #closeCookieConsent:hover {
     opacity: 1;
 }
+
+.btn-bookmark-custom[bookmarked="True"] {
+    background-color: #114D7F !important;
+    color: white !important;
+    border: 1px solid white !important;
+}
+
+.btn-bookmark-custom[bookmarked="True"]:hover {
+    background-color: white !important;
+    color: #114D7F !important;
+    border: 1px solid #114D7F !important;
+}
+
+
+.btn-bookmark-custom[bookmarked="False"] {
+    background-color: white !important;
+    color: #114D7F !important;
+    border: 1px solid #114D7F !important;
+}
+
+.btn-bookmark-custom[bookmarked="False"]:hover {
+    background-color: #114D7F !important;
+    color: white !important;
+    border: 1px solid white !important;
+}

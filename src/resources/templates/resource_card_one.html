@@ -105,13 +105,7 @@
                         btnDownload.href = `https://drive.google.com/uc?export=download&id=${driveId}`;
                     }
                 }
-            } else if (urlOriginal) {
-                // Se for um link externo normal, apenas atualiza o botão Abrir Recurso
-                const btnOpen = currentCard.querySelector('.btn-open-resource');
-                if (btnOpen) {
-                    btnOpen.href = urlOriginal.startsWith('http') ? urlOriginal : `//${urlOriginal}`;
-                }
-            }
+            } 
         }
     })();
 </script>
