@@ -82,7 +82,7 @@
                   border-bottom-left-radius: 76px; 
                   padding-left: 35px;
                   width: 85%;">
-              <div class="btn bttn4 col-1 text-center mdm text-home2" style="
+              <a class="btn bttn4 col-1 text-center mdm text-home2" style="
                   height: 100%; 
                   border-top-right-radius: 76px; 
                   border-bottom-right-radius: 76px; 
@@ -90,9 +90,9 @@
                   justify-content: center; 
                   align-items: center;
                   width: 15%;
-                  ">
+                  "  href="{% url 'emconstrucao' %}">
                   {% trans "search" %}
-              </div>
+          </a>
           </div>
       </div>
       
@@ -219,7 +219,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-4">
-                    <a href="#/" class="btn bttn2">
+                    <a href="{% url 'sintomas' %}" class="btn bttn2">
                         <div class="icon-container">
                             <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img" alt="Sintomas">
                         </div>
@@ -228,7 +228,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-4">
-                    <a href="#/" class="btn bttn2">
+                    <a href="{% url 'resources' %}" class="btn bttn2">
                         <div class="icon-container">
                             <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" alt="Publicações">
                         </div>
@@ -269,13 +269,12 @@
               </h1>
           </div>
           <div class="text-center col-lg-auto col-md-6 col-12 mb-2">
-              <a class=" azul" href="/#" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
+              <a class=" azul" href="{% url 'emconstrucao' %}" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
                 {% trans "See others testimonials here +" %}
               </a>
           </div>
       </div>
 
-      <!-- Novos Cards -->
       <div class="row justify-content-between mt-3">
           <!-- Card 1 -->
           <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
@@ -375,7 +374,7 @@
             border-bottom-left-radius: 76px; 
             padding-left: 35px;"
             >
-        <div class="btn bttn4 col-sm-2 col-3 text-center mdm " style="
+        <a class="btn bttn4 col-sm-2 col-3 text-center mdm " style="
             height: 100%; 
             border-top-right-radius: 76px; 
             border-bottom-right-radius: 76px; 
@@ -384,9 +383,9 @@
             align-items: center;
             
             font-size: clamp(15px, 1vw, 20px);
-            ">
+            " href="{% url 'emconstrucao' %}">
             {% trans "search" %}
-        </div>
+      </a>
     </div>
     </div>
 
