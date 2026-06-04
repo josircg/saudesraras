@@ -1,13 +1,11 @@
-from __future__ import unicode_literals
-
 from itertools import chain
 
 from contact.models import Subscriber
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
+from django.db import ProgrammingError
 from django.db.models import Q
-from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import ugettext_lazy as _
@@ -16,10 +14,10 @@ from events.models import Event
 from organisations.models import Organisation, OrganisationPermission
 from projects.models import Project, FollowedProjects, ProjectPermission
 from resources.models import Resource, BookmarkedResources, ResourcePermission
+from utilities.models import SearchIndex, SearchIndexType
 
 from . import forms
-from . import models
-from .models import Profile
+from .models import Profile, InterestArea
 
 
 class ShowProfile(LoginRequiredMixin, generic.TemplateView):
@@ -29,7 +27,7 @@ class ShowProfile(LoginRequiredMixin, generic.TemplateView):
     def get(self, request, *args, **kwargs):
         slug = self.kwargs.get("slug")
         if slug:
-            profile = get_object_or_404(models.Profile, slug=slug)
+            profile = get_object_or_404(Profile, slug=slug)
             user = profile.user
             if user.profile.profileVisible is True:
                 kwargs["show_user"] = user
@@ -125,16 +123,16 @@ class Submissions(generic.TemplateView):
     def get(self, request, *args, **kwargs):
         slug = self.kwargs.get("slug")
         if slug:
-            profile = get_object_or_404(models.Profile, slug=slug)
+            profile = get_object_or_404(Profile, slug=slug)
             user = profile.user
         else:
             user = self.request.user
             if user.is_anonymous:
                 return redirect("/login")
 
-        projectsSubmitted = Project.objects.all().filter(creator=user).order_by('-dateUpdated')
-        resourcesSubmitted = Resource.objects.all().filter(creator=user).filter(isTrainingResource=False)
-        trainingsSubmitted = Resource.objects.all().filter(creator=user).filter(isTrainingResource=True)
+        projectsSubmitted = Project.objects.filter(creator=user).order_by('-dateUpdated')
+        resourcesSubmitted = Resource.objects.filter(creator=user).filter(isTrainingResource=False)
+        trainingsSubmitted = Resource.objects.filter(creator=user).filter(isTrainingResource=True)
         organisationsSubmitted = Organisation.objects.all().filter(creator=user)
         eventsSubmitted = Event.objects.all().filter(creator=user)
         kwargs["show_user"] = user
@@ -192,14 +190,19 @@ class UsersSearch(generic.TemplateView):
                 '-user__date_joined')
             filters['orderby'] = ''
 
-            # TODO: Add surname (needs to be added algo in the autocomplete search
         if request.GET.get('keywords'):
-            users = users.filter(
-                Q(user__name__icontains=request.GET['keywords']) |
-                Q(interestAreas__interestArea__icontains=request.GET['keywords'])).distinct()
+            users = (
+                users.filter(slug__in=SearchIndex.objects.full_text_search_ids(request.GET['keywords'],
+                                                                               SearchIndexType.PROFILE.value,
+                                                                               cast_as='uuid'))
+            )
             filters['keywords'] = request.GET['keywords']
 
-        counter = len(users)
+        try:
+            counter = len(users)
+        except ProgrammingError:
+            counter = 0
+            users = Profile.objects.none()
 
         paginator = Paginator(users, 42)
         page = request.GET.get('page')
@@ -297,35 +300,10 @@ def updateInterestAreas(dictio):
         for ia in interestAreas:
             if not ia.isdecimal():
                 # This is a new interestArea
-                models.InterestArea.objects.get_or_create(interestArea=ia)
-                interestArea_id = models.InterestArea.objects.get(interestArea=ia).id
+                InterestArea.objects.get_or_create(interestArea=ia)
+                interestArea_id = InterestArea.objects.get(interestArea=ia).id
                 dictio.update({'interestAreas': interestArea_id})
             else:
                 # This keyword is already in the database
                 dictio.update({'interestAreas': ia})
     return dictio
-
-
-def usersAutocompleteSearch(request):
-    if request.GET.get('q'):
-        text = request.GET['q']
-        users = getProfilesAutocomplete(text)
-        users = list(users)
-        return JsonResponse(users, safe=False)
-    else:
-        return HttpResponse("No cookies")
-
-
-def getProfilesAutocomplete(text):
-    profiles = models.Profile.objects.all().filter(
-        Q(user__name__icontains=text)).filter(profileVisible=True).values_list('user__id', 'user__name', 'slug')
-    interestAreas = models.InterestArea.objects.filter(
-        interestArea__icontains=text).values_list('interestArea', flat=True).distinct()
-    report = []
-    for profile in profiles:
-        report.append({"type": "profile", "id": profile[0], "text": profile[1], "slug": profile[2]})
-    for interestArea in interestAreas:
-        numberElements = models.Profile.objects.filter(
-            profileVisible=True).filter(Q(interestAreas__interestArea__icontains=interestArea)).count()
-        report.append({"type": "profileInterestArea", "text": interestArea, "numberElements": numberElements})
-    return report

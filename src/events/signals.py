@@ -22,3 +22,17 @@ def notify_approved_event(sender, instance, **kwargs):
                 ),
                 to=to
             )
+
+
+def add_search_index(sender, instance, created, **kwargs):
+    from utilities.models import add_searchindex_text, SearchIndexType
+
+    text = f'{instance.title} {instance.description} {instance.place}'
+
+    add_searchindex_text(SearchIndexType.EVENT.value, instance.pk, instance.title, text,
+                         is_public=bool(instance.approved))
+
+
+def delete_search_index(sender, instance, **kwargs):
+    from utilities.models import delete_searchindex, SearchIndexType
+    delete_searchindex(SearchIndexType.EVENT.value, instance.pk)

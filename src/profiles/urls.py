@@ -13,7 +13,6 @@ urlpatterns = [
     path("me/resources", views.resources, name="self_resources"),
     path("me/followed_projects", views.followedProjects, name="followed_projects"),
     path("me/organisations", views.organisations, name="self_organisations"),
-    path("me/usersAutocompleteSearch", views.usersAutocompleteSearch, name="usersAutocompleteSearch"),
     path("<slug:slug>/submissions", views.Submissions.as_view(), name="submissions"),
     path("<slug:slug>/project_permissions", views.ProjectPermissions.as_view(), name="project_permissions"),
     path("<slug:slug>/", views.ShowProfile.as_view(), name="show"),

@@ -8,7 +8,6 @@
 @font-face {
     font-family: "Recoleta-SemiBold";
     src: url("/static/bootstrap/fonts/Recoleta-SemiBold.ttf") format("opentype");
-    /* Adicione outras variações da fonte conforme necessário */
     }
        
 
@@ -751,11 +750,6 @@ footer #parcerias .parceiros-logos img {
 #navTop ul.navbar-nav .nav-item.top a:hover {
     color: var(--blue2) !important;
     transition: 0.3s;
-}
-
-#searchTop.finder-page>div,
-#finder.finder-page .input-group {
-    height: 48px;
 }
 
 .form-control:focus {
