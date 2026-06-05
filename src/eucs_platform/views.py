@@ -24,7 +24,7 @@ from projects.models import Project, Topic as PTopic
 from projects.views import getProjectsAutocomplete
 from resources.models import Resource, ResourceGroup, ResourcesGrouped
 from resources.views import getResourcesAutocomplete
-
+from pages.models import Page, Section
 
 def home(request):
     # TODO: Clean this, we dont need lot of things
@@ -58,7 +58,6 @@ def home(request):
     countertresources = paginator_training_resources.count
 
     # Organisations
-    # TODO: Put -dateCreated
     organisations = Organisation.objects.all().order_by('id')
     if request.GET.get('keywords'):
         organisations = organisations.filter(Q(name__icontains=request.GET['keywords'])).distinct()
@@ -99,6 +98,12 @@ def home(request):
                   items_per_page)
     events = paginator_event.get_page(page)
 
+    # Depoimentos
+    depoimentos = Section.objects.filter(page__slug='depoimentos').order_by('order')[:3]
+
+    # FAQ
+    perguntas_frequentes = Section.objects.filter(page__slug='depoimentos').order_by('order')[:10]
+
     # Users
     counter_users = Profile.objects.count()
 
@@ -118,6 +123,8 @@ def home(request):
         'platforms': platforms,
         'posts': posts,
         'events': events,
+        'depoimentos': depoimentos,
+        'faq': perguntas_frequentes,
         'counterPlatforms': counter_platforms,
         'counterUsers': counter_users,
         'total': total,

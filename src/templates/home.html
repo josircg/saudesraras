@@ -128,7 +128,7 @@
     <div class="container justify-content-center p-0" style="max-width: 1120px;">
         <div class="row justify-content-lg-between justify-content-center">
             <div class="card text-center col-lg-6 col-sm-12 p-0 mb-4" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
-                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
+                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; overflow-wrap: break-word;">
                     {% trans "Hidden Disabilities Sunflower" %}
             </p>
                     
@@ -146,7 +146,7 @@
         </div>
     
             <div class="card text-center col-lg-6 col-sm-12 p-0 mb-4" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
-                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
+                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; overflow-wrap: break-word;">
                     {% trans "Service centers" %}
                 </p>
                 <video
@@ -269,7 +269,7 @@
               </h1>
           </div>
           <div class="text-center col-lg-auto col-md-6 col-12 mb-2">
-              <a class=" azul" href="/#" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
+              <a class=" azul" href="/depoimentos" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
                 {% trans "See others testimonials here +" %}
               </a>
           </div>
@@ -277,88 +277,35 @@
 
       <!-- Novos Cards -->
       <div class="row justify-content-between mt-3">
+          {% for depoimento in depoimentos %}
           <!-- Card 1 -->
           <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
-              <div class="p-4 mb-4 card-container" 
-                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <!-- Link sobrepondo o conteúdo -->
-                  <a href="SEU_LINK_AQUI"
-                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
+              <div class="p-4 mb-4 card-container" style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
+                  <a href="/depoimentos#{depoimento.slug}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
                   <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
+                  <img src="{{ depoimento.first_image }}" alt="Imagem" class="card-image"
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
                   <!-- Conteúdo da carta com espaçamento fixo -->
                   <div style="padding-top: 40px; margin-bottom: 60px;">
                       <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
+                        {{ depoimento.header|safe }}
                     </p>
                   </div>
 
                   <!-- Título fixo na parte inferior -->
                   <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
-                      Mariana Costa
+                      {{ depoimento.title }}
                   </h5>
               </div>
           </div>
-
-          <!-- Card 2 -->
-          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
-              <div class="p-4 mb-4 card-container" 
-                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <!-- Link sobrepondo o conteúdo -->
-                  <a href="SEU_LINK_AQUI"
-                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
-
-                  <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
-                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
-
-                  <!-- Conteúdo da carta com espaçamento fixo -->
-                  <div style="padding-top: 40px; margin-bottom: 60px;">
-                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
-                    </p>
-                  </div>
-
-                  <!-- Título fixo na parte inferior -->
-                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
-                      Mariana Costa
-                  </h5>
-              </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
-              <div class="p-4 mb-4 card-container" 
-                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <!-- Link sobrepondo o conteúdo -->
-                  <a href="SEU_LINK_AQUI"
-                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
-
-                  <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
-                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
-
-                  <!-- Conteúdo da carta com espaçamento fixo -->
-                  <div style="padding-top: 40px; margin-bottom: 60px;">
-                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
-                    </p>
-                  </div>
-
-                  <!-- Título fixo na parte inferior -->
-                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
-                      Mariana Costa
-                  </h5>
-              </div>
-          </div>
+          {% endfor %}
       </div>
   </div>
 </div>
 
-<div class="container pb-4 px-5" style="max-width: 1140px;">
+<!-- div class="container pb-4 px-5" style="max-width: 1140px;">
   <div class="row pb-5">
     <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center m-0 reg" style="width: 100%; height: auto;">
       <h1 class="text-home reg azul-escuro col-lg-7 col-12 text-start mb-3 mb-lg-0" style="overflow-wrap: break-word;">
@@ -390,9 +337,8 @@
     </div>
     </div>
 
-    <!-- iframe id="frame-visao" class="w-100 mt-3" style="height: 37.5rem;" src="https://visao.ibict.br/visao2/viewGroupCategory/238?l=462&amp;amp&amp;ui=f&amp;amp&amp;header=f&amp;amp&amp;hideIndicator=t" frameborder="0"></iframe-->
   </div>
-</div>
+</div -->
 
 
   <div class="container-fluid row" style="background-color: #5CDCFF; padding: 0; margin: 0;">

@@ -4,6 +4,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from ckeditor.widgets import CKEditorWidget
+from poweradmin.admin import PowerModelAdmin, PowerButton
 
 from .models import Organisation, OrganisationType
 
@@ -48,7 +49,7 @@ class OrgAdminForm(forms.ModelForm):
 
 
 @admin.register(Organisation)
-class OrganisationAdmin(admin.ModelAdmin):
+class OrganisationAdmin(PowerModelAdmin):
     list_display = ('name', 'orgType', 'approved', 'dateCreated', 'safe_url')
     list_filter = ('orgType', 'approved')
     ordering = ('-name',)
@@ -57,6 +58,12 @@ class OrganisationAdmin(admin.ModelAdmin):
     autocomplete_fields = ('diseases',)
     search_fields = ('name',)
     form = OrgAdminForm
+
+    def get_buttons(self, request, object_id=None):
+        buttons = super(OrganisationAdmin, self).get_buttons(request, object_id)
+        if object_id:
+            buttons.append(PowerButton(url=f'/organisation/{object_id}', label=_('Public URL')))
+        return buttons
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)

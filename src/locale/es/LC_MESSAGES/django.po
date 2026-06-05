@@ -683,6 +683,12 @@ msgstr "¡Su evento \"%s\" ha sido enviado!"
 msgid "Notification - New event \"%s\" submitted"
 msgstr "Notificación - Nuevo evento \"%s\" enviado"
 
+msgid "Please briefly describe the organisation (max 500 words)."
+msgstr "Describa brevemente la organización (máx. 500 palabras)."
+
+msgid "Public URL"
+msgstr ""
+
 msgid "Organisation name"
 msgstr "Nombre de la organización"
 
@@ -691,9 +697,6 @@ msgstr "Escriba el nombre de la organización o red."
 
 msgid "Please provide the URL to the website of the organisation."
 msgstr "Indique la URL del sitio web de la organización."
-
-msgid "Please briefly describe the organisation (max 500 words)."
-msgstr "Describa brevemente la organización (máx. 500 palabras)."
 
 msgid "Type"
 msgstr "Tipo"
@@ -2282,6 +2285,9 @@ msgstr "Histórico"
 
 msgid "View on site"
 msgstr "Visualizar en site"
+
+msgid "Ver todas"
+msgstr ""
 
 #, fuzzy
 #| msgid "profile"

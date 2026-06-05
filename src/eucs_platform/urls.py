@@ -7,6 +7,7 @@ import platforms.urls
 import profiles.urls
 import projects.urls
 import resources.urls
+import pages.urls
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -66,6 +67,7 @@ urlpatterns = [
     path("", include(events.urls)),
     path("", include(digest.urls)),
     path("", include(platforms.urls)),
+    path("", include(pages.urls)),
     path('summernote/', include('django_summernote.urls')),
     re_path(r'^i18n/', include('django.conf.urls.i18n')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -98,8 +100,7 @@ urlpatterns = [
     path("parceiro/", views.parceiro, name="parceiro"),
     path("sintomas/", views.pag_em_construcao, name="sintomas"),
     path("SUS/", views.pag_em_construcao, name="SUS"),
-    path("depoimentos/", views.pag_em_construcao, name="depoimentos"),
-   
+
     # Mantive abaixo os links com dev no final para que consigamos acessar as pags via link
     path("privacydev/", views.privacy, name="privacydev"),
     path("guidedev/", views.guide, name="guidedev"),
@@ -108,8 +109,6 @@ urlpatterns = [
     path("diagnosticodev/", views.diagnostico, name="diagnosticodev"),
     path("doencasdev/", views.doencas, name="doencasdev"),
     path("justicadev/", views.justica, name="justicadev"),
-    #path("sintomasdev/", views.sintomas, name="sintomasdev"),
-    #path("SUSdev/", views.SUS, name="SUSdev"),
 ]
 
 # User-uploaded files like profile pics need to be served in development
