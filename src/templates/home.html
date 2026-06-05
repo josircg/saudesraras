@@ -12,7 +12,7 @@
 {% block splash %}
 {% if request.get_full_path == "/" %}
 
-<link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}" />
+<link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}?v=1" type="text/css" />
 <body class="d-flex flex-column min-vh-100">
   <div
     class="border-top "
@@ -300,35 +300,6 @@
               </div>
           </div>
           {% endfor %}
-      </div>
-  </div>
-</div>
-
-          <!-- Card 3 -->
-          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
-              <div class="p-4 mb-4 card-container" 
-                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <!-- Link sobrepondo o conteúdo -->
-                  <a href="SEU_LINK_AQUI"
-                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
-
-                  <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
-                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
-
-                  <!-- Conteúdo da carta com espaçamento fixo -->
-                  <div style="padding-top: 40px; margin-bottom: 60px;">
-                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
-                    </p>
-                  </div>
-
-                  <!-- Título fixo na parte inferior -->
-                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
-                      Mariana Costa
-                  </h5>
-              </div>
-          </div>
       </div>
   </div>
 </div>
