@@ -167,20 +167,10 @@ class ResourceForm(forms.Form):
     height1 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     withImage1 = forms.BooleanField(widget=forms.HiddenInput(), required=False, initial=False)
 
-    image2 = forms.ImageField(
-        required=False,
-        widget=forms.FileInput(attrs={'data-image-suffix': '2', 'data-image-width-option': 1}),
-        label=_("Image for the resource profile heading"),
-        help_text=_("The image (.jpg or .png) will be resized to 1100x400 pixels. "
-                    "Image files with dimensions that greatly differ from this size may be "
-                    "drastically cropped. To learn how to avoid this, see our <a href='/"
-                    "guide' target='_blank'>User Guide.</a>"))
-    image_credit2 = forms.CharField(max_length=300, required=False, label=_("Provide image credit, if applicable"))
     x2 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     y2 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     width2 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     height2 = forms.FloatField(widget=forms.HiddenInput(), required=False)
-    withImage2 = forms.BooleanField(widget=forms.HiddenInput(), required=False, initial=False)
 
     # Curated list
     curatedList = forms.ModelMultipleChoiceField(
@@ -235,10 +225,7 @@ class ResourceForm(forms.Form):
         # Saving images
         if (len(images[0]) > 6):
             resource.image1 = images[0]
-        if (len(images[1]) > 6):
-            resource.image2 = images[1]
         resource.imageCredit1 = self.data['image_credit1']
-        resource.imageCredit2 = self.data['image_credit2']
 
         # Training resource fields
 

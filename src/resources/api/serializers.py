@@ -45,7 +45,7 @@ class ResourceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Resource
-        fields = ['id', 'name', 'url', 'abstract', 'image1', 'image2', 'authors', 'dateUploaded', 'keywords',
+        fields = ['id', 'name', 'url', 'abstract', 'image1', 'authors', 'dateUploaded', 'keywords',
                   'category', 'license', 'publisher', 'datePublished', 'theme', 'inLanguage', 'resourceDOI', 'featured']
 
 
@@ -57,7 +57,7 @@ class TrainingResourceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Resource
-        fields = ['id', 'name', 'url', 'abstract', 'image1', 'image2', 'authors', 'dateUploaded', 'keywords',
+        fields = ['id', 'name', 'url', 'abstract', 'image1', 'authors', 'keywords',
                   'category', 'license', 'publisher', 'datePublished', 'theme', 'inLanguage', 'resourceDOI', 'featured',
                   'own']
 
@@ -70,7 +70,7 @@ class ResourceSerializerCreateUpdate(serializers.ModelSerializer):
 
     class Meta:
         model = Resource
-        fields = ['id', 'name', 'url', 'abstract', 'image1', 'image2', 'authors', 'keywords',
+        fields = ['id', 'name', 'url', 'abstract', 'image1', 'authors', 'keywords',
                   'category', 'license', 'publisher', 'datePublished', 'theme', 'inLanguage', 'resourceDOI', 'featured']
 
     def validate(self, data):
@@ -111,18 +111,10 @@ class ResourceSerializerCreateUpdate(serializers.ModelSerializer):
             image_path = save_image_with_path(image, photo.name)
             image1 = image_path
 
-        image2 = self.validated_data.get('image2')
-        if (image2):
-            photo = image2
-            image = Image.open(photo)
-            image_path = save_image_with_path(image, photo.name)
-            image2 = image_path
-
         publication_date = datetime.now()
 
         moreItems = [('creator', args.user), ('keywords', keywords), ('authors', authors),
-                     ('dateUploaded', publication_date),
-                     ('image1', image1), ('image2', image2)]
+                     ('image1', image1), ]
 
         data = dict(
             list(self.validated_data.items()) +
@@ -137,7 +129,6 @@ class ResourceSerializerCreateUpdate(serializers.ModelSerializer):
         keywordsSent = False
         authorsSent = False
         image1Sent = False
-        image2Sent = False
         if 'keywords' in requestData:
             keywords = ""
             if requestData.get('keywords'):
@@ -155,11 +146,6 @@ class ResourceSerializerCreateUpdate(serializers.ModelSerializer):
             if requestData.get('image1'):
                 image1 = validated_data.pop('image1')
             image1Sent = True
-
-        if 'image2' in requestData:
-            if requestData.get('image2'):
-                image2 = validated_data.pop('image2')
-            image2Sent = True
 
         super().update(instance, validated_data)
 
@@ -187,13 +173,6 @@ class ResourceSerializerCreateUpdate(serializers.ModelSerializer):
                 image_path = save_image_with_path(image, photo.name)
                 instance.image1 = image_path
 
-        if image2Sent:
-            if image2:
-                photo = image2
-                image = Image.open(photo)
-                image_path = save_image_with_path(image, photo.name)
-                instance.image2 = image_path
-
         instance.save()
         return instance
 
@@ -206,7 +185,7 @@ class TrainingResourceSerializerCreateUpdate(serializers.ModelSerializer):
 
     class Meta:
         model = Resource
-        fields = ['id', 'name', 'url', 'abstract', 'image1', 'image2', 'authors', 'keywords',
+        fields = ['id', 'name', 'url', 'abstract', 'image1', 'authors', 'keywords',
                   'category', 'license', 'publisher', 'datePublished', 'theme', 'inLanguage', 'resourceDOI', 'featured',
                   'own']
 
@@ -248,20 +227,13 @@ class TrainingResourceSerializerCreateUpdate(serializers.ModelSerializer):
             image_path = save_image_with_path(image, photo.name)
             image1 = image_path
 
-        image2 = self.validated_data.get('image2')
-        if image2:
-            photo = image2
-            image = Image.open(photo)
-            image_path = save_image_with_path(image, photo.name)
-            image2 = image_path
-
         publication_date = datetime.now()
 
         isTrainingResource = True
 
         moreItems = [('creator', args.user), ('keywords', keywords), ('authors', authors),
                      ('dateUploaded', publication_date),
-                     ('image1', image1), ('image2', image2), ('isTrainingResource', isTrainingResource)]
+                     ('image1', image1), ('isTrainingResource', isTrainingResource)]
 
         data = dict(
             list(self.validated_data.items()) +
@@ -276,7 +248,6 @@ class TrainingResourceSerializerCreateUpdate(serializers.ModelSerializer):
         keywordsSent = False
         authorsSent = False
         image1Sent = False
-        image2Sent = False
         if 'keywords' in requestData:
             keywords = ""
             if requestData.get('keywords'):
@@ -294,11 +265,6 @@ class TrainingResourceSerializerCreateUpdate(serializers.ModelSerializer):
             if requestData.get('image1'):
                 image1 = validated_data.pop('image1')
             image1Sent = True
-
-        if 'image2' in requestData:
-            if requestData.get('image2'):
-                image2 = validated_data.pop('image2')
-            image2Sent = True
 
         super().update(instance, validated_data)
 
@@ -325,13 +291,6 @@ class TrainingResourceSerializerCreateUpdate(serializers.ModelSerializer):
                 image = Image.open(photo)
                 image_path = save_image_with_path(image, photo.name)
                 instance.image1 = image_path
-
-        if image2Sent:
-            if image2:
-                photo = image2
-                image = Image.open(photo)
-                image_path = save_image_with_path(image, photo.name)
-                instance.image2 = image_path
 
         instance.save()
         return instance

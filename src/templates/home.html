@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n l10n eucs_platform_tags %}
 {% load crispy_forms_tags %}
-{% load i18n %}
 {% block head %}
 {{block.super }}
 <meta name="Description" content="Saúdes Raras">
@@ -277,20 +276,17 @@
 
       <div class="row justify-content-between mt-3">
           {% for depoimento in depoimentos %}
-          <!-- Card 1 -->
           <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
               <div class="p-4 mb-4 card-container" style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
                   <a href="/depoimentos#{depoimento.slug}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
-                  <!-- Imagem no topo -->
                   <img src="{{ depoimento.first_image }}" alt="Imagem" class="card-image"
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
-                  <!-- Conteúdo da carta com espaçamento fixo -->
                   <div style="padding-top: 40px; margin-bottom: 60px;">
                       <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {{ depoimento.header|safe }}
-                    </p>
+                        {{ depoimento.header|strip_p|safe }}
+                      </p>
                   </div>
 
                   <!-- Título fixo na parte inferior -->
@@ -404,9 +400,6 @@
       <div class="row text-center azul" style="margin-top: 5rem;">
         <h1 class="text-home reg" style=" overflow-wrap: break-word; text-align: center;">{% trans "FAQ" %}</h1>
       </div>
-
-
-
 
       <div class="container" style="max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
   <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">
