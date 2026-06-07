@@ -138,10 +138,11 @@ def home(request):
 def all(request):
     return home(request)
 
+def riofarmes(request):
+    return render(request, 'pages/%s/riofarmes.html' % get_language())
 
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
-
 
 def diagnostico(request):
     return render(request, 'pages/%s/diagnostico.html' % get_language())
@@ -149,12 +150,8 @@ def diagnostico(request):
 def justica(request):
     return render(request, 'pages/%s/justica.html' % get_language())
 
-def riofarmes(request):
-    return render(request, 'pages/%s/riofarmes.html' % get_language())
-
 def medicos(request):
     return render(request, 'pages/%s/medicos.html' % get_language())
-
 
 def ajuda(request):
     return render(request, 'pages/%s/ajuda.html' % get_language())

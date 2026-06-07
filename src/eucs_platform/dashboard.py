@@ -65,7 +65,7 @@ class CustomIndexDashboard(Dashboard):
 
         self.children.append(modules.AppList(
             _('Communications'),
-            models=('blog.*', 'pages.Page', 'pages.Section')
+            models=('blog.*', 'pages.*',)
         ))
 
         self.children += [

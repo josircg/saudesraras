@@ -25,7 +25,7 @@ class ArticleInline(BaseInline):
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'language')
-    fields = ('explain', ('title', 'slug', 'language'), ('header', 'content'), 'image')
+    fields = (('title', 'slug', 'language'), 'explain', ('header', 'content'), 'image')
     search_fields = ['title']
     formfield_overrides = {
         models.TextField: {'widget': CKEditorWidget(config_name='admin')},

@@ -278,7 +278,7 @@
           {% for depoimento in depoimentos %}
           <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
               <div class="p-4 mb-4 card-container" style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <a href="/depoimentos#{depoimento.slug}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
+                  <a href="/depoimentos#{{ depoimento.slug }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
                   <img src="{{ depoimento.first_image }}" alt="Imagem" class="card-image"
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">

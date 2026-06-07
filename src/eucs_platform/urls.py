@@ -44,7 +44,7 @@ urlpatterns = [
     path("curated/", views.curated, name="curated"),
     path("imprint/", views.imprint, name="imprint"),
     path("terms/", views.terms, name="terms"),
-    path("privacy/", views.pag_em_construcao, name="privacy"),
+    path("privacy/", views.privacy, name="privacy"),
     path("guide/", views.pag_em_construcao, name="guide"),
     path("faq/", views.pag_em_construcao, name="faq"),
     path("moderation/", views.moderation, name="moderation"),
@@ -67,7 +67,6 @@ urlpatterns = [
     path("", include(events.urls)),
     path("", include(digest.urls)),
     path("", include(platforms.urls)),
-    path("", include(pages.urls)),
     path('summernote/', include('django_summernote.urls')),
     re_path(r'^i18n/', include('django.conf.urls.i18n')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -100,15 +99,14 @@ urlpatterns = [
     path("parceiro/", views.parceiro, name="parceiro"),
     path("sintomas/", views.pag_em_construcao, name="sintomas"),
     path("SUS/", views.pag_em_construcao, name="SUS"),
-
     # Mantive abaixo os links com dev no final para que consigamos acessar as pags via link
-    path("privacydev/", views.privacy, name="privacydev"),
     path("guidedev/", views.guide, name="guidedev"),
     path("faqdev/", views.faq, name="faqdev"),
     path("medicosdev/", views.medicos, name="medicosdev"),
     path("diagnosticodev/", views.diagnostico, name="diagnosticodev"),
     path("doencasdev/", views.doencas, name="doencasdev"),
     path("justicadev/", views.justica, name="justicadev"),
+    path("", include(pages.urls)),
 ]
 
 # User-uploaded files like profile pics need to be served in development
