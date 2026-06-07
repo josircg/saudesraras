@@ -46,31 +46,6 @@ class ResourceForm(forms.Form):
         label=_('Brief description'),
         max_length=3000)
 
-    description_citizen_science_aspects = forms.CharField(
-        widget=CKEditorWidget(config_name='frontpage'),
-        help_text=_(
-            "Please describe the citizen science aspect(s) of the resource that "
-            "warrant your registration in Civis. This information will not be "
-            "visible on the platform, and serves simply as reference when undergoing "
-            "moderation. You can see our explanation on what <a href=\"https://civis.ibict.br/"
-            "about/\">citizen science</a> is (max 2000 characters)."),
-        max_length=2000,
-        label=_("Description of citizen science aspects"))
-
-    authors = forms.ModelMultipleChoiceField(
-        queryset=Author.objects.all(),
-        widget=s2forms.ModelSelect2TagWidget(
-            search_fields=['author__icontains'],
-            attrs={
-                'data-token-separators': '[","]'}),
-        help_text=_(
-            "Please name the author(s) of the resource. Enter <i>First Initial Last Name</"
-            "i> and close with a comma or press enter to add an author or multiple "
-            "authors. If authorship is unknown, use the name of the project for which "
-            "the resource was created."),
-        required=False,
-        label=_("Authors"))
-
     # To clasify
     # TODO: Improve category
     category = forms.ModelChoiceField(
@@ -80,19 +55,21 @@ class ResourceForm(forms.Form):
     choices = forms.CharField(widget=forms.HiddenInput(), required=False)
     categorySelected = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-    # audience = forms.ModelMultipleChoiceField(
-    #         queryset=Audience.objects.all(),
-    #         widget=Select2MultipleWidget(),
-    #         label=_('Audience'),
-    #         help_text=_(
-    #             'Please select the audience(s) for which the resource is intended. '
-    #             'Multiple options can be selected.'))
+    '''
+    audience = forms.ModelMultipleChoiceField(
+             queryset=Audience.objects.all(),
+             widget=Select2MultipleWidget(),
+             label=_('Audience'),
+             help_text=_(
+                 'Please select the audience(s) for which the publication is intended. '
+                 'Multiple options can be selected.'))
+    '''
 
     theme = forms.ModelMultipleChoiceField(
         queryset=Theme.objects.none(),
         widget=Select2MultipleWidget(),
         label=_("Theme"),
-        help_text=_('Please select the thematic content of the resource.'))
+        help_text=_('Please select the thematic content of the publication.'))
 
     resource_DOI = forms.CharField(
         max_length=100,
@@ -223,7 +200,7 @@ class ResourceForm(forms.Form):
         resource.category = category
 
         # Saving images
-        if (len(images[0]) > 6):
+        if len(images[0]) > 6:
             resource.image1 = images[0]
         resource.imageCredit1 = self.data['image_credit1']
 
