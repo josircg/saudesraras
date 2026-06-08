@@ -1,6 +1,9 @@
 from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from django.db import models
+from django.utils.translation import ugettext as _
+
+from poweradmin.admin import PowerModelAdmin, PowerButton
 
 from .models import Page, Section, Article
 
@@ -23,7 +26,7 @@ class ArticleInline(BaseInline):
 
 
 @admin.register(Page)
-class PageAdmin(admin.ModelAdmin):
+class PageAdmin(PowerModelAdmin):
     list_display = ('title', 'slug', 'language')
     fields = (('title', 'slug', 'language'), 'explain', ('header', 'content'), 'image')
     search_fields = ['title']
@@ -31,6 +34,13 @@ class PageAdmin(admin.ModelAdmin):
         models.TextField: {'widget': CKEditorWidget(config_name='admin')},
     }
     inlines = [SectionInline]
+
+    def get_buttons(self, request, object_id=None):
+        buttons = super(PageAdmin, self).get_buttons(request, object_id)
+        if object_id:
+            obj = Page.objects.get(pk=object_id)
+            buttons.append(PowerButton(url=f'/{obj.slug}', label=_('Public URL')))
+        return buttons
 
 
 @admin.register(Section)
