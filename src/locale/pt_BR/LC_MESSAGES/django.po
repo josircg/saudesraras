@@ -17,6 +17,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.3.1\n"
 
+msgid "SUS"
+msgstr "Onde eu acho meu remédio? (RJ)"
+
 msgid "Forgot password?"
 msgstr "Esqueceu a senha?"
 
@@ -2332,7 +2335,7 @@ msgid "Diagnosis"
 msgstr "A dificuldade de conseguir o diagnostico"
 
 msgid "Doctors"
-msgstr "Como devo ser tratada pela(os) médica(os?)"
+msgstr "Sabe aquele médico? Já passei por isso"
 
 msgid "Justice"
 msgstr "Meus direitos"
