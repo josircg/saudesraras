@@ -1297,3 +1297,27 @@ footer #parcerias .parceiros-logos img {
 #closeCookieConsent:hover {
     opacity: 1;
 }
+
+/* pag sintomas */
+
+
+.btn-sintomas-busca{
+    color: var(--blue1) !important; 
+    background-color: var(--blue3) !important; 
+    border: 1px !important;
+}
+.btn-sintomas-busca:hover{
+    background-color: #5CDCFF !important;  
+    color:  var(--blue3) !important; 
+}
+
+
+.btn-sintomas-add{
+    color: white !important; 
+    background-color: var(--blue3) !important; 
+    border: 1px !important;
+}
+.btn-sintomas-add:hover{
+    background-color: #5CDCFF !important;  
+    color:  var(--blue3) !important; 
+}

@@ -463,11 +463,6 @@ msgid "No symptoms registered."
 msgstr "Nenhum sintoma registrado"
 
 #, fuzzy
-#| msgid "platform <span class='text-blue3'>search</span>"
-msgid "disease or symptom <span class='text-blue3'>search</span>"
-msgstr "<span class='text-blue3'>busca de</span> Plataformas"
-
-#, fuzzy
 #| msgid "No Newsletter found"
 msgid "No diseases found."
 msgstr "Newsletter"
@@ -507,10 +502,51 @@ msgstr "Limpar busca e filtros"
 msgid "diseases found"
 msgstr "colaboradores encontrados"
 
-#, fuzzy
-#| msgid "users found"
 msgid "disease found"
-msgstr "colaboradores encontrados"
+msgstr "doenças encontradas"
+
+msgid "No symptoms found."
+msgstr "Nenhum sintoma encontrado"
+
+msgid "Selected symptoms:"
+msgstr "Sintomas selecionados:"
+
+msgid ""
+"No symptoms selected yet. Click the [+] next to the symptoms in the page."
+msgstr ""
+"Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas na "
+"pagina."
+
+msgid "search diseases with those symptoms"
+msgstr "Buscar doenças com estes sintomas"
+
+msgid "Go to letter:"
+msgstr "Ir para a letra:"
+
+msgid ""
+"Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas do "
+"catálogo."
+msgstr ""
+" Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas no "
+"catálogo."
+
+msgid "Search Symptoms"
+msgstr "Busque por sintomas"
+
+msgid "Enter the symptom..."
+msgstr "Digite o sintoma..."
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Filter by letter:"
+msgstr "Filtrar por letra:"
+
+msgid "term:"
+msgstr "termo:"
+
+msgid "letter:"
+msgstr "letra:"
 
 msgid "Projects"
 msgstr "Iniciativas"
@@ -1679,9 +1715,6 @@ msgstr "Informações"
 msgid "Close"
 msgstr "Fechar"
 
-msgid "Search"
-msgstr "Busca"
-
 msgid ""
 "projects by title or keywords by typing text directly into the the search bar"
 msgstr ""
@@ -2629,3 +2662,8 @@ msgstr "Tradução"
 
 msgid "TOTALS"
 msgstr ""
+
+#, fuzzy
+#~| msgid "platform <span class='text-blue3'>search</span>"
+#~ msgid "disease or symptom <span class='text-blue3'>search</span>"
+#~ msgstr "<span class='text-blue3'>busca de</span> Plataformas"

@@ -467,11 +467,6 @@ msgid "No symptoms registered."
 msgstr ""
 
 #, fuzzy
-#| msgid "platform <span class='text-pink5'>search</span>"
-msgid "disease or symptom <span class='text-blue3'>search</span>"
-msgstr "plataforma <span class='text-white'>ciencia ciudadana?</span>"
-
-#, fuzzy
 #| msgid "No Newsletter found"
 msgid "No diseases found."
 msgstr "No se ha encontrado ningún boletín"
@@ -515,6 +510,57 @@ msgstr "usuarios encontrados"
 #| msgid "users found"
 msgid "disease found"
 msgstr "usuarios encontrados"
+
+#, fuzzy
+#| msgid "No Newsletter found"
+msgid "No symptoms found."
+msgstr "No se ha encontrado ningún boletín"
+
+#, fuzzy
+#| msgid "Symptoms"
+msgid "Selected symptoms:"
+msgstr "Sintomas"
+
+msgid ""
+"No symptoms selected yet. Click the [+] next to the symptoms in the catalog."
+msgstr ""
+
+msgid "search diseases with those symptoms"
+msgstr ""
+
+#, fuzzy
+#| msgid "Go to event page"
+msgid "Go to letter:"
+msgstr "Ir a la página del evento"
+
+msgid ""
+"Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas do "
+"catálogo."
+msgstr ""
+
+#, fuzzy
+#| msgid "Symptoms"
+msgid "Search Symptoms"
+msgstr "Sintomas"
+
+msgid "Enter the symptom..."
+msgstr ""
+
+msgid "Search"
+msgstr "Buscar"
+
+#, fuzzy
+#| msgid "Filter by"
+msgid "Filter by letter:"
+msgstr "Filtrar"
+
+msgid "term:"
+msgstr ""
+
+#, fuzzy
+#| msgid "Go to event page"
+msgid "letter:"
+msgstr "Ir a la página del evento"
 
 msgid "Projects"
 msgstr "Proyectos"
@@ -1777,9 +1823,6 @@ msgstr "Información"
 msgid "Close"
 msgstr "Cerrar"
 
-msgid "Search"
-msgstr "Buscar"
-
 msgid ""
 "projects by title or keywords by typing text directly into the the search bar"
 msgstr ""
@@ -2771,6 +2814,11 @@ msgstr "Traducciones"
 
 msgid "TOTALS"
 msgstr ""
+
+#, fuzzy
+#~| msgid "platform <span class='text-pink5'>search</span>"
+#~ msgid "disease or symptom <span class='text-blue3'>search</span>"
+#~ msgstr "plataforma <span class='text-white'>ciencia ciudadana?</span>"
 
 #~ msgid "I want to receive the newsletter from Civis"
 #~ msgstr "Quiero recibir el boletín de Civis"

@@ -8,14 +8,14 @@
 
 
 <div class="container mt-5">
-    {% include "diseases_filter.html" %}
+    
     <div class="row">
         <div class="col-12">
             <h1>{% trans "Diseases" %}</h1>
         </div>
         {# {% include "_finder_disease.html" %} #}
     </div>
-    
+    {% include "diseases_filter.html" %}
     <div class="row w-100 mt-3">
     {% if diseases %}
         {% include "diseases_cards.html" %}
