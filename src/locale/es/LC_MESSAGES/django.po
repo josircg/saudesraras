@@ -452,6 +452,70 @@ msgstr "Otros Nomes"
 msgid "Disease"
 msgstr "Doença"
 
+msgid "About the disease"
+msgstr ""
+
+#, fuzzy
+#| msgid "Go to Organisation"
+msgid "Support Organizations"
+msgstr "Ir a la Organización"
+
+msgid "No organizations registered for this disease yet."
+msgstr ""
+
+msgid "No symptoms registered."
+msgstr ""
+
+#, fuzzy
+#| msgid "platform <span class='text-pink5'>search</span>"
+msgid "disease or symptom <span class='text-blue3'>search</span>"
+msgstr "plataforma <span class='text-white'>ciencia ciudadana?</span>"
+
+#, fuzzy
+#| msgid "No Newsletter found"
+msgid "No diseases found."
+msgstr "No se ha encontrado ningún boletín"
+
+msgid "Order by"
+msgstr "Ordenar por"
+
+msgid "Name (A-Z)"
+msgstr ""
+
+msgid "Name (Z-A)"
+msgstr ""
+
+msgid "Filter by"
+msgstr "Filtrar"
+
+#, fuzzy
+#| msgid "Symptoms"
+msgid "All Symptoms"
+msgstr "Sintomas"
+
+#, fuzzy
+#| msgid "Search"
+msgid "search:"
+msgstr "Buscar"
+
+#, fuzzy
+#| msgid "Symptom"
+msgid "symptom"
+msgstr "Sintoma"
+
+msgid "Clear current search query and filters"
+msgstr "Borra la búsqueda actual"
+
+#, fuzzy
+#| msgid "users found"
+msgid "diseases found"
+msgstr "usuarios encontrados"
+
+#, fuzzy
+#| msgid "users found"
+msgid "disease found"
+msgstr "usuarios encontrados"
+
 msgid "Projects"
 msgstr "Proyectos"
 
@@ -755,17 +819,11 @@ msgstr "Cancelar"
 msgid "Delete"
 msgstr "Eliminar"
 
-msgid "Order by"
-msgstr "Ordenar por"
-
 msgid "By Name"
 msgstr "Nombre Completo"
 
 msgid "Most Recent"
 msgstr "Ordenar por añadidos más recientes"
-
-msgid "Filter by"
-msgstr "Filtrar"
 
 msgid "Country"
 msgstr "País"
@@ -778,9 +836,6 @@ msgstr "País"
 
 msgid "type:"
 msgstr "tipo:"
-
-msgid "Clear current search query and filters"
-msgstr "Borra la búsqueda actual"
 
 msgid "organisations"
 msgstr "organizaciones"
@@ -2469,6 +2524,9 @@ msgid "Doctors"
 msgstr ""
 
 msgid "Justice"
+msgstr ""
+
+msgid "SUS"
 msgstr ""
 
 #, fuzzy

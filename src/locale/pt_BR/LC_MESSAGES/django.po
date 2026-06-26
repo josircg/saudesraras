@@ -450,6 +450,68 @@ msgstr "Outros Nomes conhecidos"
 msgid "Disease"
 msgstr "Doença"
 
+msgid "About the disease"
+msgstr "Sobre a doença"
+
+msgid "Support Organizations"
+msgstr "Organizações de suporte"
+
+msgid "No organizations registered for this disease yet."
+msgstr "Nenhuma organização registrada para essa doença"
+
+msgid "No symptoms registered."
+msgstr "Nenhum sintoma registrado"
+
+#, fuzzy
+#| msgid "platform <span class='text-blue3'>search</span>"
+msgid "disease or symptom <span class='text-blue3'>search</span>"
+msgstr "<span class='text-blue3'>busca de</span> Plataformas"
+
+#, fuzzy
+#| msgid "No Newsletter found"
+msgid "No diseases found."
+msgstr "Newsletter"
+
+msgid "Order by"
+msgstr "Ordenar por"
+
+msgid "Name (A-Z)"
+msgstr ""
+
+msgid "Name (Z-A)"
+msgstr ""
+
+msgid "Filter by"
+msgstr "Filtrar"
+
+#, fuzzy
+#| msgid "Symptoms"
+msgid "All Symptoms"
+msgstr "Sintomas"
+
+#, fuzzy
+#| msgid "search"
+msgid "search:"
+msgstr "buscar"
+
+#, fuzzy
+#| msgid "Symptom"
+msgid "symptom"
+msgstr "Sintoma"
+
+msgid "Clear current search query and filters"
+msgstr "Limpar busca e filtros"
+
+#, fuzzy
+#| msgid "users found"
+msgid "diseases found"
+msgstr "colaboradores encontrados"
+
+#, fuzzy
+#| msgid "users found"
+msgid "disease found"
+msgstr "colaboradores encontrados"
+
 msgid "Projects"
 msgstr "Iniciativas"
 
@@ -732,17 +794,11 @@ msgstr "Cancelar"
 msgid "Delete"
 msgstr "Excluir"
 
-msgid "Order by"
-msgstr "Ordenar por"
-
 msgid "By Name"
 msgstr "Ordem alfabética"
 
 msgid "Most Recent"
 msgstr "Mais recentes"
-
-msgid "Filter by"
-msgstr "Filtrar"
 
 msgid "Country"
 msgstr "País"
@@ -755,9 +811,6 @@ msgstr "país"
 
 msgid "type:"
 msgstr "tipo:"
-
-msgid "Clear current search query and filters"
-msgstr "Limpar busca e filtros"
 
 msgid "organisations"
 msgstr "organizações"
@@ -2336,6 +2389,9 @@ msgstr "Como devo ser tratada pela(os) médica(os?)"
 
 msgid "Justice"
 msgstr "Meus direitos"
+
+msgid "SUS"
+msgstr "Onde eu acho o meu remédio? (RJ)"
 
 msgid "Publications"
 msgstr "Cartilhas, artigos e publicações"
