@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static l10n eucs_platform_tags %}
+{% block title %}{{ block.super }} :: {{ page }}{% endblock %}
+
+{% block list_of_items %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mt-5 mb-5">
+        <h1>
+          {{ page.header|default_if_none:''|strip_p|safe }}
+        </h1>
+        {% if page.content %}
+          <br>
+          {{ page.content|safe }}
+        {% endif %}
+      </div>
+    </div>
+    <section class="accordion">
+      {% for section in page.sections.sections_by_order %}
+          <div class="accordion" id="accordion-{{ section.pk|unlocalize }}">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="acc1Heading-{{ section.pk|unlocalize }}">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#acc1Collapse-{{ section.pk|unlocalize }}" aria-expanded="true"
+                          aria-controls="acc1Collapse-{{ section.pk|unlocalize }}">
+                    {{ section.title|default_if_none:''|strip_p|safe }}
+                  </button>
+                </h2>
+                <div id="acc1Collapse-{{ section.pk|unlocalize }}" class="accordion-collapse collapse"
+                     aria-labelledby="acc1Heading-{{ section.pk|unlocalize }}"
+                     data-bs-parent="#accordion-{{ section.pk|unlocalize }}">
+                  <div class="accordion-body">
+                    {{ section.content|safe }}
+                  </div>
+                </div>
+              </div>
+          </div>
+      {% endfor %}
+    </section>
+  </div>
+{% endblock list_of_items %}

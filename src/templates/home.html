@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n l10n eucs_platform_tags %}
 {% load crispy_forms_tags %}
-{% load i18n %}
 {% block head %}
 {{block.super }}
 <meta name="Description" content="Saúdes Raras">
@@ -12,7 +11,7 @@
 {% block splash %}
 {% if request.get_full_path == "/" %}
 
-<link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}" />
+<link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}?v=1" type="text/css" />
 <body class="d-flex flex-column min-vh-100">
   <div
     class="border-top "
@@ -82,7 +81,7 @@
                   border-bottom-left-radius: 76px; 
                   padding-left: 35px;
                   width: 85%;">
-              <div class="btn bttn4 col-1 text-center mdm text-home2" style="
+              <a class="btn bttn4 col-1 text-center mdm text-home2" style="
                   height: 100%; 
                   border-top-right-radius: 76px; 
                   border-bottom-right-radius: 76px; 
@@ -90,9 +89,9 @@
                   justify-content: center; 
                   align-items: center;
                   width: 15%;
-                  ">
+                  "  href="{% url 'emconstrucao' %}">
                   {% trans "search" %}
-              </div>
+          </a>
           </div>
       </div>
       
@@ -128,7 +127,7 @@
     <div class="container justify-content-center p-0" style="max-width: 1120px;">
         <div class="row justify-content-lg-between justify-content-center">
             <div class="card text-center col-lg-6 col-sm-12 p-0 mb-4" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
-                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
+                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; overflow-wrap: break-word;">
                     {% trans "Hidden Disabilities Sunflower" %}
             </p>
                     
@@ -146,7 +145,7 @@
         </div>
     
             <div class="card text-center col-lg-6 col-sm-12 p-0 mb-4" style="border: transparent; border-radius: 10px; padding: 0.5rem; max-width: 560px; max-height: 400px;">
-                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; font-weight: 30px; overflow-wrap: break-word;">
+                <p class="container-fluid bld azul-escuro" style="font-size: 1.3rem; overflow-wrap: break-word;">
                     {% trans "Service centers" %}
                 </p>
                 <video
@@ -185,7 +184,7 @@
                 <div class="col-12 col-md-6 mb-4">
                     <a href="{% url 'medicos' %}" class="btn bttn2">
                         <div class="icon-container">
-                            <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img" alt="Médicos">
+                            <img src="{% static 'site/img/medicos.svg' %}" class="medicos-img" alt="{% trans "Doctors" %}">
                         </div>
                         <span class="btn-text">{% trans "Doctors" %}</span>
                     </a>
@@ -194,7 +193,7 @@
                 <div class="col-12 col-md-6 mb-4">
                     <a href="{% url 'justica' %}" class="btn bttn2">
                         <div class="icon-container">
-                            <img src="{% static 'site/img/justica.svg' %}" class="justica-img" alt="Justiça">
+                            <img src="{% static 'site/img/justica.svg' %}" class="justica-img" alt="{% trans "Justice" %}">
                         </div>
                         <span class="btn-text">{% trans "Justice" %}</span>
                     </a>
@@ -205,21 +204,21 @@
                         <div class="icon-container">
                             <img src="{% static 'site/img/sus.svg' %}" class="sus-img" alt="SUS">
                         </div>
-                        <span class="btn-text">{% trans "SUS" %}</span>
+                        <span class="btn-text">SUS</span>
                     </a>
                 </div>
 
                 <div class="col-12 col-md-6 mb-4">
                     <a href="{% url 'doencas' %}" class="btn bttn2">
                         <div class="icon-container">
-                            <img src="{% static 'site/img/doencas-azul-escuro.png' %}" class="doencas-img" alt="Doenças">
+                            <img src="{% static 'site/img/doencas-azul-escuro.png' %}" class="doencas-img" alt="{% trans "Diseases" %}">
                         </div>
                         <span class="btn-text">{% trans "Diseases" %}</span>
                     </a>
                 </div>
 
                 <div class="col-12 col-md-6 mb-4">
-                    <a href="#/" class="btn bttn2">
+                    <a href="{% url 'sintomas' %}" class="btn bttn2">
                         <div class="icon-container">
                             <img src="{% static 'site/img/sintomas.svg' %}" class="sintomas-img" alt="Sintomas">
                         </div>
@@ -228,7 +227,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-4">
-                    <a href="#/" class="btn bttn2">
+                    <a href="{% url 'resources' %}" class="btn bttn2">
                         <div class="icon-container">
                             <img src="{% static 'site/img/publicacoes.svg' %}" class="publicacoes-img" alt="Publicações">
                         </div>
@@ -269,91 +268,34 @@
               </h1>
           </div>
           <div class="text-center col-lg-auto col-md-6 col-12 mb-2">
-              <a class=" azul" href="/#" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
+              <a class=" azul" href="/depoimentos" style="text-decoration: underline; font-weight: 400; line-height: 53px; display: inline-block; overflow-wrap: break-word;">
                 {% trans "See others testimonials here +" %}
               </a>
           </div>
       </div>
 
-      <!-- Novos Cards -->
       <div class="row justify-content-between mt-3">
-          <!-- Card 1 -->
+          {% for depoimento in depoimentos %}
           <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
-              <div class="p-4 mb-4 card-container" 
-                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <!-- Link sobrepondo o conteúdo -->
-                  <a href="SEU_LINK_AQUI"
-                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
+              <div class="p-4 mb-4 card-container" style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
+                  <a href="/depoimentos#{{ depoimento.slug }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
 
-                  <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
+                  <img src="{{ depoimento.first_image }}" alt="Imagem" class="card-image"
                        style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
 
-                  <!-- Conteúdo da carta com espaçamento fixo -->
                   <div style="padding-top: 40px; margin-bottom: 60px;">
                       <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
-                    </p>
+                        {{ depoimento.header|strip_p|safe }}
+                      </p>
                   </div>
 
                   <!-- Título fixo na parte inferior -->
                   <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
-                      Mariana Costa
+                      {{ depoimento.title }}
                   </h5>
               </div>
           </div>
-
-          <!-- Card 2 -->
-          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
-              <div class="p-4 mb-4 card-container" 
-                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <!-- Link sobrepondo o conteúdo -->
-                  <a href="SEU_LINK_AQUI"
-                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
-
-                  <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
-                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
-
-                  <!-- Conteúdo da carta com espaçamento fixo -->
-                  <div style="padding-top: 40px; margin-bottom: 60px;">
-                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
-                    </p>
-                  </div>
-
-                  <!-- Título fixo na parte inferior -->
-                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
-                      Mariana Costa
-                  </h5>
-              </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
-              <div class="p-4 mb-4 card-container" 
-                   style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <!-- Link sobrepondo o conteúdo -->
-                  <a href="SEU_LINK_AQUI"
-                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
-
-                  <!-- Imagem no topo -->
-                  <img src="{% static '/site/img/perfil1.jpg'%}" alt="Imagem" class="card-image" 
-                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
-
-                  <!-- Conteúdo da carta com espaçamento fixo -->
-                  <div style="padding-top: 40px; margin-bottom: 60px;">
-                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {% trans "This online space provided me with emotional support and valuable information that made all the difference during my process and my son's process." %}
-                    </p>
-                  </div>
-
-                  <!-- Título fixo na parte inferior -->
-                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
-                      Mariana Costa
-                  </h5>
-              </div>
-          </div>
+          {% endfor %}
       </div>
   </div>
 </div>
@@ -375,7 +317,7 @@
             border-bottom-left-radius: 76px; 
             padding-left: 35px;"
             >
-        <div class="btn bttn4 col-sm-2 col-3 text-center mdm " style="
+        <a class="btn bttn4 col-sm-2 col-3 text-center mdm " style="
             height: 100%; 
             border-top-right-radius: 76px; 
             border-bottom-right-radius: 76px; 
@@ -384,9 +326,9 @@
             align-items: center;
             
             font-size: clamp(15px, 1vw, 20px);
-            ">
+            " href="{% url 'emconstrucao' %}">
             {% trans "search" %}
-        </div>
+      </a>
     </div>
     </div>
 
@@ -458,9 +400,6 @@
       <div class="row text-center azul" style="margin-top: 5rem;">
         <h1 class="text-home reg" style=" overflow-wrap: break-word; text-align: center;">{% trans "FAQ" %}</h1>
       </div>
-
-
-
 
       <div class="container" style="max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
   <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">

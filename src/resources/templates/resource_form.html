@@ -49,7 +49,6 @@
                         {{ form.url|as_crispy_field }}
                         {{ form.keywords|as_crispy_field }}
                         {{ form.abstract|as_crispy_field }}
-                        {{ form.description_citizen_science_aspects|as_crispy_field }}
                         {{ form.category|as_crispy_field }}
                         {{ form.categorySelected|as_crispy_field }}
                         <div id="id_sub_categories" class="mb-3"></div>
@@ -62,7 +61,6 @@
                 <div class="row d-flex justify-content-center">
                         <div class="col-8">
                         <h3 class="leftborder mt-5">{% trans "Publisher information" %}</h3>
-                        {{ form.authors|as_crispy_field }}
                         {{ form.publisher|as_crispy_field }}
                         {{ form.year_of_publication|as_crispy_field }}
                         {{ form.license|as_crispy_field }}
@@ -108,17 +106,6 @@
                         {{ form.height1|as_crispy_field }}
                         {{ form.width1|as_crispy_field }}
                         {{ form.image_credit1|as_crispy_field }}
-                        <div class="mb-5"></div>
-                        <img class="img-fluid img-zoom" 
-                                id="imageResult2" 
-                                src="{% thumbnail resource.image2|safe_image:'void_1100.png' 1100x400 %}">
-                        {{ form.image2|as_crispy_field }}
-                        {{ form.x2|as_crispy_field }}
-                        {{ form.y2|as_crispy_field }}
-                        {{ form.height2|as_crispy_field }}
-                        {{ form.width2|as_crispy_field }}
-                        {{ form.image_credit2|as_crispy_field }}
-                        <div class="mb-5"></div>
                         {% include '_save_zone.html' %}
                         <div class="mb-5"></div>
                         <div class="row mt-5 mb-5">

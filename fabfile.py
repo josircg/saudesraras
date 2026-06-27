@@ -7,7 +7,7 @@ from datetime import datetime
 
 from invoke import UnexpectedExit
 
-HML_SERVER = 'webapp@3.89.127.179'
+HML_SERVER = 'webapp@54.234.183.153'
 
 
 def deploy(connection, path):
@@ -89,7 +89,7 @@ def get_mediafiles(connection, path):
 
 @task
 def get_file(connection):
-    connection = Connection('webapp@3.89.127.179')
+    connection = Connection(HML_SERVER)
     connection.get('/var/webapp/raras/db.sql')
     print('Arquivo copiado na pasta local')
 

@@ -65,7 +65,7 @@ class CustomIndexDashboard(Dashboard):
 
         self.children.append(modules.AppList(
             _('Communications'),
-            models=('contact.*', 'blog.*', 'digest.*',)
+            models=('blog.*', 'pages.*',)
         ))
 
         self.children += [
@@ -80,7 +80,7 @@ class CustomIndexDashboard(Dashboard):
 
         self.children.append(modules.ModelList(
             title=_('Administration'),
-            models=('django_cron.*', 'django_summernote.*', 'oauth2_provider.*', 'oidc_provider.*'),
+            models=('django_cron.*', 'django_summernote.*',),
             extra=[
                     {'title': _('Countries'), 'change_url': reverse('country_list')},
             ]
