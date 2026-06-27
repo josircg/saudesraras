@@ -152,13 +152,11 @@ def parceiro(request):
     return render(request, 'pages/%s/parceiro.html' % get_language())
 
 def about(request):
-    # Criamos um prefetch que barra explicitamente a área de interesse "Equipe"
     prefetch_funcoes = Prefetch(
         'interestAreas',
         queryset=InterestArea.objects.exclude(interestArea__iexact='Equipe')
     )
 
-    # 1. Integrantes em Destaque (Equipe Atual) - Já sem a função "Equipe"
     equipe = Profile.objects.filter(
         team__lt=99
     ).prefetch_related(prefetch_funcoes).order_by(
@@ -166,7 +164,6 @@ def about(request):
         'user__name'
     )
 
-    # 2. Todos os perfis que possuem períodos para a linha do tempo
     todos_colaboradores = Profile.objects.filter(title__isnull=False).prefetch_related(prefetch_funcoes)
     
     periodos_dict = {}
@@ -184,7 +181,6 @@ def about(request):
                 if perfil not in periodos_dict[periodo_formatado]:
                     periodos_dict[periodo_formatado].append(perfil)
 
-    # 3. Ordenação decrescente de períodos e alfabética por nome
     periodos_ordenados = OrderedDict()
     for per in sorted(periodos_dict.keys(), reverse=True):
         periodos_ordenados[per] = sorted(

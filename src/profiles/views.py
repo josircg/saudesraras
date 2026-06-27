@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
-
+import re
 from itertools import chain
-
+from django.shortcuts import render
 from contact.models import Subscriber
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -41,6 +41,8 @@ class ShowProfile(LoginRequiredMixin, generic.TemplateView):
         if user == self.request.user:
             kwargs["editable"] = True
 
+        titulo_do_perfil = getattr(user.profile, 'title', '')
+        kwargs["periodos"] = get_profile_periods(titulo_do_perfil)
         return super().get(request, *args, **kwargs)
 
 
@@ -84,7 +86,7 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
             user_form = forms.UserForm(instance=user)
             profile_form = forms.ProfileForm(instance=user.profile)
             return super().get(request, user_form=user_form, profile_form=profile_form)
-        # Both forms are fine. Time to save!
+        
         user_form.save()
         profile_form.save(request)
         messages.success(request, _("Profile details saved!"))
@@ -192,7 +194,6 @@ class UsersSearch(generic.TemplateView):
                 '-user__date_joined')
             filters['orderby'] = ''
 
-            # TODO: Add surname (needs to be added algo in the autocomplete search
         if request.GET.get('keywords'):
             users = users.filter(
                 Q(user__name__icontains=request.GET['keywords']) |
@@ -296,12 +297,10 @@ def updateInterestAreas(dictio):
     if interestAreas:
         for ia in interestAreas:
             if not ia.isdecimal():
-                # This is a new interestArea
                 models.InterestArea.objects.get_or_create(interestArea=ia)
                 interestArea_id = models.InterestArea.objects.get(interestArea=ia).id
                 dictio.update({'interestAreas': interestArea_id})
             else:
-                # This keyword is already in the database
                 dictio.update({'interestAreas': ia})
     return dictio
 
@@ -329,3 +328,15 @@ def getProfilesAutocomplete(text):
             profileVisible=True).filter(Q(interestAreas__interestArea__icontains=interestArea)).count()
         report.append({"type": "profileInterestArea", "text": interestArea, "numberElements": numberElements})
     return report
+
+
+def get_profile_periods(title):
+    if not title:
+        return []
+
+    pattern = re.compile(r'\b(\d{4})[./]([12])\b')
+
+    return sorted({
+        f"{year}.{semester}"
+        for year, semester in pattern.findall(title)
+    }, reverse=True)
