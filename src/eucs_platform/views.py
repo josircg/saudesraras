@@ -25,21 +25,19 @@ from projects.models import Project, Topic as PTopic
 from projects.views import getProjectsAutocomplete
 from resources.models import Resource, ResourceGroup, ResourcesGrouped
 from resources.views import getResourcesAutocomplete
-
+from pages.models import Page, Section
 
 def home(request):
-    # TODO: Clean this, we dont need lot of things
     user = request.user
     filters = {'keywords': ''}
-    items_per_page = 4
     page = request.GET.get('page')
 
     # Blog
-    posts = Post.objects.all().order_by('-sticky', '-created_on')
+    items_per_page = 4
+    posts = Post.objects.all().order_by('-sticky', '-created_on')[:4]
     paginatorposts = Paginator(posts, items_per_page)
     posts = paginatorposts.get_page(page)
-    counterposts = paginatorposts.count
-    
+
     # Projects
     projects = Project.objects.filter(approved=True, hidden=False).order_by('-dateCreated')
     paginatorprojects = Paginator(projects, items_per_page)
@@ -59,7 +57,6 @@ def home(request):
     countertresources = paginator_training_resources.count
 
     # Organisations
-    # TODO: Put -dateCreated
     organisations = Organisation.objects.all().order_by('id')
     if request.GET.get('keywords'):
         organisations = organisations.filter(Q(name__icontains=request.GET['keywords'])).distinct()
@@ -73,23 +70,9 @@ def home(request):
     platforms = paginator_platform.get_page(page)
     counter_platforms = paginator_platform.count
 
-    if settings.VISAO_USERNAME:
-        base_endpoint = f'{settings.VISAO_URL}/visao2/viewGroupCategory/{settings.VISAO_GROUP}?'
-        compare_topics_endpoint = mark_safe(
-            f'{settings.VISAO_URL}/app/#/visao?chart=1&grupCategory={settings.VISAO_GROUP}'
-        )
-
-        visao_endpoint = mark_safe(
-            f'{base_endpoint}l={settings.VISAO_LAYER}&amp&ui=f&amp&header=f&amp&hideIndicator=t'
-        )
-        project_topics = [
-            (str(ptopic), f'{base_endpoint}{ptopic.external_url}')
-            for ptopic in PTopic.objects.topics_with_external_url().translated().order_by('translated_text')
-        ]
-    else:
-        compare_topics_endpoint = None
-        visao_endpoint = None
-        project_topics = []
+    compare_topics_endpoint = None
+    visao_endpoint = None
+    project_topics = []
 
     # Events
     ongoing_events = Event.objects.approved_events().ongoing_events()
@@ -99,6 +82,12 @@ def home(request):
         Paginator(ongoing_events.union(upcoming_events, all=True).order_by('-featured', 'start_date', 'end_date'),
                   items_per_page)
     events = paginator_event.get_page(page)
+
+    # Depoimentos
+    depoimentos = Section.objects.filter(page__slug='depoimentos').order_by('order')[:3]
+
+    # FAQ
+    perguntas_frequentes = Section.objects.filter(page__slug='depoimentos').order_by('order')[:10]
 
     # Users
     counter_users = Profile.objects.count()
@@ -119,6 +108,8 @@ def home(request):
         'platforms': platforms,
         'posts': posts,
         'events': events,
+        'depoimentos': depoimentos,
+        'faq': perguntas_frequentes,
         'counterPlatforms': counter_platforms,
         'counterUsers': counter_users,
         'total': total,
@@ -132,10 +123,11 @@ def home(request):
 def all(request):
     return home(request)
 
+def riofarmes(request):
+    return render(request, 'pages/%s/riofarmes.html' % get_language())
 
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
-
 
 def diagnostico(request):
     return render(request, 'pages/%s/diagnostico.html' % get_language())
@@ -143,16 +135,11 @@ def diagnostico(request):
 def justica(request):
     return render(request, 'pages/%s/justica.html' % get_language())
 
-def riofarmes(request):
-    return render(request, 'pages/%s/riofarmes.html' % get_language())
-
 def medicos(request):
     return render(request, 'pages/%s/medicos.html' % get_language())
 
-
 def ajuda(request):
     return render(request, 'pages/%s/ajuda.html' % get_language())
-
 
 def projeto(request):
     return render(request, 'pages/%s/projeto.html' % get_language())

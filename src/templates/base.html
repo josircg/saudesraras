@@ -49,53 +49,38 @@
   
 <nav class="navbar navbar-expand-lg sticky-top mb-5 navbar-secondary" style="background-color: #114d7f; padding-bottom:1rem; padding-top: 1rem;">
     <div class="container d-flex" >
-        <!-- Logo e Texto -->
         <a class="navbar-brand d-flex mb-2" href="/">
             <img src="{% static 'site/img/logos/logo_raras_new.svg'%}" alt="Logo" class="d-inline-block align-top">
-            <!-- <div class="text-white ms-3 mt-3" style="align-self: center;">
-                <div class="lh-1" style="font-size: 1.7rem;">
-                    Saúdes
-                </div>
-                <div class="lh-1" style="font-size: 1.7rem;">
-                    Raras
-                </div>
-            </div> -->
         </a>
 
-        <!-- Botão de alternância para menu responsivo -->
         <button class="navbar-toggler navbartoggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="align-self: center;">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu Responsivo -->
         <div class="collapse navbar-collapse" id="navbarResponsive" style="background-color: #114D7F;">
-            <!-- Links no Meio -->
-            <div class="navbar-nav mx-auto mb-2">
-                <a href="{% url 'home' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "Home" %}</a>
+            <div class="navbar-nav mx-auto mb-2 text-center"> <a href="{% url 'home' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "Home" %}</a>
                 <a href="{% url 'about' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "About" %}</a>
                 <a href="{% url 'events' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "Events" %}</a>
                 <a href="{% url 'blog' %}" class="btn nav-bttn me-2 mt-2 text-decoration-none" style="border-radius: 25px; font-weight: 800;">{% trans "News" %}</a>
                 
-                <div class="nav-item dropdown d-flex align-items-center">
+                <div class="nav-item dropdown d-flex flex-column flex-lg-row align-items-center justify-content-center">
                     <a class="btn nav-bttn dropdown-toggle me-2 mt-2 text-decoration-none" href="#" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 25px; font-weight: 800;">
                         {% trans "Organisations" %}
                     </a>
                     
-                    <div class="dropdown-menu p-3" aria-labelledby="orgDropdown" style="min-width: 500px; border-radius: 15px; border: none; box-shadow: 0px 4px 15px rgba(0,0,0,0.1);">
+                    <div class="dropdown-menu p-3" aria-labelledby="orgDropdown" style="width: max-content; max-width: 90vw; border-radius: 15px; border: none; box-shadow: 0px 4px 15px rgba(0,0,0,0.1);">
                         <div class="row">
-                            <!-- Coluna 1: Primeira metade dos itens (ex: primeiros 4 se forem 8 no total) -->
                             <div class="col-6">
                                 {% for org_type in all_organisation_types|slice:":4" %}
-                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type }}">
+                                    <a class="dropdown-item small text-wrap" href="/organisations?orgTypes={{ org_type }}">
                                         {{ org_type }}
                                     </a>
                                 {% endfor %}
                             </div>
 
-                            <!-- Coluna 2: Restante dos itens, com a borda separadora na esquerda -->
                             <div class="col-6 border-start">
                                 {% for org_type in all_organisation_types|slice:"4:" %}
-                                    <a class="dropdown-item small" href="/organisations?orgTypes={{ org_type }}">
+                                    <a class="dropdown-item small text-wrap" href="/organisations?orgTypes={{ org_type }}">
                                         {{ org_type }}
                                     </a>
                                 {% endfor %}
@@ -107,9 +92,7 @@
                 </div>
             </div>
 
-            <!-- Dropdown de Idioma -->
-
-            <ul class="navbar-nav ms-auto align-items-center">
+            <ul class="navbar-nav ms-auto align-items-center mb-3 mb-lg-0">
                 <li class="nav-item dropdown d-flex align-items-center">
                     <a class="nav-link dropdown-toggle d-flex align-items-center mb-1 mb-md-0 py-0" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                         {{ LANGUAGE_CODE }}
@@ -129,10 +112,10 @@
                     </ul>
                 </li>
             </ul>
-            <!-- Botões à Direita -->
-            <div class="d-flex flex-wrap flex-column flex-xl-row align-items-center justify-content-center text-center w-auto">
+
+            <div class="d-flex flex-wrap flex-column flex-xl-row align-items-center justify-content-center text-center w-auto gap-2">
                 {% if not user.is_authenticated %}
-                    <a href="/login/" class="btn mx-2 "
+                    <a href="/login/" class="btn mx-2"
                         style="
                             background-color: #114D7F;  
                             color: #FFFFFF;             
@@ -144,6 +127,7 @@
                             align-items: center;        
                             justify-content: center;   
                             padding: 10px 20px; 
+                            width: 160px; /* Definido largura para não esticar no mobile */
                         ">
                         Entrar
                     </a>
@@ -159,12 +143,13 @@
                             display: flex;              
                             align-items: center;        
                             justify-content: center;   
-                            padding: 10px 20px;         
+                            padding: 10px 20px;          
+                            width: 160px; /* Definido largura para não esticar no mobile */
                         ">
                         Criar Conta
                     </a>
                 {% else %}
-                    <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-2">
                         <div class="dropdown mx-2 mb-2 mb-md-0 d-flex justify-content-center align-items-center">
                             <a href="#" class="dropdown-toggle profile-menu d-flex align-items-center justify-content-center" data-bs-toggle="dropdown" aria-expanded="false" style="color: #5CDCFF !important;">
                                 <i class="fas fa-user-edit"></i>
