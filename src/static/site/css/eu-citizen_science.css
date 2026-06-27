@@ -1297,3 +1297,10 @@ footer #parcerias .parceiros-logos img {
 #closeCookieConsent:hover {
     opacity: 1;
 }
+
+.faq-arrow {
+      transition: transform 0.2s ease;
+    }
+    .card-header[aria-expanded="true"] .faq-arrow {
+      transform: rotate(180deg);
+    }

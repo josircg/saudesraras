@@ -15,3 +15,5 @@ class PageDetailView(DetailView):
     def get_queryset(self):
         current_language = get_language()
         return Page.objects.filter(slug=self.kwargs['slug'], language=current_language)
+
+

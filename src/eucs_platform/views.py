@@ -12,6 +12,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django_countries import countries
 from django_countries.templatetags.countries import get_country
+
 from blog.models import Post
 from events.models import Event
 from organisations.models import Organisation
@@ -31,31 +32,26 @@ def home(request):
     filters = {'keywords': ''}
     page = request.GET.get('page')
 
-    # Blog
     items_per_page = 4
     posts = Post.objects.all().order_by('-sticky', '-created_on')[:4]
     paginatorposts = Paginator(posts, items_per_page)
     posts = paginatorposts.get_page(page)
-
-    # Projects
+  
     projects = Project.objects.filter(approved=True, hidden=False).order_by('-dateCreated')
     paginatorprojects = Paginator(projects, items_per_page)
     projects = paginatorprojects.get_page(page)
     counterprojects = paginatorprojects.count
-
-    # Resources
+    
     resources = Resource.objects.approved_resources().order_by('-dateUpdated')
     paginatorresources = Paginator(resources, items_per_page)
     resources = paginatorresources.get_page(page)
     counterresources = paginatorresources.count
 
-    # Training Resources
     training_resources = Resource.objects.approved_training_resources().order_by('-dateUpdated')
     paginator_training_resources = Paginator(training_resources, items_per_page)
     training_resources = paginator_training_resources.get_page(page)
     countertresources = paginator_training_resources.count
 
-    # Organisations
     organisations = Organisation.objects.all().order_by('id')
     if request.GET.get('keywords'):
         organisations = organisations.filter(Q(name__icontains=request.GET['keywords'])).distinct()
@@ -63,7 +59,6 @@ def home(request):
     organisations = paginatororganisation.get_page(page)
     counterorganisations = paginatororganisation.count
 
-    # Platforms
     platforms = Platform.objects.filter(active=True).order_by('-dateCreated')
     paginator_platform = Paginator(platforms, items_per_page)
     platforms = paginator_platform.get_page(page)
@@ -73,25 +68,20 @@ def home(request):
     visao_endpoint = None
     project_topics = []
 
-    # Events
+    
     ongoing_events = Event.objects.approved_events().ongoing_events()
     upcoming_events = Event.objects.approved_events().upcoming_events()
-    # Join ongoing and upcoming events in one paginator
     paginator_event = \
         Paginator(ongoing_events.union(upcoming_events, all=True).order_by('-featured', 'start_date', 'end_date'),
                   items_per_page)
     events = paginator_event.get_page(page)
 
-    # Depoimentos
     depoimentos = Section.objects.filter(page__slug='depoimentos').order_by('order')[:3]
 
-    # FAQ
-    perguntas_frequentes = Section.objects.filter(page__slug='depoimentos').order_by('order')[:10]
+    perguntas_frequentes = Section.objects.filter(page__slug='faq').order_by('order')[:10]
 
-    # Users
     counter_users = Profile.objects.count()
-
-    total = countertresources + counterprojects + countertresources + counterorganisations
+    total = counterprojects + counterresources + countertresources + counterorganisations
 
     return render(request, 'home.html', {
         'user': user,
@@ -117,6 +107,16 @@ def home(request):
         'project_topics': project_topics,
         'isSearchPage': True,
     })
+
+
+def faq(request):
+    current_language = get_language()
+    try:
+        page_obj = Page.objects.get(slug='faq', language=current_language)
+    except Page.DoesNotExist:
+        page_obj = None
+
+    return render(request, 'pages/%s/faq.html' % current_language, {'page': page_obj})
 
 
 def all(request):
@@ -149,7 +149,6 @@ def pag_em_construcao(request):
 def parceiro(request):
     return render(request, 'pages/%s/parceiro.html' % get_language())
 
-
 def about(request):
     equipe = Profile.objects.filter(team__lt=99).order_by('team','user__name')
     alunos_antigos = Profile.objects.filter(team=99).order_by('user__name')
@@ -157,18 +156,11 @@ def about(request):
                   'pages/%s/about.html' % get_language(),
                   {'equipe': equipe, 'equipe_antiga': alunos_antigos})
 
-
 def terms(request):
     return render(request, 'pages/%s/terms.html' % get_language())
 
-
-def faq(request):
-    return render(request, 'pages/%s/faq.html' % get_language())
-
-
 def privacy(request):
     return render(request, 'pages/%s/privacy.html' % get_language())
-
 
 def curated(request):
     groups = ResourceGroup.objects.get_queryset().order_by('id')
@@ -178,29 +170,23 @@ def curated(request):
         'resourcesgrouped': resourcesgrouped,
         'isSearchPage': False})
 
-
 def imprint(request):
     return render(request, 'imprint.html')
-
 
 def development(request):
     return render(request, 'development.html')
 
-
 def moderation(request):
     return render(request, 'moderation.html')
 
-
 def translations(request):
     return render(request, 'translations.html')
-
 
 def guide(request):
     if settings.USE_GUIDE:
         return HttpResponseRedirect("/static/site/files/%s/%s" % (get_language(), settings.USE_GUIDE))
     else:
         return render(request, 'guide.html')
-
 
 def home_autocomplete(request):
     if request.GET.get('q'):
@@ -218,23 +204,17 @@ def home_autocomplete(request):
     else:
         return HttpResponse("No cookies")
 
-
 @staff_member_required(login_url='/login')
 def country_list(request):
-    """Page with admin style to list countries from django-countries"""
     if SEARCH_VAR in request.GET:
         text = request.GET.get(SEARCH_VAR)
         result = filter(lambda c: text.lower() in c.name.lower(), countries)
     else:
         result = countries
-    # Return country name translations
     result = country_translation(result)
-
     return render(request, 'country_list.html', {'countries': result})
 
-
 def country_translation(country_iterator):
-    """Rebuild country list to return translations"""
     for country in country_iterator:
         country_object = get_country(country.code)
         yield {
@@ -243,7 +223,6 @@ def country_translation(country_iterator):
             'name_portuguese': get_country_translated_name('pt-br', country_object),
             'name_spanish': get_country_translated_name('es', country_object),
         }
-
 
 def get_country_translated_name(language, country):
     with translation.override(language):
