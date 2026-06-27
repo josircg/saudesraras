@@ -1,11 +1,12 @@
 import re
 from django.utils import timezone
+from collections import OrderedDict
 from itertools import chain
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.admin.views.main import SEARCH_VAR
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils import translation
@@ -19,7 +20,7 @@ from organisations.models import Organisation
 from organisations.views import getOrganisationAutocomplete
 from platforms.models import Platform
 from platforms.views import getPlatformsAutocomplete
-from profiles.models import Profile
+from profiles.models import Profile, InterestArea
 from profiles.views import getProfilesAutocomplete
 from projects.models import Project, Topic as PTopic
 from projects.views import getProjectsAutocomplete
@@ -150,120 +151,56 @@ def pag_em_construcao(request):
 def parceiro(request):
     return render(request, 'pages/%s/parceiro.html' % get_language())
 
-
-
 def about(request):
+    # Criamos um prefetch que barra explicitamente a área de interesse "Equipe"
+    prefetch_funcoes = Prefetch(
+        'interestAreas',
+        queryset=InterestArea.objects.exclude(interestArea__iexact='Equipe')
+    )
 
+    # 1. Integrantes em Destaque (Equipe Atual) - Já sem a função "Equipe"
     equipe = Profile.objects.filter(
         team__lt=99
-    ).order_by(
+    ).prefetch_related(prefetch_funcoes).order_by(
         'team',
         'user__name'
     )
 
-    alunos_antigos = list(
-        Profile.objects.filter(team=99)
-    )
+    # 2. Todos os perfis que possuem períodos para a linha do tempo
+    todos_colaboradores = Profile.objects.filter(title__isnull=False).prefetch_related(prefetch_funcoes)
+    
+    periodos_dict = {}
+    padrao_periodo = re.compile(r'\b(\d{4})[./]([12])\b')
 
-    now = timezone.now()
-    current_period = 1 if now.month <= 6 else 2
+    for perfil in todos_colaboradores:
+        if perfil.title:
+            matches = padrao_periodo.findall(perfil.title)
+            periodos_unicos = set(f"{ano}.{semestre}" for ano, semestre in matches)
+            
+            for periodo_formatado in periodos_unicos:
+                if periodo_formatado not in periodos_dict:
+                    periodos_dict[periodo_formatado] = []
+                
+                if perfil not in periodos_dict[periodo_formatado]:
+                    periodos_dict[periodo_formatado].append(perfil)
 
-    # EX:
-    # 2026.1
-    current_value = f"{now.year}.{current_period}"
-
-    def normalize_period(period_str):
-        """
-        Aceita:
-        2022.1
-        2022/1
-
-        Retorna:
-        2022.1
-        """
-        return period_str.replace("/", ".")
-
-    def extract_periods(text):
-        """
-        Extrai:
-        2022.1
-        2022/1
-        """
-        matches = re.findall(
-            r'(\d{4}[./][12])',
-            text or ""
+    # 3. Ordenação decrescente de períodos e alfabética por nome
+    periodos_ordenados = OrderedDict()
+    for per in sorted(periodos_dict.keys(), reverse=True):
+        periodos_ordenados[per] = sorted(
+            periodos_dict[per], 
+            key=lambda p: p.user.name.lower()
         )
-
-        return [
-            normalize_period(p)
-            for p in matches
-        ]
-
-    def period_to_sortable(period):
-        """
-        2026.1 -> 20261
-        2026.2 -> 20262
-        """
-        year, semester = period.split(".")
-        return int(year) * 10 + int(semester)
-
-    def sort_key_colaboradores(profile):
-
-        periods = extract_periods(
-            profile.title
-        )
-
-        # SEM DATA
-        if len(periods) == 0:
-
-            entrada = "0.0"
-            saida = "0.0"
-
-        # UMA DATA = ATUAL
-        elif len(periods) == 1:
-
-            entrada = periods[0]
-            saida = current_value
-
-        # DUAS DATAS
-        else:
-
-            entrada = periods[0]
-            saida = periods[1]
-
-        entrada_sort = period_to_sortable(entrada)
-        saida_sort = period_to_sortable(saida)
-
-        # PRA USAR NO HTML
-        profile.sort_saida = saida_sort
-
-        print("\n================")
-        print("NOME:", profile.user.name)
-        print("TITLE:", profile.title)
-        print("ENTRADA:", entrada)
-        print("SAIDA:", saida)
-        print("SAIDA_SORT:", saida_sort)
-
-        return (
-            -saida_sort,
-            -entrada_sort,
-            profile.user.name.lower()
-        )
-
-    alunos_antigos.sort(
-        key=sort_key_colaboradores
-    )
 
     return render(
         request,
         'pages/%s/about.html' % get_language(),
         {
             'equipe': equipe,
-            'equipe_antiga': alunos_antigos
+            'equipe_por_periodo': periodos_ordenados
         }
     )
 
-    
 def terms(request):
     return render(request, 'pages/%s/terms.html' % get_language())
 

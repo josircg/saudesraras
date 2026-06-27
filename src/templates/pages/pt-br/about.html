@@ -20,7 +20,7 @@
                     Sobre o projeto
                 </div>
                 <div class="mt-4 mb-5 reg" style="color: #000;font-size: 20px; line-height: 26px;max-width: 749px;">
-                  <p>De acordo com a OMS, uma doença rara é a que afeta até 65 a cada 100 mil indivíduos. No entanto, como cada país tem critérios próprios e linhas de corte particulares sobre tais enfermidades, a ONU propôs a adoção de uma resolução para ser reconhecida em todo o mundo que diz que a “condição médica com um padrão específico de sinais, sintomas e achados clínicos, afetando até 1,3 em cada 2.000 pessoas.” (OMS,2024). No Brasil não se nota a participação da população desamparada em discussões de ampla visibilidade nem a representação em dados oficiais disponibilizados pelo Estado. Este apagamento não significa a inexistência da doença rara na população pobre, mas pode indicar que uma parcela da população afetada por esse tipo de patologia tenha sido excluída do processo antes mesmo de chegar à atenção primária à saúde (APS) em unidades básicas de saúde.</p>
+                  <p>De acordo com a OMS, uma doença rara é a que afeta até 65 a cada 100 mil indivíduos. No entanto, como cada país tem critérios próprios e linhas de corte particulares sobre tais enfermidades, a ONU propôs a adoção de uma resolução para ser reconhecida em todo o mundo que diz que a “condição médica com um padrão específico de sinais, sintomas e achados clínicos, afetando até 1,3 em cada 2.000 pessoas.” (OMS,2024). No Brasil não se nota a participação da população desamparada em discussões de ampla visibilidade nem a representation em dados oficiais disponibilizados pelo Estado. Este apagamento não significa a inexistência da doença rara na população pobre, mas pode indicar que uma parcela da população afetada por esse tipo de patologia tenha sido excluída do processo antes mesmo de chegar à atenção primária à saúde (APS) em unidades básicas de saúde.</p>
 
                   <p>Segundo Paiva (2003) a “Comunidade como Unidade de Gerência e Pressão” representa a ação contínua dos movimentos sociais brasileiros atuantes nas causas das doenças raras, pois, entendem que a “possibilidade comunitária quer dizer opor-se ou, pelo menos, não aceitar incondicionalmente o ideal societário, no qual a globalização traz como lógica os princípios de hegemonia e exclusão” (p. 123)
                   Os movimentos contra-hegemônicos, pressionam tanto o mercado como o Estado e vêm colocando o Brasil, numa posição de destaque em relação aos outros países latino-americanos, pois não aceitam o manejo do mercado para fortalecer uma “catalaxia, ou seja, um ordenamento mercadológico do mundo, para além de qualquer desígnio humano” (Sodré, 2002, p. 14). </p>
@@ -28,7 +28,7 @@
 
                   <p>Apesar de termos 13 milhões de pessoas no Brasil afetadas por algum tipo de doença rara, não se nota a participação da população desamparada em discussões de ampla visibilidade nem a representação em dados oficiais disponibilizados pelo Estado. 
                       Este apagamento não significa a inexistência da doença rara na população pobre, mas pode indicar que uma parcela da população afetada por esse tipo de patologia tenha sido excluída do processo antes mesmo de chegar à atenção primária à saúde (APS) em unidades básicas de saúde.</p> 
-                  <p>Com base na “escuta’ sem impor nem nos pautarmos nos interesses da classe dominante convidamos quem vive o drama da doença rara  para participar da construção deste espaço de maneira coletiva, com linguagem fácil e acessível, com a própria voz.</p>
+                  <p>Com base na “escuta’ sem impor nem nos pautarmos nos interesses da classe dominante convidamos quem vive o drama da doença rara  para participar da construção deste space de maneira coletiva, com linguagem fácil e acessível, com a própria voz.</p>
                 </div>
 
                 <div class=" mt-4 mb-5 reg" style="color: #000;font-size: 20px; line-height: 26px;max-width: 749px; word-wrap: break-word; overflow-wrap: break-word;">
@@ -40,16 +40,16 @@
 
             <div class="col-lg-6 col-12">
               <div class="text-about mb-3 font-weight-bold " style=" line-height: 26px;  word-wrap: break-word; overflow-wrap: break-word;">
-                    Conheça Nossa Equipe
+                    Conheça Nossos Integrantes
               </div>
 
               <div class="mb-4 team-horizontal" style="max-width: 900px;">
               {% for pessoa in equipe %}
                 <div class="row g-2 align-items-start" style="margin-bottom: 20px;">
                   <div class="col-md-4">
-                    {% if item.picture %}
-                        <img src="/media/{{ item.picture }}"
-                            alt="Foto de {{ item.nome }}"
+                    {% if pessoa.picture %}
+                        <img src="/media/{{ pessoa.picture }}"
+                            alt="Foto de {{ pessoa.user.name }}"
                             class="img-fluid rounded-circle" />
                     {% else %}
                         <img src="/media/default_profile.png"
@@ -61,9 +61,20 @@
                   <div class="col-md-8">
                     <div class="card-body">
                       <h5 class="card-title mb-1">{{ pessoa.user.name}}</h5>
-                      <p class="text-muted mb-1"></p>
-                      <p class="text-muted mb-2">{{ pessoa.title }}</p>
-                      <p style="color: #000;">{{ pessoa.bio }}</p>
+                      
+                      <div class="mb-2 d-flex flex-wrap gap-1">
+                        {% for area in pessoa.interestAreas.all %}
+                          <span class="badge bg-info text-dark rounded-pill" style="font-size: 0.8rem;">
+                            <i class="fas fa-briefcase me-1"></i>Função: {{ area.interestArea }}
+                          </span>
+                        {% empty %}
+                          
+                        {% endfor %}
+                      </div>
+
+                      <div style="color: #000; font-size: 0.95rem;">
+                        {{ pessoa.bio|safe }}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -73,191 +84,136 @@
           </div>
         </div>
       </div>
-      
-<div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-    <h4 class="fw-bold mb-0">Outros Colaboradores</h4>
 
-    <!-- FILTRO -->
-    <div class="dropdown">
-      <button class="btn btn-outline-secondary btn-sm dropdown-toggle"
-              type="button"
-              id="sortDropdown"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
-        <i class="fas fa-sort-amount-down me-1"></i>
-        <span id="sortLabel">Mais recentes</span>
-      </button>
+<div class="container mt-5">
+  <h4 class="fw-bold mb-4">Outros Colaboradores</h4>
 
-      <ul class="dropdown-menu dropdown-menu-end">
-        <li>
-          <a class="dropdown-item active"
-             href="#"
-             data-sort="recent-desc">
-             Mais recentes
-          </a>
-        </li>
-
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-sort="recent-asc">
-             Menos recentes
-          </a>
-        </li>
-
-        <li><hr class="dropdown-divider"></li>
-
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-sort="name-asc">
-             Nome (A-Z)
-          </a>
-        </li>
-
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-sort="name-desc">
-             Nome (Z-A)
-          </a>
-        </li>
-      </ul>
+  <div class="card card-body bg-light border-0 mb-4 shadow-sm">
+    <h6 class="fw-bold mb-3"><i class="fas fa-filter me-2"></i>Filtrar por Período</h6>
+    <div class="row g-3 align-items-center">
+      <div class="col-sm-5">
+        <label for="filterFrom" class="form-label small text-muted mb-1">De (Mais antigo):</label>
+        <select id="filterFrom" class="form-select form-select-sm">
+          <option value="">Todos</option>
+          {% for periodo in equipe_por_periodo.keys reversed %}
+            <option value="{{ periodo }}">{{ periodo }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-sm-5">
+        <label for="filterTo" class="form-label small text-muted mb-1">Até (Mais recente):</label>
+        <select id="filterTo" class="form-select form-select-sm">
+          <option value="">Todos</option>
+          {% for periodo in equipe_por_periodo.keys %}
+            <option value="{{ periodo }}">{{ periodo }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-sm-2 d-grid pt-3">
+        <button id="clearFilterBtn" class="btn btn-outline-secondary btn-sm" type="button">Limpar</button>
+      </div>
     </div>
   </div>
 
-  <!-- LISTA -->
-  <ul class="list-group shadow-sm" id="collaboratorsList">
-
-    {% for item in equipe_antiga %}
-      <li class="list-group-item p-0 border-bottom collaborator-item"
-          data-name="{{ item.user.name|lower }}"
-          data-date="{{ item.sort_saida }}">
-
-        <button class="btn btn-link text-start w-100 py-3 px-4 text-decoration-none d-flex justify-content-between align-items-center collaborator-toggle"
+  <div id="timelineCollaborators">
+    {% for periodo, colaboradores in equipe_por_periodo.items %}
+      <div class="timeline-period-block mb-3" data-period="{{ periodo }}">
+        
+        <button class="btn btn-blue3 w-100 py-3 px-4 text-start d-flex justify-content-between align-items-center shadow-sm text-decoration-none"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapse{{ item.user.id }}"
+                data-bs-target="#panel-{{ periodo|slugify }}"
                 aria-expanded="false"
-                style="color: #333;">
-
-          <h5 class="mb-0 fw-semibold"
-              style="font-size: 1.1rem;">
-            {{ item.user.name }}
-          </h5>
-
-          <i class="fas fa-chevron-down small text-muted"></i>
+                aria-controls="panel-{{ periodo|slugify }}">
+          <span class="fs-5 fw-bold"><i class="fas fa-calendar-alt me-2"></i>{{ periodo }}</span>
+          <span class="badge bg-light text-dark rounded-pill me-3">{{ colaboradores|length }}</span>
         </button>
 
-        <div class="collapse" id="collapse{{ item.user.id }}">
-          <div class="card card-body border-0 bg-light mx-3 mb-3 rounded-3">
-            <div class="row align-items-center">
+        <div class="collapse mt-2" id="panel-{{ periodo|slugify }}">
+          <ul class="list-group shadow-sm">
+            {% for item in colaboradores %}
+              <li class="list-group-item p-3 border-bottom bg-white">
+                <div class="row align-items-center">
+                  
+                  <div class="col-md-2 d-flex justify-content-center mb-3 mb-md-0">
+                    {% if item.picture %}
+                      <img src="/media/{{ item.picture }}" alt="Foto de {{ item.user.name }}" class="rounded-circle border" style="width: 70px; height: 70px; object-fit: cover;" />
+                    {% else %}
+                      <img src="/media/default_profile.png" alt="Foto de {{ item.user.name }}" class="rounded-circle border" style="width: 70px; height: 70px; object-fit: cover;" />
+                    {% endif %}
+                  </div>
 
-              <div class="col-md-2 d-flex justify-content-center mb-3 mb-md-0">
-                {% if item.picture %}
-                  <img src="/media/{{ item.picture }}"
-                       alt="Foto de {{ item.user.name }}"
-                       class="rounded-circle border"
-                       style="width: 80px; height: 80px; object-fit: cover;" />
-                {% else %}
-                  <img src="/media/default_profile.png"
-                       alt="Foto de {{ item.user.name }}"
-                       class="rounded-circle border"
-                       style="width: 80px; height: 80px; object-fit: cover;" />
-                {% endif %}
-              </div>
+                  <div class="col-md-10">
+                    <h5 class="mb-1 fw-semibold text-dark" style="font-size: 1.05rem;">{{ item.user.name }}</h5>
+                    
+                    <div class="mb-2 d-flex flex-wrap gap-1">
+                      {% for area in item.interestAreas.all %}
+                        <span class="badge bg-info text-dark rounded-pill" style="font-size: 0.8rem;">
+                          <i class="fas fa-briefcase me-1"></i>Função: {{ area.interestArea }}
+                        </span>
+                      {% empty %}
+                      {% endfor %}
+                    </div>
 
-              <div class="col-md-10">
-                <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                  <span class="badge rounded-pill bg-info text-dark">
-                    <i class="fas fa-id-badge me-1"></i>
-                    {{ item.title }}
-                  </span>
+                    {% if item.bio %}
+                      <div class="mb-0 text-secondary small" style="line-height: 1.5;">
+                        <strong class="text-dark">O que fez:</strong> {{ item.bio|safe }}
+                      </div>
+                    {% endif %}
+                  </div>
+
                 </div>
-
-                {% if item.bio %}
-                  <p class="mb-0 text-secondary"
-                     style="font-size: 0.95rem; line-height: 1.5;">
-                    <strong class="text-dark">O que fez:</strong>
-                    {{ item.bio }}
-                  </p>
-                {% endif %}
-              </div>
-
-            </div>
-          </div>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
 
-      </li>
-
+      </div>
     {% empty %}
-      <li class="list-group-item text-center py-4 text-muted">
+      <div class="text-center py-5 text-muted bg-white border rounded shadow-sm">
         <i class="fas fa-users-slash d-block mb-2 fa-2x"></i>
-        Nenhum colaborador encontrado.
-      </li>
+        Nenhum colaborador histórico registrado.
+      </div>
     {% endfor %}
-
-  </ul>
+  </div>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  const fromSelect = document.getElementById("filterFrom");
+  const toSelect = document.getElementById("filterTo");
+  const clearBtn = document.getElementById("clearFilterBtn");
+  const periodBlocks = document.querySelectorAll(".timeline-period-block");
 
-  const list = document.getElementById("collaboratorsList");
-  const sortItems = document.querySelectorAll(".dropdown-item");
-  const sortLabel = document.getElementById("sortLabel");
+  function parsePeriod(pStr) {
+    if (!pStr) return 0;
+    const parts = pStr.split('.');
+    return parseInt(parts[0]) * 10 + parseInt(parts[1]);
+  }
 
-  sortItems.forEach(item => {
+  function filterTimeline() {
+    const valFrom = parsePeriod(fromSelect.value);
+    const valTo = parsePeriod(toSelect.value);
 
-    item.addEventListener("click", function (e) {
-      e.preventDefault();
+    periodBlocks.forEach(block => {
+      const blockVal = parsePeriod(block.dataset.period);
+      let visible = true;
 
-      // REMOVE ACTIVE
-      sortItems.forEach(i => i.classList.remove("active"));
-      this.classList.add("active");
+      if (valFrom && blockVal < valFrom) visible = false;
+      if (valTo && blockVal > valTo) visible = false;
 
-      const sortType = this.dataset.sort;
-      sortLabel.textContent = this.textContent.trim();
-
-      let collaborators = Array.from(
-        list.querySelectorAll(".collaborator-item")
-      );
-
-      collaborators.sort((a, b) => {
-
-        const nameA = a.dataset.name;
-        const nameB = b.dataset.name;
-        const dateA = parseInt(a.dataset.date);
-        const dateB = parseInt(b.dataset.date);
-
-        switch (sortType) {
-
-          case "name-asc":
-            return nameA.localeCompare(nameB);
-
-          case "name-desc":
-            return nameB.localeCompare(nameA);
-
-          case "recent-asc":
-            return dateA - dateB;
-
-          case "recent-desc":
-          default:
-            return dateB - dateA;
-        }
-      });
-
-      collaborators.forEach(el => list.appendChild(el));
+      block.style.display = visible ? "block" : "none";
     });
-  });
+  }
 
-  document.querySelectorAll(".dropdown-item").forEach(item => {
-    item.addEventListener("click", function(e) {
-      e.preventDefault();
-    });
-  });
+  fromSelect.addEventListener("change", filterTimeline);
+  toSelect.addEventListener("change", filterTimeline);
 
+  clearBtn.addEventListener("click", function() {
+    fromSelect.value = "";
+    toSelect.value = "";
+    periodBlocks.forEach(block => block.style.display = "block");
+  });
 });
 </script>
 {% endblock %}

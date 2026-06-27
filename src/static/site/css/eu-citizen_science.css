@@ -206,7 +206,7 @@ span.card-title {
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 32px;
+    line-height: 32px;replace
     color: #101828 !important;
 }
 
@@ -860,8 +860,8 @@ footer #parcerias .parceiros-logos img {
 }
 
 .btn-blue3:hover{
-    background-color: var(--blue3) !important;
-    color: var(--blue1) !important
+    color: var(--blue3) !important;
+    background-color: var(--blue1) !important
 
 }
 
