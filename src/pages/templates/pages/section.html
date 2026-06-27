@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ block.super }} :: {{ section.title }}{% endblock %}
+
+{% block list_of_items %}
+<div class="container mt-5">
+    
+    <div class="mb-4">
+        <a href="{% url 'page_detail' slug=page_mae.slug %}" class="text-decoration-none text-muted small">
+            <i class="fas fa-arrow-left me-1"></i> {% trans "Voltar para" %} {{ page_mae.title }}
+        </a>
+    </div>
+
+    <div class="row align-items-center mb-4">
+        <div class="col-md-8 col-12">
+            
+            <h1 class="text-blue3 fw-bold mt-1 mb-2">{{ section.title }}</h1>
+            
+            {% if section.header %}
+                <p class="lead text-muted mb-0 fw-normal" style="font-size: 1.15rem;">
+                    {{ section.header|striptags }}
+                </p>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-4 col-12 text-md-end mt-3 mt-md-0">
+            {% if perms.pages.change_page or user.is_superuser %}
+                <a href="{% url 'edit_section_generic' page_slug=page_mae.slug section_id=section.id %}" 
+                class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center" style="font-weight: 500; height: 42px; border-radius: 4px;">
+                    <i class="fas fa-edit me-1"></i> {% trans "Editar Seção" %}
+                </a>
+            {% endif %}
+            {% if perms.pages.change_page or user.is_superuser %}
+                <a href="{% url 'new_article_generic' page_slug=page_mae.slug section_id=section.id %}" 
+                   class="btn btn-sm btn-blue3 px-4 d-inline-flex align-items-center"
+                   style="font-weight: 500; height: 42px; border-radius: 4px;">
+                    <i class="fas fa-plus me-2"></i> {% trans "Add Artigo" %}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if section.content %}
+        <div class="fs-5 text-secondary mb-4 row-content">
+            {{ section.content|safe }}
+        </div>
+    {% endif %}
+
+    <hr class="mb-5">
+
+    <div class="row g-4">
+        {% if articles_paginated %}
+            {% for artigo in articles_paginated %}
+                <div class="col-md-4 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm border rounded">
+                        <div class="card-body d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <h5 class="card-title text-blue3 fw-bold mb-3">{{ artigo.title }}</h5>
+                                
+                                <p class="card-text text-muted small mb-4">
+                                    {{ artigo.header|default:artigo.content|striptags|truncatewords:25 }}
+                                </p>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
+                                <a class="btn btn-blue3 text-white px-4" 
+                                   href="{% url 'article_detail' page_slug=page_mae.slug section_id=section.id article_id=artigo.id %}" 
+                                   style="background-color: #0d6efd;">
+                                    {% trans "Acessar página" %}
+                                </a>
+                                
+                                {% if perms.pages.change_page or user.is_superuser %}
+                                    <a href="{% url 'edit_article_generic' page_slug=page_mae.slug section_id=section.id article_id=artigo.id %}" 
+                                       class="text-muted" title="{% trans 'Editar Artigo' %}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="col-12 mt-5 d-flex justify-content-center">
+                {% include "pages/_paginator.html" with page_obj=articles_paginated %}
+            </div>
+
+        {% else %}
+            <div class="col-12 text-center py-5">
+                <p class="text-muted">{% trans "Nenhum artigo cadastrado para esta seção ainda." %}</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock list_of_items %}

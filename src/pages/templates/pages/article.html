@@ -1,0 +1,97 @@
+{% extends 'baseblog.html' %}
+{% load i18n %}
+
+{% block list_of_items %}
+<div class="container" id="blog-single">
+  <div class="row">
+    <div class="container mt-5">
+      <div class="row d-flex justify-content-center">
+
+        <div class="col-sm-10 col-12">
+          
+          <div class="mt-4 d-flex justify-content-between align-items-center">
+            <a href="{% url 'section_detail' page_slug=page_mae.slug section_id=section.id %}" class="text-decoration-none text-muted small">
+                <i class="fas fa-arrow-left me-1"></i> {% trans "Voltar para" %} {{ section.title|default:_("Voltar") }}
+            </a>
+            
+            {% if perms.pages.change_page or user.is_superuser %}
+                <a href="{% url 'edit_article_generic' page_slug=page_mae.slug section_id=section.id article_id=article.id %}" class="btn btn-sm btn-outline-secondary px-3">
+                    <i class="fas fa-edit me-1"></i> {% trans "Editar Conteúdo" %}
+                </a>
+            {% endif %}
+          </div>
+
+          <div class="mt-4 mb-5">
+            <div class="">
+
+                <h1 class="text-blue3">
+                {% block title %} {{ article.title }} {% endblock title %}
+                </h1>
+
+              <div class="blog-text-content mt-5">
+                {% if article.header %}
+                    <p class="lead text-muted mb-4 fw-normal" style="font-size: 1.25rem;">
+                        {{ article.header|striptags }}
+                    </p>
+                {% endif %}
+                
+                <div class="content-text fs-5 lh-base" style="text-align: justify;">
+                    {{ article.content|safe }}
+                </div>
+              </div>
+
+              <div class="mt-5 pt-4 border-top">
+                <h5 class="text-muted mb-3" style="font-size: 1.1rem; font-weight: 600;">
+                    <i class="fas fa-share-alt me-2 text-blue3"></i>{% trans "Se gostou, compartilhe" %}
+                </h5>
+                
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                    
+                        <div class="input-group" style="max-width: 500px; height: 42px;">
+                            <input type="text" 
+                                class="form-control border-0" 
+                                value="{{ request.build_absolute_uri }}" 
+                                id="pageUrlInput" 
+                                readonly 
+                                style="font-size: 0.9rem; height: 100%; background-color: #e9ecef; color: #495057;">
+                            
+                            <button class="btn btn4 border-0 d-inline-flex align-items-center px-3 my-0 ms-0" 
+                                    type="button" 
+                                    onclick="copyPageUrl()" 
+                                    title="{% trans 'Copiar Link' %}"
+                                    style="height: 100%; border-radius: 0 5px 5px 0;">
+                                <i class="far fa-copy me-2"></i>{% trans "Copiar link" %}
+                            </button>
+                        </div>
+
+                        <a href="https://api.whatsapp.com/send?text={{ article.title|urlencode }}%20-%20{{ request.build_absolute_uri|urlencode }}" 
+                        target="_blank" 
+                        class="btn btn-success d-inline-flex align-items-center justify-content-center px-4" 
+                        style="background-color: #1ea852; border-color: #1ea852; font-size: 0.9rem; font-weight: 500; height: 42px; border-radius: 4px;">
+                            <i class="fab fa-whatsapp me-2 fs-5"></i> {% trans "Compartilhar no WhatsApp" %}
+                        </a>
+
+                    </div>
+                </div>
+
+              <hr class="mt-4" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function copyPageUrl() {
+  var copyText = document.getElementById("pageUrlInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* Para mobile */
+  navigator.clipboard.writeText(copyText.value);
+  
+  alert("{% trans 'Link copiado para a área de transferência!' %}");
+}
+</script>
+{% endblock list_of_items %}

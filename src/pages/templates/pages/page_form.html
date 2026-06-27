@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ block.super }} :: {% trans "Editar Página" %} {{ page_obj.title }}{% endblock %}
+
+{% block list_of_items %}
+<div class="container mt-5 mb-5" style="max-width: 800px;">
+    
+    <div class="mb-4">
+        <a href="{% url 'page_detail' slug=page_obj.slug %}" class="text-decoration-none text-muted small">
+            <i class="fas fa-arrow-left me-1"></i> {% trans "Cancelar e voltar" %}
+        </a>
+    </div>
+
+    <div class="card shadow-sm p-4 bg-white rounded border">
+        <h2 class="text-blue3 mb-4" style="font-family: Recoleta, sans-serif; font-weight: 600;">
+            {% trans "Editar Configurações da Página" %}
+        </h2>
+        
+        <form method="POST" enctype="multipart/form-data" class="w-100">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div class="mb-3">
+                    <label for="{{ field.id_for_label }}" class="form-label fw-bold text-secondary small">
+                        {{ field.label }}
+                    </label>
+                    
+                    {% if field.field.widget.input_type == "file" %}
+                        <div class="input-group d-block class-file-wrapper">
+                            {{ field }}
+                        </div>
+                    {% else %}
+                        <div class="w-100">
+                            {{ field }}
+                        </div>
+                    {% endif %}
+                    
+                    {% if field.help_text %}
+                        <div class="form-text text-muted small">{{ field.help_text }}</div>
+                    {% endif %}
+                    
+                    {% if field.errors %}
+                        <div class="text-danger small mt-1">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="mt-4 pt-3 border-top d-flex gap-2 justify-content-end">
+                <a href="{% url 'page_detail' slug=page_obj.slug %}" class="btn btn-light px-4">
+                    {% trans "Cancelar" %}
+                </a>
+                <button type="submit" class="btn btn-primary btn-blue3 px-5" style="background-color: #0d6efd;">
+                    {% trans "Salvar Alterações" %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), select, textarea').forEach(function(el) {
+        el.classList.add('form-control');
+    });
+
+    // Ajuste opcional para estilizar os links nativos do widget de arquivo do Django
+    document.querySelectorAll('.class-file-wrapper a').forEach(function(el) {
+        el.classList.add('text-decoration-none', 'small', 'd-block', 'mb-1');
+    });
+</script>
+{% endblock list_of_items %}
