@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.db.models import Q  
 from .models import Page, Section, Article
+from .forms import SectionForm, PageForm, ArticleForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class PageDetailView(DetailView):
     model = Page
