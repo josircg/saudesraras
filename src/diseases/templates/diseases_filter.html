@@ -19,22 +19,22 @@
                 </div>
             </div>
 
-            <div id="div-filtros" class="flex-grow-1" style="min-width: 280px; max-width: 400px;">
+            <div id="div-filtros" class="flex-grow-1" style="min-width: 280px; max-width: 400px; position: relative;">
                 <div class="title-filtros mb-1">{% trans "Filter by" %}</div>
-                <div class="input-group input-group-sm filter-bar">
+                <div class="input-group input-group-sm filter-bar position-relative">
                     <div class="input-group-text filter-img">
                         <img src="{% static 'site/icons/filter-icon.png' %}" height="14px" alt="">
                     </div>
 
-                    <select id="symptom" name="symptom" class="custom-select form-control" onchange="addSymptomFromSelect(this.value)">
-                        <option value="">{% trans "All Symptoms" %}</option>
-                        {% for symptom in all_symptoms %}
-                            <option value="{{ symptom.id }}">
-                                {{ symptom.description|capfirst }}
-                            </option>
-                        {% endfor %}
-                    </select>
+                    <input type="text" id="symptom-autocomplete-input" class="form-control pr-5" placeholder="Digite um sintoma..." autocomplete="off">
+                    
+                    <div id="autocomplete-spinner" class="spinner-border spinner-border-sm text-primary position-absolute d-none" style="right: 15px; top: 50%; transform: translateY(-50%); z-index: 10;" role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
                 </div>
+
+                <ul id="symptom-suggestions-list" class="list-group position-absolute w-100 mt-1 d-none" style="z-index: 1000; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);">
+                    </ul>
             </div>
             
         </div>
@@ -79,6 +79,74 @@
 </div>
 
 <script>
+    let debounceTimer;
+    const symptomInput = document.getElementById('symptom-autocomplete-input');
+    const suggestionsList = document.getElementById('symptom-suggestions-list');
+    const spinner = document.getElementById('autocomplete-spinner');
+
+    const localSymptomsList = [
+        {% for symptom in all_symptoms %}
+            { id: "{{ symptom.id }}", description: "{{ symptom.description|capfirst|escapejs }}" },
+        {% endfor %}
+    ];
+
+    symptomInput.addEventListener('input', function() {
+        clearTimeout(debounceTimer);
+        const query = this.value.trim().toLowerCase();
+
+        if (query.length < 2) {
+            suggestionsList.classList.add('d-none');
+            spinner.classList.add('d-none');
+            return;
+        }
+
+       
+        
+        
+        suggestionsList.innerHTML = '<li class="list-group-item text-muted text-center py-2"><i class="fas fa-clock me-1"></i> Buscando sintoma...</li>';
+        suggestionsList.classList.remove('d-none');
+
+        
+        debounceTimer = setTimeout(() => {
+            filterLocalSymptoms(query);
+        }, 1000); 
+    });
+
+    function filterLocalSymptoms(query) {
+        spinner.classList.add('d-none');
+        suggestionsList.innerHTML = '';
+
+        const matches = localSymptomsList.filter(s => s.description.toLowerCase().includes(query));
+
+        const limitedMatches = matches.slice(0, 4);
+
+        if (limitedMatches.length > 0) {
+            limitedMatches.forEach(symptom => {
+                let li = document.createElement('li');
+                li.className = 'list-group-item list-group-item-action py-2';
+                li.style.cursor = 'pointer';
+                li.textContent = symptom.description;
+                
+                li.onclick = function() {
+                    addSymptomFromSelect(symptom.id);
+                };
+                suggestionsList.appendChild(li);
+            });
+            suggestionsList.classList.remove('d-none');
+        } else {
+            suggestionsList.innerHTML = '<li class="list-group-item text-muted text-center py-2">{% trans "No symptoms found" %}</li>';
+            suggestionsList.classList.remove('d-none');
+        }
+    }
+
+    
+    document.addEventListener('click', function(e) {
+        if (e.target !== symptomInput && e.target !== suggestionsList) {
+            suggestionsList.classList.add('d-none');
+            spinner.classList.add('d-none');
+        }
+    });
+
     function addSymptomFromSelect(value) {
         if (!value) return;
         let input = document.getElementById('hiddenSymptomFilter');
@@ -88,11 +156,11 @@
             currentValues.push(value);
             input.value = currentValues.filter(Boolean).join(',');
         }
-        document.getElementById('symptom').name = "";
+        
+        symptomInput.name = "";
         document.getElementById('searchDiseases').submit();
     }
 
-    // Remove o ID da pílula clicada e atualiza os resultados
     function removeSymptomPill(id) {
         let input = document.getElementById('hiddenSymptomFilter');
         let currentValues = input.value ? input.value.split(',') : [];
@@ -100,7 +168,7 @@
         currentValues = currentValues.filter(item => item !== id.toString());
         input.value = currentValues.filter(Boolean).join(',');
         
-        document.getElementById('symptom').name = "";
+        symptomInput.name = "";
         document.getElementById('searchDiseases').submit();
     }
 </script>
