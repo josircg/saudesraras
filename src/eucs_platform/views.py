@@ -76,12 +76,19 @@ def home(request):
                   items_per_page)
     events = paginator_event.get_page(page)
 
-    depoimentos = Section.objects.filter(page__slug='depoimentos').order_by('order')[:3]
+    # Depoimentos
+    current_language = get_language()
+    depoimentos = Section.objects.filter(page__slug='depoimentos',
+                                         page__language=current_language).order_by('order')[:3]
 
-    perguntas_frequentes = Section.objects.filter(page__slug='faq').order_by('order')[:10]
+    # FAQ
+    perguntas_frequentes = Section.objects.filter(page__slug='faq',
+                                                  page__language=current_language).order_by('order')[:5]
 
+    # Users
     counter_users = Profile.objects.count()
-    total = counterprojects + counterresources + countertresources + counterorganisations
+
+    total = countertresources + counterprojects + countertresources + counterorganisations
 
     return render(request, 'home.html', {
         'user': user,
@@ -149,12 +156,14 @@ def pag_em_construcao(request):
 def parceiro(request):
     return render(request, 'pages/%s/parceiro.html' % get_language())
 
+
 def about(request):
     equipe = Profile.objects.filter(team__lt=99).order_by('team','user__name')
     alunos_antigos = Profile.objects.filter(team=99).order_by('user__name')
     return render(request,
                   'pages/%s/about.html' % get_language(),
                   {'equipe': equipe, 'equipe_antiga': alunos_antigos})
+
 
 def terms(request):
     return render(request, 'pages/%s/terms.html' % get_language())
@@ -170,23 +179,29 @@ def curated(request):
         'resourcesgrouped': resourcesgrouped,
         'isSearchPage': False})
 
+
 def imprint(request):
     return render(request, 'imprint.html')
+
 
 def development(request):
     return render(request, 'development.html')
 
+
 def moderation(request):
     return render(request, 'moderation.html')
 
+
 def translations(request):
     return render(request, 'translations.html')
+
 
 def guide(request):
     if settings.USE_GUIDE:
         return HttpResponseRedirect("/static/site/files/%s/%s" % (get_language(), settings.USE_GUIDE))
     else:
         return render(request, 'guide.html')
+
 
 def home_autocomplete(request):
     if request.GET.get('q'):
@@ -204,17 +219,23 @@ def home_autocomplete(request):
     else:
         return HttpResponse("No cookies")
 
+
 @staff_member_required(login_url='/login')
 def country_list(request):
+    """Page with admin style to list countries from django-countries"""
     if SEARCH_VAR in request.GET:
         text = request.GET.get(SEARCH_VAR)
         result = filter(lambda c: text.lower() in c.name.lower(), countries)
     else:
         result = countries
+    # Return country name translations
     result = country_translation(result)
+
     return render(request, 'country_list.html', {'countries': result})
 
+
 def country_translation(country_iterator):
+    """Rebuild country list to return translations"""
     for country in country_iterator:
         country_object = get_country(country.code)
         yield {
@@ -223,6 +244,7 @@ def country_translation(country_iterator):
             'name_portuguese': get_country_translated_name('pt-br', country_object),
             'name_spanish': get_country_translated_name('es', country_object),
         }
+
 
 def get_country_translated_name(language, country):
     with translation.override(language):
