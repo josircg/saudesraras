@@ -281,9 +281,13 @@
         <a href="/depoimentos#{{ depoimento.slug }}" class="card-container" 
            style="display: block; text-decoration: none; color: inherit; position: relative; width: 290px !important;  height: 355px !important;  border-radius: 30px; border: 3px solid #3D99F4; padding: 20px; box-sizing: border-box; background-color: #fff;">
             
-            <img src="{{ depoimento.first_image }}" alt="Imagem de {{ depoimento.title }}" class="card-image"
-                 style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0; object-fit: cover;">
-
+            {% if depoimento.first_image %}
+                <img src="{{ depoimento.first_image }}" alt="Imagem de {{ depoimento.title }}" class="card-image"
+                    style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0; object-fit: cover;">
+            {% else %}
+                <img src="/media/default_profile.png" alt="Imagem padrão para {{ depoimento.title }}" class="card-image"
+                    style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 3px solid #3D99F4; background-color: #fff; object-fit: cover; box-sizing: border-box;">
+            {% endif %}
             <div style="padding-top: 35px; max-height: 275px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 13; -webkit-box-orient: vertical;">
                 <p class="reg" style="color: black; font-size: 18px; font-family: Recoleta; font-weight: 400; line-height: 21px; word-wrap: break-word; word-break: break-all; text-align: left; margin: 0;">
                     {{ depoimento.header|strip_p|safe }}
