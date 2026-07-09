@@ -1,17 +1,15 @@
 from django.utils.translation import get_language
 from django.views.generic import DetailView
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import SectionForm, PageForm, ArticleForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from django.db.models import Q  
 from .models import Page, Section, Article
 
 class PageDetailView(DetailView):
     model = Page
 
     def get_template_names(self):
-        # Primeiro procura o arquivo específico do slug. Se não existir, usa o genérico do CMS.
         return [
             f'pages/{self.object.slug}.html',
             'pages/page.html'
@@ -29,36 +27,46 @@ class PageDetailView(DetailView):
 
         query = self.request.GET.get('q', '').strip()
         if query:
+            # Varre apenas os campos preenchíveis de texto de SECTION e ARTICLE
             sections_list = sections_list.filter(
-                title__icontains=query
-            ) | sections_list.filter(
-                content__icontains=query
-            )
-
+                # 1. Busca nos campos de texto da própria SECTION (SectionForm)
+                Q(title__icontains=query) |
+                Q(header__icontains=query) |
+                Q(content__icontains=query) |
+                
+                # 2. Busca nos campos de texto dos ARTICLES desta seção (ArticleForm)
+                Q(articles__title__icontains=query) |
+                Q(articles__header__icontains=query) |
+                Q(articles__content__icontains=query)
+            ).distinct() 
         context['item_count'] = sections_list.count()
 
-        # Alimenta os 4 primeiros artigos para CADA seção da lista completa
+        
         for section in sections_list:
-            # Garanta que o related_name no seu model Section -> Article seja 'articles'
-            section.top_articles = section.articles.all().order_by('id')[:4]
+            articles_queryset = section.articles.all().order_by('order', 'id')
+            
+            if query:
+                articles_queryset = articles_queryset.filter(
+                    Q(title__icontains=query) |
+                    Q(header__icontains=query) |
+                    Q(content__icontains=query)
+                )
+            
+            section.top_articles = articles_queryset[:4]
 
-        # Envia a lista completa de seções, sem paginação
         context['sections'] = sections_list
         context['filters'] = {'q': query}
         
         return context
 
-        
 def section_detail(request, page_slug, section_id):
     current_lang = get_language()
     
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
     section = get_object_or_404(Section, id=section_id, page=page_mae, visible=True)
     
-    # Captura a lista de todos os artigos vinculados a esta seção
     articles_list = section.articles.all().order_by('order', 'id')
     
-    # Pagina os artigos (ex: 15 cards por página)
     page_number = request.GET.get('page', 1)
     paginator = Paginator(articles_list, 15)
     
@@ -72,7 +80,7 @@ def section_detail(request, page_slug, section_id):
     context = {
         'page_mae': page_mae,
         'section': section,
-        'articles_paginated': articles_paginated, # Variável enviada limpa para o template
+        'articles_paginated': articles_paginated, 
     }
     
     return render(request, 'pages/section.html', context)
@@ -167,7 +175,7 @@ def new_article_generic(request, page_slug, section_id):
     user = request.user
     current_lang = get_language()
     
-    # Valida se a página e a seção existem de verdade
+    
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
     section = get_object_or_404(Section, id=section_id, page=page_mae)
 
@@ -175,9 +183,9 @@ def new_article_generic(request, page_slug, section_id):
         form = ArticleForm(request.POST)
         if form.is_valid():
             article = form.save(commit=False)
-            article.section = section  # Vincula à seção vinda da URL
+            article.section = section  
             article.save()
-            # Redireciona de volta para a listagem da seção (page_section.html)
+            
             return redirect('section_detail', page_slug=page_slug, section_id=section_id)
     else:
         form = ArticleForm()
