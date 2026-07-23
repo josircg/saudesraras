@@ -1,4 +1,4 @@
-from django.utils.translation import get_language
+from django.utils.translation import get_language, gettext as _
 from django.views.generic import DetailView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -7,6 +7,7 @@ from django.db.models import Q
 from .models import Page, Section, Article
 from .forms import SectionForm, PageForm, ArticleForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from urllib.parse import quote
 
 class PageDetailView(DetailView):
     model = Page
@@ -43,7 +44,6 @@ class PageDetailView(DetailView):
             ).distinct() 
         context['item_count'] = sections_list.count()
 
-        
         for section in sections_list:
             articles_queryset = section.articles.all().order_by('order', 'id')
             
@@ -60,6 +60,7 @@ class PageDetailView(DetailView):
         context['filters'] = {'q': query}
         
         return context
+
 
 def section_detail(request, page_slug, section_id):
     current_lang = get_language()
@@ -103,13 +104,42 @@ def article_detail(request, page_slug, section_id, article_id):
     
     return render(request, 'pages/article.html', context)
 
+def render_no_permission(request, message, item_type="", item_title="", perm_needed=""):
+    subject = quote(_("Solicitação de Acesso - Painel"))
+    
+    if item_title:
+        body_text = _("Olá, gostaria de solicitar permissão para editar %(item_type)s '%(item_title)s' ou permissão geral de editar %(perm_needed)s.") % {
+            'item_type': item_type,
+            'item_title': item_title,
+            'perm_needed': perm_needed
+        }
+    else:
+        body_text = _("Olá, gostaria de solicitar permissão geral para editar %(perm_needed)s.") % {
+            'perm_needed': perm_needed
+        }
+        
+    
+    body = quote(body_text)
+    mailto_link = f"mailto:saudesraras@gmail.com?subject={subject}&body={body}"
+
+    return render(request, 'pages/no_permission.html', {
+        'exception': message,
+        'mailto_link': mailto_link
+    }, status=403)
+
 @login_required(login_url='/login')
 def edit_page_generic(request, page_slug):
-    if not (request.user.has_perm('pages.change_page') or request.user.is_superuser):
-        return HttpResponseForbidden()
-        
     current_lang = get_language()
     page_obj = get_object_or_404(Page, slug=page_slug, language=current_lang)
+
+    if not (request.user.has_perm('pages.change_page') or request.user.is_superuser):
+        return render_no_permission(
+            request, 
+            message=_('Você não tem permissão para editar esta página.'),
+            item_type=_('a página'),
+            item_title=getattr(page_obj, 'title', page_obj.slug),
+            perm_needed='pages'
+        )
     
     if request.method == 'POST':
         form = PageForm(request.POST, request.FILES, instance=page_obj)
@@ -126,8 +156,18 @@ def edit_page_generic(request, page_slug):
 def new_section_generic(request, page_slug):
     user = request.user
     current_lang = get_language()
-    
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
+
+    if not (request.user.has_perm('pages.change_page') or 
+            request.user.has_perm('pages.change_section') or 
+            request.user.is_superuser):
+        return render_no_permission(
+            request, 
+            message=_('Você não tem permissão para criar seções.'),
+            item_type=_('a página'),
+            item_title=getattr(page_mae, 'title', page_mae.slug),
+            perm_needed='sections'
+        )
 
     if request.method == 'POST':
         form = SectionForm(request.POST)
@@ -149,13 +189,21 @@ def new_section_generic(request, page_slug):
 
 @login_required(login_url='/login')
 def edit_section_generic(request, page_slug, section_id):
-    if not (request.user.has_perm('pages.change_page') or request.user.is_superuser):
-        return HttpResponseForbidden()
-        
     current_lang = get_language()
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
     section = get_object_or_404(Section, id=section_id, page=page_mae)
-    
+
+    if not (request.user.has_perm('pages.change_page') or 
+            request.user.has_perm('pages.change_section') or 
+            request.user.is_superuser):
+        return render_no_permission(
+            request, 
+            message=_('Você não tem permissão para editar seções.'),
+            item_type=_('a seção'),
+            item_title=getattr(section, 'title', f'ID {section.id}'),
+            perm_needed='sections'
+        )
+        
     if request.method == 'POST':
         form = SectionForm(request.POST, instance=section)
         if form.is_valid():
@@ -172,14 +220,25 @@ def edit_section_generic(request, page_slug, section_id):
         'page_slug': page_slug
     })
 
+
 @login_required(login_url='/login')
 def new_article_generic(request, page_slug, section_id):
     user = request.user
     current_lang = get_language()
-    
-    
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
     section = get_object_or_404(Section, id=section_id, page=page_mae)
+
+    if not (request.user.has_perm('pages.change_page') or 
+            request.user.has_perm('pages.change_section') or 
+            request.user.has_perm('pages.change_article') or 
+            request.user.is_superuser):
+        return render_no_permission(
+            request, 
+            message=_('Você não tem permissão para criar artigos.'),
+            item_type=_('a seção'),
+            item_title=getattr(section, 'title', f'ID {section.id}'),
+            perm_needed='articles'
+        )
 
     if request.method == 'POST':
         form = ArticleForm(request.POST)
@@ -187,7 +246,6 @@ def new_article_generic(request, page_slug, section_id):
             article = form.save(commit=False)
             article.section = section  
             article.save()
-            
             return redirect('section_detail', page_slug=page_slug, section_id=section_id)
     else:
         form = ArticleForm()
@@ -203,14 +261,23 @@ def new_article_generic(request, page_slug, section_id):
 
 @login_required(login_url='/login')
 def edit_article_generic(request, page_slug, section_id, article_id):
-    if not (request.user.has_perm('pages.change_page') or request.user.is_superuser):
-        return HttpResponseForbidden()
-        
     current_lang = get_language()
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
     section = get_object_or_404(Section, id=section_id, page=page_mae)
     article = get_object_or_404(Article, id=article_id, section=section)
-    
+
+    if not (request.user.has_perm('pages.change_page') or 
+            request.user.has_perm('pages.change_section') or 
+            request.user.has_perm('pages.change_article') or 
+            request.user.is_superuser):
+        return render_no_permission(
+            request, 
+            message=_('Você não tem permissão para editar artigos.'),
+            item_type=_('o artigo'),
+            item_title=getattr(article, 'title', f'ID {article.id}'),
+            perm_needed='articles'
+        )
+        
     if request.method == 'POST':
         form = ArticleForm(request.POST, instance=article)
         if form.is_valid():

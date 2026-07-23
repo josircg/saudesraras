@@ -25,6 +25,8 @@
                 <a href="{% url 'edit_page_generic' page_slug=page.slug %}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center">
                     <i class="fas fa-edit me-1"></i> {% trans "Editar Página" %}
                 </a>
+            {% endif %}
+            {% if perms.pages.change_page or perms.pages.change_section or user.is_superuser %}
                 <a href="{% url 'new_section_generic' page_slug=page.slug %}" class="btn btn-blue3 btn-sm d-inline-flex align-items-center">
                     <i class="fas fa-plus me-1"></i> {% trans "Add Seção" %}
                 </a>

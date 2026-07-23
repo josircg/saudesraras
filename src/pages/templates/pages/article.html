@@ -14,7 +14,7 @@
                 <i class="fas fa-arrow-left me-1"></i> {% trans "Voltar para" %} {{ section.title|default:_("Voltar") }}
             </a>
             
-            {% if perms.pages.change_page or user.is_superuser %}
+            {% if perms.pages.change_page or perms.pages.change_section or perms.pages.change_article or user.is_superuser %}
                 <a href="{% url 'edit_article_generic' page_slug=page_mae.slug section_id=section.id article_id=article.id %}" class="btn btn-sm btn-outline-secondary px-3">
                     <i class="fas fa-edit me-1"></i> {% trans "Editar Conteúdo" %}
                 </a>
