@@ -91,7 +91,7 @@ urlpatterns = [
 
      # PATHS SAUDESRARAS
     path("emconstrucao/", views.pag_em_construcao, name="emconstrucao"),
-    path("riofarmes/", views.riofarmes, name="riofarmes"),
+    path("riofarmes2/", views.riofarmes, name="riofarmes"),
     path("about/", views.about, name="about"),
     path("medicos/", views.pag_em_construcao, name="medicos"),
     path("diagnostico/", views.pag_em_construcao, name="diagnostico"),

@@ -21,6 +21,9 @@
         <form method="POST" enctype="multipart/form-data" class="w-100">
             {% csrf_token %}
             
+            <!-- OBRIGATÓRIO: Carrega os arquivos JS e CSS do CKEditor -->
+            {{ form.media }}
+            
             {% for field in form %}
                 <div class="mb-3">
                     <label for="{{ field.id_for_label }}" class="form-label fw-bold text-secondary small">
@@ -60,11 +63,11 @@
 </div>
 
 <script>
-    document.querySelectorAll('input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), select, textarea').forEach(function(el) {
+    // Aplica form-control apenas em inputs, selects e textareas que NÃO sejam do CKEditor
+    document.querySelectorAll('input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), select, textarea:not([data-type="ckeditortype"])').forEach(function(el) {
         el.classList.add('form-control');
     });
 
-    // Ajuste opcional para estilizar os links nativos do widget de arquivo do Django
     document.querySelectorAll('.class-file-wrapper a').forEach(function(el) {
         el.classList.add('text-decoration-none', 'small', 'd-block', 'mb-1');
     });

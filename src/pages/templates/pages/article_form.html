@@ -25,6 +25,9 @@
         <form method="POST" action="" enctype="multipart/form-data" class="w-100">
             {% csrf_token %}
             
+            <!-- Carrega as dependências JS/CSS do CKEditor -->
+            {{ form.media }}
+            
             {% for field in form %}
                 <div class="mb-3">
                     <label for="{{ field.id_for_label }}" class="form-label fw-bold text-secondary small">
@@ -61,8 +64,8 @@
 </div>
 
 <script>
-    // Injeta automaticamente form-control nas tags controladas pelo Django admin
-    document.querySelectorAll('input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), select, textarea').forEach(function(el) {
+    // Ignora as textareas gerenciadas pelo CKEditor para não quebrar a barra de ferramentas
+    document.querySelectorAll('input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), select, textarea:not([data-type="ckeditortype"])').forEach(function(el) {
         el.classList.add('form-control');
     });
 </script>

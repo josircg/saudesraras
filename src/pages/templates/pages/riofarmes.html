@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load guardian_tags %}
+
+{% block title %}{{ block.super }} :: {{ object.title|default:object.header|default:"" }}{% endblock %}
+
+{% block list_of_items %}
+<div class="container mt-5">
+    
+    {% if object.image %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <img src="{{ object.image.url }}" class="img-fluid rounded shadow-sm" style="max-height: 300px; width: 100%; object-fit: cover;" alt="{{ object.title }}">
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="row align-items-center mb-3">
+        <div class="col-12">
+            <h1 class="text-center mb-5 text-blue3 fw-bold">
+                {{ object.title|default:object.header|safe }}
+            </h1>
+            
+            {% if object.content %}
+            <div class="text-center text-home" style="font-size: 2.2rem;;">
+                {{ object.content|safe }}
+            </div>
+            {% endif %}
+        </div>
+        
+        <!-- Pega as permissões do usuário nesta página especificamente -->
+        {% get_obj_perms user for object as "page_perms" %}
+
+        <div class="col-md-4 col-12 text-md-end mt-3 mt-md-0 d-flex justify-content-md-start gap-2">
+            <!-- Botão Editar Página -->
+            {% if perms.pages.change_page or "change_page" in page_perms or user.is_superuser %}
+                <a href="{% url 'edit_page_generic' page_slug=object.slug %}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center">
+                    <i class="fas fa-edit me-1"></i> {% trans "Editar Página" %}
+                </a>
+            {% endif %}
+
+            <!-- Botão Add Seção -->
+            {% if perms.pages.change_page or perms.pages.change_section or "change_page" in page_perms or user.is_superuser %}
+                <a href="{% url 'new_section_generic' page_slug=object.slug %}" class="btn btn-blue3 btn-sm d-inline-flex align-items-center">
+                    <i class="fas fa-plus me-1"></i> {% trans "Add Seção" %}
+                </a>
+            {% endif %}
+        </div>
+
+        
+    </div>
+
+    
+
+    <!-- Sistema de busca de seções -->
+    {% if sections %}
+        {% include "pages/_finder.html" with page_obj=sections finder_title=_("Buscar conteúdo...") finder_placeholder=_("Digite o que procura...") %}
+    {% endif %}
+
+    <div class="row mt-4">
+        <!-- Usa a lista tratada da view (sections) se existir; se não, usa a property do Model -->
+        {% with secoes_list=sections|default:object.sections.sections_by_order %}
+        {% if secoes_list %}
+            {% for secao in secoes_list %}
+                <div class="col-12 mb-5 pb-4 border-bottom">
+                    
+                    {% get_obj_perms user for secao as "secao_perms" %}
+
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                        <h2 class="text-blue2 fw-bold h3 mb-0">
+                            {{ secao.title|default:secao.header|safe }}
+                        </h2>
+                        
+                        <div class="d-flex align-items-center gap-2">
+                            {% if perms.pages.change_page or perms.pages.change_section or "change_page" in page_perms or "change_section" in secao_perms or user.is_superuser %}
+                                <a href="{% url 'edit_section_generic' page_slug=object.slug section_id=secao.id %}" 
+                                   class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center" title="{% trans 'Editar Seção' %}">
+                                    <i class="fas fa-edit me-1"></i> {% trans "Editar Seção" %}
+                                </a>
+                            {% endif %}
+
+                            {% if perms.pages.change_page or perms.pages.change_section or perms.pages.change_article or "change_page" in page_perms or "change_section" in secao_perms or user.is_superuser %}
+                                <a href="{% url 'new_article_generic' page_slug=object.slug section_id=secao.id %}" 
+                                   class="btn btn-sm btn-outline-primary d-inline-flex align-items-center" title="{% trans 'Adicionar Artigo' %}">
+                                    <i class="fas fa-plus me-1"></i> {% trans "Add Artigo" %}
+                                </a>
+                            {% endif %}
+
+                            
+                        </div>
+                    </div>
+
+                    {% if secao.content %}
+                    <div class=" mb-4 row-content" style="font-size: 20px;">
+                        {{ secao.content|safe }}
+                    </div>
+                    {% endif %}
+
+                    <!-- Renderização dos Artigos -->
+                    {% with artigos_list=secao.top_articles|default:secao.articles.articles_by_order %}
+                    {% if artigos_list %}
+                        <div class="row g-3">
+                            {% for artigo in artigos_list %}
+                                <div class="col-md-4 col-sm-6 col-12">
+                                    <div class="card h-100 border shadow-sm">
+                                        <div class="card-body p-3 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <h6 class="card-title text-dark fw-bold mb-2">
+                                                    {{ artigo.title|default:artigo.header|striptags|truncatechars:60 }}
+                                                </h6>
+                                                <p class="card-text text-muted small mb-3">
+                                                    {{ artigo.content|striptags|truncatechars:90 }}
+                                                </p>
+                                            </div>
+                                            <a href="{% url 'article_detail' page_slug=object.slug section_id=secao.id article_id=artigo.id %}" class="stretched-link small text-decoration-none fw-medium">
+                                                {% trans "Ver detalhes" %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12 text-center py-5">
+                <p class="text-muted">{% trans "Nenhum conteúdo estruturado nesta página." %}</p>
+            </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock list_of_items %}
