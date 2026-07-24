@@ -1307,3 +1307,38 @@ footer #parcerias .parceiros-logos img {
     background-color: #5CDCFF;  
     color:  #3D99F4; 
 }
+
+
+.btn-blue5{
+    background-color: var(--blue3) !important;
+    color: var(--blue1)  !important;
+    border: 2px solid var(--blue3)  !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-blue5:focus {
+    box-shadow: none;
+}
+
+.btn-blue5:hover {
+    background-color: var(--blue1)  !important;
+    color: var(--blue2)!important;
+    border-color: var(--blue2) !important;
+}
+
+.btn-blue5-outline {
+    background-color: transparent !important;
+    color: var(--blue3) !important;
+    border: 2px solid var(--blue3) !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-blue5-outline:focus {
+    box-shadow: none;
+}
+
+.btn-blue5-outline:hover {
+    background-color: var(--blue2) !important;
+    color: white !important;
+    border-color: var(--blue2) !important;
+}
