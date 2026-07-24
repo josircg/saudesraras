@@ -62,7 +62,6 @@ urlpatterns = [
     path("", include(contact.urls)),
     path("", include(accounts.urls)),
     path("", include(organisations.urls)),
-    path("", include(pages.urls)),
     path("", include(projects.urls)),
     path("", include(resources.urls)),
     path('', include('blog.urls')),
