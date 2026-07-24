@@ -160,6 +160,7 @@ INSTALLED_APPS = (
     'ckeditor_uploader',
     'django_cleanup.apps.CleanupConfig',
     'utilities',
+    'guardian'
 )
 
 MIDDLEWARE = [
@@ -242,6 +243,11 @@ MESSAGE_TAGS = {
 AUTH_USER_MODEL = "authtools.User"
 LOGIN_REDIRECT_URL = reverse_lazy("home")
 LOGIN_URL = reverse_lazy("accounts:login")
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Padrão do Django
+    'guardian.backends.ObjectPermissionBackend',  # Backend do Guardian
+)
 
 THUMBNAIL_EXTENSION = "png"  # Or any extn for your thumbnails
 
@@ -439,3 +445,4 @@ ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomAppIndexDashboa
 USER_AGENT = env('USER_AGENT')
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+

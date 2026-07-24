@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load guardian_tags %}
 {% load static %}
 
 {% block title %}{{ block.super }} :: {{ section.title }}{% endblock %}
 
 {% block list_of_items %}
+
 <div class="container mt-5">
     
     <div class="mb-4">
@@ -25,17 +27,23 @@
             {% endif %}
         </div>
         
+        {% get_obj_perms user for page_mae as "page_mae_perms" %}
+        {% get_obj_perms user for section as "section_perms" %}
+
         <div class="col-md-4 col-12 text-md-end mt-3 mt-md-0">
-            {% if perms.pages.change_page or perms.pages.change_section or user.is_superuser %}
+            <!-- Botão Editar Seção -->
+            {% if user.is_superuser or perms.pages.change_page or perms.pages.change_section or "change_page" in page_mae_perms or "change_section" in section_perms %}
                 <a href="{% url 'edit_section_generic' page_slug=page_mae.slug section_id=section.id %}" 
                 class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center" style="font-weight: 500; height: 42px; border-radius: 4px;">
                     <i class="fas fa-edit me-1"></i> {% trans "Editar Seção" %}
                 </a>
             {% endif %}
-            {% if perms.pages.change_page or perms.pages.change_section or perms.pages.change_article or user.is_superuser %}
+
+            <!-- Botão Add Artigo -->
+            {% if user.is_superuser or perms.pages.change_page or perms.pages.change_section or perms.pages.change_article or "change_page" in page_mae_perms or "change_section" in section_perms %}
                 <a href="{% url 'new_article_generic' page_slug=page_mae.slug section_id=section.id %}" 
-                   class="btn btn-sm btn-blue3 px-4 d-inline-flex align-items-center"
-                   style="font-weight: 500; height: 42px; border-radius: 4px;">
+                class="btn btn-sm btn-blue3 px-4 d-inline-flex align-items-center"
+                style="font-weight: 500; height: 42px; border-radius: 4px;">
                     <i class="fas fa-plus me-2"></i> {% trans "Add Artigo" %}
                 </a>
             {% endif %}

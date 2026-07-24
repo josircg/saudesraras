@@ -118,7 +118,6 @@ def render_no_permission(request, message, item_type="", item_title="", perm_nee
             'perm_needed': perm_needed
         }
         
-    
     body = quote(body_text)
     mailto_link = f"mailto:saudesraras@gmail.com?subject={subject}&body={body}"
 
@@ -127,12 +126,16 @@ def render_no_permission(request, message, item_type="", item_title="", perm_nee
         'mailto_link': mailto_link
     }, status=403)
 
+
 @login_required(login_url='/login')
 def edit_page_generic(request, page_slug):
     current_lang = get_language()
     page_obj = get_object_or_404(Page, slug=page_slug, language=current_lang)
 
-    if not (request.user.has_perm('pages.change_page') or request.user.is_superuser):
+    # Checa permissão global OU se tem permissão nesta página específica
+    if not (request.user.is_superuser or 
+            request.user.has_perm('pages.change_page') or 
+            request.user.has_perm('pages.change_page', page_obj)):
         return render_no_permission(
             request, 
             message=_('Você não tem permissão para editar esta página.'),
@@ -158,9 +161,11 @@ def new_section_generic(request, page_slug):
     current_lang = get_language()
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
 
-    if not (request.user.has_perm('pages.change_page') or 
-            request.user.has_perm('pages.change_section') or 
-            request.user.is_superuser):
+    # Pode criar seção se tiver acesso global OU se tiver acesso a esta página mãe
+    if not (user.is_superuser or 
+            user.has_perm('pages.change_page') or 
+            user.has_perm('pages.change_section') or 
+            user.has_perm('pages.change_page', page_mae)):
         return render_no_permission(
             request, 
             message=_('Você não tem permissão para criar seções.'),
@@ -193,9 +198,12 @@ def edit_section_generic(request, page_slug, section_id):
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
     section = get_object_or_404(Section, id=section_id, page=page_mae)
 
-    if not (request.user.has_perm('pages.change_page') or 
+    # Pode editar seção se tiver permissão global OU na página mãe OU na seção específica
+    if not (request.user.is_superuser or 
+            request.user.has_perm('pages.change_page') or 
             request.user.has_perm('pages.change_section') or 
-            request.user.is_superuser):
+            request.user.has_perm('pages.change_page', page_mae) or 
+            request.user.has_perm('pages.change_section', section)):
         return render_no_permission(
             request, 
             message=_('Você não tem permissão para editar seções.'),
@@ -228,10 +236,13 @@ def new_article_generic(request, page_slug, section_id):
     page_mae = get_object_or_404(Page, slug=page_slug, language=current_lang)
     section = get_object_or_404(Section, id=section_id, page=page_mae)
 
-    if not (request.user.has_perm('pages.change_page') or 
-            request.user.has_perm('pages.change_section') or 
-            request.user.has_perm('pages.change_article') or 
-            request.user.is_superuser):
+    # Pode criar artigo se tiver acesso global OU na página mãe OU na seção pai
+    if not (user.is_superuser or 
+            user.has_perm('pages.change_page') or 
+            user.has_perm('pages.change_section') or 
+            user.has_perm('pages.change_article') or 
+            user.has_perm('pages.change_page', page_mae) or 
+            user.has_perm('pages.change_section', section)):
         return render_no_permission(
             request, 
             message=_('Você não tem permissão para criar artigos.'),
@@ -266,10 +277,14 @@ def edit_article_generic(request, page_slug, section_id, article_id):
     section = get_object_or_404(Section, id=section_id, page=page_mae)
     article = get_object_or_404(Article, id=article_id, section=section)
 
-    if not (request.user.has_perm('pages.change_page') or 
+    # Cascata completa: Permissão Global OU na Page Mãe OU na Section Pai OU no Article Específico
+    if not (request.user.is_superuser or 
+            request.user.has_perm('pages.change_page') or 
             request.user.has_perm('pages.change_section') or 
             request.user.has_perm('pages.change_article') or 
-            request.user.is_superuser):
+            request.user.has_perm('pages.change_page', page_mae) or 
+            request.user.has_perm('pages.change_section', section) or 
+            request.user.has_perm('pages.change_article', article)):
         return render_no_permission(
             request, 
             message=_('Você não tem permissão para editar artigos.'),

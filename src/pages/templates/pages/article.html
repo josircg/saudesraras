@@ -1,5 +1,6 @@
 {% extends 'baseblog.html' %}
 {% load i18n %}
+{% load guardian_tags %}
 
 {% block list_of_items %}
 <div class="container" id="blog-single">
@@ -14,7 +15,11 @@
                 <i class="fas fa-arrow-left me-1"></i> {% trans "Voltar para" %} {{ section.title|default:_("Voltar") }}
             </a>
             
-            {% if perms.pages.change_page or perms.pages.change_section or perms.pages.change_article or user.is_superuser %}
+            {% get_obj_perms user for page_mae as "page_mae_perms" %}
+            {% get_obj_perms user for section as "section_perms" %}
+            {% get_obj_perms user for article as "article_perms" %}
+
+            {% if user.is_superuser or perms.pages.change_page or perms.pages.change_section or perms.pages.change_article or "change_page" in page_mae_perms or "change_section" in section_perms or "change_article" in article_perms %}
                 <a href="{% url 'edit_article_generic' page_slug=page_mae.slug section_id=section.id article_id=article.id %}" class="btn btn-sm btn-outline-secondary px-3">
                     <i class="fas fa-edit me-1"></i> {% trans "Editar Conteúdo" %}
                 </a>

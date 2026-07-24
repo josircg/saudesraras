@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
+{% load guardian_tags %}
 
 {% block title %}{{ block.super }} :: {{ page.title }}{% endblock %}
 
@@ -20,13 +21,19 @@
             <h1 class="mb-0 fw-bold text-blue3">{{ page.title }}</h1>
         </div>
         
+        <!-- Pega as permissões do usuário nesta página especificamente -->
+        {% get_obj_perms user for page as "page_perms" %}
+
         <div class="col-md-4 col-12 text-md-end mt-3 mt-md-0 d-flex justify-content-md-end gap-2">
-            {% if perms.pages.change_page or user.is_superuser %}
+            <!-- Botão Editar Página -->
+            {% if perms.pages.change_page or "change_page" in page_perms or user.is_superuser %}
                 <a href="{% url 'edit_page_generic' page_slug=page.slug %}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center">
                     <i class="fas fa-edit me-1"></i> {% trans "Editar Página" %}
                 </a>
             {% endif %}
-            {% if perms.pages.change_page or perms.pages.change_section or user.is_superuser %}
+
+            <!-- Botão Add Seção -->
+            {% if perms.pages.change_page or perms.pages.change_section or "change_page" in page_perms or user.is_superuser %}
                 <a href="{% url 'new_section_generic' page_slug=page.slug %}" class="btn btn-blue3 btn-sm d-inline-flex align-items-center">
                     <i class="fas fa-plus me-1"></i> {% trans "Add Seção" %}
                 </a>
@@ -58,15 +65,23 @@
             {% for secao in sections %}
                 <div class="col-12 mb-5 pb-4 border-bottom">
                     
+                    <!-- Pega as permissões específicas desta seção do loop -->
+                    {% get_obj_perms user for secao as "secao_perms" %}
+
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                         <h2 class="text-blue2 fw-bold h3 mb-0">{{ secao.title }}</h2>
                         
                         <div class="d-flex align-items-center gap-2">
-                            {% if perms.pages.change_page or user.is_superuser %}
+                            <!-- Botão Editar Seção: libera por perm global, perm na página ou perm na seção -->
+                            {% if perms.pages.change_page or perms.pages.change_section or "change_page" in page_perms or "change_section" in secao_perms or user.is_superuser %}
                                 <a href="{% url 'edit_section_generic' page_slug=page.slug section_id=secao.id %}" 
                                    class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center" title="{% trans 'Editar Seção' %}">
                                     <i class="fas fa-edit me-1"></i> {% trans "Editar Seção" %}
                                 </a>
+                            {% endif %}
+
+                            <!-- Botão Add Artigo: libera por perm global, perm na página ou perm na seção -->
+                            {% if perms.pages.change_page or perms.pages.change_section or perms.pages.change_article or "change_page" in page_perms or "change_section" in secao_perms or user.is_superuser %}
                                 <a href="{% url 'new_article_generic' page_slug=page.slug section_id=secao.id %}" 
                                    class="btn btn-sm btn-outline-primary d-inline-flex align-items-center" title="{% trans 'Adicionar Artigo' %}">
                                     <i class="fas fa-plus me-1"></i> {% trans "Add Artigo" %}
