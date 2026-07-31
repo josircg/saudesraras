@@ -5,37 +5,95 @@
 {% block list_of_items %}
   <div class="container">
     <div class="row">
-      <div class="col-12 mt-5 mb-5">
-        <h1>
-          {{ page.header|default_if_none:''|strip_p|safe }}
-        </h1>
+      <div class="col-12 mt-5 mb-1">
+        <div class="col-12">
+            <h1 class="text-blue3">
+              Depoimentos
+            </h1>
+
+            <div
+    class="border-top "
+    style="
+      margin-left: 0%;
+      margin-right: 0%;
+      margin-top: 0%;
+      margin-bottom: 3%;
+      border: 3px solid #114D7F;
+    "
+  ></div>
+        </div>
+        
         {% if page.content %}
           <br>
           {{ page.content|safe }}
         {% endif %}
       </div>
+
+
     </div>
-    <section class="accordion">
-      {% for section in page.sections.sections_by_order %}
-          <div class="accordion" id="accordion-{{ section.pk|unlocalize }}">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="acc1Heading-{{ section.pk|unlocalize }}">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#acc1Collapse-{{ section.pk|unlocalize }}" aria-expanded="true"
-                          aria-controls="acc1Collapse-{{ section.pk|unlocalize }}">
-                    {{ section.title|default_if_none:''|strip_p|safe }}
-                  </button>
-                </h2>
-                <div id="acc1Collapse-{{ section.pk|unlocalize }}" class="accordion-collapse collapse"
-                     aria-labelledby="acc1Heading-{{ section.pk|unlocalize }}"
-                     data-bs-parent="#accordion-{{ section.pk|unlocalize }}">
-                  <div class="accordion-body">
-                    {{ section.content|safe }}
-                  </div>
+
+    <div class="row mt-2">
+      
+
+       
+        {% for depoimento in page_obj %}
+        <div id="{{ depoimento.slug }}" class="col-12 mb-5 pt-4">
+            <div class="p-4 card-container" style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; width: 100%; box-sizing: border-box;">
+                
+                <img src="{% if depoimento.first_image %}{{ depoimento.first_image }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" 
+                  alt="Imagem de {{ depoimento.title }}" class="card-image"
+                  style="position: absolute; top: -41px; left: 40px; border-radius: 50%; width: 80px; height: 80px; border: 0; object-fit: cover; z-index: 2;">
+
+                <div style="padding-top: 30px; margin-bottom: 20px;">
+                    <p class="reg" style="color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 26px; word-wrap: break-word; text-align: left; margin: 0;">
+                        {{ depoimento.header|strip_p|safe }}
+                    </p>
                 </div>
-              </div>
-          </div>
-      {% endfor %}
-    </section>
+
+                <h5 class="bld" style="color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 23px; margin: 0; padding-top: 10px;">
+                    {{ depoimento.title }}
+                </h5>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p>Nenhum depoimento encontrado.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if page_obj.has_other_pages %}
+    <nav aria-label="Navegação de páginas" class="d-flex justify-content-center mt-5 mb-5">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Anterior">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <li class="page-item active" aria-current="page"><span class="page-link">{{ num }}</span></li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Próximo">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
   </div>
 {% endblock list_of_items %}
