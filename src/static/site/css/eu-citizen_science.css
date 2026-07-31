@@ -1321,3 +1321,9 @@ footer #parcerias .parceiros-logos img {
     background-color: #5CDCFF !important;  
     color:  var(--blue3) !important; 
 }
+.faq-arrow {
+      transition: transform 0.2s ease;
+    }
+    .card-header[aria-expanded="true"] .faq-arrow {
+      transform: rotate(180deg);
+    }

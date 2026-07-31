@@ -47,7 +47,6 @@ urlpatterns = [
     path("terms/", views.terms, name="terms"),
     path("privacy/", views.privacy, name="privacy"),
     path("guide/", views.pag_em_construcao, name="guide"),
-    path("faq/", views.pag_em_construcao, name="faq"),
     path("moderation/", views.moderation, name="moderation"),
     path("translations/", views.translations, name="translations"),
     path("home_autocomplete/", views.home_autocomplete, name="home_autocomplete"),
