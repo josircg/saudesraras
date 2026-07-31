@@ -1,6 +1,7 @@
 import accounts.urls
 import contact.urls
 import digest.urls
+import diseases.urls
 import events.urls
 import organisations.urls
 import platforms.urls
@@ -60,6 +61,7 @@ urlpatterns = [
     path("", include(contact.urls)),
     path("", include(accounts.urls)),
     path("", include(organisations.urls)),
+    path("", include(diseases.urls)),
     path("", include(projects.urls)),
     path("", include(resources.urls)),
     path('', include('blog.urls')),
@@ -93,7 +95,6 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("medicos/", views.pag_em_construcao, name="medicos"),
     path("diagnostico/", views.pag_em_construcao, name="diagnostico"),
-    path("doencas/", views.pag_em_construcao, name="doencas"),
     path("justica/", views.pag_em_construcao, name="justica"),
     path("parceiro/", views.parceiro, name="parceiro"),
     path("sintomas/", views.pag_em_construcao, name="sintomas"),
