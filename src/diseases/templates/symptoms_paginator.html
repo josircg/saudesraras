@@ -1,0 +1,35 @@
+{% load my_tags %}
+
+<ul class="pagination">
+
+  {% if symptoms_page.number|add:'-3' > 1 %}
+  <a href="?{% param_replace page=1 %}">
+    <li class="btn mb-4 btn-light">1</li>
+  </a>
+  {% endif %}
+
+  {% if symptoms_page.number|add:'-3' > 1 and symptoms_page.number|add:'-4' > 1 %}
+    <li><a href="?{% param_replace page=symptoms_page.number|add:'-4' %}">&hellip;</a></li>
+  {% endif %}
+
+  {% for i in symptoms_page.paginator.page_range %}
+    {% if symptoms_page.number == i %}
+      <li class="active btn btn-info mb-4"><span>{{ i }}</span></li>
+    {% elif i > symptoms_page.number|add:'-4' and i < symptoms_page.number|add:'4' %}
+      <a href="javascript:void(0)" onclick="goToPage({{ i }})">
+        <li class="btn mb-4 btn-light">{{ i }}</li>
+      </a>
+    {% endif %}
+  {% endfor %}
+
+  {% if symptoms_page.paginator.num_pages > symptoms_page.number|add:'3' and symptoms_page.paginator.num_pages > symptoms_page.number|add:'4' %}
+    <li><a href="?{% param_replace page=symptoms_page.number|add:'4' %}">&hellip;</a></li>
+  {% endif %}
+
+  {% if symptoms_page.paginator.num_pages > symptoms_page.number|add:'3' %}
+  <a href="?{% param_replace page=symptoms_page.paginator.num_pages %}">
+    <li class="btn mb-4 btn-light">{{ symptoms_page.paginator.num_pages }}</li>
+  </a>
+  {% endif %}
+
+</ul>

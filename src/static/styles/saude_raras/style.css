@@ -561,12 +561,12 @@ textarea:focus {
 
 
 .bttn4{
-    color: #114D7F; 
-    background-color:  #3D99F4; 
+    color: #114D7F !important; 
+    background-color:  #3D99F4 !important; 
 }
 .bttn4:hover{
-    background-color: #5CDCFF;  
-    color:  #3D99F4; 
+    background-color: #5CDCFF !important;  
+    color:  #3D99F4 !important; 
 }
 li .bttn5{
     color: #3D99F4; 
