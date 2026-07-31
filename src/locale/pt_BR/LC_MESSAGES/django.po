@@ -134,10 +134,6 @@ msgstr "Redefinição de senha"
 msgid "Don't have an account?"
 msgstr "Ainda não tem conta?"
 
-#, fuzzy
-#| msgid ""
-#| "Please check your mailbox.You are going to receive an email to certify "
-#| "that your email is valid."
 msgid "Check your inbox. We've sent a message to confirm your email is valid."
 msgstr ""
 "Verifique sua caixa de entrada. Enviamos um e-mail para nos certificar de "
@@ -418,8 +414,7 @@ msgstr "%d linhas lidas"
 msgid "%d subscribers added"
 msgstr "%d assinantes adicionados"
 
-#, fuzzy, python-format
-#| msgid "Newsletter %s sent"
+
 msgid "Opened newsletter %s email"
 msgstr "Abriu o e-mail da newsletter %s"
 
@@ -504,10 +499,8 @@ msgstr "Inglês"
 msgid "Falkland Islands (Malvinas)"
 msgstr "Ilhas Malvinas"
 
-#, fuzzy
-#| msgid "Project"
 msgid "View Project"
-msgstr "Iniciativa e Projeto"
+msgstr "Visualizar Projeto"
 
 msgid "Not moderated"
 msgstr "Não moderado"
@@ -902,18 +895,14 @@ msgstr ""
 msgid "Header"
 msgstr "Texto do cabeçalho"
 
-#, fuzzy
-#| msgid "Contact"
 msgid "Content"
-msgstr "Contato"
+msgstr "Conteúdo"
 
 msgid "Language"
 msgstr "Idioma"
 
-#, fuzzy
-#| msgid "Authentication"
 msgid "Documentation"
-msgstr "Autenticação"
+msgstr "Documentação"
 
 msgid "Image"
 msgstr ""
@@ -927,23 +916,26 @@ msgid "Order"
 msgstr "Ordenar por"
 
 msgid "Visible"
-msgstr ""
+msgstr "Visível"
 
 #, fuzzy
 #| msgid "Description"
 msgid "Section"
-msgstr "Descrição"
+msgstr "Seção"
 
 #, fuzzy
 #| msgid "Recent Actions"
 msgid "Sections"
-msgstr "Ações recentes"
+msgstr "Seções"
 
 msgid "Article"
-msgstr ""
+msgstr "Artigo"
 
 msgid "Articles"
-msgstr ""
+msgstr "Artigos"
+
+msgid "FAQ"
+msgstr "Perguntas frequentes"
 
 msgid "Please write the name of the citizen science platform."
 msgstr "Escreva o nome da plataforma de ciência cidadã."
@@ -2155,9 +2147,6 @@ msgstr "Página inicial"
 msgid "About"
 msgstr "Sobre"
 
-msgid "FAQ"
-msgstr "Perguntas frequentes"
-
 msgid "Policies"
 msgstr "Políticas"
 
@@ -2316,7 +2305,7 @@ msgstr "faça sua busca aqui..."
 msgid "search"
 msgstr "buscar"
 
-msgid "Social adversity"
+msgid "Social advertising"
 msgstr "Publicidade social"
 
 msgid "Hidden Disabilities Sunflower"
@@ -2361,21 +2350,6 @@ msgstr "Saiba como"
 msgid "Our medias:"
 msgstr "Nossas redes:"
 
-msgid "Are rare diseases contagious?"
-msgstr "Doenças raras são contagiosas?"
-
-msgid "How can we support people with rare diseases?"
-msgstr "Como podemos apoiar pessoas com doenças raras?"
-
-msgid "Why is difficult to find treatments for rare diseases?"
-msgstr "Por que é complicado encontrar tratamentos para doenças raras?"
-
-msgid "How do families deal with rare diseases?"
-msgstr "Como as famílias lidam com doenças raras?"
-
-msgid "Can children also have rare diseases?"
-msgstr "As crianças também podem ter doenças raras?"
-
 msgid "Imprint"
 msgstr "Créditos"
 
@@ -2413,8 +2387,6 @@ msgstr ""
 msgid "Ajuda"
 msgstr ""
 
-#, fuzzy
-#| msgid "Submitted <span class='text-pink6'>events</span>"
 msgid "Ongoing <span class='text-pink6'>events</span>"
 msgstr "<span class='text-pink6'> Eventos</span> acontecendo"
 
@@ -2573,3 +2545,18 @@ msgstr "Tradução"
 
 msgid "TOTALS"
 msgstr ""
+
+#~ msgid "Are rare diseases contagious?"
+#~ msgstr "Doenças raras são contagiosas?"
+
+#~ msgid "How can we support people with rare diseases?"
+#~ msgstr "Como podemos apoiar pessoas com doenças raras?"
+
+#~ msgid "Why is difficult to find treatments for rare diseases?"
+#~ msgstr "Por que é complicado encontrar tratamentos para doenças raras?"
+
+#~ msgid "How do families deal with rare diseases?"
+#~ msgstr "Como as famílias lidam com doenças raras?"
+
+#~ msgid "Can children also have rare diseases?"
+#~ msgstr "As crianças também podem ter doenças raras?"
