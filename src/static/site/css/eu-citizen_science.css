@@ -1354,6 +1354,28 @@ footer #parcerias .parceiros-logos img {
     width: 70px; /* Distância limpa e idêntica entre cada período */
     background-color: #e0e0e0;
     margin-top: -22px; /* Sobe a linha para alinhar exatamente no meio da bolinha */
+/* pag sintomas */
+
+
+.btn-sintomas-busca{
+    color: var(--blue1) !important; 
+    background-color: var(--blue3) !important; 
+    border: 1px !important;
+}
+.btn-sintomas-busca:hover{
+    background-color: #5CDCFF !important;  
+    color:  var(--blue3) !important; 
+}
+
+
+.btn-sintomas-add{
+    color: white !important; 
+    background-color: var(--blue3) !important; 
+    border: 1px !important;
+}
+.btn-sintomas-add:hover{
+    background-color: #5CDCFF !important;  
+    color:  var(--blue3) !important; 
 }
 .faq-arrow {
       transition: transform 0.2s ease;
