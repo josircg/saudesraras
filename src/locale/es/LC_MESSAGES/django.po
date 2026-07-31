@@ -982,6 +982,9 @@ msgstr ""
 msgid "Articles"
 msgstr ""
 
+msgid "FAQ"
+msgstr "Preguntas frecuentes"
+
 msgid "Please write the name of the citizen science platform."
 msgstr "Escriba el nombre de la plataforma de ciencia ciudadana."
 
@@ -2271,9 +2274,6 @@ msgstr "Inicio"
 msgid "About"
 msgstr "Acerca de"
 
-msgid "FAQ"
-msgstr "Preguntas frecuentes"
-
 msgid "Policies"
 msgstr "Políticas"
 
@@ -2446,7 +2446,7 @@ msgstr "Buscar..."
 msgid "search"
 msgstr "Buscar"
 
-msgid "Social adversity"
+msgid "Social advertising"
 msgstr ""
 
 msgid "Hidden Disabilities Sunflower"
@@ -2497,21 +2497,6 @@ msgid "Know how"
 msgstr ""
 
 msgid "Our medias:"
-msgstr ""
-
-msgid "Are rare diseases contagious?"
-msgstr ""
-
-msgid "How can we support people with rare diseases?"
-msgstr ""
-
-msgid "Why is difficult to find treatments for rare diseases?"
-msgstr ""
-
-msgid "How do families deal with rare diseases?"
-msgstr ""
-
-msgid "Can children also have rare diseases?"
 msgstr ""
 
 msgid "Imprint"

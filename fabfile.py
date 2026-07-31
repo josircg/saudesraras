@@ -101,7 +101,7 @@ def backup_local(context):
 
 @task
 def backup(context):
-    connection = Connection('webapp@3.89.127.179')
+    connection = Connection(HML_SERVER)
     get_database(connection, banco='raras_usr@db-postgres.cpklsdpnssqm.us-east-1.rds.amazonaws.com:5432/raras', path='/var/webapp/raras')
     get_mediafiles(connection,path='/var/webapp/raras')
 
