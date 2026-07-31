@@ -12,6 +12,7 @@ from pathlib import Path
 
 # Use 12factor inspired environment variables or from a file
 import environ
+from ckeditor_demo.settings import CKEDITOR_IMAGE_BACKEND
 # For Bootstrap 3, change error alert to 'danger'
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -307,13 +308,13 @@ HOST = env("HOST")
 DOMAIN = env("DOMAIN")
 USE_GUIDE = env("USE_GUIDE")
 
-VISAO_USERNAME = env('VISAO_USERNAME')
-VISAO_PASSWORD = env('VISAO_PASSWORD')
-VISAO_GROUP = env('VISAO_GROUP')
-VISAO_LAYER = env('VISAO_LAYER')
-VISAO_URL = env('VISAO_URL')
-VISAO_LAYOUT = env('VISAO_LAYOUT')
-VISAO_CATEGORY = env('VISAO_CATEGORY')
+VISAO_USERNAME = ""
+VISAO_PASSWORD = ""
+VISAO_GROUP = ""
+VISAO_LAYER = ""
+VISAO_URL = ""
+VISAO_LAYOUT = ""
+VISAO_CATEGORY = ""
 
 # Debug Options
 DEBUG = env('DEBUG')
@@ -369,6 +370,7 @@ RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_REQUIRE_STAFF = False
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -379,10 +381,8 @@ CKEDITOR_CONFIGS = {
              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
             {'name': 'paragraph',
              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-                       'Language']},
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', ]},
             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert', 'items': ['Image']},
             '/',
             {'name': 'styles', 'items': ['Styles', 'Format', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
@@ -406,8 +406,7 @@ CKEDITOR_CONFIGS = {
              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
             {'name': 'paragraph',
              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-                       'Language', 'Source']},
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Source']},
             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
             {'name': 'insert', 'items': ['Image']},
             '/',

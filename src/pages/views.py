@@ -1,5 +1,5 @@
 from django.utils.translation import get_language, gettext as _
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
@@ -8,6 +8,7 @@ from .models import Page, Section, Article
 from .forms import SectionForm, PageForm, ArticleForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from urllib.parse import quote
+
 
 class PageDetailView(DetailView):
     model = Page
@@ -309,3 +310,23 @@ def edit_article_generic(request, page_slug, section_id, article_id):
         'section_id': section_id,
         'article': article
     })
+
+class DepoimentosListView(ListView):
+    model = Section
+    template_name = 'pages/depoimentos.html'
+    context_object_name = 'page_obj'
+    paginate_by = 6 
+
+    def get_queryset(self):
+        return Section.objects.filter(page__slug='depoimentos').order_by('order')
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_language = get_language()
+        
+        try:
+            context['page'] = Page.objects.get(slug='depoimentos', language=current_language)
+        except Page.DoesNotExist:
+            context['page'] = None
+            
+        return context
