@@ -255,8 +255,6 @@
   
   {% include '_latest_events.html' %}
   
-</div>
-  
 
 <div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-5 sbld mx-0" >
   <div class="container d-flex flex-column align-items-center" style="max-width: 1120px;">
@@ -274,29 +272,36 @@
           </div>
       </div>
 
-      <div class="row justify-content-between mt-3">
-          {% for depoimento in depoimentos %}
-          <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
-              <div class="p-4 mb-4 card-container" style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; max-width: 350px; min-height: 300px; padding: 20px; box-sizing: border-box;">
-                  <a href="/depoimentos#{{ depoimento.slug }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: block; text-decoration: none; color: inherit;"></a>
+<div class="row justify-content-between mt-3 w-100">
+    {% for depoimento in depoimentos %}
+    <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex justify-content-center">
+        
+        <a href="/depoimentos#{{ depoimento.slug }}" class="card-container" 
+           style="display: block; text-decoration: none; color: inherit; position: relative; width: 290px !important;  height: 355px !important;  border-radius: 30px; border: 3px solid #3D99F4; padding: 20px; box-sizing: border-box; background-color: #fff;">
+            
+            {% if depoimento.first_image == 0 %}
+                <img src="{{ depoimento.first_image }}" alt="Imagem de {{ depoimento.title }}" class="card-image"
+                    style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0; object-fit: cover;">
+            {% else %}
+                <img src="/media/default_profile.png" alt="Imagem padrão para {{ depoimento.title }}" class="card-image"
+                    style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 3px solid #3D99F4; background-color: #fff; object-fit: cover; box-sizing: border-box;">
+            {% endif %}
+            <div style="padding-top: 35px; max-height: 275px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 13; -webkit-box-orient: vertical;">
+                <p class="reg" style="color: black; font-size: 18px; font-family: Recoleta; font-weight: 400; line-height: 21px; word-wrap: break-word; word-break: break-all; text-align: left; margin: 0;">
+                    {{ depoimento.header|strip_p|safe }}
+                </p>
+            </div>
 
-                  <img src="{{ depoimento.first_image }}" alt="Imagem" class="card-image"
-                       style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0;">
-
-                  <div style="padding-top: 40px; margin-bottom: 60px;">
-                      <p class="reg" style="max-width: 278px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 23px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {{ depoimento.header|strip_p|safe }}
-                      </p>
-                  </div>
-
-                  <!-- Título fixo na parte inferior -->
-                  <h5 class="bld" style="position: absolute; bottom: 30px; left: 20px; color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 13px; margin: 0;">
-                      {{ depoimento.title }}
-                  </h5>
-              </div>
-          </div>
-          {% endfor %}
-      </div>
+            <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background-color: #fff; padding-top: 5px;">
+                <h5 class="bld" style="color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 24px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="{{ depoimento.title }}">
+                    {{ depoimento.title }}
+                </h5>
+            </div>
+            
+        </a>
+    </div>
+    {% endfor %}
+</div>
   </div>
 </div>
 
@@ -332,12 +337,11 @@
     </div>
     </div>
 
-    <!-- iframe id="frame-visao" class="w-100 mt-3" style="height: 37.5rem;" src="https://visao.ibict.br/visao2/viewGroupCategory/238?l=462&amp;amp&amp;ui=f&amp;amp&amp;header=f&amp;amp&amp;hideIndicator=t" frameborder="0"></iframe-->
   </div>
 </div>
 
 
-  <div class="container-fluid row" style="background-color: #5CDCFF; padding: 0; margin: 0;">
+  <!-- div class="container-fluid row" style="background-color: #5CDCFF; padding: 0; margin: 0;">
     <div class="row no-gutters align-items-center" style="margin: 0; padding: 0;">
 
       <div class="col-4 d-flex justify-content-start align-items-center" style="padding: 0; margin: 0;">
@@ -354,14 +358,14 @@
         <a href="/parceiro/" class="btn mdm" style="display: inline-block; width: 100%; margin-top: 10px; background-color: #3D99F4; color: white; text-align: center; border: none; border-radius: 42px; font-size: 1.5vw; padding: 10px; text-decoration: none;">{% trans "Know how" %}</a>
       
       </div>
-  </div>
+      </div>
   
       <div class="col-6  d-flex justify-content-center align-items-center" style="padding: 0 20px; margin: 0;">
         <img src="{% static '/site/img/img.svg'%}" alt="Imagem" class="img-fluid" style="height: auto;">
       </div>
   
     </div>
-  </div>
+  </div-->
   
   <div class="container mt-5" style="max-width:  1120px;">
     <div class="row align-items-center justify-content-center w-auto" style="max-width: 1120px;">
@@ -394,7 +398,7 @@
         </div>
             </div>
     </div>
-</div>
+</--div>
 
     <div class="container-fluid justify-content-center mdm m-0">
       <div class="row text-center azul mb-3" style="margin-top: 5rem;">
