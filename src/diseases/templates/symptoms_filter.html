@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load static %}
+
+<div id="div-filtros" class="mb-4 w-100">
+    <div class="title-filtros mb-1 text-blue3">{% trans "Search Symptoms" %}</div>
+    <div class="input-group filter-bar w-100">
+        <input type="text" id="q_symptom" name="q_symptom" class="form-control barra-sintomas-busca" 
+               placeholder="{% trans 'Enter the symptom...' %}" value="{{ filters.q_symptom }}">
+        <button type="submit" class="btn btn-primary btn-sintomas-busca">{% trans "Search" %}</button>
+    </div>
+</div>
+
+<div class="mb-4">
+    <span class="small text-muted d-block mb-2">{% trans "Filter by letter:" %}</span>
+    <div class="d-flex flex-wrap fs-5" style="gap: 5px; font-weight: 500;">
+        
+        <a href="#" onclick="filterByLetter('')" 
+           class="badge text-decoration-none d-inline-flex align-items-center {% if not filters.letter %}bg-blue1 text-blue3{% else %} bg-blue3 text-white{% endif %}">
+           Todas
+        </a>
+        
+        {% for char in alphabet %}
+            <a href="#" onclick="filterByLetter('{{ char }}')" 
+               class="badge p-2 text-decoration-none 
+                      {% if filters.letter == char %}
+                          bg-blue1 text-white   {% else %}
+                          bg-light text-dark border {% endif %}">
+                {{ char }}
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-2">
+        {% if filters.q_symptom and filters.q_symptom.strip %}
+        <a href="#" onclick="clearSearchQuery()" class="badge rounded-pill bg-blue1 mt-1 text-decoration-none text-white p-2 pe-3">
+            <i class="fas fa-times"></i> {% trans "term:" %} {{ filters.q_symptom }} 
+        </a>
+        {% endif %}
+
+        {% if filters.letter and filters.letter.strip %}
+        <a href="#" onclick="filterByLetter('')" class="badge rounded-pill bg-blue1 mt-1 text-decoration-none text-white p-2 pe-3">
+            <i class="fas fa-times"></i> {% trans "letter:" %} {{ filters.letter }} 
+        </a>
+        {% endif %}
+
+        {% if filters.q_symptom.strip or filters.letter.strip %}
+        <a class="badge rounded-pill bg-blue3 text-decoration-none mt-1 text-white p-2" href="{% url 'symptoms' %}">
+            {% trans "Clear current search query and filters" %}
+        </a>
+        {% endif %}
+    </div>
+</div>
