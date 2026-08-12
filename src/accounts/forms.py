@@ -1,13 +1,18 @@
+import time
+
 from authtools import forms as authtoolsforms
 from crispy_forms.bootstrap import StrictButton
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, HTML, Field
+from crispy_forms.layout import Div, Field, HTML, Layout, Submit
+
 from django import forms
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth import forms as authforms
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
+
+from captcha.fields import CaptchaField
 
 User = get_user_model()
 
@@ -76,9 +81,15 @@ class LoginForm(AuthenticationForm):
 
 class SignupForm(authtoolsforms.UserCreationForm):
     newsletter = forms.BooleanField(label=_('I want to receive the newsletter'), required=False)
+    captcha = CaptchaField()
+    # Hidden field for Time Check
+    form_timestamp = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        if not self.data:
+            self.fields['form_timestamp'].initial = str(int(time.time()))
+
         self.helper = FormHelper()
 
         custom_field_class = "form-control"
@@ -104,6 +115,20 @@ class SignupForm(authtoolsforms.UserCreationForm):
                   css_class=custom_field_class, style=custom_field_style),
             HTML('<div class="m-4"></div>'),
             Field("newsletter"),
+            HTML('<div class="m-4"></div>'),
+            Div(
+                Field("captcha"),
+                HTML(
+                    '<button type="button" id="refresh-captcha" '
+                    f'class="btn btn-pink6" title="{_("Refresh captcha")}" alt="{_("Refresh captcha")}">'
+                    '<i class="fas fa-sync-alt"></i> '
+                    '</button>'
+                ),
+                css_class="d-flex align-items-end gap-1",
+            ),
+            Field("form_timestamp"),
+            HTML('<div class="m-4"></div>'),
+
             StrictButton(
                 _("Sign up"),
                 css_class="btn btn-submit-account mt-3",
@@ -111,6 +136,26 @@ class SignupForm(authtoolsforms.UserCreationForm):
                 style="background-color: #114D7F; color: #FFFFFF; border-radius: 25px;"
             )
         )
+
+    def clean_name(self):
+        if len(self.cleaned_data['name'].split()) < 2:
+            raise forms.ValidationError(_('Name must have a surname'))
+        return self.cleaned_data['name']
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        # Time Check — blocks submissions in less than 5 seconds
+        ts = cleaned_data.get('form_timestamp')
+        if ts:
+            try:
+                elapsed = int(time.time()) - int(ts)
+                if elapsed < 5:
+                    raise forms.ValidationError(_('Form submitted too fast. Please try again.'))
+            except (ValueError, TypeError):
+                raise forms.ValidationError(_('Invalid form data.'))
+
+        return cleaned_data
 
 
 
