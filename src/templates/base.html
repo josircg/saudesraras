@@ -156,10 +156,14 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'profiles:show_self' %}">{% trans "Profile" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
                                 {% if user.is_staff %}
                                     <li><a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
                                 {% endif %}
+                                {% if user.is_superuser or perms.pages.add_page %}
+                                    
+                                    <li><a class="dropdown-item" href="{% url 'admin:pages_page_add' %}">Criar Nova Página</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
                             </ul>
                         </div>
 

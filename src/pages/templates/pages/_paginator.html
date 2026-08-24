@@ -1,0 +1,37 @@
+{% load my_tags %}
+
+{% if page_obj.has_other_pages %}
+<ul class="pagination d-flex flex-wrap align-items-center list-unstyled" style="gap: 5px;">
+
+  {% if page_obj.number|add:'-3' > 1 %}
+  <li>
+    <a href="?{% param_replace page=1 %}" class="btn mb-4 btn-light">1</a>
+  </li>
+  {% endif %}
+
+  {% if page_obj.number|add:'-3' > 1 and page_obj.number|add:'-4' > 1 %}
+    <li class="mb-4 mx-1"><a href="?{% param_replace page=page_obj.number|add:'-4' %}" class="text-decoration-none">&hellip;</a></li>
+  {% endif %}
+
+  {% for i in page_obj.paginator.page_range %}
+    {% if page_obj.number == i %}
+      <li class="active btn btn-info mb-4 text-white"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+    {% elif i > page_obj.number|add:'-4' and i < page_obj.number|add:'4' %}
+      <li>
+        <a href="?{% param_replace page=i %}" class="btn mb-4 btn-light">{{ i }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+
+  {% if page_obj.paginator.num_pages > page_obj.number|add:'3' and page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+    <li class="mb-4 mx-1"><a href="?{% param_replace page=page_obj.number|add:'4' %}" class="text-decoration-none">&hellip;</a></li>
+  {% endif %}
+
+  {% if page_obj.paginator.num_pages > page_obj.number|add:'3' %}
+  <li>
+    <a href="?{% param_replace page=page_obj.paginator.num_pages %}" class="btn mb-4 btn-light">{{ page_obj.paginator.num_pages }}</a>
+  </li>
+  {% endif %}
+
+</ul>
+{% endif %}

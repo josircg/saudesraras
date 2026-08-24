@@ -860,8 +860,8 @@ footer #parcerias .parceiros-logos img {
 }
 
 .btn-blue3:hover{
-    background-color: var(--blue3) !important;
-    color: var(--blue1) !important
+    color: var(--blue3) !important;
+    background-color: var(--blue1) !important
 
 }
 
@@ -1298,6 +1298,14 @@ footer #parcerias .parceiros-logos img {
     opacity: 1;
 }
 
+
+.btn4{
+    color: #5CDCFF !important; 
+    background-color:  #114D7F !important; 
+}
+.btn4:hover{
+    background-color: #5CDCFF;  
+    color:  #3D99F4; 
 /* pag sintomas */
 
 
