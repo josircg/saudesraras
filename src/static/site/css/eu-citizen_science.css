@@ -860,8 +860,8 @@ footer #parcerias .parceiros-logos img {
 }
 
 .btn-blue3:hover{
-    background-color: var(--blue3) !important;
-    color: var(--blue1) !important
+    background-color:var(--blue1)  !important;
+    color: var(--blue3)  !important
 
 }
 
@@ -1298,6 +1298,29 @@ footer #parcerias .parceiros-logos img {
     opacity: 1;
 }
 
+.btn-bookmark-custom[bookmarked="True"] {
+    background-color: #114D7F !important;
+    color: white !important;
+    border: 1px solid white !important;
+}
+
+.btn-bookmark-custom[bookmarked="True"]:hover {
+    background-color: white !important;
+    color: #114D7F !important;
+    border: 1px solid #114D7F !important;
+}
+
+
+.btn-bookmark-custom[bookmarked="False"] {
+    background-color: white !important;
+    color: #114D7F !important;
+    border: 1px solid #114D7F !important;
+}
+
+.btn-bookmark-custom[bookmarked="False"]:hover {
+    background-color: #114D7F !important;
+    color: white !important;
+    border: 1px solid white !important;
 /* pag sintomas */
 
 
