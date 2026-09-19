@@ -6,22 +6,53 @@
 {% block title %}{{ block.super }} :: {{ page.title }}{% endblock %}
 
 {% block list_of_items %}
-<div class="container mt-5">
+
+
+<div class="mt-5">
+    {% if object.image %}
+    <div class="position-relative overflow-hidden rounded shadow-sm mb-4" style="min-height: 350px;">
+        <!-- Imagem de fundo cobrindo -->
+        <img 
+            src="{{ object.image.url }}" 
+            class="position-absolute top-0 start-0 w-100 h-100" 
+            style="object-fit: cover; z-index: 1;" 
+            alt="{{ object.title }}"
+        >
+
+        <!-- Camada de overlay branco -->
+        <div 
+            class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-4" 
+            style="
+                background-color: rgba(255, 255, 255, 0.7); 
+                backdrop-filter: blur(8px); 
+                -webkit-backdrop-filter: blur(8px); 
+                z-index: 2;
+            "
+        >
+            <!-- Título centralizado-->
+            <h1 class="text-center text-blue3 fw-bold m-0" style="font-size: 70px;" >
+                {{ object.title|default:object.header|safe }}
+            </h1>
+        </div>
+    </div>
+    {% else %}
     
-    {% if page.image %}
-    <div class="row mb-4">
+    <div class="row align-items-center mb-3">
         <div class="col-12">
-            <img src="{{ page.image.url }}" class="img-fluid rounded shadow-sm" style="max-height: 300px; width: 100%; object-fit: cover;" alt="{{ page.title }}">
+            <h1 class="text-center mb-3 text-blue3 fw-bold">
+                {{ object.title|default:object.header|safe }}
+            </h1>
         </div>
     </div>
     {% endif %}
+</div>
+<div class="container mt-5">
+    
     
     <div class="row align-items-center mb-3">
-        <div class="col-md-8 col-12">
-            <h1 class="mb-0 fw-bold text-blue3">{{ page.title }}</h1>
-        </div>
         
-        <!-- Pega as permissões do usuário nesta página especificamente -->
+        
+        
         {% get_obj_perms user for page as "page_perms" %}
 
         <div class="col-md-4 col-12 text-md-end mt-3 mt-md-0 d-flex justify-content-md-end gap-2">
@@ -65,14 +96,14 @@
             {% for secao in sections %}
                 <div class="col-12 mb-5 pb-4 border-bottom">
                     
-                    <!-- Pega as permissões específicas desta seção do loop -->
+                    <!-- Pega as permissões específicas desta seção -->
                     {% get_obj_perms user for secao as "secao_perms" %}
 
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                         <h2 class="text-blue2 fw-bold h3 mb-0">{{ secao.title }}</h2>
                         
                         <div class="d-flex align-items-center gap-2">
-                            <!-- Botão Editar Seção: libera por perm global, perm na página ou perm na seção -->
+                            <!-- Botão Editar Seção-->
                             {% if perms.pages.change_page or perms.pages.change_section or "change_page" in page_perms or "change_section" in secao_perms or user.is_superuser %}
                                 <a href="{% url 'edit_section_generic' page_slug=page.slug section_id=secao.id %}" 
                                    class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center" title="{% trans 'Editar Seção' %}">
@@ -80,7 +111,7 @@
                                 </a>
                             {% endif %}
 
-                            <!-- Botão Add Artigo: libera por perm global, perm na página ou perm na seção -->
+                            <!-- Botão Add Artigo-->
                             {% if perms.pages.change_page or perms.pages.change_section or perms.pages.change_article or "change_page" in page_perms or "change_section" in secao_perms or user.is_superuser %}
                                 <a href="{% url 'new_article_generic' page_slug=page.slug section_id=secao.id %}" 
                                    class="btn btn-sm btn-outline-primary d-inline-flex align-items-center" title="{% trans 'Adicionar Artigo' %}">
