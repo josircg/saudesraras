@@ -1,10 +1,12 @@
+import re
+from django.utils import timezone
+from collections import OrderedDict
 from itertools import chain
-
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.admin.views.main import SEARCH_VAR
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils import translation
@@ -19,7 +21,7 @@ from organisations.models import Organisation
 from organisations.views import getOrganisationAutocomplete
 from platforms.models import Platform
 from platforms.views import getPlatformsAutocomplete
-from profiles.models import Profile
+from profiles.models import Profile, InterestArea
 from profiles.views import getProfilesAutocomplete
 from projects.models import Project, Topic as PTopic
 from projects.views import getProjectsAutocomplete
@@ -156,14 +158,51 @@ def pag_em_construcao(request):
 def parceiro(request):
     return render(request, 'pages/%s/parceiro.html' % get_language())
 
-
 def about(request):
-    equipe = Profile.objects.filter(team__lt=99).order_by('team','user__name')
-    alunos_antigos = Profile.objects.filter(team=99).order_by('user__name')
-    return render(request,
-                  'pages/%s/about.html' % get_language(),
-                  {'equipe': equipe, 'equipe_antiga': alunos_antigos})
+    prefetch_funcoes = Prefetch(
+        'interestAreas',
+        queryset=InterestArea.objects.exclude(interestArea__iexact='Equipe')
+    )
 
+    equipe = Profile.objects.filter(
+        team__lt=99
+    ).prefetch_related(prefetch_funcoes).order_by(
+        'team',
+        'user__name'
+    )
+
+    todos_colaboradores = Profile.objects.filter(title__isnull=False).prefetch_related(prefetch_funcoes)
+    
+    periodos_dict = {}
+    padrao_periodo = re.compile(r'\b(\d{4})[./]([12])\b')
+
+    for perfil in todos_colaboradores:
+        if perfil.title:
+            matches = padrao_periodo.findall(perfil.title)
+            periodos_unicos = set(f"{ano}.{semestre}" for ano, semestre in matches)
+            
+            for periodo_formatado in periodos_unicos:
+                if periodo_formatado not in periodos_dict:
+                    periodos_dict[periodo_formatado] = []
+                
+                if perfil not in periodos_dict[periodo_formatado]:
+                    periodos_dict[periodo_formatado].append(perfil)
+
+    periodos_ordenados = OrderedDict()
+    for per in sorted(periodos_dict.keys(), reverse=True):
+        periodos_ordenados[per] = sorted(
+            periodos_dict[per], 
+            key=lambda p: p.user.name.lower()
+        )
+
+    return render(
+        request,
+        'pages/%s/about.html' % get_language(),
+        {
+            'equipe': equipe,
+            'equipe_por_periodo': periodos_ordenados
+        }
+    )
 
 def terms(request):
     return render(request, 'pages/%s/terms.html' % get_language())

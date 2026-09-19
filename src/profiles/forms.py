@@ -44,7 +44,10 @@ class ProfileForm(forms.ModelForm):
             Field("longitude"),
             Submit("update", "Update", css_class="btn-green"),
         )
-
+        self.fields['title'].label = _('Participated periods')
+        self.fields['title'].help_text = _("Insira os períodos em que participou separados por espaço (Ex: 2023.1 2021.2)")
+        
+        self.fields['title'].widget.attrs['placeholder'] = "Ex: 2023.1 2021.2"
     bio = forms.CharField(
         widget=CKEditorWidget(config_name='frontpage'),
         max_length=2000,
@@ -57,7 +60,7 @@ class ProfileForm(forms.ModelForm):
             attrs={
                 'data-token-separators': '[","]'}),
         required=False,
-        label=_('Interest Areas'),
+        label=_('Funções no projeto'),
         help_text=_("Please write or select 2 to 3 interest areas, separated by commas or by "
                     "pressing enter"))
     country = CountryField(blank=True).formfield()

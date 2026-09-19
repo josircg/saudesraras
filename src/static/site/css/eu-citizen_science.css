@@ -206,7 +206,7 @@ span.card-title {
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 32px;
+    line-height: 32px;replace
     color: #101828 !important;
 }
 
@@ -860,8 +860,8 @@ footer #parcerias .parceiros-logos img {
 }
 
 .btn-blue3:hover{
-    background-color: var(--blue3) !important;
-    color: var(--blue1) !important
+    color: var(--blue3) !important;
+    background-color: var(--blue1) !important
 
 }
 
@@ -1298,6 +1298,62 @@ footer #parcerias .parceiros-logos img {
     opacity: 1;
 }
 
+
+/* Container principal adaptável ao tamanho do conteúdo */
+.timeline-clean-container {
+    width: 100%;
+    padding: 15px 0 25px 0; /* Espaço extra embaixo para o texto respirar */
+    overflow-y: hidden;     /* Garante que NUNCA apareça barra vertical */
+    overflow-x: auto;       /* Só ativa scroll horizontal se faltar tela */
+}
+
+/* Alinha todos os blocos em linha horizontal */
+.period-timeline {
+    display: flex;
+    align-items: flex-start; /* Alinha o topo das bolinhas */
+    padding: 0 10px;
+}
+
+/* Estrutura que agrupa (Nodo + Linha) */
+.period-item {
+    display: flex;
+    align-items: center; /* Centraliza a linha verticalmente com a bolinha */
+}
+
+/* Nodo que segura a bolinha e o texto logo abaixo dela */
+.period-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px; /* Garante espaço mínimo para o texto não quebrar linha */
+}
+
+/* A bolinha azul */
+.period-dot {
+    width: 14px;
+    height: 14px;
+    background-color: #0d6efd; /* Use a variável de cor do seu sistema se preferir */
+    border-radius: 50%;
+    margin-bottom: 8px; /* Espaçamento fixo e seguro entre a bola e o texto */
+    transition: transform 0.2s ease;
+}
+
+.period-node:hover .period-dot {
+    transform: scale(1.25);
+}
+
+/* O texto do período */
+.period-label {
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* Linha conectora cinza perfeitamente alinhada */
+.period-line {
+    height: 2px;
+    width: 70px; /* Distância limpa e idêntica entre cada período */
+    background-color: #e0e0e0;
+    margin-top: -22px; /* Sobe a linha para alinhar exatamente no meio da bolinha */
 /* pag sintomas */
 
 

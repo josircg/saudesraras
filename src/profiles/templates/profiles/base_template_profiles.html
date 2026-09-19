@@ -19,9 +19,7 @@
                          src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 280x280 crop %}">
                 </div>
                 <h3 class="mt-4">
-                    {% if show_user.profile.title %}
-                        {{ show_user.profile.title}}
-                    {% endif %}
+                    
                     
                     {{ show_user.get_full_name}}
 
