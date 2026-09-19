@@ -65,7 +65,7 @@
                       <div class="mb-2 d-flex flex-wrap gap-1">
                         {% for area in pessoa.interestAreas.all %}
                           <span class="badge bg-info text-dark rounded-pill" style="font-size: 0.8rem;">
-                            <i class="fas fa-briefcase me-1"></i>Função: {{ area.interestArea }}
+                            <i class="fas fa-briefcase me-1"></i>{{ area.interestArea }}
                           </span>
                         {% empty %}
                           
