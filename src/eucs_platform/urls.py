@@ -9,7 +9,6 @@ import profiles.urls
 import projects.urls
 import resources.urls
 import pages.urls
-from pages.views import PageDetailView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -94,9 +93,9 @@ urlpatterns = [
     path("emconstrucao/", views.pag_em_construcao, name="emconstrucao"),
     path("riofarmes/", views.riofarmes, name="riofarmes"),
     path("about/", views.about, name="about"),
-    path("medicos/", views.pag_em_construcao, name="medicos"),
-    path("diagnostico/", views.pag_em_construcao, name="diagnostico"),
-    path("justica/", PageDetailView.as_view(), {"slug": "justica"}, name="justica",),
+    path("medicos/", views.medicos, name="medicos"),
+    path("diagnostico/", views.diagnostico, name="diagnostico"),
+    path("justica/", views.justica, name="justica"),
     path("parceiro/", views.parceiro, name="parceiro"),
     path("sintomas/", views.pag_em_construcao, name="sintomas"),
     path("SUS/", views.pag_em_construcao, name="SUS"),

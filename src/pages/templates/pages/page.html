@@ -55,20 +55,22 @@
         
         {% get_obj_perms user for page as "page_perms" %}
 
-        <div class="col-md-4 col-12 text-md-end mt-3 mt-md-0 d-flex justify-content-md-end gap-2">
-            <!-- Botão Editar Página -->
-            {% if perms.pages.change_page or "change_page" in page_perms or user.is_superuser %}
-                <a href="{% url 'edit_page_generic' page_slug=page.slug %}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center">
-                    <i class="fas fa-edit me-1"></i> {% trans "Editar Página" %}
-                </a>
-            {% endif %}
+        <div class="row align-items-center mb-3">
+            <div class="col-12 d-flex justify-content-end gap-2">
+                <!-- Botão Editar Página -->
+                {% if perms.pages.change_page or "change_page" in page_perms or user.is_superuser %}
+                    <a href="{% url 'edit_page_generic' page_slug=page.slug %}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center">
+                        <i class="fas fa-edit me-1"></i> {% trans "Editar Página" %}
+                    </a>
+                {% endif %}
 
-            <!-- Botão Add Seção -->
-            {% if perms.pages.change_page or perms.pages.change_section or "change_page" in page_perms or user.is_superuser %}
-                <a href="{% url 'new_section_generic' page_slug=page.slug %}" class="btn btn-blue3 btn-sm d-inline-flex align-items-center">
-                    <i class="fas fa-plus me-1"></i> {% trans "Add Seção" %}
-                </a>
-            {% endif %}
+                <!-- Botão Add Seção -->
+                {% if perms.pages.change_page or perms.pages.change_section or "change_page" in page_perms or user.is_superuser %}
+                    <a href="{% url 'new_section_generic' page_slug=page.slug %}" class="btn btn-blue3 btn-sm d-inline-flex align-items-center">
+                        <i class="fas fa-plus me-1"></i> {% trans "Add Seção" %}
+                    </a>
+                {% endif %}
+            </div>
         </div>
 
         <div
@@ -77,14 +79,14 @@
             margin-left: 0%;
             margin-right: 0%;
             margin-top: 0%;
-            margin-bottom: 3%;
+            margin-bottom: 0%;
             border: 3px solid #114D7F;
             "
         ></div>
     </div>
     <div class="row align-items-center mb-3">
         {% if page.content %}
-            <p class="text-muted mt-2 fs-5">{{ page.content|striptags }}</p>
+            <p class="text-muted mt-2 fs-5">{{ page.content|safe }}</p>
         {% endif %}
     </div>
     
