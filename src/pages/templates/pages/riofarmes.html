@@ -10,31 +10,54 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<div class="container mt-5">
+
+
+
+
+<div class="mt-5">
     {% if object.image %}
-    <div class="row mb-4">
-        <div class="col-12">
-            <img src="{{ object.image.url }}" class="img-fluid rounded shadow-sm" style="max-height: 300px; width: 100%; object-fit: cover;" alt="{{ object.title }}">
+    <div class="position-relative overflow-hidden rounded shadow-sm mb-4" style="min-height: 350px;">
+        <!-- Imagem de fundo cobrindo toda a área vertical e horizontal -->
+        <img 
+            src="{{ object.image.url }}" 
+            class="position-absolute top-0 start-0 w-100 h-100" 
+            style="object-fit: cover; z-index: 1;" 
+            alt="{{ object.title }}"
+        >
+
+        <!-- Camada de overlay branco com desfoque (blur) -->
+        <div 
+            class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-4" 
+            style="
+                background-color: rgba(255, 255, 255, 0.8); 
+                backdrop-filter: blur(8px); 
+                -webkit-backdrop-filter: blur(8px); 
+                z-index: 2;
+            "
+        >
+            <!-- Título centralizado na frente do fundo desfocado -->
+            <h1 class="text-center text-blue3 fw-bold m-0" style="font-size: 70px;" >
+                {{ object.title|default:object.header|safe }}
+            </h1>
         </div>
     </div>
-
-    <div
-            class="border-top "
-            style="
-            margin-left: 0%;
-            margin-right: 0%;
-            margin-top: 5%;
-            margin-bottom: 3%;
-            border: 3px solid #114D7F;
-            "
-        ></div>
-    {% endif %}
-    
+    {% else %}
+    <!-- Caso não haja imagem, exibe apenas o título tradicional -->
     <div class="row align-items-center mb-3">
         <div class="col-12">
             <h1 class="text-center mb-3 text-blue3 fw-bold">
                 {{ object.title|default:object.header|safe }}
             </h1>
+        </div>
+    </div>
+    {% endif %}
+</div>
+<div class="container mt-5">
+    
+    
+    <div class="row align-items-center mb-3">
+        <div class="col-12">
+            
             
             {% if object.content %}
             <div class="text-center text-home" style="font-size: 2.2rem;">
@@ -206,10 +229,10 @@
                               const map = L.map("map-unidades").setView([-22.9068, -43.1729], 11);
 
                               L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                                  maxZoom: 19,
-                                  attribution: "© OpenStreetMap"
-                              }).addTo(map);
-
+                                    maxZoom: 19,
+                                    attribution: "© OpenStreetMap contributors",
+                                    referrerPolicy: 'origin'
+                                }).addTo(map);
                               setTimeout(() => map.invalidateSize(), 300);
 
                               const defaultIcon = L.icon({
