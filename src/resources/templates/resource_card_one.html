@@ -9,9 +9,9 @@
         <div class="position-relative d-block h-100">
             
             <img class="w-100 h-100 object-fit-contain lazyload resource-img" 
-     data-src="{% thumbnail resource.image1|safe_image 400x565 %}" 
-     alt="{{ resource.name }}" />
-            
+                data-src="{% thumbnail resource.image1|safe_image 400x565 %}" 
+                alt="{{ resource.name }}" />
+                        
             <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center text-center p-4 overlay-blur-dark">
                 
                 {% if resource.featured %}
@@ -27,7 +27,7 @@
                 </p>
 
                 <div class="d-grid gap-2 w-100 px-3">
-                    <a class="btn btn-light btn-sm fw-semibold rounded-pill" href="/resource/{{resource.id}}">
+                    <a class="btn btn-blue3 btn-sm fw-semibold rounded-pill" href="/resource/{{resource.id}}">
                         Saiba mais...
                     </a>
                 </div>
@@ -37,16 +37,3 @@
     </div>
 </div>
 
-<script>
-    document.querySelectorAll('.resource-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            if (e.target.tagName.toLowerCase() === 'a') return;
-            
-            document.querySelectorAll('.resource-card').forEach(c => {
-                if (c !== card) c.classList.remove('active');
-            });
-            
-            this.classList.toggle('active');
-        });
-    });
-</script>

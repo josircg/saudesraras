@@ -28,6 +28,30 @@
 {% block scripts %}
 <script src="{% static 'site/js/bootstrap-autocomplete.js'%}"></script>
 <script>
+    document.querySelectorAll('.resource-card').forEach((card) => {
+        card.addEventListener('click', function(e) {
+
+            // Se o clique foi num link ou dentro de um elemento <a>, ignora
+            if (e.target.closest('a')) {
+                return;
+            }
+
+            // Verifica se este cartão já está ativo
+            var isActive = this.classList.contains('active');
+
+            // Remove a classe 'active' de todos os cartões da página
+            document.querySelectorAll('.resource-card').forEach(c => {
+                c.classList.remove('active');
+            });
+
+            // Se não estava ativo, ativa este. Se já estava, deixa fechado.
+            if (!isActive) {
+                this.classList.add('active');
+            }
+        });
+    });
+</script>
+<script>
     $('.basicAutoComplete').autoComplete(
         { minLength: 3 }
     );
