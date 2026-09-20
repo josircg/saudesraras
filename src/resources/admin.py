@@ -29,6 +29,12 @@ class ResourceAdminBase(admin.ModelAdmin):
     exclude = ('isTrainingResource',)
     migrate_to_cls = None
 
+    def save_model(self, request, obj, form, change):
+        """Atribui automaticamente o utilizador logado como criador se estiver vazio"""
+        if not obj.creator_id:  # Verifica se o ID do criador está vazio
+            obj.creator = request.user
+        super().save_model(request, obj, form, change)
+
     def migrate_resource(self, request, object_id):
         """Change Resource to Training Resource and Training Resource to Resource"""
         # Use self.migrate_to_cls to log change in the right admin class
@@ -66,7 +72,7 @@ class ResourceAdminBase(admin.ModelAdmin):
 
 @admin.register(Resource)
 class ResourceAdmin(ResourceAdminBase):
-    fields= ('name', 'url', 'theme', 'category', 'abstract', 'publisher', 'keywords', 'approved', 'safe_url')
+    fields = ('name', 'url', 'theme', 'category', 'abstract', 'publisher', 'keywords', 'approved', 'safe_url')
     autocomplete_fields = ('organisation',)
     readonly_fields = ('image1', 'safe_url')
     migrate_to_cls = TrainingResource

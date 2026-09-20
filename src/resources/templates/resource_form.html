@@ -22,18 +22,19 @@
 <!-- MODAL TO CROP THE IMAGE -->
 {% include '_crop_zone.html' %}
 <!-- END MODAL TO CROP -->
-
-
-<div class="intro-form mt-5 mb-5 pb-5 pt-5">
-    <div class="container">
-        {% if isTrainingResource %}
-        {% include "_intro_form_training_resource.html" %}
-        {% else %}
-        {% include "_intro_form_resource.html" %}
-        {% endif %}
+<div class="intro-form mt-5 mb-5 ">
+    <div class="container  pb-5 pt-0">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                {% if isTrainingResource %}
+                {% include "_intro_form_training_resource.html" %}
+                {% else %}
+                {% include "_intro_form_resource.html" %}
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
-
 
 <div class="container mt-5">
     <form action="#" class="edit-resource" id="form_resource" method="post" enctype="multipart/form-data">
@@ -99,13 +100,14 @@
                         <h3 class="leftborder mt-5">{% trans "Resource profile images" %}</h3>
                         <img class="img-fluid img-zoom" 
                                 id="imageResult1" 
-                                src="{% thumbnail resource.image1|safe_image 600x400 %}">
+                                src="{% thumbnail resource.image1|safe_image 400x565 %}">
                         {{ form.image1|as_crispy_field }}
                         {{ form.x1|as_crispy_field }}
                         {{ form.y1|as_crispy_field }}
                         {{ form.height1|as_crispy_field }}
                         {{ form.width1|as_crispy_field }}
                         {{ form.image_credit1|as_crispy_field }}
+                        <br>
                         {% include '_save_zone.html' %}
                         <div class="mb-5"></div>
                         <div class="row mt-5 mb-5">
@@ -115,7 +117,7 @@
                                        class="btn btn-pink6"><i class="fas fa-thumbs-up"></i> {% trans "Approve" %}
                                     </a>
                                     <a href="{% url 'approve_resource' resource.id 0 %}"
-                                       class="btn btn-pink6"><i class="fas fa-thumbs-down"></i> {% trans "Do not" %} {% trans "Approve" %}
+                                       class="btn bttn4"><i class="fas fa-thumbs-down"></i> {% trans "Do not" %} {% trans "Approve" %}
                                     </a>
                                 {% endif %}
                             </div>
@@ -132,7 +134,42 @@
 <script src="{% static 'scripts/jquery-ui.min.js' %}"></script>
 <script src="{% static 'scripts/jquery.ui.touch-punch.min.js' %}"></script>
 <script src="{% static 'site/js/site.js' %}"></script>
-<script src="{% static 'scripts/cropper.min.js' %}"></script>
+<script src="{% static 'site/js/modal-crop.js' ?>?v=1}"></script>
+<script>
+    $(document).on('show.bs.modal', function (e) {
+        var $modalContent = $(e.target).find('.modal-content');
+        if (!$modalContent.length) $modalContent = $('.modal-content');
+
+        $('#crop-loading-overlay').remove();
+
+        var loadingHtml = '<div id="crop-loading-overlay">' +
+                            '<img src="{% static "site/icons/loop-carregando.gif" %}" alt="Carregando...">' +
+                            '<span>Carregando...</span>' +
+                          '</div>';
+        
+        if ($modalContent.length) {
+            $modalContent.css('position', 'relative').append(loadingHtml);
+        }
+    });
+
+    $(document).on('shown.bs.modal', function () {
+        setTimeout(function () {
+            var imageElement = document.querySelector('.cropper-container img, #imageResult1, img[id*="image"]');
+            if (imageElement && imageElement.cropper) {
+                imageElement.cropper.setAspectRatio(1 / 1.414);
+            } else if (typeof cropper !== 'undefined' && cropper) {
+                cropper.setAspectRatio(1 / 1.414);
+            }
+            
+            $('#crop-loading-overlay').fadeOut(200, function() {
+                $(this).remove();
+            });
+        }, 1000);
+    });
+</script>
+
+
+
 <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
 <script src="{% static 'site/js/modal-crop.js' %}?v=1"></script>
 <script>
