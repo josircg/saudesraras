@@ -22,18 +22,19 @@
 <!-- MODAL TO CROP THE IMAGE -->
 {% include '_crop_zone.html' %}
 <!-- END MODAL TO CROP -->
-
-
-<div class="intro-form mt-5 mb-5 pb-5 pt-5">
-    <div class="container">
-        {% if isTrainingResource %}
-        {% include "_intro_form_training_resource.html" %}
-        {% else %}
-        {% include "_intro_form_resource.html" %}
-        {% endif %}
+<div class="intro-form mt-5 mb-5 ">
+    <div class="container  pb-5 pt-0">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                {% if isTrainingResource %}
+                {% include "_intro_form_training_resource.html" %}
+                {% else %}
+                {% include "_intro_form_resource.html" %}
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
-
 
 <div class="container mt-5">
     <form action="#" class="edit-resource" id="form_resource" method="post" enctype="multipart/form-data">

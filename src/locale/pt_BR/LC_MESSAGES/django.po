@@ -2112,11 +2112,8 @@ msgid ""
 "for 'not yet moderated' or 'All'."
 msgstr "#missing"
 
-msgid "Publisher information"
-msgstr "Informações do Editor"
-
-msgid "Links with projects and/or organisations"
-msgstr "Vínculos com iniciativas e/ou organizações"
+msgid "Authors"
+msgstr ""
 
 msgid "Go to Training"
 msgstr "Ir para o material didático"
@@ -2124,8 +2121,11 @@ msgstr "Ir para o material didático"
 msgid "Go to Resource"
 msgstr "Ir para a publicação"
 
-msgid "Comment"
-msgstr "Comentário"
+msgid "Links with projects and/or organisations"
+msgstr "Vínculos com iniciativas e/ou organizações"
+
+msgid "Publisher information"
+msgstr "Informações do Editor"
 
 msgid "Please specify the primary language in which the resource is available"
 msgstr "Idioma principal em que a publicação está disponível"
@@ -2256,6 +2256,9 @@ msgstr "Registrar uma nova organização sobre saúde rara"
 
 msgid "Register a new rare health event"
 msgstr "Registrar uma novo evento sobre saúde rara"
+
+msgid "Register a new booklet, article or resource"
+msgstr "Registrar uma nova cartilha, artigo ou publicação"
 
 msgid "Register a new rare health news"
 msgstr "Registrar um novo informe sobre saúde rara"
@@ -2587,6 +2590,15 @@ msgstr "Tradução"
 
 msgid "TOTALS"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "masc"
+#~| msgid "New"
+#~ msgid "New"
+#~ msgstr "Novo"
+
+#~ msgid "Comment"
+#~ msgstr "Comentário"
 
 #, fuzzy
 #~| msgid "Symptoms"
