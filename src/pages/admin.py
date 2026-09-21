@@ -1,7 +1,7 @@
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib import admin
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 from poweradmin.admin import PowerModelAdmin, PowerButton
 
@@ -12,7 +12,7 @@ class BaseInline(admin.StackedInline):
     extra = 0
     fields = (('title', 'order'), ('header', 'content'))
     formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget(config_name='admin')},
+        models.TextField: {'widget': CKEditorUploadingWidget(config_name='admin')},
     }
 
 
@@ -31,7 +31,7 @@ class PageAdmin(PowerModelAdmin):
     fields = (('title', 'slug', 'language'), 'explain', ('header', 'content'), 'image')
     search_fields = ['title']
     formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget(config_name='admin')},
+        models.TextField: {'widget': CKEditorUploadingWidget(config_name='admin')},
     }
     inlines = [SectionInline]
 
@@ -44,13 +44,13 @@ class PageAdmin(PowerModelAdmin):
 
 
 @admin.register(Section)
-class SectionAdmin(admin.ModelAdmin):
+class SectionAdmin(PowerModelAdmin):
     list_display = ('page', 'title', 'order', 'language')
     fields = (('page', 'title', 'order', 'language'), ('header', 'content'))
     list_select_related = ['page']
     search_fields = ['title']
     formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget(config_name='admin')},
+        models.TextField: {'widget': CKEditorUploadingWidget(config_name='admin')},
     }
     inlines = [ArticleInline]
     autocomplete_fields = ['page']
@@ -64,13 +64,13 @@ class SectionAdmin(admin.ModelAdmin):
 
 
 @admin.register(Article)
-class ArticleAdmin(admin.ModelAdmin):
+class ArticleAdmin(PowerModelAdmin):
     list_display = ('section', 'title', 'order', 'language')
     fields = (('section', 'title', 'order', 'language'), 'header', 'content')
     list_select_related = ['section']
     search_fields = ['title']
     formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget(config_name='admin')},
+        models.TextField: {'widget': CKEditorUploadingWidget(config_name='admin')},
     }
     autocomplete_fields = ['section']
     ordering = ['section', 'language', 'order']

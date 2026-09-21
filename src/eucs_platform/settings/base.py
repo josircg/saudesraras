@@ -438,3 +438,6 @@ ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomAppIndexDashboa
 USER_AGENT = env('USER_AGENT')
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+from PIL import Image
+Image.ANTIALIAS = 1
