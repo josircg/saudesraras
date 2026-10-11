@@ -12,6 +12,8 @@ from django.utils import formats
 from django.utils.translation import ugettext_lazy as _
 from eucs_platform import send_email
 from eucs_platform.logger import log_message
+from django.db.models import Q
+from django.utils import timezone
 
 from .forms import EventForm
 from .models import Event
@@ -31,38 +33,94 @@ def set_pages_and_get_object_list(paginator, pages, page_num):
 def events(request):
     user = request.user
     page = request.GET.get('page', 1)
-    upcoming_events = Event.objects.upcoming_events().order_by('start_date')
-    ongoing_events = Event.objects.ongoing_events().order_by('start_date')
-    past_events = Event.objects.past_events().order_by('-start_date')
+    keywords = request.GET.get('keywords', '').strip()
+    orderby = request.GET.get('orderby', '-start_date')
+    status = request.GET.get('status', '')
+    start_date = request.GET.get('start_date', '')
+    end_date = request.GET.get('end_date', '')
+
+    upcoming_events = Event.objects.upcoming_events()
+    ongoing_events = Event.objects.ongoing_events()
+    past_events = Event.objects.past_events()
 
     if not user.is_staff:
         upcoming_events = upcoming_events.approved_events()
         ongoing_events = ongoing_events.approved_events()
         past_events = past_events.approved_events()
 
+    if keywords:
+        kw_filter = Q(title__icontains=keywords) | Q(description__icontains=keywords)
+        upcoming_events = upcoming_events.filter(kw_filter)
+        ongoing_events = ongoing_events.filter(kw_filter)
+        past_events = past_events.filter(kw_filter)
+
+    if start_date:
+        upcoming_events = upcoming_events.filter(start_date__gte=start_date)
+        ongoing_events = ongoing_events.filter(start_date__gte=start_date)
+        past_events = past_events.filter(start_date__gte=start_date)
+
+    if end_date:
+        upcoming_events = upcoming_events.filter(start_date__lte=end_date)
+        ongoing_events = ongoing_events.filter(start_date__lte=end_date)
+        past_events = past_events.filter(start_date__lte=end_date)
+
+    if status == 'ongoing':
+        upcoming_events = Event.objects.none()
+        past_events = Event.objects.none()
+    elif status == 'upcoming':
+        ongoing_events = Event.objects.none()
+        past_events = Event.objects.none()
+    elif status == 'past':
+        upcoming_events = Event.objects.none()
+        ongoing_events = Event.objects.none()
+
+    if orderby == 'title':
+        ordering_field = 'title'
+    elif orderby == 'start_date':       
+        ordering_field = 'start_date'
+    elif orderby == '-start_date':      
+        ordering_field = '-start_date'
+    else:                               
+        ordering_field = 'start_date'
+
+    upcoming_events = upcoming_events.order_by(ordering_field)
+    ongoing_events = ongoing_events.order_by(ordering_field)
+    past_events = past_events.order_by(ordering_field)
+
+    
+    counter = upcoming_events.count() + ongoing_events.count() + past_events.count()
+
+    
     paginator_upcoming = Paginator(upcoming_events, 10)
     paginator_ongoing = Paginator(ongoing_events, 10)
     paginator_past = Paginator(past_events, 10)
 
     page_list = []
-
     upcoming_events = set_pages_and_get_object_list(paginator_upcoming, page_list, page)
     ongoing_events = set_pages_and_get_object_list(paginator_ongoing, page_list, page)
     past_events = set_pages_and_get_object_list(paginator_past, page_list, page)
-    # Return the page object from paginator with max pages, to command pagination
-    if page_list:
-        page_obj = max(page_list, key=lambda item: item.paginator.num_pages)
-    else:
-        page_obj = None
+
+    page_obj = max(page_list, key=lambda item: item.paginator.num_pages) if page_list else None
+
+    filters = {
+        'keywords': keywords,
+        'orderby': orderby,
+        'status': status,
+        'start_date': start_date,
+        'end_date': end_date,
+    }
 
     return render(request, 'events.html', {
+        'isSearchPage': True,
         'upcoming_events': upcoming_events,
         'ongoing_events': ongoing_events,
         'past_events': past_events,
         'page_obj': page_obj,
-        'user': user})
-
-
+        'counter': counter,
+        'filters': filters,
+        'user': user
+    })
+    
 @login_required(login_url='/login')
 def new_event(request):
     user = request.user

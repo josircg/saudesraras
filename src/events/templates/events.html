@@ -6,16 +6,34 @@
 
 
 {% block list_of_items %}
-<div class="border-top"
-    style="
-      margin: 3rem 5%;
-      border: 3px solid #114D7F;
-      margin-right: 5%;
-      margin-left: 5%;">
-</div>
+
 <div class="container">
+    <div class="border-top"
+                style="
+                margin: 3rem 5%;
+                margin-top: 0;
+                border: 3px solid #114D7F;
+                margin-right: 0%;
+                margin-left: 0%;"></div>
+
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mt-0 mb-4 text-blue2 lght" style="text-align: center;">{% trans "Events" %} </h1>
+        </div>
+            {% include "_subnavbar.html" %}
+            {% include "_finder_events.html" %}
+    </div>
+    
+    
     {% if ongoing_events %}
-    <h1 class="mt-5 mb-5 text-blue3" style="text-align: center;">{% trans "Ongoing events" %}</h1>
+    <h2 class="mb-2 text-blue2" >{% trans "Ongoing events" %}</h2>
+    <div class="border-top mb-3"
+    style="
+      margin-top: 0;
+      border: 2px solid #3D99F4;
+      margin-right: 0%;
+      margin-left: 0%;">
+    </div>
     <div class="row">
         <div class="col-12">
             {% for event in ongoing_events %}
@@ -23,17 +41,19 @@
             {% endfor %}
         </div>
     </div>
-    <div class="border-top"
-    style="
-      margin: 3rem 5%;
-      border: 3px solid #114D7F;
-      margin-right: 5%;
-      margin-left: 5%;">
-    </div>
+    
     {% endif %}
 
     {% if upcoming_events %}
-    <h1 class="mb-5 text-blue3" style="text-align: center;">{% trans "Upcoming Events" %}</h1>
+    <h2 class="mb-2 text-blue2" >{% trans "Upcoming Events" %}</h2>
+
+    <div class="border-top mb-3"
+        style="
+        margin-top: 0;
+        border: 2px solid #3D99F4;
+        margin-right: 0%;
+        margin-left: 0%;">
+    </div>
     <div class="row">
         <div class="col-12">
             {% for event in upcoming_events %}
@@ -41,17 +61,19 @@
             {% endfor %}
         </div>
     </div>
-    <div class="border-top"
-    style="
-      margin: 3rem 5%;
-      border: 3px solid #114D7F;
-      margin-right: 5%;
-      margin-left: 5%;">
-    </div>
+    
     {% endif %}
 
     {% if past_events %}
-    <h1 class="mb-5 text-blue3" style="text-align: center;">{% trans "Past events" %}</h1>
+    <h2 class="mb-2 text-blue2" >{% trans "Past events" %}</h2>
+    <div class="border-top mb-3"
+        style="
+        
+        margin-top: 0;
+        border: 2px solid #3D99F4;
+        margin-right: 0%;
+        margin-left: 0%;">
+    </div>
     <div class="row">
         <div class="col-12">
             {% for event in past_events %}
