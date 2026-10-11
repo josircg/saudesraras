@@ -1372,65 +1372,71 @@ footer #parcerias .parceiros-logos img {
 .period-label {
     font-size: 0.85rem;
     white-space: nowrap;
-}
-
-/* Linha conectora cinza perfeitamente alinhada */
+}/* Linha conectora cinza perfeitamente alinhada */
 .period-line {
     height: 2px;
     width: 70px; /* Distância limpa e idêntica entre cada período */
     background-color: #e0e0e0;
     margin-top: -22px; /* Sobe a linha para alinhar exatamente no meio da bolinha */
-.btn4{
-    color: #5CDCFF !important; 
-    background-color:  #114D7F !important; 
 }
-.btn4:hover{
+
+.btn4 {
+    color: #5CDCFF !important; 
+    background-color: #114D7F !important; 
+}
+
+.btn4:hover {
     background-color: #5CDCFF;  
-    color:  #3D99F4; 
+    color: #3D99F4; 
+}
+
 /* pag sintomas */
 
-
-.btn-sintomas-busca{
+.btn-sintomas-busca {
     color: var(--blue1) !important; 
     background-color: var(--blue3) !important; 
     border: 4px solid var(--blue3) !important;
 }
-.btn-sintomas-busca:hover{
+
+.btn-sintomas-busca:hover {
     background-color: #5CDCFF !important;  
-    color:  var(--blue3) !important; 
+    color: var(--blue3) !important; 
     border: 4px solid var(--blue1) !important;
 }
 
-
-.btn-sintomas-add{
+.btn-sintomas-add {
     color: white !important; 
     background-color: var(--blue3) !important; 
     border: 1px !important;
 }
-.btn-sintomas-add:hover{
+
+.btn-sintomas-add:hover {
     background-color: #5CDCFF !important;  
-    color:  var(--blue3) !important; 
+    color: var(--blue3) !important; 
 }
+
 .faq-arrow {
-      transition: transform 0.2s ease;
-    }
-    .card-header[aria-expanded="true"] .faq-arrow {
-      transform: rotate(180deg);
-    }
-.filter-icon{
+    transition: transform 0.2s ease;
+}
+
+.card-header[aria-expanded="true"] .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.filter-icon {
     background-color: var(--blue3) !important;
     border: 2px solid var(--blue3) !important;
     color: var(--blue1) !important;
 }
 
-.btn-search-icon{
+.btn-search-icon {
     background-color: var(--blue3) !important;
     border: 2px solid var(--blue3) !important;
     color: var(--blue1) !important;
 }
 
-.btn-search-icon:hover{
-    background-color:var(--blue1) !important; 
+.btn-search-icon:hover {
+    background-color: var(--blue1) !important; 
     border: 2px solid var(--blue1) !important;
     color: var(--blue3) !important;
 }
@@ -1439,7 +1445,7 @@ footer #parcerias .parceiros-logos img {
     font-size: 14px;
     color: #212529;
 }
-    
+
 #crop-loading-overlay {
     position: absolute;
     top: 0;
@@ -1464,22 +1470,22 @@ footer #parcerias .parceiros-logos img {
 }
 
 .resource-img {
-        aspect-ratio: 1 / 1.414;
-        min-height: 380px;
-    }
+    aspect-ratio: 1 / 1.414;
+    min-height: 380px;
+}
 
-    .cursor-pointer {
-        cursor: pointer;
-    }
+.cursor-pointer {
+    cursor: pointer;
+}
 
-    .card-hover-overlay .overlay-blur-dark {
-        background-color: rgba(13, 33, 55, 0.85);
-        backdrop-filter: blur(6px);
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
+.card-hover-overlay .overlay-blur-dark {
+    background-color: rgba(13, 33, 55, 0.85);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
 
-    .card-hover-overlay:hover .overlay-blur-dark,
-    .card-hover-overlay.active .overlay-blur-dark {
-        opacity: 1;
-    }
+.card-hover-overlay:hover .overlay-blur-dark,
+.card-hover-overlay.active .overlay-blur-dark {
+    opacity: 1;
+}
