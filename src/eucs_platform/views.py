@@ -27,6 +27,16 @@ from resources.models import Resource, ResourceGroup, ResourcesGrouped
 from resources.views import getResourcesAutocomplete
 from pages.models import Page, Section
 
+from pages.views import PageDetailView
+from django.http import Http404
+
+class SafePageView(PageDetailView):
+    def get(self, request, *args, **kwargs):
+        try:
+            return super().get(request, *args, **kwargs)
+        except Http404:
+            return pag_em_construcao(request)
+
 def home(request):
     user = request.user
     filters = {'keywords': ''}
@@ -136,14 +146,14 @@ def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
 
 def diagnostico(request):
-    return render(request, 'pages/%s/diagnostico.html' % get_language())
+    return SafePageView.as_view()(request, slug="diagnostico")
 
 def justica(request):
-    return render(request, 'pages/%s/justica.html' % get_language())
+    return SafePageView.as_view()(request, slug="justica")
 
 def medicos(request):
-    return render(request, 'pages/%s/medicos.html' % get_language())
-
+    return SafePageView.as_view()(request, slug="medicos")
+        
 def ajuda(request):
     return render(request, 'pages/%s/ajuda.html' % get_language())
 
