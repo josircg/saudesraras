@@ -7,17 +7,21 @@
 
 {% block list_of_items %}
 {% include "modal_resources.html" %}
-<div class="container mt-5">
+<div class="container mt-0">
+    <div class="border-top"
+                style="
+                margin: 3rem 5%;
+                margin-top: 0;
+                border: 3px solid #114D7F;
+                margin-right: 0%;
+                margin-left: 0%;"></div>
+
     <div class="row">
         <div class="col-12">
-            {% if isTrainingResource %}
-                <h1>{% trans "Training resource <span class='text-blue3'> search</span>" %} </h1>
-            {% else %}
-                <h1>{% trans "Resource <span class='text-blue3'> search</span>" %} </h1>
-            {% endif %}
-            {% include "_subnavbar_finder.html" %}
-            {% include "_finder_resources.html" %}
+            <h1 class="mt-0 mb-4 text-blue2 lght" style="text-align: center;">{% trans "Resources" %} </h1>
         </div>
+            {% include "_subnavbar.html" %}
+            {% include "_finder_resources.html" %}
     </div>
     <div class="row">
         {% include "resources_cards.html" %}
@@ -27,6 +31,30 @@
 
 {% block scripts %}
 <script src="{% static 'site/js/bootstrap-autocomplete.js'%}"></script>
+<script>
+    document.querySelectorAll('.resource-card').forEach((card) => {
+        card.addEventListener('click', function(e) {
+
+            // Se o clique foi num link ou dentro de um elemento <a>, ignora
+            if (e.target.closest('a')) {
+                return;
+            }
+
+            // Verifica se este cartão já está ativo
+            var isActive = this.classList.contains('active');
+
+            // Remove a classe 'active' de todos os cartões da página
+            document.querySelectorAll('.resource-card').forEach(c => {
+                c.classList.remove('active');
+            });
+
+            // Se não estava ativo, ativa este. Se já estava, deixa fechado.
+            if (!isActive) {
+                this.classList.add('active');
+            }
+        });
+    });
+</script>
 <script>
     $('.basicAutoComplete').autoComplete(
         { minLength: 3 }
