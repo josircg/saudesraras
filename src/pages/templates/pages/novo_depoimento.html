@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ block.super }} :: {% trans "Novo Depoimento" %}{% endblock %}
+
+{% block list_of_items %}
+<div class="container mb-5">
+    <h1 class="mt-5 mb-4 text-blue3" style="text-align: center;">{% trans "Enviar Novo Depoimento" %}</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- IMPORTANTE: enctype="multipart/form-data" para upload de arquivos -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {# Campo de Upload da Foto de Perfil #}
+                <div class="mb-3">
+                    <label for="{{ form.profile_image.id_for_label }}" class="form-label fw-bold">
+                        {% trans "Foto de Perfil" %}
+                    </label>
+                    {{ form.profile_image }}
+                    {% if form.profile_image.errors %}
+                        <div class="text-danger small">{{ form.profile_image.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.title.id_for_label }}" class="form-label fw-bold">
+                        {% trans "Nome" %}
+                    </label>
+                    {{ form.title }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.header.id_for_label }}" class="form-label fw-bold">
+                        {% trans "Depoimento" %}
+                    </label>
+                    {{ form.header }}
+                </div>
+
+                <div class="text-end mt-4">
+                    <button type="submit" class="btn btn-primary px-4">
+                        {% trans "Salvar Depoimento" %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% if form.errors %}
+  <div class="alert alert-danger mb-4">
+    <strong>Atenção:</strong> Verifique os erros no formulário.
+    <ul>
+      {% for field, errors in form.errors.items %}
+        <li><strong>{{ field }}:</strong> {{ errors|join:", " }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+{% endblock list_of_items %}

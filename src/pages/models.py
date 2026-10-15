@@ -87,6 +87,11 @@ class Section(models.Model):
                 return self.page.image.url
             else:
                 return None
+    
+    def header_without_first_image(self):
+        if not self.header:
+            return ""
+        return img_finder.sub('', self.header, count=1)
 
     def save(self, *args, **kwargs):
         if self.page_id:
