@@ -422,7 +422,7 @@ a {
 }
 
 #mapaHome {
-    background-color: #5BBABF;
+    background-color: var(--blue3);
     padding: 50px;
 }
 

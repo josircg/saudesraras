@@ -5,19 +5,27 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
 
-
-<div id="mapaHome" class="mb-5">
-    <div class="mapaContent">
-        <div class="d-flex mb-3">
-            <div class="d-sm-flex align-items-center flex-grow-1">
-              <span class="title">{% trans 'Project map' %}</span>
+<style>
+  #map-container {
+    width: 100%;
+    height: 480px;
+    border-radius: 8px;
+    z-index: 1;
+  }
+</style>
+<div id="mapaHome" class="mb-5 px-2 py-4">
+    <div class="mapaContent mx-auto" style="max-width: 1120px;">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-3 mb-3">
+            <div class="d-flex align-items-center">
+              <span class="title">{% trans 'Find help near you!' %}</span>
             </div>
-            <div id="div-ordenacao">
-                <div class="title-filtros text-white">{% trans "Select topic" %}</div>
+            <div id="div-ordenacao" style="max-width: 320px; width: 100%;">
+                <div class="title-filtros subtitle mb-1">{% trans "Select category" %}</div>
                 <div class="input-group input-group-sm filter-bar">
                     <select id="map-filter" class="custom-select form-control">
-                        <option value="all" selected>{% trans 'All topics' %}</option>
+                        <option value="all" selected>{% trans 'All categories' %}</option>
                         <option value="organisation">{% trans 'Organizações' %}</option>
+                        <option value="riofarme">{% trans 'Riofarmes' %}</option>
                     </select>
                 </div>
             </div>
@@ -25,34 +33,26 @@
         <div id="map-container"></div>
     </div>
 </div>
-
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    
     const locations = {{ map_locations_json|safe }};
 
-   
     const customIcon = L.icon({
       iconUrl: "{% static 'site/icons/icon-loc.png' %}",
       iconSize: [48, 48],       
       iconAnchor: [24, 48],     
-      popupAnchor: [0, -48]    
+      popupAnchor: [0, -48]     
     });
 
-    
     const map = L.map('map-container').setView([-22.9068, -43.1729], 6);
 
-    
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
       maxZoom: 20,
       attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    
     const markersGroup = L.markerClusterGroup({
       iconCreateFunction: function (cluster) {
         const count = cluster.getChildCount();
@@ -72,30 +72,122 @@
       }
     });
 
-    
-    locations.forEach(loc => {
+    map.addLayer(markersGroup);
+
+    const loadedMarkers = [];
+
+    function renderMarkers(filterType, shouldFitBounds = false) {
+      markersGroup.clearLayers();
+      const visibleMarkers = [];
+
+      loadedMarkers.forEach(item => {
+        if (filterType === 'all' || item.type === filterType) {
+          markersGroup.addLayer(item.marker);
+          visibleMarkers.push(item.marker);
+        }
+      });
+
+      if (shouldFitBounds && visibleMarkers.length > 0) {
+        const bounds = L.featureGroup(visibleMarkers).getBounds();
+        if (bounds.isValid()) {
+          map.fitBounds(bounds.pad(0.1));
+        }
+      }
+    }
+
+    function createAndStoreMarker(loc) {
+      const cleanUrl = loc.url.endsWith('/') ? loc.url.slice(0, -1) : loc.url;
+      const marker = L.marker([loc.lat, loc.lng], { icon: customIcon });
+
+      const popupContent = `
+        <strong>${loc.name}</strong><br>
+        <small>${loc.type === 'riofarme' ? '📍 Riofarmes' : '🏢 Organização'}</small><br>
+        <a href="${cleanUrl}">Ver detalhes</a>
+      `;
+      marker.bindPopup(popupContent);
+
+      loadedMarkers.push({
+        id: loc.id,
+        type: loc.type,
+        marker: marker
+      });
+    }
+
+    locations.filter(l => l.type === 'organisation').forEach(loc => {
       if (loc.lat && loc.lng) {
-        const marker = L.marker([loc.lat, loc.lng], { icon: customIcon });
-        
-        
-        const cleanUrl = loc.url.endsWith('/') ? loc.url.slice(0, -1) : loc.url;
-
-        const popupContent = `
-          <strong>${loc.name}</strong><br>
-          <a href="${cleanUrl}">Ver detalhes</a>
-        `;
-        marker.bindPopup(popupContent);
-
-        markersGroup.addLayer(marker);
+        createAndStoreMarker(loc);
       }
     });
 
-    
-    map.addLayer(markersGroup);
+    renderMarkers('all', true);
 
-   
-    if (locations.length > 0) {
-      map.fitBounds(markersGroup.getBounds().pad(0.1));
+    const riofarmesQueue = locations.filter(l => l.type === 'riofarme');
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+    function decodeHTMLEntities(text) {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = text;
+      return txt.value;
     }
+
+    async function processRiofarmesGeocode() {
+      for (const item of riofarmesQueue) {
+        const decodedRaw = decodeHTMLEntities(item.raw_address || '');
+        const lines = decodedRaw.split(/\r?\n/).map(l => l.trim()).filter(l => l.length);
+        const address = lines[0] || decodedRaw;
+
+        let searchAddress = address
+          .replace(/\bR\.\b/gi, "Rua")
+          .replace(/\bAv\.\b/gi, "Avenida")
+          .replace(/\bPça\b/gi, "Praça")
+          .replace(/,\s*,/g, ",")
+          .replace(/\s+/g, " ")
+          .trim()
+          .replace(/,\s*$/, "");
+
+        let cleanStreet = searchAddress.replace(/-\s*[^,]+,/g, ",").replace(/\s+/g, " ").trim();
+        let streetOnly = cleanStreet.split(',')[0].replace(/\d+/, '').trim();
+        const city = decodeHTMLEntities(item.city || '');
+
+        const queries = [
+          `${searchAddress}, Brasil`,                     
+          `${searchAddress}, ${city}, RJ, Brasil`,          
+          `${cleanStreet}, ${city}, RJ, Brasil`,           
+          `${streetOnly}, ${city}, RJ, Brasil`,            
+          `${city}, RJ, Brasil`                          
+        ];
+
+        for (const query of queries) {
+          try {
+            const response = await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query));
+            const data = await response.json();
+
+            if (data && data.length > 0) {
+              item.lat = parseFloat(data[0].lat);
+              item.lng = parseFloat(data[0].lon);
+
+              createAndStoreMarker(item);
+
+              const currentFilter = document.getElementById('map-filter').value;
+              renderMarkers(currentFilter, false);
+              break;
+            }
+          } catch (e) {
+            console.error("Erro ao geocodificar Riofarme:", e);
+          }
+          await sleep(300);
+        }
+        await sleep(1000); 
+      }
+    }
+
+    if (riofarmesQueue.length > 0) {
+      processRiofarmesGeocode();
+    }
+
+    const filterSelect = document.getElementById('map-filter');
+    filterSelect.addEventListener('change', function () {
+      renderMarkers(this.value, true);
+    });
   });
 </script>
