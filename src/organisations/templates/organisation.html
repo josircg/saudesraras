@@ -24,6 +24,24 @@
         <div class="col-xl-8 col-md-6 col-12">
             <p class="mt-3 gray7-color">{{ organisation.description | safe}}</p>
 
+            {% if organisation.diseases.all %}
+            <h4 class="mt-4 leftborder">{% trans "Diseases associated with this organisation" %}</h4>
+            <div class="row">
+                {% for disease in organisation.diseases.all %}
+                <div class="col-12 mt-3">
+                    <h5 class="text-blue2">{{ disease.name }}</h5>
+                    {% if disease.description %}
+                        <p class="gray7-color mb-2">{{ disease.description | safe }}</p>
+                    {% endif %}
+                    
+                    <a href="{% url 'disease_detail' disease.id %}" class="btn btn-sm btn-blue3 mb-2">
+                         {% trans "View disease details" %}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
             {% if associatedProjects.all %}
             <h4 class="mt-4 leftborder">{% trans "Projects" %}</h4>
             <div class="row">
@@ -133,6 +151,31 @@
             <input type="hidden" id="lat" value="{{ organisation.latitude }}">
             <input type="hidden" id="long" value="{{ organisation.longitude }}">
             {% leaflet_map "map" callback="window.map_init_basic" %}
+            {% if organisation.diseases.all %}
+            <div class="mt-4">
+                {% for disease in organisation.diseases.all %}
+                    <h6 class="fw-bold mt-3">
+                        <a href="{% url 'disease_detail' disease.id %}" class="text-decoration-none text-blue3">
+                            {% blocktrans with disease_name=disease.name %}Symptoms related to {{ disease_name }}{% endblocktrans %}
+                        </a>
+                    </h6>
+                    
+                    {% if disease.symptoms.all %}
+                        <ul class="list-unstyled ms-2">
+                            {% for symptom in disease.symptoms.all %}
+                            <li>
+                                <a href="{% url 'symptoms' %}?q={{ symptom.description|urlencode }}" class="text-decoration-none gray7-color">
+                                    • {{ symptom.description }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="small text-muted ms-2">{% trans "No symptoms registered." %}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
         <div><br/></div>
     </div>
