@@ -1,9 +1,11 @@
 from itertools import chain
+import json
 
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.admin.views.main import SEARCH_VAR
 from django.core.paginator import Paginator
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -59,6 +61,25 @@ def home(request):
     organisations = paginatororganisation.get_page(page)
     counterorganisations = paginatororganisation.count
 
+    org_map_qs = Organisation.objects.filter(
+        approved=True,
+        latitude__isnull=False,
+        longitude__isnull=False
+    )
+
+    map_locations = []
+    for org in org_map_qs:
+        map_locations.append({
+            'id': org.id,
+            'name': org.name,
+            'lat': float(org.latitude),
+            'lng': float(org.longitude),
+            'type': 'organisation',
+            'url': f'/organisation/{org.id}/'
+        })
+
+    map_locations_json = json.dumps(map_locations, cls=DjangoJSONEncoder)
+
     platforms = Platform.objects.filter(active=True).order_by('-dateCreated')
     paginator_platform = Paginator(platforms, items_per_page)
     platforms = paginator_platform.get_page(page)
@@ -112,10 +133,9 @@ def home(request):
         'visao_endpoint': visao_endpoint,
         'compare_topics_endpoint': compare_topics_endpoint,
         'project_topics': project_topics,
+        'map_locations_json': map_locations_json,  
         'isSearchPage': True,
     })
-
-
 def faq(request):
     current_language = get_language()
     try:

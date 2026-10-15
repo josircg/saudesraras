@@ -1327,3 +1327,45 @@ footer #parcerias .parceiros-logos img {
     .card-header[aria-expanded="true"] .faq-arrow {
       transform: rotate(180deg);
     }
+
+
+.custom-cluster {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-cluster div {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.cluster-small div {
+    background-color: var(--blue1);
+    color: #111111;
+}
+
+.cluster-medium div {
+    background-color: var(--blue2);
+}
+
+.cluster-large div {
+    background-color: var(--blue3);
+}
+
+#map-container {
+    width: 100%;
+    height: 480px;
+    border-radius: 8px;
+    z-index: 1;
+  }

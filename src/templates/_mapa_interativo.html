@@ -1,52 +1,101 @@
 {% load static %}
-{% load i18n cache %}
-{% cache 0 project_map %}
+{% load i18n %}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+
 <div id="mapaHome" class="mb-5">
     <div class="mapaContent">
-        <div class="d-flex">
+        <div class="d-flex mb-3">
             <div class="d-sm-flex align-items-center flex-grow-1">
               <span class="title">{% trans 'Project map' %}</span>
             </div>
             <div id="div-ordenacao">
                 <div class="title-filtros text-white">{% trans "Select topic" %}</div>
                 <div class="input-group input-group-sm filter-bar">
-                        <select id="orderby" name="orderby" class="custom-select form-control">
-                          <option value="{{ visao_endpoint }}" selected>{% trans 'All topics' %}</option>
-                            {% for project_topic, endpoint  in project_topics %}
-                              <option value="{{ endpoint }}">{{ project_topic }}</option>
-                            {% endfor %}
-                        </select>
+                    <select id="map-filter" class="custom-select form-control">
+                        <option value="all" selected>{% trans 'All topics' %}</option>
+                        <option value="organisation">{% trans 'Organizações' %}</option>
+                    </select>
                 </div>
             </div>
         </div>        
-        <br>
-        <div id="frame-visao" class=""></div>
+        <div id="map-container"></div>
     </div>
 </div>
-{% endcache %}
 
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
 <script>
-  function loadIframe() {
-    const iframeContainer = document.getElementById('frame-visao');
-    const iframe = document.createElement('iframe');
-    // Add the iframe to the container
-    iframeContainer.appendChild(iframe);
-    // Default iframe src
-    iframe.src = '{{ visao_endpoint }}';
-  }
-  // Function to update the iframe src based on the selected option
-  function updateIframeSrc() {
-    const selectedUrl = this.value;
-    const iframe = document.querySelector('#frame-visao iframe');
+  document.addEventListener('DOMContentLoaded', function () {
+    
+    const locations = {{ map_locations_json|safe }};
 
-    if (iframe) {
-      iframe.src = selectedUrl;
+   
+    const customIcon = L.icon({
+      iconUrl: "{% static 'site/icons/icon-loc.png' %}",
+      iconSize: [48, 48],       
+      iconAnchor: [24, 48],     
+      popupAnchor: [0, -48]    
+    });
+
+    
+    const map = L.map('map-container').setView([-22.9068, -43.1729], 6);
+
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+      maxZoom: 20,
+      attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    
+    const markersGroup = L.markerClusterGroup({
+      iconCreateFunction: function (cluster) {
+        const count = cluster.getChildCount();
+        let sizeClass = 'cluster-small';
+
+        if (count >= 50) {
+          sizeClass = 'cluster-large';
+        } else if (count >= 10) {
+          sizeClass = 'cluster-medium';
+        }
+
+        return L.divIcon({
+          html: `<div><span>${count}</span></div>`,
+          className: `custom-cluster ${sizeClass}`,
+          iconSize: L.point(40, 40)
+        });
+      }
+    });
+
+    
+    locations.forEach(loc => {
+      if (loc.lat && loc.lng) {
+        const marker = L.marker([loc.lat, loc.lng], { icon: customIcon });
+        
+        
+        const cleanUrl = loc.url.endsWith('/') ? loc.url.slice(0, -1) : loc.url;
+
+        const popupContent = `
+          <strong>${loc.name}</strong><br>
+          <a href="${cleanUrl}">Ver detalhes</a>
+        `;
+        marker.bindPopup(popupContent);
+
+        markersGroup.addLayer(marker);
+      }
+    });
+
+    
+    map.addLayer(markersGroup);
+
+   
+    if (locations.length > 0) {
+      map.fitBounds(markersGroup.getBounds().pad(0.1));
     }
-  }
-  // Add event listener for change in select
-  const selectElement = document.getElementById('orderby');
-  selectElement.addEventListener('change', updateIframeSrc);
-  // Add event listener to load iframe after page load
-  window.addEventListener('load', loadIframe);
+  });
 </script>
