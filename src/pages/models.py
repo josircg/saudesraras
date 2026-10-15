@@ -88,7 +88,7 @@ class Section(models.Model):
                 return self.page.image.url
             else:
                 return None
-                
+
     def get_video_url(self):
         """Retorna a URL do primeiro vídeo/iframe encontrado no header, se existir."""
         if self.header:
@@ -104,7 +104,6 @@ class Section(models.Model):
         if not self.header:
             return []
         images = img_finder.findall(self.header)
-        # Ignora a primeira imagem (index 0), pois ela é usada como foto de perfil/avatar
         return images[1:]
 
     def clean_text_content(self):

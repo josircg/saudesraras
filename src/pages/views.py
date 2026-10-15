@@ -71,15 +71,13 @@ class DepoimentoCreateView(CreateView):
 
         fs = FileSystemStorage()
 
-        # 1. Avatar / Foto de Perfil
         profile_image = form.cleaned_data.get('profile_image')
         avatar_html = ""
         if profile_image:
             filename = fs.save(f'depoimentos/{profile_image.name}', profile_image)
             avatar_url = fs.url(filename)
             avatar_html = f'<p><img src="{avatar_url}" alt="{form.instance.title}" width="120" /></p>\n'
-
-        # 2. Vídeo do Google Drive (Inserido no HEADER para aparecer no Admin)
+        
         video_url = form.cleaned_data.get('video_url')
         video_html = ""
         if video_url:
@@ -91,7 +89,7 @@ class DepoimentoCreateView(CreateView):
                     f'</div>\n'
                 )
 
-        # 3. Imagens Extras (1 a 5)
+       
         extra_images_html = ""
         for i in range(1, 6):
             img_file = form.cleaned_data.get(f'image_{i}')
@@ -100,7 +98,7 @@ class DepoimentoCreateView(CreateView):
                 img_url = fs.url(filename)
                 extra_images_html += f'<p><img src="{img_url}" class="img-fluid rounded my-2" alt="Imagem {i}" /></p>\n'
 
-        # Monta o header com: Avatar -> Vídeo do Drive -> Texto escrito -> Fotos extras
+     
         current_header = form.instance.header or ''
         form.instance.header = f'{avatar_html}{video_html}{current_header}\n{extra_images_html}'
 
@@ -110,7 +108,7 @@ class DepoimentoCreateView(CreateView):
         if not url:
             return ""
         
-        # Suporte exclusivo para Google Drive (converte /view, /edit, etc. para /preview)
+        
         if 'drive.google.com' in url:
             drive_match = re.search(r'/d/([a-zA-Z0-9_-]+)', url)
             if drive_match:
@@ -149,7 +147,7 @@ class DepoimentoUpdateView(UpdateView):
         old_avatar = existing_images[0] if existing_images else None
         old_gallery = existing_images[1:] if existing_images else []
 
-        # 1. Avatar: excluir, substituir ou manter.
+    
         profile_image = form.cleaned_data.get('profile_image')
         remove_avatar = form.cleaned_data.get('remove_profile_image')
 
@@ -171,7 +169,7 @@ class DepoimentoUpdateView(UpdateView):
                 f'alt="{form.instance.title}" width="120"></p>\n'
             )
 
-        # 2. Vídeo: mantém o existente se não houver novo link.
+        
         video_url = form.cleaned_data.get('video_url')
 
         if video_url:
@@ -189,7 +187,7 @@ class DepoimentoUpdateView(UpdateView):
                 'style="border:0;"></iframe></div>\n'
             )
 
-        # 3. Fotos extras: excluir, substituir ou manter.
+        
         gallery = list(old_gallery)
 
         for i in range(1, 6):
@@ -198,7 +196,7 @@ class DepoimentoUpdateView(UpdateView):
             remove_image = form.cleaned_data.get(f'remove_image_{i}')
             img_file = form.cleaned_data.get(f'image_{i}')
 
-            # Excluir tem prioridade sobre substituir.
+           
             if remove_image:
                 if position < len(gallery):
                     gallery[position] = None
@@ -216,10 +214,10 @@ class DepoimentoUpdateView(UpdateView):
                 else:
                     gallery.append(img_url)
 
-        # Retira as posições excluídas sem alterar a ordem restante.
+       
         gallery = [url for url in gallery if url]
 
-        # 4. Remonta o HTML da galeria.
+        
         extra_images_html = ''
 
         for i, image_url in enumerate(gallery, start=1):
@@ -229,7 +227,7 @@ class DepoimentoUpdateView(UpdateView):
                 f'alt="Imagem {i}"></p>\n'
             )
 
-        # 5. Salva o texto editável junto das mídias atualizadas.
+        
         text_header = form.cleaned_data.get('header') or ''
 
         form.instance.header = (

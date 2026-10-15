@@ -4,20 +4,7 @@
 {% block title %}{{ block.super }} :: {% if is_editing %}{% trans "Editar Depoimento" %}{% else %}{% trans "Enviar Novo Depoimento" %}{% endif %}{% endblock %}
 
 {% block list_of_items %}
-<style>
-    .django-ckeditor-widget,
-    .cke,
-    .cke_wrapper {
-        width: 100% !important;
-        box-sizing: border-box;
-    }
 
-    .depoimento-preview {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-    }
-</style>
 
 <div class="container mb-5">
     <h1 class="mt-5 mb-4 text-blue3" style="text-align: center;">

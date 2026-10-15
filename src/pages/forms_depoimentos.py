@@ -56,7 +56,6 @@ class DepoimentoForm(forms.ModelForm):
         })
     )
 
-    # Campos auxiliares para excluir mídias existentes.
     remove_profile_image = forms.BooleanField(
         required=False,
         label='Excluir foto de perfil'

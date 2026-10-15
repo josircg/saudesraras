@@ -1328,17 +1328,16 @@ footer #parcerias .parceiros-logos img {
       transform: rotate(180deg);
     }
 
-    
 
-    .card-container .depoimento-texto .ratio,
-  .card-container .depoimento-texto iframe {
+
+.card-container .depoimento-texto .ratio,
+.card-container .depoimento-texto iframe {
     display: none !important;
   }
 
-  /* Centralização vertical do botão em relação à área da mídia de 377px */
   .custom-carousel-btn {
     position: absolute !important;
-    top: 188px !important; /* Metade exata dos 377px do quadro */
+    top: 188px !important; 
     transform: translateY(-50%) !important;
     background: transparent !important;
     background-color: transparent !important;
@@ -1351,7 +1350,7 @@ footer #parcerias .parceiros-logos img {
     z-index: 5 !important;
   }
 
-  /* Afasta os botões para fora do quadro da mídia de 283px */
+
   .custom-carousel-btn.carousel-control-prev {
     left: -12px !important;
   }
@@ -1359,7 +1358,6 @@ footer #parcerias .parceiros-logos img {
     right: -12px !important;
   }
 
-  /* Estilização das bolinhas/indicadores */
   .carousel-indicators .custom-indicator {
     width: 10px !important;
     height: 10px !important;
@@ -1373,3 +1371,16 @@ footer #parcerias .parceiros-logos img {
     opacity: 1 !important;
     background-color: #3D99F4 !important;
   }
+
+.django-ckeditor-widget,
+    .cke,
+    .cke_wrapper {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .depoimento-preview {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+    }
