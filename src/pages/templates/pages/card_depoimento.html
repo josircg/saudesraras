@@ -1,0 +1,83 @@
+{% load static i18n eucs_platform_tags %}
+
+<div id="{{ depoimento.slug }}" class="mb-5 pt-4">
+    <div class="p-4 card-container" style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; width: 100%; box-sizing: border-box; background-color: #fff; height: auto;">
+        
+        <!-- Avatar do Autor -->
+        <img src="{% if depoimento.first_image %}{{ depoimento.first_image }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" 
+             alt="Imagem de {{ depoimento.title }}" class="card-image"
+             style="position: absolute; top: -41px; left: 40px; border-radius: 50%; width: 80px; height: 80px; border: 0; object-fit: cover; z-index: 2;">
+
+        <div style="padding-top: 30px; margin-bottom: 20px;">
+
+            <!-- CARROSSEL DE MÍDIAS -->
+            {% with video=depoimento.get_video_url gallery=depoimento.get_gallery_images %}
+            {% if video or gallery %}
+            <div id="carousel-{{ counter }}" class="carousel slide mb-4 position-relative" data-bs-ride="carousel">
+                
+                <!-- Container da Mídia (Largura 283px e Altura Proporcional 377px) -->
+                <div class="carousel-inner rounded-3 overflow-hidden bg-dark mx-auto" style="max-width: 283px; height: 377px;">
+                    
+                    {% if video %}
+                    <div class="carousel-item active h-100">
+                        <div class="d-flex justify-content-center align-items-center w-100 h-100 bg-black">
+                            <iframe src="{{ video }}" title="Vídeo do depoimento" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen style="width: 100%; height: 100%; border: 0; object-fit: contain;"></iframe>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% for img_url in gallery %}
+                    <div class="carousel-item {% if not video and forloop.first %}active{% endif %} h-100">
+                        <div class="d-flex justify-content-center align-items-center w-100 h-100 bg-black">
+                            <img src="{{ img_url }}" class="d-block" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: auto;" alt="Mídia do depoimento">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Botões de Navegação (Centralizados na altura da imagem e posicionados nas bordas) -->
+                {% if video and gallery or gallery|length > 1 %}
+                <button class="carousel-control-prev custom-carousel-btn" type="button" data-bs-target="#carousel-{{ counter }}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon rounded-circle bg-primary p-2" aria-hidden="true" style="width: 28px; height: 28px; background-size: 50%;"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next custom-carousel-btn" type="button" data-bs-target="#carousel-{{ counter }}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon rounded-circle bg-primary p-2" aria-hidden="true" style="width: 28px; height: 28px; background-size: 50%;"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+
+                <!-- Indicadores/Bolinhas -->
+                <div class="carousel-indicators position-relative mt-2 mb-0" style="bottom: 0;">
+                    {% if video %}
+                        <button type="button" data-bs-target="#carousel-{{ counter }}" data-bs-slide-to="0" class="active custom-indicator" aria-current="true"></button>
+                    {% endif %}
+                    {% for img in gallery %}
+                        <button type="button" data-bs-target="#carousel-{{ counter }}" data-bs-slide-to="{% if video %}{{ forloop.counter }}{% else %}{{ forloop.counter0 }}{% endif %}" {% if not video and forloop.first %}class="active custom-indicator"{% else %}class="custom-indicator"{% endif %}></button>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <!-- TEXTO DO DEPOIMENTO -->
+            <div class="depoimento-texto reg" style="color: black; font-size: 18px; font-family: Recoleta; font-weight: 400; line-height: 24px; word-wrap: break-word; text-align: left; margin: 0;">
+                {{ depoimento.clean_text_content|strip_p|safe }}
+            </div>
+        </div>
+
+        <!-- AUTOR / NOME -->
+        <h5 class="bld" style="color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 23px; margin: 0; padding-top: 10px;">
+            {{ depoimento.title }}
+        </h5>
+
+        {% if request.user.is_staff %}
+        <a href="{% url 'editar_depoimento' depoimento.id %}" class="btn btn-sm btn-outline-primary position-absolute" style="top: 15px; right: 20px; z-index: 5; border-radius: 20px; font-size: 13px; font-weight: 600;">
+            ✏️ {% trans "Editar" %}
+        </a>
+        {% endif %}
+    </div>
+</div>

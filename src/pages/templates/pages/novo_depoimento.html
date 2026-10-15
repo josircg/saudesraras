@@ -1,62 +1,273 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{{ block.super }} :: {% trans "Novo Depoimento" %}{% endblock %}
+{% block title %}{{ block.super }} :: {% if is_editing %}{% trans "Editar Depoimento" %}{% else %}{% trans "Enviar Novo Depoimento" %}{% endif %}{% endblock %}
 
 {% block list_of_items %}
+<style>
+    .django-ckeditor-widget,
+    .cke,
+    .cke_wrapper {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .depoimento-preview {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+    }
+</style>
+
 <div class="container mb-5">
-    <h1 class="mt-5 mb-4 text-blue3" style="text-align: center;">{% trans "Enviar Novo Depoimento" %}</h1>
+    <h1 class="mt-5 mb-4 text-blue3" style="text-align: center;">
+        {% if is_editing %}
+            {% trans "Editar Depoimento" %}
+        {% else %}
+            {% trans "Enviar Novo Depoimento" %}
+        {% endif %}
+    </h1>
 
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <!-- IMPORTANTE: enctype="multipart/form-data" para upload de arquivos -->
+
+            {% if form.errors %}
+                <div class="alert alert-danger mb-4">
+                    <strong>{% trans "Atenção:" %}</strong>
+                    {% trans "Verifique os erros no formulário." %}
+
+                    <ul>
+                        {% for field, errors in form.errors.items %}
+                            <li>
+                                <strong>{{ field }}:</strong>
+                                {{ errors|join:", " }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                {{ form.media }}
 
-                {# Campo de Upload da Foto de Perfil #}
-                <div class="mb-3">
-                    <label for="{{ form.profile_image.id_for_label }}" class="form-label fw-bold">
-                        {% trans "Foto de Perfil" %}
-                    </label>
-                    {{ form.profile_image }}
-                    {% if form.profile_image.errors %}
-                        <div class="text-danger small">{{ form.profile_image.errors }}</div>
-                    {% endif %}
-                </div>
-
-                <div class="mb-3">
-                    <label for="{{ form.title.id_for_label }}" class="form-label fw-bold">
+                <!-- 1. Nome -->
+                <div class="mb-4">
+                    <label for="{{ form.title.id_for_label }}"
+                           class="form-label fw-bold d-block">
                         {% trans "Nome" %}
                     </label>
+
                     {{ form.title }}
                 </div>
 
-                <div class="mb-3">
-                    <label for="{{ form.header.id_for_label }}" class="form-label fw-bold">
-                        {% trans "Depoimento" %}
+                <!-- 2. Ordem -->
+                <div class="mb-4">
+                    <label for="{{ form.order.id_for_label }}"
+                           class="form-label fw-bold d-block">
+                        {% trans "Ordem de Exibição" %}
                     </label>
-                    {{ form.header }}
+
+                    {{ form.order }}
+
+                    <div class="form-text text-muted">
+                        {% trans "Defina a posição do card na listagem (ex: 1 para o primeiro card)." %}
+                    </div>
                 </div>
 
+                <!-- 3. Avatar -->
+        
+                <div class="mb-4">
+                    <label for="{{ form.profile_image.id_for_label }}"
+                        class="form-label fw-bold d-block">
+                        {% trans "Foto de Perfil (Avatar do Card)" %}
+                    </label>
+
+                    {% if form.instance.pk and form.existing_avatar %}
+                        <div class="mb-3">
+                            <p class="form-text">
+                                {% trans "Foto de perfil atual:" %}
+                            </p>
+
+                            <img src="{{ form.existing_avatar }}"
+                                alt="{% trans 'Avatar atual' %}"
+                                class="depoimento-preview rounded mb-2">
+
+                            <div class="form-check mt-2">
+                                {{ form.remove_profile_image }}
+                                <label class="form-check-label"
+                                    for="{{ form.remove_profile_image.id_for_label }}">
+                                    {% trans "Excluir foto de perfil atual" %}
+                                </label>
+                            </div>
+
+                            <p class="form-text text-muted">
+                                {% trans "Se não marcar a exclusão nem enviar outra foto, a imagem atual será mantida." %}
+                            </p>
+                        </div>
+                    {% endif %}
+
+                    {{ form.profile_image }}
+                </div>
+
+
+                <!-- 4. Depoimento -->
+                <div class="mb-4">
+                    <label for="{{ form.header.id_for_label }}"
+                           class="form-label fw-bold d-block mb-2">
+                        {% trans "Depoimento" %}
+                    </label>
+
+                    <div class="w-100">
+                        {{ form.header }}
+                    </div>
+                </div>
+
+                <!-- 5. Imagens extras -->
+            
+                <div class="card p-3 mb-4 bg-light border">
+                    <h5 class="fw-bold mb-3">
+                        {% trans "Anexar Fotos ao Depoimento (Opcional - até 5 fotos)" %}
+                    </h5>
+
+                    {% if form.instance.pk and form.existing_gallery %}
+                        <div class="mb-4">
+                            <p class="form-text">
+                                {% trans "Imagens extras atuais:" %}
+                            </p>
+
+                            {% for image_url in form.existing_gallery %}
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <img src="{{ image_url }}"
+                                        alt="{% trans 'Imagem extra atual' %}"
+                                        class="depoimento-preview rounded">
+
+                                    <div>
+                                        <p class="mb-2">
+                                            {% trans "Foto Extra" %} {{ forloop.counter }}
+                                        </p>
+
+                                        {% if forloop.counter == 1 %}
+                                            <div class="form-check">
+                                                {{ form.remove_image_1 }}
+                                                <label class="form-check-label"
+                                                    for="{{ form.remove_image_1.id_for_label }}">
+                                                    {% trans "Excluir esta imagem" %}
+                                                </label>
+                                            </div>
+                                        {% elif forloop.counter == 2 %}
+                                            <div class="form-check">
+                                                {{ form.remove_image_2 }}
+                                                <label class="form-check-label"
+                                                    for="{{ form.remove_image_2.id_for_label }}">
+                                                    {% trans "Excluir esta imagem" %}
+                                                </label>
+                                            </div>
+                                        {% elif forloop.counter == 3 %}
+                                            <div class="form-check">
+                                                {{ form.remove_image_3 }}
+                                                <label class="form-check-label"
+                                                    for="{{ form.remove_image_3.id_for_label }}">
+                                                    {% trans "Excluir esta imagem" %}
+                                                </label>
+                                            </div>
+                                        {% elif forloop.counter == 4 %}
+                                            <div class="form-check">
+                                                {{ form.remove_image_4 }}
+                                                <label class="form-check-label"
+                                                    for="{{ form.remove_image_4.id_for_label }}">
+                                                    {% trans "Excluir esta imagem" %}
+                                                </label>
+                                            </div>
+                                        {% elif forloop.counter == 5 %}
+                                            <div class="form-check">
+                                                {{ form.remove_image_5 }}
+                                                <label class="form-check-label"
+                                                    for="{{ form.remove_image_5.id_for_label }}">
+                                                    {% trans "Excluir esta imagem" %}
+                                                </label>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <p class="form-text text-muted">
+                                {% trans "Marque a caixa correspondente para excluir uma imagem ao salvar." %}
+                            </p>
+                        </div>
+                    {% endif %}
+
+                    <div class="row">
+                        {% for field in form %}
+                            {% if field.name == 'image_1' or field.name == 'image_2' or field.name == 'image_3' or field.name == 'image_4' or field.name == 'image_5' %}
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ field.id_for_label }}"
+                                        class="form-label">
+                                        {% if field.name == 'image_1' %}
+                                            {% trans "Foto Extra 1" %}
+                                        {% elif field.name == 'image_2' %}
+                                            {% trans "Foto Extra 2" %}
+                                        {% elif field.name == 'image_3' %}
+                                            {% trans "Foto Extra 3" %}
+                                        {% elif field.name == 'image_4' %}
+                                            {% trans "Foto Extra 4" %}
+                                        {% else %}
+                                            {% trans "Foto Extra 5" %}
+                                        {% endif %}
+                                    </label>
+
+                                    {{ field }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+                <!-- 6. Vídeo -->
+                <div class="card p-3 mb-4 bg-light border">
+                    <h5 class="fw-bold mb-1">
+                        {% trans "Anexar Vídeo do Google Drive (Opcional)" %}
+                    </h5>
+
+                    <p class="form-text text-muted mb-3">
+                        <strong>{% trans "Aviso:" %}</strong>
+                        {% trans 'Certifique-se de que o arquivo no Google Drive esteja configurado com acesso público ("Qualquer pessoa com o link pode ver").' %}
+                    </p>
+
+                    <label for="{{ form.video_url.id_for_label }}"
+                           class="form-label fw-bold small">
+                        {% trans "Cole o link de compartilhamento do Google Drive" %}
+                    </label>
+
+                    {{ form.video_url }}
+
+                    {% if form.instance.pk and form.existing_video %}
+                        <p class="form-text text-muted mt-2">
+                            {% trans "O vídeo atual será mantido se você não alterar o link." %}
+                        </p>
+                    {% endif %}
+
+                    {% if form.video_url.errors %}
+                        <div class="text-danger small mt-1">
+                            {{ form.video_url.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- 7. Botão salvar -->
                 <div class="text-end mt-4">
                     <button type="submit" class="btn btn-primary px-4">
-                        {% trans "Salvar Depoimento" %}
+                        {% if is_editing %}
+                            {% trans "Salvar Alterações" %}
+                        {% else %}
+                            {% trans "Salvar Depoimento" %}
+                        {% endif %}
                     </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
-{% if form.errors %}
-  <div class="alert alert-danger mb-4">
-    <strong>Atenção:</strong> Verifique os erros no formulário.
-    <ul>
-      {% for field, errors in form.errors.items %}
-        <li><strong>{{ field }}:</strong> {{ errors|join:", " }}</li>
-      {% endfor %}
-    </ul>
-  </div>
-{% endif %}
 {% endblock list_of_items %}
