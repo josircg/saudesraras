@@ -407,7 +407,7 @@ CKEDITOR_CONFIGS = {
             {'name': 'styles', 'items': ['Styles', 'Format', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
         ],
-        'extraAllowedContent': 'span(*);',
+        'extraAllowedContent': 'span(*); iframe[*]{*}(*);',
     },
 }
 
