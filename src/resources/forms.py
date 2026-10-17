@@ -173,59 +173,63 @@ class ResourceForm(forms.Form):
         self.fields['theme'].queryset = Theme.objects.translated_sorted_by_text()
 
     def save(self, args, images):
-        """Save & update a Resource & Training Resource"""
-        pk = self.data.get('resourceID', '')
-        category = get_object_or_404(Category, id=self.data['category'])
+            """Save & update a Resource & Training Resource"""
+            pk = self.data.get('resourceID', '')
+            category = get_object_or_404(Category, id=self.data['category'])
 
-        if pk:
-            resource = get_object_or_404(Resource, id=pk)
-            if resource.hidden:
-                resource.hidden = False
-            resource.name = self.data['name']
-            resource.abstract = self.data['abstract']
-            resource.description_citizen_science_aspects = self.data['description_citizen_science_aspects']
-            resource.url = self.cleaned_data['url']
-            resource.license = self.data['license']
-            resource.publisher = self.data['publisher']
-        else:
-            resource = self.createResource(args)
+            if pk:
+                resource = get_object_or_404(Resource, id=pk)
+                if resource.hidden:
+                    resource.hidden = False
+                resource.name = self.data['name']
+                resource.abstract = self.data['abstract']
+                
+                # Utiliza .get() com valor padrão vazio para evitar MultiValueDictKeyError
+                if 'description_citizen_science_aspects' in self.data:
+                    resource.description_citizen_science_aspects = self.data.get('description_citizen_science_aspects', '')
+                    
+                resource.url = self.cleaned_data['url']
+                resource.license = self.data.get('license', '')
+                resource.publisher = self.data.get('publisher', '')
+            else:
+                resource = self.createResource(args)
 
-        resource.inLanguage = self.data['language']
-        resource.resourceDOI = self.data['resource_DOI']
-        resource.save()
-        if self.data['year_of_publication'] != '':
-            resource.datePublished = self.data['year_of_publication']
-        else:
-            resource.datePublished = None
-        resource.category = category
+            resource.inLanguage = self.data['language']
+            resource.resourceDOI = self.data['resource_DOI']
+            resource.save()
+            if self.data['year_of_publication'] != '':
+                resource.datePublished = self.data['year_of_publication']
+            else:
+                resource.datePublished = None
+            resource.category = category
 
-        # Saving images
-        if len(images[0]) > 6:
-            resource.image1 = images[0]
-        resource.imageCredit1 = self.data['image_credit1']
+            # Saving images
+            if len(images[0]) > 6:
+                resource.image1 = images[0]
+            resource.imageCredit1 = self.data.get('image_credit1', '')
 
-        # Training resource fields
+            # Training resource fields
 
-        # End training resource fields
-        resource.save()
+            # End training resource fields
+            resource.save()
 
-        # Set the fields that are lists
-        resource.theme.set(self.data.getlist('theme'))
-        resource.organisation.set(self.data.getlist('organisation'))
-        resource.project.set(self.data.getlist('project'))
-        resource.keywords.set(self.data.getlist('keywords'))
-        curatedList = self.data.getlist('curatedList')
+            # Set the fields that are lists
+            resource.theme.set(self.data.getlist('theme'))
+            resource.organisation.set(self.data.getlist('organisation'))
+            resource.project.set(self.data.getlist('project'))
+            resource.keywords.set(self.data.getlist('keywords'))
+            curatedList = self.data.getlist('curatedList')
 
-        if args.user.is_staff:
-            objs = ResourcesGrouped.objects.filter(resource=resource)
-            if objs:
-                for obj in objs:
-                    obj.delete()
-            for clist in curatedList:
-                resourceGroup = get_object_or_404(ResourceGroup, id=clist)
-                ResourcesGrouped.objects.get_or_create(group=resourceGroup, resource=resource)
+            if args.user.is_staff:
+                objs = ResourcesGrouped.objects.filter(resource=resource)
+                if objs:
+                    for obj in objs:
+                        obj.delete()
+                for clist in curatedList:
+                    resourceGroup = get_object_or_404(ResourceGroup, id=clist)
+                    ResourcesGrouped.objects.get_or_create(group=resourceGroup, resource=resource)
 
-        return resource.id
+            return resource.id
 
     def createResource(self, args):
         return Resource(
@@ -233,9 +237,9 @@ class ResourceForm(forms.Form):
             name=self.data['name'],
             url=self.cleaned_data['url'],
             abstract=self.data['abstract'],
-            description_citizen_science_aspects=self.data['description_citizen_science_aspects'],
-            license=self.data['license'],
-            publisher=self.data['publisher'],
+            description_citizen_science_aspects=self.data.get('description_citizen_science_aspects', ''),
+            license=self.data.get('license', ''),
+            publisher=self.data.get('publisher', ''),
             dateUploaded=datetime.now(),
             isTrainingResource=self.cleaned_data.get('isTrainingResource', False)
         )
