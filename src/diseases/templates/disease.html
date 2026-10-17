@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% load eucs_platform_tags eucs_platform_translate %}{% load thumbnail %}{% block title %}{{ block.super }} :: {{ disease.name }}{% endblock %}
+
+{% block list_of_items %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        
+        <div class="col-lg-8 col-md-12">
+            
+            <h1 class="display-4 bld mb-3 text-blue3" style="font-family: Recoleta; ">
+                {{ disease.name }}
+            </h1>
+
+            {% if disease.ICD %}
+            <div class="mb-4">
+                <span class="badge rounded-pill bg-blue2 text-white p-2 px-3" style="font-size: 14px;">
+                    CID: {{ disease.ICD }}
+                </span>
+            </div>
+            {% endif %}
+
+            <hr class="my-4">
+
+            <div class="disease-description mb-5">
+                <h3 class="h4 mb-3 text-blue3" style="font-family: Recoleta;">{% trans "About the disease" %}</h3>
+                <div class="text-muted" style="font-size: 16px; line-height: 1.8;">
+                    {{ disease.description|safe }}
+                </div>
+            </div>
+
+            <hr class="my-5">
+
+            <div class="disease-organisations mb-5">
+                <h3 class="h4 mb-4 text-blue3" style="font-family: Recoleta;">{% trans "Support Organizations" %}</h3>
+                
+                <div class="row">
+                    {% for org in organisations %}
+                        <div class="col-md-6 col-sm-6 col-xs-12 mb-5">
+                            <div class="card h-100 border-1 rounded"> 
+                                <a href="/organisation/{{ org.id }}">
+                                    <img class="card-img-top lazyload" data-src="{% thumbnail org.safe_image 306x204 crop %}" />
+                                </a>
+                                <div class="card-body">
+                                    <a href="/organisations?country={{ org.country.code }}" class="badge rounded-pill bg-pill text-decoration-none">
+                                        {{ org.country.name }}
+                                    </a>
+                                    {% with orgType=org.orgType|translate_instance %}
+                                      <a href="/organisations?orgTypes={{ orgType }}" class="badge rounded-pill bg-pill text-decoration-none">{{ orgType }}</a>
+                                    {% endwith %}
+                                    <h5 class="mt-2 mb-3">
+                                        <a href="/organisation/{{ org.id }}" class="card-title">{{ org.name }}</a>
+                                    </h5>
+                                    <p class="mt-4">{{ org.description|safe|truncate_summary:30 }}</p>
+                                </div></div></div>
+                    {% empty %}
+                        <div class="col-12">
+                            <p class="text-muted italic">{% trans "No organizations registered for this disease yet." %}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if organisations.has_other_pages %}
+                <nav class="mt-4">
+                    <ul class="pagination pagination-sm justify-content-center">
+                        {% if organisations.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ organisations.previous_page_number }}">&laquo;</a></li>
+                        {% endif %}
+
+                        {% for i in organisations.paginator.page_range %}
+                            <li class="page-item {% if organisations.number == i %}active{% endif %}">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endfor %}
+
+                        {% if organisations.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ organisations.next_page_number }}">&raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 ps-lg-5 mt-5 mt-lg-0">
+            <div>
+                <h3 class="h4 mb-3 text-blue3" style="font-family: Recoleta;">{% trans "Symptoms" %}</h3>
+                
+                <div class="d-flex flex-column " style="gap: 10px;">
+                    {% for symptom in symptoms %}
+                        <div class="p-2 px-3 border rounded bg-light text-dark shadow-sm d-flex align-items-center" style="font-size: 14px;">
+                            <span>{{ symptom.description|capfirst }}</span>
+                        </div>
+                    {% empty %}
+                        <p class="text-muted small">{% trans "No symptoms registered." %}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock list_of_items %}

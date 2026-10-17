@@ -7,10 +7,35 @@
 </div>
 <script type="text/javascript" src="{% static 'site/js/jquery.min.js' %}"></script>
 <script>
+var LocalCookieConsent = {
+    COOKIE_NAME: 'cookie_consent_accepted',
+    createCookie: function() {
+        var date = new Date();
+        date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000)); 
+        var expires = "; expires=" + date.toUTCString();
+        document.cookie = this.COOKIE_NAME + "=true" + expires + "; path=/; SameSite=Lax";
+    },
+    getCookie: function() {
+        var nameEQ = this.COOKIE_NAME + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+};
+
 $(document).ready(function(){   
-    setTimeout(function () {
-        $("#cookieConsent").fadeIn(200);
-     }, 1000);
+    if (!LocalCookieConsent.getCookie()) {
+        setTimeout(function () {
+            $("#cookieConsent").fadeIn(200);
+        }, 1000);
+    }
+    $(".cookieConsentOK").click(function(e) {
+        LocalCookieConsent.createCookie();
+    });
     $("#closeCookieConsent, .cookieConsentOK").click(function() {
         $("#cookieConsent").fadeOut(200);
     }); 

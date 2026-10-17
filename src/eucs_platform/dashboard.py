@@ -59,15 +59,13 @@ class CustomIndexDashboard(Dashboard):
 
         self.children += [
             modules.ModelList(_('Events'), models=('events.models.*',)),
-        ]
-
-        self.children += [
             modules.ModelList(_('Organisations'), models=('organisations.models.*',)),
+            modules.ModelList(_('Diseases'), models=('diseases.models.*',)),
         ]
 
         self.children.append(modules.AppList(
             _('Communications'),
-            models=('contact.*', 'blog.*', 'digest.*',)
+            models=('blog.*', 'pages.*',)
         ))
 
         self.children += [
@@ -82,16 +80,17 @@ class CustomIndexDashboard(Dashboard):
 
         self.children.append(modules.ModelList(
             title=_('Administration'),
-            models=('django_cron.*', 'django_summernote.*', 'oauth2_provider.*', 'oidc_provider.*'),
+            models=('django_cron.*', 'django_summernote.*',),
             extra=[
                     {'title': _('Countries'), 'change_url': reverse('country_list')},
             ]
         ))
+
         # append a link list module for "quick links"
         self.children.append(modules.LinkList(
             _('Quick links'),
             layout='inline',
-            draggable=False,
+            draggable=True,
             deletable=False,
             collapsible=False,
             children=[

@@ -7,7 +7,7 @@ from datetime import datetime
 
 from invoke import UnexpectedExit
 
-HML_SERVER = 'webapp@3.89.127.179'
+HML_SERVER = 'webapp@54.234.183.153'
 
 
 def deploy(connection, path):
@@ -88,15 +88,22 @@ def get_mediafiles(connection, path):
 
 
 @task
+def get_file(connection):
+    connection = Connection(HML_SERVER)
+    connection.get('/var/webapp/raras/db.sql')
+    print('Arquivo copiado na pasta local')
+
+
+@task
 def backup_local(context):
     get_database(Connection('supervisor@192.168.0.24'), 'raras_usr@localhost:5432/raras', '.')
 
 
 @task
 def backup(context):
-    connection = Connection('webapp@3.89.127.179')
+    connection = Connection(HML_SERVER)
     get_database(connection, banco='raras_usr@db-postgres.cpklsdpnssqm.us-east-1.rds.amazonaws.com:5432/raras', path='/var/webapp/raras')
-    # get_mediafiles(connection,path='/var/webapp/raras')
+    get_mediafiles(connection,path='/var/webapp/raras')
 
 
 if __name__ == '__main__':

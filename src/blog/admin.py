@@ -6,6 +6,8 @@ from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.translation import ugettext as _
 from django_summernote.widgets import SummernoteWidget
+from poweradmin.admin import PowerModelAdmin, PowerButton
+
 
 from .models import Post
 
@@ -57,7 +59,7 @@ class CustomPostForm(forms.ModelForm):
         fields = "__all__"
 
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(PowerModelAdmin):
     list_display = ('title', 'slug', 'status', 'sticky', 'created_on')
     list_filter = ("status",)
     search_fields = ['title', 'content']
@@ -66,34 +68,27 @@ class PostAdmin(admin.ModelAdmin):
     actions = [make_published, make_draft]
     readonly_fields = ['status']
 
-    def response_change(self, request, obj):
+    def test_preview(self, request ):
         if "_preview" in request.POST:
             form = CustomPostForm(request.POST)
             if form.data['title'] and form.data['excerpt'] and form.data['content']:
                 post = get_object_or_404(Post, slug=form.data['slug'])
                 objectA = post
                 return render(request, "preview_post_detail.html", {'object': objectA, 'post': post})
-            else:
-                print(form.errors)
 
-        return super().response_change(request, obj)
+    def response_change(self, request, obj):
+        response = self.test_preview(request)
+        if response:
+            return response
+        else:
+            return super().response_change(request, obj)
 
     def response_add(self, request, obj, post_url_continue=None):
-        if "_preview" in request.POST:
-            form = CustomPostForm(request.POST)
-            if form.data['title'] and form.data['excerpt'] and form.data['content']:
-                post = get_object_or_404(Post, slug=form.data['slug'])
-                objectA = post
-                return render(request, "preview_post_detail.html", {'object': objectA, 'post': post})
-            else:
-                print(form.errors)
-
-        return super().response_add(request, obj, post_url_continue=None)
-
-    def get_view_on_site_url(self, obj=None):
-        """Add link to views.post_detail"""
-        self.view_on_site = obj is not None and obj.status == 1
-        return super().get_view_on_site_url(obj)
+        response = self.test_preview(request)
+        if response:
+            return response
+        else:
+            return super().response_add(request, obj, post_url_continue=None)
 
     def save_model(self, request, obj, form, change):
         if '_save_and_publish' in request.POST:

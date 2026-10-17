@@ -62,14 +62,14 @@ class ProjectForm(forms.Form):
 
     description_citizen_science_aspects = forms.CharField(
         widget=CKEditorWidget(config_name='frontpage'),
-        help_text=_("Please describe the citizen science aspect(s) of the project that "
-                    "warrant your registration in Civis. This information will not be "
+        help_text=_("Please describe the aspect(s) of the project that "
+                    "warrant your registration in Saúdes Raras. This information will not be "
                     "visible on the platform, and serves simply as reference when undergoing "
-                    "moderation. You can see our explanation on what <a href=\"https://civis.ibict.br/"
-                    "about/\">citizen science</a> is (max 2000 characters)."
+                    "moderation. You can see our explanation on what <a href=\"https://saudesraras.pro.br/"
+                    "about/\">saúdes raras</a> is (max 2000 characters)."
                     ),
         max_length=2000,
-        label=_('Description of citizen science aspects'))
+        label=_('Description of rare diseases aspects'))
 
     status = forms.ModelChoiceField(
         queryset=Status.objects.all(),

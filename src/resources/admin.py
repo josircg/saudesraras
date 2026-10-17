@@ -27,7 +27,6 @@ class ResourceAdminBase(admin.ModelAdmin):
     list_display = ('name', 'category', 'dateCreated', 'dateUpdated', 'approved', 'safe_url')
     list_filter = ('approved',)
     exclude = ('isTrainingResource',)
-    readonly_fields = ('image1', 'image2')
     migrate_to_cls = None
 
     def migrate_resource(self, request, object_id):
@@ -65,7 +64,11 @@ class ResourceAdminBase(admin.ModelAdmin):
         return form
 
 
+@admin.register(Resource)
 class ResourceAdmin(ResourceAdminBase):
+    fields= ('name', 'url', 'theme', 'category', 'abstract', 'publisher', 'keywords', 'approved', 'safe_url')
+    autocomplete_fields = ('organisation',)
+    readonly_fields = ('image1', 'safe_url')
     migrate_to_cls = TrainingResource
 
     def get_queryset(self, request):
@@ -73,6 +76,7 @@ class ResourceAdmin(ResourceAdminBase):
         return qs.resources()
 
 
+@admin.register(TrainingResource)
 class TrainingResourceAdmin(ResourceAdminBase):
     migrate_to_cls = Resource
 
@@ -93,6 +97,4 @@ class AudienceAdmin(admin.ModelAdmin):
 
 admin.site.register(Keyword)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Resource, ResourceAdmin)
-admin.site.register(TrainingResource, TrainingResourceAdmin)
 admin.site.register(ResourceGroup, ResourceGroupAdmin)

@@ -1,0 +1,46 @@
+{% load i18n %}
+
+{% regroup symptoms_page by description|slice:":1"|upper as symptoms_grouped %}
+
+{% if filters.letter %}
+    <div id="symptom-char-{{ filters.letter }}" class="mt-0 mb-0 text-blue1 fw-bold fs-2">{{ filters.letter }}</div>
+    <div class="border-top" style="margin-left: 0%; margin-right: 0%; margin-top: 0%; margin-bottom: 3%; border: 3px solid #5CDCFF;"></div>
+    
+    {% for symptom in symptoms_page %}
+        <div class="list-group-item d-flex justify-content-between align-items-center mb-1 rounded border">
+            <span id="symptom-name-{{ symptom.id }}">{{ symptom.description|capfirst }}</span>
+            <button
+                    type="button"
+                    class="btn btn-sintomas-add d-flex justify-content-center align-items-center p-0"
+                    style="width:32px;height:32px;"
+                    onclick="addSymptomTag('{{ symptom.id }}', '{{ symptom.description|capfirst }}')">
+                    <i class="fas fa-plus m-0" style="font-size:16px;line-height:1;"></i>
+                </button>
+        </div>
+        <br>
+    {% empty %}
+        <div class="list-group-item text-muted">{% trans "No symptoms found." %}</div>
+    {% endfor %}
+
+{% else %}
+    {% for group in symptoms_grouped %}
+        <div id="symptom-char-{{ group.grouper }}" class="mt-0 mb-0 text-blue1 fw-bold fs-2">{{ group.grouper }}</div>
+        <div class="border-top" style="margin-left: 0%; margin-right: 0%; margin-top: 0%; margin-bottom: 3%; border: 3px solid #5CDCFF;"></div>
+        
+        {% for symptom in group.list %}
+            <div class="list-group-item d-flex justify-content-between align-items-center mb-1 rounded border">
+                <span id="symptom-name-{{ symptom.id }}">{{ symptom.description|capfirst }}</span>
+                <button
+                    type="button"
+                    class="btn btn-sintomas-add d-flex justify-content-center align-items-center p-0"
+                    style="width:32px;height:32px;"
+                    onclick="addSymptomTag('{{ symptom.id }}', '{{ symptom.description|capfirst }}')">
+                    <i class="fas fa-plus m-0" style="font-size:16px;line-height:1;"></i>
+                </button>
+            </div>
+        {% endfor %}
+        <br>
+    {% empty %}
+        <div class="list-group-item text-muted">{% trans "No symptoms found." %}</div>
+    {% endfor %}
+{% endif %}

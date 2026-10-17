@@ -1,12 +1,14 @@
 import accounts.urls
 import contact.urls
 import digest.urls
+import diseases.urls
 import events.urls
 import organisations.urls
 import platforms.urls
 import profiles.urls
 import projects.urls
 import resources.urls
+import pages.urls
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -43,12 +45,9 @@ urlpatterns = [
     path("curated/", views.curated, name="curated"),
     path("imprint/", views.imprint, name="imprint"),
     path("terms/", views.terms, name="terms"),
-    path("privacy/", views.pag_em_construcao, name="privacy"),
+    path("privacy/", views.privacy, name="privacy"),
     path("guide/", views.pag_em_construcao, name="guide"),
-    path("faq/", views.pag_em_construcao, name="faq"),
     path("moderation/", views.moderation, name="moderation"),
-    path("criteria/", views.criteria, name="criteria"),
-    path("moderation_quality_criteria", views.moderation_quality_criteria, name="moderation_quality_criteria"),
     path("translations/", views.translations, name="translations"),
     path("home_autocomplete/", views.home_autocomplete, name="home_autocomplete"),
     path("home_autocomplete/<str:index_type>/", views.home_autocomplete, name="home_autocomplete_by_index_type"),
@@ -63,6 +62,7 @@ urlpatterns = [
     path("", include(contact.urls)),
     path("", include(accounts.urls)),
     path("", include(organisations.urls)),
+    path("", include(diseases.urls)),
     path("", include(projects.urls)),
     path("", include(resources.urls)),
     path('', include('blog.urls')),
@@ -96,23 +96,18 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("medicos/", views.pag_em_construcao, name="medicos"),
     path("diagnostico/", views.pag_em_construcao, name="diagnostico"),
-    path("doencas/", views.pag_em_construcao, name="doencas"),
     path("justica/", views.pag_em_construcao, name="justica"),
     path("parceiro/", views.parceiro, name="parceiro"),
     path("sintomas/", views.pag_em_construcao, name="sintomas"),
     path("SUS/", views.pag_em_construcao, name="SUS"),
-    path("depoimentos/", views.pag_em_construcao, name="depoimentos"),
-   
     # Mantive abaixo os links com dev no final para que consigamos acessar as pags via link
-    path("privacydev/", views.privacy, name="privacydev"),
     path("guidedev/", views.guide, name="guidedev"),
     path("faqdev/", views.faq, name="faqdev"),
     path("medicosdev/", views.medicos, name="medicosdev"),
     path("diagnosticodev/", views.diagnostico, name="diagnosticodev"),
     path("doencasdev/", views.doencas, name="doencasdev"),
     path("justicadev/", views.justica, name="justicadev"),
-    #path("sintomasdev/", views.sintomas, name="sintomasdev"),
-    #path("SUSdev/", views.SUS, name="SUSdev"),
+    path("", include(pages.urls)),
 ]
 
 # User-uploaded files like profile pics need to be served in development
