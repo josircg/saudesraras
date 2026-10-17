@@ -1,3 +1,4 @@
+from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
 from django.http import Http404
 from resources.api.serializers import ResourceSerializer, AudienceSerializer, ThemeSerializer, CategorySerializer, \

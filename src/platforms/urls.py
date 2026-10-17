@@ -9,5 +9,6 @@ urlpatterns = [
     path('platforms', views.platforms, name='platforms'),
     path('editPlatform/<int:pk>', views.editPlatform, name='editPlatform'),
     path('deletePlatformAjax/<int:pk>', views.deletePlatformAjax, name='deletePlatformAjax'),
+    path('platformsAutocompleteSearch/', views.platformsAutocompleteSearch, name='platformsAutocompleteSearch'),
     path('api/', include('platforms.api.urls')),
 ]

@@ -36,10 +36,7 @@ class LoginForm(AuthenticationForm):
             HTML('<div class="m-4"></div>'),
             Field("password", placeholder=_("Enter Password"),
                   css_class=custom_field_class, style=custom_field_style),
-            HTML(
-                f'<div class="mt-3 mb-4"><a href="{reset_pwd_url}" '
-                f'class="pt-1 mb-5 text-light">{reset_pwd_msg}</a></div>'
-            ),
+            HTML(f'<div class="mt-3 mb-4"><a href="{reset_pwd_url}" class="pt-1 mb-5 text-light">{reset_pwd_msg}</a></div>'),
             StrictButton(
                 _("Log in"),
                 css_class="btn btn-submit-account",
@@ -81,7 +78,6 @@ class LoginForm(AuthenticationForm):
                     )
 
         return self.cleaned_data
-
 
 class SignupForm(authtoolsforms.UserCreationForm):
     newsletter = forms.BooleanField(label=_('I want to receive the newsletter'), required=False)
@@ -160,6 +156,7 @@ class SignupForm(authtoolsforms.UserCreationForm):
                 raise forms.ValidationError(_('Invalid form data.'))
 
         return cleaned_data
+
 
 
 class PasswordChangeForm(authforms.PasswordChangeForm):
