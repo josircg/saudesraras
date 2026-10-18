@@ -2,7 +2,7 @@
 
 ## Overview
 
-O deploy automático passa a seguir a **Opção B**: um script shell versionado (`deploy.sh`) concentra todos os passos de atualização, e a view `system_update` apenas o invoca e exibe o resultado. Isso resolve três problemas do fluxo atual: (1) a captura incorreta da saída dos management commands, (2) o reinício do serviço que mata o próprio request, e (3) a lógica de deploy espalhada e frágil dentro da view. O deploy é sempre **local** (mesmo host do Django), então nenhuma ferramenta de execução remota (Fabric/SSH) é necessária.
+O deploy automático executa o script shell versionado (`deploy.sh`) concentra todos os passos de atualização, e a view `system_update` apenas o invoca e exibe o resultado. Isso resolve três problemas do fluxo atual: (1) a captura incorreta da saída dos management commands, (2) o reinício do serviço que mata o próprio request, e (3) a lógica de deploy espalhada e frágil dentro da view. O deploy é sempre **local** (mesmo host do Django), então nenhuma ferramenta de execução remota (Fabric/SSH) é necessária.
 
 Este documento descreve o estado atual e o alvo da mudança.
 
@@ -17,7 +17,7 @@ system_update (utils/views.py)
    ├── os_run('git pull', cwd=BASE_DIR/tema)
    ├── call_command('collectstatic')   → retorna None → log += None  ✗ TypeError
    ├── call_command('migrate')         → retorna None
-   └── os_run('supervisorctl restart odorico')  ← mata o worker no request
+   └── os_run('supervisorctl restart <serviço>')  ← mata o worker no request
 ```
 
 ### Alvo (Opção B — script versionado)
@@ -42,7 +42,7 @@ render deploy.html (log + mensagem de sucesso/erro conforme código de saída)
 
 ### `deploy.sh` (novo, versionado na raiz do projeto)
 - **Contrato**: executa os passos em ordem, aborta no primeiro erro (`set -e`), imprime cada passo no stdout e retorna código de saída != 0 em falha.
-- **Parametrização**: lê caminhos de variáveis de ambiente com defaults derivados — `PROJECT_DIR` (default `BASE_DIR`), `VENV_DIR` (ex.: `/var/webapp/odorico310`), `SUPERVISOR_SERVICE` (default `odorico`). Evita valores fixos de um único servidor (Requisito 5.5).
+- **Parametrização**: lê caminhos de variáveis de ambiente com defaults derivados — `PROJECT_DIR` (default `BASE_DIR`), `VENV_DIR` (ex.: `/var/webapp/saudesraras`), `SUPERVISOR_SERVICE` (default `saudesraras`). Evita valores fixos de um único servidor (Requisito 5.5).
 - **Reinício desacoplado**: o restart do supervisor é disparado de forma que não bloqueie nem derrube o processo que respondeu ao request — por exemplo `setsid`/`nohup ... &` ou `at now`, agendando o restart para logo após o script retornar.
 - **Tema opcional**: só roda `git pull` em `tema/` se o diretório existir (consistente com o settings, que condiciona o app `tema` à existência da pasta).
 
@@ -66,8 +66,8 @@ Não há modelos de dados envolvidos. As dependências são de ambiente/sistema:
 |---|---|
 | `settings.BASE_DIR` | Raiz do projeto; `cwd` do `git pull` e do script |
 | `settings.DEBUG` | Gate do reinício do serviço |
-| venv (`odorico310`) | Python/pip que executam migrate/collectstatic |
-| supervisor (`odorico`) | Serviço reiniciado ao final |
+| venv | Python/pip que executam migrate/collectstatic que será calculado pela view |
+| supervisor (`saudesraras`) | Serviço reiniciado ao final |
 | submódulo `tema/` | Repositório de tema com `git pull` próprio (opcional) |
 
 ## Correctness Properties

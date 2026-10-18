@@ -2,16 +2,16 @@
 
 ## Introduction
 
-O deploy automático atualiza a aplicação Odorico no próprio servidor onde o Django está rodando, a partir de um disparo pela web (view `system_update`). O fluxo atualiza o código (`git pull` do projeto e do submódulo `tema/`), aplica migrações, coleta arquivos estáticos e reinicia o serviço via supervisor.
+O deploy automático atualiza a aplicação no próprio servidor onde o Django está rodando, a partir de um disparo pela web (view `system_update`). O fluxo atualiza o código (`git pull` do projeto e do submódulo `tema/`), aplica migrações, coleta arquivos estáticos e reinicia o serviço via supervisor.
 
-Hoje a lógica vive dentro da view `utils/views.py::system_update`, executando comandos in-process via `utils/apps.py::os_run` (subprocess). A rotina funciona parcialmente e tem bugs conhecidos. Esta spec documenta o estado atual e especifica a evolução escolhida (**Opção B**): extrair os passos para um **script shell versionado** (`deploy.sh`) que a view apenas invoca, deixando o reinício do serviço desacoplado do request HTTP e sem dependência de ferramentas externas (o Fabric deixa de ser necessário para o deploy local).
+Esta spec contém as instruções para executar **script shell versionado** (`deploy.sh`) que a view apenas invoca, deixando o reinício do serviço desacoplado do request HTTP e sem dependência de ferramentas externas (o Fabric deixa de ser necessário para o deploy local).
 
 ## Glossary
 - **Deploy local**: atualização executada no mesmo host em que a aplicação Django está rodando (não há SSH para outro servidor)
 - **`os_run`**: helper em `utils/apps.py` que executa um comando de SO via `subprocess.run`, retornando a saída ou levantando `ValidationError`
 - **`tema/`**: submódulo/repositório de tema, versionado separadamente, com `git pull` próprio
-- **supervisor**: gerenciador de processos que mantém o serviço `odorico`; `supervisorctl restart odorico` reinicia os workers
-- **venv**: ambiente virtual Python do projeto (ex.: `odorico310`), cujo `python`/`pip` executam os management commands
+- **supervisor**: nome do gerenciador de processos que mantém o serviço; `supervisorctl restart <serviço>` reinicia os workers
+- **venv**: determina através da view que está rodando qual o caminho do Python do projeto , cujo `python`/`pip` executarão os management commands
 
 ## Requirements
 
@@ -42,15 +42,15 @@ Hoje a lógica vive dentro da view `utils/views.py::system_update`, executando c
 **User Story:** Como administrador, quero que o reinício do serviço não derrube a resposta do próprio deploy, para receber o resultado da operação.
 
 #### Acceptance Criteria
-1. QUANDO não está em `DEBUG` ENTÃO o deploy DEVE reiniciar o serviço via supervisor (`supervisorctl restart odorico`).
+1. QUANDO não está em `DEBUG` ENTÃO o deploy DEVE reiniciar o serviço via supervisor (`supervisorctl restart <serviço>`).
 2. QUANDO o reinício é disparado ENTÃO ele DEVE ocorrer de forma que o worker que atende o request consiga devolver a resposta HTTP antes de ser reiniciado (reinício assíncrono / ao final do script).
 3. QUANDO está em `DEBUG` ENTÃO o sistema NÃO DEVE reiniciar o serviço.
 
-### Requirement 5: Script de deploy versionado (Opção B)
+### Requirement 5: Script de deploy versionado
 **User Story:** Como mantenedor, quero os passos de deploy em um script versionado, para reutilizá-lo manualmente, por cron ou webhook, sem duplicar lógica na view.
 
 #### Acceptance Criteria
-1. QUANDO o deploy é executado ENTÃO os passos (git pull do projeto e do tema, migrate, collectstatic, restart) DEVEM estar em um script shell versionado no repositório (`deploy.sh`).
+1. QUANDO o deploy é executado ENTÃO os passos (git pull do projeto, migrate, collectstatic, restart) DEVEM estar em um script shell versionado no repositório (`deploy.sh`).
 2. QUANDO a view `system_update` roda ENTÃO ela DEVE apenas invocar o script e capturar sua saída, sem reimplementar os passos.
 3. QUANDO o script é executado ENTÃO ele DEVE usar o Python do venv do projeto para os management commands.
 4. QUANDO um passo do script falha ENTÃO o script DEVE abortar imediatamente (`set -e` ou equivalente) e sinalizar erro via código de saída.
@@ -67,8 +67,7 @@ Hoje a lógica vive dentro da view `utils/views.py::system_update`, executando c
 ## Gaps e dívidas técnicas conhecidas (estado atual)
 - `management.call_command("collectstatic"/"migrate")` **retorna `None`**; o código atual faz `log += None + '<br/>'`, o que lança `TypeError` e interrompe o fluxo — causa provável do "funcionando parcialmente".
 - `@staff_member_required` está **comentado** na view: a URL de deploy está exposta sem autenticação.
-- `supervisorctl restart odorico` roda **dentro do request**, podendo matar o worker antes de a resposta HTTP ser enviada.
+- `supervisorctl restart <serviço>` roda **dentro do request**, podendo matar o worker antes de a resposta HTTP ser enviada.
 - `os_run` faz `command.split(" ")`, frágil para caminhos/argumentos com espaços.
 - O `git pull` depende de credenciais do usuário que roda o processo Django (worker do supervisor), que pode não ter chave SSH/token configurados.
-- `execute_deploy_tema` duplica parte do fluxo (git pull do tema + collectstatic) e tem código Fabric comentado; convém consolidar com o `deploy.sh`.
 - Não há testes automatizados do fluxo de deploy.
