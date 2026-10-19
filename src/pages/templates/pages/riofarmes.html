@@ -205,15 +205,15 @@
 
                               const map = L.map("map-unidades").setView([-22.9068, -43.1729], 11);
 
-                              L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                                  maxZoom: 19,
-                                  attribution: "© OpenStreetMap"
-                              }).addTo(map);
+                              L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                                maxZoom: 20,
+                                attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                }).addTo(map);
 
                               setTimeout(() => map.invalidateSize(), 300);
 
                               const defaultIcon = L.icon({
-                                  iconUrl: "{{ MEDIA_URL }}loc.png",
+                                  iconUrl: "{% static 'site/icons/icon-loc.png' %}",
                                   iconSize: [80, 80],
                                   iconAnchor: [40, 80],
                                   popupAnchor: [0, -38],

@@ -20,6 +20,7 @@ from django.views.generic import TemplateView
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
+from pages.views import PageDetailView
 
 from . import sitemaps
 from . import views
@@ -108,6 +109,7 @@ urlpatterns = [
     path("doencasdev/", views.doencas, name="doencasdev"),
     path("justicadev/", views.justica, name="justicadev"),
     path("", include(pages.urls)),
+]
 # User-uploaded files like profile pics need to be served in development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
