@@ -195,9 +195,6 @@ def faq(request):
 def all(request):
     return home(request)
 
-def riofarmes(request):
-    return render(request, 'pages/%s/riofarmes.html' % get_language())
-
 def doencas(request):
     return render(request, 'pages/%s/doencas.html' % get_language())
 

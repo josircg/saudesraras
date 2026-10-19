@@ -25,7 +25,6 @@
         <form method="POST" action="" enctype="multipart/form-data" class="w-100">
             {% csrf_token %}
             
-            <!-- OBRIGATÓRIO: Carrega os arquivos do CKEditor -->
             {{ form.media }}
             
             {% for field in form %}
@@ -64,7 +63,6 @@
 </div>
 
 <script>
-    // Aplica form-control apenas nos elementos que NÃO são do CKEditor
     document.querySelectorAll('input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), select, textarea:not([data-type="ckeditortype"])').forEach(function(el) {
         el.classList.add('form-control');
     });

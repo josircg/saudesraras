@@ -22,7 +22,7 @@
             
             {% if section.header %}
                 <p class="lead text-muted mb-0 fw-normal" style="font-size: 1.15rem;">
-                    {{ section.header|striptags }}
+                    {{ section.header|safe }}
                 </p>
             {% endif %}
         </div>

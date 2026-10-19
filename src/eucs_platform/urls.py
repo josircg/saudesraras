@@ -91,11 +91,12 @@ urlpatterns = [
 
      # PATHS SAUDESRARAS
     path("emconstrucao/", views.pag_em_construcao, name="emconstrucao"),
-    path("riofarmes/", views.riofarmes, name="riofarmes"),
+    path("riofarmes/", PageDetailView.as_view(), {"slug": "riofarmes"}, name="riofarmes",),
     path("about/", views.about, name="about"),
     path("medicos/", views.medicos, name="medicos"),
     path("diagnostico/", views.diagnostico, name="diagnostico"),
-    path("justica/", views.justica, name="justica"),
+    path("doencas/", views.pag_em_construcao, name="doencas"),
+    path("justica/", PageDetailView.as_view(), {"slug": "justica"}, name="justica"),
     path("parceiro/", views.parceiro, name="parceiro"),
     path("sintomas/", views.pag_em_construcao, name="sintomas"),
     path("SUS/", views.pag_em_construcao, name="SUS"),
@@ -107,8 +108,6 @@ urlpatterns = [
     path("doencasdev/", views.doencas, name="doencasdev"),
     path("justicadev/", views.justica, name="justicadev"),
     path("", include(pages.urls)),
-]
-
 # User-uploaded files like profile pics need to be served in development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
