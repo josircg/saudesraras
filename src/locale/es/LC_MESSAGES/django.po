@@ -937,6 +937,14 @@ msgstr "organizaciones encontradas"
 msgid "organisation found"
 msgstr "organización encontrada"
 
+#, fuzzy
+#| msgid "Register your organisation or network"
+msgid "Diseases associated with this organisation"
+msgstr "Registre su organización o red"
+
+msgid "View disease details"
+msgstr ""
+
 msgid "Training resources"
 msgstr "Recursos de formación"
 
@@ -964,6 +972,10 @@ msgstr "No"
 
 msgid "Contact submitter"
 msgstr "Contactar con el remitente"
+
+#, python-format
+msgid "Symptoms related to %(disease_name)s"
+msgstr ""
 
 msgid "Main information"
 msgstr "Revisión"

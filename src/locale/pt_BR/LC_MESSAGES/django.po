@@ -899,6 +899,13 @@ msgstr "organizações econtradas"
 msgid "organisation found"
 msgstr "organização encontrada"
 
+
+msgid "Diseases associated with this organisation"
+msgstr "Doenças associadas a esta organização"
+
+msgid "View disease details"
+msgstr "Ver detalhes da doença"
+
 msgid "Training resources"
 msgstr "Materias Didáticos"
 
@@ -926,6 +933,10 @@ msgstr "Não"
 
 msgid "Contact submitter"
 msgstr "Contatar responsável pelo cadastro"
+
+#, python-format
+msgid "Symptoms related to %(disease_name)s"
+msgstr "Sintomas relacionados a %(disease_name)s"
 
 msgid "Main information"
 msgstr "Informações principais"
