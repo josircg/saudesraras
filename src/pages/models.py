@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from .managers import SectionQuerySet, ArticleQuerySet
 
 img_finder = re.compile(r'<img[^>]*?src="([^"]+)"[^>]*?>')
+iframe_finder = re.compile(r'<iframe[^>]*?src="([^"]+)"[^>]*?>')
 
 class Page(models.Model):
     slug = models.SlugField()
@@ -87,6 +88,39 @@ class Section(models.Model):
                 return self.page.image.url
             else:
                 return None
+
+    def get_video_url(self):
+        """Retorna a URL do primeiro vídeo/iframe encontrado no header, se existir."""
+        if self.header:
+            videos = iframe_finder.findall(self.header)
+            if videos:
+                return videos[0]
+        return None
+
+    def get_gallery_images(self):
+        """
+        Retorna uma lista com as imagens extras (ignorando a 1ª imagem que é o avatar).
+        """
+        if not self.header:
+            return []
+        images = img_finder.findall(self.header)
+        return images[1:]
+
+    def clean_text_content(self):
+        """
+        Retorna o texto do header removendo todas as imagens e vídeos,
+        deixando apenas o texto puro/formatado do depoimento.
+        """
+        if not self.header:
+            return ""
+        text = img_finder.sub('', self.header)
+        text = iframe_finder.sub('', text)
+        return text
+    
+    def header_without_first_image(self):
+        if not self.header:
+            return ""
+        return img_finder.sub('', self.header, count=1)
 
     def save(self, *args, **kwargs):
         if self.page_id:

@@ -7,20 +7,8 @@
     <div class="row">
       <div class="col-12 mt-5 mb-1">
         <div class="col-12">
-            <h1 class="text-blue3">
-              Depoimentos
-            </h1>
-
-            <div
-    class="border-top "
-    style="
-      margin-left: 0%;
-      margin-right: 0%;
-      margin-top: 0%;
-      margin-bottom: 3%;
-      border: 3px solid #114D7F;
-    "
-  ></div>
+            <h1 class="text-blue3">Depoimentos</h1>
+            <div class="border-top" style="margin: 0 0 3% 0; border: 3px solid #114D7F;"></div>
         </div>
         
         {% if page.content %}
@@ -28,48 +16,47 @@
           {{ page.content|safe }}
         {% endif %}
       </div>
-
-
     </div>
 
+    <!-- Estrutura em 3 colunas independentes para encaixe vertical -->
     <div class="row mt-2">
       
-
-       
+      <!-- COLUNA 1 -->
+      <div class="col-12 col-md-4">
         {% for depoimento in page_obj %}
-        <div id="{{ depoimento.slug }}" class="col-12 mb-5 pt-4">
-            <div class="p-4 card-container" style="border-radius: 30px; border: 3px solid #3D99F4; position: relative; width: 100%; box-sizing: border-box;">
-                
-                <img src="{% if depoimento.first_image %}{{ depoimento.first_image }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" 
-                  alt="Imagem de {{ depoimento.title }}" class="card-image"
-                  style="position: absolute; top: -41px; left: 40px; border-radius: 50%; width: 80px; height: 80px; border: 0; object-fit: cover; z-index: 2;">
-
-                <div style="padding-top: 30px; margin-bottom: 20px;">
-                    <p class="reg" style="color: black; font-size: 20px; font-family: Recoleta; font-weight: 400; line-height: 26px; word-wrap: break-word; text-align: left; margin: 0;">
-                        {{ depoimento.header|strip_p|safe }}
-                    </p>
-                </div>
-
-                <h5 class="bld" style="color: black; font-size: 20px; font-family: Recoleta; font-weight: 700; line-height: 23px; margin: 0; padding-top: 10px;">
-                    {{ depoimento.title }}
-                </h5>
-            </div>
-        </div>
-        {% empty %}
-        <div class="col-12">
-            <p>Nenhum depoimento encontrado.</p>
-        </div>
+          {% if forloop.counter0|divisibleby:3 %}
+            {% include "pages/card_depoimento.html" with depoimento=depoimento counter=forloop.counter %}
+          {% endif %}
         {% endfor %}
+      </div>
+
+      <!-- COLUNA 2 -->
+      <div class="col-12 col-md-4">
+        {% for depoimento in page_obj %}
+          {% if forloop.counter0|add:"-1"|divisibleby:3 %}
+            {% include "pages/card_depoimento.html" with depoimento=depoimento counter=forloop.counter %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- COLUNA 3 -->
+      <div class="col-12 col-md-4">
+        {% for depoimento in page_obj %}
+          {% if forloop.counter0|add:"-2"|divisibleby:3 %}
+            {% include "pages/card_depoimento.html" with depoimento=depoimento counter=forloop.counter %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
     </div>
 
+    <!-- Paginador -->
     {% if page_obj.has_other_pages %}
     <nav aria-label="Navegação de páginas" class="d-flex justify-content-center mt-5 mb-5">
         <ul class="pagination">
             {% if page_obj.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Anterior">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Anterior">&laquo;</a>
                 </li>
             {% else %}
                 <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
@@ -85,9 +72,7 @@
 
             {% if page_obj.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Próximo">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Próximo">&raquo;</a>
                 </li>
             {% else %}
                 <li class="page-item disabled"><span class="page-link">&raquo;</span></li>

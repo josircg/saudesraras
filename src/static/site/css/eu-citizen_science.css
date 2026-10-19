@@ -1529,3 +1529,59 @@ footer #parcerias .parceiros-logos img {
     border-radius: 8px;
     z-index: 1;
 }
+
+.card-container .depoimento-texto .ratio,
+.card-container .depoimento-texto iframe {
+    display: none !important;
+}
+
+.custom-carousel-btn {
+    position: absolute !important;
+    top: 188px !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    width: auto !important;
+    opacity: 1 !important;
+    z-index: 5 !important;
+}
+
+.custom-carousel-btn.carousel-control-prev {
+    left: -12px !important;
+}
+
+.custom-carousel-btn.carousel-control-next {
+    right: -12px !important;
+}
+
+.carousel-indicators .custom-indicator {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background-color: #114D7F !important;
+    opacity: 0.4 !important;
+    margin: 0 4px !important;
+}
+
+.carousel-indicators .custom-indicator.active {
+    opacity: 1 !important;
+    background-color: #3D99F4 !important;
+}
+
+.django-ckeditor-widget,
+.cke,
+.cke_wrapper {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+.depoimento-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
