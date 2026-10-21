@@ -36,7 +36,7 @@
               <div class="blog-text-content mt-5">
                 {% if article.header %}
                     <p class="lead text-muted mb-4 fw-normal" style="font-size: 1.25rem;">
-                        {{ article.header|striptags }}
+                        {{ article.header|striptags|safe }}
                     </p>
                 {% endif %}
                 

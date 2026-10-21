@@ -68,7 +68,7 @@
                                 <h5 class="card-title text-blue3 fw-bold mb-3">{{ artigo.title }}</h5>
                                 
                                 <p class="card-text text-muted small mb-4">
-                                    {{ artigo.header|default:artigo.content|striptags|truncatewords:25 }}
+                                    {{ artigo.header|default:artigo.content|striptags|truncatewords:25|safe }}
                                 </p>
                             </div>
                             

@@ -129,8 +129,8 @@
                             <div class="row g-3 justify-content-center">
                                 {% for artigo in artigos_list %}
                                     <div class="col-md-4 col-sm-6 col-12 d-flex justify-content-center">
-                                      <div class="card-wrapper m-2" style="width: 100%; max-width: 500px;">
-                                          <div class="card" style="aspect-ratio: 7 / 6; width: 100%; border-radius: 30px; border: none; position: relative; overflow: hidden; background-color: #5CDCFF; box-sizing: border-box;">
+                                      <div class="card-wrapper m-2" style="height:450px; width: 100%; max-width: 400px;">
+                                          <div class="card" style="height:450px; width: 100%; border-radius: 30px; border: none; position: relative; overflow: hidden; background-color: #5CDCFF; box-sizing: border-box;">
                                               
                                               <!-- Imagem Grafismo Centralizada como Marca d'água -->
                                               <img src="/media/logo.png" 
@@ -147,7 +147,7 @@
 
                                                       <!-- Unidade (Header) -->
                                                       {% if artigo.header %}
-                                                          <p class="fw-bold azul-escuro small mb-1" style="font-size: clamp(12px, 2vw, 15px);">
+                                                          <p class="fw-bold azul-escuro bld small mb-1" style="font-size: clamp(12px, 2vw, 15px);">
                                                               {{ artigo.header|safe }}
                                                           </p>
                                                       {% endif %}
@@ -188,202 +188,429 @@
 
                         <!-- SCRIPT INLINE DENTRO DO IF DA SEÇÃO DE UNIDADES -->
                         <script>
-                          function openRoute(htmlAddress) {
-                              const div = document.createElement("div");
-                              div.innerHTML = htmlAddress;
-                              const address = div.textContent.trim();
+                            function openRoute(htmlAddress) {
+                                const div = document.createElement("div");
+                                div.innerHTML = htmlAddress;
+                                const address = div.textContent.trim();
 
-                              window.open(
-                                  "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(address),
-                                  "_blank"
-                              );
-                          }
+                                window.open(
+                                    "https://www.google.com/maps/search/?api=1&query=" +
+                                    encodeURIComponent(address),
+                                    "_blank"
+                                );
+                            }
 
-                          document.addEventListener("DOMContentLoaded", function () {
-                              const mapContainer = document.getElementById("map-unidades");
-                              if (!mapContainer) return;
+                            document.addEventListener("DOMContentLoaded", function () {
+                                const mapContainer = document.getElementById("map-unidades");
+                                if (!mapContainer) return;
 
-                              const map = L.map("map-unidades").setView([-22.9068, -43.1729], 11);
+                                // ============================================================
+                                // INICIALIZAÇÃO DO MAPA
+                                // ============================================================
 
-                              L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-                                maxZoom: 20,
-                                attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                                }).addTo(map);
+                                const map = L.map("map-unidades").setView(
+                                    [-22.5000, -42.8000],
+                                    8
+                                );
 
-                              setTimeout(() => map.invalidateSize(), 300);
+                                L.tileLayer(
+                                    "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+                                    {
+                                        maxZoom: 20,
+                                        attribution:
+                                            '&copy; OpenStreetMap France | &copy; ' +
+                                            '<a href="https://www.openstreetmap.org/copyright">' +
+                                            'OpenStreetMap</a>'
+                                    }
+                                ).addTo(map);
 
-                              const defaultIcon = L.icon({
-                                  iconUrl: "{% static 'site/icons/icon-loc.png' %}",
-                                  iconSize: [80, 80],
-                                  iconAnchor: [40, 80],
-                                  popupAnchor: [0, -38],
-                                  tooltipAnchor: [20, -35]
-                              });
+                                setTimeout(() => map.invalidateSize(), 300);
 
-                              window.unitMarkers = {};
-                              const bounds = L.latLngBounds();
+                                // ============================================================
+                                // DESTAQUE DO ESTADO DO RIO DE JANEIRO
+                                // GEOJSON ONLINE - SEM ARQUIVOS LOCAIS
+                                // SEM TURF.JS
+                                // ============================================================
 
-                              // Função utilitária para delay (respeitar limite da API do Nominatim)
-                              const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+                                const rjGeoJSONUrl =
+                                    "https://raw.githubusercontent.com/giuliano-macedo/geodata-br-states/main/geojson/br_states/br_rj.json";
 
-                              function addMarker(articleId, lat, lon, unitName, decodedAddress, extraInfo) {
-                                  if (window.unitMarkers[articleId]) return;
+                                // Painéis para controlar a ordem das camadas
+                                map.createPane("mascaraRJ");
+                                map.getPane("mascaraRJ").style.zIndex = 350;
+                                map.getPane("mascaraRJ").style.pointerEvents = "none";
 
-                                  const marker = L.marker([lat, lon], { icon: defaultIcon }).addTo(map);
+                                map.createPane("contornoRJ");
+                                map.getPane("contornoRJ").style.zIndex = 450;
+                                map.getPane("contornoRJ").style.pointerEvents = "none";
 
-                                  let popup = `
-                                      <div style="min-width:240px">
-                                          <h6 style="margin-bottom:10px;font-weight:bold;">${unitName}</h6>
-                                          <div style="margin-bottom:8px;">📍 ${decodedAddress}</div>
-                                  `;
+                                fetch(rjGeoJSONUrl)
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error(
+                                                "Erro ao carregar contorno do RJ: " +
+                                                response.status
+                                            );
+                                        }
 
-                                  if (extraInfo.length) {
-                                      popup += "<hr style='margin:8px 0'>";
-                                      extraInfo.forEach(info => { popup += `<div>${info}</div>`; });
-                                  }
-                                  popup += "</div>";
+                                        return response.json();
+                                    })
+                                    .then(geoData => {
 
-                                  marker.bindPopup(popup);
-                                  marker.bindTooltip(unitName);
+                                        console.log("GeoJSON do RJ carregado:", geoData);
 
-                                  window.unitMarkers[articleId] = { lat, lng: lon, marker };
-                                  bounds.extend([lat, lon]);
+                                        // ====================================================
+                                        // EXTRAIR OS POLÍGONOS DO ESTADO
+                                        // ====================================================
 
-                                  if (bounds.isValid()) {
-                                      map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
-                                  }
-                              }
+                                        const polygons = [];
 
-                              // Lista de tarefas para execução sequencial
-                              const geocodeQueue = [];
+                                        function extractGeometry(geometry) {
+                                            if (!geometry) return;
 
-                              {% for artigo in artigos_list %}
-                              (function(){
-                                  const articleId = "{{ artigo.id }}";
-                                  const unitName = "{{ artigo.header|default:artigo.title|escapejs }}";
-                                  const unitCity = "{{ artigo.title|escapejs }}";
-                                  const rawContent = `{{ artigo.content|safe|striptags|escapejs }}`;
+                                            if (geometry.type === "Polygon") {
+                                                polygons.push(geometry.coordinates);
+                                            }
 
-                                  const lines = rawContent.split(/\r?\n/).map(l => l.trim()).filter(l => l.length);
-                                  const address = lines[0] || rawContent.trim();
-                                  const extraInfo = lines.slice(1);
+                                            else if (geometry.type === "MultiPolygon") {
+                                                geometry.coordinates.forEach(polygon => {
+                                                    polygons.push(polygon);
+                                                });
+                                            }
 
-                                  const decoder = document.createElement("textarea");
-                                  decoder.innerHTML = address;
-                                  const decodedAddress = decoder.value;
+                                            else if (geometry.type === "GeometryCollection") {
+                                                geometry.geometries.forEach(extractGeometry);
+                                            }
+                                        }
 
-                                  // Limpeza avançada do endereço
-                                  // Limpeza avançada do endereço
-                        let searchAddress = decodedAddress
-                            .replace(/CEP[: ]*\d{5}-?\d{3}/ig, "")
-                            .replace(/\d{5}-\d{3}/g, "")
-                            .replace(/\bR\.\b/gi, "Rua")
-                            .replace(/\bAv\.\b/gi, "Avenida")
-                            .replace(/\bP&ccedil;a\b|\bPça\b/gi, "Praça")
-                            .replace(/,\s*,/g, ",")
-                            .replace(/\s+/g, " ")
-                            .trim()
-                            .replace(/,\s*$/, "");
+                                        function processGeoJSON(data) {
+                                            if (data.type === "FeatureCollection") {
+                                                data.features.forEach(feature => {
+                                                    extractGeometry(feature.geometry);
+                                                });
+                                            } else if (data.type === "Feature") {
+                                                extractGeometry(data.geometry);
+                                            } else {
+                                                extractGeometry(data);
+                                            }
+                                        }
 
-                        // Extrai o número da rua se existir
-                        const numberMatch = searchAddress.match(/,\s*(\d+)/);
-                        const streetNumber = numberMatch ? numberMatch[1] : null;
+                                        processGeoJSON(geoData);
 
-                        // Remove o bairro (ex: - Centro, - Cidade Nova) para não confundir o Nominatim
-                        let cleanStreetAndCity = searchAddress
-                            .replace(/-\s*[^,]+,/g, ",") // Remove o trecho "- Bairro,"
-                            .replace(/\s+/g, " ")
-                            .trim();
+                                        if (!polygons.length) {
+                                            throw new Error(
+                                                "Nenhum polígono encontrado no GeoJSON do RJ."
+                                            );
+                                        }
 
-                        // Tenta extrair só a rua (sem o número e sem o bairro)
-                        let streetOnly = cleanStreetAndCity.split(',')[0].replace(/\d+/, '').trim();
+                                        // ====================================================
+                                        // CRIAR MÁSCARA ESCURA FORA DO RJ
+                                        // ====================================================
 
-                        const queries = [
-                            // 1. Tenta o endereço tratado completo com país
-                            `${searchAddress}, Brasil`,
+                                        // Coordenadas Leaflet: [latitude, longitude]
+                                        const worldRing = [
+                                            [-85, -179.99],
+                                            [-85, 179.99],
+                                            [85, 179.99],
+                                            [85, -179.99],
+                                            [-85, -179.99]
+                                        ];
 
-                            // 2. Tenta sem o bairro (Rua + Número + Cidade) -> Costuma ser o mais preciso no OSM
-                            `${cleanStreetAndCity}, Brasil`,
+                                        const maskRings = [worldRing];
 
-                            // 3. Tenta só o nome da Rua + Cidade (se o número específico estiver fazendo falhar)
-                            `${streetOnly}, ${unitCity}, RJ, Brasil`,
+                                        polygons.forEach(polygon => {
+                                            const outerRing = polygon[0].map(coord => [
+                                                coord[1],
+                                                coord[0]
+                                            ]);
 
-                            // 4. Último caso: Cidade genérica
-                            `${unitCity}, RJ, Brasil`
-                        ];
+                                            maskRings.push(outerRing);
+                                        });
 
-                                  geocodeQueue.push({
-                                      articleId, unitName, decodedAddress, extraInfo, queries
-                                  });
-                              })();
-                              {% endfor %}
+                                        // Máscara escura sobre tudo que não é RJ
+                                        L.polygon(maskRings, {
+                                            pane: "mascaraRJ",
+                                            stroke: false,
+                                            fillColor: "#111827",
+                                            fillOpacity: 0.85,
+                                            fillRule: "evenodd",
+                                            interactive: false
+                                        }).addTo(map);
 
-                              // Executa as requisições em fila com intervalo de 1 segundo (1000ms)
-                              async function processGeocodeQueue() {
-                                  for (const item of geocodeQueue) {
-                                      let found = false;
+                                        // ====================================================
+                                        // DESENHAR CONTORNO AZUL DO RJ
+                                        // ====================================================
 
-                                      console.table(item.queries);
+                                        const rjLayer = L.geoJSON(geoData, {
+                                            pane: "contornoRJ",
+                                            style: {
+                                                color: "#0066ff",
+                                                weight: 4,
+                                                opacity: 1,
+                                                fillColor: "#0088ff",
+                                                fillOpacity: 0.06,
+                                                interactive: false
+                                            }
+                                        }).addTo(map);
 
-                                      for (const query of item.queries) {
-                                          console.log("🔍 Procurando:", query);
+                                        // ====================================================
+                                        // CENTRALIZAR MAPA NO ESTADO
+                                        // ====================================================
 
-                                          try {
-                                              const response = await fetch(
-                                                  "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query)
-                                              );
-                                              const data = await response.json();
+                                        const rjBounds = rjLayer.getBounds();
 
-                                              console.log("📍 Resultado:", data);
+                                        if (rjBounds.isValid()) {
+                                            map.fitBounds(rjBounds, {
+                                                padding: [30, 30],
+                                                maxZoom: 9
+                                            });
+                                        }
 
-                                              if (data && data.length > 0) {
-                                                  console.log("✅ Encontrado:", query);
-                                                  console.log("Latitude:", data[0].lat);
-                                                  console.log("Longitude:", data[0].lon);
+                                        setTimeout(() => {
+                                            map.invalidateSize();
+                                        }, 300);
 
-                                                  addMarker(
-                                                      item.articleId,
-                                                      parseFloat(data[0].lat),
-                                                      parseFloat(data[0].lon),
-                                                      item.unitName,
-                                                      item.decodedAddress,
-                                                      item.extraInfo
-                                                  );
-                                                  found = true;
-                                                  break;
-                                              }
-                                          } catch (e) {
-                                              console.error("❌ Erro ao geocodificar:", e);
-                                          }
+                                        console.log(
+                                            "RJ destacado e outros estados escurecidos!"
+                                        );
+                                    })
+                                    .catch(error => {
+                                        console.error(
+                                            "Erro ao aplicar destaque do RJ:",
+                                            error
+                                        );
+                                    });
 
-                                          // Delay de 300ms entre diferentes tentativas para a mesma unidade
-                                          await sleep(300);
-                                      }
+                                // ============================================================
+                                // MARCADORES E GEOCODING
+                                // ============================================================
 
-                                      if (!found) {
-                                          console.warn("❌ Nenhum resultado para:", item.unitName);
-                                      }
+                                const defaultIcon = L.icon({
+                                    iconUrl: "{% static 'site/icons/icon-loc.png' %}",
+                                    iconSize: [80, 80],
+                                    iconAnchor: [40, 80],
+                                    popupAnchor: [0, -38],
+                                    tooltipAnchor: [20, -35]
+                                });
 
-                                      // Respeita o limite de requisições do Nominatim (1s entre requisições de unidades)
-                                      await sleep(1000);
-                                  }
-                              }
+                                window.unitMarkers = {};
+                                const bounds = L.latLngBounds();
 
-                              processGeocodeQueue();
+                                const sleep = ms =>
+                                    new Promise(resolve => setTimeout(resolve, ms));
 
-                              window.focusOnMap = function(articleId) {
-                                  const target = window.unitMarkers[articleId];
-                                  if (!target) {
-                                      alert("{% trans 'Aguarde o carregamento do mapa ou verifique o endereço.' %}");
-                                      return;
-                                  }
+                                function addMarker(
+                                    articleId,
+                                    lat,
+                                    lon,
+                                    unitName,
+                                    decodedAddress,
+                                    extraInfo
+                                ) {
+                                    if (window.unitMarkers[articleId]) return;
 
-                                  mapContainer.scrollIntoView({ behavior: "smooth", block: "center" });
-                                  map.flyTo([target.lat, target.lng], 16, { animate: true, duration: 1.2 });
-                                  target.marker.openPopup();
-                              };
-                          });
+                                    const marker = L.marker([lat, lon], {
+                                        icon: defaultIcon
+                                    }).addTo(map);
+
+                                    let popup = `
+                                        <div style="min-width:240px">
+                                            <h6 style="margin-bottom:10px;font-weight:bold;">
+                                                ${unitName}
+                                            </h6>
+                                            <div style="margin-bottom:8px;">
+                                                📍 ${decodedAddress}
+                                            </div>
+                                    `;
+
+                                    if (extraInfo.length) {
+                                        popup += "<hr style='margin:8px 0'>";
+                                        extraInfo.forEach(info => {
+                                            popup += `<div>${info}</div>`;
+                                        });
+                                    }
+
+                                    popup += "</div>";
+
+                                    marker.bindPopup(popup);
+                                    marker.bindTooltip(unitName);
+
+                                    window.unitMarkers[articleId] = {
+                                        lat,
+                                        lng: lon,
+                                        marker
+                                    };
+
+                                    bounds.extend([lat, lon]);
+                                }
+
+                                const geocodeQueue = [];
+
+                                {% for artigo in artigos_list %}
+                                (function () {
+                                    const articleId = "{{ artigo.id }}";
+                                    const unitName =
+                                        "{{ artigo.header|default:artigo.title|escapejs }}";
+
+                                    let rawCity = "{{ artigo.title|escapejs }}";
+                                    let unitCity = rawCity.split("-")[0].trim();
+
+                                    const rawContent =
+                                        `{{ artigo.content|safe|striptags|escapejs }}`;
+
+                                    const lines = rawContent
+                                        .split(/\r?\n/)
+                                        .map(l => l.trim())
+                                        .filter(l => l.length);
+
+                                    const address = lines[0] || rawContent.trim();
+                                    const extraInfo = lines.slice(1);
+
+                                    const decoder = document.createElement("textarea");
+                                    decoder.innerHTML = address;
+                                    const decodedAddress = decoder.value;
+
+                                    const cepMatch =
+                                        decodedAddress.match(/\b\d{5}-?\d{3}\b/);
+
+                                    const rawCep = cepMatch ? cepMatch[0] : null;
+
+                                    let fullAddressClean = decodedAddress
+                                        .replace(/\bR\.\b/gi, "Rua")
+                                        .replace(/\bAv\.\b/gi, "Avenida")
+                                        .replace(/\bP&ccedil;a\b|\bPça\b/gi, "Praça")
+                                        .replace(/,\s*,/g, ",")
+                                        .replace(/\s+/g, " ")
+                                        .trim();
+
+                                    let addressWithoutCep = fullAddressClean
+                                        .replace(/CEP[: ]*\d{5}-?\d{3}/gi, "")
+                                        .replace(/\b\d{5}-\d{3}\b/g, "")
+                                        .trim()
+                                        .replace(/,\s*$/, "");
+
+                                    let streetOnly = addressWithoutCep
+                                        .split(",")[0]
+                                        .split("-")[0]
+                                        .replace(/\d+/, "")
+                                        .trim();
+
+                                    const queries = [];
+
+                                    queries.push(`${fullAddressClean}, Brasil`);
+                                    queries.push(`${addressWithoutCep}, Brasil`);
+
+                                    if (streetOnly.length > 3) {
+                                        queries.push(
+                                            `${streetOnly}, ${unitCity}, RJ, Brasil`
+                                        );
+                                    }
+
+                                    if (rawCep) {
+                                        queries.push(`${rawCep}, Brasil`);
+                                    }
+
+                                    queries.push(`${unitCity}, RJ, Brasil`);
+
+                                    geocodeQueue.push({
+                                        articleId,
+                                        unitName,
+                                        decodedAddress,
+                                        extraInfo,
+                                        queries
+                                    });
+                                })();
+                                {% endfor %}
+
+                                async function processGeocodeQueue() {
+                                    for (const item of geocodeQueue) {
+                                        let found = false;
+
+                                        for (const query of item.queries) {
+                                            try {
+                                                const response = await fetch(
+                                                    "https://nominatim.openstreetmap.org/search" +
+                                                    "?format=json&limit=1&q=" +
+                                                    encodeURIComponent(query)
+                                                );
+
+                                                if (!response.ok) {
+                                                    throw new Error(
+                                                        `HTTP ${response.status} no geocoding`
+                                                    );
+                                                }
+
+                                                const data = await response.json();
+
+                                                if (data && data.length > 0) {
+                                                    addMarker(
+                                                        item.articleId,
+                                                        parseFloat(data[0].lat),
+                                                        parseFloat(data[0].lon),
+                                                        item.unitName,
+                                                        item.decodedAddress,
+                                                        item.extraInfo
+                                                    );
+
+                                                    found = true;
+                                                    break;
+                                                }
+                                            } catch (e) {
+                                                console.error(
+                                                    "Erro ao geocodificar:",
+                                                    e
+                                                );
+                                            }
+
+                                            await sleep(1000);
+                                        }
+
+                                        if (!found) {
+                                            console.warn(
+                                                "Nenhum resultado para:",
+                                                item.unitName
+                                            );
+                                        }
+
+                                        await sleep(1000);
+                                    }
+                                }
+
+                                processGeocodeQueue();
+
+                                // ============================================================
+                                // FOCAR EM UMA UNIDADE
+                                // ============================================================
+
+                                window.focusOnMap = function (articleId) {
+                                    const target = window.unitMarkers[articleId];
+
+                                    if (!target) {
+                                        alert(
+                                            "{% trans 'Aguarde o carregamento do mapa ou verifique o endereço.' %}"
+                                        );
+                                        return;
+                                    }
+
+                                    mapContainer.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "center"
+                                    });
+
+                                    map.flyTo(
+                                        [target.lat, target.lng],
+                                        16,
+                                        {
+                                            animate: true,
+                                            duration: 1.2
+                                        }
+                                    );
+
+                                    target.marker.openPopup();
+                                };
+                            });
                         </script>
+
                         {% endwith %}
 
                     {% else %}

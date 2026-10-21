@@ -24,6 +24,7 @@
 
         <form method="POST" action="" enctype="multipart/form-data" class="w-100">
             
+            {% csrf_token %}
             <!-- OBRIGATÓRIO: Carrega os arquivos JS e CSS do CKEditor para esta seção -->
             {{ form.media }}
             
