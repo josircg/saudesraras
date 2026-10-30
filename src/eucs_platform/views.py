@@ -1,13 +1,17 @@
 from itertools import chain
+import json
+import html
 
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.admin.views.main import SEARCH_VAR
 from django.core.paginator import Paginator
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils import translation
+from django.utils.html import strip_tags
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django_countries import countries
@@ -31,6 +35,7 @@ def home(request):
     user = request.user
     filters = {'keywords': ''}
     page = request.GET.get('page')
+    current_language = get_language()
 
     items_per_page = 4
     posts = Post.objects.all().order_by('-sticky', '-created_on')[:4]
@@ -59,6 +64,56 @@ def home(request):
     organisations = paginatororganisation.get_page(page)
     counterorganisations = paginatororganisation.count
 
+    map_locations = []
+
+    org_map_qs = Organisation.objects.filter(
+        approved=True,
+        latitude__isnull=False,
+        longitude__isnull=False
+    )
+    for org in org_map_qs:
+        map_locations.append({
+            'id': f'org_{org.id}',
+            'name': org.name,
+            'lat': float(org.latitude),
+            'lng': float(org.longitude),
+            'type': 'organisation',
+            'url': f'/organisation/{org.id}'
+        })
+
+    secao_unidades = Section.objects.filter(
+        page__slug='riofarmes',
+        page__language=current_language
+    ).filter(
+        Q(title__icontains='unidades') | Q(header__icontains='unidades')
+    ).first()
+
+    if secao_unidades:
+        artigos_list = getattr(secao_unidades, 'top_articles', None) or (
+            secao_unidades.articles.articles_by_order() if hasattr(secao_unidades.articles, 'articles_by_order') else secao_unidades.articles.all()
+        )
+        for artigo in artigos_list:
+            raw_header = strip_tags(artigo.header or artigo.title or '')
+            unit_name = html.unescape(raw_header).strip()
+            
+            raw_city = strip_tags(artigo.title or '')
+            unit_city = html.unescape(raw_city).strip()
+            
+            raw_content = strip_tags(artigo.content or '')
+            clean_content = html.unescape(raw_content).strip()
+            
+            map_locations.append({
+                'id': f'riofarme_{artigo.id}',
+                'name': unit_name,
+                'city': unit_city,
+                'raw_address': clean_content,
+                'type': 'riofarme',
+                'lat': None,
+                'lng': None,
+                'url': '/riofarmes'
+            })
+
+    map_locations_json = json.dumps(map_locations, cls=DjangoJSONEncoder)
     platforms = Platform.objects.filter(active=True).order_by('-dateCreated')
     paginator_platform = Paginator(platforms, items_per_page)
     platforms = paginator_platform.get_page(page)
@@ -68,22 +123,19 @@ def home(request):
     visao_endpoint = None
     project_topics = []
 
-    
     ongoing_events = Event.objects.approved_events().ongoing_events()
     upcoming_events = Event.objects.approved_events().upcoming_events()
-    paginator_event = \
-        Paginator(ongoing_events.union(upcoming_events, all=True).order_by('-featured', 'start_date', 'end_date'),
-                  items_per_page)
+    paginator_event = Paginator(
+        ongoing_events.union(upcoming_events, all=True).order_by('-featured', 'start_date', 'end_date'),
+        items_per_page
+    )
     events = paginator_event.get_page(page)
 
     # Depoimentos
-    current_language = get_language()
-    depoimentos = Section.objects.filter(page__slug='depoimentos',
-                                         page__language=current_language).order_by('order')[:3]
+    depoimentos = Section.objects.filter(page__slug='depoimentos', page__language=current_language).order_by('order')[:3]
 
     # FAQ
-    perguntas_frequentes = Section.objects.filter(page__slug='faq',
-                                                  page__language=current_language).order_by('order')[:5]
+    perguntas_frequentes = Section.objects.filter(page__slug='faq', page__language=current_language).order_by('order')[:5]
 
     # Users
     counter_users = Profile.objects.count()
@@ -112,9 +164,9 @@ def home(request):
         'visao_endpoint': visao_endpoint,
         'compare_topics_endpoint': compare_topics_endpoint,
         'project_topics': project_topics,
+        'map_locations_json': map_locations_json,
         'isSearchPage': True,
     })
-
 
 def faq(request):
     current_language = get_language()
