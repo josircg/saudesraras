@@ -12,8 +12,8 @@
             <div id="div-ordenacao">
                 <div class="title-filtros">{% trans "Order by" %}</div>
                 <div class="input-group input-group-sm filter-bar">
-                    <div class="input-group-text filter-img">
-                        <img src="{% static '../static/site/icons/order-icon.png' %}" height="14px;" alt="">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-sort-down" style="font-size: 20px;"></i>
                     </div>
                     <select id="orderby" name="orderby" class="custom-select form-control float-right">
                         <option value="recent" {% if filters.orderby == "recent" %} selected {% endif %}>{% trans "Most Recent" %}</option>
@@ -29,8 +29,8 @@
                 <div class="title-filtros">{% trans "Filter by" %}</div>
                 <div class="input-group input-group-sm filter-bar">
 
-                    <div class="input-group-text filter-img">
-                        <img src="{% static '../static/site/icons/filter-icon.png' %}" alt="">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-funnel" style="font-size: 20px;"></i>
                     </div>
                     <select id="inLanguage" name="inLanguage" class="custom-select form-control">
                         <option value="">{% trans "All languages" %}<option>

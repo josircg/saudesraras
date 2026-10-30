@@ -75,3 +75,5 @@ src/whoosh_index
 .idea/
 venv
 *.Zone.Identifier
+env/
+.env

@@ -10,7 +10,7 @@ from organisations.models import Organisation
 def disease_list(request):
     disease_queryset = Disease.objects.all().prefetch_related('symptoms')
     
-    query = request.GET.get('q', '')
+    query = request.GET.get('keywords', '').strip()
     symptom_filter = request.GET.get('symptom', '')
     orderby_filter = request.GET.get('orderby', 'name') 
 
@@ -55,10 +55,11 @@ def disease_list(request):
     all_symptoms = Symptom.objects.all().order_by(Lower('description'))
 
     context = {
+        'isSearchPage': True,
         "diseases": diseases,
         "all_symptoms": all_symptoms,
         "filters": {
-            "q": query,
+            "keywords": query,
             "symptom": symptom_filter,
             "symptom_list": symptom_ids_list,  # Enviado como lista de números inteiros [14]
             "orderby": orderby_filter,
