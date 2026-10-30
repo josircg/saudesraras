@@ -2,7 +2,6 @@
 {% load i18n %}
 
 <div id="cookieConsent">
-    <div id="closeCookieConsent">x</div>
     {% trans 'This website uses cookies.' %}<a href="{% url 'privacy' %}" target="_blank"> {% trans 'More info'%}</a>. <a class="cookieConsentOK" href="javascript:Cookielaw.createCookielawCookie();">{% trans "That's fine" %}</a>
 </div>
 <script type="text/javascript" src="{% static 'site/js/jquery.min.js' %}"></script>
