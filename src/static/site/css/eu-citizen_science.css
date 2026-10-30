@@ -1268,7 +1268,7 @@ footer #parcerias .parceiros-logos img {
 
 /* Botão "Tudo bem" amarelo/dourado conforme a referência */
 .cookieConsentOK {
-    background-color: var(--blue2) ; 
+    background-color: var(--blue2) !important; 
     color: white !important;
     text-decoration: none !important;
     padding: 5px 20px;
@@ -1281,7 +1281,7 @@ footer #parcerias .parceiros-logos img {
 }
 
 .cookieConsentOK:hover {
-    background-color: var(--blue3);
+    background-color: var(--blue3) !important;
 }
 
 #closeCookieConsent {
