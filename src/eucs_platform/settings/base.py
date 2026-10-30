@@ -12,23 +12,11 @@ from pathlib import Path
 
 # Use 12factor inspired environment variables or from a file
 import environ
+from ckeditor_demo.settings import CKEDITOR_IMAGE_BACKEND
 # For Bootstrap 3, change error alert to 'danger'
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-
-# instalando o GDAL windows
-if os.name == 'nt':
-    import platform
-
-    OSGEO4W = r"C:\OSGeo4W"
-    if '64' in platform.architecture()[0]:
-        OSGEO4W += "64"
-    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
-    os.environ['OSGEO4W_ROOT'] = OSGEO4W
-    os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
-    os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
-    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
 
 # Build paths inside the project like this: BASE_DIR / "directory"
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -127,7 +115,7 @@ if ADMIN_EMAIL:
 INSTALLED_APPS = (
     "admin_tools",
     "admin_tools.dashboard",
-
+    "poweradmin",
     "django.contrib.auth",
     "django.contrib.admin",
     "django.contrib.contenttypes",
@@ -141,20 +129,23 @@ INSTALLED_APPS = (
     "easy_thumbnails",
     "profiles",
     "accounts",
-    "projects",
-    "resources",
     "digest",
-    "platforms",
     "django_select2",
     "blog",
+    'events',
+    'diseases',
+    "projects",
+    'organisations',
+    "platforms",
+    "resources",
+    "authors",
+    "contact",
+    "pages",
     "django_summernote",
     "leaflet",
     "django_countries",
-    "authors",
-    "contact",
     'django.contrib.sites',
     'cookielaw',
-    'events',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
@@ -165,14 +156,10 @@ INSTALLED_APPS = (
     'active_link',
     'oauth2_provider',
     'django.contrib.gis',
-
-    'organisations',
-    "django_cron",
+    'django_cron',
     'ckeditor',
     'ckeditor_uploader',
-
     'django_cleanup.apps.CleanupConfig',
-
     'utilities',
 )
 
@@ -265,7 +252,16 @@ LEAFLET_CONFIG = {
     'MIN_ZOOM': 2,
     'RESET_VIEW': False,
     'MAX_ZOOM': 18,
+    'TILES': [
+        (
+            'CartoDB Light',
+            'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+            '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors &copy; '
+            '<a href="https://carto.com">CARTO</a>'
+        )
+    ],
 }
+
 
 SUMMERNOTE_THEME = 'bs4'
 
@@ -306,13 +302,13 @@ HOST = env("HOST")
 DOMAIN = env("DOMAIN")
 USE_GUIDE = env("USE_GUIDE")
 
-VISAO_USERNAME = env('VISAO_USERNAME')
-VISAO_PASSWORD = env('VISAO_PASSWORD')
-VISAO_GROUP = env('VISAO_GROUP')
-VISAO_LAYER = env('VISAO_LAYER')
-VISAO_URL = env('VISAO_URL')
-VISAO_LAYOUT = env('VISAO_LAYOUT')
-VISAO_CATEGORY = env('VISAO_CATEGORY')
+VISAO_USERNAME = ""
+VISAO_PASSWORD = ""
+VISAO_GROUP = ""
+VISAO_LAYER = ""
+VISAO_URL = ""
+VISAO_LAYOUT = ""
+VISAO_CATEGORY = ""
 
 # Debug Options
 DEBUG = env('DEBUG')
@@ -368,6 +364,7 @@ RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_REQUIRE_STAFF = False
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -378,10 +375,8 @@ CKEDITOR_CONFIGS = {
              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
             {'name': 'paragraph',
              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-                       'Language']},
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', ]},
             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert', 'items': ['Image']},
             '/',
             {'name': 'styles', 'items': ['Styles', 'Format', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
@@ -396,6 +391,23 @@ CKEDITOR_CONFIGS = {
             ['Link', 'Unlink'],
             ['RemoveFormat']
         ]
+    },
+    'admin': {
+        'removePlugins': 'exportpdf',
+        'toolbar': 'default_custom',
+        'toolbar_default_custom': [
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Source']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert', 'items': ['Image']},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+        ],
+        'extraAllowedContent': 'span(*);',
     },
 }
 

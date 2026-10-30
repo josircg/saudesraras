@@ -31,9 +31,9 @@ def set_pages_and_get_object_list(paginator, pages, page_num):
 def events(request):
     user = request.user
     page = request.GET.get('page', 1)
-    upcoming_events = Event.objects.upcoming_events()
-    ongoing_events = Event.objects.ongoing_events()
-    past_events = Event.objects.past_events()
+    upcoming_events = Event.objects.upcoming_events().order_by('start_date')
+    ongoing_events = Event.objects.ongoing_events().order_by('start_date')
+    past_events = Event.objects.past_events().order_by('-start_date')
 
     if not user.is_staff:
         upcoming_events = upcoming_events.approved_events()

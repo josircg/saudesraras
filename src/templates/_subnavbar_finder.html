@@ -5,6 +5,12 @@
     <div class="col-12">
         <nav id="searchNav" class="navbar navbar-light bg-white sub-nav-bar p-1 pl-0 rounded mb-2 finder">
             <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link ps-4  {% active_link 'organisations' %}"
+                       href="{% url 'organisations'%}{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">
+                       <img src="{% static 'site/icons/icon-organizacoes.png' %}" alt=""> {% trans "Organisations" %}
+                    </a>
+                </li>
                 <li class="nav-item text-start">
                     <a class="nav-link ps-4  {% active_link 'projects' %}"
                        href="{% url 'projects' %}{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">
@@ -24,25 +30,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ps-4  {% active_link 'organisations' %}"
-                       href="{% url 'organisations'%}{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">
-                       <img src="{% static 'site/icons/icon-organizacoes.png' %}" alt=""> {% trans "Organisations" %}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ps-4  {% active_link 'platforms' %}"
-                       href="{% url 'platforms'%}{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">
-                       <img src="{% static 'site/icons/icon-plataformas.png' %}" alt=""> {% trans "Platforms" %}
-                    </a>
-                </li>
-                <li class="nav-item">
                     {% with request.resolver_match.url_name as url_name %}
                         <a class="nav-link ps-4 {% if request.get_full_path == '/users/' %}active{% endif %}"
                         href="/users/{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">
                         <img src="{% static 'site/icons/icon-user.png' %}" alt=""> {% trans "Users" %}
                         </a>
                     {% endwith %}
-                </li> 
+                </li>
             </ul>
             <!-- <ul class="nav navbar-nav navbar-right {% active_link 'curated'%}">
                 <li class="nav-item">

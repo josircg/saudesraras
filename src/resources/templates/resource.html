@@ -7,12 +7,6 @@
 
 {% block title %}{{ block.super }} :: {{resource.name}}{% endblock %}
 {% block list_of_items %}
-{% if resource.image2 %}
-<div class="container-fluid profileImage" style="background: url('/media/{{resource.image2| safe}}') no-repeat; background-size: cover;"> 
-    <div class="container-fluid">
-    </div>
-</div>
-{% endif %}
 
 <div class="container">
     <div class="row mt-5">

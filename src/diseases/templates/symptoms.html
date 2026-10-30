@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load my_tags %}
+
+{% block title %}{{ block.super }} :: {% trans "Symptoms" %}{% endblock %}
+
+{% block list_of_items %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 mb-3 text-blue3">
+            <h1>{% trans "Symptoms" %}</h1>
+        </div>
+    </div>
+
+    <form id="symptomForm" method="get" action="{% url 'symptoms' %}">
+        <input type="hidden" id="hiddenSelected" name="symptom" value="{{ filters.selected_symptoms }}">
+        <input type="hidden" id="hiddenLetter" name="letter" value="{{ filters.letter }}">
+        <input type="hidden" id="local_q" name="q_symptom" value="{{ filters.q_symptom }}">
+
+        <div class="row w-100 mt-3">
+            <div class="col-lg-9 pr-lg-4" >
+                
+                {% include "symptoms_filter.html" %}
+
+                <div class="list-group my-3">
+                    {% if symptoms_page %}
+                        {% include "symptoms_list.html" %}
+                    {% else %}
+                        <div class="list-group-item text-muted">{% trans "No symptoms found." %}</div>
+                    {% endif %}
+                </div>
+
+                {% if symptoms_page.has_other_pages %}
+                <div class="mt-3">
+                    {% include "symptoms_paginator.html" %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="col-lg-3 pl-lg-4" style="border-left: 1px solid #dee2e6;">
+                <h5 class="mb-2 text-blue3 fw-bold" style="font-size: 1.15rem;">{% trans "Selected symptoms:" %}</h5>
+                
+                <div id="selected-tags-container"
+                    class="p-3 border rounded bg-light mb-2 d-flex flex-wrap"
+                    style="gap: 8px; min-height: 80px;">
+
+                    {% if selected_symptoms %}
+                        {% for symptom in selected_symptoms %}
+                           <span id="tag-pill-{{ symptom.id }}"
+                                class="badge rounded-pill bg-info ps-3 pe-1 py-0 d-inline-flex align-items-center text-white lh-base"
+                                style="font-size:0.9rem; gap:8px; height:28px; max-width:250px;">
+
+                                <span style="
+                                    overflow:hidden;
+                                    white-space:nowrap;
+                                    text-overflow:ellipsis;
+                                    flex:1;
+                                    min-width:0;
+                                ">
+                                    {{ symptom.description|capfirst }}
+                                </span>
+
+                                <i class="fas fa-times text-white"
+                                onclick="removeSymptomTag('{{ symptom.id }}')"
+                                style="cursor:pointer; font-style:normal; font-weight:bold; margin-left:2px; font-size:0.8rem; flex-shrink:0;">
+                                </i>
+                            </span>
+                        {% endfor %}
+                    {% else %}
+                        <span id="empty-tags-msg" class="text-muted small">
+                            {% trans "No symptoms selected yet. Click the [+] next to the symptoms in the page." %}
+                        </span>
+                    {% endif %}
+
+                </div>
+
+                <div class="d-grid gap-2 mb-4">
+                    <button
+                        type="submit"
+                        formaction="{% url 'diseases' %}"
+                        class="btn btn-sintomas-busca w-100 fw-bold p-2.5 shadow-sm"
+                        id="btnBuscarDoencas"
+                        onclick="searchDiseases()"
+                        disabled>
+                        <i class="fas fa-search me-2"></i>
+                        {% trans "Search diseases with those symptoms" %}
+                    </button>  
+                </div>
+
+                <div class="mb-4 p-2 border rounded bg-white">
+                    <span class="small text-muted d-block mb-1">{% trans "Go to letter:" %}</span>
+                    <div class="d-flex flex-wrap" style="gap: 4px;">
+                        {% for letter, target_page in alphabet_map.items %}
+                            <a href="javascript:void(0)" 
+                            onclick="goToLetterPage('{{ target_page }}', '{{ letter }}')" 
+                            class="badge bg-light text-secondary border text-decoration-none p-1">
+                                {{ letter }}
+                            </a>
+                        {% empty %}
+                            <span class="text-muted small">{% trans "No symptoms found." %}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        checkButtonState();
+
+        const params = new URLSearchParams(window.location.search);
+        const scrollToLetter = params.get("scroll_to");
+        
+        if (scrollToLetter) {
+            const targetElement = document.getElementById('symptom-char-' + scrollToLetter);
+            if (targetElement) {
+                setTimeout(() => {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 200);
+            }
+        }
+    });
+
+    function clearSearchQuery() {
+        document.getElementById('q_symptom').value = '';
+        document.getElementById('local_q').value = '';
+        
+        const params = new URLSearchParams(window.location.search);
+        params.delete("q_symptom");
+        
+        let form = document.getElementById('symptomForm');
+        form.action = "{% url 'symptoms' %}";
+        form.submit();
+    }
+
+    function filterByLetter(letter) {
+        let form = document.getElementById('symptomForm');
+        document.getElementById('hiddenLetter').value = letter;
+        
+        const params = new URLSearchParams(window.location.search);
+        params.delete("page");
+        
+        form.action = "{% url 'symptoms' %}"; 
+        form.submit();
+    }
+
+    function goToLetterPage(page, letter) {
+        const params = new URLSearchParams(window.location.search);
+        params.set("page", page);
+        params.set("scroll_to", letter);
+
+        const selected = document.getElementById("hiddenSelected").value;
+        if (selected) {
+            params.set("symptom", selected);
+        } else {
+            params.delete("symptom");
+        }
+
+        const q = document.getElementById("local_q").value;
+        if (q) {
+            params.set("q_symptom", q);
+        } else {
+            params.delete("q_symptom");
+        }
+
+        params.delete("letter");
+
+        window.location = "{% url 'symptoms' %}?" + params.toString();
+    }
+
+    function addSymptomTag(id, description) {
+        let hiddenInput = document.getElementById('hiddenSelected');
+        let currentValues = hiddenInput.value ? hiddenInput.value.split(',') : [];
+        
+        if (!currentValues.includes(id.toString())) {
+            currentValues.push(id);
+            hiddenInput.value = currentValues.filter(Boolean).join(',');
+            updateUrl();
+            renderTag(id, description);
+            checkButtonState();
+        }
+    }
+
+    function renderTag(id, description) {
+        let container = document.getElementById('selected-tags-container');
+        let msg = document.getElementById('empty-tags-msg');
+        if (msg) msg.remove();
+
+        if (document.getElementById('tag-pill-' + id)) return;
+
+        let span = document.createElement('span');
+        span.id = 'tag-pill-' + id;
+        span.className = 'badge rounded-pill bg-info ps-3 pe-1 py-0 d-inline-flex align-items-center text-white lh-base';
+        span.style = `
+            font-size:0.9rem;
+            gap:8px;
+            height:28px;
+            max-width:250px;
+        `;
+
+        span.innerHTML = `
+            <span style="
+                overflow:hidden;
+                white-space:nowrap;
+                text-overflow:ellipsis;
+                flex:1;
+                min-width:0;
+            ">
+                ${description}
+            </span>
+
+            <i class="fas fa-times text-white"
+            onclick="removeSymptomTag('${id}')"
+            style="
+                    cursor:pointer;
+                    font-style:normal;
+                    font-weight:bold;
+                    margin-left:2px;
+                    font-size:0.8rem;
+                    flex-shrink:0;
+            ">
+            </i>
+        `;
+
+        container.appendChild(span);
+    }
+
+    function removeSymptomTag(id) {
+        let hiddenInput = document.getElementById('hiddenSelected');
+        let currentValues = hiddenInput.value ? hiddenInput.value.split(',') : [];
+        
+        currentValues = currentValues.filter(item => item !== id.toString());
+        hiddenInput.value = currentValues.filter(Boolean).join(',');
+        updateUrl();
+        
+        let pill = document.getElementById('tag-pill-' + id);
+        if (pill) pill.remove();
+
+        let container = document.getElementById('selected-tags-container');
+        if (container.children.length === 0) {
+            container.innerHTML = `<span id="empty-tags-msg" class="text-muted small">{% trans "Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas do catálogo." %}</span>`;
+        }
+        checkButtonState();
+    }
+
+    function checkButtonState() {
+        let hiddenInput = document.getElementById('hiddenSelected');
+        let btn = document.getElementById('btnBuscarDoencas');
+        if (btn) {
+            btn.disabled = (hiddenInput.value.trim() === "");
+        }
+    }
+
+    document.querySelectorAll('a[href^="#symptom-char-"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    function goToPage(page) {
+        const params = new URLSearchParams(window.location.search);
+        params.set("page", page);
+
+        const selected = document.getElementById("hiddenSelected").value;
+        if (selected) {
+            params.set("symptom", selected);
+        } else {
+            params.delete("symptom");
+        }
+
+        const letter = document.getElementById("hiddenLetter").value;
+        if (letter) {
+            params.set("letter", letter);
+        } else {
+            params.delete("letter");
+        }
+
+        const q = document.getElementById("local_q").value;
+        if (q) {
+            params.set("q_symptom", q);
+        } else {
+            params.delete("q_symptom");
+        }
+
+        window.location = "{% url 'symptoms' %}?" + params.toString();
+    }
+
+    function updateUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const selected = document.getElementById("hiddenSelected").value;
+
+        if (selected) {
+            params.set("symptom", selected);
+        } else {
+            params.delete("symptom");
+        }
+
+        if (!params.get("letter")) params.delete("letter");
+        if (!params.get("q_symptom")) params.delete("q_symptom");
+
+        history.replaceState({}, "", window.location.pathname + "?" + params.toString());
+    }
+    function searchDiseases() {
+        const selected = document.getElementById("hiddenSelected").value;
+
+        if (!selected.trim()) {
+            return;
+        }
+
+        const params = new URLSearchParams();
+        params.set("symptom", selected);
+
+        window.location.href = "{% url 'diseases' %}?" + params.toString();
+    }
+</script>
+{% endblock list_of_items %}

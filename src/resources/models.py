@@ -70,19 +70,17 @@ class Resource(models.Model):
     name = models.CharField(max_length=200)
     url = models.URLField(max_length=200)
     keywords = models.ManyToManyField(Keyword)
-    abstract = models.CharField(max_length=3000)
-    description_citizen_science_aspects = models.CharField(max_length=2000)
+    abstract = models.TextField()
     category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
     theme = models.ManyToManyField(Theme)
 
     # Publish information
-    # TODO: Convert datePublished to Year
     authors = models.ManyToManyField(Author, blank=True)
-    publisher = models.CharField(max_length=100, blank=True, null=True)
+    publisher = models.TextField(blank=True, null=True)
     datePublished = models.IntegerField(_('Year published'), null=True, blank=True)
     resourceDOI = models.CharField(max_length=100, null=True, blank=True)
-    inLanguage = models.CharField(max_length=100, null=True, blank=True)
-    license = models.CharField(max_length=300, null=True, blank=True)
+    inLanguage = models.TextField(null=True, blank=True)
+    license = models.TextField(null=True, blank=True)
 
     # Links
     organisation = models.ManyToManyField(Organisation, blank=True)
@@ -91,15 +89,9 @@ class Resource(models.Model):
     # Pictures
     image1 = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
     imageCredit1 = models.CharField(max_length=300, null=True, blank=True)
-    image2 = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
-    imageCredit2 = models.CharField(max_length=300, null=True, blank=True)
 
-    # Training resources fields
     isTrainingResource = models.BooleanField(_('Is Training Resource'), null=True, blank=True, default=False)
 
-    # Time
-    # Legacy TODO: delete dateUploaded
-    dateUploaded = models.DateTimeField('Date Uploaded')
     dateCreated = models.DateTimeField('Created date', auto_now_add=True)
     dateUpdated = models.DateTimeField('Updated date', auto_now=True)
 

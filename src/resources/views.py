@@ -169,12 +169,10 @@ def editResource(request, pk):
         'url': resource.url,
         'keywords': resource.keywords.all,
         'abstract': resource.abstract,
-        'description_citizen_science_aspects': resource.description_citizen_science_aspects,
         'category': getCategory(resource.category),
         'categorySelected': resource.category.id,
         'theme': resource.theme.all,
         # Publish information
-        'authors': resource.authors.all,
         'publisher': resource.publisher,
         'year_of_publication': resource.datePublished,
         'resource_DOI': resource.resourceDOI,
@@ -185,11 +183,8 @@ def editResource(request, pk):
         'organisation': resource.organisation.all,
         # Images
         'image_credit1': resource.imageCredit1,
-        'image_credit2': resource.imageCredit2,
         'image1': resource.image1,
-        'image2': resource.image2,
         'withImage1': (True, False)[resource.image1 == ""],
-        'withImage2': (True, False)[resource.image2 == ""],
     })
 
     if request.method == 'POST':
@@ -197,9 +192,7 @@ def editResource(request, pk):
         if form.is_valid():
             images = []
             image1_path = saveImage(request, form, 'image1', '1')
-            image2_path = saveImage(request, form, 'image2', '2')
             images.append(image1_path)
-            images.append(image2_path)
             form.save(request, images)
             if isTrainingResource:
                 return redirect('/training_resource/' + str(pk))
@@ -305,9 +298,7 @@ def updateAuthors(dictio):
 def setImages(request, form):
     images = []
     image1_path = saveImage(request, form, 'image1', '1')
-    image2_path = saveImage(request, form, 'image2', '2')
     images.append(image1_path)
-    images.append(image2_path)
     return images
 
 

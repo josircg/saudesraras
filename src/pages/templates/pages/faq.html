@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static i18n l10n eucs_platform_tags %}
+{% block title %}{{ block.super }} :: {{ page }}{% endblock %}
+
+{% block list_of_items %}
+    
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mt-5 mb-5 ">
+        <h1 class="text-blue2">
+          {% trans "FAQ" %}
+        </h1>
+        {% if page.content %}
+          <div class="page-content mt-3">
+            {{ page.content|safe }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="row mt-4 mb-5">
+        <div class="col-12 d-flex flex-column" style="gap: 16px; width: 100%;">
+          {% for section in page.sections.sections_by_order %}
+              <div class="card brdr-20" style="width: 100%; cursor: pointer; background-color: #3D99F4;">
+                
+                <div class="card-header bttn3 brdr-20-t d-flex justify-content-between align-items-center" 
+                     data-bs-toggle="collapse" 
+                     data-bs-target="#collapseCard-{{ section.pk|unlocalize }}" 
+                     aria-expanded="false" 
+                     aria-controls="collapseCard-{{ section.pk|unlocalize }}" 
+                     style="user-select:none; padding: 15px 20px;">
+                    
+                    <span>{{ section.title|default_if_none:''|strip_p|safe }}</span>
+                    
+                    <span class="faq-arrow" style="display: inline-block; font-size: 16px; font-weight: bold; line-height: 1;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </span>
+                </div>
+                
+                <div id="collapseCard-{{ section.pk|unlocalize }}" class="collapse">
+                  <div class="card-body bg-light" style="background-color: transparent; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; height: auto;">
+                    {{ section.content|safe }}
+                  </div>
+                </div>
+
+              </div>
+          {% empty %}
+              <div class="col-12 text-center mt-3">
+                  <p>Nenhuma pergunta frequente encontrada.</p>
+              </div>
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+{% endblock list_of_items %}

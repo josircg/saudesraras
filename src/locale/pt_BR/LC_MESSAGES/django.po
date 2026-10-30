@@ -50,6 +50,15 @@ msgstr "Repita a senha"
 msgid "Sign up"
 msgstr "Cadastre-se"
 
+msgid "Name must have a surname"
+msgstr "O nome deve conter um sobrenome"
+
+msgid "Form submitted too fast. Please try again."
+msgstr "Formulário preenchido muito rápido"
+
+msgid "Invalid form data."
+msgstr "Dados inválidos"
+
 msgid "Enter old password"
 msgstr "Informe a senha atual"
 
@@ -100,10 +109,8 @@ msgstr "Parâmetros da tarefa"
 msgid "Task Description"
 msgstr "Descrição da tarefa"
 
-#, fuzzy
-#| msgid "Activate your Civis account."
 msgid "Activate your account."
-msgstr "Ative sua conta Civis"
+msgstr "Ative sua conta."
 
 msgid "Almost done!"
 msgstr "Falta pouco!"
@@ -136,10 +143,6 @@ msgstr "Redefinição de senha"
 msgid "Don't have an account?"
 msgstr "Ainda não tem conta?"
 
-#, fuzzy
-#| msgid ""
-#| "Please check your mailbox.You are going to receive an email to certify "
-#| "that your email is valid."
 msgid "Check your inbox. We've sent a message to confirm your email is valid."
 msgstr ""
 "Verifique sua caixa de entrada. Enviamos um e-mail para nos certificar de "
@@ -152,23 +155,19 @@ msgstr "Já possui conta?"
 #| msgid ""
 #| "By clicking on Register, you accept our <a href='/terms'>Terms of Use</a> "
 msgid "By clicking on Register, you accept our "
-msgstr ""
-"Ao clicar em Cadastre-se, você aceita nossos <a href='/terms'>Termos de uso</"
-"a> "
+msgstr "Ao clicar em Cadastre-se, você aceita nossos "
 
 msgid "Terms of Use"
 msgstr "Termos de Uso"
 
 msgid "and "
-msgstr ""
+msgstr "e "
 
-#, fuzzy
-#| msgid "Privacy"
 msgid "Privacy Policy"
 msgstr "Privacidade"
 
 msgid "as well as our use of "
-msgstr ""
+msgstr "bem como nosso uso de "
 
 msgid "cookies"
 msgstr ""
@@ -185,8 +184,6 @@ msgstr "Marcar posts selecionados como em edição"
 msgid "Draft"
 msgstr "Em edição"
 
-#, fuzzy
-#| msgid "Publisher"
 msgid "Published"
 msgstr "Publicado"
 
@@ -199,13 +196,9 @@ msgstr "Sim"
 msgid "Preview"
 msgstr "Visualizar"
 
-#, fuzzy
-#| msgid "Publisher"
 msgid "Save and publish"
 msgstr "Salvar e publicar"
 
-#, fuzzy
-#| msgid "Translations"
 msgid "Save as draft"
 msgstr "Salvar como em edição"
 
@@ -235,11 +228,6 @@ msgstr "Sobrenome"
 
 msgid "Message"
 msgstr "Mensagem"
-
-#, fuzzy
-#| msgid "I want to receive the newsletter"
-msgid "I want to receive the newsletter from Civis"
-msgstr "Quero receber o boletim informativo"
 
 msgid "Subject"
 msgstr "Assunto"
@@ -349,9 +337,7 @@ msgstr "Esta mensagem será enviada para o responsável por "
 msgid "Subscribe to our newsletter"
 msgstr "Assine nosso boletim"
 
-#, fuzzy
-#| msgid "Sign up to the newsletter to get the latest updates"
-msgid "Sign up to the Civis newsletter to get the latest updates"
+msgid "Sign up to the newsletter to get the latest updates"
 msgstr "Inscreva-se na newsletter para receber novidades"
 
 msgid ""
@@ -435,8 +421,7 @@ msgstr "%d linhas lidas"
 msgid "%d subscribers added"
 msgstr "%d assinantes adicionados"
 
-#, fuzzy, python-format
-#| msgid "Newsletter %s sent"
+#, python-format
 msgid "Opened newsletter %s email"
 msgstr "Abriu o e-mail da newsletter %s"
 
@@ -446,6 +431,115 @@ msgid_plural "%d test mails were sent"
 msgstr[0] "%d e-mail de teste foi enviado"
 msgstr[1] "%d e-mails de teste foram enviados"
 
+msgid "Diseases"
+msgstr "Doenças"
+
+msgid "Description"
+msgstr "Descrição"
+
+msgid "Symptom"
+msgstr "Sintoma"
+
+msgid "Symptoms"
+msgstr "Sintomas"
+
+msgid "ICD"
+msgstr "CID"
+
+msgid "Other names"
+msgstr "Outros Nomes conhecidos"
+
+msgid "Disease"
+msgstr "Doença"
+
+msgid "About the disease"
+msgstr "Sobre a doença"
+
+msgid "Support Organizations"
+msgstr "Organizações de suporte"
+
+msgid "No organizations registered for this disease yet."
+msgstr "Nenhuma organização registrada para essa doença"
+
+msgid "No symptoms registered."
+msgstr "Nenhum sintoma registrado"
+
+msgid "No diseases found."
+msgstr "Nenhuma doença encontrada"
+
+msgid "Order by"
+msgstr "Ordenar por"
+
+msgid "Name (A-Z)"
+msgstr "Nome (A-Z)"
+
+msgid "Name (Z-A)"
+msgstr "Nome (Z-A)"
+
+msgid "Filter by"
+msgstr "Filtrar"
+
+msgid "search:"
+msgstr "busca:"
+
+msgid "symptom"
+msgstr "sintoma"
+
+msgid "Clear current search query and filters"
+msgstr "Limpar busca e filtros"
+
+msgid "diseases found"
+msgstr "doenças encontradas"
+
+msgid "disease found"
+msgstr "doenças encontradas"
+
+msgid "No symptoms found"
+msgstr "Nenhum sintoma encontrado"
+
+msgid "No symptoms found."
+msgstr "Nenhum sintoma encontrado"
+
+msgid "Selected symptoms:"
+msgstr "Sintomas selecionados:"
+
+msgid ""
+"No symptoms selected yet. Click the [+] next to the symptoms in the page."
+msgstr ""
+"Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas na "
+"pagina."
+
+msgid "Search diseases with those symptoms"
+msgstr "Buscar doenças com estes sintomas"
+
+msgid "Go to letter:"
+msgstr "Ir para a letra:"
+
+msgid ""
+"Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas do "
+"catálogo."
+msgstr ""
+" Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas no "
+"catálogo."
+
+msgid "Search Symptoms"
+msgstr "Busque por sintomas"
+
+msgid "Enter the symptom..."
+msgstr "Digite o sintoma..."
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Filter by letter:"
+msgstr "Filtrar por letra:"
+
+msgid "term:"
+msgstr "termo:"
+
+msgid "letter:"
+msgstr "letra:"
+
 msgid "Projects"
 msgstr "Iniciativas"
 
@@ -453,7 +547,7 @@ msgid "Platforms"
 msgstr "Plataformas"
 
 msgid "Resources"
-msgstr "Recursos"
+msgstr "Publicações"
 
 msgid "Events"
 msgstr "Eventos"
@@ -500,10 +594,8 @@ msgstr "Inglês"
 msgid "Falkland Islands (Malvinas)"
 msgstr "Ilhas Malvinas"
 
-#, fuzzy
-#| msgid "Project"
 msgid "View Project"
-msgstr "Iniciativa e Projeto"
+msgstr "Visualizar Projeto"
 
 msgid "Not moderated"
 msgstr "Não moderado"
@@ -513,9 +605,6 @@ msgstr "Escreva o nome do evento"
 
 msgid "A brief description of the event"
 msgstr "Escreva uma breve descrição do evento"
-
-msgid "Description"
-msgstr "Descrição"
 
 msgid "Location of the Event"
 msgstr "Indique o local do evento"
@@ -576,15 +665,13 @@ msgid "event"
 msgstr "evento"
 
 msgid ""
-"Thank you for registering a citizen science event on the Civis platform. "
-"After submitting this form, the event will undergo moderation by the Civis "
-"team. This step is simply to prevent use of the platform for purposes other "
-"than supporting citizen science."
+"Thank you for registering an event on the platform. After submitting this "
+"form, the event will undergo moderation by our team. This step is simply to "
+"prevent use of the platform for other purposes."
 msgstr ""
-"Agradecemos por registrar um evento de ciência cidadã na plataforma Civis. "
-"Após o envio deste formulário, o evento passará por uma etapa de moderação "
-"pela equipe da Civis. O objetivo é prevenir o uso da plataforma para outros "
-"fins que não sejam o suporte à ciência cidadã."
+"Agradecemos por registrar um evento na plataforma Saúdes Raras. Após o envio "
+"deste formulário, o evento passará por uma etapa de moderação por nossa "
+"equipe. O objetivo é prevenir o uso da plataforma para outros fins."
 
 #, python-format
 msgid ""
@@ -595,21 +682,22 @@ msgid ""
 "href=\"%(domain)s%(event_url)s\">%(title)s</a>\n"
 "      has been approved.\n"
 "    </p>\n"
-"    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
+"    <p>If you want to get in touch with us, write to saudesraras@gmail.com.</"
+"p>\n"
 "    <p>This is an automated email, DO NOT reply.</p>\n"
 "    <p>Greetings,</p>\n"
-"    <p>Civis Team</p>\n"
+"    <p>Saúdes Raras Team</p>\n"
 "  "
 msgstr ""
 "\n"
 "    <p>Olá,</p>\n"
 "    <p>Temos o prazer de informar que o evento <a "
 "href=\"%(domain)s%(event_url)s\">%(title)s</a> foi aprovado.</p>\n"
-"    <p>Se quiser entrar em contato conosco, escreva para civis@ibict.br.</"
-"p>\n"
+"    <p>Se quiser entrar em contato conosco, escreva para saudesraras@gmail."
+"com</p>\n"
 "    <p>Este é um e-mail automático, NÃO responda.</p>\n"
 "    <p>Saudações,</p>\n"
-"    <p>Equipe Civis</p>\n"
+"    <p>Equipe Saúdes Raras</p>\n"
 "  "
 
 msgid "Event info"
@@ -665,6 +753,12 @@ msgstr "Seu evento \"%s\" foi submetido!"
 msgid "Notification - New event \"%s\" submitted"
 msgstr "Notificação - Um novo evento \"%s\" foi submetido"
 
+msgid "Please briefly describe the organisation (max 500 words)."
+msgstr "Descreva resumidamente a organização (máximo de 500 palavras)"
+
+msgid "Public URL"
+msgstr "URL Pública"
+
 msgid "Organisation name"
 msgstr "Nome da organização"
 
@@ -673,9 +767,6 @@ msgstr "Escreva o nome da organização ou rede"
 
 msgid "Please provide the URL to the website of the organisation."
 msgstr "Informe o endereço URL para o site da organização"
-
-msgid "Please briefly describe the organisation (max 500 words)."
-msgstr "Descreva resumidamente a organização (máximo de 500 palavras)"
 
 msgid "Type"
 msgstr "Tipo de organização"
@@ -729,17 +820,11 @@ msgstr "Cancelar"
 msgid "Delete"
 msgstr "Excluir"
 
-msgid "Order by"
-msgstr "Ordenar por"
-
 msgid "By Name"
 msgstr "Ordem alfabética"
 
 msgid "Most Recent"
 msgstr "Mais recentes"
-
-msgid "Filter by"
-msgstr "Filtrar"
 
 msgid "Country"
 msgstr "País"
@@ -752,9 +837,6 @@ msgstr "país"
 
 msgid "type:"
 msgstr "tipo:"
-
-msgid "Clear current search query and filters"
-msgstr "Limpar busca e filtros"
 
 msgid "organisations"
 msgstr "organizações"
@@ -818,7 +900,7 @@ msgid "organisation found"
 msgstr "organização encontrada"
 
 msgid "Training resources"
-msgstr "Formações"
+msgstr "Materias Didáticos"
 
 msgid "Members"
 msgstr "Membros"
@@ -874,10 +956,9 @@ msgstr "Organização adicionada com sucesso!"
 msgid "Your organisation or network \"%s\" has been submitted!"
 msgstr "Sua organização ou rede \"%s\" foi submetida!"
 
-#, fuzzy, python-format
-#| msgid "Notification - New organisation or network \"%s\" submitted"
+#, python-format
 msgid "Notification - New organisation \"%s\" submitted"
-msgstr "Notificação - Uma nova organização ou rede \"%s\" foi submetida"
+msgstr "Notificação - Nova organização \"%s\" foi submetida"
 
 msgid "Organisation approved"
 msgstr "Organização aprovada"
@@ -890,6 +971,48 @@ msgid ""
 "it"
 msgstr ""
 "A organização não pode ser excluída pois existem iniciativas associadas a ela"
+
+msgid "Pages"
+msgstr ""
+
+msgid "Header"
+msgstr "Texto do cabeçalho"
+
+msgid "Content"
+msgstr "Conteúdo"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Documentation"
+msgstr "Documentação"
+
+msgid "Image"
+msgstr ""
+
+msgid "Page"
+msgstr ""
+
+msgid "Order"
+msgstr "Ordenar por"
+
+msgid "Visible"
+msgstr "Visível"
+
+msgid "Section"
+msgstr "Seção"
+
+msgid "Sections"
+msgstr "Seções"
+
+msgid "Article"
+msgstr "Artigo"
+
+msgid "Articles"
+msgstr "Artigos"
+
+msgid "FAQ"
+msgstr "Perguntas frequentes"
 
 msgid "Please write the name of the citizen science platform."
 msgstr "Escreva o nome da plataforma de ciência cidadã."
@@ -975,8 +1098,6 @@ msgstr "Extensões geográficas"
 msgid "Platform"
 msgstr "Plataforma"
 
-#, fuzzy
-#| msgid "country"
 msgid "country:"
 msgstr "país:"
 
@@ -990,15 +1111,14 @@ msgid "platform"
 msgstr "plataforma"
 
 msgid ""
-"Thank you for registering a citizen science platform on the Civis platform. "
-"After submitting this form, the platform will undergo moderation by the "
-"Civis team. This step is simply to prevent use of platform for purposes "
-"other than supporting citizen science."
+"Thank you for registering a platform on the Saúdes Raras platform. After "
+"submitting this form, the platform will undergo moderation by our team. This "
+"step is simply to prevent use of platform for other purposes."
 msgstr ""
 "Agradecemos por registrar uma plataforma de ciência cidadã na plataforma "
-"Civis. Após o envio deste formulário, a plataforma passará por uma etapa de "
-"moderação pela equipe da Civis. O objetivo é prevenir o uso da plataforma "
-"para outros fins que não sejam o suporte à ciência cidadã."
+"Saúdes Raras. Após o envio deste formulário, a plataforma passará por uma "
+"etapa de moderação por nossa equipe. O objetivo é prevenir o uso da "
+"plataforma para outros fins."
 
 msgid "Go to the platform page"
 msgstr "Acessar a página da plataforma"
@@ -1061,10 +1181,10 @@ msgid "{}'s profile"
 msgstr "perfil de {}"
 
 msgid "users found"
-msgstr "usuários encontrados"
+msgstr "colaboradores encontrados"
 
 msgid "user found"
-msgstr "usuário encontrado"
+msgstr "Colaborador encontrado"
 
 msgid "Personal profile"
 msgstr "Perfil pessoal"
@@ -1091,7 +1211,7 @@ msgid "Submitted organisations"
 msgstr "Organizações submetidas"
 
 msgid "Resources in bookmarks"
-msgstr "Recursos favoritos"
+msgstr "Publicações favoritas"
 
 msgid "Training in bookmarks"
 msgstr "Formações favoritas"
@@ -1143,7 +1263,7 @@ msgid "Submitted <span class='text-pink6'>projects</span>"
 msgstr "<span class='text-pink6'>Iniciativas</span> submetidas"
 
 msgid "Submitted <span class='text-pink6'>resources</span>"
-msgstr "<span class='text-pink6'>Recursos</span> submetidos"
+msgstr "<span class='text-pink6'>Publicações</span> submetidas"
 
 msgid "Submitted <span class='text-pink6'>training</span>"
 msgstr "<span class='text-pink6'>Formações</span> submetidas"
@@ -1204,20 +1324,20 @@ msgstr ""
 "características (máximo 3000 caracteres)."
 
 msgid ""
-"Please describe the citizen science aspect(s) of the project that warrant "
-"your registration in Civis. This information will not be visible on the "
-"platform, and serves simply as reference when undergoing moderation. You can "
-"see our explanation on what <a href=\"https://civis.ibict.br/about/"
-"\">citizen science</a> is (max 2000 characters)."
+"Please describe the aspect(s) of the project that warrant your registration "
+"in Saúdes Raras. This information will not be visible on the platform, and "
+"serves simply as reference when undergoing moderation. You can see our "
+"explanation on what <a href=\"https://saudesraras.pro.br/about/\">saúdes "
+"raras</a> is (max 2000 characters)."
 msgstr ""
-"Descreva o(s) aspecto(s) de ciência cidadã da sua iniciativa, que "
-"justifique(m) seu cadastro na Civis. Essas informações não estarão visíveis "
-"na plataforma, e servem apenas como subsídio à moderação. Você pode "
-"consultar nossa explicação sobre o que é <a href=\"https://civis.ibict.br/"
-"about/\">ciência cidadã</a> (máximo 2000 caracteres)."
+"Descreva o(s) aspecto(s) de sua iniciativa que se referem a Doenças Raras, "
+"que justifique(m) seu cadastro na plataforma. Essas informações não estarão "
+"visíveis na plataforma, e servem apenas como subsídio à moderação. Você pode "
+"consultar nossa explicação sobre o que é <a href=\"https://saudesraras.pro."
+"br/about/\">saúdes raras</a> (máximo 2000 caracteres)."
 
-msgid "Description of citizen science aspects"
-msgstr "Descrição dos aspectos de ciência cidadã"
+msgid "Description of rare diseases aspects"
+msgstr "Descrição dos aspectos referentes à doenças raras"
 
 msgid "Activity status"
 msgstr "Status da atividade"
@@ -1482,22 +1602,22 @@ msgid "project"
 msgstr "Iniciativa"
 
 msgid ""
-"Thank you for registering your citizen science project on the Civis "
-"platform. Please fill in all the mandatory information in the fields below "
-"(indicated with an asterisk*), and as much optional information as possible."
+"Thank you for registering your project on the platform. Please fill in all "
+"the mandatory information in the fields below (indicated with an asterisk*), "
+"and as much optional information as possible."
 msgstr ""
-"Agradecemos por registrar sua iniciativa de ciência cidadã na plataforma "
-"Civis. Preencha todas as informações obrigatórias (indicadas com asterisco*) "
-"e o máximo possível de informações opcionais."
+"Agradecemos por registrar sua iniciativa na plataforma.Preencha todas as "
+"informações obrigatórias (indicadas com asterisco*) e o máximo possível de "
+"informações opcionais."
 
 msgid ""
 "After the registered information is saved, your project will undergo "
-"moderation by the Civis team. This step is simply to prevent use of the "
-"platform for purposes other than supporting citizen science."
+"moderation by our team. This step is simply to prevent use of the platform "
+"for other purposes."
 msgstr ""
 "Após as informações registradas serem salvas, sua iniciativa passará por uma "
-"etapa de moderação pela equipe da Civis. O objetivo é prevenir o uso da "
-"plataforma para outros fins que não sejam o suporte à ciência cidadã."
+"etapa de moderação realizada por nossa equipe. O objetivo é prevenir o uso "
+"da plataforma para outros fins."
 
 msgid ""
 "We would like to point out that, upon registering information, you have to "
@@ -1517,66 +1637,45 @@ msgstr "Se houver dúvidas no preenchimento, consulte nosso "
 msgid "User Guide"
 msgstr "Guia de Uso"
 
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "  <p>You were invited by %(creator)s to be the editor of the project <a "
-#| "href='%(domain)s/project/%(project_id)s'>%(project)s</a>, registered on "
-#| "the Civis platform.</p>\n"
-#| "  <p>This gives you authorization to update or modify registered "
-#| "information for this project.</p>\n"
-#| "  <p>To accept the invitation, <a href='%(domain)s/%(link)s'>click here</"
-#| "a>.</p>\n"
-#| "  <p>\n"
-#| "    Civis is a citizen science platform, developed by the Brazilian "
-#| "Institute of Information in Science and Technology (IBICT).\n"
-#| "    Our goal is to provide infrastructure and content that contribute to "
-#| "broadening the comprehension about citizen science,\n"
-#| "    disseminating its use and supporting the development of projects and "
-#| "the application of methodologies in this field.\n"
-#| "  </p>\n"
-#| "  <p>Civis is open for anyone to register projects, resources and other "
-#| "citizen science content.</p>\n"
-#| "  <p>Join the Civis community!</p>\n"
+#, python-format
 msgid ""
 "\n"
 "  <p>You were invited by %(creator)s to be the editor of the project <a "
 "href='%(domain)s/project/%(project_id)s'>%(project)s</a>, registered on the "
-"Civis platform.</p>\n"
+"Saúdes Raras.</p>\n"
 "  <p>This gives you authorization to update or modify registered information "
 "for this project.</p>\n"
 "  <p>To accept the invitation, <a href='%(domain)s/%(link)s'>click here</a>."
 "</p>\n"
 "  <p>\n"
-"    Civis is a citizen science platform, developed by the Brazilian "
-"Institute of Information in Science and Technology - IBICT.\n"
+"    Saúdes Raras platform was developed by the Federal University Fluminense "
+"- UFF.\n"
 "    Our goal is to provide infrastructure and content that contribute to "
-"broadening the comprehension about citizen science,\n"
+"broadening the comprehension about rare diseases,\n"
 "    disseminating its use and supporting the development of projects and the "
 "application of methodologies in this field.\n"
 "  </p>\n"
-"  <p>Civis is open for anyone to register projects, resources and other "
-"citizen science content.</p>\n"
-"  <p>Join the Civis community!</p>\n"
+"  <p>Saúdes Raras is open for anyone to register projects, publications, "
+"resources and other contents.</p>\n"
+"  <p>Join the Saúdes Raras community!</p>\n"
 msgstr ""
 "\n"
 "  <p>Você foi convidado/a por %(creator)s para ser editor/a da iniciativa <a "
 "href='%(domain)s/project/%(project_id)s'>%(project)s</a>, cadastrada na "
-"plataforma Civis.</p>\n"
+"plataforma Saúdes Raras.</p>\n"
 "  <p>Isso lhe dá autorização para atualizar ou modificar as informações de "
 "cadastro dessa iniciativa.</p>\n"
 "  <p>Para aceitar o convite, <a href='%(domain)s/%(link)s'>clique aqui</a>.</"
 "p>\n"
-"  <p>A Civis [pronuncia Cívis] é uma plataforma de ciência cidadã "
-"desenvolvida pelo Instituto Brasileiro de Informação em Ciência e Tecnologia "
-"(IBICT). Nosso objetivo é oferecer infraestrutura e conteúdos que contribuam "
-"para ampliar o entendimento sobre ciência cidadã, disseminar seu uso e dar "
-"suporte ao desenvolvimento de iniciativas e à aplicação de metodologias "
-"nesse campo.\n"
+"  <p>A plataforma Saúdes Raras foi desenvolvida pela Universidade Federal "
+"Fluminense (UFF). Nosso objetivo é oferecer infraestrutura e conteúdos que "
+"contribuam para ampliar o entendimento sobre doenças raras, disseminar "
+"informações e dar suporte ao desenvolvimento de iniciativas e à aplicação de "
+"metodologias nesse campo.\n"
 "</p>\n"
-"  <p>A Civis está aberta para que qualquer pessoa possa cadastrar "
-"iniciativas, recursos e outros conteúdos de ciência cidadã.</p>\n"
-"  <p>Faça parte da comunidade Civis!</p>\n"
+"  <p>A plataforma está aberta para que qualquer pessoa possa cadastrar "
+"iniciativas, recursos e outros conteúdos sobre doenças raras.</p>\n"
+"  <p>Faça parte da comunidade Saúdes Raras!</p>\n"
 
 #, python-format
 msgid ""
@@ -1593,9 +1692,6 @@ msgstr "Informações"
 
 msgid "Close"
 msgstr "Fechar"
-
-msgid "Search"
-msgstr "Busca"
 
 msgid ""
 "projects by title or keywords by typing text directly into the the search bar"
@@ -1753,33 +1849,6 @@ msgstr "Descreva resumidamente o recurso (máximo 3000 caracteres)"
 msgid "Brief description"
 msgstr "Descrição resumida"
 
-msgid ""
-"Please describe the citizen science aspect(s) of the resource that warrant "
-"your registration in Civis. This information will not be visible on the "
-"platform, and serves simply as reference when undergoing moderation. You can "
-"see our explanation on what <a href=\"https://civis.ibict.br/about/"
-"\">citizen science</a> is (max 2000 characters)."
-msgstr ""
-"Descreva o(s) aspecto(s) de ciência cidadã do recurso, que justifique(m) seu "
-"cadastro na Civis. Essas informações não estarão visíveis na plataforma, "
-"servem apenas como subsídio à moderação. Você pode consultar nossa "
-"explicação sobre o que é <a href='https://civis.ibict.br/about'>Ciência "
-"Cidadã</a> (máximo 2000 caracteres)"
-
-msgid ""
-"Please name the author(s) of the resource. Enter <i>First Initial Last Name</"
-"i> and close with a comma or press enter to add an author or multiple "
-"authors. If authorship is unknown, use the name of the project for which the "
-"resource was created."
-msgstr ""
-"Autor(es) do recurso. Insira <i>Primeira Inicial Sobrenome</i>, seguidos de "
-"vírgula ou pressione enter para adicionar um autor ou múltiplos autores. "
-"Caso a autoria seja desconhecida, use o nome da Iniciativa para a qual o "
-"recurso foi criado."
-
-msgid "Authors"
-msgstr "Autores"
-
 msgid "Category"
 msgstr "Tipo"
 
@@ -1789,8 +1858,8 @@ msgstr "Selecione um dos tipos de recurso propostos"
 msgid "Theme"
 msgstr "Tópico"
 
-msgid "Please select the thematic content of the resource."
-msgstr "Selecione o(s) tópico(s) do recurso."
+msgid "Please select the thematic content of the publication."
+msgstr "Selecione o(s) tópico(s) da publicação."
 
 msgid ""
 "Please provide the <b>Digital Object Identifier</b> that is unique to your "
@@ -1825,7 +1894,7 @@ msgid ""
 "target=\"_blank\">here</a > before submitting the resource."
 msgstr ""
 "Organização que desenvolveu o recurso, se houver. Se não estiver listada, "
-"será necessário adicioná-la <a href='http://civis.ibict.br/"
+"será necessário adicioná-la <a href='http://saudesraras.pro.br/"
 "new_organisation'>aqui</a> antes de submeter o recurso."
 
 msgid ""
@@ -1834,7 +1903,7 @@ msgid ""
 "submitting."
 msgstr ""
 "Selecione a(s) iniciativa(s) em que o recurso foi desenvolvido. Se não "
-"estiver(em) listada(s), adicione-a(s) <a href='https://civis.ibict.br/"
+"estiver(em) listada(s), adicione-a(s) <a href='http://saudesraras.pro.br/"
 "newProject'>aqui</a> antes de submeter o recurso, se for o caso."
 
 msgid "Project(s)"
@@ -1848,9 +1917,6 @@ msgstr "Informe a editora do recurso"
 
 msgid "Resource image for the thumbnail profile"
 msgstr "Imagem para a miniatura do perfil do recurso"
-
-msgid "Image for the resource profile heading"
-msgstr "Imagem para o cabeçalho do perfil do recurso"
 
 msgid "Curated lists"
 msgstr "Listas selecionadas"
@@ -1868,10 +1934,10 @@ msgid "Audiences"
 msgstr "Públicos-alvo"
 
 msgid "Resource category"
-msgstr "Tipo do recurso"
+msgstr "Tipo do publicação"
 
 msgid "Resource categories"
-msgstr "Tipos do recurso"
+msgstr "Tipos de Publicações"
 
 msgid "Year published"
 msgstr "Ano de publicação"
@@ -1880,13 +1946,13 @@ msgid "Is Training Resource"
 msgstr "É uma formação"
 
 msgid "Resource"
-msgstr "Recurso"
+msgstr "Publicação"
 
 msgid "Training Resource"
 msgstr "Formação"
 
 msgid "Training Resources"
-msgstr "Formações"
+msgstr "Materiais Didáticos"
 
 msgid "Resource Group"
 msgstr "Grupo de recursos"
@@ -1895,7 +1961,7 @@ msgid "Resource Groups"
 msgstr "Grupos de recursos"
 
 msgid "Resources Grouped"
-msgstr "Recursos agrupados"
+msgstr "Publicações agrupadas"
 
 #, python-format
 msgid "Your resource \"%s\" has been approved!"
@@ -1926,51 +1992,49 @@ msgid "training resource found"
 msgstr "formação encontrada"
 
 msgid "resources found"
-msgstr "recursos encontrados"
+msgstr "publicações encontradas"
 
 msgid "resource found"
-msgstr "recurso encontrado"
+msgstr "publicação encontrada"
 
 msgid "resource"
-msgstr "recurso"
+msgstr "publicação"
 
 msgid ""
-"Thank you for registering a new citizen science resource on the Civis "
-"platform. Please fill in all the mandatory information, and as much optional "
-"information as possible."
+"Thank you for registering a new resource on the platform. Please fill in all "
+"the mandatory information, and as much optional information as possible."
 msgstr ""
-"Agradecemos por registrar um novo recurso de ciência cidadã na plataforma "
-"Civis. Preencha todas as informações obrigatórias (indicadas com asterisco*) "
-"e o máximo possível de informações opcionais."
+"Agradecemos por registrar uma nova publicação na plataforma. Preencha todas "
+"as informações obrigatórias (indicadas com asterisco*) e o máximo possível "
+"de informações opcionais."
 
 msgid ""
 "Resources can include documents such as guidelines, tutorials, methodologies "
 "and tools to co-produce knowledge, such as gamification resources, "
 "measurements, sensors, registration softwares, data sending and managing, "
-"and other materials that may help in citizen science Project and initiative "
-"development and execution."
+"and other materials that may help in Project development and execution."
 msgstr ""
-"Recursos incluem guias, tutoriais, metodologias e ferramentas para "
+"Publicações incluem guias, tutoriais, metodologias e ferramentas para "
 "coprodução de conhecimentos, como recursos de gamificação, medidores, "
 "sensores, softwares para registro, envio e gestão de dados, e outros "
-"materiais que possam auxiliar no desenvolvimento e na execução de projetos e "
-"iniciativas de ciência cidadã."
+"materiais que possam ser úteis para quem quer se informar sobre doenças "
+"raras."
 
 msgid ""
-"After submitting this form, the resource will undergo moderation by the "
-"Civis team. This step is simply to prevent use of the platform for purposes "
-"other than supporting citizen science."
+"After submitting this form, the resource will undergo moderation by our "
+"team. This step is simply to prevent use of the platform for purposes other "
+"than supporting citizen science."
 msgstr ""
-"Após as informações registradas serem salvas, o recurso passará por uma "
-"etapa de moderação pela equipe da Civis. O objetivo é prevenir o uso da "
-"plataforma para outros fins que não sejam o suporte à ciência cidadã."
+"Após as informações registradas serem salvas, a publicação passará por uma "
+"etapa de moderação. O objetivo é prevenir o uso da plataforma para outros "
+"fins que não sejam o suporte à doenças raras."
 
 msgid ""
 "Please note that we strongly recommend that you ensure your resource is "
 "available, or make it available, on a website, repository, or publishers "
 "with a permanente link, especially those considered open access like"
 msgstr ""
-"Recomendamos que se certifique ou providencie que o recurso esteja "
+"Recomendamos que se certifique ou providencie que a publicação esteja "
 "disponível em um website, repositório ou editores com um link permanente, "
 "particularmente os de acesso aberto, como"
 
@@ -1988,14 +2052,13 @@ msgid "training resource"
 msgstr "formação"
 
 msgid ""
-"Thank you for registering a new citizen science training resource or "
-"educational material on the Civis platform. Please fill in all the mandatory "
-"information (indicated with an asterisk*), and as much optional information "
-"as possible."
+"Thank you for registering a new training resource or educational material on "
+"the platform. Please fill in all the mandatory information (indicated with "
+"an asterisk*), and as much optional information as possible."
 msgstr ""
-"Agradecemos por registrar uma nova formação ou material educativo de ciência "
-"cidadã na plataforma Civis. Preencha todas as informações obrigatórias "
-"(indicadas com asterisco*) e o máximo possível de informações opcionais."
+"Agradecemos por registrar um novo material educativo. Preencha todas as "
+"informações obrigatórias (indicadas com asterisco*) e o máximo possível de "
+"informações opcionais."
 
 msgid ""
 "Training Resources can include documents such as courses, sessions, "
@@ -2003,18 +2066,18 @@ msgid ""
 "the initiation and improvement of citizen science projects and project "
 "practices."
 msgstr ""
-"Materiais de formação incluem cursos, oficinas, workshops, seminários, jogos "
+"Materiais didáticos incluem cursos, oficinas, workshops, seminários, jogos "
 "educativos, entre outros, que contribuam para iniciar e aprimorar práticas e "
-"projetos de projetos de ciência cidadã."
+"projetos."
 
 msgid ""
 "After submitting this form, the training resource will undergo moderation by "
-"the Civis team. This step is simply to prevent use of the platform for "
-"purposes other than supporting citizen science."
+"our team. This step is simply to prevent use of the platform for purposes "
+"other than supporting citizen science."
 msgstr ""
 "Após as informações registradas serem salvas, a formação passará por uma "
-"etapa de moderação pela equipe da Civis. O objetivo é prevenir o uso da "
-"plataforma para outros fins que não sejam o suporte à ciência cidadã."
+"etapa de moderação por nossa equipe. O objetivo é prevenir o uso da "
+"plataforma para outros fins."
 
 msgid ""
 "Please note that we strongly recommend that you ensure that your training "
@@ -2022,26 +2085,26 @@ msgid ""
 "publishers with a permanent link, especially those considered open access, "
 "like "
 msgstr ""
-"Recomendamos que se certifique ou providencie que a formação esteja "
+"Recomendamos que se certifique ou providencie que o material esteja "
 "disponível em um website, repositório ou editores com um link permanente, "
 "particularmente os de acesso aberto, como"
 
 msgid "Migrate to Training Resource"
-msgstr "Mudar para formação"
+msgstr "Mudar para Material Didático"
 
 msgid "Migrate to Resource"
-msgstr "Mudar para recurso"
+msgstr "Mudar para Publicação"
 
 msgid ""
 "resources by title or keywords by typing text directly into the the search "
 "bar"
-msgstr "#missing"
+msgstr "produções por título ou palavra-chave"
 
 msgid "resources by date or by rating"
-msgstr "#missing"
+msgstr "produções por data ou por qualidade"
 
 msgid "search results by language, theme or category"
-msgstr "#missing"
+msgstr "busca por idioma, tipo ou categoria"
 
 msgid ""
 "Submitted resources that have been through the moderation process are marked "
@@ -2050,55 +2113,52 @@ msgid ""
 msgstr "#missing"
 
 msgid "Publisher information"
-msgstr "Informações de publicação"
+msgstr "Informações do Editor"
 
 msgid "Links with projects and/or organisations"
 msgstr "Vínculos com iniciativas e/ou organizações"
 
 msgid "Go to Training"
-msgstr "Ir para a formação"
+msgstr "Ir para o material didático"
 
 msgid "Go to Resource"
-msgstr "Ir para o recurso"
+msgstr "Ir para a publicação"
 
 msgid "Comment"
 msgstr "Comentário"
 
-msgid "Language"
-msgstr "Idioma"
-
 msgid "Please specify the primary language in which the resource is available"
-msgstr "Idioma principal em que o recurso está disponível"
+msgstr "Idioma principal em que a publicação está disponível"
 
 msgid "Links with projects and organisations"
 msgstr "Vínculos com iniciativas e/ou organizações"
 
 msgid "Resource profile images"
-msgstr "Imagens de perfil do recurso"
+msgstr "Imagens de perfil da publicação"
 
 msgid "Training resource <span class='text-blue3'> search</span>"
-msgstr "<span class='text-blue3'>busca de</span> Formações"
+msgstr "<span class='text-blue3'>busca de</span> Material Didático"
 
 msgid "Resource <span class='text-blue3'> search</span>"
-msgstr "<span class='text-blue3'>busca de</span> Recursos"
+msgstr "<span class='text-blue3'>busca de</span> Publicações"
 
 msgid "Training Resource added correctly!"
-msgstr "Formação adicionada com sucesso!"
+msgstr "Material didático adicionado com sucesso!"
 
 msgid "Resource added correctly!"
-msgstr "Recurso adicionado com sucesso!"
+msgstr "Publicação adicionada com sucesso!"
 
 #, python-format
 msgid "Your resource \"%s\" has been submitted!"
-msgstr "Seu recurso \"%s\" foi submetido!"
+msgstr "Uma nova publicação \"%s\" foi submetida!"
 
 #, python-format
 msgid "Notification - New resource \"%s\" submitted"
-msgstr "Notificação - Um novo recurso \"%s\" submetido"
+msgstr "Notificação - Nova publicação \"%s\" submetida"
 
 #, python-format
 msgid "Your resource \"%s\" has been bookmarked!"
-msgstr "Seu recurso \"%s\" foi marcado como favorito!"
+msgstr "Sua publicação \"%s\" foi marcada como favorita!"
 
 msgid "approved"
 msgstr "Aprovado"
@@ -2140,9 +2200,6 @@ msgstr "Página inicial"
 msgid "About"
 msgstr "Sobre"
 
-msgid "FAQ"
-msgstr "Perguntas frequentes"
-
 msgid "Policies"
 msgstr "Políticas"
 
@@ -2165,13 +2222,13 @@ msgid "See all projects"
 msgstr "Ver todas as iniciativas"
 
 msgid "See all resources"
-msgstr "Ver todos os recursos"
+msgstr "Ver todas as publicações"
 
 msgid "Training"
-msgstr "Formação"
+msgstr "Material Didático"
 
 msgid "See all training resources"
-msgstr "Ver todas as formações"
+msgstr "Ver todos os materiais didáticos"
 
 msgid "Project map"
 msgstr "Mapa de Iniciativas"
@@ -2179,8 +2236,6 @@ msgstr "Mapa de Iniciativas"
 msgid "Select topic"
 msgstr "Selecione o tema"
 
-#, fuzzy
-#| msgid "Projects"
 msgid "All topics"
 msgstr "Todos os temas"
 
@@ -2209,7 +2264,7 @@ msgid "Save & continue editing"
 msgstr "Salvar e continuar editando"
 
 msgid "Users"
-msgstr "Usuários"
+msgstr "Colaboradores"
 
 msgid "Our Gold Star Selection"
 msgstr "Nossa seleção"
@@ -2222,6 +2277,9 @@ msgstr "Histórico"
 
 msgid "View on site"
 msgstr "Visualizar no site"
+
+msgid "Ver todas"
+msgstr ""
 
 msgid "Profile"
 msgstr "Perfil"
@@ -2239,7 +2297,7 @@ msgid "Go back"
 msgstr "Retornar"
 
 msgid "This website uses cookies."
-msgstr "Este site utiliza cookies"
+msgstr "Este site utiliza cookies."
 
 msgid "More info"
 msgstr "Mais informações"
@@ -2263,18 +2321,18 @@ msgid "Gold Star <span class='lightBlue-color'> selection</span>"
 msgstr "<span class='lightBlue-color'>Seleção</span> Estrela de Ouro"
 
 msgid ""
-"The Civis platform has a selection of the best citizen science resources, "
-"sorted by project life cycle,"
+"The platform has a selection of the best resource, sorted by project life "
+"cycle,"
 msgstr ""
-"A plataforma Civis tem uma seleção dos melhores recursos de ciência cidadã, "
-"categorizados de acordo com o ciclo de vida do projeto, "
+"A plataforma tem uma seleção das melhores publicações, categorizados de "
+"acordo com o ciclo de vida do projeto, "
 
 msgid ""
-"for you to design and start your own citizen science project or simply learn "
-"about citizen science.the project lifecycle."
+"for you to design and start your own project or simply learn about rare "
+"diseases and their diagnosis."
 msgstr ""
-"para você poder desenhar e começar sua própria iniciativa de ciência cidadã "
-"ou simplesmente aprender sobre ciência cidadã."
+"para você poder registrar sua própria iniciativa ou simplesmente aprender "
+"sobre as doenças raras registradas."
 
 msgid "Development"
 msgstr "Desenvolvimento"
@@ -2282,28 +2340,13 @@ msgstr "Desenvolvimento"
 msgid "Don't you see, we feel"
 msgstr "Você não vê, a gente sente"
 
-msgid "Diagnosis"
-msgstr "Diagnóstico"
-
-msgid "Doctors"
-msgstr "Médicos"
-
-msgid "Justice"
-msgstr "Justiça"
-
-msgid "Symptoms"
-msgstr "Sintomas"
-
-msgid "Publications"
-msgstr "Publicações"
-
 msgid "search here..."
 msgstr "faça sua busca aqui..."
 
 msgid "search"
 msgstr "buscar"
 
-msgid "Social adversity"
+msgid "Social advertising"
 msgstr "Publicidade social"
 
 msgid "Hidden Disabilities Sunflower"
@@ -2315,19 +2358,29 @@ msgstr "Polos de atendimento"
 msgid "Information about:"
 msgstr "Informações sobre:"
 
+msgid "Diagnosis"
+msgstr "A dificuldade de conseguir o diagnostico"
+
+msgid "Doctors"
+msgstr "Como devo ser tratada pela(os) médica(os?)"
+
+msgid "Justice"
+msgstr "Meus direitos"
+
+msgid "SUS"
+msgstr "Onde eu acho o meu remédio? (RJ)"
+
+msgid "Publications"
+msgstr "Cartilhas, artigos e publicações"
+
+msgid "Platform Saúdes Raras"
+msgstr "Plataforma Saúdes Raras"
+
 msgid "Testimonials"
 msgstr "Depoimentos"
 
 msgid "See others testimonials here +"
 msgstr "Veja outros depoimentos aqui +"
-
-msgid ""
-"This online space provided me with emotional support and valuable "
-"information that made all the difference during my process and my son's "
-"process."
-msgstr ""
-"Esse espaço online me proporcionou apoio emocional e informações valiosas "
-"que fizeram toda a diferença durante meu processo e no processo do meu filho."
 
 msgid "Find help near to you!"
 msgstr "Encontre ajuda perto de você!"
@@ -2341,21 +2394,6 @@ msgstr "Saiba como"
 msgid "Our medias:"
 msgstr "Nossas redes:"
 
-msgid "Are rare diseases contagious?"
-msgstr "Doenças raras são contagiosas?"
-
-msgid "How can we support people with rare diseases?"
-msgstr "Como podemos apoiar pessoas com doenças raras?"
-
-msgid "Why is difficult to find treatments for rare diseases?"
-msgstr "Por que é complicado encontrar tratamentos para doenças raras?"
-
-msgid "How do families deal with rare diseases?"
-msgstr "Como as famílias lidam com doenças raras?"
-
-msgid "Can children also have rare diseases?"
-msgstr "As crianças também podem ter doenças raras?"
-
 msgid "Imprint"
 msgstr "Créditos"
 
@@ -2364,306 +2402,6 @@ msgstr "Processo de moderação"
 
 msgid "The Moderation Process"
 msgstr "O processo de moderação"
-
-msgid "moderation"
-msgstr "moderação"
-
-msgid "and"
-msgstr "e"
-
-msgid "quality criteria"
-msgstr "critérios de qualidade"
-
-msgid ""
-"The project and (training) resource profiles that you can find on the "
-"platform have been submitted by the citizen science community or the EU-"
-"Citizen.Science project consortium. Before publishing, they undergo a "
-"moderation process where the quality criteria framework developed within the "
-"EU-Citizen.Science project is applied. Below you can find a description of "
-"the moderation process and of all the criteria. IIASA and other partners in "
-"the project have developed these criteria and assessment framework as part "
-"of WP3 “Content - Framework, Quality Assurance and Curation” of the EU-"
-"Citizen.Science project. The work carried out can be found in <a "
-"href='https://zenodo.org/record/3716236#.YZNyLRwxlhE' target='_blank'>D3.1 "
-"<i>Framework Report Describing Criteria and Rationale for Sharing and "
-"Selecting State of the art Citizen Science Resources</i></a> and <a "
-"href='https://zenodo.org/record/5041332#.YZNxBRwxlhF' target='_blank'>D3.3 "
-"<i>Review of Framework Implementation Defined in D3.1</i></a>."
-msgstr "#missing"
-
-msgid ""
-"Our ambitious goal is to become <b>the</b> place to share useful resources "
-"about planning, running, evaluating and participating in citizen science "
-"initiatives or simply learning about citizen science, including tools and "
-"guidelines, best practices and training modules. We hope to make practical "
-"guidance on citizen science findable and accessible to all, and enable "
-"people to initiate their own activities wherever they are. It is important "
-"to us, and the community of practitioners, that we have a way of ensuring "
-"that the resources profiled on the platform are of good quality, and that "
-"the projects profiled on the platform are indeed citizen science "
-"initiatives. This is why we have a moderation process for all submissions."
-msgstr "#missing"
-
-msgid ""
-"When you create a profile for a resource or a project to share on the "
-"platform, you will be asked to provide a range of descriptive information "
-"about it, and once all of the mandatory data fields are completed, you will "
-"be able to submit the profile. Upon submission, it will be sent for "
-"moderation. Until it has been reviewed against our criteria, it will be "
-"marked as ‘not yet moderated’, and will not be automatically visible in "
-"search results. Once your resource profile has successfully been through the "
-"moderation process, it will be marked as ‘moderated’, and will be fully "
-"available in search results."
-msgstr "#missing"
-
-msgid ""
-"We have developed a set of comprehensive quality criteria as a way of "
-"ensuring that the projects and resources that you can find on this platform "
-"are of good quality. The overarching criteria can be applied to both "
-"projects and resources. Specific and supporting criteria have been developed "
-"for resources. The table below provides an overview of all resources; "
-"further down on this page you can read about all the quality criteria in "
-"more detail."
-msgstr "#missing"
-
-msgid "Overarching Criteria (for projects and resources)"
-msgstr "#missing"
-
-msgid "About citizen science or relevant to citizen science (required)"
-msgstr "#missing"
-
-msgid "All mandatory metadata is provided (required)"
-msgstr "#missing"
-
-msgid ""
-"Engages with the <a target='_blank' href='https://zenodo.org/record/5127534#."
-"YV7PKt9CRhF'>ECSA 10 Principles of Citizen Science</a> (suggested)"
-msgstr "#missing"
-
-msgid "Specific Criteria (for resources)"
-msgstr "#missing"
-
-msgid "Access to the resource"
-msgstr "Vá para Recursos"
-
-msgid "Readability and Legibility"
-msgstr "#missing"
-
-msgid "Clear structure"
-msgstr "#missing"
-
-msgid "Clear language"
-msgstr "Limpar idioma"
-
-msgid "Basic formatting"
-msgstr "Formatação básica"
-
-msgid "Content"
-msgstr "Conteúdo"
-
-msgid "Applicability"
-msgstr "#missing"
-
-msgid "Easy to implement"
-msgstr "#missing"
-
-msgid "Easy to adapt"
-msgstr "#missing"
-
-msgid "Object"
-msgstr "#missing"
-
-msgid "Clearly audible (audio object)"
-msgstr "#missing"
-
-msgid "Good quality (video or image)"
-msgstr "#missing"
-
-msgid "Supporting Criteria (for resources)"
-msgstr "#missing"
-
-msgid "Evaluation"
-msgstr "#missing"
-
-msgid "Used in the context of a citizen science initiative"
-msgstr "#missing"
-
-msgid ""
-"Evaluated in terms of the quality of the content, methods, or results of the "
-"method"
-msgstr "#missing"
-
-msgid "Impact"
-msgstr "#missing"
-
-msgid "The overarching criteria for all resources"
-msgstr "#missing"
-
-msgid " Required Criteria - Citizen Science"
-msgstr "#missing"
-
-msgid ""
-"The first criterion that the moderator will look for, is that your "
-"<b>resource is relevant to citizen science</b>, or that your <b>project is a "
-"citizen science initiative</b>."
-msgstr "#missing"
-
-msgid ""
-"Although there are no hard and fast definitions of what citizen science is "
-"and is not (nor should there be - citizen science should always remain a "
-"broad and inclusive concept), we turn to the recent work conducted by the "
-"citizen science community on the <a target='_blank' href='https://zenodo.org/"
-"communities/citscicharacteristics/?page=1&size=20'>ECSA Characteristics of "
-"Citizen Science</a> as guidance. Please consult these characteristics if you "
-"are uncertain whether the resource or the project you would like to share "
-"really does relate to citizen science. If the moderator has concerns they "
-"will contact you directly."
-msgstr "#missing"
-
-msgid ""
-"The moderator will also check if all mandatory fields in the resource "
-"profile are completed. This is to ensure that all project and resource "
-"profiles provide sufficient information to enable users of the platform to "
-"see whether it is useful or relevant to them."
-msgstr "#missing"
-
-msgid "Suggested Criteria - the Principles of Citizen Science"
-msgstr "#missing"
-
-msgid ""
-"The moderator of your submitted profile will also consider whether your "
-"resource or project is in alignment with the <a href='https://zenodo.org/"
-"record/5127534#.YV7PKt9CRhF' target='_blank'>ECSA 10 Principles of Citizen "
-"Science</a>."
-msgstr "#missing"
-
-msgid "Specific criteria"
-msgstr "#missing"
-
-msgid ""
-"For the resources to be shared on the platform, we have developed a specific "
-"set of further criteria, which will be assessed during the moderation "
-"process. You can read more about how we developed these in the blog post ‘<a "
-"href='/blog/2020/04/30/how-we-developed-quality-criteria-resources/'>How we "
-"developed the quality criteria for resources’</a>."
-msgstr "#missing"
-
-msgid ""
-"We consider good quality citizen science resources to be those that are easy "
-"to access, implement and adapt, well structured, clearly described and "
-"written in clear language, and ideally improve or support the desired impact "
-"of the initiative (eg. on science, policy or society, etc). For this purpose "
-"we have developed a range of criteria that the moderator will assess against "
-"a 5-point scale, from strongly disagree (1 point) to strongly agree (5 "
-"points)."
-msgstr "#missing"
-
-msgid "Easy access to the resource"
-msgstr "#missing"
-
-msgid ""
-"The resource should be easy to access, i.e. it doesn’t require registration, "
-"and is not behind a paywall."
-msgstr "#missing"
-
-msgid ""
-"The resource should be <b>clearly structured</b> according to the type of "
-"the resource. For example, a scientific paper or report should include an "
-"introduction, methodology, results, discussion and/or conclusions, and "
-"methodology documents should include an introduction, audience description, "
-"step by step methodology, and an example."
-msgstr "#missing"
-
-msgid ""
-"The resource should be <b>written in clear language</b> that is easy to read "
-"and understand for the intended target audience, and should be concise, "
-"unambiguous, and avoid the use of unusual words and jargon. Where technical "
-"terms are used, their meaning should be explained clearly."
-msgstr "#missing"
-
-msgid ""
-"The resource should pay attention to <b>basic formatting</b>, such as clear "
-"titles and paragraphs, correct grammar and spelling, a legible font of large "
-"enough size to read, and clearly marked references."
-msgstr "#missing"
-
-msgid "Clarity of Content"
-msgstr "#missing"
-
-msgid ""
-"The resource should clearly describe its aims, goals and methods, so that it "
-"is easy for readers to understand how to apply the resource in their own "
-"context."
-msgstr "#missing"
-
-msgid ""
-"The resource should be <b>easy to implement</b>, ideally with descriptions "
-"of how it can be implemented, the contexts that it is useful for, and "
-"recommendations for further use or development."
-msgstr "#missing"
-
-msgid ""
-"The resource should be <b>easy to adapt</b> to different cases, ideally with "
-"an explanation of any limitations of the resource and the contexto in which "
-"it could be useful, and with guidelines or recommendations for its "
-"adaptation to different cases."
-msgstr "#missing"
-
-msgid "Object Quality"
-msgstr "#missing"
-
-msgid ""
-"If the resource is an audio object, it should be <b>clearly audible</b>, "
-"with no interruptions or background noise."
-msgstr "#missing"
-
-msgid ""
-"If the resource is a video, an image or illustration, the quality should be "
-"good enough to <b>see clearly, with a sharp focus</b>."
-msgstr "#missing"
-
-#, python-format
-msgid ""
-"The highest possible score is 40 points, if all criteria are applicable. But "
-"in most cases, only a selection of the above criteria will be applicable. "
-"The moderator will look to see that your resource exceeds 50%% of the total "
-"possible points for that type of resource. That is the threshold for being "
-"listed on the platform as a good quality resource."
-msgstr "#missing"
-
-msgid "Supporting criteria"
-msgstr "#missing"
-
-msgid ""
-"It really enhances the value and quality of your resources when you can say "
-"something about how it has been used and developed further in practice, and "
-"whether or not it has been evaluated for usefulness and applicability in "
-"practice. The moderator will also take it into positive consideration if "
-"there is evidence of the following criteria being met (but these are not "
-"part of the threshold calculation mentioned above):"
-msgstr "#missing"
-
-msgid ""
-"The resource has been <b>used in the context of citizen science</b>, or is "
-"currently being used in a citizen science initiative, and the outcome of "
-"this has been shared."
-msgstr "#missing"
-
-msgid ""
-"The resource has been <b>evaluated</b> in terms of the quality of the "
-"content, or the methods, or the results of the method, and the outcomes of "
-"these evaluations have been shared."
-msgstr "#missing"
-
-msgid ""
-"The resource refers to any <b>impact</b> that it could have (or has had) on "
-"science, policy, society, etc."
-msgstr "#missing"
-
-msgid ""
-"The impact of the resource has been <b>measured</b> and is shared in the "
-"resource."
-msgstr "#missing"
 
 msgid "Page Under Construction"
 msgstr "Página em construção"
@@ -2694,13 +2432,13 @@ msgid "Ajuda"
 msgstr ""
 
 msgid "Ongoing <span class='text-pink6'>events</span>"
-msgstr "<span class='text-pink6'> Eventos</span> submetidos"
+msgstr "<span class='text-pink6'> Eventos</span> acontecendo"
 
 msgid "Upcoming <span class='text-pink6'>Events</span>"
-msgstr "<span class='text-pink6'> Eventos</span> submetidos"
+msgstr "<span class='text-pink6'> Eventos</span> futuros"
 
 msgid "Past <span class='text-pink6'>events</span>"
-msgstr "<span class='text-pink6'> Eventos</span> submetidos"
+msgstr "<span class='text-pink6'> Eventos</span> já ocorridos"
 
 msgid "Notícias"
 msgstr ""
@@ -2711,8 +2449,6 @@ msgstr ""
 msgid "Entre em contato"
 msgstr ""
 
-#, fuzzy
-#| msgid "Access page"
 msgid "Acessar página"
 msgstr "Acessar página"
 
@@ -2848,3 +2584,31 @@ msgstr "Texto Traduzido"
 
 msgid "Translation"
 msgstr "Tradução"
+
+msgid "TOTALS"
+msgstr ""
+
+#, fuzzy
+#~| msgid "Symptoms"
+#~ msgid "All Symptoms"
+#~ msgstr "Sintomas"
+
+#, fuzzy
+#~| msgid "platform <span class='text-blue3'>search</span>"
+#~ msgid "disease or symptom <span class='text-blue3'>search</span>"
+#~ msgstr "<span class='text-blue3'>busca de</span> Plataformas"
+
+#~ msgid "Are rare diseases contagious?"
+#~ msgstr "Doenças raras são contagiosas?"
+
+#~ msgid "How can we support people with rare diseases?"
+#~ msgstr "Como podemos apoiar pessoas com doenças raras?"
+
+#~ msgid "Why is difficult to find treatments for rare diseases?"
+#~ msgstr "Por que é complicado encontrar tratamentos para doenças raras?"
+
+#~ msgid "How do families deal with rare diseases?"
+#~ msgstr "Como as famílias lidam com doenças raras?"
+
+#~ msgid "Can children also have rare diseases?"
+#~ msgstr "As crianças também podem ter doenças raras?"

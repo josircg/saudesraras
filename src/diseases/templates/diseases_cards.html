@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load static %}
+{% load eucs_platform_tags %}
+
+{% for disease in diseases %}
+<div class="col-lg-3 col-sm-6 col-xs-12 mb-5">
+    <a href="/disease/{{ disease.id }}" class="card h-100 border-1 rounded text-decoration-none color-inherit" style="display: block; color: initial; min-height: 280px;">
+        <div class="card-body d-flex flex-column h-100">
+            
+            <h5 class="mt-2 mb-3 bld" style="font-size: 20px; font-family: Recoleta; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="{{ disease.name }}">
+                {{ disease.name }}
+            </h5>
+
+            <div class="mb-2 d-flex flex-wrap" style="gap: 6px 4px; max-height: 54px; overflow: hidden; width: 100%;">
+                {% for symptom in disease.symptoms.all|slice:":10" %}
+                    <span class="badge rounded-pill bg-pill text-decoration-none text-dark" 
+                        style="background-color: #e9ecef; font-size: 12px; padding: 6px 12px; display: inline-block; max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" 
+                        title="{{ symptom.description }}">
+                        {{ symptom.description|truncatewords:4 }}
+                    </span>
+                {% endfor %}
+            </div>
+            
+            <p class="mt-0 text-muted" style="font-size: 15px; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; margin: 0;">
+                {{ disease.description|default:""|safe|truncate_summary:30 }}
+            </p>
+
+        </div>
+    </a>
+</div>
+{% endfor %}
+
+{% if 'diseases' in request.get_full_path or 'doencas' in request.get_full_path %}
+<div class="col-lg-12">
+    {% include "diseases_paginator.html" %}
+</div>
+{% endif %}
