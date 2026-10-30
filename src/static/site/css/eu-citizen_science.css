@@ -1327,3 +1327,110 @@ footer #parcerias .parceiros-logos img {
     .card-header[aria-expanded="true"] .faq-arrow {
       transform: rotate(180deg);
     }
+
+
+.share-input-wrapper {
+    max-width: 560px;
+    height: 50px;
+    border-radius: 100px;
+    }
+
+.share-input-field {
+    font-size: 16px;
+    background-color: transparent !important;
+    color: white !important;
+    border: none;
+    border-radius: 100px;
+    padding-left: 1.5rem;
+    padding-right: 0;
+    width: 85%;
+    }
+
+.btn-copy-icon {
+    border: none;
+    background: transparent !important;
+    cursor: pointer;
+    }
+
+.btn-copy-icon img {
+    width: 25px;
+    height: 25px;
+    }
+
+.btn-share-pill {
+    max-width: 173px;
+    width: 10rem;
+    font-size: 18px;
+    background-color: transparent;
+    color: #175CD3;
+    border: 2px solid #3D99F4;
+    border-radius: 100px;
+    margin-right: 1%;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    }
+
+.btn-share-pill:hover {
+    background-color: #3D99F4;
+    color: #ffffff;
+    border-color: #3D99F4;
+    text-decoration: none;
+    }
+
+
+.btn-share-wpp {
+    color: #25D366;
+    border-color: #25D366;
+    }
+
+.btn-share-wpp:hover {
+    background-color: #25D366;
+    color: #ffffff;
+    border-color: #25D366;
+    }
+
+.copy-feedback-text {
+    padding-left: 1.5rem;
+    }
+
+
+.recent-post-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 17px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #ffffff;
+}
+
+.recent-post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.recent-post-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.recent-post-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #175CD3;
+  line-height: 1.3;
+}
+
+.recent-post-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.recent-post-title a:hover {
+  color: #3D99F4;
+}
+
+.recent-post-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}

@@ -1,4 +1,5 @@
 {% extends 'baseblog.html' %}
+{% load i18n %}
 {% block meta %}
 <meta property="og:title" content="{{post.title}}" />
 <meta property="og:description" content="{{post.excerpt}}" />
@@ -23,7 +24,7 @@
               <h1 class="text-blue3">{% block title %} {{ post.title }} {% endblock title %}</h1>
               <p class=" text-muted">
                 {% if post.author.name != "Empty user" %}
-								  {{ post.author.name }} {% endif %} <br /> {{ post.created_on }}
+                  {{ post.author.name }} {% endif %} <br /> {{ post.created_on }}
               </p>
 
               {% if post.image.width > post.image.height %}              
@@ -36,9 +37,100 @@
               {% endif %}              
 
               <div class="blog-text-content mt-5">{{ post.content | safe }}</div>
+              <span class="fs-6 pt-3 mb-5 d-block">
+                    {% blocktrans %}Want to send a news to our site?{% endblocktrans %}
+                    <a class="text-blue2" href="/contact">{% blocktrans %}Contact us{% endblocktrans %}.</a>
+                </span>
+              <hr class="mt-5" />
 
+              <!-- SEÇÃO: Compartilhar Notícia -->
+              <div class="container-fluid mt-4 p-0">
+                <h2 class="text-left text-about">Gostou dessa notícia? Compartilhe!</h2>
 
-              <hr />
+                <!-- Linha com o link e botão de copiar -->
+                <div class="d-flex align-items-center mt-3 bck-azul share-input-wrapper">
+                  <input 
+                    id="share-link-input"
+                    type="text" 
+                    class="form-control form-control-sm mr-2 bck-azul share-input-field" 
+                    value="" 
+                    readonly>
+                  
+                  <button 
+                    type="button" 
+                    id="btn-copy-link" 
+                    class="btn btn-sm btn-copy-icon" 
+                    title="Copiar Link"
+                    onclick="copiarLinkPost()">
+                    <img src="/static/site/img/botabout.svg" alt="Copiar">
+                  </button>
+                </div>
+
+                <!-- Mensagem de feedback de cópia -->
+                <small id="copy-feedback" class="text-success mt-2 font-weight-bold copy-feedback-text" style="display: none;"></small>
+
+                <!-- Botões de compartilhamento -->
+                <div class="d-flex flex-column flex-md-row mt-3">
+                  <!-- Botão WhatsApp -->
+                  <a 
+                    id="btn-share-whatsapp" 
+                    href="#" 
+                    target="_blank" 
+                    class="btn btn-secondary btn-sm d-flex align-items-center justify-content-center gap-2 mt-2 mt-md-0 btn-share-pill btn-share-wpp">
+                    <i class="bi bi-whatsapp"></i> WhatsApp
+                  </a>
+
+                  <!-- Botão Instagram -->
+                  <button 
+                    type="button" 
+                    onclick="compartilharInstagram()" 
+                    class="btn btn-secondary btn-sm d-flex align-items-center justify-content-center gap-2 mt-2 mt-md-0 btn-share-pill btn-share-insta">
+                    <i class="bi bi-instagram"></i> Instagram
+                  </button>
+
+                  <!-- Botão Outros -->
+                  <button 
+                    type="button" 
+                    onclick="compartilharOutros()" 
+                    class="btn btn-secondary btn-sm d-flex align-items-center justify-content-center gap-2 mt-2 mt-md-0 btn-share-pill">
+                    <i class="bi bi-share-fill"></i> Outros
+                  </button>
+                </div>
+              </div>
+
+              <hr class="mt-5 mb-5" />
+
+              <!-- SEÇÃO: Veja Mais -->
+              {% if latest_posts %}
+              <div class="container-fluid p-0 mt-4">
+                <h2 class="text-left text-about mb-4">Veja Mais</h2>
+                
+                <div class="row g-3">
+                  {% for item in latest_posts %}
+                  <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="card recent-post-card mw-100">
+                      {% if item.image %}
+                        <a href="{% url 'post_detail' item.created_on.year item.created_on.month item.created_on.day item.slug %}">
+                          <img src="/media/{{ item.image }}" class="card-img-top recent-post-img img-fluid" alt="{{ item.title }}">
+                        </a>
+                      {% endif %}
+                      <div class="card-body d-flex flex-column justify-content-between p-3">
+                        <div>
+                          <p class="text-muted small mb-1">{{ item.created_on|date:"d/m/Y" }}</p>
+                          <h5 class="recent-post-title mb-0">
+                            <a href="{% url 'post_detail' item.created_on.year item.created_on.month item.created_on.day item.slug %}">
+                              {{ item.title|truncatechars:60 }}
+                            </a>
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+
             </div>
           </div>
         </div>
@@ -47,4 +139,56 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const postTitle = "{{ post.title|escapejs }}";
+    const currentUrl = window.location.href;
+
+    const inputLink = document.getElementById("share-link-input");
+    if (inputLink) {
+      inputLink.value = currentUrl;
+    }
+
+    const whatsappMessage = `*${postTitle}*\n\nConfira esta notícia completa no link abaixo:\n${currentUrl}`;
+    const whatsappBtn = document.getElementById("btn-share-whatsapp");
+    if (whatsappBtn) {
+      whatsappBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
+    }
+  });
+
+  function copiarLinkPost() {
+    const currentUrl = window.location.href;
+    const feedback = document.getElementById("copy-feedback");
+
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      if (feedback) {
+        feedback.innerText = "Link copiado para a área de transferência!";
+        feedback.style.display = "block";
+        setTimeout(() => { feedback.style.display = "none"; }, 3000);
+      }
+    }).catch(() => {
+      alert("Não foi possível copiar o link.");
+    });
+  }
+
+  function compartilharInstagram() {
+    const postTitle = "{{ post.title|escapejs }}";
+    const currentUrl = window.location.href;
+
+    if (navigator.share) {
+      navigator.share({
+        title: postTitle,
+        text: postTitle,
+        url: currentUrl,
+      }).catch((err) => console.log('Compartilhamento cancelado:', err));
+    } else {
+      copiarLinkPost();
+    }
+  }
+
+  function compartilharOutros() {
+    compartilharInstagram();
+  }
+</script>
 {% endblock list_of_items %}
