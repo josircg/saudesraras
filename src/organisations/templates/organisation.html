@@ -21,11 +21,16 @@
         <div class="col-12">
             <h1 class="text-blue3">{{organisation.name}}</h1>
         </div>
+        {% if organisation.orgType %}
+              {% with orgType=organisation.orgType|translate_instance %}
+                <p><a class="badge bg-dark" href="/organisations?orgTypes={{ orgType }}">{{ orgType }}</a></p>
+              {% endwith %}
+            {% endif %}
         <div class="col-xl-8 col-md-6 col-12">
             <p class="mt-3 gray7-color">{{ organisation.description | safe}}</p>
 
             {% if organisation.diseases.all %}
-            <h4 class="mt-4 leftborder">{% trans "Diseases associated with this organisation" %}</h4>
+            <h4 class="mt-4 leftborder">Doenças sobre as quais esta organização disponibiliza informação</h4>
             <div class="row">
                 {% for disease in organisation.diseases.all %}
                 <div class="col-12 mt-3">
@@ -136,11 +141,7 @@
 
         <div class="col-xl-4 col-md-6 col-12">
 
-            {% if organisation.orgType %}
-              {% with orgType=organisation.orgType|translate_instance %}
-                <p><a class="badge bg-dark" href="/organisations?orgTypes={{ orgType }}">{{ orgType }}</a></p>
-              {% endwith %}
-            {% endif %}
+            
 
             {% if organisation.logo %}
             <img title="{{ organisation.name }} logo"
@@ -200,9 +201,19 @@ var marker_layer = new L.marker([50.5, 30.5]);
 function map_init_basic (map, options) {
     var lat = $("#lat").val().replace(",", ".");
     var long = $("#long").val().replace(",", ".");
-    L.marker([lat, long]).addTo(map);
-    if(lat != 0)
-        map.flyTo([lat, long], 8)
+    
+    if (lat != 0 && long != 0) {
+        var myIcon = L.icon({
+            iconUrl: "{% static 'images/marker-icon.png' %}", 
+            iconSize: [32, 32],      
+            iconAnchor: [16, 32],    
+            popupAnchor: [0, -32]    
+        });
+
+        L.marker([lat, long], { icon: myIcon }).addTo(map);
+
+        map.flyTo([lat, long], 8);
+    }
 }
 </script>
 {{ permissionForm.media.js }}
