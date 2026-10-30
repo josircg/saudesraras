@@ -254,14 +254,12 @@ LEAFLET_CONFIG = {
     'MAX_ZOOM': 18,
     'TILES': [
         (
-            'CartoDB Light',
-            'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-            '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors &copy; '
-            '<a href="https://carto.com">CARTO</a>'
+            'OSM HOT',
+            'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         )
     ],
 }
-
 
 SUMMERNOTE_THEME = 'bs4'
 

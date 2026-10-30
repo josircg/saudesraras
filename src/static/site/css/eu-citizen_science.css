@@ -138,15 +138,15 @@ body {
 }
 
 .text-blue3 {
-    color: #114D7F;
+    color: #114D7F !important;
 }
 
 .text-blue2{ 
-    color: #3D99F4; 
+    color: #3D99F4 !important; 
 }
 
 .text-blue1{ 
-    color:#5CDCFF;
+    color:#5CDCFF !important;
 }
 
 .bg-ice{
@@ -860,8 +860,8 @@ footer #parcerias .parceiros-logos img {
 }
 
 .btn-blue3:hover{
-    background-color: var(--blue3) !important;
-    color: var(--blue1) !important
+    background-color: var(--blue1) !important;
+    color: var(--blue3) !important;
 
 }
 
