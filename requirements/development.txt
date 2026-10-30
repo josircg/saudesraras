@@ -1,6 +1,7 @@
 -i https://pypi.python.org/simple
 -r base.txt
 django-debug-toolbar==4.2.0
+django-guardian
 sqlparse==0.4.4
 werkzeug<3
 fabric==3.2.2
