@@ -12,8 +12,8 @@
             <div id="div-ordenacao">
                 <div class="title-filtros">Ordenar por</div>
                 <div class="input-group input-group-sm filter-bar">
-                    <div class="input-group-text filter-img">
-                        <img src="{% static '../static/site/icons/order-icon.png' %}" alt="">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-sort-down" style="font-size: 20px;"></i>
                     </div>
                     <select id="orderby" name="orderby" class="custom-select status-select form-control">
                         <option value="" {% if filters.orderby == "" %} selected {% endif %}>{% trans "Most Recent" %}</option>
