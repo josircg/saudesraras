@@ -10,7 +10,9 @@ from organisations.models import Organisation
 def disease_list(request):
     disease_queryset = Disease.objects.all().prefetch_related('symptoms')
     
-    query = request.GET.get('keywords', '').strip()
+    # Compatibilidade retroativa: aceita 'keywords' (padrao) com fallback
+    # para 'q' (parametro antigo), evitando quebrar links salvos/externos.
+    query = (request.GET.get('keywords') or request.GET.get('q', '')).strip()
     symptom_filter = request.GET.get('symptom', '')
     orderby_filter = request.GET.get('orderby', 'name') 
 
