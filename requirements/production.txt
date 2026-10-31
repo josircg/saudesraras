@@ -4,4 +4,8 @@
 # Extra stuff required for production like Prod Database interfacing packages
 # psycopg2
 django[argon2]
-gunicorn
+
+# gunicorn: a fonte canonica agora e o grupo "prod" do pyproject.toml
+# (gerido pelo uv). No servidor, instale com:  uv sync --group prod
+# A linha abaixo so e necessaria se o deploy ainda usar pip com este arquivo.
+# gunicorn

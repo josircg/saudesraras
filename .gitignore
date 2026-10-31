@@ -23,6 +23,7 @@ build
 
 # Environment variables
 local.env
+fabfile.py
 
 # Django stuff:
 *.pot

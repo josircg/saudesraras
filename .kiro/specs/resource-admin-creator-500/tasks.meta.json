@@ -1,0 +1,17 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Escrever teste de exploração da condição do bug (antes do fix)": [
+      {
+        "executionId": "8d093e1f-f41c-48c1-80d4-e039bdb826a0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793398366228
+      },
+      {
+        "executionId": "62251430-d9c1-41bc-a407-792f072e5d8c",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793398659577
+      }
+    ]
+  }
+}

@@ -189,6 +189,11 @@ DATABASES = {
         'PASSWORD': env("DATABASE_PASSWORD"),
         'HOST': env('DATABASE_HOST'),
         'PORT': '5432',
+        # Banco de teste pre-criado (o usuario do banco pode nao ter CREATEDB).
+        # Rodar a suite com --keepdb para reutilizar este banco sem recria-lo.
+        'TEST': {
+            'NAME': env('DATABASE_TEST_NAME', default='raras_teste'),
+        },
     }
 }
 
@@ -248,6 +253,13 @@ AUTHENTICATION_BACKENDS = (
     'guardian.backends.ObjectPermissionBackend',  # Backend do Guardian
 )
 
+# django-guardian: o AUTH_USER_MODEL e' authtools.User (login por email, sem
+# 'username'), entao o usuario anonimo padrao do guardian nao se aplica.
+# As permissoes por objeto desta plataforma sao sempre para usuarios
+# autenticados (as views de edicao usam @login_required), portanto
+# desabilitamos a criacao do anonymous user do guardian.
+ANONYMOUS_USER_NAME = None
+
 THUMBNAIL_EXTENSION = "png"  # Or any extn for your thumbnails
 
 LEAFLET_CONFIG = {
@@ -300,7 +312,7 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 SITE_NAME = 'Saúdes Raras'
 EMAIL_RECIPIENT_LIST = ["josircg@gmail.com"]
 EMAIL_CONTACT_RECIPIENT_LIST = ["josircg@gmail.com"]
-EMAIL_CIVIS = ["laccops.gco.ega@id.uff.br"]
+EMAIL_CIVIS = ["saudesraras@gmail.com"]
 EMAIL_TAG = env("EMAIL_TAG")
 HOST = env("HOST")
 DOMAIN = env("DOMAIN")

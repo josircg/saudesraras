@@ -11,7 +11,7 @@
 {% block splash %}
 {% if request.get_full_path == "/" %}
 
-<link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}?v=1" type="text/css" />
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}?v=2" type="text/css" />
 <body class="d-flex flex-column min-vh-100">
   <div
     class="border-top "
@@ -204,7 +204,7 @@
                         <div class="icon-container">
                             <img src="{% static 'site/img/sus.svg' %}" class="sus-img" alt="SUS">
                         </div>
-                        <span class="btn-text">{% trans "SUS" %}</span>
+                        <span class="btn-text">{% trans "Where can I find my medicine (RJ)" %}</span>
                     </a>
                 </div>
 
@@ -429,7 +429,7 @@
         </div>
         {% empty %}
         <div class="col-12 text-center text-muted">
-          <p>Nenhuma pergunta frequente encontrada.</p>
+          <p>{% trans "No FAQ registered yet" %} </p>
         </div>
         {% endfor %}
 
