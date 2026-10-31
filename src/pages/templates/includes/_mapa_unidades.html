@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<!-- INCLUSÃO DO COMPONENTE DE FILTRO -->
+
+
 <!-- CONTÊINER DO MAPA -->
 <div class="row mb-4">
     <div class="col-12">
@@ -14,11 +17,12 @@
         </div>
     </div>
 </div>
-
+{% include "../includes/_filtro.html" with section=section filters=filters %}
 <!-- CARDS DE UNIDADES -->
-{% if artigos_list %}
+{% with artigos_exibicao=section.top_articles|default:artigos_list %}
+{% if artigos_exibicao %}
     <div class="row g-3 justify-content-center">
-        {% for artigo in artigos_list %}
+        {% for artigo in artigos_exibicao %}
             <div class="col-md-4 col-sm-6 col-12 d-flex justify-content-center">
                 <div class="card-wrapper m-2" style="height:450px; width: 100%; max-width: 400px;">
                     <div class="card" style="height:450px; width: 100%; border-radius: 30px; border: none; position: relative; overflow: hidden; background-color: #5CDCFF; box-sizing: border-box;">
@@ -69,6 +73,10 @@
             </div>
         {% endfor %}
     </div>
+{% else %}
+    <div class="alert alert-info text-center rounded-pill my-4">
+        {% trans "Nenhuma unidade encontrada." %}
+    </div>
 {% endif %}
 
 <!-- SCRIPT COMPLETO DO MAPA -->
@@ -88,12 +96,10 @@
         const mapContainer = document.getElementById("map-unidades");
         if (!mapContainer) return;
 
-        // Reset do mapa caso já exista uma instância no container
         if (mapContainer._leaflet_id) {
             mapContainer._leaflet_id = null;
         }
 
-        // 1. Inicialização do Mapa
         const map = L.map("map-unidades").setView([-22.5000, -42.8000], 8);
 
         L.tileLayer(
@@ -104,11 +110,9 @@
             }
         ).addTo(map);
 
-        // Força a renderização imediata do container
         map.invalidateSize();
         setTimeout(() => map.invalidateSize(), 300);
 
-        // 2. Destaque do Estado do Rio de Janeiro
         const rjGeoJSONUrl = "https://raw.githubusercontent.com/giuliano-macedo/geodata-br-states/main/geojson/br_states/br_rj.json";
 
         map.createPane("mascaraRJ");
@@ -195,7 +199,6 @@
             })
             .catch(error => console.error("Erro ao aplicar destaque do RJ:", error));
 
-        // 3. Marcadores e Geocoding
         const defaultIcon = L.icon({
             iconUrl: "{% static 'site/icons/icon-loc.png' %}",
             iconSize: [80, 80],
@@ -237,7 +240,7 @@
 
         const geocodeQueue = [];
 
-        {% for artigo in artigos_list %}
+        {% for artigo in artigos_exibicao %}
         (function () {
             const articleId = "{{ artigo.id }}";
             const unitName = "{{ artigo.header|default:artigo.title|escapejs }}";
@@ -350,7 +353,6 @@
 
         processGeocodeQueue();
 
-        // 4. Focar em uma Unidade
         window.focusOnMap = function (articleId) {
             const target = window.unitMarkers[articleId];
 
@@ -377,3 +379,4 @@
         };
     });
 </script>
+{% endwith %}

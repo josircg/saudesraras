@@ -1,3 +1,5 @@
+import re
+import html
 from django.utils.translation import get_language, gettext as _
 from django.views.generic import DetailView
 from django.shortcuts import render, redirect, get_object_or_404
@@ -8,6 +10,39 @@ from .models import Page, Section, Article
 from .forms import SectionForm, PageForm, ArticleForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from urllib.parse import quote
+
+
+from unicodedata import normalize
+from urllib.parse import quote
+from django.utils.html import strip_tags
+
+def remover_acentos(texto):
+    """Remove acentos e força minúsculas para comparação insensível a acentuação."""
+    if not texto:
+        return ""
+    return (
+        normalize("NFKD", texto)
+        .encode("ASCII", "ignore")
+        .decode("ASCII")
+        .lower()
+        .strip()
+    )
+
+def extrair_texto_limpo(html_content):
+    """
+    Substitui <br> por quebras de linha reais, decodifica entidades HTML (&iacute; -> í)
+    e limpa as tags HTML.
+    """
+    if not html_content:
+        return ""
+    # Decodifica &iacute; -> í, &nbsp; -> espaço, etc.
+    texto = html.unescape(html_content)
+    # Substitui <br> e feches de bloco por \n
+    texto = re.sub(r'<br\s*/?>|</p>|</div>|</li>', '\n', texto, flags=re.IGNORECASE)
+    # Remove as tags HTML restantes
+    texto = strip_tags(texto)
+    return texto
+
 
 class PageDetailView(DetailView):
     model = Page
@@ -29,40 +64,90 @@ class PageDetailView(DetailView):
         sections_list = Section.objects.filter(page=page_obj, visible=True).order_by('order')
 
         query = self.request.GET.get('q', '').strip()
+        selected_municipio = self.request.GET.get('municipio', '').strip()
+
         if query:
-            # Varre apenas os campos preenchíveis de texto de SECTION e ARTICLE
             sections_list = sections_list.filter(
-                # 1. Busca nos campos de texto da própria SECTION (SectionForm)
                 Q(title__icontains=query) |
                 Q(header__icontains=query) |
                 Q(content__icontains=query) |
-                
-                # 2. Busca nos campos de texto dos ARTICLES desta seção (ArticleForm)
                 Q(articles__title__icontains=query) |
                 Q(articles__header__icontains=query) |
                 Q(articles__content__icontains=query)
-            ).distinct() 
+            ).distinct()
+
         context['item_count'] = sections_list.count()
+
+        # Regex preparada para ler após decodificar o HTML
+        municipio_pattern = re.compile(
+            r'Munic[ií]pios(?:\s+atendidos)?\s*:\s*([^\r\n<]+)', 
+            re.IGNORECASE
+        )
 
         for section in sections_list:
             articles_queryset = section.articles.all().order_by('order', 'id')
-            
+
             if query:
                 articles_queryset = articles_queryset.filter(
                     Q(title__icontains=query) |
                     Q(header__icontains=query) |
                     Q(content__icontains=query)
                 )
-            section_title = (section.title or section.header or '').lower()
+
             if page_obj.slug == 'riofarmes':
+                todos_municipios_dict = {}
+
+                for art in section.articles.all():
+                    clean_content = extrair_texto_limpo(art.content or '')
+                    matches = municipio_pattern.findall(clean_content)
+
+                    for match in matches:
+                        cidades = re.split(r',|/|\be\b|\bou\b', match)
+                        for c in cidades:
+                            nome_cidade = c.strip()
+                            if len(nome_cidade) > 1:
+                                chave_normalizada = remover_acentos(nome_cidade)
+                                if chave_normalizada not in todos_municipios_dict:
+                                    todos_municipios_dict[chave_normalizada] = nome_cidade.title()
+
+                section.lista_municipios = sorted(todos_municipios_dict.values())
+
+                if selected_municipio:
+                    target_normalizado = remover_acentos(selected_municipio)
+                    ids_correspondentes = []
+
+                    for art in articles_queryset:
+                        clean_content = extrair_texto_limpo(art.content or '')
+                        matches = municipio_pattern.findall(clean_content)
+
+                        pertence = False
+                        for match in matches:
+                            cidades = re.split(r',|/|\be\b|\bou\b', match)
+                            for c in cidades:
+                                if remover_acentos(c.strip()) == target_normalizado:
+                                    pertence = True
+                                    break
+                            if pertence:
+                                break
+
+                        if pertence:
+                            ids_correspondentes.append(art.id)
+
+                    articles_queryset = articles_queryset.filter(id__in=ids_correspondentes)
+
                 section.top_articles = articles_queryset
             else:
                 section.top_articles = articles_queryset[:4]
 
         context['sections'] = sections_list
-        context['filters'] = {'q': query}
-        
+        context['filters'] = {
+            'q': query,
+            'selected_municipio': selected_municipio
+        }
+
         return context
+
+
 
 
 def section_detail(request, page_slug, section_id):

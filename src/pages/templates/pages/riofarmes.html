@@ -72,6 +72,8 @@
         {% include "pages/_finder.html" with page_obj=sections finder_title=_("Buscar conteúdo...") finder_placeholder=_("Digite o que procura...") %}
     {% endif %}
 
+    
+
     <div class="row mt-4">
         {% with secoes_list=sections|default:object.sections.sections_by_order %}
         {% if secoes_list %}
@@ -80,7 +82,7 @@
                     {% get_obj_perms user for secao as "secao_perms" %}
 
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
-                        <h2 class="text-blue2 fw-bold h3 mb-0">
+                        <h2 class="text-blue2 fw-bold h3 mb-4 ">
                             {{ secao.title|default:secao.header|safe }}
                         </h2>
                         
@@ -111,14 +113,14 @@
                     </div>
 
                     {% if secao.content %}
-                    <div class="mb-4 row-content" style="font-size: 20px;">
+                    <div class="mb-4 row-content conteudo-secao" style="font-size: 20px;">
                         {{ secao.content|safe }}
                     </div>
                     {% endif %}
 
                     {% if "unidades" in secao.title|default:secao.header|lower %}
                         {% with artigos_list=secao.top_articles|default:secao.articles.articles_by_order %}
-                            {% include "../includes/_mapa_unidades.html" with artigos_list=artigos_list %}
+                            {% include "../includes/_mapa_unidades.html" with artigos_list=artigos_list section=secao filters=filters %}
                         {% endwith %}
                     {% else %}
                         <!-- INCLUSÃO DO COMPONENTE SEPARADO DO CARROSSEL -->

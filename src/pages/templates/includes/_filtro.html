@@ -1,0 +1,95 @@
+{% load i18n %}
+
+{% if section.lista_municipios %}
+
+
+<div class="row mb-4 justify-content-center" id="filtro-municipio-container">
+    <div class="col-12 d-flex justify-content-center">
+        <!-- flex-wrap no mobile (quebra de linha se não couber) e flex-sm-nowrap no desktop -->
+        <form method="GET" action="" id="filtro-municipio-form" class="d-flex gap-2 align-items-center justify-content-center flex-wrap flex-sm-nowrap">
+            {% if filters.q %}
+                <input type="hidden" name="q" value="{{ filters.q }}">
+            {% endif %}
+
+            <input type="hidden" name="municipio" id="input-municipio-hidden" value="{{ filters.selected_municipio }}">
+
+            <label class="fw-bold filter-label text-nowrap mb-0 text-center">
+                <i class="fas fa-filter me-1"></i> {% trans "Filtrar por Município:" %}
+            </label>
+
+            <!-- Dropdown Customizado -->
+            <div class="custom-dropdown-container">
+                <div class="custom-dropdown-btn shadow-sm" id="dropdown-trigger">
+                    {% if filters.selected_municipio %}
+                        {{ filters.selected_municipio }}
+                    {% else %}
+                        {% trans "Todos os Municípios" %}
+                    {% endif %}
+                </div>
+
+                <!-- Menu de opções -->
+                <div class="custom-dropdown-menu" id="dropdown-options">
+                    <div class="dropdown-item {% if not filters.selected_municipio %}active{% endif %}" data-value="">
+                        {% trans "Todos os Municípios" %}
+                    </div>
+                    {% for mun in section.lista_municipios %}
+                        <div class="dropdown-item {% if filters.selected_municipio|lower == mun|lower %}active{% endif %}" data-value="{{ mun }}">
+                            {{ mun }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if filters.selected_municipio %}
+                <a href="?{% if filters.q %}q={{ filters.q }}{% endif %}" 
+                   class="btn btn-outline-secondary rounded-pill btn-sm text-nowrap btn-limpar-municipio"
+                   onclick="sessionStorage.setItem('scroll_to_filter', 'true')">
+                    {% trans "Limpar" %}
+                </a>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const trigger = document.getElementById("dropdown-trigger");
+        const menu = document.getElementById("dropdown-options");
+        const hiddenInput = document.getElementById("input-municipio-hidden");
+        const form = document.getElementById("filtro-municipio-form");
+
+        if (trigger && menu) {
+            trigger.addEventListener("click", function (e) {
+                e.stopPropagation();
+                menu.classList.toggle("show");
+            });
+
+            menu.querySelectorAll(".dropdown-item").forEach(function (item) {
+                item.addEventListener("click", function () {
+                    const value = this.getAttribute("data-value");
+                    hiddenInput.value = value;
+                    sessionStorage.setItem('scroll_to_filter', 'true');
+                    form.submit();
+                });
+            });
+
+            document.addEventListener("click", function () {
+                menu.classList.remove("show");
+            });
+        }
+
+        if (sessionStorage.getItem('scroll_to_filter') === 'true') {
+            sessionStorage.removeItem('scroll_to_filter');
+            const filtroContainer = document.getElementById("filtro-municipio-container");
+            if (filtroContainer) {
+                setTimeout(function () {
+                    filtroContainer.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }, 150);
+            }
+        }
+    });
+</script>
+{% endif %}
