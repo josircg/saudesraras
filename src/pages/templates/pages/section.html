@@ -27,8 +27,10 @@
             {% endif %}
         </div>
         
+        {% if user.is_authenticated %}
         {% get_obj_perms user for page_mae as "page_mae_perms" %}
         {% get_obj_perms user for section as "section_perms" %}
+        {% endif %}
 
         <div class="col-md-4 col-12 text-md-end mt-3 mt-md-0">
             <!-- Botão Editar Seção -->
