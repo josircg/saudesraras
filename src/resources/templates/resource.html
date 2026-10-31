@@ -12,18 +12,33 @@
 <div class="container id-resource-detail-container" data-url="{{ resource.url }}">
     <div class="row mt-5">
         
-        <!-- Coluna da Esquerda: Imagem -->
-        <div class="col-md-4 mb-4">
-            <div class="d-flex align-items-stretch" style="min-height: 350px;">
-                <img class="w-100 h-100 object-fit-contain lazyload resource-img rounded shadow-sm" 
-                     data-src="{% thumbnail resource.image1|safe_image 400x565 %}" 
-                     alt="{{ resource.name }}" />
+        <!-- Coluna da Esquerda: Imagem (capa em proporcao A4 ~1:1.414) -->
+        <div class="col-md-3 col-sm-5 col-8 mx-auto mb-4">
+            <div class="resource-cover rounded shadow-sm overflow-hidden"
+                 style="aspect-ratio: 210 / 297;">
+                {% if resource.image1 %}
+                    <img class="w-100 h-100 object-fit-cover lazyload resource-img"
+                         data-src="{% thumbnail resource.image1 420x594 %}"
+                         alt="{{ resource.name }}" />
+                {% else %}
+                    <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light">
+                        <img src="{% static 'site/img/publicacoes.svg' %}"
+                             alt="{% trans 'Resource' %}"
+                             style="width: 96px; height: 96px; opacity: .65;" />
+                    </div>
+                {% endif %}
             </div>
         </div>
 
         <!-- Coluna da Direita: Título, Metadados, Idioma/Tema/Tipo/Keywords e Botões -->
-        <div class="col-md-8 d-flex flex-column justify-content-start mb-4">
+        <div class="col-md-9 d-flex flex-column justify-content-start mb-4">
             <h1 class="text-blue3">{{resource.name}}</h1>
+
+            <!-- Descricao logo abaixo do titulo -->
+            {% if resource.abstract %}
+            <div class="resource-abstract mb-3 mt-2">{{ resource.abstract | safe }}</div>
+            {% endif %}
+
             <div class="small"><i>{% trans "Created" %} {{resource.dateCreated}}</i></div>
             <div class="small"><i>{% trans "Updated" %} {{resource.dateUpdated}}</i></div>
             
@@ -106,20 +121,7 @@
                             {% trans "Go to Resource" %}
                         {% endif %}
                     </a>
-                </div>
 
-                
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Seção Inferior: Abstract, Organizações e Projetos -->
-    <div class="row mt-3">
-        <div class="col-12">
-            <p class="mt-3">{{ resource.abstract | safe }}</p>
-
-            <div class="d-flex flex-wrap gap-2">
                     {% if user.is_staff %}
                     <a href="mailto:{{ resource.creator.email }}" class="btn btn-blue3 btn-open-resource">
                         <i class="far fa-envelope me-1"></i> {% trans "Contact submitter" %}
@@ -133,7 +135,14 @@
                     </a>
                     {% endif %}
                 </div>
-            
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Seção Inferior: Abstract, Organizações e Projetos -->
+    <div class="row mt-3">
+        <div class="col-12">
             {% if resource.organisation.all %}
             <h4 class="mt-4 leftborder">{% trans "Links with projects and/or organisations" %}</h4>
             <div class="row">
