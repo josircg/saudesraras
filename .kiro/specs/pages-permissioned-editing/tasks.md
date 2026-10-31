@@ -72,42 +72,42 @@ o comportamento já implementado, sem regressões. Rodar comandos a partir de
     `new_<slug:page_slug>/` e o catch-all `<slug:slug>/`)
   - _Requisitos: 8.1, 8.3, 8.4_
 
-- [ ] 5. Testes do fluxo de permissões por objeto (admin)
+- [x] 5. Testes do fluxo de permissões por objeto (admin)
   - Criar `src/pages/tests.py` (ou `src/accounts/tests.py`) com testes:
-  - [ ] 5.1 Salvar usuário no admin com objetos nos seletores
+  - [x] 5.1 Salvar usuário no admin com objetos nos seletores
     (`allowed_pages`/`sections`/`articles`) atribui as permissões via guardian
     (`assign_perm`); remover desmarca (`remove_perm`)
     - _Requisitos: 1.2, 1.3, 1.4_
-  - [ ] 5.2 Pré-carregamento dos seletores reflete permissões existentes
+  - [x] 5.2 Pré-carregamento dos seletores reflete permissões existentes
     (`get_objects_for_user`)
     - _Requisitos: 1.1, 1.2_
 
-- [ ] 6. Testes do modelo de autorização em cascata (front-end)
+- [x] 6. Testes do modelo de autorização em cascata (front-end)
   - Em `src/pages/tests.py`, cobrir a matriz de permissões por view:
-  - [ ] 6.1 Superuser e permissão global permitem edição em qualquer objeto
+  - [x] 6.1 Superuser e permissão global permitem edição em qualquer objeto
     - _Requisitos: 3.1, 3.2_
-  - [ ] 6.2 Permissão por objeto na página permite editar a página e
+  - [x] 6.2 Permissão por objeto na página permite editar a página e
     criar/editar suas seções e artigos
     - _Requisitos: 3.3_
-  - [ ] 6.3 Permissão por objeto na seção permite editar a seção e criar/editar
+  - [x] 6.3 Permissão por objeto na seção permite editar a seção e criar/editar
     seus artigos; permissão no artigo permite editar só aquele artigo
     - _Requisitos: 3.4, 3.5, 3.6_
-  - [ ] 6.4 Usuário sem permissão recebe HTTP 403 com `no_permission.html` e
+  - [x] 6.4 Usuário sem permissão recebe HTTP 403 com `no_permission.html` e
     link mailto; usuário não autenticado é redirecionado para `/login`
     - _Requisitos: 2.1, 4.1, 4.2_
 
-- [ ] 7. Testes de navegação e páginas institucionais
-  - [ ] 7.1 `section_detail` pagina artigos (15/página) e exige `visible=True`;
+- [x] 7. Testes de navegação e páginas institucionais
+  - [x] 7.1 `section_detail` pagina artigos (15/página) e exige `visible=True`;
     `article_detail` exibe o artigo no contexto correto
     - _Requisitos: 5.1, 5.2_
-  - [ ] 7.2 Busca `?q=` em `PageDetailView` filtra seções/artigos por
+  - [x] 7.2 Busca `?q=` em `PageDetailView` filtra seções/artigos por
     title/header/content (icontains) sem duplicar seções
     - _Requisitos: 5.3_
-  - [ ] 7.3 Rotas `medicos`/`diagnostico`/`justica` renderizam Page do banco e
+  - [x] 7.3 Rotas `medicos`/`diagnostico`/`justica` renderizam Page do banco e
     caem no fallback "em construção" quando a Page não existe (sem 500)
     - _Requisitos: 6.1, 6.2_
 
-- [ ] 8. Checkpoint final de verificação
+- [x] 8. Checkpoint final de verificação
   - A partir de `src/`: `python manage.py check`;
     `python manage.py makemigrations --check --dry-run`;
     `python manage.py test pages accounts`
@@ -119,5 +119,10 @@ o comportamento já implementado, sem regressões. Rodar comandos a partir de
 - Ordem recomendada: tasks 1→4 primeiro (sem elas a app não sobe), depois os
   testes (5→7) e o checkpoint (8).
 - Nunca aplicar `migrate` em produção sem confirmação explícita do usuário.
-- O projeto usa PostGIS; rodar testes exige um usuário de banco com permissão de
-  criar o banco de teste (ver observação na execução do bugfix anterior).
+- O projeto usa PostGIS. Existe um banco de teste pré-criado **`raras_teste`**
+  (vazio, com PostGIS) para a suíte. O settings aponta
+  `DATABASES['default']['TEST']['NAME'] = 'raras_teste'`
+  (via env `DATABASE_TEST_NAME`, default `raras_teste`). Rodar com
+  `--keepdb` para reutilizar o banco sem recriá-lo (o usuário do banco
+  pode não ter `CREATEDB`):
+  `python manage.py test pages accounts --keepdb`
