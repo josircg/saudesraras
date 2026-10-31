@@ -48,11 +48,11 @@
                 <div class="row g-2 align-items-start" style="margin-bottom: 20px;">
                   <div class="col-md-4">
                     {% if pessoa.picture %}
-                        <img src="/media/{{ pessoa.picture }}"
+                        <img src="{{ pessoa.picture.url }}"
                             alt="Foto de {{ pessoa.user.name }}"
                             class="img-fluid rounded-circle" />
                     {% else %}
-                        <img src="/media/default_profile.png"
+                        <img src="{{ MEDIA_URL }}default_profile.png"
                             alt="Foto default"
                             class="img-fluid rounded-circle"
                              />
@@ -137,9 +137,9 @@
                   
                   <div class="col-md-2 d-flex justify-content-center mb-3 mb-md-0">
                     {% if item.picture %}
-                      <img src="/media/{{ item.picture }}" alt="Foto de {{ item.user.name }}" class="rounded-circle border" style="width: 70px; height: 70px; object-fit: cover;" />
+                      <img src="{{ item.picture.url }}" alt="Foto de {{ item.user.name }}" class="rounded-circle border" style="width: 70px; height: 70px; object-fit: cover;" />
                     {% else %}
-                      <img src="/media/default_profile.png" alt="Foto de {{ item.user.name }}" class="rounded-circle border" style="width: 70px; height: 70px; object-fit: cover;" />
+                      <img src="{{ MEDIA_URL }}default_profile.png" alt="Foto de {{ item.user.name }}" class="rounded-circle border" style="width: 70px; height: 70px; object-fit: cover;" />
                     {% endif %}
                   </div>
 
