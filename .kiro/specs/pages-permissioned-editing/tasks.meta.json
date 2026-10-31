@@ -1,0 +1,43 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Corrigir a dependência do django-guardian": [
+      {
+        "executionId": "f9cc0092-36ac-4747-af2d-198113ac3ca0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445763786
+      }
+    ],
+    "3. Aplicar e validar migrations do guardian": [
+      {
+        "executionId": "f9cc0092-36ac-4747-af2d-198113ac3ca0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445767081
+      }
+    ],
+    "2. Configurar o guardian para o AUTH_USER_MODEL customizado": [
+      {
+        "executionId": "f9cc0092-36ac-4747-af2d-198113ac3ca0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445771217
+      },
+      {
+        "executionId": "f9cc0092-36ac-4747-af2d-198113ac3ca0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445808968
+      }
+    ],
+    "4. Verificação de boot e ausência de regressão": [
+      {
+        "executionId": "d273280e-7469-4e95-81ec-0f3d0f043aad",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445916785
+      },
+      {
+        "executionId": "d273280e-7469-4e95-81ec-0f3d0f043aad",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445992375
+      }
+    ]
+  }
+}
