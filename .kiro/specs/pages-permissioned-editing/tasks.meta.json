@@ -1,0 +1,154 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Corrigir a dependência do django-guardian": [
+      {
+        "executionId": "f9cc0092-36ac-4747-af2d-198113ac3ca0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445763786
+      }
+    ],
+    "3. Aplicar e validar migrations do guardian": [
+      {
+        "executionId": "f9cc0092-36ac-4747-af2d-198113ac3ca0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445767081
+      }
+    ],
+    "2. Configurar o guardian para o AUTH_USER_MODEL customizado": [
+      {
+        "executionId": "f9cc0092-36ac-4747-af2d-198113ac3ca0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445771217
+      },
+      {
+        "executionId": "f9cc0092-36ac-4747-af2d-198113ac3ca0",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445808968
+      }
+    ],
+    "4. Verificação de boot e ausência de regressão": [
+      {
+        "executionId": "d273280e-7469-4e95-81ec-0f3d0f043aad",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445916785
+      },
+      {
+        "executionId": "d273280e-7469-4e95-81ec-0f3d0f043aad",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793445992375
+      }
+    ],
+    "5.1 Salvar usuário no admin com objetos nos seletores": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793446567323
+      },
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447711428
+      }
+    ],
+    "5.2 Pré-carregamento dos seletores reflete permissões existentes": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447714906
+      }
+    ],
+    "5. Testes do fluxo de permissões por objeto (admin)": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447714959
+      }
+    ],
+    "6.1 Superuser e permissão global permitem edição em qualquer objeto": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447720152
+      },
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447857055
+      }
+    ],
+    "6.2 Permissão por objeto na página permite editar a página e": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447869046
+      }
+    ],
+    "6.3 Permissão por objeto na seção permite editar a seção e criar/editar": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447870445
+      }
+    ],
+    "6.4 Usuário sem permissão recebe HTTP 403 com `no_permission.html` e": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447871574
+      }
+    ],
+    "6. Testes do modelo de autorização em cascata (front-end)": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447871644
+      }
+    ],
+    "7.1 `section_detail` pagina artigos (15/página) e exige `visible=True`;": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793447876243
+      },
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793448446622
+      }
+    ],
+    "7.3 Rotas `medicos`/`diagnostico`/`justica` renderizam Page do banco e": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793448444145
+      }
+    ],
+    "7.2 Busca `?q=` em `PageDetailView` filtra seções/artigos por": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793448445525
+      }
+    ],
+    "7. Testes de navegação e páginas institucionais": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793448446671
+      }
+    ],
+    "8. Checkpoint final de verificação": [
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793448450669
+      },
+      {
+        "executionId": "2f05021a-5be4-4fdc-a0f4-716c9f20e507",
+        "chatSessionId": "sess_71826676-f678-4891-9c59-7efcb434f4b0",
+        "timestamp": 1793448474795
+      }
+    ]
+  }
+}

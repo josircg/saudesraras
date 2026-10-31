@@ -30,8 +30,10 @@ class ResourceAdminBase(admin.ModelAdmin):
     migrate_to_cls = None
 
     def save_model(self, request, obj, form, change):
-        """Atribui automaticamente o utilizador logado como criador se estiver vazio"""
-        if not obj.creator_id:  # Verifica se o ID do criador está vazio
+        # Em criacao pelo admin, o form nao expoe 'creator' (FK obrigatoria).
+        # Preenche com o usuario logado (staff) para evitar
+        # RelatedObjectDoesNotExist em Resource.save() e registrar a autoria.
+        if not change and not obj.creator_id:
             obj.creator = request.user
         super().save_model(request, obj, form, change)
 
@@ -72,7 +74,7 @@ class ResourceAdminBase(admin.ModelAdmin):
 
 @admin.register(Resource)
 class ResourceAdmin(ResourceAdminBase):
-    fields = ('name', 'url', 'theme', 'category', 'abstract', 'publisher', 'keywords', 'approved', 'safe_url')
+    fields= ('name', 'url', 'theme', 'category', 'abstract', 'publisher', 'keywords', 'approved', 'safe_url')
     autocomplete_fields = ('organisation',)
     readonly_fields = ('image1', 'safe_url')
     migrate_to_cls = TrainingResource

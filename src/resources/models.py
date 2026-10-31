@@ -132,7 +132,7 @@ class Resource(models.Model):
 
     def save(self, *args, **kwargs):
         # approved can be null (not moderated), so we can't put self.approved = ... in one line
-        if not self.pk and self.creator.is_staff:
+        if not self.pk and self.creator_id and self.creator.is_staff:
             self.approved = True
 
         super().save(*args, **kwargs)

@@ -106,16 +106,16 @@ def article_detail(request, page_slug, section_id, article_id):
     return render(request, 'pages/article.html', context)
 
 def render_no_permission(request, message, item_type="", item_title="", perm_needed=""):
-    subject = quote(_("Solicitação de Acesso - Painel"))
+    subject = quote(_("Access Request - Panel"))
     
     if item_title:
-        body_text = _("Olá, gostaria de solicitar permissão para editar %(item_type)s '%(item_title)s' ou permissão geral de editar %(perm_needed)s.") % {
+        body_text = _("Hello, I would like to request permission to edit %(item_type)s '%(item_title)s' or general permission to edit %(perm_needed)s.") % {
             'item_type': item_type,
             'item_title': item_title,
             'perm_needed': perm_needed
         }
     else:
-        body_text = _("Olá, gostaria de solicitar permissão geral para editar %(perm_needed)s.") % {
+        body_text = _("Hello, I would like to request general permission to edit %(perm_needed)s.") % {
             'perm_needed': perm_needed
         }
         
@@ -139,8 +139,8 @@ def edit_page_generic(request, page_slug):
             request.user.has_perm('pages.change_page', page_obj)):
         return render_no_permission(
             request, 
-            message=_('Você não tem permissão para editar esta página.'),
-            item_type=_('a página'),
+            message=_('You do not have permission to edit this page.'),
+            item_type=_('the page'),
             item_title=getattr(page_obj, 'title', page_obj.slug),
             perm_needed='pages'
         )
@@ -169,8 +169,8 @@ def new_section_generic(request, page_slug):
             user.has_perm('pages.change_page', page_mae)):
         return render_no_permission(
             request, 
-            message=_('Você não tem permissão para criar seções.'),
-            item_type=_('a página'),
+            message=_('You do not have permission to create sections.'),
+            item_type=_('the page'),
             item_title=getattr(page_mae, 'title', page_mae.slug),
             perm_needed='sections'
         )
@@ -207,8 +207,8 @@ def edit_section_generic(request, page_slug, section_id):
             request.user.has_perm('pages.change_section', section)):
         return render_no_permission(
             request, 
-            message=_('Você não tem permissão para editar seções.'),
-            item_type=_('a seção'),
+            message=_('You do not have permission to edit sections.'),
+            item_type=_('the section'),
             item_title=getattr(section, 'title', f'ID {section.id}'),
             perm_needed='sections'
         )
@@ -246,8 +246,8 @@ def new_article_generic(request, page_slug, section_id):
             user.has_perm('pages.change_section', section)):
         return render_no_permission(
             request, 
-            message=_('Você não tem permissão para criar artigos.'),
-            item_type=_('a seção'),
+            message=_('You do not have permission to create articles.'),
+            item_type=_('the section'),
             item_title=getattr(section, 'title', f'ID {section.id}'),
             perm_needed='articles'
         )
@@ -288,8 +288,8 @@ def edit_article_generic(request, page_slug, section_id, article_id):
             request.user.has_perm('pages.change_article', article)):
         return render_no_permission(
             request, 
-            message=_('Você não tem permissão para editar artigos.'),
-            item_type=_('o artigo'),
+            message=_('You do not have permission to edit articles.'),
+            item_type=_('the article'),
             item_title=getattr(article, 'title', f'ID {article.id}'),
             perm_needed='articles'
         )

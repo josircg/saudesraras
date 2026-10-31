@@ -1,0 +1,49 @@
+[Unit]
+Description=Saudes Raras (Django)
+After=network.target
+
+# Proteção contra loop infinito de reinicialização
+# (StartLimit* pertencem à seção [Unit] no systemd atual)
+StartLimitIntervalSec=60s
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=webapp
+Group=www-data
+
+# O gunicorn roda a partir de 'src/' para que 'eucs_platform' esteja no
+# import path. O settings de produção já é o default (definido no wsgi.py),
+# e o local.env é lido por caminho absoluto em settings/local.env.
+WorkingDirectory=/var/webapp/saudesraras/src
+
+# Comando de Execução:
+# - Executa o binário do Gunicorn criado dentro do .venv do uv
+# - '--workers 4': Número de workers (recomendado: 2 x Núcleos de CPU + 1)
+# - '--bind 127.0.0.1:5000': Porta interna de escuta (consumida pelo nginx)
+# - '--access-logfile -' e '--error-logfile -': Direciona os logs para o journald
+# Obs.: projeto é WSGI (eucs_platform/wsgi.py); não usar workers uvicorn/ASGI.
+ExecStart=/var/webapp/saudesraras/.venv/bin/gunicorn eucs_platform.wsgi:application \
+          --workers 4 \
+          --bind 127.0.0.1:5000 \
+          --access-logfile - \
+          --error-logfile -
+
+# Politica de Auto-Restart em caso de crash
+Restart=on-failure
+RestartSec=5s
+
+# ======================================================
+# LIMITES DE RECURSOS NO SYSTEMD (Aplicados ao grupo Gunicorn + Workers)
+# ======================================================
+MemoryMax=1.0G
+MemoryHigh=1.0G
+CPUQuota=200%
+LimitNOFILE=65536
+
+# Isolamento e Segurança do SO
+ProtectSystem=full
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

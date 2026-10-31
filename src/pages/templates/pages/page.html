@@ -53,7 +53,9 @@
         
         
         
+        {% if user.is_authenticated %}
         {% get_obj_perms user for page as "page_perms" %}
+        {% endif %}
 
         <div class="row align-items-center mb-3">
             <div class="col-12 d-flex justify-content-end gap-2">
@@ -99,7 +101,9 @@
                 <div class="col-12 mb-5 pb-4 border-bottom">
                     
                     <!-- Pega as permissões específicas desta seção -->
+                    {% if user.is_authenticated %}
                     {% get_obj_perms user for secao as "secao_perms" %}
+                    {% endif %}
 
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                         <h2 class="text-blue2 fw-bold h3 mb-0">{{ secao.title }}</h2>
