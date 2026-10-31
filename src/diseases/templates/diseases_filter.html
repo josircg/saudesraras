@@ -9,8 +9,8 @@
             <div id="div-ordenacao" style="display: inline-block; min-width: 200px;">
                 <div class="title-filtros mb-1">{% trans "Order by" %}</div>
                 <div class="input-group input-group-sm filter-bar">
-                    <div class="input-group-text filter-img">
-                        <img src="{% static 'site/icons/order-icon.png' %}" height="14px" alt="">
+                    <div class="input-group-text filter-img filter-icon">
+                        <i class="bi bi-sort-down" style="font-size: 20px;"></i>
                     </div>
                     <select id="orderby" name="orderby" class="custom-select form-control" onchange="this.form.submit()">
                         <option value="name" {% if filters.orderby == "name" or not filters.orderby %}selected{% endif %}>{% trans "Name (A-Z)" %}</option>
@@ -22,8 +22,8 @@
             <div id="div-filtros" class="flex-grow-1" style="min-width: 280px; max-width: 400px; position: relative;">
                 <div class="title-filtros mb-1">{% trans "Filter by" %}</div>
                 <div class="input-group input-group-sm filter-bar position-relative">
-                    <div class="input-group-text filter-img" >
-                        <img src="{% static 'site/icons/filter-icon.png' %}" height="14px" alt="">
+                    <div class="input-group-text filter-icon" >
+                        <i class="bi bi-funnel" style="font-size: 20px;"></i>
                     </div>
 
                     <input type="text" id="symptom-autocomplete-input" class="form-control pr-5" placeholder="Digite um sintoma..." autocomplete="off">

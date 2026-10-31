@@ -10,8 +10,8 @@
             <div id="div-ordenacao">
                 <div class="title-filtros">{% trans "Order by" %}</div>
                 <div class="input-group input-group-sm filter-bar">
-                    <div class="input-group-text filter-img">
-                        <img src="{% static '../static/site/icons/order-icon.png' %}" height="14px;" alt="">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-sort-down" style="font-size: 20px;"></i>
                     </div>
                     <select id="orderby" name="orderby" class="custom-select form-control">
                         <option value="name" {% if filters.orderby == "name" or filters.orderby is None %}selected{% endif %}>{% trans "By Name" %}</option>
@@ -25,8 +25,8 @@
                 <div class="title-filtros">{% trans "Filter by" %}</div>
                 <div class="input-group input-group-sm filter-bar">
 
-                    <div class="input-group-text filter-img">
-                        <img src="{% static '../static/site/icons/filter-icon.png' %}" height="14px;" alt="">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-funnel" style="font-size: 20px;"></i>
                     </div>
 
                     <select id="country" name="country" class="custom-select form-control">

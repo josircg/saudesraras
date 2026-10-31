@@ -5,14 +5,24 @@
 {% block title %}{{ block.super }} :: Users{% endblock %}
 
 {% block list_of_items %}
-<div class="container mt-5">
-    <div clas="row">
-        <div class="col-12">
-            <h1>{% trans "User <span class='text-pink5'>search</span>" %}</h1>
-            <div>
-                {% include "_subnavbar_finder.html" %}
-                {% include "profiles/_finder_users.html" %}
+<div class="container mt-0">
+    <div class="border-top"
+                style="
+                margin: 3rem 5%;                
+                margin-top: 0;
+                border: 3px solid #114D7F;
+                margin-right: 0%;
+                margin-left: 0%;">
             </div>
+    <div clas="row">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mt-0 mb-4 text-blue2 lght" style="text-align: center;">{% trans "Users" %} </h1>
+            </div>
+                {% include "_subnavbar.html" %}
+                {% include "profiles/_finder_users.html" %}
+        </div>
+                    
             <div class="row">
                 {% if users %}
                 <div class="row">
@@ -24,7 +34,6 @@
                 </div>
                 {% endif %}
             </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-12 mt-3 mb-3">

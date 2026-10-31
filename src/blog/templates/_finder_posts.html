@@ -1,0 +1,274 @@
+
+{% load i18n %}
+{% load static %}
+
+<div class="row">
+    <form class="form-inline float-lg-right w-100"
+          id="searchBlogFilters"
+          action="{% url 'blog' %}"
+          method="GET">
+
+        <input type="hidden" name="keywords" value="{{ filters.keywords }}">
+
+        <div class="col-12 d-flex flex-row flex-wrap align-items-end"
+             style="gap: 20px;">
+
+            <div id="div-ordenacao" style="min-width: 220px;">
+                <div class=" mb-1">
+                    {% trans "Order by" %}
+                </div>
+
+                <div class="input-group input-group-sm filter-bar">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-sort-down" style="font-size: 20px;"></i>
+                    </div>
+
+                    <select id="blog-orderby"
+                            name="orderby"
+                            class="custom-select form-control"
+                            onchange="document.getElementById('searchBlogFilters').submit()">
+
+                        <option value="title"
+                            {% if filters.orderby == "title" %}selected{% endif %}>
+                            Título (A–Z)
+                        </option>
+
+                        <option value="-title"
+                            {% if filters.orderby == "-title" %}selected{% endif %}>
+                            Título (Z–A)
+                        </option>
+
+                        <option value="-created_on"
+                            {% if filters.orderby == "-created_on" or not filters.orderby %}selected{% endif %}>
+                            Publicação (mais recente)
+                        </option>
+
+                        <option value="created_on"
+                            {% if filters.orderby == "created_on" %}selected{% endif %}>
+                            Publicação (mais antiga)
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="div-autor"
+                 class="flex-grow-1"
+                 style="min-width: 220px; max-width: 350px; position: relative;">
+
+                <div class=" mb-1">
+                    {% trans "Filter by author" %}
+                </div>
+
+                <div class="input-group input-group-sm filter-bar">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-person" style="font-size: 20px;"></i>
+                    </div>
+
+                    <input type="text"
+                           id="blog-author-input"
+                           class="form-control"
+                           placeholder="Digite o nome do autor..."
+                           autocomplete="off"
+                           value="{{ filters.author_name }}">
+
+                    <input type="hidden"
+                           id="blog-author-id"
+                           name="author"
+                           value="{{ filters.author }}">
+                </div>
+
+                <ul id="blog-author-suggestions"
+                    class="list-group position-absolute w-100 mt-1 d-none"
+                    style="z-index: 1000; max-height: 220px; overflow-y: auto; box-shadow: 0 4px 6px rgba(0,0,0,.1);">
+                </ul>
+            </div>
+
+            <div id="div-periodo" style="min-width: 280px;">
+                <div class="mb-1">
+                    {% trans "Filter by publication period" %}
+                </div>
+
+                <div class="input-group input-group-sm filter-bar">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-calendar-range" style="font-size: 20px;"></i>
+                    </div>
+
+                    <input type="date"
+                           id="blog-start-date"
+                           name="start_date"
+                           class="form-control date-timer"
+                           value="{{ filters.start_date }}"
+                           aria-label="Data inicial">
+
+                    <input type="date"
+                           id="blog-end-date"
+                           name="end_date"
+                           class="form-control date-timer"
+                           value="{{ filters.end_date }}"
+                           aria-label="Data final">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row w-100">
+            <div class="col-12 mb-0">
+
+                {% if filters.author %}
+                    <a href="#"
+                       id="remove-blog-author"
+                       class="badge rounded-pill bg-blue1 mt-4 text-white text-decoration-none p-2">
+                        <i class="fas fa-times"></i>
+                        Autor: {{ filters.author_name }}
+                    </a>
+                {% endif %}
+
+                {% if filters.start_date or filters.end_date %}
+                    <a href="#"
+                       id="remove-blog-dates"
+                       class="badge rounded-pill bg-blue2 mt-4 text-white text-decoration-none p-2">
+                        <i class="fas fa-times"></i>
+                        Período: {{ filters.start_date|default:"..." }} – {{ filters.end_date|default:"..." }}
+                    </a>
+                {% endif %}
+
+                {% if filters.keywords or filters.author or filters.start_date or filters.end_date or filters.orderby != "-created_on" %}
+                    <a href="{% url 'blog' %}"
+                       class="badge rounded-pill bg-blue3 text-white text-decoration-none mt-4 p-2">
+                        <i class="fas fa-times"></i>
+                        {% trans "Clear current search query and filters" %}
+                    </a>
+                {% endif %}
+
+                <div class="small result mb-3 mt-3">
+                    {{ page_obj.paginator.count }}
+                    {% if page_obj.paginator.count != 1 %}
+                        notícias encontradas
+                    {% else %}
+                        notícia encontrada
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    (function () {
+        const form = document.getElementById('searchBlogFilters');
+
+        if (!form) return;
+
+        const authorInput = document.getElementById('blog-author-input');
+        const authorIdInput = document.getElementById('blog-author-id');
+        const suggestionsList = document.getElementById('blog-author-suggestions');
+        const startDate = document.getElementById('blog-start-date');
+        const endDate = document.getElementById('blog-end-date');
+
+        let authorTimer;
+        let dateTimer;
+
+        const authors = [
+            {% for author in all_authors %}
+            {
+                id: "{{ author.id|escapejs }}",
+                name: "{{ author.name|escapejs }}"
+            },
+            {% endfor %}
+        ];
+
+        authorInput.addEventListener('input', function () {
+            clearTimeout(authorTimer);
+            authorIdInput.value = '';
+
+            const query = this.value.trim().toLocaleLowerCase();
+
+            if (query.length < 2) {
+                suggestionsList.classList.add('d-none');
+                return;
+            }
+
+            suggestionsList.innerHTML = `
+                <li class="list-group-item text-muted text-center py-2">
+                    <i class="fas fa-clock me-1"></i>
+                    Buscando autores...
+                </li>
+            `;
+            suggestionsList.classList.remove('d-none');
+
+            authorTimer = setTimeout(function () {
+                suggestionsList.innerHTML = '';
+
+                const matches = authors.filter(function (author) {
+                    return author.name.toLocaleLowerCase().includes(query);
+                }).slice(0, 10);
+
+                if (matches.length === 0) {
+                    const item = document.createElement('li');
+                    item.className = 'list-group-item text-muted text-center py-2';
+                    item.textContent = 'Nenhum autor encontrado.';
+                    suggestionsList.appendChild(item);
+                    suggestionsList.classList.remove('d-none');
+                    return;
+                }
+
+                matches.forEach(function (author) {
+                    const item = document.createElement('li');
+                    item.className = 'list-group-item list-group-item-action py-2';
+                    item.style.cursor = 'pointer';
+                    item.textContent = author.name;
+
+                    item.addEventListener('click', function () {
+                        authorInput.value = author.name;
+                        authorIdInput.value = author.id;
+                        suggestionsList.classList.add('d-none');
+
+                        form.submit();
+                    });
+
+                    suggestionsList.appendChild(item);
+                });
+
+                suggestionsList.classList.remove('d-none');
+            }, 1000);
+        });
+
+        function scheduleDateSearch() {
+            clearTimeout(dateTimer);
+
+            dateTimer = setTimeout(function () {
+                if (startDate.value && endDate.value &&
+                    startDate.value > endDate.value) {
+                    return;
+                }
+
+                form.submit();
+            }, 1000);
+        }
+
+        startDate.addEventListener('change', scheduleDateSearch);
+        endDate.addEventListener('change', scheduleDateSearch);
+
+        document.getElementById('remove-blog-author')?.addEventListener('click', function (event) {
+            event.preventDefault();
+            authorIdInput.value = '';
+            authorInput.value = '';
+            form.submit();
+        });
+
+        document.getElementById('remove-blog-dates')?.addEventListener('click', function (event) {
+            event.preventDefault();
+            startDate.value = '';
+            endDate.value = '';
+            form.submit();
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('#div-autor')) {
+                suggestionsList.classList.add('d-none');
+            }
+        });
+    })();
+</script>
