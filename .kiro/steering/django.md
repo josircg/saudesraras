@@ -117,12 +117,29 @@ O script executa (a partir de `src/`):
 2. `utilities/clean.py` — limpeza dos `.po`.
 3. `manage.py compilemessages` — compila os `.po` em `.mo` (ativa as traduções).
 
-Observações:
-- Requer o `gettext` do sistema (`msgfmt`/`xgettext`); já disponível no ambiente.
-- Ao adicionar/alterar texto visível ao usuário, rode o `translate.sh`, revise os
-  `.po` (traduza as entradas novas de `es`/`en`) e rode de novo para compilar.
-- Só compilar (sem extrair), quando os `.po` já estão traduzidos:
-  `uv run manage.py compilemessages`.
+**Requisito de sistema — GNU gettext:** `makemessages`/`compilemessages`
+dependem dos binários do `gettext` do SO (`msgfmt`, `msguniq`, `xgettext`), que
+**não** vêm pelo `uv`/pip. Instale no SO (uma vez por máquina):
+
+```
+# Debian/Ubuntu (servidor usa www-data):
+sudo apt-get update && sudo apt-get install -y gettext
+# RHEL/Fedora: sudo dnf install gettext   |   Alpine: apk add gettext
+```
+
+Sem o gettext, o erro é `CommandError: Can't find msgfmt/msguniq. Make sure you
+have GNU gettext tools ... installed.`
+
+**Dev vs. deploy (importante):** os `.mo` são **git-ignored** (`*.mo` no
+`.gitignore`), ou seja, não são versionados — precisam ser gerados onde a app
+roda.
+- **Desenvolvimento** (extrair + traduzir + compilar): rode o `translate.sh`
+  completo ao alterar texto visível; revise os `.po` (traduza `es`/`en`) e rode
+  de novo.
+- **Deploy/servidor** (apenas compilar os `.po` versionados): rode
+  `uv run manage.py compilemessages` — **não** rode o `translate.sh` inteiro no
+  servidor (o `makemessages` reescreveria os `.po` fora do controle de versão).
+  Este passo exige o `gettext` instalado no servidor.
 ## Apps locais
 
 São **15 apps**, todos em `src/`: `accounts`, `authors`, `blog`, `contact`,
