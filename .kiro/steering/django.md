@@ -56,6 +56,17 @@ estiver configurado na máquina.)
 
 A suíte de testes ainda é mínima. Ao criar testes, use o runner padrão do Django
 (`python manage.py test <app>`).
+
+**Banco de teste:** existe um banco **`raras_teste`** pré-criado (vazio, com
+PostGIS) para a suíte, porque o usuário do banco pode não ter `CREATEDB`. O
+settings define `DATABASES['default']['TEST']['NAME']` a partir da env
+`DATABASE_TEST_NAME` (default `raras_teste`). Rode sempre com `--keepdb`
+para reutilizar o banco sem tentar recriá-lo:
+
+```
+cd src
+uv run manage.py test <app> --keepdb
+```
 ## Apps locais
 
 São **15 apps**, todos em `src/`: `accounts`, `authors`, `blog`, `contact`,

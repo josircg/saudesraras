@@ -191,6 +191,11 @@ DATABASES = {
         'PASSWORD': env("DATABASE_PASSWORD"),
         'HOST': env('DATABASE_HOST'),
         'PORT': '5432',
+        # Banco de teste pre-criado (o usuario do banco pode nao ter CREATEDB).
+        # Rodar a suite com --keepdb para reutilizar este banco sem recria-lo.
+        'TEST': {
+            'NAME': env('DATABASE_TEST_NAME', default='raras_teste'),
+        },
     }
 }
 
