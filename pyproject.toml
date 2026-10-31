@@ -58,4 +58,9 @@ poweradmin = { git = "https://bitbucket.org/josir/poweradmin.git", rev = "django
 dev = [
     "fabric>=3.2.2",
 ]
+# Dependencias so de producao (servidor WSGI). Nao sao instaladas no
+# desenvolvimento normal; no servidor rodar: uv sync --group prod
+prod = [
+    "gunicorn>=21.2.0",
+]
 
