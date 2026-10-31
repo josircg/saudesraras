@@ -250,6 +250,13 @@ AUTHENTICATION_BACKENDS = (
     'guardian.backends.ObjectPermissionBackend',  # Backend do Guardian
 )
 
+# django-guardian: o AUTH_USER_MODEL e' authtools.User (login por email, sem
+# 'username'), entao o usuario anonimo padrao do guardian nao se aplica.
+# As permissoes por objeto desta plataforma sao sempre para usuarios
+# autenticados (as views de edicao usam @login_required), portanto
+# desabilitamos a criacao do anonymous user do guardian.
+ANONYMOUS_USER_NAME = None
+
 THUMBNAIL_EXTENSION = "png"  # Or any extn for your thumbnails
 
 LEAFLET_CONFIG = {

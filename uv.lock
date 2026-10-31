@@ -749,6 +749,19 @@ wheels = [
 ]
 
 [[package]]
+name = "django-guardian"
+version = "3.5.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/84/ed/d31c3befa315d8cf52efea39078ab4871b866f03dddfa01f2ab630a8182d/django_guardian-3.5.2.tar.gz", hash = "sha256:ca14b7c9cc37bc852f3749f8a998a76cfd0ebbd66ac85726ef331289a712d389", size = 124548, upload-time = "2026-10-20T10:51:23.355Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1b/5c/be6e4a9391fb0a87770ad210df9fa1e3ac523ef2e70cb906376c28200aad/django_guardian-3.5.2-py3-none-any.whl", hash = "sha256:545ea01d528830d936c129a125dc2f1aba581da4c3f3daa5d4d1e31654e276a8", size = 159192, upload-time = "2026-10-20T10:51:21.771Z" },
+]
+
+[[package]]
 name = "django-js-asset"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1909,6 +1922,7 @@ dependencies = [
     { name = "django-cron" },
     { name = "django-debug-toolbar" },
     { name = "django-environ" },
+    { name = "django-guardian" },
     { name = "django-leaflet" },
     { name = "django-oauth-toolkit" },
     { name = "django-oidc-provider" },
@@ -1963,6 +1977,7 @@ requires-dist = [
     { name = "django-cron", specifier = "==0.5.1" },
     { name = "django-debug-toolbar", specifier = "==4.2.0" },
     { name = "django-environ", specifier = "==0.11.2" },
+    { name = "django-guardian", specifier = ">=3.5.2" },
     { name = "django-leaflet", specifier = "==0.28.3" },
     { name = "django-oauth-toolkit", specifier = "==2.3.0" },
     { name = "django-oidc-provider", specifier = "==0.8.0" },
