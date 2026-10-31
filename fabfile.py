@@ -7,37 +7,34 @@ from datetime import datetime
 
 from invoke import UnexpectedExit
 
-HML_SERVER = 'webapp@54.234.183.153'
+AWS_SERVER = 'webapp@54.234.183.153'
+MG1_SERVER = 'webapp@201.23.84.25'
 
 
 def deploy(connection, path):
-    with connection.cd(path):
-        connection.run('git pull')
-        connection.run('../../bin/python3 manage.py migrate')
-        connection.run('../../bin/python3 manage.py compilemessages')
-        connection.run('../../bin/python3 manage.py collectstatic --noinput')
-        connection.run('supervisorctl restart raras')
-        print('Atualização efetuada com sucesso!')
+    # O `uv` fica em ~/.local/bin, que NAO entra no PATH de uma shell
+    # nao-interativa/nao-login (como a do connection.run). Sem isso, os
+    # comandos `uv ...` falham com "command not found". O prefix abaixo
+    # garante o PATH para todos os comandos do bloco (usa $HOME, sem hardcode).
+    with connection.prefix('export PATH="$HOME/.local/bin:$PATH"'):
+        with connection.cd(path):
+            connection.run('git pull')
+            connection.run('uv sync --group=prod')
+            connection.run('uv run manage.py migrate')
+            connection.run('uv run manage.py compilemessages')
+            connection.run('uv run manage.py collectstatic --noinput')
+            connection.run('sudo systemctl restart saudesraras')
+            print('Atualização efetuada com sucesso!')
 
 
 @task
-def deploy_hml(context):
-    deploy(Connection(HML_SERVER), '/var/webapp/raras/saudesraras/src')
+def deploy_producao(context):
+    deploy(Connection(MG1_SERVER), '/var/webapp/saudesraras/src')
 
 
 @task
-def upgrade_requirements_hml(context):
-    connection = Connection(HML_SERVER)
-    with connection.cd('/var/webapp/raras/saudesraras/src'):
-        connection.run('git pull')
-        connection.run('../../bin/pip install django_select2 --upgrade')
-        connection.run('../../bin/pip install -r ../requirements.txt')
-        print('Atualização efetuada')
-
-
-@task
-def connect_hml(context):
-    connection = Connection(HML_SERVER)
+def connect(context):
+    connection = Connection(MG1_SERVER)
     with connection.cd('/var/webapp/'):
         result = connection.run('ls', hide=True)
     msg = "Ran {0.command!r} on {0.connection.host}, got stdout:\n{0.stdout}"
@@ -66,8 +63,8 @@ def get_database(connection, banco, path):
     with connection.cd(path):
         print('Conectado')
         # Verifica se o arquivo pgpass existe
-        home_dir = connection.run('echo $HOME', hide=True).stdout.strip()
-        filename = f'{home_dir}/.pgpass'
+        home_path = connection.run('echo $HOME', hide=True).stdout.strip()
+        filename = f'{home_path}/.pgpass'
         if not file_exists(connection, filename):
             print(f'Arquivo de senha não encontrado: {filename}')
             return
@@ -89,7 +86,7 @@ def get_mediafiles(connection, path):
 
 @task
 def get_file(connection):
-    connection = Connection(HML_SERVER)
+    connection = Connection(MG1_SERVER)
     connection.get('/var/webapp/raras/db.sql')
     print('Arquivo copiado na pasta local')
 
@@ -101,8 +98,8 @@ def backup_local(context):
 
 @task
 def backup(context):
-    connection = Connection(HML_SERVER)
-    get_database(connection, banco='raras_usr@db-postgres.cpklsdpnssqm.us-east-1.rds.amazonaws.com:5432/raras', path='/var/webapp/raras')
+    connection = Connection(MG1_SERVER)
+    get_database(connection, banco='raras@localhost/saudesraras', path='/var/webapp/raras')
     get_mediafiles(connection,path='/var/webapp/raras')
 
 
