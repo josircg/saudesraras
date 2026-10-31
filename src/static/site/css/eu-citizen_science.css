@@ -1342,3 +1342,22 @@ footer #parcerias .parceiros-logos img {
     color: white !important;
     border-color: var(--blue2) !important;
 }
+
+@media (min-width: 768px) {
+  /* Em tablets (md), mostra 2 itens */
+  .multi-item-carousel .carousel-inner {
+    display: flex;
+  }
+  .multi-item-carousel .carousel-item {
+    margin-right: 0;
+    flex: 0 0 50%;
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Em desktops (lg), mostra 4 itens */
+  .multi-item-carousel .carousel-item {
+    flex: 0 0 25%;
+  }
+}

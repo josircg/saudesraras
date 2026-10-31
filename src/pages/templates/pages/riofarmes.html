@@ -10,15 +10,12 @@
 <div class="mt-5">
     {% if object.image %}
     <div class="position-relative overflow-hidden rounded shadow-sm mb-4" style="min-height: 350px;">
-        <!-- Imagem de fundo cobrindo -->
         <img 
             src="{{ object.image.url }}" 
             class="position-absolute top-0 start-0 w-100 h-100" 
             style="object-fit: cover; z-index: 1;" 
             alt="{{ object.title }}"
         >
-
-        <!-- Camada de overlay branco -->
         <div 
             class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-4" 
             style="
@@ -28,14 +25,12 @@
                 z-index: 2;
             "
         >
-            <!-- Título centralizado-->
-            <h1 class="text-center text-blue3 fw-bold m-0" style="font-size: 70px;" >
+            <h1 class="text-center text-blue3 fw-bold m-0" style="font-size: 70px;">
                 {{ object.title|default:object.header|safe }}
             </h1>
         </div>
     </div>
     {% else %}
-    
     <div class="row align-items-center mb-3">
         <div class="col-12">
             <h1 class="text-center mb-3 text-blue3 fw-bold">
@@ -45,12 +40,10 @@
     </div>
     {% endif %}
 </div>
+
 <div class="container mt-5">
-    
     <div class="row align-items-center mb-3">
         <div class="col-12">
-            
-            
             {% if object.content %}
             <div class="text-center text-home" style="font-size: 2.2rem;">
                 {{ object.content|safe }}
@@ -123,37 +116,14 @@
                     </div>
                     {% endif %}
 
-                    <!-- SEÇÃO DE UNIDADES (INCLUDE) -->
                     {% if "unidades" in secao.title|default:secao.header|lower %}
                         {% with artigos_list=secao.top_articles|default:secao.articles.articles_by_order %}
                             {% include "../includes/_mapa_unidades.html" with artigos_list=artigos_list %}
                         {% endwith %}
                     {% else %}
-                        <!-- RENDERIZAÇÃO PADRÃO PARA OUTRAS SEÇÕES -->
+                        <!-- INCLUSÃO DO COMPONENTE SEPARADO DO CARROSSEL -->
                         {% with artigos_list=secao.top_articles|default:secao.articles.articles_by_order %}
-                        {% if artigos_list %}
-                            <div class="row g-3">
-                                {% for artigo in artigos_list %}
-                                    <div class="col-md-3 col-sm-6 col-12">
-                                        <div class="card h-100 border shadow-sm">
-                                            <div class="card-body p-3 d-flex flex-column justify-content-between">
-                                                <div>
-                                                    <h6 class="card-title text-dark fw-bold mb-2">
-                                                        {{ artigo.title|default:artigo.header|striptags|truncatechars:60 }}
-                                                    </h6>
-                                                    <p class="card-text text-muted small mb-3">
-                                                        {{ artigo.content|striptags|truncatechars:90 }}
-                                                    </p>
-                                                </div>
-                                                <a href="{% url 'article_detail' page_slug=object.slug section_id=secao.id article_id=artigo.id %}" class="stretched-link small text-decoration-none fw-medium">
-                                                    {% trans "Ver detalhes" %}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
+                            {% include "../includes/_carrossel_artigos.html" with artigos_list=artigos_list secao_id=secao.id page_slug=object.slug %}
                         {% endwith %}
                     {% endif %}
 

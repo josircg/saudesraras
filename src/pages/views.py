@@ -54,7 +54,7 @@ class PageDetailView(DetailView):
                     Q(content__icontains=query)
                 )
             section_title = (section.title or section.header or '').lower()
-            if 'unidades' in section_title and page_obj.slug == 'riofarmes':
+            if page_obj.slug == 'riofarmes':
                 section.top_articles = articles_queryset
             else:
                 section.top_articles = articles_queryset[:4]
