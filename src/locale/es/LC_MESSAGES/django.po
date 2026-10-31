@@ -2429,11 +2429,8 @@ msgid ""
 "for 'not yet moderated' or 'All'."
 msgstr ""
 
-msgid "Publisher information"
-msgstr "Información de la editorial"
-
-msgid "Links with projects and/or organisations"
-msgstr "Enlaces con proyectos y/u organizaciones."
+msgid "Authors"
+msgstr "Autoría"
 
 msgid "Go to Training"
 msgstr "Ir a Formación"
@@ -2441,8 +2438,11 @@ msgstr "Ir a Formación"
 msgid "Go to Resource"
 msgstr "Ir al Recurso"
 
-msgid "Comment"
-msgstr "Comentario"
+msgid "Links with projects and/or organisations"
+msgstr "Enlaces con proyectos y/u organizaciones."
+
+msgid "Publisher information"
+msgstr "Información de la editorial"
 
 msgid "Please specify the primary language in which the resource is available"
 msgstr ""
@@ -2586,6 +2586,11 @@ msgstr "Registre su organización o red"
 #| msgid "Register a citizen science event"
 msgid "Register a new rare health event"
 msgstr "Registrar un evento de ciencia ciudadana"
+
+#, fuzzy
+#| msgid "Register your organisation or network"
+msgid "Register a new booklet, article or resource"
+msgstr "Registre su organización o red"
 
 msgid "Register a new rare health news"
 msgstr ""
@@ -2951,6 +2956,15 @@ msgid "TOTALS"
 msgstr ""
 
 #, fuzzy
+#~| msgctxt "masc"
+#~| msgid "New"
+#~ msgid "New"
+#~ msgstr "Nuevo"
+
+#~ msgid "Comment"
+#~ msgstr "Comentario"
+
+#, fuzzy
 #~| msgid "Symptoms"
 #~ msgid "All Symptoms"
 #~ msgstr "Sintomas"
@@ -2987,9 +3001,6 @@ msgstr ""
 #~ "termine con una coma o pulsando enter para añadir al autor, o múltiples "
 #~ "autores. Si los desconoce, indique el nombre del proyecto que generó el "
 #~ "recurso"
-
-#~ msgid "Authors"
-#~ msgstr "Autoría"
 
 #~ msgid "Image for the resource profile heading"
 #~ msgstr "Imagen para el encabezamiento del perfil de recursos"
