@@ -20,7 +20,8 @@ o comportamento já implementado, sem regressões. Rodar comandos a partir de
     { "wave": 3, "tasks": ["3"] },
     { "wave": 4, "tasks": ["4"] },
     { "wave": 5, "tasks": ["5", "6", "7"] },
-    { "wave": 6, "tasks": ["8"] }
+    { "wave": 6, "tasks": ["8"] },
+    { "wave": 7, "tasks": ["9"] }
   ],
   "dependencies": {
     "2": ["1"],
@@ -29,7 +30,8 @@ o comportamento já implementado, sem regressões. Rodar comandos a partir de
     "5": ["4"],
     "6": ["4"],
     "7": ["4"],
-    "8": ["5", "6", "7"]
+    "8": ["5", "6", "7"],
+    "9": ["8"]
   }
 }
 ```
@@ -110,15 +112,28 @@ o comportamento já implementado, sem regressões. Rodar comandos a partir de
 - [x] 8. Checkpoint final de verificação
   - A partir de `src/`: `python manage.py check`;
     `python manage.py makemigrations --check --dry-run`;
-    `python manage.py test pages accounts`
+    `python manage.py test pages accounts --keepdb`
   - Garantir que todos os testes passam e não há drift
   - _Requisitos: 8.1, 8.2_
+
+- [ ] 9. Compilar mensagens de tradução
+  - A feature adiciona templates e strings traduzíveis (`_()`/`gettext` nas
+    views de `pages`, mensagens do 403 e textos dos novos templates)
+  - A partir de `src/`, rodar o script de tradução: `uv run bash translate.sh`
+    (extrai com `makemessages --all --no-location`, limpa via
+    `utilities/clean.py` e compila com `compilemessages`)
+  - Revisar os `.po` de `es`/`en` para as entradas novas e rodar de novo para
+    gerar os `.mo` atualizados
+  - _Requisitos: produto multi-idioma (pt-br/es/en)_
 
 ## Notes
 
 - Ordem recomendada: tasks 1→4 primeiro (sem elas a app não sobe), depois os
   testes (5→7) e o checkpoint (8).
 - Nunca aplicar `migrate` em produção sem confirmação explícita do usuário.
+- Ao mexer em strings traduzíveis/templates, rodar `uv run bash translate.sh`
+  (de `src/`) para extrair, limpar e **compilar** as mensagens — sem o
+  `compilemessages` (gera os `.mo`) as traduções não entram em runtime.
 - O projeto usa PostGIS. Existe um banco de teste pré-criado **`raras_teste`**
   (vazio, com PostGIS) para a suíte. O settings aponta
   `DATABASES['default']['TEST']['NAME'] = 'raras_teste'`
