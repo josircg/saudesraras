@@ -161,6 +161,7 @@ INSTALLED_APPS = (
     'ckeditor_uploader',
     'django_cleanup.apps.CleanupConfig',
     'utilities',
+    'guardian'
 )
 
 MIDDLEWARE = [
@@ -190,6 +191,11 @@ DATABASES = {
         'PASSWORD': env("DATABASE_PASSWORD"),
         'HOST': env('DATABASE_HOST'),
         'PORT': '5432',
+        # Banco de teste pre-criado (o usuario do banco pode nao ter CREATEDB).
+        # Rodar a suite com --keepdb para reutilizar este banco sem recria-lo.
+        'TEST': {
+            'NAME': env('DATABASE_TEST_NAME', default='raras_teste'),
+        },
     }
 }
 
@@ -243,6 +249,18 @@ MESSAGE_TAGS = {
 AUTH_USER_MODEL = "authtools.User"
 LOGIN_REDIRECT_URL = reverse_lazy("home")
 LOGIN_URL = reverse_lazy("accounts:login")
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Padrão do Django
+    'guardian.backends.ObjectPermissionBackend',  # Backend do Guardian
+)
+
+# django-guardian: o AUTH_USER_MODEL e' authtools.User (login por email, sem
+# 'username'), entao o usuario anonimo padrao do guardian nao se aplica.
+# As permissoes por objeto desta plataforma sao sempre para usuarios
+# autenticados (as views de edicao usam @login_required), portanto
+# desabilitamos a criacao do anonymous user do guardian.
+ANONYMOUS_USER_NAME = None
 
 THUMBNAIL_EXTENSION = "png"  # Or any extn for your thumbnails
 
@@ -438,3 +456,4 @@ ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomAppIndexDashboa
 USER_AGENT = env('USER_AGENT')
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+

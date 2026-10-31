@@ -304,9 +304,13 @@ msgstr "Importar CSV"
 msgid "Contact"
 msgstr "Contato"
 
+#, fuzzy
+#| msgid ""
+#| "You can reach out by this form, or through the email: <a href='mailto:"
+#| "laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 msgid ""
 "You can reach out by this form, or through the email: <a href='mailto:"
-"laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
+"saudesraras@gmail.com'>saudesraras@gmail.com</a>"
 msgstr ""
 "Entre em contato pelo formulário ou envie um e-mail para: <a href='mailto:"
 "laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
@@ -1011,8 +1015,179 @@ msgstr "Artigo"
 msgid "Articles"
 msgstr "Artigos"
 
+msgid "Buscar"
+msgstr ""
+
+msgid "Digite sua busca..."
+msgstr ""
+
+msgid "Busca:"
+msgstr ""
+
+msgid "Limpar busca"
+msgstr ""
+
+msgid "item(ns) encontrado(s)"
+msgstr ""
+
+msgid "Voltar para"
+msgstr ""
+
+msgid "Voltar"
+msgstr ""
+
+msgid "Editar Conteúdo"
+msgstr ""
+
+msgid "Se gostou, compartilhe"
+msgstr ""
+
+msgid "Copiar Link"
+msgstr ""
+
+msgid "Copiar link"
+msgstr ""
+
+msgid "Compartilhar no WhatsApp"
+msgstr ""
+
+msgid "Link copiado para a área de transferência!"
+msgstr ""
+
+msgid "Formulário de Artigo"
+msgstr ""
+
+msgid "Editar Artigo Relacionado"
+msgstr ""
+
+msgid "Adicionar Novo Artigo"
+msgstr ""
+
+#, fuzzy
+#| msgid "Cancel"
+msgid "Cancelar"
+msgstr "Cancelar"
+
+msgid "Salvar Artigo"
+msgstr ""
+
 msgid "FAQ"
 msgstr "Perguntas frequentes"
+
+msgid "Acessar página"
+msgstr "Acessar página"
+
+msgid "Acesso Negado"
+msgstr ""
+
+msgid "Acesso Não Permitido"
+msgstr ""
+
+msgid ""
+"Você não possui a permissão necessária para acessar ou editar esta seção."
+msgstr ""
+
+msgid "Voltar para Home"
+msgstr ""
+
+msgid "Solicitar Acesso"
+msgstr ""
+
+#, fuzzy
+#| msgid "Acessar página"
+msgid "Editar Página"
+msgstr "Acessar página"
+
+msgid "Add Seção"
+msgstr ""
+
+msgid "Buscar conteúdo..."
+msgstr ""
+
+msgid "Digite o que procura..."
+msgstr ""
+
+msgid "Editar Seção"
+msgstr ""
+
+msgid "Adicionar Artigo"
+msgstr ""
+
+msgid "Add Artigo"
+msgstr ""
+
+msgid "Ver mais"
+msgstr ""
+
+msgid "Nenhum conteúdo estruturado nesta página."
+msgstr ""
+
+msgid "Cancelar e voltar"
+msgstr ""
+
+msgid "Editar Configurações da Página"
+msgstr ""
+
+msgid "Salvar Alterações"
+msgstr ""
+
+#, fuzzy
+#| msgid "Editing"
+msgid "Editar Artigo"
+msgstr "Editar"
+
+msgid "Nenhum artigo cadastrado para esta seção ainda."
+msgstr ""
+
+msgid "Formulário de Seção"
+msgstr ""
+
+msgid "Adicionar Nova Seção"
+msgstr ""
+
+msgid "Salvar Conteúdo"
+msgstr ""
+
+msgid "Access Request - Panel"
+msgstr "Solicitação de Acesso - Painel"
+
+#, python-format
+msgid ""
+"Hello, I would like to request permission to edit %(item_type)s "
+"'%(item_title)s' or general permission to edit %(perm_needed)s."
+msgstr ""
+"Olá, gostaria de solicitar permissão para editar %(item_type)s "
+"'%(item_title)s' ou permissão geral de editar %(perm_needed)s."
+
+#, python-format
+msgid ""
+"Hello, I would like to request general permission to edit %(perm_needed)s."
+msgstr ""
+"Olá, gostaria de solicitar permissão geral para editar %(perm_needed)s."
+
+msgid "You do not have permission to edit this page."
+msgstr "Você não tem permissão para editar esta página."
+
+msgid "the page"
+msgstr "a página"
+
+msgid "You do not have permission to create sections."
+msgstr "Você não tem permissão para criar seções."
+
+msgid "You do not have permission to edit sections."
+msgstr "Você não tem permissão para editar seções."
+
+msgid "the section"
+msgstr "a seção"
+
+msgid "You do not have permission to create articles."
+msgstr "Você não tem permissão para criar artigos."
+
+msgid "You do not have permission to edit articles."
+msgstr "Você não tem permissão para editar artigos."
+
+msgid "the article"
+msgstr "o artigo"
 
 msgid "Please write the name of the citizen science platform."
 msgstr "Escreva o nome da plataforma de ciência cidadã."
@@ -2284,11 +2459,11 @@ msgstr ""
 msgid "Profile"
 msgstr "Perfil"
 
-msgid "Logout"
-msgstr "Sair"
-
 msgid "Admin"
 msgstr "Admin"
+
+msgid "Logout"
+msgstr "Sair"
 
 msgid "Coming Soon"
 msgstr "Em breve"
@@ -2367,7 +2542,7 @@ msgstr "Como devo ser tratada pela(os) médica(os?)"
 msgid "Justice"
 msgstr "Meus direitos"
 
-msgid "SUS"
+msgid "Where can I find my medicine (RJ)"
 msgstr "Onde eu acho o meu remédio? (RJ)"
 
 msgid "Publications"
@@ -2393,6 +2568,9 @@ msgstr "Saiba como"
 
 msgid "Our medias:"
 msgstr "Nossas redes:"
+
+msgid "No FAQ registered yet"
+msgstr "Nenhuma pergunta frequente encontrada."
 
 msgid "Imprint"
 msgstr "Créditos"
@@ -2448,9 +2626,6 @@ msgstr ""
 
 msgid "Entre em contato"
 msgstr ""
-
-msgid "Acessar página"
-msgstr "Acessar página"
 
 msgid "Parceiro"
 msgstr ""

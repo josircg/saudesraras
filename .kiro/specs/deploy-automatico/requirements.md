@@ -30,13 +30,14 @@ Esta spec contém as instruções para executar **script shell versionado** (`de
 2. QUANDO existe o submódulo `tema/` ENTÃO o sistema DEVE rodar `git pull` também em `tema/`.
 3. QUANDO um `git pull` falha ENTÃO o deploy DEVE parar e reportar o passo que falhou.
 
-### Requirement 3: Migrações e arquivos estáticos
-**User Story:** Como administrador, quero que o banco e os estáticos fiquem consistentes com o código novo.
+### Requirement 3: Migrações, estáticos e traduções
+**User Story:** Como administrador, quero que o banco, os estáticos e as traduções fiquem consistentes com o código novo.
 
 #### Acceptance Criteria
 1. QUANDO o código é atualizado ENTÃO o sistema DEVE aplicar `migrate` com o Python do venv do projeto.
 2. QUANDO o código é atualizado ENTÃO o sistema DEVE executar `collectstatic --noinput`.
-3. QUANDO qualquer um desses passos falha ENTÃO o deploy DEVE parar e reportar o passo que falhou.
+3. QUANDO o código é atualizado ENTÃO o sistema DEVE compilar as traduções com `compilemessages` (os `.mo` são git-ignored e precisam ser gerados no servidor). NÃO rodar `makemessages`/`translate.sh` no deploy (reescreveria os `.po`).
+4. QUANDO qualquer um desses passos falha ENTÃO o deploy DEVE parar e reportar o passo que falhou.
 
 ### Requirement 4: Reinício desacoplado do serviço
 **User Story:** Como administrador, quero que o reinício do serviço não derrube a resposta do próprio deploy, para receber o resultado da operação.
@@ -70,4 +71,5 @@ Esta spec contém as instruções para executar **script shell versionado** (`de
 - `supervisorctl restart <serviço>` roda **dentro do request**, podendo matar o worker antes de a resposta HTTP ser enviada.
 - `os_run` faz `command.split(" ")`, frágil para caminhos/argumentos com espaços.
 - O `git pull` depende de credenciais do usuário que roda o processo Django (worker do supervisor), que pode não ter chave SSH/token configurados.
+- **Pré-requisito de sistema:** `compilemessages` exige o GNU `gettext` (`msgfmt`/`msguniq`) instalado no servidor (`apt-get install -y gettext`); sem ele o deploy falha com `CommandError: Can't find msgfmt/msguniq`. Documentar como pré-requisito do host (fora do `deploy.sh`).
 - Não há testes automatizados do fluxo de deploy.

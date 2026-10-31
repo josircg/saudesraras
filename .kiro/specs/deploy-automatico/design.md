@@ -67,6 +67,7 @@ Não há modelos de dados envolvidos. As dependências são de ambiente/sistema:
 | `settings.BASE_DIR` | Raiz do projeto; `cwd` do `git pull` e do script |
 | `settings.DEBUG` | Gate do reinício do serviço |
 | venv | Python/pip que executam migrate/collectstatic que será calculado pela view |
+| deps (uv) | Instaladas no servidor com `uv sync --group prod` — traz o `gunicorn` (grupo `prod` do `pyproject.toml`) além do runtime |
 | supervisor (`saudesraras`) | Serviço reiniciado ao final |
 | submódulo `tema/` | Repositório de tema com `git pull` próprio (opcional) |
 

@@ -12,6 +12,32 @@ Sistema de Informações sobre Doenças Raras que lista organizações, projetos
 - **Interpretador do venv**: uv
 - **Localização/Tradução**: translate.sh
 
+## Dependências e ambientes (uv)
+
+As dependências são geridas pelo `uv` via `pyproject.toml` + `uv.lock`:
+
+- **Runtime (todos os ambientes)**: lista `[project].dependencies`.
+- **Grupo `dev`** (`[dependency-groups].dev`): ferramentas de desenvolvimento.
+- **Grupo `prod`** (`[dependency-groups].prod`): dependências **só de
+  produção** — hoje o `gunicorn` (servidor WSGI). Grupos não são instalados por
+  padrão; o dev local (`uv sync` / `uv run`) **não** instala o gunicorn.
+
+Comandos:
+
+```
+uv sync                 # dev: runtime + grupo dev (sem gunicorn)
+uv sync --group prod    # servidor: adiciona o gunicorn ao .venv
+```
+
+O systemd service (`docs/saudesraras.service`) chama `.venv/bin/gunicorn`, que
+só existe após `uv sync --group prod`. Os arquivos `requirements/*.txt` são um
+mecanismo pip paralelo/legado; a fonte canônica das dependências é o
+`pyproject.toml` (o `gunicorn` em `requirements/production.txt` está comentado,
+apontando para o grupo `prod`).
+
+Ao adicionar uma dependência **só de produção**, coloque no grupo `prod`
+(`uv add --group prod <pacote>`), nunca em `[project].dependencies`.
+
 ## Módulos de settings
 
 Os settings ficam em `src/eucs_platform/settings/`:
@@ -51,11 +77,69 @@ estiver configurado na máquina.)
 2. `python manage.py makemigrations --check --dry-run` — garante que o modelo em
    código bate com as migrations. Se acusar mudanças, há drift (ver abaixo).
 3. Testes do app afetado (quando existirem).
+4. **Traduções** — ao alterar strings traduzíveis (templates, `_()`/`gettext`,
+   `verbose_name`), rodar o `translate.sh` para extrair/limpar/compilar as
+   mensagens (ver seção "Traduções" abaixo). O passo que efetivamente ativa as
+   traduções é o `compilemessages` (gera os `.mo`).
 
 ### Testes
 
 A suíte de testes ainda é mínima. Ao criar testes, use o runner padrão do Django
 (`python manage.py test <app>`).
+
+**Banco de teste:** existe um banco **`raras_teste`** pré-criado (vazio, com
+PostGIS) para a suíte, porque o usuário do banco pode não ter `CREATEDB`. O
+settings define `DATABASES['default']['TEST']['NAME']` a partir da env
+`DATABASE_TEST_NAME` (default `raras_teste`). Rode sempre com `--keepdb`
+para reutilizar o banco sem tentar recriá-lo:
+
+```
+cd src
+uv run manage.py test <app> --keepdb
+```
+
+### Traduções
+
+Idiomas: **pt-br** (padrão), **es**, **en**. As mensagens de template/código
+(`gettext`/`_()`/`verbose_name`) vivem em `src/locale/<lang>/LC_MESSAGES/`
+(`django.po` fonte → `django.mo` compilado). O `.mo` é o que o Django carrega em
+runtime; **editar o `.po` sem compilar não muda nada no site**.
+
+Use o script `src/translate.sh`, que roda os três passos na ordem certa:
+
+```
+cd src
+uv run bash translate.sh
+```
+
+O script executa (a partir de `src/`):
+1. `manage.py makemessages --all --no-location` — extrai strings para os `.po`.
+2. `utilities/clean.py` — limpeza dos `.po`.
+3. `manage.py compilemessages` — compila os `.po` em `.mo` (ativa as traduções).
+
+**Requisito de sistema — GNU gettext:** `makemessages`/`compilemessages`
+dependem dos binários do `gettext` do SO (`msgfmt`, `msguniq`, `xgettext`), que
+**não** vêm pelo `uv`/pip. Instale no SO (uma vez por máquina):
+
+```
+# Debian/Ubuntu (servidor usa www-data):
+sudo apt-get update && sudo apt-get install -y gettext
+# RHEL/Fedora: sudo dnf install gettext   |   Alpine: apk add gettext
+```
+
+Sem o gettext, o erro é `CommandError: Can't find msgfmt/msguniq. Make sure you
+have GNU gettext tools ... installed.`
+
+**Dev vs. deploy (importante):** os `.mo` são **git-ignored** (`*.mo` no
+`.gitignore`), ou seja, não são versionados — precisam ser gerados onde a app
+roda.
+- **Desenvolvimento** (extrair + traduzir + compilar): rode o `translate.sh`
+  completo ao alterar texto visível; revise os `.po` (traduza `es`/`en`) e rode
+  de novo.
+- **Deploy/servidor** (apenas compilar os `.po` versionados): rode
+  `uv run manage.py compilemessages` — **não** rode o `translate.sh` inteiro no
+  servidor (o `makemessages` reescreveria os `.po` fora do controle de versão).
+  Este passo exige o `gettext` instalado no servidor.
 ## Apps locais
 
 São **15 apps**, todos em `src/`: `accounts`, `authors`, `blog`, `contact`,
