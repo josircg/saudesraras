@@ -29,6 +29,14 @@ class ResourceAdminBase(admin.ModelAdmin):
     exclude = ('isTrainingResource',)
     migrate_to_cls = None
 
+    def save_model(self, request, obj, form, change):
+        # Em criacao pelo admin, o form nao expoe 'creator' (FK obrigatoria).
+        # Preenche com o usuario logado (staff) para evitar
+        # RelatedObjectDoesNotExist em Resource.save() e registrar a autoria.
+        if not change and not obj.creator_id:
+            obj.creator = request.user
+        super().save_model(request, obj, form, change)
+
     def migrate_resource(self, request, object_id):
         """Change Resource to Training Resource and Training Resource to Resource"""
         # Use self.migrate_to_cls to log change in the right admin class

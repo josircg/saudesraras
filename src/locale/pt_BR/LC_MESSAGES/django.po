@@ -50,6 +50,15 @@ msgstr "Repita a senha"
 msgid "Sign up"
 msgstr "Cadastre-se"
 
+msgid "Name must have a surname"
+msgstr "O nome deve conter um sobrenome"
+
+msgid "Form submitted too fast. Please try again."
+msgstr "Formulário preenchido muito rápido"
+
+msgid "Invalid form data."
+msgstr "Dados inválidos"
+
 msgid "Enter old password"
 msgstr "Informe a senha atual"
 
@@ -146,21 +155,19 @@ msgstr "Já possui conta?"
 #| msgid ""
 #| "By clicking on Register, you accept our <a href='/terms'>Terms of Use</a> "
 msgid "By clicking on Register, you accept our "
-msgstr ""
-"Ao clicar em Cadastre-se, você aceita nossos <a href='/terms'>Termos de uso</"
-"a> "
+msgstr "Ao clicar em Cadastre-se, você aceita nossos "
 
 msgid "Terms of Use"
 msgstr "Termos de Uso"
 
 msgid "and "
-msgstr ""
+msgstr "e "
 
 msgid "Privacy Policy"
 msgstr "Privacidade"
 
 msgid "as well as our use of "
-msgstr ""
+msgstr "bem como nosso uso de "
 
 msgid "cookies"
 msgstr ""
@@ -414,7 +421,7 @@ msgstr "%d linhas lidas"
 msgid "%d subscribers added"
 msgstr "%d assinantes adicionados"
 
-
+#, python-format
 msgid "Opened newsletter %s email"
 msgstr "Abriu o e-mail da newsletter %s"
 
@@ -457,48 +464,38 @@ msgstr "Nenhuma organização registrada para essa doença"
 msgid "No symptoms registered."
 msgstr "Nenhum sintoma registrado"
 
-#, fuzzy
-#| msgid "No Newsletter found"
 msgid "No diseases found."
-msgstr "Newsletter"
+msgstr "Nenhuma doença encontrada"
 
 msgid "Order by"
 msgstr "Ordenar por"
 
 msgid "Name (A-Z)"
-msgstr ""
+msgstr "Nome (A-Z)"
 
 msgid "Name (Z-A)"
-msgstr ""
+msgstr "Nome (Z-A)"
 
 msgid "Filter by"
 msgstr "Filtrar"
 
-#, fuzzy
-#| msgid "Symptoms"
-msgid "All Symptoms"
-msgstr "Sintomas"
-
-#, fuzzy
-#| msgid "search"
 msgid "search:"
-msgstr "buscar"
+msgstr "busca:"
 
-#, fuzzy
-#| msgid "Symptom"
 msgid "symptom"
-msgstr "Sintoma"
+msgstr "sintoma"
 
 msgid "Clear current search query and filters"
 msgstr "Limpar busca e filtros"
 
-#, fuzzy
-#| msgid "users found"
 msgid "diseases found"
-msgstr "colaboradores encontrados"
+msgstr "doenças encontradas"
 
 msgid "disease found"
 msgstr "doenças encontradas"
+
+msgid "No symptoms found"
+msgstr "Nenhum sintoma encontrado"
 
 msgid "No symptoms found."
 msgstr "Nenhum sintoma encontrado"
@@ -512,7 +509,7 @@ msgstr ""
 "Nenhum sintoma selecionado ainda. Clique no [+] ao lado dos sintomas na "
 "pagina."
 
-msgid "search diseases with those symptoms"
+msgid "Search diseases with those symptoms"
 msgstr "Buscar doenças com estes sintomas"
 
 msgid "Go to letter:"
@@ -959,10 +956,9 @@ msgstr "Organização adicionada com sucesso!"
 msgid "Your organisation or network \"%s\" has been submitted!"
 msgstr "Sua organização ou rede \"%s\" foi submetida!"
 
-#, fuzzy, python-format
-#| msgid "Notification - New organisation or network \"%s\" submitted"
+#, python-format
 msgid "Notification - New organisation \"%s\" submitted"
-msgstr "Notificação - Uma nova organização ou rede \"%s\" foi submetida"
+msgstr "Notificação - Nova organização \"%s\" foi submetida"
 
 msgid "Organisation approved"
 msgstr "Organização aprovada"
@@ -979,8 +975,6 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
-#, fuzzy
-#| msgid "Headline"
 msgid "Header"
 msgstr "Texto do cabeçalho"
 
@@ -999,21 +993,15 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#, fuzzy
-#| msgid "Order by"
 msgid "Order"
 msgstr "Ordenar por"
 
 msgid "Visible"
 msgstr "Visível"
 
-#, fuzzy
-#| msgid "Description"
 msgid "Section"
 msgstr "Seção"
 
-#, fuzzy
-#| msgid "Recent Actions"
 msgid "Sections"
 msgstr "Seções"
 
@@ -1110,8 +1098,6 @@ msgstr "Extensões geográficas"
 msgid "Platform"
 msgstr "Plataforma"
 
-#, fuzzy
-#| msgid "country"
 msgid "country:"
 msgstr "país:"
 
@@ -1872,10 +1858,8 @@ msgstr "Selecione um dos tipos de recurso propostos"
 msgid "Theme"
 msgstr "Tópico"
 
-#, fuzzy
-#| msgid "Please select the thematic content of the resource."
 msgid "Please select the thematic content of the publication."
-msgstr "Selecione o(s) tópico(s) do recurso."
+msgstr "Selecione o(s) tópico(s) da publicação."
 
 msgid ""
 "Please provide the <b>Digital Object Identifier</b> that is unique to your "
@@ -2016,26 +2000,14 @@ msgstr "publicação encontrada"
 msgid "resource"
 msgstr "publicação"
 
-#, fuzzy
-#| msgid ""
-#| "Thank you for registering a new resource on the platform.Please fill in "
-#| "all the mandatory information, and as much optional information as "
-#| "possible."
 msgid ""
 "Thank you for registering a new resource on the platform. Please fill in all "
 "the mandatory information, and as much optional information as possible."
 msgstr ""
-"Agradecemos por registrar uma nova publicação na plataforma Saúdes Raras. "
-"Preencha todas as informações obrigatórias (indicadas com asterisco*) e o "
-"máximo possível de informações opcionais."
+"Agradecemos por registrar uma nova publicação na plataforma. Preencha todas "
+"as informações obrigatórias (indicadas com asterisco*) e o máximo possível "
+"de informações opcionais."
 
-#, fuzzy
-#| msgid ""
-#| "Resources can include documents such as guidelines, tutorials, "
-#| "methodologies and tools to co-produce knowledge, such as gamification "
-#| "resources, measurements, sensors, registration softwares, data sending "
-#| "and managing, and other materials that may help in citizen science "
-#| "Project and initiative development and execution."
 msgid ""
 "Resources can include documents such as guidelines, tutorials, methodologies "
 "and tools to co-produce knowledge, such as gamification resources, "
@@ -2048,11 +2020,6 @@ msgstr ""
 "materiais que possam ser úteis para quem quer se informar sobre doenças "
 "raras."
 
-#, fuzzy
-#| msgid ""
-#| "After submitting this form, the resource will undergo moderation by the "
-#| "our team. This step is simply to prevent use of the platform for purposes "
-#| "other than supporting citizen science."
 msgid ""
 "After submitting this form, the resource will undergo moderation by our "
 "team. This step is simply to prevent use of the platform for purposes other "
@@ -2269,8 +2236,6 @@ msgstr "Mapa de Iniciativas"
 msgid "Select topic"
 msgstr "Selecione o tema"
 
-#, fuzzy
-#| msgid "Projects"
 msgid "All topics"
 msgstr "Todos os temas"
 
@@ -2331,10 +2296,8 @@ msgstr "Em breve"
 msgid "Go back"
 msgstr "Retornar"
 
-#, fuzzy
-#| msgid "This website uses cookies."
 msgid "This website uses cookies."
-msgstr "Este site utiliza cookies"
+msgstr "Este site utiliza cookies."
 
 msgid "More info"
 msgstr "Mais informações"
@@ -2357,10 +2320,6 @@ msgstr "Critérios de qualidade"
 msgid "Gold Star <span class='lightBlue-color'> selection</span>"
 msgstr "<span class='lightBlue-color'>Seleção</span> Estrela de Ouro"
 
-#, fuzzy
-#| msgid ""
-#| "The platform has a selection of the best resources, sorted by project "
-#| "life cycle,"
 msgid ""
 "The platform has a selection of the best resource, sorted by project life "
 "cycle,"
@@ -2368,16 +2327,12 @@ msgstr ""
 "A plataforma tem uma seleção das melhores publicações, categorizados de "
 "acordo com o ciclo de vida do projeto, "
 
-#, fuzzy
-#| msgid ""
-#| "for you to design and start your own project or simply learn about rare "
-#| "diseases and treatments."
 msgid ""
 "for you to design and start your own project or simply learn about rare "
 "diseases and their diagnosis."
 msgstr ""
-"para você poder desenhar e começar sua própria iniciativa de ciência cidadã "
-"ou simplesmente aprender sobre ciência cidadã."
+"para você poder registrar sua própria iniciativa ou simplesmente aprender "
+"sobre as doenças raras registradas."
 
 msgid "Development"
 msgstr "Desenvolvimento"
@@ -2494,8 +2449,6 @@ msgstr ""
 msgid "Entre em contato"
 msgstr ""
 
-#, fuzzy
-#| msgid "Access page"
 msgid "Acessar página"
 msgstr "Acessar página"
 
@@ -2636,9 +2589,15 @@ msgid "TOTALS"
 msgstr ""
 
 #, fuzzy
+#~| msgid "Symptoms"
+#~ msgid "All Symptoms"
+#~ msgstr "Sintomas"
+
+#, fuzzy
 #~| msgid "platform <span class='text-blue3'>search</span>"
 #~ msgid "disease or symptom <span class='text-blue3'>search</span>"
 #~ msgstr "<span class='text-blue3'>busca de</span> Plataformas"
+
 #~ msgid "Are rare diseases contagious?"
 #~ msgstr "Doenças raras são contagiosas?"
 

@@ -34,7 +34,7 @@ msgstr ""
 #, fuzzy
 #| msgid "I want to receive the newsletter from Civis"
 msgid "I want to receive the newsletter"
-msgstr "Quiero recibir el boletín de Civis"
+msgstr "Quiero recibir nuestro boletín"
 
 msgid "Enter your first name and surname"
 msgstr "Nombre y apellidos"
@@ -44,6 +44,15 @@ msgstr "Ingrese de nuevo su contraseña"
 
 msgid "Sign up"
 msgstr "Registrarse"
+
+msgid "Name must have a surname"
+msgstr "Nombre deve contenir un apellido"
+
+msgid "Form submitted too fast. Please try again."
+msgstr ""
+
+msgid "Invalid form data."
+msgstr ""
 
 msgid "Enter old password"
 msgstr "Ingrese su contraseña antigua"
@@ -95,10 +104,8 @@ msgstr "Parámetros de la tarea"
 msgid "Task Description"
 msgstr "Descripción de la tarea"
 
-#, fuzzy
-#| msgid "Activate your CIVIS account."
 msgid "Activate your account."
-msgstr "Active su cuenta CIVIS."
+msgstr "Active su cuenta."
 
 msgid "Almost done!"
 msgstr "¡Casi terminado!"
@@ -140,8 +147,6 @@ msgstr ""
 msgid "Already signed up?"
 msgstr "¿Ya se ha registrado?"
 
-#, fuzzy
-#| msgid "By clicking on Register, you accept our"
 msgid "By clicking on Register, you accept our "
 msgstr "Al hacer clic en Registrarse, acepta nuestros"
 
@@ -149,7 +154,7 @@ msgid "Terms of Use"
 msgstr "Términos de Uso"
 
 msgid "and "
-msgstr ""
+msgstr "y "
 
 #, fuzzy
 #| msgid "Privacy"
@@ -157,7 +162,7 @@ msgid "Privacy Policy"
 msgstr "Privacidad"
 
 msgid "as well as our use of "
-msgstr ""
+msgstr "bien como nuestro uso de "
 
 msgid "cookies"
 msgstr ""
@@ -195,8 +200,6 @@ msgstr "Guardar como borrador"
 msgid "News"
 msgstr ""
 
-#, fuzzy
-#| msgid "Want to send a text or suggestions for the blog?"
 msgid "Want to send a news to our site?"
 msgstr "¿Quiere enviar un texto o sugerencias para el blog?"
 
@@ -305,7 +308,7 @@ msgid ""
 "laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 msgstr ""
 "Puede ponerse en contacto mediante este formulario o a través del correo "
-"electrónico: <a href='mailto:civis@ibict.br'>civis@ibict.br</a>"
+"electrónico: laccops.gco.ega@id.uff.br>laccops.gco.ega@id.uff.br</a>"
 
 msgid "Refresh captcha"
 msgstr "Actualizar captcha"
@@ -333,11 +336,8 @@ msgstr "Este correo electrónico se enviará al remitente/solicitante"
 msgid "Subscribe to our newsletter"
 msgstr "Suscríbete a nuestro boletín informativo"
 
-#, fuzzy
-#| msgid "Sign up to the Civis newsletter to get the latest updates"
 msgid "Sign up to the newsletter to get the latest updates"
-msgstr ""
-"Suscríbase al boletín informativo de Civis para recibir las últimas novedades"
+msgstr "Suscríbase al boletín informativo para recibir las últimas novedades"
 
 msgid ""
 "You can unsubscribe at any time by clicking the link in the footer of our "
@@ -424,8 +424,7 @@ msgstr "%d assinantes inscritos"
 msgid "Opened newsletter %s email"
 msgstr "Boletín %s email abierto"
 
-#, fuzzy, python-format
-#| msgid "%d test email was sent"
+#, python-format
 msgid "%d test email was sent"
 msgid_plural "%d test mails were sent"
 msgstr[0] "Se ha enviado %d correo de prueba"
@@ -455,8 +454,6 @@ msgstr "Doença"
 msgid "About the disease"
 msgstr ""
 
-#, fuzzy
-#| msgid "Go to Organisation"
 msgid "Support Organizations"
 msgstr "Ir a la Organización"
 
@@ -466,10 +463,8 @@ msgstr ""
 msgid "No symptoms registered."
 msgstr ""
 
-#, fuzzy
-#| msgid "No Newsletter found"
 msgid "No diseases found."
-msgstr "No se ha encontrado ningún boletín"
+msgstr "No se ha encontrado ningúna doença"
 
 msgid "Order by"
 msgstr "Ordenar por"
@@ -483,49 +478,35 @@ msgstr ""
 msgid "Filter by"
 msgstr "Filtrar"
 
-#, fuzzy
-#| msgid "Symptoms"
-msgid "All Symptoms"
-msgstr "Sintomas"
-
-#, fuzzy
-#| msgid "Search"
 msgid "search:"
-msgstr "Buscar"
+msgstr "Busqueda"
 
-#, fuzzy
-#| msgid "Symptom"
 msgid "symptom"
 msgstr "Sintoma"
 
 msgid "Clear current search query and filters"
 msgstr "Borra la búsqueda actual"
 
-#, fuzzy
-#| msgid "users found"
 msgid "diseases found"
-msgstr "usuarios encontrados"
+msgstr "doenças encontrados"
 
-#, fuzzy
-#| msgid "users found"
 msgid "disease found"
-msgstr "usuarios encontrados"
+msgstr "doença encontrada"
 
-#, fuzzy
-#| msgid "No Newsletter found"
+msgid "No symptoms found"
+msgstr "No se ha encontrado ningún sintoma"
+
 msgid "No symptoms found."
-msgstr "No se ha encontrado ningún boletín"
+msgstr "No se ha encontrado ningún sintoma"
 
-#, fuzzy
-#| msgid "Symptoms"
 msgid "Selected symptoms:"
-msgstr "Sintomas"
+msgstr "Sintomas selecionados:"
 
 msgid ""
-"No symptoms selected yet. Click the [+] next to the symptoms in the catalog."
+"No symptoms selected yet. Click the [+] next to the symptoms in the page."
 msgstr ""
 
-msgid "search diseases with those symptoms"
+msgid "Search diseases with those symptoms"
 msgstr ""
 
 #, fuzzy
@@ -2799,6 +2780,11 @@ msgstr "Traducciones"
 
 msgid "TOTALS"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Symptoms"
+#~ msgid "All Symptoms"
+#~ msgstr "Sintomas"
 
 #, fuzzy
 #~| msgid "platform <span class='text-pink5'>search</span>"
