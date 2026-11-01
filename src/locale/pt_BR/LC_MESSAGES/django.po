@@ -904,8 +904,8 @@ msgid "organisation found"
 msgstr "organização encontrada"
 
 
-msgid "Diseases associated with this organisation"
-msgstr "Doenças associadas a esta organização"
+msgid "Diseases this organisation provides information about"
+msgstr "Doenças sobre as quais esta organização disponibiliza informação"
 
 msgid "View disease details"
 msgstr "Ver detalhes da doença"

@@ -461,7 +461,7 @@ msgid "No organizations registered for this disease yet."
 msgstr ""
 
 msgid "No symptoms registered."
-msgstr ""
+msgstr "No hay síntomas registrados."
 
 msgid "No diseases found."
 msgstr "No se ha encontrado ningúna doença"
@@ -937,13 +937,11 @@ msgstr "organizaciones encontradas"
 msgid "organisation found"
 msgstr "organización encontrada"
 
-#, fuzzy
-#| msgid "Register your organisation or network"
-msgid "Diseases associated with this organisation"
-msgstr "Registre su organización o red"
+msgid "Diseases this organisation provides information about"
+msgstr "Enfermedades sobre las que esta organización ofrece información"
 
 msgid "View disease details"
-msgstr ""
+msgstr "Ver detalles de la enfermedad"
 
 msgid "Training resources"
 msgstr "Recursos de formación"
@@ -975,7 +973,7 @@ msgstr "Contactar con el remitente"
 
 #, python-format
 msgid "Symptoms related to %(disease_name)s"
-msgstr ""
+msgstr "Síntomas relacionados con %(disease_name)s"
 
 msgid "Main information"
 msgstr "Revisión"

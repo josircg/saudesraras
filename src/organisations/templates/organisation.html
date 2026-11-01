@@ -30,7 +30,7 @@
             <p class="mt-3 gray7-color">{{ organisation.description | safe}}</p>
 
             {% if organisation.diseases.all %}
-            <h4 class="mt-4 leftborder">Doenças sobre as quais esta organização disponibiliza informação</h4>
+            <h4 class="mt-4 leftborder">{% trans "Diseases this organisation provides information about" %}</h4>
             <div class="row">
                 {% for disease in organisation.diseases.all %}
                 <div class="col-12 mt-3">
@@ -165,7 +165,7 @@
                         <ul class="list-unstyled ms-2">
                             {% for symptom in disease.symptoms.all %}
                             <li>
-                                <a href="{% url 'symptoms' %}?q={{ symptom.description|urlencode }}" class="text-decoration-none gray7-color">
+                                <a href="{% url 'symptoms' %}?q_symptom={{ symptom.description|urlencode }}" class="text-decoration-none gray7-color">
                                     • {{ symptom.description }}
                                 </a>
                             </li>
@@ -203,11 +203,15 @@ function map_init_basic (map, options) {
     var long = $("#long").val().replace(",", ".");
     
     if (lat != 0 && long != 0) {
+        // Icone padrao do Leaflet (django-leaflet), declarado explicitamente
         var myIcon = L.icon({
-            iconUrl: "{% static 'images/marker-icon.png' %}", 
-            iconSize: [32, 32],      
-            iconAnchor: [16, 32],    
-            popupAnchor: [0, -32]    
+            iconUrl: "{% static 'leaflet/images/marker-icon.png' %}",
+            iconRetinaUrl: "{% static 'leaflet/images/marker-icon-2x.png' %}",
+            shadowUrl: "{% static 'leaflet/images/marker-shadow.png' %}",
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
         });
 
         L.marker([lat, long], { icon: myIcon }).addTo(map);
