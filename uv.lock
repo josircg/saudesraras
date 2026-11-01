@@ -749,6 +749,19 @@ wheels = [
 ]
 
 [[package]]
+name = "django-guardian"
+version = "3.5.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/84/ed/d31c3befa315d8cf52efea39078ab4871b866f03dddfa01f2ab630a8182d/django_guardian-3.5.2.tar.gz", hash = "sha256:ca14b7c9cc37bc852f3749f8a998a76cfd0ebbd66ac85726ef331289a712d389", size = 124548, upload-time = "2026-10-20T10:51:23.355Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1b/5c/be6e4a9391fb0a87770ad210df9fa1e3ac523ef2e70cb906376c28200aad/django_guardian-3.5.2-py3-none-any.whl", hash = "sha256:545ea01d528830d936c129a125dc2f1aba581da4c3f3daa5d4d1e31654e276a8", size = 159192, upload-time = "2026-10-20T10:51:21.771Z" },
+]
+
+[[package]]
 name = "django-js-asset"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1016,6 +1029,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/9d/e5/4e358038626f9ed671cf4d94fdb767c39644ccf062fe6a1bc089873a9dd4/geopy-2.4.0.tar.gz", hash = "sha256:a59392bf17adb486b25dbdd71fbed27733bdf24a2dac588047a619de56695e36", size = 117582, upload-time = "2023-08-27T18:57:32.333Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e1/58/9289c6a03116025cdb61461d99b2493daa4967a80b13755463d71a0affeb/geopy-2.4.0-py3-none-any.whl", hash = "sha256:d2639a46d0ce4c091e9688b750ba94348a14b898a1e55c68f4b4a07e7d1afa20", size = 125446, upload-time = "2023-08-27T18:57:29.097Z" },
+]
+
+[[package]]
+name = "gunicorn"
+version = "26.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d9/8a/e4ef6ee11701b6cd64702848415ffb69eeff85cb388a3c6c7fe86f22f3f8/gunicorn-26.2.0.tar.gz", hash = "sha256:62b864895d9ebff0b2f9867ba04fe811c93121596540830c9c916d0769668447", size = 787921, upload-time = "2026-08-24T15:05:59.3Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fe/85/7522a52e5e2f42faf1a129113ab63e548c42e103e9af395b7bfe65e403e2/gunicorn-26.2.0-py3-none-any.whl", hash = "sha256:bd249d0b3f7972f7432f0a6b6ff3b3ee2d129f70cd1ff6c09a9dd9e29a2b88e3", size = 228389, upload-time = "2026-08-24T15:05:57.67Z" },
 ]
 
 [[package]]
@@ -1909,6 +1931,7 @@ dependencies = [
     { name = "django-cron" },
     { name = "django-debug-toolbar" },
     { name = "django-environ" },
+    { name = "django-guardian" },
     { name = "django-leaflet" },
     { name = "django-oauth-toolkit" },
     { name = "django-oidc-provider" },
@@ -1943,6 +1966,9 @@ dependencies = [
 dev = [
     { name = "fabric" },
 ]
+prod = [
+    { name = "gunicorn" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -1963,6 +1989,7 @@ requires-dist = [
     { name = "django-cron", specifier = "==0.5.1" },
     { name = "django-debug-toolbar", specifier = "==4.2.0" },
     { name = "django-environ", specifier = "==0.11.2" },
+    { name = "django-guardian", specifier = ">=3.5.2" },
     { name = "django-leaflet", specifier = "==0.28.3" },
     { name = "django-oauth-toolkit", specifier = "==2.3.0" },
     { name = "django-oidc-provider", specifier = "==0.8.0" },
@@ -1995,6 +2022,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [{ name = "fabric", specifier = ">=3.2.2" }]
+prod = [{ name = "gunicorn", specifier = ">=21.2.0" }]
 
 [[package]]
 name = "setuptools"

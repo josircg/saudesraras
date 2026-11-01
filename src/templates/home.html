@@ -11,7 +11,7 @@
 {% block splash %}
 {% if request.get_full_path == "/" %}
 
-<link rel="stylesheet" href="{% static 'src\static\styles\saude_raras\style.css' %}?v=1" type="text/css" />
+<link rel="stylesheet" href="{% static 'styles/saude_raras/style.css' %}?v=2" type="text/css" />
 <body class="d-flex flex-column min-vh-100">
   <div
     class="border-top "
@@ -204,7 +204,7 @@
                         <div class="icon-container">
                             <img src="{% static 'site/img/sus.svg' %}" class="sus-img" alt="SUS">
                         </div>
-                        <span class="btn-text">{% trans "SUS" %}</span>
+                        <span class="btn-text">{% trans "Where can I find my medicine (RJ)" %}</span>
                     </a>
                 </div>
 
@@ -260,8 +260,8 @@
   <div class="container d-flex flex-column align-items-center" style="max-width: 1120px;">
       <!-- Títulos e links -->
       <div class="row justify-content-between align-items-center text-center mb-4 w-100">
-          <div class="text-center sbld col-lg-auto col-md-6 col-12 mb-2">
-              <h1 class="azul reg" style="font-weight: 950; line-height: 53px; display: inline-block; margin: 0; overflow-wrap: break-word; ">
+          <div class="text-center sbld col-lg-auto col-md-6 col-12 mb-2 p-0">
+              <h1 class="azul reg " style="font-weight: 950; line-height: 53px; display: inline-block; margin: 0; overflow-wrap: break-word; ">
                 {% trans "Testimonials" %}
               </h1>
           </div>
@@ -279,7 +279,7 @@
         <a href="/depoimentos#{{ depoimento.slug }}" class="card-container" 
            style="display: block; text-decoration: none; color: inherit; position: relative; width: 290px !important;  height: 355px !important;  border-radius: 30px; border: 3px solid #3D99F4; padding: 20px; box-sizing: border-box; background-color: #fff;">
             
-            {% if depoimento.first_image == 0 %}
+            {% if depoimento.first_image %}
                 <img src="{{ depoimento.first_image }}" alt="Imagem de {{ depoimento.title }}" class="card-image"
                     style="position: absolute; top: -41px; left: 25%; transform: translateX(-50%); border-radius: 50%; width: 80px; height: 80px; border: 0; object-fit: cover;">
             {% else %}
@@ -288,7 +288,7 @@
             {% endif %}
             <div style="padding-top: 35px; max-height: 275px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 13; -webkit-box-orient: vertical;">
                 <p class="reg" style="color: black; font-size: 18px; font-family: Recoleta; font-weight: 400; line-height: 21px; word-wrap: break-word; word-break: break-all; text-align: left; margin: 0;">
-                    {{ depoimento.header|strip_p|safe }}
+                    {{ depoimento.header|truncate_summary:80|safe }}
                 </p>
             </div>
 
@@ -429,7 +429,7 @@
         </div>
         {% empty %}
         <div class="col-12 text-center text-muted">
-          <p>Nenhuma pergunta frequente encontrada.</p>
+          <p>{% trans "No FAQ registered yet" %} </p>
         </div>
         {% endfor %}
 

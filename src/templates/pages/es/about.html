@@ -1,51 +1,219 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
-{% block title %}{{ block.super }} :: Sobre{% endblock %}
+{% block title %}{{ block.super }} :: {% trans "About" %}{% endblock %}
 
 {% block list_of_items %}
-<div class="container">
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <h1 class="mt-5 mb-5">
-                Sobre <span class="text-pink6">civis</span>
-            </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2 col-12"></div>
-        <div class="col-sm-8 col-11">
+    <div class="container p-0" >
+      <div
+          class="border-top "
+          style=" 
+            margin-top: 0%;
+            margin-bottom: 3%;
+            border: 3px solid #114D7F;
+          "
+        ></div>
+        <div class="row justify-content-between mx-2" >
+            <div class="row gx-5">
+            <div class="col-lg-6 col-12">
+                <div class="text-about mb-3 font-weight-bold " style=" line-height: 26px;  word-wrap: break-word; overflow-wrap: break-word;">
+                    Sobre el proyecto
+                </div>
+                <div class="mt-4 mb-5 reg" style="color: #000;font-size: 20px; line-height: 26px;max-width: 749px;">
+                  <p>De acordo com a OMS, uma doença rara é a que afeta até 65 a cada 100 mil indivíduos. No entanto, como cada país tem critérios próprios e linhas de corte particulares sobre tais enfermidades, a ONU propôs a adoção de uma resolução para ser reconhecida em todo o mundo que diz que a “condição médica com um padrão específico de sinais, sintomas e achados clínicos, afetando até 1,3 em cada 2.000 pessoas.” (OMS,2024). No Brasil não se nota a participação da população desamparada em discussões de ampla visibilidade nem a representation em dados oficiais disponibilizados pelo Estado. Este apagamento não significa a inexistência da doença rara na população pobre, mas pode indicar que uma parcela da população afetada por esse tipo de patologia tenha sido excluída do processo antes mesmo de chegar à atenção primária à saúde (APS) em unidades básicas de saúde.</p>
 
-            <div class="row mb-5">                
-                <div class="col-12">
-                    <p>
-                        Civis es una plataforma de ciencia ciudadana desarrollada por el Instituto Brasileño de Información en Ciencia y Tecnología (IBICT), de código abierto a partir
-                        de <a href="https://eu-citizen.science/">EU-Citizen.Science</a>.
-                    </p>
-                    <p>
-                        Nuestro objetivo es proporcionar infraestructura y contenidos que ayuden a ampliar la comprensión de la ciencia ciudadana, difundir su uso y apoyar el desarrollo de iniciativas y la aplicación de metodologías en este campo, con un enfoque en América Latina y el Caribe.
-                    </p> 
-                    <p>
-                        Civis está abierto para que cualquier persona pueda registrar iniciativas, recursos y otros contenidos de ciencia ciudadana.
-                    </p> 
-                    <p>
-                        La plataforma está dirigida a un público amplio y plural, que incluye:
-                    </p> 
-                    <ul>
-                        <li>investigadores, científicos y docentes interesados en desarrollar proyectos e iniciativas de ciencia ciudadana, así como en conocer y utilizar metodologías y resultados de iniciativas ya existentes;</li>
-                        <li>individuos, grupos y organizaciones, con o sin formación académica, que deseen participar, iniciar o mejorar acciones utilizando este enfoque;</li>
-                        <li>gestores públicos y privados interesados en apoyar y desarrollar proyectos e iniciativas de esta naturaleza.</li>
-                    </ul>
-                    
-                    <h1 class="mt-5 mb-5">¿Qué es la <span class="text-pink6">ciencia ciudadana</span></h1>
-    
-                    <p>
-                        La ciencia ciudadana es una de las vertientes del movimiento de ciencia abierta. Se trata de un concepto amplio que engloba una extensa diversidad de iniciativas, enfoques y metodologías que buscan mejorar y promover la contribución y el compromiso de los no científicos en las actividades de producción y análisis de conocimientos, datos e información relevantes para la ciencia y las cuestiones de importancia social, medioambiental y territorial.
-                    </p>
+                  <p>Segundo Paiva (2003) a “Comunidade como Unidade de Gerência e Pressão” representa a ação contínua dos movimentos sociais brasileiros atuantes nas causas das doenças raras, pois, entendem que a “possibilidade comunitária quer dizer opor-se ou, pelo menos, não aceitar incondicionalmente o ideal societário, no qual a globalização traz como lógica os princípios de hegemonia e exclusão” (p. 123)
+                  Os movimentos contra-hegemônicos, pressionam tanto o mercado como o Estado e vêm colocando o Brasil, numa posição de destaque em relação aos outros países latino-americanos, pois não aceitam o manejo do mercado para fortalecer uma “catalaxia, ou seja, um ordenamento mercadológico do mundo, para além de qualquer desígnio humano” (Sodré, 2002, p. 14). </p>
+                  <p>Tais organizações sociais fazem a diferença no compartilhamento de informação que salvam vidas. É nesse ponto que duas tipificações da Publicidade Social brasileira vêm contribuindo não só com a criação da plataforma, como também com a elaboração do conteúdo através do próprio princípio que é envolver a Sociedade Civil em todas as etapas da causa em questão. Desta forma, a tipificação de causa tem fundamentos conectados à “agenda das organizações internacionais (OMS, OMC) e instituições intergovernamentais como a ONU (Saldanha, 2022, p. 297) e a tipologia de Interesse Público, se baseia na “escuta’ sem impor nem se pautar nos interesses da classe dominante (Saldanha, 2022, p. 297).</p>
 
+                  <p>Apesar de termos 13 milhões de pessoas no Brasil afetadas por algum tipo de doença rara, não se nota a participação da população desamparada em discussões de ampla visibilidade nem a representação em dados oficiais disponibilizados pelo Estado. 
+                      Este apagamento não significa a inexistência da doença rara na população pobre, mas pode indicar que uma parcela da população afetada por esse tipo de patologia tenha sido excluída do processo antes mesmo de chegar à atenção primária à saúde (APS) em unidades básicas de saúde.</p> 
+                  <p>Com base na “escuta’ sem impor nem nos pautarmos nos interesses da classe dominante convidamos quem vive o drama da doença rara  para participar da construção deste space de maneira coletiva, com linguagem fácil e acessível, com a própria voz.</p>
+                </div>
+
+                <div class=" mt-4 mb-5 reg" style="color: #000;font-size: 20px; line-height: 26px;max-width: 749px; word-wrap: break-word; overflow-wrap: break-word;">
+                  Nossa missão vai além de informar — queremos transformar informação em cidadania. 
+                  Conectamos pacientes, famílias e profissionais de saúde, criando uma rede de apoio e conscientização que fortalece a luta por direitos e inclusão.
+                  Conheça, compartilhe e faça parte desta causa para juntos, tornarmos o invisível visível. Porque você pode não ver, mas a gente sente.
                 </div>
             </div>
+
+            <div class="col-lg-6 col-12">
+              <div class="text-about mb-3 font-weight-bold " style=" line-height: 26px;  word-wrap: break-word; overflow-wrap: break-word;">
+                    Conozca a Nuestro Equipo
+              </div>
+
+              <div class="mb-4 team-horizontal" style="max-width: 900px;">
+              {% for pessoa in equipe %}
+                <div class="row g-2 align-items-start" style="margin-bottom: 20px;">
+                  <div class="col-md-4">
+                    {% if pessoa.picture %}
+                        <img src="{{ pessoa.picture.url }}"
+                            alt="Foto de {{ pessoa.user.name }}"
+                            class="img-fluid rounded-circle" />
+                    {% else %}
+                        <img src="{{ MEDIA_URL }}default_profile.png"
+                            alt="Foto predeterminada"
+                            class="img-fluid rounded-circle"
+                             />
+                    {% endif %}
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title mb-1">{{ pessoa.user.name}}</h5>
+                      
+                      <div class="mb-2 d-flex flex-wrap gap-1">
+                        {% for area in pessoa.interestAreas.all %}
+                          <span class="badge bg-info text-dark rounded-pill" style="font-size: 0.8rem;">
+                            <i class="fas fa-briefcase me-1"></i>{{ area.interestArea }}
+                          </span>
+                        {% empty %}
+                          
+                        {% endfor %}
+                      </div>
+
+                      <div style="color: #000; font-size: 0.95rem;">
+                        {{ pessoa.bio|safe }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}    
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+<div class="container mt-5">
+  <h4 class="fw-bold mb-4">Otros Colaboradores</h4>
+
+  <div class="card card-body bg-light border-0 mb-4 shadow-sm">
+    <h6 class="fw-bold mb-3"><i class="fas fa-filter me-2"></i>Filtrar por Período</h6>
+    <div class="row g-3 align-items-center">
+      <div class="col-sm-5">
+        <label for="filterFrom" class="form-label small text-muted mb-1">Desde (Más antiguo):</label>
+        <select id="filterFrom" class="form-select form-select-sm">
+          <option value="">Todos</option>
+          {% for periodo in equipe_por_periodo.keys reversed %}
+            <option value="{{ periodo }}">{{ periodo }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-sm-5">
+        <label for="filterTo" class="form-label small text-muted mb-1">Hasta (Más reciente):</label>
+        <select id="filterTo" class="form-select form-select-sm">
+          <option value="">Todos</option>
+          {% for periodo in equipe_por_periodo.keys %}
+            <option value="{{ periodo }}">{{ periodo }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-sm-2 d-grid pt-3">
+        <button id="clearFilterBtn" class="btn btn-outline-secondary btn-sm" type="button">Limpiar</button>
+      </div>
     </div>
+  </div>
+
+  <div id="timelineCollaborators">
+    {% for periodo, colaboradores in equipe_por_periodo.items %}
+      <div class="timeline-period-block mb-3" data-period="{{ periodo }}">
+        
+        <button class="btn btn-blue3 w-100 py-3 px-4 text-start d-flex justify-content-between align-items-center shadow-sm text-decoration-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panel-{{ periodo|slugify }}"
+                aria-expanded="false"
+                aria-controls="panel-{{ periodo|slugify }}">
+          <span class="fs-5 fw-bold"><i class="fas fa-calendar-alt me-2"></i>{{ periodo }}</span>
+          <span class="badge bg-light text-dark rounded-pill me-3">{{ colaboradores|length }}</span>
+        </button>
+
+        <div class="collapse mt-2" id="panel-{{ periodo|slugify }}">
+          <ul class="list-group shadow-sm">
+            {% for item in colaboradores %}
+              <li class="list-group-item p-3 border-bottom bg-white">
+                <div class="row align-items-center">
+                  
+                  <div class="col-md-2 d-flex justify-content-center mb-3 mb-md-0">
+                    {% if item.picture %}
+                      <img src="{{ item.picture.url }}" alt="Foto de {{ item.user.name }}" class="rounded-circle border" style="width: 70px; height: 70px; object-fit: cover;" />
+                    {% else %}
+                      <img src="{{ MEDIA_URL }}default_profile.png" alt="Foto de {{ item.user.name }}" class="rounded-circle border" style="width: 70px; height: 70px; object-fit: cover;" />
+                    {% endif %}
+                  </div>
+
+                  <div class="col-md-10">
+                    <h5 class="mb-1 fw-semibold text-dark" style="font-size: 1.05rem;">{{ item.user.name }}</h5>
+                    
+                    <div class="mb-2 d-flex flex-wrap gap-1">
+                      {% for area in item.interestAreas.all %}
+                        <span class="badge bg-info text-dark rounded-pill" style="font-size: 0.8rem;">
+                          <i class="fas fa-briefcase me-1"></i>{{ area.interestArea }}
+                        </span>
+                      {% empty %}
+                      {% endfor %}
+                    </div>
+
+                    {% if item.bio %}
+                      <div class="mb-0 text-secondary small" style="line-height: 1.5;">
+                        <strong class="text-dark">Qué hizo:</strong> {{ item.bio|safe }}
+                      </div>
+                    {% endif %}
+                  </div>
+
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+    {% empty %}
+      <div class="text-center py-5 text-muted bg-white border rounded shadow-sm">
+        <i class="fas fa-users-slash d-block mb-2 fa-2x"></i>
+        Ningún colaborador histórico registrado.
+      </div>
+    {% endfor %}
+  </div>
 </div>
-{% endblock list_of_items %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const fromSelect = document.getElementById("filterFrom");
+  const toSelect = document.getElementById("filterTo");
+  const clearBtn = document.getElementById("clearFilterBtn");
+  const periodBlocks = document.querySelectorAll(".timeline-period-block");
+
+  function parsePeriod(pStr) {
+    if (!pStr) return 0;
+    const parts = pStr.split('.');
+    return parseInt(parts[0]) * 10 + parseInt(parts[1]);
+  }
+
+  function filterTimeline() {
+    const valFrom = parsePeriod(fromSelect.value);
+    const valTo = parsePeriod(toSelect.value);
+
+    periodBlocks.forEach(block => {
+      const blockVal = parsePeriod(block.dataset.period);
+      let visible = true;
+
+      if (valFrom && blockVal < valFrom) visible = false;
+      if (valTo && blockVal > valTo) visible = false;
+
+      block.style.display = visible ? "block" : "none";
+    });
+  }
+
+  fromSelect.addEventListener("change", filterTimeline);
+  toSelect.addEventListener("change", filterTimeline);
+
+  clearBtn.addEventListener("click", function() {
+    fromSelect.value = "";
+    toSelect.value = "";
+    periodBlocks.forEach(block => block.style.display = "block");
+  });
+});
+</script>
+{% endblock %}

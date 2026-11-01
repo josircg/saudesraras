@@ -206,7 +206,7 @@ span.card-title {
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 32px;
+    line-height: 32px;replace
     color: #101828 !important;
 }
 
@@ -743,8 +743,18 @@ footer #parcerias .parceiros-logos img {
     transition: 0.3s;
 }
 
+#searchNav .nav-link {
+    color: #545d6e;
+    transition: color 0.2s ease-in-out;
+}
+
 #searchNav .nav-link.active {
+    color: var(--blue2);
     border-bottom: 2px solid var(--blue2);
+}
+
+#searchNav .nav-link:hover {
+    color: var(--blue2);
 }
 
 #navTop ul.navbar-nav .nav-item.top a:hover {
@@ -860,10 +870,26 @@ footer #parcerias .parceiros-logos img {
 }
 
 .btn-blue3:hover{
-    background-color: var(--blue1) !important;
     color: var(--blue3) !important;
+    background-color: var(--blue1) !important
 
 }
+
+.btn-blue {
+    background-color: var(--blue3) !important;
+    color: white !important
+}
+
+.btn-blue:focus {
+    box-shadow: none;
+}
+
+.btn-blue:hover{
+    background-color:var(--blue1) !important;
+    color: var(--blue3) !important
+
+}
+
 
 .btn-pink6 {
     background-color: var(--pink6) !important;
@@ -1044,7 +1070,7 @@ footer #parcerias .parceiros-logos img {
     border-color: transparent;
 }
 .nav-link.active {
-    color: var(--pink8) !important; 
+    color: var(--blue2) !important; 
 }
 
 .nav-link:not(.active) {
@@ -1298,17 +1324,83 @@ footer #parcerias .parceiros-logos img {
     opacity: 1;
 }
 
+
+/* Container principal adaptável ao tamanho do conteúdo */
+.timeline-clean-container {
+    width: 100%;
+    padding: 15px 0 25px 0; /* Espaço extra embaixo para o texto respirar */
+    overflow-y: hidden;     /* Garante que NUNCA apareça barra vertical */
+    overflow-x: auto;       /* Só ativa scroll horizontal se faltar tela */
+}
+
+/* Alinha todos os blocos em linha horizontal */
+.period-timeline {
+    display: flex;
+    align-items: flex-start; /* Alinha o topo das bolinhas */
+    padding: 0 10px;
+}
+
+/* Estrutura que agrupa (Nodo + Linha) */
+.period-item {
+    display: flex;
+    align-items: center; /* Centraliza a linha verticalmente com a bolinha */
+}
+
+/* Nodo que segura a bolinha e o texto logo abaixo dela */
+.period-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px; /* Garante espaço mínimo para o texto não quebrar linha */
+}
+
+/* A bolinha azul */
+.period-dot {
+    width: 14px;
+    height: 14px;
+    background-color: #0d6efd; /* Use a variável de cor do seu sistema se preferir */
+    border-radius: 50%;
+    margin-bottom: 8px; /* Espaçamento fixo e seguro entre a bola e o texto */
+    transition: transform 0.2s ease;
+}
+
+.period-node:hover .period-dot {
+    transform: scale(1.25);
+}
+
+/* O texto do período */
+.period-label {
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* Linha conectora cinza perfeitamente alinhada */
+.period-line {
+    height: 2px;
+    width: 70px; /* Distância limpa e idêntica entre cada período */
+    background-color: #e0e0e0;
+    margin-top: -22px; /* Sobe a linha para alinhar exatamente no meio da bolinha */
+}
+.btn4{
+    color: #5CDCFF !important; 
+    background-color:  #114D7F !important; 
+}
+.btn4:hover{
+    background-color: #5CDCFF;  
+    color:  #3D99F4; 
+}
 /* pag sintomas */
 
 
 .btn-sintomas-busca{
     color: var(--blue1) !important; 
     background-color: var(--blue3) !important; 
-    border: 1px !important;
+    border: 4px solid var(--blue3) !important;
 }
 .btn-sintomas-busca:hover{
     background-color: #5CDCFF !important;  
     color:  var(--blue3) !important; 
+    border: 4px solid var(--blue1) !important;
 }
 
 
@@ -1326,4 +1418,47 @@ footer #parcerias .parceiros-logos img {
     }
     .card-header[aria-expanded="true"] .faq-arrow {
       transform: rotate(180deg);
+    }
+.filter-icon{
+    background-color: var(--blue3) !important;
+    border: 2px solid var(--blue3) !important;
+    color: var(--blue1) !important;
+}
+
+.btn-search-icon{
+    background-color: var(--blue3) !important;
+    border: 2px solid var(--blue3) !important;
+    color: var(--blue1) !important;
+}
+
+.btn-search-icon:hover{
+    background-color:var(--blue1) !important; 
+    border: 2px solid var(--blue1) !important;
+    color: var(--blue3) !important;
+}
+
+#blog-author-input::placeholder {
+    font-size: 14px;
+    color: #212529;
+}
+    
+.resource-img {
+        aspect-ratio: 1 / 1.414;
+        min-height: 380px;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .card-hover-overlay .overlay-blur-dark {
+        background-color: rgba(13, 33, 55, 0.85);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .card-hover-overlay:hover .overlay-blur-dark,
+    .card-hover-overlay.active .overlay-blur-dark {
+        opacity: 1;
     }

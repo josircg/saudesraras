@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load static %}
+
+<div class="row">
+    <form class="form-inline w-100" method="GET" action="">
+        <div class="col-12">
+            <div id="div-filtros" class="mb-4 w-100">
+                <div class="title-filtros mb-1 text-blue3">
+                    <strong>{{ finder_title|default:_("Buscar") }}</strong>
+                </div>
+                <div class="input-group filter-bar w-100" style="max-width: 700px;">
+                    <input type="text" id="q" name="q" class="form-control" 
+                           placeholder="{{ finder_placeholder|default:_('Digite sua busca...') }}" 
+                           value="{{ filters.q|default:'' }}">
+                    <button type="submit" class="btn btn-primary btn-blue3" style="border-radius: 0 5px 5px 0 !important; border: 1px !important;">{% trans "Buscar" %}</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mb-2">
+            {% if filters.q %}
+                <a href="." class="badge rounded-pill bg-blue3 text-decoration-none text-white p-2">
+                    <i class="fas fa-times"></i> {% trans "Busca:" %} {{ filters.q }}
+                </a>
+                <a class="badge rounded-pill bg-secondary text-decoration-none text-white p-2 ms-2" href=".">
+                    {% trans "Limpar busca" %}
+                </a>
+            {% endif %}
+
+            <div class="small text-muted mb-3 mt-2">
+                {{ page_obj.paginator.count|default:item_count }} {% trans "item(ns) encontrado(s)" %}
+            </div>
+        </div>
+    </form>
+</div>

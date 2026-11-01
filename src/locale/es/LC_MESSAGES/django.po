@@ -305,7 +305,7 @@ msgstr "Contacto"
 #| "civis@ibict.br'>civis@ibict.br</a>"
 msgid ""
 "You can reach out by this form, or through the email: <a href='mailto:"
-"laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
+"saudesraras@gmail.com'>saudesraras@gmail.com</a>"
 msgstr ""
 "Puede ponerse en contacto mediante este formulario o a través del correo "
 "electrónico: laccops.gco.ega@id.uff.br>laccops.gco.ega@id.uff.br</a>"
@@ -1076,8 +1076,177 @@ msgstr ""
 msgid "Articles"
 msgstr ""
 
+msgid "Buscar"
+msgstr ""
+
+msgid "Digite sua busca..."
+msgstr ""
+
+msgid "Busca:"
+msgstr ""
+
+msgid "Limpar busca"
+msgstr ""
+
+msgid "item(ns) encontrado(s)"
+msgstr ""
+
+msgid "Voltar para"
+msgstr ""
+
+msgid "Voltar"
+msgstr ""
+
+msgid "Editar Conteúdo"
+msgstr ""
+
+msgid "Se gostou, compartilhe"
+msgstr ""
+
+msgid "Copiar Link"
+msgstr ""
+
+msgid "Copiar link"
+msgstr ""
+
+msgid "Compartilhar no WhatsApp"
+msgstr ""
+
+msgid "Link copiado para a área de transferência!"
+msgstr ""
+
+msgid "Formulário de Artigo"
+msgstr ""
+
+msgid "Editar Artigo Relacionado"
+msgstr ""
+
+msgid "Adicionar Novo Artigo"
+msgstr ""
+
+#, fuzzy
+#| msgid "Cancel"
+msgid "Cancelar"
+msgstr "Cancelar"
+
+msgid "Salvar Artigo"
+msgstr ""
+
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
+
+msgid "Acessar página"
+msgstr ""
+
+msgid "Acesso Negado"
+msgstr ""
+
+msgid "Acesso Não Permitido"
+msgstr ""
+
+msgid ""
+"Você não possui a permissão necessária para acessar ou editar esta seção."
+msgstr ""
+
+msgid "Voltar para Home"
+msgstr ""
+
+msgid "Solicitar Acesso"
+msgstr ""
+
+msgid "Editar Página"
+msgstr ""
+
+msgid "Add Seção"
+msgstr ""
+
+msgid "Buscar conteúdo..."
+msgstr ""
+
+msgid "Digite o que procura..."
+msgstr ""
+
+msgid "Editar Seção"
+msgstr ""
+
+msgid "Adicionar Artigo"
+msgstr ""
+
+msgid "Add Artigo"
+msgstr ""
+
+msgid "Ver mais"
+msgstr ""
+
+msgid "Nenhum conteúdo estruturado nesta página."
+msgstr ""
+
+msgid "Cancelar e voltar"
+msgstr ""
+
+msgid "Editar Configurações da Página"
+msgstr ""
+
+msgid "Salvar Alterações"
+msgstr ""
+
+#, fuzzy
+#| msgid "Editing"
+msgid "Editar Artigo"
+msgstr "Editar"
+
+msgid "Nenhum artigo cadastrado para esta seção ainda."
+msgstr ""
+
+msgid "Formulário de Seção"
+msgstr ""
+
+msgid "Adicionar Nova Seção"
+msgstr ""
+
+msgid "Salvar Conteúdo"
+msgstr ""
+
+msgid "Access Request - Panel"
+msgstr "Solicitud de Acceso - Panel"
+
+#, python-format
+msgid ""
+"Hello, I would like to request permission to edit %(item_type)s "
+"'%(item_title)s' or general permission to edit %(perm_needed)s."
+msgstr ""
+"Hola, me gustaría solicitar permiso para editar %(item_type)s "
+"'%(item_title)s' o permiso general para editar %(perm_needed)s."
+
+#, python-format
+msgid ""
+"Hello, I would like to request general permission to edit %(perm_needed)s."
+msgstr ""
+"Hola, me gustaría solicitar permiso general para editar %(perm_needed)s."
+
+msgid "You do not have permission to edit this page."
+msgstr "No tiene permiso para editar esta página."
+
+msgid "the page"
+msgstr "la página"
+
+msgid "You do not have permission to create sections."
+msgstr "No tiene permiso para crear secciones."
+
+msgid "You do not have permission to edit sections."
+msgstr "No tiene permiso para editar secciones."
+
+msgid "the section"
+msgstr "la sección"
+
+msgid "You do not have permission to create articles."
+msgstr "No tiene permiso para crear artículos."
+
+msgid "You do not have permission to edit articles."
+msgstr "No tiene permiso para editar artículos."
+
+msgid "the article"
+msgstr "el artículo"
 
 msgid "Please write the name of the citizen science platform."
 msgstr "Escriba el nombre de la plataforma de ciencia ciudadana."
@@ -2272,11 +2441,8 @@ msgid ""
 "for 'not yet moderated' or 'All'."
 msgstr ""
 
-msgid "Publisher information"
-msgstr "Información de la editorial"
-
-msgid "Links with projects and/or organisations"
-msgstr "Enlaces con proyectos y/u organizaciones."
+msgid "Authors"
+msgstr "Autoría"
 
 msgid "Go to Training"
 msgstr "Ir a Formación"
@@ -2284,8 +2450,11 @@ msgstr "Ir a Formación"
 msgid "Go to Resource"
 msgstr "Ir al Recurso"
 
-msgid "Comment"
-msgstr "Comentario"
+msgid "Links with projects and/or organisations"
+msgstr "Enlaces con proyectos y/u organizaciones."
+
+msgid "Publisher information"
+msgstr "Información de la editorial"
 
 msgid "Please specify the primary language in which the resource is available"
 msgstr ""
@@ -2430,6 +2599,11 @@ msgstr "Registre su organización o red"
 msgid "Register a new rare health event"
 msgstr "Registrar un evento de ciencia ciudadana"
 
+#, fuzzy
+#| msgid "Register your organisation or network"
+msgid "Register a new booklet, article or resource"
+msgstr "Registre su organización o red"
+
 msgid "Register a new rare health news"
 msgstr ""
 
@@ -2459,11 +2633,11 @@ msgstr ""
 msgid "Profile"
 msgstr "perfil"
 
-msgid "Logout"
-msgstr "Cerrar sesión"
-
 msgid "Admin"
 msgstr "Administrar"
+
+msgid "Logout"
+msgstr "Cerrar sesión"
 
 msgid "Coming Soon"
 msgstr "Próximamente"
@@ -2562,7 +2736,7 @@ msgstr ""
 msgid "Justice"
 msgstr ""
 
-msgid "SUS"
+msgid "Where can I find my medicine (RJ)"
 msgstr ""
 
 #, fuzzy
@@ -2591,6 +2765,9 @@ msgid "Know how"
 msgstr ""
 
 msgid "Our medias:"
+msgstr ""
+
+msgid "No FAQ registered yet"
 msgstr ""
 
 msgid "Imprint"
@@ -2650,9 +2827,6 @@ msgid "Quer enviar uma notícia para o nosso site?"
 msgstr ""
 
 msgid "Entre em contato"
-msgstr ""
-
-msgid "Acessar página"
 msgstr ""
 
 msgid "Parceiro"
@@ -2794,6 +2968,15 @@ msgid "TOTALS"
 msgstr ""
 
 #, fuzzy
+#~| msgctxt "masc"
+#~| msgid "New"
+#~ msgid "New"
+#~ msgstr "Nuevo"
+
+#~ msgid "Comment"
+#~ msgstr "Comentario"
+
+#, fuzzy
 #~| msgid "Symptoms"
 #~ msgid "All Symptoms"
 #~ msgstr "Sintomas"
@@ -2831,9 +3014,6 @@ msgstr ""
 #~ "autores. Si los desconoce, indique el nombre del proyecto que generó el "
 #~ "recurso"
 
-#~ msgid "Authors"
-#~ msgstr "Autoría"
-
 #~ msgid "Image for the resource profile heading"
 #~ msgstr "Imagen para el encabezamiento del perfil de recursos"
 
@@ -2846,3 +3026,9 @@ msgstr ""
 #~| msgid "Platform"
 #~ msgid "Plataforma"
 #~ msgstr "Plataforma"
+
+msgid "Full edit"
+msgstr "Edición completa"
+
+msgid "The image (.jpg or .png) should be a book or magazine cover in A4 proportion (210 x 297, portrait), for example 600 x 848 pixels. Images with very different proportions may be drastically cropped. To learn how to avoid this, see our <a href='/guide' target='_blank'>User Guide.</a>"
+msgstr "La imagen (.jpg o .png) debe ser una portada de libro o revista en proporción A4 (210 x 297, vertical), por ejemplo 600 x 848 píxeles. Las imágenes con proporciones muy diferentes pueden recortarse drásticamente. Para saber cómo evitarlo, consulte nuestra <a href='/guide' target='_blank'>Guía de uso.</a>"

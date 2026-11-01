@@ -6,6 +6,7 @@ django-braces==1.17.0
 django-crispy-forms==2.0
 crispy-bootstrap3==2022.1
 django-environ==0.11.2
+django-guardian>=3.5.2
 pillow==10.1.0
 easy-thumbnails==2.8.5
 django_select2==8.1.2

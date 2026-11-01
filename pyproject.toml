@@ -48,6 +48,7 @@ dependencies = [
     "werkzeug<3",
     "whoosh==2.7.4",
     "xhtml2pdf>=0.2.17",
+    "django-guardian>=3.5.2",
 ]
 
 [tool.uv.sources]
@@ -56,5 +57,10 @@ poweradmin = { git = "https://bitbucket.org/josir/poweradmin.git", rev = "django
 [dependency-groups]
 dev = [
     "fabric>=3.2.2",
+]
+# Dependencias so de producao (servidor WSGI). Nao sao instaladas no
+# desenvolvimento normal; no servidor rodar: uv sync --group prod
+prod = [
+    "gunicorn>=21.2.0",
 ]
 

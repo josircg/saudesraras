@@ -1,0 +1,107 @@
+{% load i18n %}
+{% load static %}
+<div class="row">
+    <form class="form-inline float-lg-right w-100" id="searchEvents" action="{% url 'events' %}" method="GET">
+
+        <div class="col-12 d-flex">
+
+            <div id="div-ordenacao">
+                <div class="title-filtros">{% trans "Order by" %}</div>
+                <div class="input-group input-group-sm filter-bar">
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-sort-down" style="font-size: 20px;"></i>
+                    </div>
+                    <select id="orderby" name="orderby" class="custom-select form-control" onchange="this.form.submit()">
+                        <option value="-start_date" {% if filters.orderby == "-start_date" or not filters.orderby %}selected{% endif %}>
+                            {% trans "Most Recent" %}
+                        </option>
+                        <option value="start_date" {% if filters.orderby == "start_date" %}selected{% endif %}>
+                            {% trans "Oldest Date" %}
+                        </option>
+                        <option value="title" {% if filters.orderby == "title" %}selected{% endif %}>
+                            {% trans "Name" %}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="div-filtros">
+                <div class="title-filtros">{% trans "Filter by" %}</div>
+                <div class="input-group input-group-sm filter-bar">
+
+                    <div class="input-group-text filter-icon">
+                        <i class="bi bi-funnel" style="font-size: 20px;"></i>
+                    </div>
+
+                    <select id="status" name="status" class="custom-select form-control" onchange="this.form.submit()">
+                        <option value="">{% trans "Status" %}</option>
+                        <option value="upcoming" {% if filters.status == "upcoming" %}selected{% endif %}>{% trans "Upcoming Events" %}</option>
+                        <option value="ongoing" {% if filters.status == "ongoing" %}selected{% endif %}>{% trans "Ongoing events" %}</option>
+                        <option value="past" {% if filters.status == "past" %}selected{% endif %}>{% trans "Past events" %}</option>
+                    </select>
+                    <input type="date" id="start_date" name="start_date" class="custom-select form-control date-timer" value="{{ filters.start_date }}">
+                    <input type="date" id="end_date" name="end_date" class="custom-select form-control date-timer" value="{{ filters.end_date }}">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- BADGES E INDICADOR DE RESULTADOS -->
+        <div class="row w-100">
+            <div class="col-12 mb-4">
+                {% if filters.keywords %}
+                <a href="#" class="badge rounded-pill bg-blue3 mt-4 search-filter">
+                    <i class="fas fa-times"></i> {% trans "keyword:" %} {{ filters.keywords }}
+                </a>
+                {% endif %}
+
+                {% if filters.status %}
+                <a href="#" class="badge rounded-pill bg-blue1 mt-4" id="pill-status">
+                    <i class="fas fa-times"></i>
+                    {% trans "status:" %} {{ filters.status }}
+                </a>
+                {% endif %}
+
+                {% if filters.start_date or filters.end_date %}
+                <a href="#" class="badge rounded-pill bg-blue2 mt-4" id="pill-dates">
+                    <i class="fas fa-times"></i>
+                    {% trans "period:" %} {{ filters.start_date }} - {{ filters.end_date }}
+                </a>
+                {% endif %}
+
+                {% if request.get_full_path != "/events" %}
+                <a class="badge rounded-pill bg-blue3 text-decoration-none mt-4" href="{% url 'events' %}">
+                    <i class="fas fa-times"></i> {% trans "Clear current search query and filters" %}
+                </a>
+                {% endif %}
+
+                <div class="small result mb-3 mt-3">
+                    {{ counter }}
+                    {% if counter != 1 %}
+                    {% trans "events" %}
+                    {% else %}
+                    {% trans "event" %}
+                    {% endif %}
+                    {% trans "found" %}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    (function() {
+        let dateTimer;
+        const dateInputs = document.querySelectorAll('.date-timer');
+        const form = document.getElementById('searchEvents');
+
+        dateInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                clearTimeout(dateTimer);
+                dateTimer = setTimeout(() => {
+                    form.submit();
+                }, 1000); 
+            });
+        });
+    })();
+</script>
