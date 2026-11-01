@@ -3014,3 +3014,9 @@ msgstr ""
 #~| msgid "Platform"
 #~ msgid "Plataforma"
 #~ msgstr "Plataforma"
+
+msgid "Full edit"
+msgstr "Edición completa"
+
+msgid "The image (.jpg or .png) should be a book or magazine cover in A4 proportion (210 x 297, portrait), for example 600 x 848 pixels. Images with very different proportions may be drastically cropped. To learn how to avoid this, see our <a href='/guide' target='_blank'>User Guide.</a>"
+msgstr "La imagen (.jpg o .png) debe ser una portada de libro o revista en proporción A4 (210 x 297, vertical), por ejemplo 600 x 848 píxeles. Las imágenes con proporciones muy diferentes pueden recortarse drásticamente. Para saber cómo evitarlo, consulte nuestra <a href='/guide' target='_blank'>Guía de uso.</a>"

@@ -17,7 +17,7 @@
             <div class="resource-cover rounded shadow-sm overflow-hidden"
                  style="aspect-ratio: 210 / 297;">
                 {% if resource.image1 %}
-                    <img class="w-100 h-100 object-fit-cover lazyload resource-img"
+                    <img class="w-100 h-100 object-fit-cover lazyload"
                          data-src="{% thumbnail resource.image1 420x594 %}"
                          alt="{{ resource.name }}" />
                 {% else %}

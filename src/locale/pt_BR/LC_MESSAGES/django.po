@@ -2799,3 +2799,9 @@ msgstr ""
 
 #~ msgid "Can children also have rare diseases?"
 #~ msgstr "As crianças também podem ter doenças raras?"
+
+msgid "Full edit"
+msgstr "Edição Completa"
+
+msgid "The image (.jpg or .png) should be a book or magazine cover in A4 proportion (210 x 297, portrait), for example 600 x 848 pixels. Images with very different proportions may be drastically cropped. To learn how to avoid this, see our <a href='/guide' target='_blank'>User Guide.</a>"
+msgstr "A imagem (.jpg ou .png) deve ser uma capa de livro ou revista na proporção A4 (210 x 297, retrato), por exemplo 600 x 848 pixels. Imagens com proporções muito diferentes podem sofrer grandes cortes. Para saber como evitar, consulte nosso <a href='/guide' target='_blank'>Guia de Uso.</a>"

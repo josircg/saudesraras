@@ -52,8 +52,6 @@ class ResourceForm(forms.Form):
         queryset=Category.objects.none(),
         label=_("Category"),
         help_text=_('Please select one of the proposed categories.'))
-    choices = forms.CharField(widget=forms.HiddenInput(), required=False)
-    categorySelected = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     '''
     audience = forms.ModelMultipleChoiceField(
@@ -130,12 +128,13 @@ class ResourceForm(forms.Form):
 
     image1 = forms.ImageField(
         required=False,
-        widget=forms.FileInput(attrs={'data-image-suffix': '1', 'data-image-width-option': 0}),
+        widget=forms.FileInput(attrs={'data-image-suffix': '1', 'data-image-width-option': 2}),
         label=_("Resource image for the thumbnail profile"),
-        help_text=_("The image (.jpg or .png) will be resized to 600 x 400 pixels."
-                    "Image files with dimensions that greatly differ from this size may be "
-                    "drastically cropped. To learn how to avoid this, see our <a href='/"
-                    "guide' target='_blank'>User Guide.</a>"))
+        help_text=_("The image (.jpg or .png) should be a book or magazine cover in A4 "
+                    "proportion (210 x 297, portrait), for example 600 x 848 pixels. "
+                    "Images with very different proportions may be drastically cropped. "
+                    "To learn how to avoid this, see our <a href='/guide' "
+                    "target='_blank'>User Guide.</a>"))
     image_credit1 = forms.CharField(max_length=300, required=False,
                                     label=_("Provide image credit, if applicable"))
     x1 = forms.FloatField(widget=forms.HiddenInput(), required=False)

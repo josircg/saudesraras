@@ -21,7 +21,6 @@ urlpatterns = [
         'trainingsAutocompleteSearch/',
         views.trainingsAutocompleteSearch,
         name='trainingsAutocompleteSearch'),
-    path('get_sub_category/', views.get_sub_category, name='get_sub_category'),
     path('bookmarkResource/', views.bookmarkResource, name='bookmarkResource'),
     path('setHiddenResource/', views.setHiddenResource, name='setHiddenResource'),
     path('allowUserResource/', views.allowUserResource, name='allowUserResource'),

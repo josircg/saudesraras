@@ -3,7 +3,7 @@ from django.conf import settings
 from django.core.files.storage import default_storage
 from django.db import models
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from organisations.models import Organisation
 from projects.models import Project
 from utilities.models import AbstractTranslatedModel
@@ -107,6 +107,7 @@ class Resource(models.Model):
 
     class Meta:
         verbose_name = _('Resource')
+        verbose_name_plural = _('Resources')
 
     def __str__(self):
         return self.name
@@ -122,6 +123,9 @@ class Resource(models.Model):
         return f'{settings.DOMAIN}/resource/{self.id}'
 
     def safe_url(self):
+        # Na inclusao (sem id) nao ha pagina de edicao para linkar
+        if not self.pk:
+            return ''
         if self.isTrainingResource:
             return mark_safe(f'<a href="/editTrainingResource/{self.id}" target="_blank">URL</a>')
         else:
