@@ -67,3 +67,7 @@ class OrganisationDetailDiseasesTest(TestCase):
         self.org.diseases.clear()
         html = self._html()
         self.assertNotIn("disponibiliza informação", html)
+
+    def test_sem_aspa_solta_apos_modal(self):
+        # O include do modal de exclusao tinha um ' solto que aparecia na pagina
+        self.assertNotIn("</div>\n\n\n'\n", self._html())
