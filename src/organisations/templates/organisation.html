@@ -15,14 +15,37 @@
 
 {% block list_of_items %}
 <!-- Delete modal -->
-{% include '_delete_modal.html' %}'
+{% include '_delete_modal.html' %}
 <div class="container">
     <div class="row mt-3">
         <div class="col-12">
             <h1 class="text-blue3">{{organisation.name}}</h1>
         </div>
+        {% if organisation.orgType %}
+              {% with orgType=organisation.orgType|translate_instance %}
+                <p><a class="badge bg-dark" href="/organisations?orgTypes={{ orgType }}">{{ orgType }}</a></p>
+              {% endwith %}
+            {% endif %}
         <div class="col-xl-8 col-md-6 col-12">
             <p class="mt-3 gray7-color">{{ organisation.description | safe}}</p>
+
+            {% if organisation.diseases.all %}
+            <h4 class="mt-4 leftborder">{% trans "Diseases this organisation provides information about" %}</h4>
+            <div class="row">
+                {% for disease in organisation.diseases.all %}
+                <div class="col-12 mt-3">
+                    <h5 class="text-blue2">{{ disease.name }}</h5>
+                    {% if disease.description %}
+                        <p class="gray7-color mb-2">{{ disease.description | safe }}</p>
+                    {% endif %}
+                    
+                    <a href="{% url 'disease_detail' disease.id %}" class="btn btn-sm btn-blue3 mb-2">
+                         {% trans "View disease details" %}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
 
             {% if associatedProjects.all %}
             <h4 class="mt-4 leftborder">{% trans "Projects" %}</h4>
@@ -118,11 +141,7 @@
 
         <div class="col-xl-4 col-md-6 col-12">
 
-            {% if organisation.orgType %}
-              {% with orgType=organisation.orgType|translate_instance %}
-                <p><a class="badge bg-dark" href="/organisations?orgTypes={{ orgType }}">{{ orgType }}</a></p>
-              {% endwith %}
-            {% endif %}
+            
 
             {% if organisation.logo %}
             <img title="{{ organisation.name }} logo"
@@ -133,6 +152,31 @@
             <input type="hidden" id="lat" value="{{ organisation.latitude }}">
             <input type="hidden" id="long" value="{{ organisation.longitude }}">
             {% leaflet_map "map" callback="window.map_init_basic" %}
+            {% if organisation.diseases.all %}
+            <div class="mt-4">
+                {% for disease in organisation.diseases.all %}
+                    <h6 class="fw-bold mt-3">
+                        <a href="{% url 'disease_detail' disease.id %}" class="text-decoration-none text-blue3">
+                            {% blocktrans with disease_name=disease.name %}Symptoms related to {{ disease_name }}{% endblocktrans %}
+                        </a>
+                    </h6>
+                    
+                    {% if disease.symptoms.all %}
+                        <ul class="list-unstyled ms-2">
+                            {% for symptom in disease.symptoms.all %}
+                            <li>
+                                <a href="{% url 'symptoms' %}?q_symptom={{ symptom.description|urlencode }}" class="text-decoration-none gray7-color">
+                                    • {{ symptom.description }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="small text-muted ms-2">{% trans "No symptoms registered." %}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
         <div><br/></div>
     </div>
@@ -157,9 +201,23 @@ var marker_layer = new L.marker([50.5, 30.5]);
 function map_init_basic (map, options) {
     var lat = $("#lat").val().replace(",", ".");
     var long = $("#long").val().replace(",", ".");
-    L.marker([lat, long]).addTo(map);
-    if(lat != 0)
-        map.flyTo([lat, long], 8)
+    
+    if (lat != 0 && long != 0) {
+        // Icone padrao do Leaflet (django-leaflet), declarado explicitamente
+        var myIcon = L.icon({
+            iconUrl: "{% static 'leaflet/images/marker-icon.png' %}",
+            iconRetinaUrl: "{% static 'leaflet/images/marker-icon-2x.png' %}",
+            shadowUrl: "{% static 'leaflet/images/marker-shadow.png' %}",
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        L.marker([lat, long], { icon: myIcon }).addTo(map);
+
+        map.flyTo([lat, long], 8);
+    }
 }
 </script>
 {{ permissionForm.media.js }}
