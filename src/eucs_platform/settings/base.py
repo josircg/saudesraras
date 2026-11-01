@@ -88,7 +88,9 @@ env = environ.Env(
     FEATURED_MGT=(bool, True),
     ADMIN_EMAIL=(str, ''),
     DEBUG=(bool, False),
-    FORUM_ENABLED=(bool, False)
+    FORUM_ENABLED=(bool, False),
+    CARTODB_API=(str, '')  # default vazio: sem a chave os tiles degradam
+                           # (marca d'agua), mas o settings nao quebra no boot
 )
 
 # Create a local.env file in the settings directory
@@ -100,17 +102,17 @@ if env_file.exists():
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
 SECRET_KEY = env("SECRET_KEY")
 
 ALLOWED_HOSTS = []
 
 ADMIN_EMAIL = env("ADMIN_EMAIL")
+CARTODB_API = env("CARTODB_API")
 
 if ADMIN_EMAIL:
     ADMINS = [(email.split('@')[0], email) for email in ADMIN_EMAIL.split(',')]
     MANAGERS = ADMINS
+
 # Application definition
 INSTALLED_APPS = (
     "admin_tools",
@@ -161,6 +163,7 @@ INSTALLED_APPS = (
     'ckeditor_uploader',
     'django_cleanup.apps.CleanupConfig',
     'utilities',
+    'guardian'
 )
 
 MIDDLEWARE = [
@@ -190,6 +193,11 @@ DATABASES = {
         'PASSWORD': env("DATABASE_PASSWORD"),
         'HOST': env('DATABASE_HOST'),
         'PORT': '5432',
+        # Banco de teste pre-criado (o usuario do banco pode nao ter CREATEDB).
+        # Rodar a suite com --keepdb para reutilizar este banco sem recria-lo.
+        'TEST': {
+            'NAME': env('DATABASE_TEST_NAME', default='raras_teste'),
+        },
     }
 }
 
@@ -244,6 +252,18 @@ AUTH_USER_MODEL = "authtools.User"
 LOGIN_REDIRECT_URL = reverse_lazy("home")
 LOGIN_URL = reverse_lazy("accounts:login")
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Padrão do Django
+    'guardian.backends.ObjectPermissionBackend',  # Backend do Guardian
+)
+
+# django-guardian: o AUTH_USER_MODEL e' authtools.User (login por email, sem
+# 'username'), entao o usuario anonimo padrao do guardian nao se aplica.
+# As permissoes por objeto desta plataforma sao sempre para usuarios
+# autenticados (as views de edicao usam @login_required), portanto
+# desabilitamos a criacao do anonymous user do guardian.
+ANONYMOUS_USER_NAME = None
+
 THUMBNAIL_EXTENSION = "png"  # Or any extn for your thumbnails
 
 LEAFLET_CONFIG = {
@@ -254,13 +274,16 @@ LEAFLET_CONFIG = {
     'MAX_ZOOM': 18,
     'TILES': [
         (
-            'CartoDB Light',
-            'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-            '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors &copy; '
-            '<a href="https://carto.com">CARTO</a>'
-        )
+            'CartoDB Positron',
+            'https://basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png?key=' + CARTODB_API,
+            {
+                'attribution': '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                'maxZoom': 20,
+            },
+        ),
     ],
 }
+
 
 
 SUMMERNOTE_THEME = 'bs4'
@@ -296,7 +319,7 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 SITE_NAME = 'Saúdes Raras'
 EMAIL_RECIPIENT_LIST = ["josircg@gmail.com"]
 EMAIL_CONTACT_RECIPIENT_LIST = ["josircg@gmail.com"]
-EMAIL_CIVIS = ["laccops.gco.ega@id.uff.br"]
+EMAIL_CIVIS = ["saudesraras@gmail.com"]
 EMAIL_TAG = env("EMAIL_TAG")
 HOST = env("HOST")
 DOMAIN = env("DOMAIN")
@@ -438,3 +461,6 @@ ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomAppIndexDashboa
 USER_AGENT = env('USER_AGENT')
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+from PIL import Image
+Image.ANTIALIAS = 1

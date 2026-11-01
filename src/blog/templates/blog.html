@@ -4,24 +4,35 @@
 {% block title %}{{ block.super }} :: Blog {% endblock %}
 
 {% block list_of_items %}
-<div class="border-top"
-    style="
-      margin: 3rem 5%;
-      border: 3px solid #114D7F;
-      margin-right: 5%;
-      margin-left: 5%;">
-</div>
+
 <div class="container">
-    <h1 class="mt-5 mb-5 text-blue3" style="text-align: center;">{% trans "News" %}</h1>
+    <div class="border-top"
+                style="
+                margin: 3rem 5%;
+                margin-top: 0;
+                border: 3px solid #114D7F;
+                margin-right: 0%;
+                margin-left: 0%;"></div>
+
     <div class="row">
+        <div class="col-12">
+            <h1 class="mt-0 mb-4 text-blue2 lght" style="text-align: center;">{% trans "News" %} </h1>
+        </div>
         <div class="row">
             <div class="text-end" style="text-align: end;">
-                <span class="fs-6 pt-3 mb-5 d-block">
+                <span class="fs-6 pt-3 mb-0 d-block">
                     {% blocktrans %}Want to send a news to our site?{% endblocktrans %}
                     <a class="text-blue2" href="/contact">{% blocktrans %}Contact us{% endblocktrans %}.</a>
                 </span>
             </div>
         </div>
+            {% include "_subnavbar.html" %}
+            {% include "_finder_posts.html" %}
+    </div>
+    
+    
+    <div class="row">
+        
         {% for post in post_list %}
             {% include "inform_card.html" %}
         {% endfor %}

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z $1 ]]; then
-  PYPATH='python'
+  PYPATH='uv run'
 else
   PYPATH=$1'/python'
 fi

@@ -170,7 +170,6 @@ def editResource(request, pk):
         'keywords': resource.keywords.all,
         'abstract': resource.abstract,
         'category': getCategory(resource.category),
-        'categorySelected': resource.category.id,
         'theme': resource.theme.all,
         # Publish information
         'publisher': resource.publisher,
@@ -378,6 +377,12 @@ def clearFilters(request):
     return redirect('resources')
 
 
+# Capa de publicacao em proporcao A4 retrato (210:297). Deve bater com o preset 2
+# do static/site/js/modal-crop.js (data-image-width-option=2 em resources/forms.py).
+# Imagens ja salvas (600x400) nao sao reprocessadas.
+RESOURCE_IMAGE_SIZE = (600, 848)
+
+
 def saveImage(request, form, element, ref):
     image_path = ''
     filepath = request.FILES.get(element, False)
@@ -395,7 +400,7 @@ def saveImage(request, form, element, ref):
         if ref == '2':
             finalSize = (1100, 400)
         else:
-            finalSize = (600, 400)
+            finalSize = RESOURCE_IMAGE_SIZE
         resized_image = cropped_image.resize(finalSize, Image.LANCZOS)
 
         if cropped_image.width > fixed_image.width:
@@ -475,30 +480,6 @@ def setFilters(request, filters):
     filters['has_active_filters'] = any([v not in EMPTY_VALUES for k, v in filters.items() if k != 'orderby'])
 
     return filters
-
-
-def get_sub_category(request):
-    category = request.GET.get("category")
-    options = '<select id="id_subcategory" class="select form-control">'
-    response = {}
-
-    if category:
-        sub_categories = Category.objects.filter(parent=category)
-        sub_categories = sub_categories.values_list("id", "text")
-        tupla_sub_categories = tuple(sub_categories)
-        if tupla_sub_categories:
-            for sub_category in tupla_sub_categories:
-                options += '<option value = "%s">%s</option>' % (
-                    sub_category[0],
-                    sub_category[1]
-                )
-            options += '</select>'
-            response['sub_categories'] = options
-        else:
-            response['sub_categories'] = '<select id="id_subcategory" class="select form-control" disabled></select>'
-    else:
-        response['sub_categories'] = '<select id="id_subcategory" class="select form-control" disabled></select>'
-    return JsonResponse(response)
 
 
 def getCategory(category):

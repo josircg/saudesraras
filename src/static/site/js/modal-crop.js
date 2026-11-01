@@ -6,8 +6,17 @@
     $(document).ready(function () {
         // Current input file
         let $imgSelected;
-        // Option to define cropper width: 0 = 600 x 400 - 1 = 1100 x 400
+        // Option to define cropper size (data-image-width-option):
+        // 0 = 600 x 400 (3:2), 1 = 1100 x 400 (11:4), 2 = 600 x 848 (A4 retrato, 210:297)
         let imgWidthOption;
+        const CROP_PRESETS = {
+            0: {width: 600, height: 400},
+            1: {width: 1100, height: 400},
+            2: {width: 600, height: 848},
+        };
+        function cropPreset() {
+            return CROP_PRESETS[imgWidthOption] || CROP_PRESETS[0];
+        }
         // Inputs defined on _crop_zone.html
         let $image = $("#image");
         let $modalCrop = $("#modalCrop");
@@ -41,12 +50,13 @@
             let cropBoxData;
             let canvasData;
             $zoomSlider.val(0);
+            let preset = cropPreset();
 
             $image.cropper({
                 viewMode: 1,
-                aspectRatio: imgWidthOption === 1 ? 11 / 4 : 3 / 2,
-                minCropBoxWidth: imgWidthOption === 1 ? 1100 : 600,
-                minCropBoxHeight: 400,
+                aspectRatio: preset.width / preset.height,
+                minCropBoxWidth: preset.width,
+                minCropBoxHeight: preset.height,
                 dragMode: 'move',
                 guides: false,
                 center: false,
@@ -88,8 +98,9 @@
             step: 0.0001,
             slide: function (event) {
                 let canvasData = $image.cropper("getCanvasData");
+                let preset = cropPreset();
 
-                if (canvasData.naturalWidth < 600 || canvasData.naturalHeight < 400) {
+                if (canvasData.naturalWidth < preset.width || canvasData.naturalHeight < preset.height) {
                     event.preventDefault();
                 } else {
                     let currentValue = $zoomSlider.slider("value");
@@ -110,8 +121,9 @@
 
             $modalCrop.modal("hide");
 
+            let preset = cropPreset();
             $('#imageResult' + suffix).attr('src', $image.cropper('getCroppedCanvas',
-                {width: imgWidthOption === 1 ? 1100 : 600, height: 400}).toDataURL());
+                {width: preset.width, height: preset.height}).toDataURL());
         });
     });
 })(jQuery);

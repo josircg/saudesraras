@@ -6,12 +6,22 @@
 {% block title %}{{ block.super }} :: {% trans "Symptoms" %}{% endblock %}
 
 {% block list_of_items %}
-<div class="container mt-5">
+<div class="container mt-0">
+    <div class="border-top"
+                style="
+                margin: 3rem 5%;
+                margin-top: 0;
+                border: 3px solid #114D7F;
+                margin-right: 0%;
+                margin-left: 0%;"></div>
+
     <div class="row">
-        <div class="col-12 mb-3 text-blue3">
-            <h1>{% trans "Symptoms" %}</h1>
+        <div class="col-12">
+            <h1 class="mt-0 mb-4 text-blue2 lght" style="text-align: center;">{% trans "Symptoms" %} </h1>
         </div>
+            {% include "_subnavbar.html" %}
     </div>
+    
 
     <form id="symptomForm" method="get" action="{% url 'symptoms' %}">
         <input type="hidden" id="hiddenSelected" name="symptom" value="{{ filters.selected_symptoms }}">

@@ -23,6 +23,7 @@ build
 
 # Environment variables
 local.env
+fabfile.py
 
 # Django stuff:
 *.pot
@@ -75,3 +76,5 @@ src/whoosh_index
 .idea/
 venv
 *.Zone.Identifier
+env/
+.env

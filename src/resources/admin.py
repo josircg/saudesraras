@@ -1,6 +1,7 @@
 from django.contrib import admin, messages
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import path
+from django.urls import path, reverse
+from poweradmin.admin import PowerModelAdmin, PowerButton
 from django.utils.translation import ugettext as _
 from utilities.admin import TranslationInline
 
@@ -22,12 +23,20 @@ class CategoryAdmin(admin.ModelAdmin):
     inlines = (TranslationInline,)
 
 
-class ResourceAdminBase(admin.ModelAdmin):
+class ResourceAdminBase(PowerModelAdmin):
     search_fields = ('name',)
     list_display = ('name', 'category', 'dateCreated', 'dateUpdated', 'approved', 'safe_url')
     list_filter = ('approved',)
     exclude = ('isTrainingResource',)
     migrate_to_cls = None
+
+    def save_model(self, request, obj, form, change):
+        # Em criacao pelo admin, o form nao expoe 'creator' (FK obrigatoria).
+        # Preenche com o usuario logado (staff) para evitar
+        # RelatedObjectDoesNotExist em Resource.save() e registrar a autoria.
+        if not change and not obj.creator_id:
+            obj.creator = request.user
+        super().save_model(request, obj, form, change)
 
     def migrate_resource(self, request, object_id):
         """Change Resource to Training Resource and Training Resource to Resource"""
@@ -58,6 +67,29 @@ class ResourceAdminBase(admin.ModelAdmin):
         ]
         return my_urls + urls
 
+    def get_buttons(self, request, object_id=None):
+        buttons = super().get_buttons(request, object_id)
+        if object_id:
+            # Training resources tem rotas proprias de edicao/visualizacao no site
+            if self.model is TrainingResource:
+                edit_url = reverse('editTrainingResource', args=[object_id])
+                view_url = reverse('training_resource', args=[object_id])
+            else:
+                edit_url = reverse('editResource', args=[object_id])
+                view_url = reverse('resource', args=[object_id])
+            buttons.append(PowerButton(url=edit_url, label=_('Full edit')))
+            buttons.append(PowerButton(url=view_url, label=_('View on site')))
+        return buttons
+
+    def get_readonly_fields(self, request, obj=None):
+        readonly = list(super().get_readonly_fields(request, obj))
+        # A capa enviada pelo admin e gravada como veio, sem o recorte A4 (600x848) do
+        # formulario do site. Por isso so superuser pode troca-la aqui; os demais usam
+        # o botao "Edicao Completa" (/editResource/<id>).
+        if not request.user.is_superuser and 'image1' not in readonly:
+            readonly.append('image1')
+        return readonly
+
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
         form.base_fields['approved'].widget.choices[0] = ('unknown', _('Not moderated'))
@@ -66,9 +98,9 @@ class ResourceAdminBase(admin.ModelAdmin):
 
 @admin.register(Resource)
 class ResourceAdmin(ResourceAdminBase):
-    fields= ('name', 'url', 'theme', 'category', 'abstract', 'publisher', 'keywords', 'approved', 'safe_url')
+    fields= ('name', 'url', 'abstract', 'theme', 'category', 'publisher', 'image1', 'keywords', 'approved', 'safe_url')
     autocomplete_fields = ('organisation',)
-    readonly_fields = ('image1', 'safe_url')
+    readonly_fields = ('safe_url', )
     migrate_to_cls = TrainingResource
 
     def get_queryset(self, request):
