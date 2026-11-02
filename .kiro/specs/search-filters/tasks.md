@@ -57,11 +57,8 @@ automatizados e validação. Comandos a partir de `src/`; testes com `--keepdb`
     (6) — 18 testes. Cobrem keywords, filtros (author/status/symptom), intervalo
     de data, ordenação sticky-first, preservação de `filters`/paginação,
     moderação de eventos (não-staff) e a regressão do contrato `q`→`keywords`
-  - NOTA: esta branch ainda NÃO tem a config `TEST.NAME=raras_teste` (vem da
-    issue154 via dev-jhonatan). Até o merge com a dev, rode os testes com um
-    settings que aponte `DATABASES['default']['TEST']['NAME']='raras_teste'`
-    (ex.: um módulo de teste que herde de development). Após o merge com a dev,
-    basta `uv run manage.py test blog events diseases --keepdb`
+  - Rodar: `uv run manage.py test blog events diseases --keepdb` (banco de teste
+    `raras_teste`, configurado em `DATABASES['default']['TEST']['NAME']`)
   - _Requisitos: 1.1, 1.5, 2.1, 2.5, 3.1_
 
 - [ ] 7. Checkpoint de verificação

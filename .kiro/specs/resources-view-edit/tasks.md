@@ -4,8 +4,8 @@ _Feature: Visualização e edição de recursos (publicações), com tratamento 
 
 ## Overview
 
-As tarefas 1 a 10 estão concluídas na `dev-jhonatan` (ainda não commitadas). Resta o
-checkpoint final (11): conferência no navegador e commit. Comandos a partir de `src/`;
+As tarefas 1 a 10 estão concluídas e publicadas (commits `8c140b62`, `851f9244` e
+`a48fbdd1`). Da tarefa 11, resta só a conferência no navegador. Comandos a partir de `src/`;
 testes com `--keepdb` (banco `raras_teste`).
 
 ## Task Dependency Graph
@@ -94,7 +94,7 @@ testes com `--keepdb` (banco `raras_teste`).
   - `uv run manage.py check`; `uv run manage.py makemigrations --check --dry-run`;
     `uv run manage.py test resources --keepdb`; `uv run manage.py compilemessages`
   - Verificação manual no navegador do fluxo de recorte e das três telas
-  - Commit na `dev-jhonatan` ou em branch com PR (a decidir)
+  - Verificações automáticas e commit: feitos (`8c140b62`, `851f9244`, `a48fbdd1`)
   - _Requisitos: todos_
 
 ## Notes

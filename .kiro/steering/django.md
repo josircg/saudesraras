@@ -124,7 +124,6 @@ dependem dos binários do `gettext` do SO (`msgfmt`, `msguniq`, `xgettext`), que
 ```
 # Debian/Ubuntu (servidor usa www-data):
 sudo apt-get update && sudo apt-get install -y gettext
-# RHEL/Fedora: sudo dnf install gettext   |   Alpine: apk add gettext
 ```
 
 Sem o gettext, o erro é `CommandError: Can't find msgfmt/msguniq. Make sure you
@@ -220,6 +219,23 @@ d'água "API KEY REQUIRED".
 
 ## Remote git
 
+- Repositório: `github.com/josircg/saudesraras` (remote `origin`).
+- **`master`**: branch de produção e branch padrão do repositório. Protegida: mudanças
+  por PR com 1 aprovação.
+- **`dev`**: branch de integração, criada a partir da `master`. Protegida: PR com 1
+  aprovação, sem exclusão e sem force push.
+- **Novas branches devem partir do `dev`**, e as PRs devem ter o `dev` como base:
+
+  ```
+  git fetch origin
+  git switch -c issueNNN origin/dev
+  ```
+
+- O `dev` é levado para a `master` nas publicações.
+- Ajustes feitos direto na `master` (hotfix) devem ser levados de volta ao `dev` logo
+  em seguida, para os dois não divergirem.
+- O `dev` antigo, anterior à recriação a partir da `master`, está preservado na tag
+  `backup/dev-2026-10-10`.
 
 ## Fluxo de trabalho com specs
 
