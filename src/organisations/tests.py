@@ -71,3 +71,18 @@ class OrganisationDetailDiseasesTest(TestCase):
     def test_sem_aspa_solta_apos_modal(self):
         # O include do modal de exclusao tinha um ' solto que aparecia na pagina
         self.assertNotIn("</div>\n\n\n'\n", self._html())
+
+
+class OrganisationListHeadingTest(TestCase):
+    """O titulo da listagem /organisations deve sair traduzido."""
+
+    def test_titulo_traduzido(self):
+        import re
+        esperado = {"pt-br": "Organizações", "es": "Organizaciones", "en": "Organisation or network"}
+        for lang, texto in esperado.items():
+            with self.subTest(lang=lang):
+                self.client.cookies["django_language"] = lang
+                html = self.client.get("/organisations").content.decode()
+                h1 = re.search(r'<h1 class="mt-0 mb-4 text-blue2 lght"[^>]*>(.*?)</h1>', html, re.S)
+                self.assertIsNotNone(h1)
+                self.assertEqual(h1.group(1).strip(), texto)

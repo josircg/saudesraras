@@ -83,7 +83,7 @@
                                 
                                 {% if perms.pages.change_page or user.is_superuser %}
                                     <a href="{% url 'edit_article_generic' page_slug=page_mae.slug section_id=section.id article_id=artigo.id %}" 
-                                       class="text-muted" title="{% trans 'Editar Artigo' %}">
+                                       class="text-muted" title="{% trans 'Edit Article' %}">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 {% endif %}
@@ -99,7 +99,7 @@
 
         {% else %}
             <div class="col-12 text-center py-5">
-                <p class="text-muted">{% trans "Nenhum artigo cadastrado para esta seção ainda." %}</p>
+                <p class="text-muted">{% trans "No Article added for this section" %}</p>
             </div>
         {% endif %}
     </div>

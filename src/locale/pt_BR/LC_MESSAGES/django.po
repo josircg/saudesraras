@@ -151,9 +151,6 @@ msgstr ""
 msgid "Already signed up?"
 msgstr "Já possui conta?"
 
-#, fuzzy
-#| msgid ""
-#| "By clicking on Register, you accept our <a href='/terms'>Terms of Use</a> "
 msgid "By clicking on Register, you accept our "
 msgstr "Ao clicar em Cadastre-se, você aceita nossos "
 
@@ -192,6 +189,18 @@ msgstr "Não"
 
 msgid "Yes"
 msgstr "Sim"
+
+msgid "Order by"
+msgstr "Ordenar por"
+
+msgid "Filter by author"
+msgstr "Filtrar por autor:"
+
+msgid "Filter by publication period"
+msgstr "Filtrar pelo ano de publicação"
+
+msgid "Clear current search query and filters"
+msgstr "Limpar busca e filtros"
 
 msgid "Preview"
 msgstr "Visualizar"
@@ -304,16 +313,12 @@ msgstr "Importar CSV"
 msgid "Contact"
 msgstr "Contato"
 
-#, fuzzy
-#| msgid ""
-#| "You can reach out by this form, or through the email: <a href='mailto:"
-#| "laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
 msgid ""
 "You can reach out by this form, or through the email: <a href='mailto:"
 "saudesraras@gmail.com'>saudesraras@gmail.com</a>"
 msgstr ""
 "Entre em contato pelo formulário ou envie um e-mail para: <a href='mailto:"
-"laccops.gco.ega@id.uff.br'>laccops.gco.ega@id.uff.br</a>"
+"saudesraras@gmail.com'>saudesraras@gmail.com</a>"
 
 msgid "Refresh captcha"
 msgstr "Atualizar captcha"
@@ -471,9 +476,6 @@ msgstr "Nenhum sintoma registrado"
 msgid "No diseases found."
 msgstr "Nenhuma doença encontrada"
 
-msgid "Order by"
-msgstr "Ordenar por"
-
 msgid "Name (A-Z)"
 msgstr "Nome (A-Z)"
 
@@ -488,9 +490,6 @@ msgstr "busca:"
 
 msgid "symptom"
 msgstr "sintoma"
-
-msgid "Clear current search query and filters"
-msgstr "Limpar busca e filtros"
 
 msgid "diseases found"
 msgstr "doenças encontradas"
@@ -658,15 +657,45 @@ msgstr "Seu evento \"%s\" foi aprovado!"
 msgid "Go to event page"
 msgstr "Acessar a página do evento"
 
+msgid "Most Recent"
+msgstr "Mais recentes"
+
+msgid "Oldest Date"
+msgstr ""
+
+msgid "Upcoming Events"
+msgstr "Eventos futuros"
+
+msgid "Ongoing events"
+msgstr "Eventos atuais"
+
+msgid "Past events"
+msgstr "Eventos passados"
+
+msgid "keyword:"
+msgstr "palavra-chave:"
+
+msgid "status:"
+msgstr "Status:"
+
+msgid "period:"
+msgstr "período"
+
+msgid "events"
+msgstr "eventos"
+
+msgid "event"
+msgstr "evento"
+
+msgid "found"
+msgstr "encontradas"
+
 msgid "Editing"
 msgstr "Editar"
 
 msgctxt "masc"
 msgid "New"
 msgstr "Novo"
-
-msgid "event"
-msgstr "evento"
 
 msgid ""
 "Thank you for registering an event on the platform. After submitting this "
@@ -718,15 +747,6 @@ msgstr "Aprovar"
 
 msgid "Do not"
 msgstr "Não"
-
-msgid "Ongoing events"
-msgstr "Eventos atuais"
-
-msgid "Upcoming Events"
-msgstr "Eventos futuros"
-
-msgid "Past events"
-msgstr "Eventos passados"
 
 msgid "From "
 msgstr "De "
@@ -827,14 +847,8 @@ msgstr "Excluir"
 msgid "By Name"
 msgstr "Ordem alfabética"
 
-msgid "Most Recent"
-msgstr "Mais recentes"
-
 msgid "Country"
 msgstr "País"
-
-msgid "keyword:"
-msgstr "palavra-chave:"
 
 msgid "country"
 msgstr "país"
@@ -847,9 +861,6 @@ msgstr "organizações"
 
 msgid "organisation"
 msgstr "organização"
-
-msgid "found"
-msgstr "encontradas"
 
 msgctxt "fem"
 msgid "New"
@@ -902,7 +913,6 @@ msgstr "organizações econtradas"
 
 msgid "organisation found"
 msgstr "organização encontrada"
-
 
 msgid "Diseases this organisation provides information about"
 msgstr "Doenças sobre as quais esta organização disponibiliza informação"
@@ -961,15 +971,15 @@ msgstr ""
 "Localize no mapa ou informe no campo abaixo a cidade ou região e país de sua "
 "iniciativa ou organização"
 
-msgid "organisation or network <span class='text-blue3'>search</span>"
-msgstr "<span class='text-blue3'>busca de</span> Organização ou Rede"
+msgid "Organisation or network"
+msgstr "Organizações"
 
 msgid "Organisation added correctly!"
 msgstr "Organização adicionada com sucesso!"
 
 #, python-format
 msgid "Your organisation or network \"%s\" has been submitted!"
-msgstr "Sua organização ou rede \"%s\" foi submetida!"
+msgstr "Sua organização \"%s\" foi submetida!"
 
 #, python-format
 msgid "Notification - New organisation \"%s\" submitted"
@@ -1074,8 +1084,6 @@ msgstr ""
 msgid "Adicionar Novo Artigo"
 msgstr ""
 
-#, fuzzy
-#| msgid "Cancel"
 msgid "Cancelar"
 msgstr "Cancelar"
 
@@ -1104,13 +1112,9 @@ msgstr ""
 msgid "Solicitar Acesso"
 msgstr ""
 
-#, fuzzy
-#| msgid "Acessar página"
-msgid "Editar Página"
-msgstr "Acessar página"
 
-msgid "Add Seção"
-msgstr ""
+msgid "Add Section"
+msgstr "Adicionar seção"
 
 msgid "Buscar conteúdo..."
 msgstr ""
@@ -1121,17 +1125,20 @@ msgstr ""
 msgid "Editar Seção"
 msgstr ""
 
-msgid "Adicionar Artigo"
-msgstr ""
+msgid "Edit Section"
+msgstr "Editar seção"
 
-msgid "Add Artigo"
-msgstr ""
+msgid "Add Article"
+msgstr "Adicionar Artigo"
 
 msgid "Ver mais"
 msgstr ""
 
 msgid "Nenhum conteúdo estruturado nesta página."
 msgstr ""
+
+msgid "Edit Page"
+msgstr "Editar página"
 
 msgid "Cancelar e voltar"
 msgstr ""
@@ -1142,13 +1149,14 @@ msgstr ""
 msgid "Salvar Alterações"
 msgstr ""
 
-#, fuzzy
-#| msgid "Editing"
-msgid "Editar Artigo"
-msgstr "Editar"
-
-msgid "Nenhum artigo cadastrado para esta seção ainda."
+msgid "Add Artigo"
 msgstr ""
+
+msgid "Edit Article"
+msgstr "Editar artigo"
+
+msgid "No Article added for this section"
+msgstr "Nenhum artigo cadastrado para esta seção"
 
 msgid "Formulário de Seção"
 msgstr ""
@@ -1324,11 +1332,18 @@ msgstr "Plataforma adicionada com sucesso!"
 msgid "First Name and Surname"
 msgstr "Nome e sobrenome"
 
+msgid "Participated periods"
+msgstr "Tarefas dos participantes"
+
+msgid ""
+"Insira os períodos em que participou separados por espaço (Ex: 2023.1 2021.2)"
+msgstr ""
+
 msgid "None"
 msgstr "Nenhum"
 
-msgid "Interest Areas"
-msgstr "Áreas de interesse"
+msgid "Funções no projeto"
+msgstr ""
 
 msgid ""
 "Please write or select 2 to 3 interest areas, separated by commas or by "
@@ -1338,6 +1353,9 @@ msgstr ""
 "clicando ENTER"
 
 msgid "Interest Area"
+msgstr "Áreas de interesse"
+
+msgid "Interest Areas"
 msgstr "Áreas de interesse"
 
 msgid "Profile picture"
@@ -1439,11 +1457,11 @@ msgstr "Perfil criado em"
 msgid "Last seen on"
 msgstr "Último acesso em"
 
-msgid "Bio and <span class='lightBlue-color'>disciplinary background</span>"
-msgstr "Biografia e formação"
+msgid "Bio and disciplinary background"
+msgstr "Mini biografia e formação"
 
-msgid "Interest areas"
-msgstr "Áreas de interesse"
+msgid "Functions"
+msgstr "Funções"
 
 msgid "Submitted <span class='text-pink6'>projects</span>"
 msgstr "<span class='text-pink6'>Iniciativas</span> submetidas"
@@ -1460,8 +1478,8 @@ msgstr "<span class='text-pink6'>Organizações</span> submetidas"
 msgid "Submitted <span class='text-pink6'>events</span>"
 msgstr "<span class='text-pink6'> Eventos</span> submetidos"
 
-msgid "User <span class='text-pink5'>search</span>"
-msgstr "<span class='text-pink5'>busca</span> Usuário"
+msgid "Users"
+msgstr "Colaboradores"
 
 msgid "Profile details saved!"
 msgstr "Perfil salvo!"
@@ -2007,6 +2025,12 @@ msgstr "Campo isTrainingResource alterado"
 msgid "\"{obj}\" was changed successfully"
 msgstr "\"{obj}\" alterado com sucesso"
 
+msgid "Full edit"
+msgstr "Edição Completa"
+
+msgid "View on site"
+msgstr "Visualizar no site"
+
 msgid "Resource name"
 msgstr "Nome do recurso"
 
@@ -2103,6 +2127,17 @@ msgstr "Informe a editora do recurso"
 
 msgid "Resource image for the thumbnail profile"
 msgstr "Imagem para a miniatura do perfil do recurso"
+
+msgid ""
+"The image (.jpg or .png) should be a book or magazine cover in A4 proportion "
+"(210 x 297, portrait), for example 600 x 848 pixels. Images with very "
+"different proportions may be drastically cropped. To learn how to avoid "
+"this, see our <a href='/guide' target='_blank'>User Guide.</a>"
+msgstr ""
+"A imagem (.jpg ou .png) deve ser uma capa de livro ou revista na proporção "
+"A4 (210 x 297, retrato), por exemplo 600 x 848 pixels. Imagens com "
+"proporções muito diferentes podem sofrer grandes cortes. Para saber como "
+"evitar, consulte nosso <a href='/guide' target='_blank'>Guia de Uso.</a>"
 
 msgid "Curated lists"
 msgstr "Listas selecionadas"
@@ -2322,12 +2357,6 @@ msgstr "Vínculos com iniciativas e/ou organizações"
 msgid "Resource profile images"
 msgstr "Imagens de perfil da publicação"
 
-msgid "Training resource <span class='text-blue3'> search</span>"
-msgstr "<span class='text-blue3'>busca de</span> Material Didático"
-
-msgid "Resource <span class='text-blue3'> search</span>"
-msgstr "<span class='text-blue3'>busca de</span> Publicações"
-
 msgid "Training Resource added correctly!"
 msgstr "Material didático adicionado com sucesso!"
 
@@ -2452,20 +2481,11 @@ msgstr "Registrar um novo informe sobre saúde rara"
 msgid "Save & continue editing"
 msgstr "Salvar e continuar editando"
 
-msgid "Users"
-msgstr "Colaboradores"
-
-msgid "Our Gold Star Selection"
-msgstr "Nossa seleção"
-
 msgid "Search..."
 msgstr "Busca..."
 
 msgid "History"
 msgstr "Histórico"
-
-msgid "View on site"
-msgstr "Visualizar no site"
 
 msgid "Ver todas"
 msgstr ""
@@ -2638,22 +2658,6 @@ msgstr ""
 msgid "Quer enviar uma notícia para o nosso site?"
 msgstr ""
 
-msgid "Entre em contato"
-msgstr ""
-
-msgid "Parceiro"
-msgstr ""
-
-#, fuzzy
-#| msgid "Project"
-msgid "Projeto"
-msgstr "Iniciativa e Projeto"
-
-#, fuzzy
-#| msgid "Forum"
-msgid "Forum index"
-msgstr "Fórum"
-
 msgid "(optional)"
 msgstr "(opcional)"
 
@@ -2777,6 +2781,27 @@ msgstr "Tradução"
 msgid "TOTALS"
 msgstr ""
 
+#~ msgid "organisation or network <span class='text-blue3'>search</span>"
+#~ msgstr "<span class='text-blue3'>busca de</span> Organização ou Rede"
+
+#~ msgid "Bio and <span class='lightBlue-color'>disciplinary background</span>"
+#~ msgstr "Biografia e formação"
+
+#~ msgid "Interest areas"
+#~ msgstr "Áreas de interesse"
+
+#~ msgid "User <span class='text-pink5'>search</span>"
+#~ msgstr "<span class='text-pink5'>busca</span> Usuário"
+
+#~ msgid "Training resource <span class='text-blue3'> search</span>"
+#~ msgstr "<span class='text-blue3'>busca de</span> Material Didático"
+
+#~ msgid "Resource <span class='text-blue3'> search</span>"
+#~ msgstr "<span class='text-blue3'>busca de</span> Publicações"
+
+#~ msgid "Our Gold Star Selection"
+#~ msgstr "Nossa seleção"
+
 #, fuzzy
 #~| msgctxt "masc"
 #~| msgid "New"
@@ -2811,8 +2836,5 @@ msgstr ""
 #~ msgid "Can children also have rare diseases?"
 #~ msgstr "As crianças também podem ter doenças raras?"
 
-msgid "Full edit"
-msgstr "Edição Completa"
-
-msgid "The image (.jpg or .png) should be a book or magazine cover in A4 proportion (210 x 297, portrait), for example 600 x 848 pixels. Images with very different proportions may be drastically cropped. To learn how to avoid this, see our <a href='/guide' target='_blank'>User Guide.</a>"
-msgstr "A imagem (.jpg ou .png) deve ser uma capa de livro ou revista na proporção A4 (210 x 297, retrato), por exemplo 600 x 848 pixels. Imagens com proporções muito diferentes podem sofrer grandes cortes. Para saber como evitar, consulte nosso <a href='/guide' target='_blank'>Guia de Uso.</a>"
+msgid "Partner"
+msgstr "Parceiro"

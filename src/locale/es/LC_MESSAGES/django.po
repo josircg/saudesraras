@@ -188,6 +188,22 @@ msgstr "No"
 msgid "Yes"
 msgstr "Sí"
 
+msgid "Order by"
+msgstr "Ordenar por"
+
+#, fuzzy
+#| msgid "Filter by"
+msgid "Filter by author"
+msgstr "Filtrar"
+
+#, fuzzy
+#| msgid "Year of publication"
+msgid "Filter by publication period"
+msgstr "Año de publicación"
+
+msgid "Clear current search query and filters"
+msgstr "Borra la búsqueda actual"
+
 msgid "Preview"
 msgstr "Visualizar"
 
@@ -466,9 +482,6 @@ msgstr "No hay síntomas registrados."
 msgid "No diseases found."
 msgstr "No se ha encontrado ningúna doença"
 
-msgid "Order by"
-msgstr "Ordenar por"
-
 msgid "Name (A-Z)"
 msgstr ""
 
@@ -483,9 +496,6 @@ msgstr "Busqueda"
 
 msgid "symptom"
 msgstr "Sintoma"
-
-msgid "Clear current search query and filters"
-msgstr "Borra la búsqueda actual"
 
 msgid "diseases found"
 msgstr "doenças encontrados"
@@ -657,15 +667,51 @@ msgstr "¡Su evento \"%s\" ha sido aprobado!"
 msgid "Go to event page"
 msgstr "Ir a la página del evento"
 
+msgid "Most Recent"
+msgstr "Ordenar por añadidos más recientes"
+
+msgid "Oldest Date"
+msgstr ""
+
+msgid "Upcoming Events"
+msgstr ""
+
+msgid "Ongoing events"
+msgstr ""
+
+#, fuzzy
+#| msgid "See all events"
+msgid "Past events"
+msgstr "Ver todos los eventos"
+
+msgid "keyword:"
+msgstr "Palabras clave"
+
+#, fuzzy
+#| msgid "Status"
+msgid "status:"
+msgstr "Estado"
+
+msgid "period:"
+msgstr ""
+
+#, fuzzy
+#| msgid "event"
+msgid "events"
+msgstr "Evento"
+
+msgid "event"
+msgstr "Evento"
+
+msgid "found"
+msgstr "encontradas"
+
 msgid "Editing"
 msgstr "Editar"
 
 msgctxt "masc"
 msgid "New"
 msgstr "Nuevo"
-
-msgid "event"
-msgstr "Evento"
 
 #, fuzzy
 #| msgid ""
@@ -738,17 +784,6 @@ msgstr "Aprobar"
 
 msgid "Do not"
 msgstr "No aprobar"
-
-msgid "Ongoing events"
-msgstr ""
-
-msgid "Upcoming Events"
-msgstr ""
-
-#, fuzzy
-#| msgid "See all events"
-msgid "Past events"
-msgstr "Ver todos los eventos"
 
 msgid "From "
 msgstr "Desde"
@@ -849,14 +884,8 @@ msgstr "Eliminar"
 msgid "By Name"
 msgstr "Nombre Completo"
 
-msgid "Most Recent"
-msgstr "Ordenar por añadidos más recientes"
-
 msgid "Country"
 msgstr "País"
-
-msgid "keyword:"
-msgstr "Palabras clave"
 
 msgid "country"
 msgstr "País"
@@ -869,9 +898,6 @@ msgstr "organizaciones"
 
 msgid "organisation"
 msgstr "organización"
-
-msgid "found"
-msgstr "encontradas"
 
 msgctxt "fem"
 msgid "New"
@@ -994,10 +1020,8 @@ msgstr ""
 "Localice en el mapa o informe en el campo inferior la ciudad o región y el "
 "país de su iniciativa u organización."
 
-#, fuzzy
-#| msgid "organisation or network <span class='text-pink5'>search</span>"
-msgid "organisation or network <span class='text-blue3'>search</span>"
-msgstr "busca <span class='text-pink5'>Organização</span>"
+msgid "Organisation or network"
+msgstr "Organizaciones"
 
 msgid "Organisation added correctly!"
 msgstr "Organización añadida"
@@ -1155,8 +1179,10 @@ msgstr ""
 msgid "Editar Página"
 msgstr ""
 
-msgid "Add Seção"
-msgstr ""
+#, fuzzy
+#| msgid "Description"
+msgid "Add Section"
+msgstr "Descripción"
 
 msgid "Buscar conteúdo..."
 msgstr ""
@@ -1167,17 +1193,26 @@ msgstr ""
 msgid "Editar Seção"
 msgstr ""
 
-msgid "Adicionar Artigo"
-msgstr ""
+#, fuzzy
+#| msgid "Description"
+msgid "Edit Section"
+msgstr "Descripción"
 
-msgid "Add Artigo"
-msgstr ""
+#, fuzzy
+#| msgid "the article"
+msgid "Add Article"
+msgstr "el artículo"
 
 msgid "Ver mais"
 msgstr ""
 
 msgid "Nenhum conteúdo estruturado nesta página."
 msgstr ""
+
+#, fuzzy
+#| msgid "Editing"
+msgid "Edit Page"
+msgstr "Editar"
 
 msgid "Cancelar e voltar"
 msgstr ""
@@ -1188,12 +1223,15 @@ msgstr ""
 msgid "Salvar Alterações"
 msgstr ""
 
-#, fuzzy
-#| msgid "Editing"
-msgid "Editar Artigo"
-msgstr "Editar"
+msgid "Add Artigo"
+msgstr ""
 
-msgid "Nenhum artigo cadastrado para esta seção ainda."
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Edit Article"
+msgstr "Editar Perfil"
+
+msgid "No Article added for this section"
 msgstr ""
 
 msgid "Formulário de Seção"
@@ -1382,11 +1420,20 @@ msgstr "Plataforma añadida"
 msgid "First Name and Surname"
 msgstr "Nombre y apellidos"
 
+#, fuzzy
+#| msgid "Participation Task"
+msgid "Participated periods"
+msgstr "Tarea de los Participantes"
+
+msgid ""
+"Insira os períodos em que participou separados por espaço (Ex: 2023.1 2021.2)"
+msgstr ""
+
 msgid "None"
 msgstr "No hay"
 
-msgid "Interest Areas"
-msgstr "Áreas de interés"
+msgid "Funções no projeto"
+msgstr ""
 
 msgid ""
 "Please write or select 2 to 3 interest areas, separated by commas or by "
@@ -1396,6 +1443,9 @@ msgstr ""
 "separadas por comas o pulsando enter"
 
 msgid "Interest Area"
+msgstr "Áreas de interés"
+
+msgid "Interest Areas"
 msgstr "Áreas de interés"
 
 msgid "Profile picture"
@@ -1497,11 +1547,15 @@ msgstr "Perfil creado el"
 msgid "Last seen on"
 msgstr "Última visita"
 
-msgid "Bio and <span class='lightBlue-color'>disciplinary background</span>"
-msgstr "Bio y <span class='lightBlue-color'>disciplinary background</span>"
+#, fuzzy
+#| msgid "Short Bio and disciplinary background"
+msgid "Bio and disciplinary background"
+msgstr "Bio y ámbito profesional"
 
-msgid "Interest areas"
-msgstr "Áreas de interés"
+#, fuzzy
+#| msgid "Recent Actions"
+msgid "Functions"
+msgstr "Acciones recentes"
 
 msgid "Submitted <span class='text-pink6'>projects</span>"
 msgstr "Enviado <span class='text-pink6'>projects</span>"
@@ -1518,8 +1572,8 @@ msgstr "Enviado <span class='text-pink6'>organisations</span>"
 msgid "Submitted <span class='text-pink6'>events</span>"
 msgstr "Enviado <span class='text-pink6'>events</span>"
 
-msgid "User <span class='text-pink5'>search</span>"
-msgstr "Usuário <span class='text-pink5'>search</span>"
+msgid "Users"
+msgstr "Usuarios"
 
 msgid "Profile details saved!"
 msgstr "Datos del perfil guardados!"
@@ -2114,6 +2168,12 @@ msgstr "Campo isTrainingResource cambiado"
 msgid "\"{obj}\" was changed successfully"
 msgstr "{obj} se ha modificado correctamente"
 
+msgid "Full edit"
+msgstr "Edición completa"
+
+msgid "View on site"
+msgstr "Visualizar en site"
+
 msgid "Resource name"
 msgstr "Nombre del Recurso"
 
@@ -2211,6 +2271,18 @@ msgstr "Indique la editorial del recurso"
 
 msgid "Resource image for the thumbnail profile"
 msgstr "Imagen del recurso para el perfil en miniatura"
+
+msgid ""
+"The image (.jpg or .png) should be a book or magazine cover in A4 proportion "
+"(210 x 297, portrait), for example 600 x 848 pixels. Images with very "
+"different proportions may be drastically cropped. To learn how to avoid "
+"this, see our <a href='/guide' target='_blank'>User Guide.</a>"
+msgstr ""
+"La imagen (.jpg o .png) debe ser una portada de libro o revista en "
+"proporción A4 (210 x 297, vertical), por ejemplo 600 x 848 píxeles. Las "
+"imágenes con proporciones muy diferentes pueden recortarse drásticamente. "
+"Para saber cómo evitarlo, consulte nuestra <a href='/guide' "
+"target='_blank'>Guía de uso.</a>"
 
 msgid "Curated lists"
 msgstr "Mis listas"
@@ -2464,16 +2536,6 @@ msgstr "Enlaces con proyectos y/u organizaciones."
 msgid "Resource profile images"
 msgstr "Imágenes del perfil de los recursos."
 
-#, fuzzy
-#| msgid "Training resource <span class='text-pink5'> search</span>"
-msgid "Training resource <span class='text-blue3'> search</span>"
-msgstr "Recurso de Formación <span class='text-pink5'> search</span>"
-
-#, fuzzy
-#| msgid "Resource <span class='text-pink5'> search</span>"
-msgid "Resource <span class='text-blue3'> search</span>"
-msgstr "Recurso <span class='text-pink5'> search</span>"
-
 msgid "Training Resource added correctly!"
 msgstr "Recurso de Formación añadido correctamente"
 
@@ -2608,20 +2670,11 @@ msgstr ""
 msgid "Save & continue editing"
 msgstr "Guardar y continuar editando"
 
-msgid "Users"
-msgstr "Usuarios"
-
-msgid "Our Gold Star Selection"
-msgstr "Nuestros destacados"
-
 msgid "Search..."
 msgstr "Buscar..."
 
 msgid "History"
 msgstr "Histórico"
-
-msgid "View on site"
-msgstr "Visualizar en site"
 
 msgid "Ver todas"
 msgstr ""
@@ -2824,20 +2877,6 @@ msgstr ""
 msgid "Quer enviar uma notícia para o nosso site?"
 msgstr ""
 
-msgid "Entre em contato"
-msgstr ""
-
-msgid "Parceiro"
-msgstr ""
-
-#, fuzzy
-#| msgid "Project"
-msgid "Projeto"
-msgstr "Proyecto"
-
-msgid "Forum index"
-msgstr "Índice del Foro"
-
 msgid "(optional)"
 msgstr "(opcional)"
 
@@ -2966,6 +3005,46 @@ msgid "TOTALS"
 msgstr ""
 
 #, fuzzy
+#~| msgid "Editing"
+#~ msgid "Editar Artigo"
+#~ msgstr "Editar"
+
+#, fuzzy
+#~| msgid "Project"
+#~ msgid "Projeto"
+#~ msgstr "Proyecto"
+
+#~ msgid "Forum index"
+#~ msgstr "Índice del Foro"
+
+#, fuzzy
+#~| msgid "organisation or network <span class='text-pink5'>search</span>"
+#~ msgid "organisation or network <span class='text-blue3'>search</span>"
+#~ msgstr "busca <span class='text-pink5'>Organização</span>"
+
+#~ msgid "Bio and <span class='lightBlue-color'>disciplinary background</span>"
+#~ msgstr "Bio y <span class='lightBlue-color'>disciplinary background</span>"
+
+#~ msgid "Interest areas"
+#~ msgstr "Áreas de interés"
+
+#~ msgid "User <span class='text-pink5'>search</span>"
+#~ msgstr "Usuário <span class='text-pink5'>search</span>"
+
+#, fuzzy
+#~| msgid "Training resource <span class='text-pink5'> search</span>"
+#~ msgid "Training resource <span class='text-blue3'> search</span>"
+#~ msgstr "Recurso de Formación <span class='text-pink5'> search</span>"
+
+#, fuzzy
+#~| msgid "Resource <span class='text-pink5'> search</span>"
+#~ msgid "Resource <span class='text-blue3'> search</span>"
+#~ msgstr "Recurso <span class='text-pink5'> search</span>"
+
+#~ msgid "Our Gold Star Selection"
+#~ msgstr "Nuestros destacados"
+
+#, fuzzy
 #~| msgctxt "masc"
 #~| msgid "New"
 #~ msgid "New"
@@ -3025,8 +3104,5 @@ msgstr ""
 #~ msgid "Plataforma"
 #~ msgstr "Plataforma"
 
-msgid "Full edit"
-msgstr "Edición completa"
-
-msgid "The image (.jpg or .png) should be a book or magazine cover in A4 proportion (210 x 297, portrait), for example 600 x 848 pixels. Images with very different proportions may be drastically cropped. To learn how to avoid this, see our <a href='/guide' target='_blank'>User Guide.</a>"
-msgstr "La imagen (.jpg o .png) debe ser una portada de libro o revista en proporción A4 (210 x 297, vertical), por ejemplo 600 x 848 píxeles. Las imágenes con proporciones muy diferentes pueden recortarse drásticamente. Para saber cómo evitarlo, consulte nuestra <a href='/guide' target='_blank'>Guía de uso.</a>"
+msgid "Partner"
+msgstr "Socio"
